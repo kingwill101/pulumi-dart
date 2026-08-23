@@ -15,6 +15,13 @@ class PluginInstanceArgs {
   /// AuthConfig represents the authentication information.
   /// Structure is documented below.
   final pulumi.Input<PluginInstanceAuthConfig>? authConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name for this plugin instance. Max length is 255 characters.
   final pulumi.Input<bool>? disable;
   /// The display name for this plugin instance. Max length is 255 characters.
@@ -35,37 +42,45 @@ class PluginInstanceArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+  final pulumi.Input<String>? sourceProjectId;
 
   /// Creates a new [PluginInstanceArgs].
   /// [actions] The action status for the plugin instance.
   /// [authConfig] AuthConfig represents the authentication information.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disable] The display name for this plugin instance. Max length is 255 characters.
   /// [displayName] The display name for this plugin instance. Max length is 255 characters.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [plugin] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [pluginInstanceId] The ID to use for the plugin instance, which will become the final
   /// [project] The ID of the project in which the resource belongs.
+  /// [sourceProjectId] Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
   const PluginInstanceArgs({
     this.actions,
     this.authConfig,
+    this.deletionPolicy,
     this.disable,
     required this.displayName,
     required this.location,
     required this.plugin,
     required this.pluginInstanceId,
     this.project,
+    this.sourceProjectId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actions': ?pulumi.Input.mapOptionalInputValue<List<PluginInstanceAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PluginInstanceAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'authConfig': ?pulumi.Input.mapOptionalInputValue<PluginInstanceAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'disable': ?disable,
       'displayName': displayName,
       'location': location,
       'plugin': plugin,
       'pluginInstanceId': pluginInstanceId,
       'project': ?project,
+      'sourceProjectId': ?sourceProjectId,
     };
   }
 
@@ -73,13 +88,14 @@ class PluginInstanceArgs {
     return PluginInstanceArgs(
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PluginInstanceAction>(guardedValue, (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       authConfig: (() { final guardedValue = map['authConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disable: (() { final guardedValue = map['disable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       plugin: pulumi.Input.fromValue(map['plugin'] as String),
       pluginInstanceId: pulumi.Input.fromValue(map['pluginInstanceId'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceProjectId: (() { final guardedValue = map['sourceProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'function_service_config_secret_environment_variable.dart';
 import 'function_service_config_secret_volume.dart';
 
 class FunctionServiceConfig {
-  /// Whether 100% of traffic is routed to the latest revision. Defaults to true.
+  /// Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
   final pulumi.Input<bool>? allTrafficOnLatestRevision;
   /// The number of CPUs used in a single container instance. Default value is calculated from available memory.
   final pulumi.Input<String>? availableCpu;
@@ -64,7 +64,7 @@ class FunctionServiceConfig {
   final pulumi.Input<String>? vpcConnectorEgressSettings;
 
   /// Creates a new [FunctionServiceConfig].
-  /// [allTrafficOnLatestRevision] Whether 100% of traffic is routed to the latest revision. Defaults to true.
+  /// [allTrafficOnLatestRevision] Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
   /// [availableCpu] The number of CPUs used in a single container instance. Default value is calculated from available memory.
   /// [availableMemory] The amount of memory available for a function.
   /// [binaryAuthorizationPolicy] The binary authorization policy to be checked when deploying the Cloud Run service.
@@ -157,4 +157,3 @@ class FunctionServiceConfig {
     );
   }
 }
-

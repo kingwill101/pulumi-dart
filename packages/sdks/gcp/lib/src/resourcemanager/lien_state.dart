@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LienState {
   /// Time of creation
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A system-generated unique identifier for this Lien.
   final pulumi.Input<String>? name;
   /// A stable, user-visible/meaningful string identifying the origin
@@ -29,6 +36,7 @@ class LienState {
 
   /// Creates a new [LienState].
   /// [createTime] Time of creation
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] A system-generated unique identifier for this Lien.
   /// [origin] A stable, user-visible/meaningful string identifying the origin
   /// [parent] A reference to the resource this Lien is attached to.
@@ -36,6 +44,7 @@ class LienState {
   /// [restrictions] The types of operations which should be blocked as a result of this Lien.
   const LienState({
     this.createTime,
+    this.deletionPolicy,
     this.name,
     this.origin,
     this.parent,
@@ -46,6 +55,7 @@ class LienState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'origin': ?origin,
       'parent': ?parent,
@@ -57,6 +67,7 @@ class LienState {
   factory LienState.fromMap(Map<String, dynamic> map) {
     return LienState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -65,4 +76,3 @@ class LienState {
     );
   }
 }
-

@@ -17,6 +17,13 @@ class SSLPolicyArgs {
   /// *must* be present when using the `CUSTOM` profile. This argument
   /// *must not* be present when using any other profile.
   final pulumi.Input<List<String>>? customFeatures;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// The minimum version of SSL protocol that can be used by the clients
@@ -33,13 +40,24 @@ class SSLPolicyArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer
+  /// negotiates X25519MLKEM768 key exchange when clients advertise support for it.
+  /// When set to `DEFAULT`, or if no SSL Policy is attached to
+  /// the target proxy, the load balancer disallows X25519MLKEM768 key
+  /// exchange before October 2026, and allows it afterward. When set to
+  /// `ENABLED`, the load balancer allows X25519MLKEM768 key
+  /// exchange. When set to `DEFERRED`, the load balancer
+  /// disallows X25519MLKEM768 key exchange until October 2027, and allows
+  /// it afterward.
+  /// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+  final pulumi.Input<String>? postQuantumKeyExchange;
   /// Profile specifies the set of SSL features that can be used by the
   /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
   /// the set of SSL features to enable must be specified in the
   /// `customFeatures` field.
   /// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
   /// for information on what cipher suites each profile provides. If
-  /// `CUSTOM` is used, the `custom_features` attribute **must be set**.
+  /// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
   /// If set to `FIPS_202205`, `minTlsVersion` must also be set to
   /// `TLS_1_2`.
   /// Default value is `COMPATIBLE`.
@@ -51,16 +69,20 @@ class SSLPolicyArgs {
 
   /// Creates a new [SSLPolicyArgs].
   /// [customFeatures] Profile specifies the set of SSL features that can be used by the
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [minTlsVersion] The minimum version of SSL protocol that can be used by the clients
   /// [name] Name of the resource. Provided by the client when the resource is
+  /// [postQuantumKeyExchange] One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer
   /// [profile] Profile specifies the set of SSL features that can be used by the
   /// [project] The ID of the project in which the resource belongs.
   const SSLPolicyArgs({
     this.customFeatures,
+    this.deletionPolicy,
     this.description,
     this.minTlsVersion,
     this.name,
+    this.postQuantumKeyExchange,
     this.profile,
     this.project,
   });
@@ -68,9 +90,11 @@ class SSLPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customFeatures': ?customFeatures,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'minTlsVersion': ?minTlsVersion,
       'name': ?name,
+      'postQuantumKeyExchange': ?postQuantumKeyExchange,
       'profile': ?profile,
       'project': ?project,
     };
@@ -79,12 +103,13 @@ class SSLPolicyArgs {
   factory SSLPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SSLPolicyArgs(
       customFeatures: (() { final guardedValue = map['customFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minTlsVersion: (() { final guardedValue = map['minTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      postQuantumKeyExchange: (() { final guardedValue = map['postQuantumKeyExchange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

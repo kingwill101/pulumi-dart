@@ -6,10 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayState {
   /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
   /// When changing api configs please ensure the new config is a new resource and the
-  /// lifecycle rule `create_before_destroy` is set.
+  /// lifecycle rule `createBeforeDestroy` is set.
   final pulumi.Input<String>? apiConfig;
   /// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
   final pulumi.Input<String>? defaultHostname;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-visible name for the API.
   final pulumi.Input<String>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -19,7 +26,7 @@ class GatewayState {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
   final pulumi.Input<String>? name;
@@ -35,6 +42,7 @@ class GatewayState {
   /// Creates a new [GatewayState].
   /// [apiConfig] Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
   /// [defaultHostname] The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] A user-visible name for the API.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gatewayId] Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
@@ -46,6 +54,7 @@ class GatewayState {
   const GatewayState({
     this.apiConfig,
     this.defaultHostname,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveLabels,
     this.gatewayId,
@@ -60,6 +69,7 @@ class GatewayState {
     return <String, dynamic>{
       'apiConfig': ?apiConfig,
       'defaultHostname': ?defaultHostname,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
       'gatewayId': ?gatewayId,
@@ -75,6 +85,7 @@ class GatewayState {
     return GatewayState(
       apiConfig: (() { final guardedValue = map['apiConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultHostname: (() { final guardedValue = map['defaultHostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       gatewayId: (() { final guardedValue = map['gatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -86,4 +97,3 @@ class GatewayState {
     );
   }
 }
-

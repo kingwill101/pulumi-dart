@@ -88,7 +88,7 @@ import 'entry_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
-/// 			EntryGroup:          entryGroup.ID(),
+/// 			EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			EntryId:             pulumi.String("my_entry"),
 /// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
 /// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -98,6 +98,25 @@ import 'entry_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entry" "basic_entry" {
+///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   entry_id              = "my_entry"
+///   user_specified_type   = "my_custom_type"
+///   user_specified_system = "SomethingExternal"
+/// }
+/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+///   entry_group_id = "my_group"
 /// }
 /// ```
 /// ```java
@@ -110,8 +129,8 @@ import 'entry_state.dart';
 /// import com.pulumi.gcp.datacatalog.EntryGroupArgs;
 /// import com.pulumi.gcp.datacatalog.Entry;
 /// import com.pulumi.gcp.datacatalog.EntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,7 +250,7 @@ import 'entry_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
-/// 			EntryGroup: entryGroup.ID(),
+/// 			EntryGroup: entryGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			EntryId:    pulumi.String("my_entry"),
 /// 			Type:       pulumi.String("FILESET"),
 /// 			GcsFilesetSpec: &datacatalog.EntryGcsFilesetSpecArgs{
@@ -247,6 +266,27 @@ import 'entry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entry" "basic_entry" {
+///   entry_group = gcp_datacatalog_entrygroup.entry_group.id
+///   entry_id    = "my_entry"
+///   type        = "FILESET"
+///   gcs_fileset_spec = {
+///     file_patterns = ["gs://fake_bucket/dir/*"]
+///   }
+/// }
+/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+///   entry_group_id = "my_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -258,8 +298,8 @@ import 'entry_state.dart';
 /// import com.pulumi.gcp.datacatalog.Entry;
 /// import com.pulumi.gcp.datacatalog.EntryArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.EntryGcsFilesetSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -493,7 +533,7 @@ import 'entry_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
-/// 			EntryGroup:          entryGroup.ID(),
+/// 			EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			EntryId:             pulumi.String("my_entry"),
 /// 			UserSpecifiedType:   pulumi.String("my_user_specified_type"),
 /// 			UserSpecifiedSystem: pulumi.String("Something_custom"),
@@ -545,6 +585,29 @@ import 'entry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entry" "basic_entry" {
+///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   entry_id              = "my_entry"
+///   user_specified_type   = "my_user_specified_type"
+///   user_specified_system = "Something_custom"
+///   linked_resource       = "my/linked/resource"
+///   display_name          = "my custom type entry"
+///   description           = "a custom type entry for a user specified system"
+///   schema                = "{\n  \\\"columns\\\": [\n    {\n      \\\"column\\\": \\\"first_name\\\",\n      \\\"description\\\": \\\"First name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"last_name\\\",\n      \\\"description\\\": \\\"Last name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"address\\\",\n      \\\"description\\\": \\\"Address\\\",\n      \\\"mode\\\": \\\"REPEATED\\\",\n      \\\"subcolumns\\\": [\n        {\n          \\\"column\\\": \\\"city\\\",\n          \\\"description\\\": \\\"City\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        },\n        {\n          \\\"column\\\": \\\"state\\\",\n          \\\"description\\\": \\\"State\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        }\n      ],\n      \\\"type\\\": \\\"RECORD\\\"\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+///   entry_group_id = "my_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -555,8 +618,8 @@ import 'entry_state.dart';
 /// import com.pulumi.gcp.datacatalog.EntryGroupArgs;
 /// import com.pulumi.gcp.datacatalog.Entry;
 /// import com.pulumi.gcp.datacatalog.EntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -687,6 +750,7 @@ import 'entry_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -700,6 +764,13 @@ class Entry extends pulumi.CustomResource {
   /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> bigqueryTableSpecs;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
   late final pulumi.Output<String?> description;
   /// Display information such as title and description. A short name to identify the entry,
@@ -740,7 +811,7 @@ class Entry extends pulumi.CustomResource {
   late final pulumi.Output<String?> userSpecifiedSystem;
   /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   /// When creating an entry, users should check the enum values first, if nothing matches the entry
-  /// to be created, then provide a custom value, for example "my_special_type".
+  /// to be created, then provide a custom value, for example "mySpecialType".
   /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
   /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
   late final pulumi.Output<String?> userSpecifiedType;
@@ -761,6 +832,7 @@ class Entry extends pulumi.CustomResource {
         ) {
     bigqueryDateShardedSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryDateShardedSpecs');
     bigqueryTableSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryTableSpecs');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     entryGroup = registerOutput<String>('entryGroup');
@@ -800,6 +872,7 @@ class Entry extends pulumi.CustomResource {
         ) {
     bigqueryDateShardedSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryDateShardedSpecs');
     bigqueryTableSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryTableSpecs');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     entryGroup = registerOutput<String>('entryGroup');

@@ -8,7 +8,7 @@ import 'workload_identity_pool_provider_x509.dart';
 
 /// Input properties used for looking up and filtering WorkloadIdentityPoolProvider resources.
 class WorkloadIdentityPoolProviderState {
-  /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+  /// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// plain text, to restrict what otherwise valid authentication credentials issued by the
   /// provider should not be accepted.
   /// The expression must output a boolean representing whether to allow the federation.
@@ -36,7 +36,7 @@ class WorkloadIdentityPoolProviderState {
   /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
   /// * `attribute.{custom_attribute}`:
   /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-  /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+  /// Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
   /// function that maps an identity provider credential to the normalized attribute specified
   /// by the corresponding map key.
   /// You can use the `assertion` keyword in the expression to access a JSON representation of
@@ -69,6 +69,13 @@ class WorkloadIdentityPoolProviderState {
   /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
   /// Structure is documented below.
   final pulumi.Input<WorkloadIdentityPoolProviderAws>? aws;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description for the provider. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -110,9 +117,10 @@ class WorkloadIdentityPoolProviderState {
   final pulumi.Input<WorkloadIdentityPoolProviderX509>? x509;
 
   /// Creates a new [WorkloadIdentityPoolProviderState].
-  /// [attributeCondition] [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+  /// [attributeCondition] [A Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// [attributeMapping] Maps attributes from authentication credentials issued by an external identity provider
   /// [aws] An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description for the provider. Cannot exceed 256 characters.
   /// [disabled] Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// [displayName] A display name for the provider. Cannot exceed 32 characters.
@@ -128,6 +136,7 @@ class WorkloadIdentityPoolProviderState {
     this.attributeCondition,
     this.attributeMapping,
     this.aws,
+    this.deletionPolicy,
     this.description,
     this.disabled,
     this.displayName,
@@ -146,6 +155,7 @@ class WorkloadIdentityPoolProviderState {
       'attributeCondition': ?attributeCondition,
       'attributeMapping': ?attributeMapping,
       'aws': ?pulumi.Input.mapOptionalInputValue<WorkloadIdentityPoolProviderAws, Map<String, dynamic>>(aws, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disabled': ?disabled,
       'displayName': ?displayName,
@@ -165,6 +175,7 @@ class WorkloadIdentityPoolProviderState {
       attributeCondition: (() { final guardedValue = map['attributeCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attributeMapping: (() { final guardedValue = map['attributeMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       aws: (() { final guardedValue = map['aws']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -179,4 +190,3 @@ class WorkloadIdentityPoolProviderState {
     );
   }
 }
-

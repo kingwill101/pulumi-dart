@@ -70,6 +70,21 @@ import 'get_entitlement_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_privilegedaccessmanager_getentitlement" "my-entitlement" {
+///   parent         = "projects/my-project"
+///   location       = "global"
+///   entitlement_id = "my-entitlement"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'get_entitlement_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.privilegedaccessmanager.PrivilegedaccessmanagerFunctions;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.GetEntitlementArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

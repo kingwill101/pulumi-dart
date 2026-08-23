@@ -118,9 +118,9 @@ import 'dicom_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 /// 			Name:    pulumi.String("example-dicom-store"),
-/// 			Dataset: dataset.ID(),
+/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-/// 				PubsubTopic: topic.ID(),
+/// 				PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Labels: pulumi.StringMap{
 /// 				"label1": pulumi.String("labelvalue1"),
@@ -131,6 +131,33 @@ import 'dicom_store_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_dicomstore" "default" {
+///   name    = "example-dicom-store"
+///   dataset = gcp_healthcare_dataset.dataset.id
+///   notification_config = {
+///     pubsub_topic = gcp_pubsub_topic.topic.id
+///   }
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "dicom-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -146,8 +173,8 @@ import 'dicom_store_state.dart';
 /// import com.pulumi.gcp.healthcare.DicomStore;
 /// import com.pulumi.gcp.healthcare.DicomStoreArgs;
 /// import com.pulumi.gcp.healthcare.inputs.DicomStoreNotificationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -398,9 +425,9 @@ import 'dicom_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 /// 			Name:    pulumi.String("example-dicom-store"),
-/// 			Dataset: dataset.ID(),
+/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-/// 				PubsubTopic:       topic.ID(),
+/// 				PubsubTopic:       topic.ID().ToIDOutput().ToStringOutput(),
 /// 				SendForBulkImport: pulumi.Bool(true),
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -426,6 +453,51 @@ import 'dicom_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_dicomstore" "default" {
+///   name    = "example-dicom-store"
+///   dataset = gcp_healthcare_dataset.dataset.id
+///   notification_config = {
+///     pubsub_topic         = gcp_pubsub_topic.topic.id
+///     send_for_bulk_import = true
+///   }
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+///   stream_configs {
+///     bigquery_destination = {
+///       table_uri ="bq://${gcp_bigquery_dataset.bq_dataset.project}.${gcp_bigquery_dataset.bq_dataset.dataset_id}.${gcp_bigquery_table.bq_table.table_id}"
+///     }
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "dicom-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
+/// }
+/// resource "gcp_bigquery_dataset" "bq_dataset" {
+///   dataset_id                 = "dicom_bq_ds"
+///   friendly_name              = "test"
+///   description                = "This is a test description"
+///   location                   = "US"
+///   delete_contents_on_destroy = true
+/// }
+/// resource "gcp_bigquery_table" "bq_table" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.bq_dataset.dataset_id
+///   table_id            = "dicom_bq_tb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -441,8 +513,8 @@ import 'dicom_store_state.dart';
 /// import com.pulumi.gcp.healthcare.inputs.DicomStoreNotificationConfigArgs;
 /// import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigArgs;
 /// import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigBigqueryDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -548,22 +620,26 @@ import 'dicom_store_state.dart';
 /// DicomStore can be imported using any of these accepted formats:
 ///
 /// * `{{dataset}}/dicomStores/{{name}}`
-///
 /// * `{{dataset}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
 /// ```
 class DicomStore extends pulumi.CustomResource {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   late final pulumi.Output<String> dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// User-supplied key-value pairs used to organize DICOM stores.
@@ -576,7 +652,7 @@ class DicomStore extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name for the DicomStore.
   /// ** Changing this property may recreate the Dicom store (removing all data) **
@@ -589,6 +665,7 @@ class DicomStore extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The fully qualified name of this dataset
   late final pulumi.Output<String> selfLink;
+  /// (Optional, Beta)
   /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
   /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
   /// Structure is documented below.
@@ -609,6 +686,7 @@ class DicomStore extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -642,6 +720,7 @@ class DicomStore extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

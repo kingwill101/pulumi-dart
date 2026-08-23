@@ -12,6 +12,7 @@ import 'get_instance_group_manager_stateful_disk.dart';
 import 'get_instance_group_manager_stateful_external_ip.dart';
 import 'get_instance_group_manager_stateful_internal_ip.dart';
 import 'get_instance_group_manager_status.dart';
+import 'get_instance_group_manager_target_size_policy.dart';
 import 'get_instance_group_manager_update_policy.dart';
 import 'get_instance_group_manager_version.dart';
 
@@ -21,6 +22,7 @@ class GetInstanceGroupManagerResult {
   final List<GetInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
   final String baseInstanceName;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final String fingerprint;
   /// The provider-assigned unique ID for this managed resource.
@@ -43,6 +45,7 @@ class GetInstanceGroupManagerResult {
   final List<GetInstanceGroupManagerStatus> statuses;
   final List<String> targetPools;
   final int targetSize;
+  final List<GetInstanceGroupManagerTargetSizePolicy> targetSizePolicies;
   final int targetStoppedSize;
   final int targetSuspendedSize;
   final List<GetInstanceGroupManagerUpdatePolicy> updatePolicies;
@@ -56,6 +59,7 @@ class GetInstanceGroupManagerResult {
   /// [autoHealingPolicies] Required.
   /// [baseInstanceName] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [fingerprint] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -77,6 +81,7 @@ class GetInstanceGroupManagerResult {
   /// [statuses] Required.
   /// [targetPools] Required.
   /// [targetSize] Required.
+  /// [targetSizePolicies] Required.
   /// [targetStoppedSize] Required.
   /// [targetSuspendedSize] Required.
   /// [updatePolicies] Required.
@@ -89,6 +94,7 @@ class GetInstanceGroupManagerResult {
     required this.autoHealingPolicies,
     required this.baseInstanceName,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.fingerprint,
     required this.id,
@@ -110,6 +116,7 @@ class GetInstanceGroupManagerResult {
     required this.statuses,
     required this.targetPools,
     required this.targetSize,
+    required this.targetSizePolicies,
     required this.targetStoppedSize,
     required this.targetSuspendedSize,
     required this.updatePolicies,
@@ -125,6 +132,7 @@ class GetInstanceGroupManagerResult {
       'autoHealingPolicies': pulumi.Input.encodeList<GetInstanceGroupManagerAutoHealingPolicy, Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap()),
       'baseInstanceName': baseInstanceName,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'fingerprint': fingerprint,
       'id': id,
@@ -146,6 +154,7 @@ class GetInstanceGroupManagerResult {
       'statuses': pulumi.Input.encodeList<GetInstanceGroupManagerStatus, Map<String, dynamic>>(statuses, (value) => value.toMap()),
       'targetPools': targetPools,
       'targetSize': targetSize,
+      'targetSizePolicies': pulumi.Input.encodeList<GetInstanceGroupManagerTargetSizePolicy, Map<String, dynamic>>(targetSizePolicies, (value) => value.toMap()),
       'targetStoppedSize': targetStoppedSize,
       'targetSuspendedSize': targetSuspendedSize,
       'updatePolicies': pulumi.Input.encodeList<GetInstanceGroupManagerUpdatePolicy, Map<String, dynamic>>(updatePolicies, (value) => value.toMap()),
@@ -162,6 +171,7 @@ class GetInstanceGroupManagerResult {
       autoHealingPolicies: pulumi.Input.decodeList<GetInstanceGroupManagerAutoHealingPolicy>(map['autoHealingPolicies']!, (value) => GetInstanceGroupManagerAutoHealingPolicy.fromMap((value as Map).cast<String, dynamic>())),
       baseInstanceName: map['baseInstanceName'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
@@ -183,6 +193,7 @@ class GetInstanceGroupManagerResult {
       statuses: pulumi.Input.decodeList<GetInstanceGroupManagerStatus>(map['statuses']!, (value) => GetInstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>())),
       targetPools: (map['targetPools'] as List).cast<String>(),
       targetSize: map['targetSize'] as int,
+      targetSizePolicies: pulumi.Input.decodeList<GetInstanceGroupManagerTargetSizePolicy>(map['targetSizePolicies']!, (value) => GetInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>())),
       targetStoppedSize: map['targetStoppedSize'] as int,
       targetSuspendedSize: map['targetSuspendedSize'] as int,
       updatePolicies: pulumi.Input.decodeList<GetInstanceGroupManagerUpdatePolicy>(map['updatePolicies']!, (value) => GetInstanceGroupManagerUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())),
@@ -193,4 +204,3 @@ class GetInstanceGroupManagerResult {
     );
   }
 }
-

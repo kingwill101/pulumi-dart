@@ -94,6 +94,25 @@ import 'fleet_gkehub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_fleet" "default" {
+///   display_name = "my production fleet"
+///   default_cluster_config = {
+///     security_posture_config = {
+///       mode               = "DISABLED"
+///       vulnerability_mode = "VULNERABILITY_DISABLED"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'fleet_gkehub_state.dart';
 /// import com.pulumi.gcp.gkehub.FleetArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigSecurityPostureConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,16 +167,13 @@ import 'fleet_gkehub_state.dart';
 /// Fleet can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/fleets/default`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/fleet:Fleet default projects/{{project}}/locations/global/fleets/default
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/fleet:Fleet default {{project}}
 /// ```
 class Fleet extends pulumi.CustomResource {
@@ -168,6 +184,13 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<FleetDefaultClusterConfig?> defaultClusterConfig;
   /// The time the fleet was deleted, in RFC3339 text format.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
   late final pulumi.Output<String?> displayName;
@@ -201,6 +224,7 @@ class Fleet extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     project = registerOutput<String>('project');
     states = registerOutput<List<Map<String, dynamic>>>('states');
@@ -234,6 +258,7 @@ class Fleet extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     project = registerOutput<String>('project');
     states = registerOutput<List<Map<String, dynamic>>>('states');

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterBgpAdvertisedIpRange {
   /// User-specified description for the IP range.
   ///
-  /// &lt;a name="nested_md5_authentication_keys"&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
+  /// &lt;a name="nestedMd5AuthenticationKeys"&gt;&lt;/a&gt;The `md5AuthenticationKeys` block supports:
   final pulumi.Input<String>? description;
   /// The IP range to advertise. The value must be a
   /// CIDR-formatted string.
@@ -33,4 +33,3 @@ class RouterBgpAdvertisedIpRange {
     );
   }
 }
-

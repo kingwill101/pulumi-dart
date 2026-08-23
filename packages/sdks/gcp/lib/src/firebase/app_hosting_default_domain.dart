@@ -139,6 +139,36 @@ import 'app_hosting_default_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingdefaultdomain" "example" {
+///   project   = gcp_firebase_apphostingbackend.example.project
+///   location  = gcp_firebase_apphostingbackend.example.location
+///   backend   = gcp_firebase_apphostingbackend.example.backend_id
+///   domain_id = gcp_firebase_apphostingbackend.example.uri
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "dd-mini"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "service-account"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +181,8 @@ import 'app_hosting_default_domain_state.dart';
 /// import com.pulumi.gcp.firebase.AppHostingBackendArgs;
 /// import com.pulumi.gcp.firebase.AppHostingDefaultDomain;
 /// import com.pulumi.gcp.firebase.AppHostingDefaultDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,6 +384,37 @@ import 'app_hosting_default_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingdefaultdomain" "example" {
+///   project   = gcp_firebase_apphostingbackend.example.project
+///   location  = gcp_firebase_apphostingbackend.example.location
+///   backend   = gcp_firebase_apphostingbackend.example.backend_id
+///   domain_id = gcp_firebase_apphostingbackend.example.uri
+///   disabled  = false
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "dd-full"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "service-account"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -366,8 +427,8 @@ import 'app_hosting_default_domain_state.dart';
 /// import com.pulumi.gcp.firebase.AppHostingBackendArgs;
 /// import com.pulumi.gcp.firebase.AppHostingDefaultDomain;
 /// import com.pulumi.gcp.firebase.AppHostingDefaultDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -571,6 +632,37 @@ import 'app_hosting_default_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingdefaultdomain" "example" {
+///   project   = gcp_firebase_apphostingbackend.example.project
+///   location  = gcp_firebase_apphostingbackend.example.location
+///   backend   = gcp_firebase_apphostingbackend.example.backend_id
+///   domain_id = gcp_firebase_apphostingbackend.example.uri
+///   disabled  = true
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "dd-disabled"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "service-account"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -583,8 +675,8 @@ import 'app_hosting_default_domain_state.dart';
 /// import com.pulumi.gcp.firebase.AppHostingBackendArgs;
 /// import com.pulumi.gcp.firebase.AppHostingDefaultDomain;
 /// import com.pulumi.gcp.firebase.AppHostingDefaultDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -659,22 +751,15 @@ import 'app_hosting_default_domain_state.dart';
 /// DefaultDomain can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}`
-///
 /// * `{{project}}/{{location}}/{{backend}}/{{domain_id}}`
-///
 /// * `{{location}}/{{backend}}/{{domain_id}}`
+///
 ///
 /// When using the `pulumi import` command, DefaultDomain can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{project}}/{{location}}/{{backend}}/{{domain_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{location}}/{{backend}}/{{domain_id}}
 /// ```
 class AppHostingDefaultDomain extends pulumi.CustomResource {

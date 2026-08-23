@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_folder_settings_args.dart';
 import 'get_folder_settings_result.dart';
+import 'get_log_view_args.dart';
 import 'get_log_view_iam_policy_args.dart';
 import 'get_log_view_iam_policy_result.dart';
+import 'get_log_view_result.dart';
 import 'get_organization_settings_args.dart';
 import 'get_organization_settings_result.dart';
 import 'get_project_cmek_settings_args.dart';
@@ -73,6 +75,19 @@ import 'get_sink_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getfoldersettings" "settings" {
+///   folder = "my-folder-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'get_sink_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LoggingFunctions;
 /// import com.pulumi.gcp.logging.inputs.GetFolderSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,6 +137,147 @@ Future<GetFolderSettingsResult> getFolderSettings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFolderSettingsResult.fromMap(result);
+}
+
+/// Get information about a Google Cloud Logging Log View. For more information, see the
+/// [official documentation](https://cloud.google.com/logging/docs/apis)
+/// and [API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.logging.getLogView({
+///     parent: "projects/my-project",
+///     location: "global",
+///     bucket: "_Default",
+///     name: "my-view",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.logging.get_log_view(parent="projects/my-project",
+///     location="global",
+///     bucket="_Default",
+///     name="my-view")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Logging.GetLogView.Invoke(new()
+///     {
+///         Parent = "projects/my-project",
+///         Location = "global",
+///         Bucket = "_Default",
+///         Name = "my-view",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := logging.LookupLogView(ctx, &logging.LookupLogViewArgs{
+/// 			Parent:   "projects/my-project",
+/// 			Location: "global",
+/// 			Bucket:   "_Default",
+/// 			Name:     "my-view",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getlogview" "default" {
+///   parent   = "projects/my-project"
+///   location = "global"
+///   bucket   = "_Default"
+///   name     = "my-view"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.logging.LoggingFunctions;
+/// import com.pulumi.gcp.logging.inputs.GetLogViewArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = LoggingFunctions.getLogView(GetLogViewArgs.builder()
+///             .parent("projects/my-project")
+///             .location("global")
+///             .bucket("_Default")
+///             .name("my-view")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:logging:getLogView
+///       arguments:
+///         parent: projects/my-project
+///         location: global
+///         bucket: _Default
+///         name: my-view
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_logging_get_log_view_get_log_view_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetLogViewResult> getLogView(
+  GetLogViewArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:logging/getLogView:getLogView',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetLogViewResult.fromMap(result);
 }
 
 /// Retrieves the current IAM policy data for logview
@@ -191,6 +347,22 @@ Future<GetFolderSettingsResult> getFolderSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getlogviewiampolicy" "policy" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +371,8 @@ Future<GetFolderSettingsResult> getFolderSettings(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LoggingFunctions;
 /// import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,10 +385,10 @@ Future<GetFolderSettingsResult> getFolderSettings(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .build());
 ///
 ///     }
@@ -309,6 +481,19 @@ Future<GetLogViewIamPolicyResult> getLogViewIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getorganizationsettings" "settings" {
+///   organization = "my-organization-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +502,8 @@ Future<GetLogViewIamPolicyResult> getLogViewIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LoggingFunctions;
 /// import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -422,6 +607,19 @@ Future<GetOrganizationSettingsResult> getOrganizationSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getprojectcmeksettings" "cmekSettings" {
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -430,8 +628,8 @@ Future<GetOrganizationSettingsResult> getOrganizationSettings(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LoggingFunctions;
 /// import com.pulumi.gcp.logging.inputs.GetProjectCmekSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -534,6 +732,19 @@ Future<GetProjectCmekSettingsResult> getProjectCmekSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getprojectsettings" "settings" {
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -542,8 +753,8 @@ Future<GetProjectCmekSettingsResult> getProjectCmekSettings(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LoggingFunctions;
 /// import com.pulumi.gcp.logging.inputs.GetProjectSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -645,6 +856,19 @@ Future<GetProjectSettingsResult> getProjectSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getsink" "project-sink" {
+///   id = "projects/0123456789/sinks/my-sink-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -653,8 +877,8 @@ Future<GetProjectSettingsResult> getProjectSettings(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LoggingFunctions;
 /// import com.pulumi.gcp.logging.inputs.GetSinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -14,13 +14,16 @@ import 'instance_gce_setup_vm_image.dart';
 
 class InstanceGceSetup {
   /// The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has
-  /// [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
+  /// [enough vCPUs and memory to support the `machineType` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
   /// Currently supports only one accelerator configuration.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceGceSetupAcceleratorConfig>>? acceleratorConfigs;
   /// The definition of a boot disk.
   /// Structure is documented below.
   final pulumi.Input<InstanceGceSetupBootDisk>? bootDisk;
+  /// (Output)
+  /// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+  final pulumi.Input<String>? computeInstanceId;
   /// Confidential instance configuration.
   /// Structure is documented below.
   final pulumi.Input<InstanceGceSetupConfidentialInstanceConfig>? confidentialInstanceConfig;
@@ -39,6 +42,8 @@ class InstanceGceSetup {
   final pulumi.Input<String>? machineType;
   /// Optional. Custom metadata to apply to this instance.
   final pulumi.Input<Map<String, String>>? metadata;
+  /// Optional. The minimum CPU platform to use for this instance.
+  final pulumi.Input<String>? minCpuPlatform;
   /// The network interfaces for the VM. Supports only one interface.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceGceSetupNetworkInterface>>? networkInterfaces;
@@ -64,6 +69,7 @@ class InstanceGceSetup {
   /// Creates a new [InstanceGceSetup].
   /// [acceleratorConfigs] The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has
   /// [bootDisk] The definition of a boot disk.
+  /// [computeInstanceId] (Output)
   /// [confidentialInstanceConfig] Confidential instance configuration.
   /// [containerImage] Use a container image to start the workbench instance.
   /// [dataDisks] Data disks attached to the VM instance. Currently supports only one data disk.
@@ -71,6 +77,7 @@ class InstanceGceSetup {
   /// [enableIpForwarding] Optional. Flag to enable ip forwarding or not, default false/off.
   /// [machineType] Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
   /// [metadata] Optional. Custom metadata to apply to this instance.
+  /// [minCpuPlatform] Optional. The minimum CPU platform to use for this instance.
   /// [networkInterfaces] The network interfaces for the VM. Supports only one interface.
   /// [reservationAffinity] Reservations that this instance can consume from.
   /// [serviceAccounts] The service account that serves as an identity for the VM instance. Currently supports only one service account.
@@ -80,6 +87,7 @@ class InstanceGceSetup {
   const InstanceGceSetup({
     this.acceleratorConfigs,
     this.bootDisk,
+    this.computeInstanceId,
     this.confidentialInstanceConfig,
     this.containerImage,
     this.dataDisks,
@@ -87,6 +95,7 @@ class InstanceGceSetup {
     this.enableIpForwarding,
     this.machineType,
     this.metadata,
+    this.minCpuPlatform,
     this.networkInterfaces,
     this.reservationAffinity,
     this.serviceAccounts,
@@ -99,6 +108,7 @@ class InstanceGceSetup {
     return <String, dynamic>{
       'acceleratorConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceGceSetupAcceleratorConfig>, List<Map<String, dynamic>>>(acceleratorConfigs, (value) => pulumi.Input.encodeList<InstanceGceSetupAcceleratorConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bootDisk': ?pulumi.Input.mapOptionalInputValue<InstanceGceSetupBootDisk, Map<String, dynamic>>(bootDisk, (value) => value.toMap()),
+      'computeInstanceId': ?computeInstanceId,
       'confidentialInstanceConfig': ?pulumi.Input.mapOptionalInputValue<InstanceGceSetupConfidentialInstanceConfig, Map<String, dynamic>>(confidentialInstanceConfig, (value) => value.toMap()),
       'containerImage': ?pulumi.Input.mapOptionalInputValue<InstanceGceSetupContainerImage, Map<String, dynamic>>(containerImage, (value) => value.toMap()),
       'dataDisks': ?pulumi.Input.mapOptionalInputValue<InstanceGceSetupDataDisks, Map<String, dynamic>>(dataDisks, (value) => value.toMap()),
@@ -106,6 +116,7 @@ class InstanceGceSetup {
       'enableIpForwarding': ?enableIpForwarding,
       'machineType': ?machineType,
       'metadata': ?metadata,
+      'minCpuPlatform': ?minCpuPlatform,
       'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<InstanceGceSetupNetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<InstanceGceSetupNetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
       'reservationAffinity': ?pulumi.Input.mapOptionalInputValue<InstanceGceSetupReservationAffinity, Map<String, dynamic>>(reservationAffinity, (value) => value.toMap()),
       'serviceAccounts': ?pulumi.Input.mapOptionalInputValue<List<InstanceGceSetupServiceAccount>, List<Map<String, dynamic>>>(serviceAccounts, (value) => pulumi.Input.encodeList<InstanceGceSetupServiceAccount, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -119,6 +130,7 @@ class InstanceGceSetup {
     return InstanceGceSetup(
       acceleratorConfigs: (() { final guardedValue = map['acceleratorConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGceSetupAcceleratorConfig>(guardedValue, (value) => InstanceGceSetupAcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       bootDisk: (() { final guardedValue = map['bootDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGceSetupBootDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      computeInstanceId: (() { final guardedValue = map['computeInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       confidentialInstanceConfig: (() { final guardedValue = map['confidentialInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGceSetupConfidentialInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       containerImage: (() { final guardedValue = map['containerImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGceSetupContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataDisks: (() { final guardedValue = map['dataDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGceSetupDataDisks.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -126,6 +138,7 @@ class InstanceGceSetup {
       enableIpForwarding: (() { final guardedValue = map['enableIpForwarding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGceSetupNetworkInterface>(guardedValue, (value) => InstanceGceSetupNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
       reservationAffinity: (() { final guardedValue = map['reservationAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGceSetupReservationAffinity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceAccounts: (() { final guardedValue = map['serviceAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGceSetupServiceAccount>(guardedValue, (value) => InstanceGceSetupServiceAccount.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -135,4 +148,3 @@ class InstanceGceSetup {
     );
   }
 }
-

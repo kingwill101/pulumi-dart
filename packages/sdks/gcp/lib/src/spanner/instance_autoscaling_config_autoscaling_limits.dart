@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAutoscalingConfigAutoscalingLimits {
   /// The maximum number of nodes for this specific replica.
   final pulumi.Input<int>? maxNodes;
-  /// Specifies maximum number of processing units allocated to the instance.
+  /// The maximum number of processing units for this specific replica.
   /// If set, this number should be multiples of 1000 and be greater than or equal to
   /// min_processing_units.
   final pulumi.Input<int>? maxProcessingUnits;
   /// The minimum number of nodes for this specific replica.
   final pulumi.Input<int>? minNodes;
-  /// Specifies minimum number of processing units allocated to the instance.
+  /// The minimum number of processing units for this specific replica.
   /// If set, this number should be multiples of 1000.
   final pulumi.Input<int>? minProcessingUnits;
 
   /// Creates a new [InstanceAutoscalingConfigAutoscalingLimits].
   /// [maxNodes] The maximum number of nodes for this specific replica.
-  /// [maxProcessingUnits] Specifies maximum number of processing units allocated to the instance.
+  /// [maxProcessingUnits] The maximum number of processing units for this specific replica.
   /// [minNodes] The minimum number of nodes for this specific replica.
-  /// [minProcessingUnits] Specifies minimum number of processing units allocated to the instance.
+  /// [minProcessingUnits] The minimum number of processing units for this specific replica.
   const InstanceAutoscalingConfigAutoscalingLimits({
     this.maxNodes,
     this.maxProcessingUnits,
@@ -45,4 +45,3 @@ class InstanceAutoscalingConfigAutoscalingLimits {
     );
   }
 }
-

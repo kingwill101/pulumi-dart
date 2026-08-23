@@ -15,28 +15,21 @@ import 'serving_config_state.dart';
 /// ServingConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}`
-///
 /// * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
-///
 /// * `{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, ServingConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
 /// ```
 class ServingConfig extends pulumi.CustomResource {
   /// The resource IDs of the boost controls to be applied.
   late final pulumi.Output<List<String>?> boostControlIds;
-  /// The collection ID. Currently only accepts "default_collection".
+  /// The collection ID. Currently only accepts "defaultCollection".
   late final pulumi.Output<String?> collectionId;
   /// The ID of the engine associated with the serving config.
   late final pulumi.Output<String> engineId;
@@ -55,7 +48,7 @@ class ServingConfig extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> promoteControlIds;
   /// The resource IDs of the redirect controls to be applied.
   late final pulumi.Output<List<String>?> redirectControlIds;
-  /// 'The unique ID of the serving config. Currently only accepts "default_search".'
+  /// 'The unique ID of the serving config. Currently only accepts "defaultSearch".'
   late final pulumi.Output<String?> servingConfigId;
   /// The resource IDs of the synonyms controls to be applied.
   late final pulumi.Output<List<String>?> synonymsControlIds;

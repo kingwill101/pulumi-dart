@@ -7,10 +7,9 @@ import 'instance_shielded_instance_config.dart';
 import 'instance_state.dart';
 import 'instance_vm_image.dart';
 
-/// &gt; **Warning:** `google_notebook_instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+/// &gt; **Warning:** `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
 ///
 /// A Cloud AI Platform Notebook instance.
-///
 ///
 /// &gt; **Note:** Due to limitations of the Notebooks Instance API, many fields
 /// in this resource do not properly detect drift. These fields will also not
@@ -104,6 +103,25 @@ import 'instance_vm_image.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instance" "instance" {
+///   name         = "notebooks-instance"
+///   location     = "us-west1-a"
+///   machine_type = "e2-medium"
+///   vm_image = {
+///     project      = "cloud-notebooks-managed"
+///     image_family = "workbench-instances"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +131,8 @@ import 'instance_vm_image.dart';
 /// import com.pulumi.gcp.notebooks.Instance;
 /// import com.pulumi.gcp.notebooks.InstanceArgs;
 /// import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +253,26 @@ import 'instance_vm_image.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instance" "instance" {
+///   name         = "notebooks-instance"
+///   location     = "us-west1-a"
+///   machine_type = "e2-medium"
+///   vm_image = {
+///     project      = "cloud-notebooks-managed"
+///     image_family = "workbench-instances"
+///   }
+///   desired_state = "STOPPED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +282,8 @@ import 'instance_vm_image.dart';
 /// import com.pulumi.gcp.notebooks.Instance;
 /// import com.pulumi.gcp.notebooks.InstanceArgs;
 /// import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,6 +415,28 @@ import 'instance_vm_image.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instance" "instance" {
+///   name         = "notebooks-instance"
+///   location     = "us-west1-a"
+///   machine_type = "e2-medium"
+///   metadata = {
+///     "proxy-mode" = "service_account"
+///   }
+///   container_image = {
+///     repository = "gcr.io/deeplearning-platform-release/base-cpu"
+///     tag        = "latest"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -386,8 +446,8 @@ import 'instance_vm_image.dart';
 /// import com.pulumi.gcp.notebooks.Instance;
 /// import com.pulumi.gcp.notebooks.InstanceArgs;
 /// import com.pulumi.gcp.notebooks.inputs.InstanceContainerImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,6 +588,30 @@ import 'instance_vm_image.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instance" "instance" {
+///   name               = "notebooks-instance"
+///   location           = "us-west1-a"
+///   machine_type       = "n1-standard-1"
+///   install_gpu_driver = true
+///   accelerator_config = {
+///     type       = "NVIDIA_TESLA_T4"
+///     core_count = 1
+///   }
+///   vm_image = {
+///     project      = "cloud-notebooks-managed"
+///     image_family = "workbench-instances"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -538,8 +622,8 @@ import 'instance_vm_image.dart';
 /// import com.pulumi.gcp.notebooks.InstanceArgs;
 /// import com.pulumi.gcp.notebooks.inputs.InstanceAcceleratorConfigArgs;
 /// import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -763,7 +847,7 @@ import 'instance_vm_image.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "default",
+/// 			Name: pulumi.StringRef("default"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -821,6 +905,53 @@ import 'instance_vm_image.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "myNetwork" {
+///   name = "default"
+/// }
+/// data "gcp_compute_getsubnetwork" "mySubnetwork" {
+///   name   = "default"
+///   region = "us-central1"
+/// }
+///
+/// resource "gcp_notebooks_instance" "instance" {
+///   name         = "notebooks-instance"
+///   location     = "us-central1-a"
+///   machine_type = "e2-medium"
+///   vm_image = {
+///     project      = "cloud-notebooks-managed"
+///     image_family = "workbench-instances"
+///   }
+///   instance_owners    = ["my@service-account.com"]
+///   service_account    = "my@service-account.com"
+///   install_gpu_driver = true
+///   boot_disk_type     = "PD_SSD"
+///   boot_disk_size_gb  = 150
+///   no_public_ip       = true
+///   no_proxy_access    = true
+///   network            = data.gcp_compute_getnetwork.myNetwork.id
+///   subnet             = data.gcp_compute_getsubnetwork.mySubnetwork.id
+///   labels = {
+///     "k" = "val"
+///   }
+///   metadata = {
+///     "terraform" = "true"
+///   }
+///   service_account_scopes = ["https://www.googleapis.com/auth/bigquery", "https://www.googleapis.com/auth/devstorage.read_write", "https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/userinfo.email"]
+///   tags                   = ["foo", "bar"]
+///   disk_encryption        = "CMEK"
+///   kms_key                = "my-crypto-key"
+///   desired_state          = "ACTIVE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -833,8 +964,8 @@ import 'instance_vm_image.dart';
 /// import com.pulumi.gcp.notebooks.Instance;
 /// import com.pulumi.gcp.notebooks.InstanceArgs;
 /// import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -946,22 +1077,15 @@ import 'instance_vm_image.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -993,6 +1117,13 @@ class Instance extends pulumi.CustomResource {
   /// Possible disk types for notebook instances.
   /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
   late final pulumi.Output<String?> dataDiskType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
   late final pulumi.Output<String?> desiredState;
   /// Disk encryption method used on the boot and data disks, defaults to GMEK.
@@ -1017,7 +1148,7 @@ class Instance extends pulumi.CustomResource {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A reference to the zone where the machine resides.
   late final pulumi.Output<String> location;
@@ -1108,6 +1239,7 @@ class Instance extends pulumi.CustomResource {
     customGpuDriverPath = registerOutput<String?>('customGpuDriverPath');
     dataDiskSizeGb = registerOutput<int?>('dataDiskSizeGb');
     dataDiskType = registerOutput<String?>('dataDiskType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     diskEncryption = registerOutput<String>('diskEncryption');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1170,6 +1302,7 @@ class Instance extends pulumi.CustomResource {
     customGpuDriverPath = registerOutput<String?>('customGpuDriverPath');
     dataDiskSizeGb = registerOutput<int?>('dataDiskSizeGb');
     dataDiskType = registerOutput<String?>('dataDiskType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     diskEncryption = registerOutput<String>('diskEncryption');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

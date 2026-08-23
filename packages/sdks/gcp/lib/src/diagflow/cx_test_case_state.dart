@@ -9,6 +9,13 @@ import 'cx_test_case_test_config.dart';
 class CxTestCaseState {
   /// When the test was created. A timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   final pulumi.Input<String>? displayName;
   /// The latest test result.
@@ -34,6 +41,7 @@ class CxTestCaseState {
 
   /// Creates a new [CxTestCaseState].
   /// [creationTime] When the test was created. A timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   /// [lastTestResults] The latest test result.
   /// [name] The unique identifier of the page.
@@ -44,6 +52,7 @@ class CxTestCaseState {
   /// [testConfig] Config for the test case.
   const CxTestCaseState({
     this.creationTime,
+    this.deletionPolicy,
     this.displayName,
     this.lastTestResults,
     this.name,
@@ -57,6 +66,7 @@ class CxTestCaseState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTime': ?creationTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'lastTestResults': ?pulumi.Input.mapOptionalInputValue<List<CxTestCaseLastTestResult>, List<Map<String, dynamic>>>(lastTestResults, (value) => pulumi.Input.encodeList<CxTestCaseLastTestResult, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
@@ -71,6 +81,7 @@ class CxTestCaseState {
   factory CxTestCaseState.fromMap(Map<String, dynamic> map) {
     return CxTestCaseState(
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastTestResults: (() { final guardedValue = map['lastTestResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxTestCaseLastTestResult>(guardedValue, (value) => CxTestCaseLastTestResult.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -82,4 +93,3 @@ class CxTestCaseState {
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceFromTemplateConfidentialInstanceConfig {
   /// The confidential computing technology the instance uses.
   /// SEV is an AMD feature. TDX is an Intel feature. One of the following
-  /// values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+  /// values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
   /// "AMD Milan" is currently required.
   final pulumi.Input<String>? confidentialInstanceType;
   /// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
@@ -33,4 +33,3 @@ class InstanceFromTemplateConfidentialInstanceConfig {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancePerformanceConfigFixedIop {
   /// The number of IOPS to provision for the instance.
-  /// max_iops must be in multiple of 1000.
+  /// maxIops must be in multiple of 1000.
   final pulumi.Input<int> maxIops;
 
   /// Creates a new [GetInstancePerformanceConfigFixedIop].
@@ -25,4 +25,3 @@ class GetInstancePerformanceConfigFixedIop {
     );
   }
 }
-

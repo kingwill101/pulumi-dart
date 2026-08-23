@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_canary_deployment_analysis_custom_check_task_container.dart';
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask {
+  /// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer>? container;
+
+  /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask].
+  /// [container] Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask({
+    this.container,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'container': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer, Map<String, dynamic>>(container, (value) => value.toMap()),
+    };
+  }
+
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask.fromMap(Map<String, dynamic> map) {
+    return DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask(
+      container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+    );
+  }
+}

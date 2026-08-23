@@ -21,6 +21,13 @@ class SecurityActionArgs {
   /// A valid SecurityAction must contain at least one condition.
   /// Structure is documented below.
   final pulumi.Input<SecurityActionConditionConfig> conditionConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Deny a request through if it matches this SecurityAction.
   /// Structure is documented below.
   final pulumi.Input<SecurityActionDeny>? deny;
@@ -52,6 +59,7 @@ class SecurityActionArgs {
   /// [allow] Allow a request through if it matches this SecurityAction.
   /// [apiProxies] If unset, this would apply to all proxies in the environment.
   /// [conditionConfig] A valid SecurityAction must contain at least one condition.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deny] Deny a request through if it matches this SecurityAction.
   /// [description] An optional user provided description of the SecurityAction.
   /// [envId] The Apigee environment that this security action applies to.
@@ -65,6 +73,7 @@ class SecurityActionArgs {
     this.allow,
     this.apiProxies,
     required this.conditionConfig,
+    this.deletionPolicy,
     this.deny,
     this.description,
     required this.envId,
@@ -81,6 +90,7 @@ class SecurityActionArgs {
       'allow': ?allow,
       'apiProxies': ?apiProxies,
       'conditionConfig': pulumi.Input.mapInputValue<SecurityActionConditionConfig, Map<String, dynamic>>(conditionConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'deny': ?pulumi.Input.mapOptionalInputValue<SecurityActionDeny, Map<String, dynamic>>(deny, (value) => value.toMap()),
       'description': ?description,
       'envId': envId,
@@ -98,6 +108,7 @@ class SecurityActionArgs {
       allow: (() { final guardedValue = map['allow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       apiProxies: (() { final guardedValue = map['apiProxies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       conditionConfig: pulumi.Input.fromValue(SecurityActionConditionConfig.fromMap((map['conditionConfig']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deny: (() { final guardedValue = map['deny']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityActionDeny.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       envId: pulumi.Input.fromValue(map['envId'] as String),
@@ -110,4 +121,3 @@ class SecurityActionArgs {
     );
   }
 }
-

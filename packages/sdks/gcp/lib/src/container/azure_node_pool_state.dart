@@ -11,7 +11,7 @@ class AzureNodePoolState {
   /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Autoscaler configuration for this node pool.
   final pulumi.Input<AzureNodePoolAutoscaling>? autoscaling;
@@ -23,6 +23,14 @@ class AzureNodePoolState {
   final pulumi.Input<AzureNodePoolConfig>? config;
   /// Output only. The time at which this node pool was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
@@ -56,7 +64,8 @@ class AzureNodePoolState {
   /// [cluster] The azureCluster for the resource
   /// [config] The node configuration of the node pool.
   /// [createTime] Output only. The time at which this node pool was created.
-  /// [effectiveAnnotations] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [etag] Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   /// [location] The location for the resource
   /// [management] The Management configuration for this node pool.
@@ -76,6 +85,7 @@ class AzureNodePoolState {
     this.cluster,
     this.config,
     this.createTime,
+    this.deletionPolicy,
     this.effectiveAnnotations,
     this.etag,
     this.location,
@@ -99,6 +109,7 @@ class AzureNodePoolState {
       'cluster': ?cluster,
       'config': ?pulumi.Input.mapOptionalInputValue<AzureNodePoolConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveAnnotations': ?effectiveAnnotations,
       'etag': ?etag,
       'location': ?location,
@@ -123,6 +134,7 @@ class AzureNodePoolState {
       cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -139,4 +151,3 @@ class AzureNodePoolState {
     );
   }
 }
-

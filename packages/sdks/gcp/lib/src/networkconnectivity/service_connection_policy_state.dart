@@ -8,6 +8,13 @@ import 'service_connection_policy_psc_connection.dart';
 class ServiceConnectionPolicyState {
   /// The timestamp when the resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Free-text description of the resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -19,7 +26,7 @@ class ServiceConnectionPolicyState {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the ServiceConnectionPolicy.
   final pulumi.Input<String>? location;
@@ -40,13 +47,15 @@ class ServiceConnectionPolicyState {
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-  /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+  /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+  /// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
   final pulumi.Input<String>? serviceClass;
   /// The timestamp when the resource was updated.
   final pulumi.Input<String>? updateTime;
 
   /// Creates a new [ServiceConnectionPolicyState].
   /// [createTime] The timestamp when the resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Free-text description of the resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -63,6 +72,7 @@ class ServiceConnectionPolicyState {
   /// [updateTime] The timestamp when the resource was updated.
   const ServiceConnectionPolicyState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.etag,
@@ -82,6 +92,7 @@ class ServiceConnectionPolicyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
@@ -102,6 +113,7 @@ class ServiceConnectionPolicyState {
   factory ServiceConnectionPolicyState.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -119,4 +131,3 @@ class ServiceConnectionPolicyState {
     );
   }
 }
-

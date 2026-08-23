@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupVaultBackupRetentionPolicy {
   /// Minimum retention duration in days for backups in the backup vault.
   final pulumi.Input<int> backupMinimumEnforcedRetentionDays;
-  /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+  /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
   final pulumi.Input<bool>? dailyBackupImmutable;
-  /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+  /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
   final pulumi.Input<bool>? manualBackupImmutable;
-  /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+  /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
   final pulumi.Input<bool>? monthlyBackupImmutable;
-  /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+  /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
   final pulumi.Input<bool>? weeklyBackupImmutable;
 
   /// Creates a new [BackupVaultBackupRetentionPolicy].
   /// [backupMinimumEnforcedRetentionDays] Minimum retention duration in days for backups in the backup vault.
-  /// [dailyBackupImmutable] Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  /// [manualBackupImmutable] Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  /// [monthlyBackupImmutable] Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  /// [weeklyBackupImmutable] Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+  /// [dailyBackupImmutable] Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+  /// [manualBackupImmutable] Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+  /// [monthlyBackupImmutable] Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+  /// [weeklyBackupImmutable] Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
   const BackupVaultBackupRetentionPolicy({
     required this.backupMinimumEnforcedRetentionDays,
     this.dailyBackupImmutable,
@@ -48,4 +48,3 @@ class BackupVaultBackupRetentionPolicy {
     );
   }
 }
-

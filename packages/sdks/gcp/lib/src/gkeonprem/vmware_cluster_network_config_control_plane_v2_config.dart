@@ -25,4 +25,3 @@ class VMwareClusterNetworkConfigControlPlaneV2Config {
     );
   }
 }
-

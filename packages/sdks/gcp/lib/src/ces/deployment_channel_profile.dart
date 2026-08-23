@@ -13,6 +13,8 @@ class DeploymentChannelProfile {
   /// TWILIO
   /// GOOGLE_TELEPHONY_PLATFORM
   /// CONTACT_CENTER_AS_A_SERVICE
+  /// FIVE9
+  /// CONTACT_CENTER_INTEGRATION
   final pulumi.Input<String>? channelType;
   /// Whether to disable user barge-in control in the conversation.
   /// - **true**: User interruptions are disabled while the agent is speaking.
@@ -68,4 +70,3 @@ class DeploymentChannelProfile {
     );
   }
 }
-

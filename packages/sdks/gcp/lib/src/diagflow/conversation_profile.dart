@@ -7,6 +7,7 @@ import 'conversation_profile_logging_config.dart';
 import 'conversation_profile_new_message_event_notification_config.dart';
 import 'conversation_profile_new_recognition_result_notification_config.dart';
 import 'conversation_profile_notification_config.dart';
+import 'conversation_profile_sip_config.dart';
 import 'conversation_profile_state.dart';
 import 'conversation_profile_stt_config.dart';
 import 'conversation_profile_tts_config.dart';
@@ -129,7 +130,7 @@ import 'conversation_profile_tts_config.dart';
 /// 			DisplayName: pulumi.String("dialogflow-profile"),
 /// 			Location:    pulumi.String("global"),
 /// 			AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
-/// 				Agent: basicAgent.ID().ApplyT(func(id string) (string, error) {
+/// 				Agent: basicAgent.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("projects/%v/locations/global/agent/environments/draft", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -147,6 +148,34 @@ import 'conversation_profile_tts_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_agent" "basic_agent" {
+///   display_name          = "example_agent"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+/// }
+/// resource "gcp_diagflow_conversationprofile" "basic_profile" {
+///   display_name = "dialogflow-profile"
+///   location     = "global"
+///   automated_agent_config = {
+///     agent ="projects/${gcp_diagflow_agent.basic_agent.id}/locations/global/agent/environments/draft"
+///   }
+///   human_agent_assistant_config = {
+///     message_analysis_config = {
+///       enable_entity_extraction  = true
+///       enable_sentiment_analysis = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +189,8 @@ import 'conversation_profile_tts_config.dart';
 /// import com.pulumi.gcp.diagflow.inputs.ConversationProfileAutomatedAgentConfigArgs;
 /// import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentAssistantConfigArgs;
 /// import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -297,7 +326,7 @@ import 'conversation_profile_tts_config.dart';
 /// 			DisplayName: pulumi.String("dialogflow-profile"),
 /// 			Location:    pulumi.String("global"),
 /// 			NewRecognitionResultNotificationConfig: &diagflow.ConversationProfileNewRecognitionResultNotificationConfigArgs{
-/// 				Topic:         recognitionResultNotificationProfileTopic.ID(),
+/// 				Topic:         recognitionResultNotificationProfileTopic.ID().ToIDOutput().ToStringOutput(),
 /// 				MessageFormat: pulumi.String("JSON"),
 /// 			},
 /// 		})
@@ -306,6 +335,27 @@ import 'conversation_profile_tts_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_conversationprofile" "recognition_result_notification_profile" {
+///   display_name = "dialogflow-profile"
+///   location     = "global"
+///   new_recognition_result_notification_config = {
+///     topic          = gcp_pubsub_topic.recognition_result_notification_profile.id
+///     message_format = "JSON"
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "recognition_result_notification_profile" {
+///   name = "recognition-result-notification"
 /// }
 /// ```
 /// ```java
@@ -319,8 +369,8 @@ import 'conversation_profile_tts_config.dart';
 /// import com.pulumi.gcp.diagflow.ConversationProfile;
 /// import com.pulumi.gcp.diagflow.ConversationProfileArgs;
 /// import com.pulumi.gcp.diagflow.inputs.ConversationProfileNewRecognitionResultNotificationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -366,12 +416,256 @@ import 'conversation_profile_tts_config.dart';
 ///       name: recognition-result-notification
 /// ```
 ///
+/// ### Dialogflow Conversation Profile Beta Bidi
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const cesAppForAgent = new gcp.ces.App("ces_app_for_agent", {
+///     appId: "app-id",
+///     location: "us",
+///     displayName: "my-app",
+///     timeZoneSettings: {
+///         timeZone: "America/Los_Angeles",
+///     },
+/// });
+/// const bidiProfile = new gcp.diagflow.ConversationProfile("bidi_profile", {
+///     displayName: "dialogflow-profile-bidi",
+///     location: "europe-west1",
+///     languageCode: "en-US",
+///     useBidiStreaming: true,
+///     automatedAgentConfig: {
+///         agent: cesAppForAgent.id,
+///     },
+///     sipConfig: {
+///         allowVirtualAgentInteraction: true,
+///         createConversationOnTheFly: true,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
+///     app_id="app-id",
+///     location="us",
+///     display_name="my-app",
+///     time_zone_settings={
+///         "time_zone": "America/Los_Angeles",
+///     })
+/// bidi_profile = gcp.diagflow.ConversationProfile("bidi_profile",
+///     display_name="dialogflow-profile-bidi",
+///     location="europe-west1",
+///     language_code="en-US",
+///     use_bidi_streaming=True,
+///     automated_agent_config={
+///         "agent": ces_app_for_agent.id,
+///     },
+///     sip_config={
+///         "allow_virtual_agent_interaction": True,
+///         "create_conversation_on_the_fly": True,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var cesAppForAgent = new Gcp.Ces.App("ces_app_for_agent", new()
+///     {
+///         AppId = "app-id",
+///         Location = "us",
+///         DisplayName = "my-app",
+///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+///         {
+///             TimeZone = "America/Los_Angeles",
+///         },
+///     });
+///
+///     var bidiProfile = new Gcp.Diagflow.ConversationProfile("bidi_profile", new()
+///     {
+///         DisplayName = "dialogflow-profile-bidi",
+///         Location = "europe-west1",
+///         LanguageCode = "en-US",
+///         UseBidiStreaming = true,
+///         AutomatedAgentConfig = new Gcp.Diagflow.Inputs.ConversationProfileAutomatedAgentConfigArgs
+///         {
+///             Agent = cesAppForAgent.Id,
+///         },
+///         SipConfig = new Gcp.Diagflow.Inputs.ConversationProfileSipConfigArgs
+///         {
+///             AllowVirtualAgentInteraction = true,
+///             CreateConversationOnTheFly = true,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cesAppForAgent, err := ces.NewApp(ctx, "ces_app_for_agent", &ces.AppArgs{
+/// 			AppId:       pulumi.String("app-id"),
+/// 			Location:    pulumi.String("us"),
+/// 			DisplayName: pulumi.String("my-app"),
+/// 			TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+/// 				TimeZone: pulumi.String("America/Los_Angeles"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = diagflow.NewConversationProfile(ctx, "bidi_profile", &diagflow.ConversationProfileArgs{
+/// 			DisplayName:      pulumi.String("dialogflow-profile-bidi"),
+/// 			Location:         pulumi.String("europe-west1"),
+/// 			LanguageCode:     pulumi.String("en-US"),
+/// 			UseBidiStreaming: pulumi.Bool(true),
+/// 			AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
+/// 				Agent: cesAppForAgent.ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 			SipConfig: &diagflow.ConversationProfileSipConfigArgs{
+/// 				AllowVirtualAgentInteraction: pulumi.Bool(true),
+/// 				CreateConversationOnTheFly:   pulumi.Bool(true),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_conversationprofile" "bidi_profile" {
+///   display_name       = "dialogflow-profile-bidi"
+///   location           = "europe-west1"
+///   language_code      = "en-US"
+///   use_bidi_streaming = true
+///   automated_agent_config = {
+///     agent = gcp_ces_app.ces_app_for_agent.id
+///   }
+///   sip_config = {
+///     allow_virtual_agent_interaction = true
+///     create_conversation_on_the_fly  = true
+///   }
+/// }
+/// resource "gcp_ces_app" "ces_app_for_agent" {
+///   app_id       = "app-id"
+///   location     = "us"
+///   display_name = "my-app"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.ces.App;
+/// import com.pulumi.gcp.ces.AppArgs;
+/// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+/// import com.pulumi.gcp.diagflow.ConversationProfile;
+/// import com.pulumi.gcp.diagflow.ConversationProfileArgs;
+/// import com.pulumi.gcp.diagflow.inputs.ConversationProfileAutomatedAgentConfigArgs;
+/// import com.pulumi.gcp.diagflow.inputs.ConversationProfileSipConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var cesAppForAgent = new App("cesAppForAgent", AppArgs.builder()
+///             .appId("app-id")
+///             .location("us")
+///             .displayName("my-app")
+///             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+///                 .timeZone("America/Los_Angeles")
+///                 .build())
+///             .build());
+///
+///         var bidiProfile = new ConversationProfile("bidiProfile", ConversationProfileArgs.builder()
+///             .displayName("dialogflow-profile-bidi")
+///             .location("europe-west1")
+///             .languageCode("en-US")
+///             .useBidiStreaming(true)
+///             .automatedAgentConfig(ConversationProfileAutomatedAgentConfigArgs.builder()
+///                 .agent(cesAppForAgent.id())
+///                 .build())
+///             .sipConfig(ConversationProfileSipConfigArgs.builder()
+///                 .allowVirtualAgentInteraction(true)
+///                 .createConversationOnTheFly(true)
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   bidiProfile:
+///     type: gcp:diagflow:ConversationProfile
+///     name: bidi_profile
+///     properties:
+///       displayName: dialogflow-profile-bidi
+///       location: europe-west1
+///       languageCode: en-US
+///       useBidiStreaming: true
+///       automatedAgentConfig:
+///         agent: ${cesAppForAgent.id}
+///       sipConfig:
+///         allowVirtualAgentInteraction: true
+///         createConversationOnTheFly: true
+///   cesAppForAgent:
+///     type: gcp:ces:App
+///     name: ces_app_for_agent
+///     properties:
+///       appId: app-id
+///       location: us
+///       displayName: my-app
+///       timeZoneSettings:
+///         timeZone: America/Los_Angeles
+/// ```
+///
 ///
 /// ## Import
 ///
 /// ConversationProfile can be imported using any of these accepted formats:
 ///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ConversationProfile can be imported using one of the formats above. For example:
 ///
@@ -382,6 +676,13 @@ class ConversationProfile extends pulumi.CustomResource {
   /// Configuration for an automated agent to use with this profile
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileAutomatedAgentConfig?> automatedAgentConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Required. Human readable name for this profile. Max length 1024 bytes.
   late final pulumi.Output<String> displayName;
   /// Configuration for connecting to a live agent
@@ -392,18 +693,18 @@ class ConversationProfile extends pulumi.CustomResource {
   late final pulumi.Output<ConversationProfileHumanAgentHandoffConfig?> humanAgentHandoffConfig;
   /// Language code for the conversation profile. This should be a BCP-47 language tag.
   late final pulumi.Output<String> languageCode;
-  /// desc
+  /// The location of the conversation profile.
   late final pulumi.Output<String> location;
   /// Defines logging behavior for conversation lifecycle events.
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileLoggingConfig?> loggingConfig;
-  /// name
+  /// Identifier. The unique identifier of this conversation profile.
   late final pulumi.Output<String> name;
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;"
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileNewMessageEventNotificationConfig?> newMessageEventNotificationConfig;
-  /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+  /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileNewRecognitionResultNotificationConfig?> newRecognitionResultNotificationConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
@@ -415,6 +716,10 @@ class ConversationProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Name of the CX SecuritySettings reference for the agent.
   late final pulumi.Output<String?> securitySettings;
+  /// (Optional, Beta)
+  /// Configuration for SIP.
+  /// Structure is documented below.
+  late final pulumi.Output<ConversationProfileSipConfig?> sipConfig;
   /// Settings for speech transcription.
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileSttConfig?> sttConfig;
@@ -423,6 +728,9 @@ class ConversationProfile extends pulumi.CustomResource {
   /// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileTtsConfig?> ttsConfig;
+  /// (Optional, Beta)
+  /// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+  late final pulumi.Output<bool?> useBidiStreaming;
 
   /// Creates a new [ConversationProfile].
   /// [name] The Pulumi resource name.
@@ -439,6 +747,7 @@ class ConversationProfile extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileAutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     humanAgentAssistantConfig = registerOutput<ConversationProfileHumanAgentAssistantConfig?>('humanAgentAssistantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileHumanAgentAssistantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     humanAgentHandoffConfig = registerOutput<ConversationProfileHumanAgentHandoffConfig?>('humanAgentHandoffConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileHumanAgentHandoffConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -451,9 +760,11 @@ class ConversationProfile extends pulumi.CustomResource {
     notificationConfig = registerOutput<ConversationProfileNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     securitySettings = registerOutput<String?>('securitySettings');
+    sipConfig = registerOutput<ConversationProfileSipConfig?>('sipConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileSipConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileSttConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZone = registerOutput<String?>('timeZone');
     ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileTtsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useBidiStreaming = registerOutput<bool?>('useBidiStreaming');
   }
 
   /// Gets an existing [ConversationProfile] resource's state with the given [name] and [id].
@@ -480,6 +791,7 @@ class ConversationProfile extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileAutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     humanAgentAssistantConfig = registerOutput<ConversationProfileHumanAgentAssistantConfig?>('humanAgentAssistantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileHumanAgentAssistantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     humanAgentHandoffConfig = registerOutput<ConversationProfileHumanAgentHandoffConfig?>('humanAgentHandoffConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileHumanAgentHandoffConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -492,8 +804,10 @@ class ConversationProfile extends pulumi.CustomResource {
     notificationConfig = registerOutput<ConversationProfileNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     securitySettings = registerOutput<String?>('securitySettings');
+    sipConfig = registerOutput<ConversationProfileSipConfig?>('sipConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileSipConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileSttConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZone = registerOutput<String?>('timeZone');
     ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileTtsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useBidiStreaming = registerOutput<bool?>('useBidiStreaming');
   }
 }

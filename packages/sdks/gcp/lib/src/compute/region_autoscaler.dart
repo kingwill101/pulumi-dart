@@ -70,6 +70,7 @@ import 'region_autoscaler_state.dart';
 ///         maxReplicas: 5,
 ///         minReplicas: 1,
 ///         cooldownPeriod: 60,
+///         stabilizationPeriod: 300,
 ///         cpuUtilization: {
 ///             target: 0.5,
 ///         },
@@ -126,6 +127,7 @@ import 'region_autoscaler_state.dart';
 ///         "max_replicas": 5,
 ///         "min_replicas": 1,
 ///         "cooldown_period": 60,
+///         "stabilization_period": 300,
 ///         "cpu_utilization": {
 ///             "target": 0.5,
 ///         },
@@ -216,6 +218,7 @@ import 'region_autoscaler_state.dart';
 ///             MaxReplicas = 5,
 ///             MinReplicas = 1,
 ///             CooldownPeriod = 60,
+///             StabilizationPeriod = 300,
 ///             CpuUtilization = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs
 ///             {
 ///                 Target = 0.5,
@@ -286,12 +289,12 @@ import 'region_autoscaler_state.dart';
 /// 			Region: pulumi.String("us-central1"),
 /// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
 /// 				&compute.RegionInstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: foobarInstanceTemplate.ID(),
+/// 					InstanceTemplate: foobarInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 					Name:             pulumi.String("primary"),
 /// 				},
 /// 			},
 /// 			TargetPools: pulumi.StringArray{
-/// 				foobarTargetPool.ID(),
+/// 				foobarTargetPool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			BaseInstanceName: pulumi.String("foobar"),
 /// 		})
@@ -301,11 +304,12 @@ import 'region_autoscaler_state.dart';
 /// 		_, err = compute.NewRegionAutoscaler(ctx, "foobar", &compute.RegionAutoscalerArgs{
 /// 			Name:   pulumi.String("my-region-autoscaler"),
 /// 			Region: pulumi.String("us-central1"),
-/// 			Target: foobarRegionInstanceGroupManager.ID(),
+/// 			Target: foobarRegionInstanceGroupManager.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoscalingPolicy: &compute.RegionAutoscalerAutoscalingPolicyArgs{
-/// 				MaxReplicas:    pulumi.Int(5),
-/// 				MinReplicas:    pulumi.Int(1),
-/// 				CooldownPeriod: pulumi.Int(60),
+/// 				MaxReplicas:         pulumi.Int(5),
+/// 				MinReplicas:         pulumi.Int(1),
+/// 				CooldownPeriod:      pulumi.Int(60),
+/// 				StabilizationPeriod: pulumi.Int(300),
 /// 				CpuUtilization: &compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs{
 /// 					Target: pulumi.Float64(0.5),
 /// 				},
@@ -325,6 +329,65 @@ import 'region_autoscaler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian9" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_regionautoscaler" "foobar" {
+///   name   = "my-region-autoscaler"
+///   region = "us-central1"
+///   target = gcp_compute_regioninstancegroupmanager.foobar.id
+///   autoscaling_policy = {
+///     max_replicas         = 5
+///     min_replicas         = 1
+///     cooldown_period      = 60
+///     stabilization_period = 300
+///     cpu_utilization = {
+///       target = 0.5
+///     }
+///   }
+/// }
+/// resource "gcp_compute_instancetemplate" "foobar" {
+///   name         = "my-instance-template"
+///   machine_type = "e2-standard-4"
+///   disks {
+///     source_image = "debian-cloud/debian-11"
+///     disk_size_gb = 250
+///   }
+///   network_interfaces {
+///     network = "default"
+///     access_configs {
+///       network_tier = "PREMIUM"
+///     }
+///   }
+///   service_account = {
+///     scopes = ["https://www.googleapis.com/auth/devstorage.read_only", "https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring.write", "https://www.googleapis.com/auth/pubsub", "https://www.googleapis.com/auth/service.management.readonly", "https://www.googleapis.com/auth/servicecontrol", "https://www.googleapis.com/auth/trace.append"]
+///   }
+/// }
+/// resource "gcp_compute_targetpool" "foobar" {
+///   name = "my-target-pool"
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "foobar" {
+///   name   = "my-region-igm"
+///   region = "us-central1"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.foobar.id
+///     name              = "primary"
+///   }
+///   target_pools       = [gcp_compute_targetpool.foobar.id]
+///   base_instance_name = "foobar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -335,6 +398,7 @@ import 'region_autoscaler_state.dart';
 /// import com.pulumi.gcp.compute.InstanceTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
 /// import com.pulumi.gcp.compute.TargetPool;
 /// import com.pulumi.gcp.compute.TargetPoolArgs;
@@ -347,8 +411,8 @@ import 'region_autoscaler_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,6 +472,7 @@ import 'region_autoscaler_state.dart';
 ///                 .maxReplicas(5)
 ///                 .minReplicas(1)
 ///                 .cooldownPeriod(60)
+///                 .stabilizationPeriod(300)
 ///                 .cpuUtilization(RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs.builder()
 ///                     .target(0.5)
 ///                     .build())
@@ -434,6 +499,7 @@ import 'region_autoscaler_state.dart';
 ///         maxReplicas: 5
 ///         minReplicas: 1
 ///         cooldownPeriod: 60
+///         stabilizationPeriod: 300
 ///         cpuUtilization:
 ///           target: 0.5
 ///   foobarInstanceTemplate:
@@ -490,28 +556,17 @@ import 'region_autoscaler_state.dart';
 /// RegionAutoscaler can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionAutoscaler can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
 /// ```
 class RegionAutoscaler extends pulumi.CustomResource {
@@ -524,6 +579,13 @@ class RegionAutoscaler extends pulumi.CustomResource {
   late final pulumi.Output<RegionAutoscalerAutoscalingPolicy> autoscalingPolicy;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Name of the resource. The name must be 1-63 characters long and match
@@ -558,6 +620,7 @@ class RegionAutoscaler extends pulumi.CustomResource {
         ) {
     autoscalingPolicy = registerOutput<RegionAutoscalerAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionAutoscalerAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -591,6 +654,7 @@ class RegionAutoscaler extends pulumi.CustomResource {
         ) {
     autoscalingPolicy = registerOutput<RegionAutoscalerAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionAutoscalerAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

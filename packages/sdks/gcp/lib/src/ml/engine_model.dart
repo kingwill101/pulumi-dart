@@ -3,6 +3,20 @@ import 'engine_model_args.dart';
 import 'engine_model_default_version.dart';
 import 'engine_model_state.dart';
 
+/// &gt; **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
+///
+/// Represents a machine learning solution.
+///
+/// A model can have multiple versions, each of which is a deployed, trained model
+/// ready to receive prediction requests. The model itself is just a container.
+///
+///
+/// To get more information about Model, see:
+///
+/// * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
+/// * How-to Guides
+/// * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+///
 /// ## Example Usage
 ///
 /// ### Ml Model Basic
@@ -67,6 +81,21 @@ import 'engine_model_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ml_enginemodel" "default" {
+///   name        = "default"
+///   description = "My model"
+///   regions     = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +104,8 @@ import 'engine_model_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.ml.EngineModel;
 /// import com.pulumi.gcp.ml.EngineModelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,6 +219,26 @@ import 'engine_model_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ml_enginemodel" "default" {
+///   name        = "default"
+///   description = "My model"
+///   regions     = "us-central1"
+///   labels = {
+///     "my_model" = "foo"
+///   }
+///   online_prediction_logging         = true
+///   online_prediction_console_logging = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +247,8 @@ import 'engine_model_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.ml.EngineModel;
 /// import com.pulumi.gcp.ml.EngineModelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,22 +292,15 @@ import 'engine_model_state.dart';
 /// Model can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/models/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
 /// ```
 class EngineModel extends pulumi.CustomResource {
@@ -266,13 +308,20 @@ class EngineModel extends pulumi.CustomResource {
   /// prediction requests that do not specify a version.
   /// Structure is documented below.
   late final pulumi.Output<EngineModelDefaultVersion?> defaultVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description specified for the model when it was created.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// One or more labels that you can add, to organize your models.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name specified for the model.
   late final pulumi.Output<String> name;
@@ -305,6 +354,7 @@ class EngineModel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     defaultVersion = registerOutput<EngineModelDefaultVersion?>('defaultVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineModelDefaultVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -340,6 +390,7 @@ class EngineModel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     defaultVersion = registerOutput<EngineModelDefaultVersion?>('defaultVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineModelDefaultVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

@@ -8,14 +8,14 @@ class NodePoolUpgradeSettings {
   /// Structure is documented below
   final pulumi.Input<NodePoolUpgradeSettingsBlueGreenSettings>? blueGreenSettings;
   /// The number of additional nodes that can be added to the node pool during
-  /// an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+  /// an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
   /// Can be set to 0 or greater.
   final pulumi.Input<int>? maxSurge;
   /// The number of nodes that can be simultaneously unavailable during
-  /// an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+  /// an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
   /// parallel. Can be set to 0 or greater.
   ///
-  /// `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
+  /// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
   final pulumi.Input<int>? maxUnavailable;
   /// The upgrade strategy to be used for upgrading the nodes.
   final pulumi.Input<String>? strategy;
@@ -50,4 +50,3 @@ class NodePoolUpgradeSettings {
     );
   }
 }
-

@@ -73,6 +73,21 @@ import 'gateway_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+///   name        = "my-gateway-security-policy"
+///   location    = "us-central1"
+///   description = "my description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'gateway_security_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -415,8 +430,6 @@ import 'gateway_security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -494,7 +507,7 @@ import 'gateway_security_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
-/// 			CaPool: _default.ID(),
+/// 			CaPool: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/privateca.certificateManager"),
 /// 			Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -504,7 +517,7 @@ import 'gateway_security_policy_state.dart';
 /// 		defaultTlsInspectionPolicy, err := networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
 /// 			Name:     pulumi.String("my-tls-inspection-policy"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			CaPool:   _default.ID(),
+/// 			CaPool:   _default.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			_default,
 /// 			defaultAuthority,
@@ -517,7 +530,7 @@ import 'gateway_security_policy_state.dart';
 /// 			Name:                pulumi.String("my-gateway-security-policy"),
 /// 			Location:            pulumi.String("us-central1"),
 /// 			Description:         pulumi.String("my description"),
-/// 			TlsInspectionPolicy: defaultTlsInspectionPolicy.ID(),
+/// 			TlsInspectionPolicy: defaultTlsInspectionPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			defaultTlsInspectionPolicy,
 /// 		}))
@@ -526,6 +539,95 @@ import 'gateway_security_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   name     = "my-basic-ca-pool"
+///   location = "us-central1"
+///   tier     = "DEVOPS"
+///   publishing_options = {
+///     publish_ca_cert = false
+///     publish_crl     = false
+///   }
+///   issuance_policy = {
+///     maximum_lifetime = "1209600s"
+///     baseline_values = {
+///       ca_options = {
+///         is_ca = false
+///       }
+///       key_usage = {
+///         base_key_usage = {}
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                                   = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id               = "my-basic-certificate-authority"
+///   location                               = "us-central1"
+///   lifetime                               = "86400s"
+///   type                                   = "SELF_SIGNED"
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "Test LLC"
+///         common_name  = "my-ca"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = false
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+/// }
+/// resource "gcp_certificateauthority_capooliammember" "tls_inspection_permission" {
+///   ca_pool = gcp_certificateauthority_capool.default.id
+///   role    = "roles/privateca.certificateManager"
+///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_networksecurity_tlsinspectionpolicy" "default" {
+///   depends_on = [gcp_certificateauthority_capool.default, gcp_certificateauthority_authority.default, gcp_certificateauthority_capooliammember.tls_inspection_permission]
+///   name       = "my-tls-inspection-policy"
+///   location   = "us-central1"
+///   ca_pool    = gcp_certificateauthority_capool.default.id
+/// }
+/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+///   depends_on            = [gcp_networksecurity_tlsinspectionpolicy.default]
+///   name                  = "my-gateway-security-policy"
+///   location              = "us-central1"
+///   description           = "my description"
+///   tls_inspection_policy = gcp_networksecurity_tlsinspectionpolicy.default.id
 /// }
 /// ```
 /// ```java
@@ -563,8 +665,8 @@ import 'gateway_security_policy_state.dart';
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -760,22 +862,15 @@ import 'gateway_security_policy_state.dart';
 /// GatewaySecurityPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default {{location}}/{{name}}
 /// ```
 class GatewaySecurityPolicy extends pulumi.CustomResource {
@@ -783,6 +878,13 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// The location of the gateway security policy.
@@ -818,6 +920,7 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -851,6 +954,7 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

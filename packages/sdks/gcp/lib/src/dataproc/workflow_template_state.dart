@@ -12,23 +12,31 @@ class WorkflowTemplateState {
   final pulumi.Input<String>? createTime;
   /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
   final pulumi.Input<String>? dagTimeout;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-  /// Optional. The encryption configuration for the workflow template.
+  /// Encryption settings for encrypting workflow template job arguments. Structure is documented below
   final pulumi.Input<WorkflowTemplateEncryptionConfig>? encryptionConfig;
-  /// Required. The Directed Acyclic Graph of Jobs to submit.
+  /// (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
   final pulumi.Input<List<WorkflowTemplateJob>>? jobs;
   /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String>? location;
-  /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+  /// (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
   final pulumi.Input<String>? name;
   /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
   final pulumi.Input<List<WorkflowTemplateParameter>>? parameters;
-  /// Required. WorkflowTemplate scheduling information.
+  /// (Required) WorkflowTemplate scheduling information.
   final pulumi.Input<WorkflowTemplatePlacement>? placement;
   /// The project for the resource
   final pulumi.Input<String>? project;
@@ -42,14 +50,15 @@ class WorkflowTemplateState {
   /// Creates a new [WorkflowTemplateState].
   /// [createTime] Output only. The time template was created.
   /// [dagTimeout] Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
-  /// [effectiveLabels] Optional.
-  /// [encryptionConfig] Optional. The encryption configuration for the workflow template.
-  /// [jobs] Required. The Directed Acyclic Graph of Jobs to submit.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+  /// [encryptionConfig] Encryption settings for encrypting workflow template job arguments. Structure is documented below
+  /// [jobs] (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
   /// [labels] Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
   /// [location] The location for the resource
-  /// [name] Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+  /// [name] (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
   /// [parameters] Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-  /// [placement] Required. WorkflowTemplate scheduling information.
+  /// [placement] (Required) WorkflowTemplate scheduling information.
   /// [project] The project for the resource
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [updateTime] Output only. The time template was last updated.
@@ -57,6 +66,7 @@ class WorkflowTemplateState {
   const WorkflowTemplateState({
     this.createTime,
     this.dagTimeout,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.encryptionConfig,
     this.jobs,
@@ -75,6 +85,7 @@ class WorkflowTemplateState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'dagTimeout': ?dagTimeout,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<WorkflowTemplateEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'jobs': ?pulumi.Input.mapOptionalInputValue<List<WorkflowTemplateJob>, List<Map<String, dynamic>>>(jobs, (value) => pulumi.Input.encodeList<WorkflowTemplateJob, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -94,6 +105,7 @@ class WorkflowTemplateState {
     return WorkflowTemplateState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dagTimeout: (() { final guardedValue = map['dagTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkflowTemplateEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       jobs: (() { final guardedValue = map['jobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowTemplateJob>(guardedValue, (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -109,4 +121,3 @@ class WorkflowTemplateState {
     );
   }
 }
-

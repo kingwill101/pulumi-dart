@@ -75,6 +75,21 @@ import 'document_ai_processor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_essentialcontacts_documentaiprocessor" "processor" {
+///   location     = "us"
+///   display_name = "test-processor"
+///   type         = "OCR_PROCESSOR"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +98,8 @@ import 'document_ai_processor_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiProcessor;
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiProcessorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,25 +136,25 @@ import 'document_ai_processor_state.dart';
 /// Processor can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/processors/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Processor can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default projects/{{project}}/locations/{{location}}/processors/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{location}}/{{name}}
 /// ```
 class DocumentAiProcessor extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name. Must be unique.
   late final pulumi.Output<String> displayName;
   /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
@@ -168,6 +183,7 @@ class DocumentAiProcessor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     location = registerOutput<String>('location');
@@ -199,6 +215,7 @@ class DocumentAiProcessor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     location = registerOutput<String>('location');

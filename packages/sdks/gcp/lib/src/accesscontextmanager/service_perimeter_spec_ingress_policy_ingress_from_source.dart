@@ -1,10 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'service_perimeter_spec_ingress_policy_ingress_from_source_psc_endpoint.dart';
 
 class ServicePerimeterSpecIngressPolicyIngressFromSource {
   /// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
   final pulumi.Input<String>? accessLevel;
+  /// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+  /// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+  /// Structure is documented below.
+  final pulumi.Input<ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint>? pscEndpoint;
   /// A Google Cloud resource that is allowed to egress the perimeter.
   /// Requests from these resources are allowed to access data outside the perimeter.
   /// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -15,15 +20,18 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource {
 
   /// Creates a new [ServicePerimeterSpecIngressPolicyIngressFromSource].
   /// [accessLevel] An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+  /// [pscEndpoint] A Private Service Connect endpoint that is allowed to access data outside the perimeter.
   /// [resource] A Google Cloud resource that is allowed to egress the perimeter.
   const ServicePerimeterSpecIngressPolicyIngressFromSource({
     this.accessLevel,
+    this.pscEndpoint,
     this.resource,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessLevel': ?accessLevel,
+      'pscEndpoint': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint, Map<String, dynamic>>(pscEndpoint, (value) => value.toMap()),
       'resource': ?resource,
     };
   }
@@ -31,8 +39,8 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource {
   factory ServicePerimeterSpecIngressPolicyIngressFromSource.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterSpecIngressPolicyIngressFromSource(
       accessLevel: (() { final guardedValue = map['accessLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pscEndpoint: (() { final guardedValue = map['pscEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

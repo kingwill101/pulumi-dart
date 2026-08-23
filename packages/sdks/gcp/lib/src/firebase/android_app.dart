@@ -4,6 +4,9 @@ import 'android_app_state.dart';
 
 /// A Google Cloud Firebase Android application instance
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about AndroidApp, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
@@ -92,6 +95,23 @@ import 'android_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_androidapp" "basic" {
+///   project       = "my-project-name"
+///   display_name  = "Display Name Basic"
+///   package_name  = "android.package.app"
+///   sha1_hashes   = ["2145bdf698b8715039bd0e83f2069bed435ac21c"]
+///   sha256_hashes = ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'android_app_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.firebase.AndroidApp;
 /// import com.pulumi.gcp.firebase.AndroidAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,6 +307,37 @@ import 'android_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_androidapp" "default" {
+///   project       = "my-project-name"
+///   display_name  = "Display Name"
+///   package_name  = "android.package.app"
+///   sha1_hashes   = ["2145bdf698b8715039bd0e83f2069bed435ac21c"]
+///   sha256_hashes = ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"]
+///   api_key_id    = gcp_projects_apikey.android.uid
+/// }
+/// resource "gcp_projects_apikey" "android" {
+///   name         = "api-key"
+///   display_name = "Display Name"
+///   project      = "my-project-name"
+///   restrictions = {
+///     android_key_restrictions = {
+///       allowed_applications = [{
+///         "packageName"     = "android.package.app"
+///         "sha1Fingerprint" = "2145bdf698b8715039bd0e83f2069bed435ac21c"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -297,10 +348,11 @@ import 'android_app_state.dart';
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs;
+/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs;
 /// import com.pulumi.gcp.firebase.AndroidApp;
 /// import com.pulumi.gcp.firebase.AndroidAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,34 +422,19 @@ import 'android_app_state.dart';
 /// AndroidApp can be imported using any of these accepted formats:
 ///
 /// * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
-///
 /// * `projects/{{project}}/androidApps/{{app_id}}`
-///
 /// * `{{project}}/{{project}}/{{app_id}}`
-///
 /// * `androidApps/{{app_id}}`
-///
 /// * `{{app_id}}`
+///
 ///
 /// When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
 ///
 /// ```sh
-/// $ pulumi import gcp:firebase/androidApp:AndroidApp default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_firebase_android_app.default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
 /// $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
 /// ```
 class AndroidApp extends pulumi.CustomResource {
@@ -408,7 +445,13 @@ class AndroidApp extends pulumi.CustomResource {
   /// The globally unique, Firebase-assigned identifier of the AndroidApp.
   /// This identifier should be treated as an opaque token, as the data format is not specified.
   late final pulumi.Output<String> appId;
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The user-assigned display name of the AndroidApp.
   late final pulumi.Output<String> displayName;
   /// This checksum is computed by the server based on the value of other fields, and it may be sent
@@ -444,7 +487,7 @@ class AndroidApp extends pulumi.CustomResource {
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -479,7 +522,7 @@ class AndroidApp extends pulumi.CustomResource {
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

@@ -12,6 +12,13 @@ import 'resource_policy_workload_policy.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_resource_policy_resource_policy_args_doc}
 class ResourcePolicyArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Replication consistency group for asynchronous disk replication.
@@ -44,6 +51,7 @@ class ResourcePolicyArgs {
   final pulumi.Input<ResourcePolicyWorkloadPolicy>? workloadPolicy;
 
   /// Creates a new [ResourcePolicyArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [diskConsistencyGroupPolicy] Replication consistency group for asynchronous disk replication.
   /// [groupPlacementPolicy] Resource policy for instances used for placement configuration.
@@ -54,6 +62,7 @@ class ResourcePolicyArgs {
   /// [snapshotSchedulePolicy] Policy for creating snapshots of persistent disks.
   /// [workloadPolicy] Represents the workload policy.
   const ResourcePolicyArgs({
+    this.deletionPolicy,
     this.description,
     this.diskConsistencyGroupPolicy,
     this.groupPlacementPolicy,
@@ -67,6 +76,7 @@ class ResourcePolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskConsistencyGroupPolicy': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyDiskConsistencyGroupPolicy, Map<String, dynamic>>(diskConsistencyGroupPolicy, (value) => value.toMap()),
       'groupPlacementPolicy': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyGroupPlacementPolicy, Map<String, dynamic>>(groupPlacementPolicy, (value) => value.toMap()),
@@ -81,6 +91,7 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskConsistencyGroupPolicy: (() { final guardedValue = map['diskConsistencyGroupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicyDiskConsistencyGroupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       groupPlacementPolicy: (() { final guardedValue = map['groupPlacementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicyGroupPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -93,4 +104,3 @@ class ResourcePolicyArgs {
     );
   }
 }
-

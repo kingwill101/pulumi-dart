@@ -78,6 +78,20 @@ import 'get_secrets_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getregionalsecret" "secretDatasource" {
+///   secret_id = "secretname"
+///   location  = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +100,8 @@ import 'get_secrets_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +208,21 @@ Future<GetRegionalSecretResult> getRegionalSecret(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getregionalsecretiampolicy" "policy" {
+///   project   = regional-secret-basic.project
+///   location  = regional-secret-basic.location
+///   secret_id = regional-secret-basic.secretId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +231,8 @@ Future<GetRegionalSecretResult> getRegionalSecret(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,9 +245,9 @@ Future<GetRegionalSecretResult> getRegionalSecret(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = SecretmanagerFunctions.getRegionalSecretIamPolicy(GetRegionalSecretIamPolicyArgs.builder()
-///             .project(regional_secret_basic.project())
-///             .location(regional_secret_basic.location())
-///             .secretId(regional_secret_basic.secretId())
+///             .project(regional_secret_basic.get("project"))
+///             .location(regional_secret_basic.get("location"))
+///             .secretId(regional_secret_basic.get("secretId"))
 ///             .build());
 ///
 ///     }
@@ -312,6 +341,20 @@ Future<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getregionalsecretversion" "basic" {
+///   secret   = "my-secret"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +363,8 @@ Future<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -429,6 +472,20 @@ Future<GetRegionalSecretVersionResult> getRegionalSecretVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getregionalsecretversionaccess" "latest" {
+///   secret   = "my-secret"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -437,8 +494,8 @@ Future<GetRegionalSecretVersionResult> getRegionalSecretVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -541,6 +598,19 @@ Future<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccess(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getregionalsecrets" "secrets" {
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -549,8 +619,8 @@ Future<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccess(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -646,6 +716,19 @@ Future<GetRegionalSecretsResult> getRegionalSecrets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getsecret" "qa" {
+///   secret_id = "foobar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -654,8 +737,8 @@ Future<GetRegionalSecretsResult> getRegionalSecrets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -756,6 +839,20 @@ Future<GetSecretResult> getSecret(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getsecretiampolicy" "policy" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -764,8 +861,8 @@ Future<GetSecretResult> getSecret(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -778,8 +875,8 @@ Future<GetSecretResult> getSecret(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .build());
 ///
 ///     }
@@ -863,6 +960,19 @@ Future<GetSecretIamPolicyResult> getSecretIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getsecretversion" "basic" {
+///   secret = "my-secret"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -871,8 +981,8 @@ Future<GetSecretIamPolicyResult> getSecretIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -968,6 +1078,19 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getsecretversionaccess" "basic" {
+///   secret = "my-secret"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -976,8 +1099,8 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1066,6 +1189,18 @@ Future<GetSecretVersionAccessResult> getSecretVersionAccess(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getsecrets" "secrets" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1074,8 +1209,8 @@ Future<GetSecretVersionAccessResult> getSecretVersionAccess(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

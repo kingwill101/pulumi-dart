@@ -7,6 +7,13 @@ import 'security_profile_v2_profile_assessment_config.dart';
 class SecurityProfileV2State {
   /// The timestamp at which this profile was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the security profile.
   final pulumi.Input<String>? description;
   /// Name of the security profile v2 resource,
@@ -25,6 +32,7 @@ class SecurityProfileV2State {
 
   /// Creates a new [SecurityProfileV2State].
   /// [createTime] The timestamp at which this profile was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the security profile.
   /// [name] Name of the security profile v2 resource,
   /// [orgId] The Apigee Organization associated with the Apigee Security Profile V2,
@@ -33,6 +41,7 @@ class SecurityProfileV2State {
   /// [updateTime] The timestamp at which this profile was most recently updated.
   const SecurityProfileV2State({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.name,
     this.orgId,
@@ -44,6 +53,7 @@ class SecurityProfileV2State {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'orgId': ?orgId,
@@ -56,6 +66,7 @@ class SecurityProfileV2State {
   factory SecurityProfileV2State.fromMap(Map<String, dynamic> map) {
     return SecurityProfileV2State(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -65,4 +76,3 @@ class SecurityProfileV2State {
     );
   }
 }
-

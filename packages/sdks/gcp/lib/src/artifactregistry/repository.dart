@@ -84,6 +84,22 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+///   description   = "example docker repository"
+///   format        = "DOCKER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +108,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.Repository;
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +208,22 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   repository_id = "my-repository"
+///   description   = "example docker repository"
+///   location      = "us"
+///   format        = "DOCKER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +232,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.Repository;
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,6 +345,25 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+///   description   = "example docker repository"
+///   format        = "DOCKER"
+///   docker_config = {
+///     immutable_tags = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +373,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.Repository;
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryDockerConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -440,8 +491,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -478,6 +527,32 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   depends_on    = [gcp_kms_cryptokeyiammember.crypto_key]
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+///   description   = "example docker repository with cmek"
+///   format        = "DOCKER"
+///   kms_key_name  = "kms-key"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   crypto_key_id = "kms-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -491,8 +566,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.Repository;
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -721,12 +796,12 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 				UpstreamPolicies: artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArray{
 /// 					&artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{
 /// 						Id:         pulumi.String("my-repository-upstream-1"),
-/// 						Repository: my_repo_upstream_1.ID(),
+/// 						Repository: my_repo_upstream_1.ID().ToIDOutput().ToStringOutput(),
 /// 						Priority:   pulumi.Int(20),
 /// 					},
 /// 					&artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{
 /// 						Id:         pulumi.String("my-repository-upstream-2"),
-/// 						Repository: my_repo_upstream_2.ID(),
+/// 						Repository: my_repo_upstream_2.ID().ToIDOutput().ToStringOutput(),
 /// 						Priority:   pulumi.Int(10),
 /// 					},
 /// 				},
@@ -739,6 +814,46 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo-upstream-1" {
+///   location      = "us-central1"
+///   repository_id = "my-repository-upstream-1"
+///   description   = "example docker repository (upstream source) 1"
+///   format        = "DOCKER"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo-upstream-2" {
+///   location      = "us-central1"
+///   repository_id = "my-repository-upstream-2"
+///   description   = "example docker repository (upstream source) 2"
+///   format        = "DOCKER"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+///   description   = "example virtual docker repository"
+///   format        = "DOCKER"
+///   mode          = "VIRTUAL_REPOSITORY"
+///   virtual_repository_config = {
+///     upstream_policies = [{
+///       "id"         = "my-repository-upstream-1"
+///       "repository" = gcp_artifactregistry_repository.my-repo-upstream-1.id
+///       "priority"   = 20
+///       }, {
+///       "id"         = "my-repository-upstream-2"
+///       "repository" = gcp_artifactregistry_repository.my-repo-upstream-2.id
+///       "priority"   = 10
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -748,8 +863,9 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.Repository;
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -929,6 +1045,29 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+///   description   = "example remote docker repository"
+///   format        = "DOCKER"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description = "docker hub"
+///     docker_repository = {
+///       public_repository = "DOCKER_HUB"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -939,8 +1078,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -983,6 +1122,397 @@ import 'repository_vulnerability_scanning_config.dart';
 ///         description: docker hub
 ///         dockerRepository:
 ///           publicRepository: DOCKER_HUB
+/// ```
+///
+/// ### Artifact Registry Repository Connector
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
+///     secretId: "example-secret",
+///     replication: {
+///         auto: {},
+///     },
+/// });
+/// const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+///     secret: example_remote_secret.id,
+///     secretData: "remote-password",
+/// });
+/// const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+///     secretId: example_remote_secret.id,
+///     role: "roles/secretmanager.secretAccessor",
+///     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+/// });
+/// const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+///     location: "us-central1",
+///     repositoryId: "my-repository",
+///     description: "example remote docker repository with no cache (connector mode)",
+///     format: "DOCKER",
+///     mode: "REMOTE_REPOSITORY",
+///     remoteRepositoryConfig: {
+///         description: "docker hub connector repository (no cache)",
+///         disableUpstreamValidation: true,
+///         dockerRepository: {
+///             publicRepository: "DOCKER_HUB",
+///         },
+///         upstreamCredentials: {
+///             usernamePasswordCredentials: {
+///                 username: "remote-username",
+///                 passwordSecretVersion: example_remote_secretVersion.name,
+///             },
+///         },
+///         noCache: {},
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+///     secret_id="example-secret",
+///     replication={
+///         "auto": {},
+///     })
+/// example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+///     secret=example_remote_secret.id,
+///     secret_data="remote-password")
+/// secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+///     secret_id=example_remote_secret.id,
+///     role="roles/secretmanager.secretAccessor",
+///     member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+/// my_repo = gcp.artifactregistry.Repository("my-repo",
+///     location="us-central1",
+///     repository_id="my-repository",
+///     description="example remote docker repository with no cache (connector mode)",
+///     format="DOCKER",
+///     mode="REMOTE_REPOSITORY",
+///     remote_repository_config={
+///         "description": "docker hub connector repository (no cache)",
+///         "disable_upstream_validation": True,
+///         "docker_repository": {
+///             "public_repository": "DOCKER_HUB",
+///         },
+///         "upstream_credentials": {
+///             "username_password_credentials": {
+///                 "username": "remote-username",
+///                 "password_secret_version": example_remote_secret_version.name,
+///             },
+///         },
+///         "no_cache": {},
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
+///     {
+///         SecretId = "example-secret",
+///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+///         {
+///             Auto = null,
+///         },
+///     });
+///
+///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
+///     {
+///         Secret = example_remote_secret.Id,
+///         SecretData = "remote-password",
+///     });
+///
+///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+///     {
+///         SecretId = example_remote_secret.Id,
+///         Role = "roles/secretmanager.secretAccessor",
+///         Member = $"serviceAccount:service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+///     });
+///
+///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+///     {
+///         Location = "us-central1",
+///         RepositoryId = "my-repository",
+///         Description = "example remote docker repository with no cache (connector mode)",
+///         Format = "DOCKER",
+///         Mode = "REMOTE_REPOSITORY",
+///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+///         {
+///             Description = "docker hub connector repository (no cache)",
+///             DisableUpstreamValidation = true,
+///             DockerRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs
+///             {
+///                 PublicRepository = "DOCKER_HUB",
+///             },
+///             UpstreamCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+///             {
+///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+///                 {
+///                     Username = "remote-username",
+///                     PasswordSecretVersion = example_remote_secretVersion.Name,
+///                 },
+///             },
+///             NoCache = null,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+/// 			SecretId: pulumi.String("example-secret"),
+/// 			Replication: &secretmanager.SecretReplicationArgs{
+/// 				Auto: &secretmanager.SecretReplicationAutoArgs{},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretData: pulumi.String("remote-password"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
+/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+/// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+/// 			Location:     pulumi.String("us-central1"),
+/// 			RepositoryId: pulumi.String("my-repository"),
+/// 			Description:  pulumi.String("example remote docker repository with no cache (connector mode)"),
+/// 			Format:       pulumi.String("DOCKER"),
+/// 			Mode:         pulumi.String("REMOTE_REPOSITORY"),
+/// 			RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
+/// 				Description:               pulumi.String("docker hub connector repository (no cache)"),
+/// 				DisableUpstreamValidation: pulumi.Bool(true),
+/// 				DockerRepository: &artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs{
+/// 					PublicRepository: pulumi.String("DOCKER_HUB"),
+/// 				},
+/// 				UpstreamCredentials: &artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{
+/// 					UsernamePasswordCredentials: &artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs{
+/// 						Username:              pulumi.String("remote-username"),
+/// 						PasswordSecretVersion: example_remote_secretVersion.Name,
+/// 					},
+/// 				},
+/// 				NoCache: &artifactregistry.RepositoryRemoteRepositoryConfigNoCacheArgs{},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   secret_id = "example-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+///   secret      = gcp_secretmanager_secret.example-remote-secret.id
+///   secret_data = "remote-password"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+///   description   = "example remote docker repository with no cache (connector mode)"
+///   format        = "DOCKER"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description                 = "docker hub connector repository (no cache)"
+///     disable_upstream_validation = true
+///     docker_repository = {
+///       public_repository = "DOCKER_HUB"
+///     }
+///     upstream_credentials = {
+///       username_password_credentials = {
+///         username                = "remote-username"
+///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///       }
+///     }
+///     no_cache = {}
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.secretmanager.Secret;
+/// import com.pulumi.gcp.secretmanager.SecretArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+/// import com.pulumi.gcp.secretmanager.SecretVersion;
+/// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+/// import com.pulumi.gcp.secretmanager.SecretIamMember;
+/// import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+/// import com.pulumi.gcp.artifactregistry.Repository;
+/// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+/// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+/// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
+/// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
+/// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
+/// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNoCacheArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
+///             .secretId("example-secret")
+///             .replication(SecretReplicationArgs.builder()
+///                 .auto(SecretReplicationAutoArgs.builder()
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
+///             .secret(example_remote_secret.id())
+///             .secretData("remote-password")
+///             .build());
+///
+///         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
+///             .secretId(example_remote_secret.id())
+///             .role("roles/secretmanager.secretAccessor")
+///             .member(String.format("serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
+///             .build());
+///
+///         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+///             .location("us-central1")
+///             .repositoryId("my-repository")
+///             .description("example remote docker repository with no cache (connector mode)")
+///             .format("DOCKER")
+///             .mode("REMOTE_REPOSITORY")
+///             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+///                 .description("docker hub connector repository (no cache)")
+///                 .disableUpstreamValidation(true)
+///                 .dockerRepository(RepositoryRemoteRepositoryConfigDockerRepositoryArgs.builder()
+///                     .publicRepository("DOCKER_HUB")
+///                     .build())
+///                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
+///                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
+///                         .username("remote-username")
+///                         .passwordSecretVersion(example_remote_secretVersion.name())
+///                         .build())
+///                     .build())
+///                 .noCache(RepositoryRemoteRepositoryConfigNoCacheArgs.builder()
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example-remote-secret:
+///     type: gcp:secretmanager:Secret
+///     properties:
+///       secretId: example-secret
+///       replication:
+///         auto: {}
+///   example-remote-secretVersion:
+///     type: gcp:secretmanager:SecretVersion
+///     name: example-remote-secret_version
+///     properties:
+///       secret: ${["example-remote-secret"].id}
+///       secretData: remote-password
+///   secret-access:
+///     type: gcp:secretmanager:SecretIamMember
+///     properties:
+///       secretId: ${["example-remote-secret"].id}
+///       role: roles/secretmanager.secretAccessor
+///       member: serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com
+///   my-repo:
+///     type: gcp:artifactregistry:Repository
+///     properties:
+///       location: us-central1
+///       repositoryId: my-repository
+///       description: example remote docker repository with no cache (connector mode)
+///       format: DOCKER
+///       mode: REMOTE_REPOSITORY
+///       remoteRepositoryConfig:
+///         description: docker hub connector repository (no cache)
+///         disableUpstreamValidation: true
+///         dockerRepository:
+///           publicRepository: DOCKER_HUB
+///         upstreamCredentials:
+///           usernamePasswordCredentials:
+///             username: remote-username
+///             passwordSecretVersion: ${["example-remote-secretVersion"].name}
+///         noCache: {}
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
 /// ```
 ///
 /// ### Artifact Registry Repository Remote Apt
@@ -1094,6 +1624,32 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "debian-stable"
+///   description   = "example remote apt repository"
+///   format        = "APT"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description = "Debian stable remote repository"
+///     apt_repository = {
+///       public_repository = {
+///         repository_base = "DEBIAN"
+///         repository_path = "debian/dists/stable"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1105,8 +1661,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1265,6 +1821,32 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "rocky-9"
+///   description   = "example remote yum repository"
+///   format        = "YUM"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description = "Rocky 9 remote repository"
+///     yum_repository = {
+///       public_repository = {
+///         repository_base = "ROCKY"
+///         repository_path = "pub/rocky/9/BaseOS/x86_64/os"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1276,8 +1858,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1628,6 +2210,64 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location               = "us-central1"
+///   repository_id          = "my-repository"
+///   description            = "example docker repository with cleanup policies"
+///   format                 = "DOCKER"
+///   cleanup_policy_dry_run = false
+///   cleanup_policies {
+///     id     = "delete-untagged"
+///     action = "DELETE"
+///     condition = {
+///       tag_state = "UNTAGGED"
+///     }
+///   }
+///   cleanup_policies {
+///     id     = "keep-new-untagged"
+///     action = "KEEP"
+///     condition = {
+///       tag_state  = "UNTAGGED"
+///       newer_than = "7d"
+///     }
+///   }
+///   cleanup_policies {
+///     id     = "delete-prerelease"
+///     action = "DELETE"
+///     condition = {
+///       tag_state    = "TAGGED"
+///       tag_prefixes = ["alpha", "v0"]
+///       older_than   = "30d"
+///     }
+///   }
+///   cleanup_policies {
+///     id     = "keep-tagged-release"
+///     action = "KEEP"
+///     condition = {
+///       tag_state             = "TAGGED"
+///       tag_prefixes          = ["release"]
+///       package_name_prefixes = ["webapp", "mobile"]
+///     }
+///   }
+///   cleanup_policies {
+///     id     = "keep-minimum-versions"
+///     action = "KEEP"
+///     most_recent_versions = {
+///       package_name_prefixes = ["webapp", "mobile", "sandbox"]
+///       keep_count            = 5
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1639,8 +2279,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyConditionArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyMostRecentVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1905,8 +2545,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -1929,14 +2567,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID(),
+/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID(),
+/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -1970,6 +2608,54 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   secret_id = "example-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+///   secret      = gcp_secretmanager_secret.example-remote-secret.id
+///   secret_data = "remote-password"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "example-dockerhub-remote"
+///   description   = "example remote dockerhub repository with credentials"
+///   format        = "DOCKER"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description                 = "docker hub with custom credentials"
+///     disable_upstream_validation = true
+///     docker_repository = {
+///       public_repository = "DOCKER_HUB"
+///     }
+///     upstream_credentials = {
+///       username_password_credentials = {
+///         username                = "remote-username"
+///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1992,8 +2678,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2248,8 +2934,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -2272,14 +2956,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID(),
+/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID(),
+/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -2315,6 +2999,56 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   secret_id = "example-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+///   secret      = gcp_secretmanager_secret.example-remote-secret.id
+///   secret_data = "remote-password"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "example-docker-custom-remote"
+///   description   = "example remote custom docker repository with credentials"
+///   format        = "DOCKER"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description                 = "custom docker remote with credentials"
+///     disable_upstream_validation = true
+///     docker_repository = {
+///       custom_repository = {
+///         uri = "https://registry-1.docker.io"
+///       }
+///     }
+///     upstream_credentials = {
+///       username_password_credentials = {
+///         username                = "remote-username"
+///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2338,8 +3072,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2597,8 +3331,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -2621,14 +3353,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID(),
+/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID(),
+/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -2664,6 +3396,56 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   secret_id = "example-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+///   secret      = gcp_secretmanager_secret.example-remote-secret.id
+///   secret_data = "remote-password"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "example-maven-custom-remote"
+///   description   = "example remote custom maven repository with credentials"
+///   format        = "MAVEN"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description                 = "custom maven remote with credentials"
+///     disable_upstream_validation = true
+///     maven_repository = {
+///       custom_repository = {
+///         uri = "https://my.maven.registry"
+///       }
+///     }
+///     upstream_credentials = {
+///       username_password_credentials = {
+///         username                = "remote-username"
+///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2687,8 +3469,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2946,8 +3728,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -2970,14 +3750,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID(),
+/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID(),
+/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -3013,6 +3793,56 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   secret_id = "example-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+///   secret      = gcp_secretmanager_secret.example-remote-secret.id
+///   secret_data = "remote-password"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "example-npm-custom-remote"
+///   description   = "example remote custom npm repository with credentials"
+///   format        = "NPM"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description                 = "custom npm with credentials"
+///     disable_upstream_validation = true
+///     npm_repository = {
+///       custom_repository = {
+///         uri = "https://my.npm.registry"
+///       }
+///     }
+///     upstream_credentials = {
+///       username_password_credentials = {
+///         username                = "remote-username"
+///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3036,8 +3866,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3295,8 +4125,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -3319,14 +4147,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID(),
+/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID(),
+/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -3362,6 +4190,56 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   secret_id = "example-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+///   secret      = gcp_secretmanager_secret.example-remote-secret.id
+///   secret_data = "remote-password"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "example-python-custom-remote"
+///   description   = "example remote custom python repository with credentials"
+///   format        = "PYTHON"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description                 = "custom npm with credentials"
+///     disable_upstream_validation = true
+///     python_repository = {
+///       custom_repository = {
+///         uri = "https://my.python.registry"
+///       }
+///     }
+///     upstream_credentials = {
+///       username_password_credentials = {
+///         username                = "remote-username"
+///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3385,8 +4263,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3604,7 +4482,7 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
 /// 				Description: pulumi.String("pull-through cache of another Artifact Registry repository"),
 /// 				CommonRepository: &artifactregistry.RepositoryRemoteRepositoryConfigCommonRepositoryArgs{
-/// 					Uri: upstreamRepo.ID(),
+/// 					Uri: upstreamRepo.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -3613,6 +4491,35 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "upstream_repo" {
+///   location      = "us-central1"
+///   repository_id = "example-upstream-repo"
+///   description   = "example upstream repository"
+///   format        = "DOCKER"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "example-common-remote"
+///   description   = "example remote common repository with docker upstream"
+///   format        = "DOCKER"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description = "pull-through cache of another Artifact Registry repository"
+///     common_repository = {
+///       uri = gcp_artifactregistry_repository.upstream_repo.id
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -3625,8 +4532,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3788,8 +4695,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -3832,6 +4737,39 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "upstream_repo" {
+///   location      = "us-central1"
+///   repository_id = "example-upstream-repo"
+///   description   = "example upstream repository"
+///   format        = "DOCKER"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   depends_on    = [gcp_artifactregistry_repository.upstream_repo]
+///   location      = "us-central1"
+///   repository_id = "example-common-remote"
+///   description   = "example remote common repository with docker upstream"
+///   format        = "DOCKER"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description = "pull-through cache of another Artifact Registry repository by URL"
+///     common_repository = {
+///       uri ="https://us-central1-docker.pkg.dev/${data.gcp_organizations_getproject.project.project_id}/example-upstream-repo"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3845,8 +4783,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4065,8 +5003,6 @@ import 'repository_vulnerability_scanning_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -4089,14 +5025,14 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 			return err
 /// 		}
 /// 		example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     example_remote_secret.ID(),
+/// 			Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("remote-password"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: example_remote_secret.ID(),
+/// 			SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -4130,6 +5066,54 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "example-remote-secret" {
+///   secret_id = "example-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "example-remote-secret_version" {
+///   secret      = gcp_secretmanager_secret.example-remote-secret.id
+///   secret_data = "remote-password"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   secret_id = gcp_secretmanager_secret.example-remote-secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "example-docker-custom-remote"
+///   description   = "example remote custom docker repository with credentials"
+///   format        = "DOCKER"
+///   mode          = "REMOTE_REPOSITORY"
+///   remote_repository_config = {
+///     description                 = "custom common docker remote with credentials"
+///     disable_upstream_validation = true
+///     common_repository = {
+///       uri = "https://registry-1.docker.io"
+///     }
+///     upstream_credentials = {
+///       username_password_credentials = {
+///         username                = "remote-username"
+///         password_secret_version = gcp_secretmanager_secretversion.example-remote-secret_version.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4152,8 +5136,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4334,6 +5318,25 @@ import 'repository_vulnerability_scanning_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+///   description   = "example docker repository with vulnerability scanning config"
+///   format        = "DOCKER"
+///   vulnerability_scanning_config = {
+///     enablement_config = "INHERITED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4343,8 +5346,8 @@ import 'repository_vulnerability_scanning_config.dart';
 /// import com.pulumi.gcp.artifactregistry.Repository;
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.inputs.RepositoryVulnerabilityScanningConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4383,27 +5386,24 @@ import 'repository_vulnerability_scanning_config.dart';
 /// ```
 ///
 ///
+/// ## Regional Endpoint Policies
+///
+/// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+///
 /// ## Import
 ///
 /// Repository can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
-///
 /// * `{{project}}/{{location}}/{{repository_id}}`
-///
 /// * `{{location}}/{{repository_id}}`
+///
 ///
 /// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
 /// ```
 class Repository extends pulumi.CustomResource {
@@ -4418,6 +5418,13 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<bool?> cleanupPolicyDryRun;
   /// The time when the repository was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The user-provided description of the repository.
   late final pulumi.Output<String?> description;
   /// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -4442,7 +5449,7 @@ class Repository extends pulumi.CustomResource {
   /// and dashes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the repository's location. In addition to specific regions,
   /// special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -4503,6 +5510,7 @@ class Repository extends pulumi.CustomResource {
     cleanupPolicies = registerOutput<List<Map<String, dynamic>>?>('cleanupPolicies');
     cleanupPolicyDryRun = registerOutput<bool?>('cleanupPolicyDryRun');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -4549,6 +5557,7 @@ class Repository extends pulumi.CustomResource {
     cleanupPolicies = registerOutput<List<Map<String, dynamic>>?>('cleanupPolicies');
     cleanupPolicyDryRun = registerOutput<bool?>('cleanupPolicyDryRun');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

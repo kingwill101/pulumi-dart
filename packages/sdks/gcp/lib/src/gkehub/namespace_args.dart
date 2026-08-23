@@ -7,14 +7,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_gkehub_namespace_namespace_args_doc}
 class NamespaceArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Labels for this Namespace.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Namespace-level cluster namespace labels. These labels are applied
   /// to the related namespace of the member clusters bound to the parent
-  /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+  /// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
   /// resource) take precedence over Namespace-level labels if they share
   /// a key. Keys and values must be Kubernetes-conformant.
   final pulumi.Input<Map<String, String>>? namespaceLabels;
@@ -29,6 +36,7 @@ class NamespaceArgs {
   final pulumi.Input<String> scopeNamespaceId;
 
   /// Creates a new [NamespaceArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [labels] Labels for this Namespace.
   /// [namespaceLabels] Namespace-level cluster namespace labels. These labels are applied
   /// [project] The ID of the project in which the resource belongs.
@@ -36,6 +44,7 @@ class NamespaceArgs {
   /// [scopeId] Id of the scope
   /// [scopeNamespaceId] The client-provided identifier of the namespace.
   const NamespaceArgs({
+    this.deletionPolicy,
     this.labels,
     this.namespaceLabels,
     this.project,
@@ -46,6 +55,7 @@ class NamespaceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'labels': ?labels,
       'namespaceLabels': ?namespaceLabels,
       'project': ?project,
@@ -57,6 +67,7 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       namespaceLabels: (() { final guardedValue = map['namespaceLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -66,4 +77,3 @@ class NamespaceArgs {
     );
   }
 }
-

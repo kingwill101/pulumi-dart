@@ -38,3 +38,8 @@ export 'cloudidentity/group_membership_role.dart';
 export 'cloudidentity/group_membership_role_expiry_detail.dart';
 export 'cloudidentity/group_membership_state.dart';
 export 'cloudidentity/group_state.dart';
+export 'cloudidentity/policy.dart';
+export 'cloudidentity/policy_args.dart';
+export 'cloudidentity/policy_policy_query.dart';
+export 'cloudidentity/policy_setting.dart';
+export 'cloudidentity/policy_state.dart';

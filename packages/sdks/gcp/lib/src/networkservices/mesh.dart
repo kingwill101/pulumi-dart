@@ -88,6 +88,24 @@ import 'mesh_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_mesh" "default" {
+///   name = "my-mesh"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description       = "my description"
+///   interception_port = 443
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'mesh_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkservices.Mesh;
 /// import com.pulumi.gcp.networkservices.MeshArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,6 +220,23 @@ import 'mesh_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_mesh" "default" {
+///   name = "my-mesh-noport"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +245,8 @@ import 'mesh_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkservices.Mesh;
 /// import com.pulumi.gcp.networkservices.MeshArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,6 +336,20 @@ import 'mesh_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_mesh" "default" {
+///   name     = "my-mesh"
+///   location = "global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +358,8 @@ import 'mesh_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkservices.Mesh;
 /// import com.pulumi.gcp.networkservices.MeshArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,27 +394,27 @@ import 'mesh_state.dart';
 /// Mesh can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/meshes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/{{location}}/meshes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
 /// ```
 class Mesh extends pulumi.CustomResource {
   /// Time the Mesh was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -378,7 +427,7 @@ class Mesh extends pulumi.CustomResource {
   late final pulumi.Output<int?> interceptionPort;
   /// Set of label tags associated with the Mesh resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
   late final pulumi.Output<String?> location;
@@ -410,6 +459,7 @@ class Mesh extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interceptionPort = registerOutput<int?>('interceptionPort');
@@ -446,6 +496,7 @@ class Mesh extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interceptionPort = registerOutput<int?>('interceptionPort');

@@ -26,6 +26,13 @@ class DeploymentArgs {
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
   final pulumi.Input<String>? deletePolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional user-provided description of deployment.
   final pulumi.Input<String>? description;
   /// Key-value pairs to apply to this labels.
@@ -53,6 +60,7 @@ class DeploymentArgs {
   /// Creates a new [DeploymentArgs].
   /// [createPolicy] Set the policy to use for creating new resources. Only used on
   /// [deletePolicy] Set the policy to use for deleting new resources on update/delete.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional user-provided description of deployment.
   /// [labels] Key-value pairs to apply to this labels.
   /// [name] Unique name for the deployment
@@ -62,6 +70,7 @@ class DeploymentArgs {
   const DeploymentArgs({
     this.createPolicy,
     this.deletePolicy,
+    this.deletionPolicy,
     this.description,
     this.labels,
     this.name,
@@ -74,6 +83,7 @@ class DeploymentArgs {
     return <String, dynamic>{
       'createPolicy': ?createPolicy,
       'deletePolicy': ?deletePolicy,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?pulumi.Input.mapOptionalInputValue<List<DeploymentLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<DeploymentLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
@@ -87,6 +97,7 @@ class DeploymentArgs {
     return DeploymentArgs(
       createPolicy: (() { final guardedValue = map['createPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletePolicy: (() { final guardedValue = map['deletePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentLabel>(guardedValue, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -96,4 +107,3 @@ class DeploymentArgs {
     );
   }
 }
-

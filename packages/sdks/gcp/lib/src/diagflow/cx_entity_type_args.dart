@@ -14,6 +14,13 @@ class CxEntityTypeArgs {
   /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
   /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
   final pulumi.Input<String>? autoExpansionMode;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the entity type, unique within the agent.
   final pulumi.Input<String> displayName;
   /// Enables fuzzy entity extraction during classification.
@@ -45,6 +52,7 @@ class CxEntityTypeArgs {
 
   /// Creates a new [CxEntityTypeArgs].
   /// [autoExpansionMode] Represents kinds of entities.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the entity type, unique within the agent.
   /// [enableFuzzyExtraction] Enables fuzzy entity extraction during classification.
   /// [entities] The collection of entity entries associated with the entity type.
@@ -55,6 +63,7 @@ class CxEntityTypeArgs {
   /// [redact] Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
   const CxEntityTypeArgs({
     this.autoExpansionMode,
+    this.deletionPolicy,
     required this.displayName,
     this.enableFuzzyExtraction,
     required this.entities,
@@ -68,6 +77,7 @@ class CxEntityTypeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoExpansionMode': ?autoExpansionMode,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'enableFuzzyExtraction': ?enableFuzzyExtraction,
       'entities': pulumi.Input.mapInputValue<List<CxEntityTypeEntity>, List<Map<String, dynamic>>>(entities, (value) => pulumi.Input.encodeList<CxEntityTypeEntity, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -82,6 +92,7 @@ class CxEntityTypeArgs {
   factory CxEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return CxEntityTypeArgs(
       autoExpansionMode: (() { final guardedValue = map['autoExpansionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enableFuzzyExtraction: (() { final guardedValue = map['enableFuzzyExtraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       entities: pulumi.Input.fromValue(pulumi.Input.decodeList<CxEntityTypeEntity>(map['entities']!, (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))),
@@ -93,4 +104,3 @@ class CxEntityTypeArgs {
     );
   }
 }
-

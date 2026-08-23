@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lite_reservation_args.dart';
 import 'lite_reservation_state.dart';
 
-/// &gt; **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `google_pubsub_reservation` instead.
+/// &gt; **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `googlePubsubReservation` instead.
 ///
 /// A named resource representing a shared pool of capacity.
 ///
@@ -86,6 +86,24 @@ import 'lite_reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_litereservation" "example" {
+///   name                = "example-reservation"
+///   project             = data.gcp_organizations_getproject.project.number
+///   throughput_capacity = 2
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'lite_reservation_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.pubsub.LiteReservation;
 /// import com.pulumi.gcp.pubsub.LiteReservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,31 +160,27 @@ import 'lite_reservation_state.dart';
 /// Reservation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/reservations/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:pubsub/liteReservation:LiteReservation default projects/{{project}}/locations/{{region}}/reservations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{name}}
 /// ```
 class LiteReservation extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name of the reservation.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -193,6 +207,7 @@ class LiteReservation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
@@ -222,6 +237,7 @@ class LiteReservation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');

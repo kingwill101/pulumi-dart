@@ -43,7 +43,7 @@ class GetDataQualityRulesRule {
   final pulumi.Input<bool> suspended;
   /// Aggregate rule which evaluates whether the provided expression is true for a table.
   final pulumi.Input<List<GetDataQualityRulesRuleTableConditionExpectation>> tableConditionExpectations;
-  /// The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+  /// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
   final pulumi.Input<double> threshold;
   /// Row-level rule which evaluates whether each column value is unique.
   final pulumi.Input<List<Map<String, dynamic>>> uniquenessExpectations;
@@ -63,7 +63,7 @@ class GetDataQualityRulesRule {
   /// [statisticRangeExpectations] Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
   /// [suspended] Whether the Rule is active or suspended. Default is false.
   /// [tableConditionExpectations] Aggregate rule which evaluates whether the provided expression is true for a table.
-  /// [threshold] The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+  /// [threshold] The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
   /// [uniquenessExpectations] Row-level rule which evaluates whether each column value is unique.
   const GetDataQualityRulesRule({
     required this.column,
@@ -126,4 +126,3 @@ class GetDataQualityRulesRule {
     );
   }
 }
-

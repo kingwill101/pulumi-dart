@@ -10,6 +10,13 @@ class HttpHealthCheckArgs {
   /// How often (in seconds) to send a health check. The default value is 5
   /// seconds.
   final pulumi.Input<int>? checkIntervalSec;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -47,6 +54,7 @@ class HttpHealthCheckArgs {
 
   /// Creates a new [HttpHealthCheckArgs].
   /// [checkIntervalSec] How often (in seconds) to send a health check. The default value is 5
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [healthyThreshold] A so-far unhealthy instance will be marked healthy after this many
   /// [host] The value of the host header in the HTTP health check request. If
@@ -58,6 +66,7 @@ class HttpHealthCheckArgs {
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many
   const HttpHealthCheckArgs({
     this.checkIntervalSec,
+    this.deletionPolicy,
     this.description,
     this.healthyThreshold,
     this.host,
@@ -72,6 +81,7 @@ class HttpHealthCheckArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'checkIntervalSec': ?checkIntervalSec,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'healthyThreshold': ?healthyThreshold,
       'host': ?host,
@@ -87,6 +97,7 @@ class HttpHealthCheckArgs {
   factory HttpHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return HttpHealthCheckArgs(
       checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -99,4 +110,3 @@ class HttpHealthCheckArgs {
     );
   }
 }
-

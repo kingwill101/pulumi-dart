@@ -9,6 +9,13 @@ import 'tenant_inbound_saml_config_sp_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_identityplatform_tenant_inbound_saml_config_tenant_inbound_saml_config_args_doc}
 class TenantInboundSamlConfigArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human friendly display name.
   final pulumi.Input<String> displayName;
   /// If this config allows users to sign in with the provider.
@@ -31,6 +38,7 @@ class TenantInboundSamlConfigArgs {
   final pulumi.Input<String> tenant;
 
   /// Creates a new [TenantInboundSamlConfigArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Human friendly display name.
   /// [enabled] If this config allows users to sign in with the provider.
   /// [idpConfig] SAML IdP configuration when the project acts as the relying party
@@ -39,6 +47,7 @@ class TenantInboundSamlConfigArgs {
   /// [spConfig] SAML SP (Service Provider) configuration when the project acts as the relying party to receive
   /// [tenant] The name of the tenant where this inbound SAML config resource exists
   const TenantInboundSamlConfigArgs({
+    this.deletionPolicy,
     required this.displayName,
     this.enabled,
     required this.idpConfig,
@@ -50,6 +59,7 @@ class TenantInboundSamlConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'enabled': ?enabled,
       'idpConfig': pulumi.Input.mapInputValue<TenantInboundSamlConfigIdpConfig, Map<String, dynamic>>(idpConfig, (value) => value.toMap()),
@@ -62,6 +72,7 @@ class TenantInboundSamlConfigArgs {
 
   factory TenantInboundSamlConfigArgs.fromMap(Map<String, dynamic> map) {
     return TenantInboundSamlConfigArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       idpConfig: pulumi.Input.fromValue(TenantInboundSamlConfigIdpConfig.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())),
@@ -72,4 +83,3 @@ class TenantInboundSamlConfigArgs {
     );
   }
 }
-

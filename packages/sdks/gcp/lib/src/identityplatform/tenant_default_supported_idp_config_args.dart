@@ -11,6 +11,13 @@ class TenantDefaultSupportedIdpConfigArgs {
   final pulumi.Input<String> clientId;
   /// OAuth client secret
   final pulumi.Input<String> clientSecret;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If this IDP allows the user to sign in
   final pulumi.Input<bool>? enabled;
   /// ID of the IDP. Possible values include:
@@ -34,6 +41,7 @@ class TenantDefaultSupportedIdpConfigArgs {
   /// Creates a new [TenantDefaultSupportedIdpConfigArgs].
   /// [clientId] OAuth client ID
   /// [clientSecret] OAuth client secret
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [enabled] If this IDP allows the user to sign in
   /// [idpId] ID of the IDP. Possible values include:
   /// [project] The ID of the project in which the resource belongs.
@@ -41,6 +49,7 @@ class TenantDefaultSupportedIdpConfigArgs {
   const TenantDefaultSupportedIdpConfigArgs({
     required this.clientId,
     required this.clientSecret,
+    this.deletionPolicy,
     this.enabled,
     required this.idpId,
     this.project,
@@ -51,6 +60,7 @@ class TenantDefaultSupportedIdpConfigArgs {
     return <String, dynamic>{
       'clientId': clientId,
       'clientSecret': clientSecret,
+      'deletionPolicy': ?deletionPolicy,
       'enabled': ?enabled,
       'idpId': idpId,
       'project': ?project,
@@ -62,6 +72,7 @@ class TenantDefaultSupportedIdpConfigArgs {
     return TenantDefaultSupportedIdpConfigArgs(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       idpId: pulumi.Input.fromValue(map['idpId'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -69,4 +80,3 @@ class TenantDefaultSupportedIdpConfigArgs {
     );
   }
 }
-

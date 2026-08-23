@@ -10,9 +10,16 @@ class FolderSccBigQueryExportArgs {
   /// This must be unique within the organization.
   final pulumi.Input<String> bigQueryExportId;
   /// The dataset to write findings' updates to.
-  /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+  /// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   final pulumi.Input<String> dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the export (max of 1024 characters).
   final pulumi.Input<String> description;
   /// Expression that defines the filter to apply across create/update
@@ -42,12 +49,14 @@ class FolderSccBigQueryExportArgs {
   /// Creates a new [FolderSccBigQueryExportArgs].
   /// [bigQueryExportId] This must be unique within the organization.
   /// [dataset] The dataset to write findings' updates to.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the export (max of 1024 characters).
   /// [filter] Expression that defines the filter to apply across create/update
   /// [folder] The folder where Cloud Security Command Center Big Query Export
   const FolderSccBigQueryExportArgs({
     required this.bigQueryExportId,
     required this.dataset,
+    this.deletionPolicy,
     required this.description,
     required this.filter,
     required this.folder,
@@ -57,6 +66,7 @@ class FolderSccBigQueryExportArgs {
     return <String, dynamic>{
       'bigQueryExportId': bigQueryExportId,
       'dataset': dataset,
+      'deletionPolicy': ?deletionPolicy,
       'description': description,
       'filter': filter,
       'folder': folder,
@@ -67,10 +77,10 @@ class FolderSccBigQueryExportArgs {
     return FolderSccBigQueryExportArgs(
       bigQueryExportId: pulumi.Input.fromValue(map['bigQueryExportId'] as String),
       dataset: pulumi.Input.fromValue(map['dataset'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
       filter: pulumi.Input.fromValue(map['filter'] as String),
       folder: pulumi.Input.fromValue(map['folder'] as String),
     );
   }
 }
-

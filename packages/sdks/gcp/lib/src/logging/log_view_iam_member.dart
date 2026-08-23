@@ -6,8 +6,8 @@ import 'log_view_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 ///
 /// * `gcp.logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-/// * `gcp.logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-/// * `gcp.logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+/// * `gcp.logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,7 @@ import 'log_view_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.logging.LogViewIamPolicy` **cannot** be used in conjunction with `gcp.logging.LogViewIamBinding` and `gcp.logging.LogViewIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -128,6 +128,30 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/logging.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiampolicy" "policy" {
+///   parent      = loggingLogView.parent
+///   location    = loggingLogView.location
+///   bucket      = loggingLogView.bucket
+///   name        = loggingLogView.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,10 +160,11 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.logging.LogViewIamPolicy;
 /// import com.pulumi.gcp.logging.LogViewIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,10 +184,10 @@ import 'log_view_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -320,6 +345,35 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/logging.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiampolicy" "policy" {
+///   parent      = loggingLogView.parent
+///   location    = loggingLogView.location
+///   bucket      = loggingLogView.bucket
+///   name        = loggingLogView.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -328,10 +382,12 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.logging.LogViewIamPolicy;
 /// import com.pulumi.gcp.logging.LogViewIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,10 +412,10 @@ import 'log_view_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -469,6 +525,24 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiambinding" "binding" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +551,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LogViewIamBinding;
 /// import com.pulumi.gcp.logging.LogViewIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,10 +565,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -616,6 +690,29 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiambinding" "binding" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   members  = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -625,8 +722,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.gcp.logging.LogViewIamBinding;
 /// import com.pulumi.gcp.logging.LogViewIamBindingArgs;
 /// import com.pulumi.gcp.logging.inputs.LogViewIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -639,10 +736,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .members("user:jane@example.com")
 ///             .condition(LogViewIamBindingConditionArgs.builder()
@@ -746,6 +843,24 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiammember" "member" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -754,8 +869,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LogViewIamMember;
 /// import com.pulumi.gcp.logging.LogViewIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -768,10 +883,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -887,6 +1002,29 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiammember" "member" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   member   = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -896,8 +1034,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.gcp.logging.LogViewIamMember;
 /// import com.pulumi.gcp.logging.LogViewIamMemberArgs;
 /// import com.pulumi.gcp.logging.inputs.LogViewIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -910,10 +1048,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .member("user:jane@example.com")
 ///             .condition(LogViewIamMemberConditionArgs.builder()
@@ -954,8 +1092,8 @@ import 'log_view_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 ///
 /// * `gcp.logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-/// * `gcp.logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-/// * `gcp.logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+/// * `gcp.logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -963,7 +1101,7 @@ import 'log_view_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.logging.LogViewIamPolicy` **cannot** be used in conjunction with `gcp.logging.LogViewIamBinding` and `gcp.logging.LogViewIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -1076,6 +1214,30 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/logging.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiampolicy" "policy" {
+///   parent      = loggingLogView.parent
+///   location    = loggingLogView.location
+///   bucket      = loggingLogView.bucket
+///   name        = loggingLogView.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1084,10 +1246,11 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.logging.LogViewIamPolicy;
 /// import com.pulumi.gcp.logging.LogViewIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1107,10 +1270,10 @@ import 'log_view_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1268,6 +1431,35 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/logging.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiampolicy" "policy" {
+///   parent      = loggingLogView.parent
+///   location    = loggingLogView.location
+///   bucket      = loggingLogView.bucket
+///   name        = loggingLogView.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1276,10 +1468,12 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.logging.LogViewIamPolicy;
 /// import com.pulumi.gcp.logging.LogViewIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1304,10 +1498,10 @@ import 'log_view_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1417,6 +1611,24 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiambinding" "binding" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1425,8 +1637,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LogViewIamBinding;
 /// import com.pulumi.gcp.logging.LogViewIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1439,10 +1651,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1564,6 +1776,29 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiambinding" "binding" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   members  = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1573,8 +1808,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.gcp.logging.LogViewIamBinding;
 /// import com.pulumi.gcp.logging.LogViewIamBindingArgs;
 /// import com.pulumi.gcp.logging.inputs.LogViewIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1587,10 +1822,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .members("user:jane@example.com")
 ///             .condition(LogViewIamBindingConditionArgs.builder()
@@ -1694,6 +1929,24 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiammember" "member" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1702,8 +1955,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LogViewIamMember;
 /// import com.pulumi.gcp.logging.LogViewIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1716,10 +1969,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1835,6 +2088,29 @@ import 'log_view_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logviewiammember" "member" {
+///   parent   = loggingLogView.parent
+///   location = loggingLogView.location
+///   bucket   = loggingLogView.bucket
+///   name     = loggingLogView.name
+///   role     = "roles/logging.admin"
+///   member   = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1844,8 +2120,8 @@ import 'log_view_iam_member_state.dart';
 /// import com.pulumi.gcp.logging.LogViewIamMember;
 /// import com.pulumi.gcp.logging.LogViewIamMemberArgs;
 /// import com.pulumi.gcp.logging.inputs.LogViewIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1858,10 +2134,10 @@ import 'log_view_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
-///             .parent(loggingLogView.parent())
-///             .location(loggingLogView.location())
-///             .bucket(loggingLogView.bucket())
-///             .name(loggingLogView.name())
+///             .parent(loggingLogView.get("parent"))
+///             .location(loggingLogView.get("location"))
+///             .bucket(loggingLogView.get("bucket"))
+///             .name(loggingLogView.get("name"))
 ///             .role("roles/logging.admin")
 ///             .member("user:jane@example.com")
 ///             .condition(LogViewIamMemberConditionArgs.builder()
@@ -1897,7 +2173,6 @@ import 'log_view_iam_member_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1905,25 +2180,21 @@ import 'log_view_iam_member_state.dart';
 /// Cloud (Stackdriver) Logging logview IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:logging/logViewIamMember:LogViewIamMember editor "{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{log_view}} roles/logging.admin user:jane@example.com"
+/// $ terraform import google_logging_log_view_iam_member.editor "{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{log_view}} roles/logging.admin user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:logging/logViewIamMember:LogViewIamMember editor "{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{log_view}} roles/logging.admin"
+/// $ terraform import google_logging_log_view_iam_binding.editor "{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{log_view}} roles/logging.admin"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:logging/logViewIamMember:LogViewIamMember editor {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{log_view}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class LogViewIamMember extends pulumi.CustomResource {
   /// The bucket of the resource Used to find the parent resource to bind the IAM policy to
@@ -1955,7 +2226,7 @@ class LogViewIamMember extends pulumi.CustomResource {
   /// The parent of the resource. Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> parent;
   /// The role that should be applied. Only one
-  /// `gcp.logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `gcp.logging.LogViewIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
 

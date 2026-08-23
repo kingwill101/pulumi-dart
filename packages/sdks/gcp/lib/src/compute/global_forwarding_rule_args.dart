@@ -9,8 +9,16 @@ import 'global_forwarding_rule_service_directory_registrations.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_global_forwarding_rule_global_forwarding_rule_args_doc}
 class GlobalForwardingRuleArgs {
+  /// (Optional, Beta)
   /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
   final pulumi.Input<bool>? allowPscGlobalAccess;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -81,7 +89,7 @@ class GlobalForwardingRuleArgs {
   /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Specifies the forwarding rule type.
   /// For more information about forwarding rules, refer to
@@ -186,7 +194,8 @@ class GlobalForwardingRuleArgs {
   final pulumi.Input<String> target;
 
   /// Creates a new [GlobalForwardingRuleArgs].
-  /// [allowPscGlobalAccess] This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+  /// [allowPscGlobalAccess] (Optional, Beta)
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [externalManagedBackendBucketMigrationState] Specifies the canary migration state for the backend buckets attached to this forwarding rule.
   /// [externalManagedBackendBucketMigrationTestingPercentage] Determines the fraction of requests to backend buckets that should be processed by the Global
@@ -208,6 +217,7 @@ class GlobalForwardingRuleArgs {
   /// [target] The URL of the target resource to receive the matched traffic.  For
   const GlobalForwardingRuleArgs({
     this.allowPscGlobalAccess,
+    this.deletionPolicy,
     this.description,
     this.externalManagedBackendBucketMigrationState,
     this.externalManagedBackendBucketMigrationTestingPercentage,
@@ -232,6 +242,7 @@ class GlobalForwardingRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowPscGlobalAccess': ?allowPscGlobalAccess,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'externalManagedBackendBucketMigrationState': ?externalManagedBackendBucketMigrationState,
       'externalManagedBackendBucketMigrationTestingPercentage': ?externalManagedBackendBucketMigrationTestingPercentage,
@@ -257,6 +268,7 @@ class GlobalForwardingRuleArgs {
   factory GlobalForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GlobalForwardingRuleArgs(
       allowPscGlobalAccess: (() { final guardedValue = map['allowPscGlobalAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalManagedBackendBucketMigrationState: (() { final guardedValue = map['externalManagedBackendBucketMigrationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalManagedBackendBucketMigrationTestingPercentage: (() { final guardedValue = map['externalManagedBackendBucketMigrationTestingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
@@ -279,4 +291,3 @@ class GlobalForwardingRuleArgs {
     );
   }
 }
-

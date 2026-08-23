@@ -361,6 +361,77 @@ import 'plugin_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apihub_plugin" "apihub_plugin_full" {
+///   location        = "us-central1"
+///   display_name    = "Test Plugin"
+///   description     = "Test description"
+///   plugin_id       = "plugin-full"
+///   plugin_category = "API_GATEWAY"
+///   actions_configs {
+///     id           = "sync-metadata"
+///     display_name = "Sync Metadata"
+///     description  = "Syncs API metadata."
+///     trigger_mode = "API_HUB_SCHEDULE_TRIGGER"
+///   }
+///   documentation = {
+///     external_uri = "https://example.com/plugin-documentation"
+///   }
+///   hosting_service = {
+///     service_uri = "https://your-plugin-service.example.com/api"
+///   }
+///   config_template = {
+///     auth_config_template = {
+///       supported_auth_types = ["NO_AUTH", "USER_PASSWORD"]
+///       service_account = {
+///         service_account = "test@developer.gserviceaccount.com"
+///       }
+///     }
+///     additional_config_templates = [{
+///       "id"              = "string-val"
+///       "description"     = "API key for the service."
+///       "valueType"       = "STRING"
+///       "required"        = false
+///       "validationRegex" = "^[a-zA-Z0-9]{5,20}$"
+///       }, {
+///       "id"              = "integer-val"
+///       "description"     = "API key for the service."
+///       "valueType"       = "INT"
+///       "required"        = true
+///       "validationRegex" = ""
+///       }, {
+///       "id"              = "bool-val"
+///       "description"     = "API key for the service."
+///       "valueType"       = "BOOL"
+///       "required"        = false
+///       "validationRegex" = ""
+///       }, {
+///       "id"          = "enum-val"
+///       "description" = "API key for the service."
+///       "valueType"   = "ENUM"
+///       "enumOptions" = [{
+///         "id"          = "Option1"
+///         "displayName" = "Option1"
+///         "description" = "Description for Option1"
+///         }, {
+///         "id"          = "Option2"
+///         "displayName" = "Option2"
+///         "description" = "Description for Option2"
+///       }]
+///       "required"        = false
+///       "validationRegex" = ""
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -375,8 +446,10 @@ import 'plugin_state.dart';
 /// import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateArgs;
 /// import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAuthConfigTemplateArgs;
 /// import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAuthConfigTemplateServiceAccountArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAdditionalConfigTemplateArgs;
+/// import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,22 +597,15 @@ import 'plugin_state.dart';
 /// Plugin can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/plugins/{{plugin_id}}`
-///
 /// * `{{project}}/{{location}}/{{plugin_id}}`
-///
 /// * `{{location}}/{{plugin_id}}`
+///
 ///
 /// When using the `pulumi import` command, Plugin can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apihub/plugin:Plugin default projects/{{project}}/locations/{{location}}/plugins/{{plugin_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/plugin:Plugin default {{project}}/{{location}}/{{plugin_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/plugin:Plugin default {{location}}/{{plugin_id}}
 /// ```
 class Plugin extends pulumi.CustomResource {
@@ -551,6 +617,13 @@ class Plugin extends pulumi.CustomResource {
   late final pulumi.Output<PluginConfigTemplate> configTemplate;
   /// Timestamp indicating when the plugin was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The plugin description. Max length is 2000 characters (Unicode code
   /// points).
   late final pulumi.Output<String?> description;
@@ -624,6 +697,7 @@ class Plugin extends pulumi.CustomResource {
     actionsConfigs = registerOutput<List<Map<String, dynamic>>?>('actionsConfigs');
     configTemplate = registerOutput<PluginConfigTemplate>('configTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<PluginDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -664,6 +738,7 @@ class Plugin extends pulumi.CustomResource {
     actionsConfigs = registerOutput<List<Map<String, dynamic>>?>('actionsConfigs');
     configTemplate = registerOutput<PluginConfigTemplate>('configTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<PluginDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

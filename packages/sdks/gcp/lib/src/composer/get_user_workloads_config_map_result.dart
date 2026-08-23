@@ -6,6 +6,7 @@ class GetUserWorkloadsConfigMapResult {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
   final Map<String, String> data;
+  final String deletionPolicy;
   final String environment;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -15,6 +16,7 @@ class GetUserWorkloadsConfigMapResult {
 
   /// Creates a new [GetUserWorkloadsConfigMapResult].
   /// [data] The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
+  /// [deletionPolicy] Required.
   /// [environment] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
@@ -22,6 +24,7 @@ class GetUserWorkloadsConfigMapResult {
   /// [region] Optional.
   const GetUserWorkloadsConfigMapResult({
     required this.data,
+    required this.deletionPolicy,
     required this.environment,
     required this.id,
     required this.name,
@@ -32,6 +35,7 @@ class GetUserWorkloadsConfigMapResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'data': data,
+      'deletionPolicy': deletionPolicy,
       'environment': environment,
       'id': id,
       'name': name,
@@ -43,6 +47,7 @@ class GetUserWorkloadsConfigMapResult {
   factory GetUserWorkloadsConfigMapResult.fromMap(Map<String, dynamic> map) {
     return GetUserWorkloadsConfigMapResult(
       data: (map['data'] as Map).cast<String, String>(),
+      deletionPolicy: map['deletionPolicy'] as String,
       environment: map['environment'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -51,4 +56,3 @@ class GetUserWorkloadsConfigMapResult {
     );
   }
 }
-

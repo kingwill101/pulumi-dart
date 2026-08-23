@@ -14,6 +14,13 @@ class TriggerState {
   final pulumi.Input<Map<String, String>>? conditions;
   /// Output only. The creation time.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Required. Destination specifies where the events should be sent to.
   /// Structure is documented below.
   final pulumi.Input<TriggerDestination>? destination;
@@ -25,7 +32,7 @@ class TriggerState {
   final pulumi.Input<String>? eventDataContentType;
   /// Optional. User labels attached to the triggers that can be used to group resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String>? location;
@@ -58,6 +65,7 @@ class TriggerState {
   /// [channel] Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
   /// [conditions] Output only. The reason(s) why a trigger is in FAILED state.
   /// [createTime] Output only. The creation time.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destination] Required. Destination specifies where the events should be sent to.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
@@ -77,6 +85,7 @@ class TriggerState {
     this.channel,
     this.conditions,
     this.createTime,
+    this.deletionPolicy,
     this.destination,
     this.effectiveLabels,
     this.etag,
@@ -99,6 +108,7 @@ class TriggerState {
       'channel': ?channel,
       'conditions': ?conditions,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'destination': ?pulumi.Input.mapOptionalInputValue<TriggerDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
@@ -122,6 +132,7 @@ class TriggerState {
       channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TriggerDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -140,4 +151,3 @@ class TriggerState {
     );
   }
 }
-

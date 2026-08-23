@@ -134,13 +134,13 @@ import 'endpoint_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				serviceRange.Name,
@@ -152,7 +152,7 @@ import 'endpoint_state.dart';
 /// 		_, err = cloudids.NewEndpoint(ctx, "example-endpoint", &cloudids.EndpointArgs{
 /// 			Name:     pulumi.String("test"),
 /// 			Location: pulumi.String("us-central1-f"),
-/// 			Network:  _default.ID(),
+/// 			Network:  _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Severity: pulumi.String("INFORMATIONAL"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			privateServiceConnection,
@@ -162,6 +162,38 @@ import 'endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "tf-test-my-network"
+/// }
+/// resource "gcp_compute_globaladdress" "service_range" {
+///   name          = "address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "private_service_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.service_range.name]
+/// }
+/// resource "gcp_cloudids_endpoint" "example-endpoint" {
+///   depends_on = [gcp_servicenetworking_connection.private_service_connection]
+///   name       = "test"
+///   location   = "us-central1-f"
+///   network    = gcp_compute_network.default.id
+///   severity   = "INFORMATIONAL"
 /// }
 /// ```
 /// ```java
@@ -179,8 +211,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.gcp.cloudids.Endpoint;
 /// import com.pulumi.gcp.cloudids.EndpointArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,27 +295,27 @@ import 'endpoint_state.dart';
 /// Endpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudids/endpoint:Endpoint default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
 /// ```
 class Endpoint extends pulumi.CustomResource {
   /// Creation timestamp in RFC 3339 text format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of the endpoint.
   late final pulumi.Output<String?> description;
   /// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
@@ -322,6 +354,7 @@ class Endpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     endpointForwardingRule = registerOutput<String>('endpointForwardingRule');
     endpointIp = registerOutput<String>('endpointIp');
@@ -358,6 +391,7 @@ class Endpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     endpointForwardingRule = registerOutput<String>('endpointForwardingRule');
     endpointIp = registerOutput<String>('endpointIp');

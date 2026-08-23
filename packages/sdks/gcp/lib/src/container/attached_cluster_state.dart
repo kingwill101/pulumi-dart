@@ -22,7 +22,7 @@ class AttachedClusterState {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
@@ -36,7 +36,14 @@ class AttachedClusterState {
   final pulumi.Input<String>? clusterRegion;
   /// Output only. The time at which this cluster was created.
   final pulumi.Input<String>? createTime;
-  /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+  /// Policy to determine what flags to send on delete.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  ///
+  /// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
   final pulumi.Input<String>? deletionPolicy;
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
@@ -45,6 +52,7 @@ class AttachedClusterState {
   /// "eks", "aks", "generic". The generic distribution provides the ability to register
   /// or migrate any CNCF conformant cluster.
   final pulumi.Input<String>? distribution;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// A set of errors found in the cluster.
   /// Structure is documented below.
@@ -70,9 +78,9 @@ class AttachedClusterState {
   /// validate KSA tokens in order to allow system workloads (such as GKE Connect
   /// and telemetry agents) to authenticate back to GCP.
   /// Both clusters with public and private issuer URLs are supported.
-  /// Clusters with public issuers only need to specify the `issuer_url` field
+  /// Clusters with public issuers only need to specify the `issuerUrl` field
   /// while clusters with private issuers need to provide both
-  /// `issuer_url` and `jwks`.
+  /// `issuerUrl` and `jwks`.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterOidcConfig>? oidcConfig;
   /// The platform version for the cluster (e.g. `1.23.0-gke.1`).
@@ -89,7 +97,7 @@ class AttachedClusterState {
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+  /// &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
   final pulumi.Input<AttachedClusterSecurityPostureConfig>? securityPostureConfig;
   /// The current state of the cluster. Possible values:
   /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -109,10 +117,10 @@ class AttachedClusterState {
   /// [binaryAuthorization] Binary Authorization configuration.
   /// [clusterRegion] Output only. The region where this cluster runs.
   /// [createTime] Output only. The time at which this cluster was created.
-  /// [deletionPolicy] Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+  /// [deletionPolicy] Policy to determine what flags to send on delete.
   /// [description] A human readable description of this attached cluster. Cannot be longer
   /// [distribution] The Kubernetes distribution of the underlying attached cluster. Supported values:
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [errors] A set of errors found in the cluster.
   /// [fleet] Fleet configuration.
   /// [kubernetesVersion] The Kubernetes version of the cluster.
@@ -221,4 +229,3 @@ class AttachedClusterState {
     );
   }
 }
-

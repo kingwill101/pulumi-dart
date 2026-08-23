@@ -18,7 +18,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource>? dialogflowQuerySource;
   /// Maximum number of results to return.
   final pulumi.Input<int>? maxResults;
-  /// he customized sections chosen to return when requesting a summary of a conversation.
+  /// The customized sections chosen to return when requesting a summary of a conversation.
   /// Structure is documented below.
   final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections>? sections;
 
@@ -27,7 +27,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   /// [contextFilterSettings] Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
   /// [dialogflowQuerySource] Query from Dialogflow agent.
   /// [maxResults] Maximum number of results to return.
-  /// [sections] he customized sections chosen to return when requesting a summary of a conversation.
+  /// [sections] The customized sections chosen to return when requesting a summary of a conversation.
   const ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig({
     this.confidenceThreshold,
     this.contextFilterSettings,
@@ -56,4 +56,3 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
     );
   }
 }
-

@@ -10,6 +10,13 @@ class DocumentState {
   final pulumi.Input<String>? createTime;
   /// The Firestore database id. Defaults to `"(default)"`.
   final pulumi.Input<String>? database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The client-assigned document ID to use for this document during creation.
   final pulumi.Input<String>? documentId;
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
@@ -29,6 +36,7 @@ class DocumentState {
   /// [collection] The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
   /// [createTime] Creation timestamp in RFC3339 format.
   /// [database] The Firestore database id. Defaults to `"(default)"`.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [documentId] The client-assigned document ID to use for this document during creation.
   /// [fields] The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
   /// [name] A server defined name for this document. Format:
@@ -39,6 +47,7 @@ class DocumentState {
     this.collection,
     this.createTime,
     this.database,
+    this.deletionPolicy,
     this.documentId,
     this.fields,
     this.name,
@@ -52,6 +61,7 @@ class DocumentState {
       'collection': ?collection,
       'createTime': ?createTime,
       'database': ?database,
+      'deletionPolicy': ?deletionPolicy,
       'documentId': ?documentId,
       'fields': ?fields,
       'name': ?name,
@@ -66,6 +76,7 @@ class DocumentState {
       collection: (() { final guardedValue = map['collection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       documentId: (() { final guardedValue = map['documentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -75,4 +86,3 @@ class DocumentState {
     );
   }
 }
-

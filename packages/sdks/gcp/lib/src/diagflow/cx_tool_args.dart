@@ -11,6 +11,7 @@ import 'cx_tool_open_api_spec.dart';
 /// {@endtemplate}
 /// {@macro pulumi_diagflow_cx_tool_cx_tool_args_doc}
 class CxToolArgs {
+  /// (Optional, Beta)
   /// Integration connectors tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
@@ -19,6 +20,13 @@ class CxToolArgs {
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolDataStoreSpec>? dataStoreSpec;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// High level description of the Tool and its usage.
   final pulumi.Input<String> description;
   /// The human-readable name of the tool, unique within the agent.
@@ -36,8 +44,9 @@ class CxToolArgs {
   final pulumi.Input<String>? parent;
 
   /// Creates a new [CxToolArgs].
-  /// [connectorSpec] Integration connectors tool specification.
+  /// [connectorSpec] (Optional, Beta)
   /// [dataStoreSpec] Data store search tool specification.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] High level description of the Tool and its usage.
   /// [displayName] The human-readable name of the tool, unique within the agent.
   /// [functionSpec] Client side executed function specification.
@@ -46,6 +55,7 @@ class CxToolArgs {
   const CxToolArgs({
     this.connectorSpec,
     this.dataStoreSpec,
+    this.deletionPolicy,
     required this.description,
     required this.displayName,
     this.functionSpec,
@@ -57,6 +67,7 @@ class CxToolArgs {
     return <String, dynamic>{
       'connectorSpec': ?pulumi.Input.mapOptionalInputValue<CxToolConnectorSpec, Map<String, dynamic>>(connectorSpec, (value) => value.toMap()),
       'dataStoreSpec': ?pulumi.Input.mapOptionalInputValue<CxToolDataStoreSpec, Map<String, dynamic>>(dataStoreSpec, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': description,
       'displayName': displayName,
       'functionSpec': ?pulumi.Input.mapOptionalInputValue<CxToolFunctionSpec, Map<String, dynamic>>(functionSpec, (value) => value.toMap()),
@@ -69,6 +80,7 @@ class CxToolArgs {
     return CxToolArgs(
       connectorSpec: (() { final guardedValue = map['connectorSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolConnectorSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataStoreSpec: (() { final guardedValue = map['dataStoreSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolDataStoreSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       functionSpec: (() { final guardedValue = map['functionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolFunctionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -77,4 +89,3 @@ class CxToolArgs {
     );
   }
 }
-

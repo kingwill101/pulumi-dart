@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_organizations_i_amcustom_role_iamcustom_role_args_doc}
 class IAMCustomRoleArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description for the role.
   final pulumi.Input<String>? description;
   /// The numeric ID of the organization in which you want to create a custom role.
@@ -23,6 +30,7 @@ class IAMCustomRoleArgs {
   final pulumi.Input<String> title;
 
   /// Creates a new [IAMCustomRoleArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] A human-readable description for the role.
   /// [orgId] The numeric ID of the organization in which you want to create a custom role.
   /// [permissions] The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
@@ -30,6 +38,7 @@ class IAMCustomRoleArgs {
   /// [stage] The current launch stage of the role.
   /// [title] A human-readable title for the role.
   const IAMCustomRoleArgs({
+    this.deletionPolicy,
     this.description,
     required this.orgId,
     required this.permissions,
@@ -40,6 +49,7 @@ class IAMCustomRoleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'orgId': orgId,
       'permissions': permissions,
@@ -51,6 +61,7 @@ class IAMCustomRoleArgs {
 
   factory IAMCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
       permissions: pulumi.Input.fromValue((map['permissions'] as List).cast<String>()),
@@ -60,4 +71,3 @@ class IAMCustomRoleArgs {
     );
   }
 }
-

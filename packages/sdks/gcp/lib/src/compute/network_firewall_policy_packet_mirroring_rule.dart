@@ -5,6 +5,9 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 
 /// Represents a packet mirroring rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (mirror or do_not_mirror).
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about NetworkFirewallPolicyPacketMirroringRule, see:
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkFirewallPolicies/addPacketMirroringRule)
@@ -73,7 +76,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 ///     description: "This is a simple packet mirroring rule description",
 ///     direction: "INGRESS",
 ///     disabled: false,
-///     firewallPolicy: basicNetworkFirewallPolicy.name,
+///     firewallPolicy: basicNetworkFirewallPolicy.id,
 ///     priority: 1000,
 ///     ruleName: "test-rule",
 ///     match: {
@@ -138,7 +141,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 ///     description="This is a simple packet mirroring rule description",
 ///     direction="INGRESS",
 ///     disabled=False,
-///     firewall_policy=basic_network_firewall_policy.name,
+///     firewall_policy=basic_network_firewall_policy.id,
 ///     priority=1000,
 ///     rule_name="test-rule",
 ///     match={
@@ -234,7 +237,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 ///         Description = "This is a simple packet mirroring rule description",
 ///         Direction = "INGRESS",
 ///         Disabled = false,
-///         FirewallPolicy = basicNetworkFirewallPolicy.Name,
+///         FirewallPolicy = basicNetworkFirewallPolicy.Id,
 ///         Priority = 1000,
 ///         RuleName = "test-rule",
 ///         Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyPacketMirroringRuleMatchArgs
@@ -300,7 +303,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 		defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("deployment-group"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID(),
+/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -308,7 +311,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 		defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 /// 			MirroringEndpointGroupId: pulumi.String("endpoint-group"),
 /// 			Location:                 pulumi.String("global"),
-/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
+/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -319,7 +322,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_MIRRORING"),
 /// 			CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -329,7 +332,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 			Name:                   pulumi.String("sec-profile-group"),
 /// 			Parent:                 pulumi.String("organizations/123456789"),
 /// 			Description:            pulumi.String("my description"),
-/// 			CustomMirroringProfile: defaultSecurityProfile.ID(),
+/// 			CustomMirroringProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -350,7 +353,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 		}
 /// 		secureTagValue1, err := tags.NewTagValue(ctx, "secure_tag_value_1", &tags.TagValueArgs{
 /// 			Description: pulumi.String("Test tag value description."),
-/// 			Parent:      secureTagKey1.ID(),
+/// 			Parent:      secureTagKey1.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -361,7 +364,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 			Description:    pulumi.String("This is a simple packet mirroring rule description"),
 /// 			Direction:      pulumi.String("INGRESS"),
 /// 			Disabled:       pulumi.Bool(false),
-/// 			FirewallPolicy: basicNetworkFirewallPolicy.Name,
+/// 			FirewallPolicy: basicNetworkFirewallPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:       pulumi.Int(1000),
 /// 			RuleName:       pulumi.String("test-rule"),
 /// 			Match: &compute.NetworkFirewallPolicyPacketMirroringRuleMatchArgs{
@@ -374,7 +377,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id string) (string, error) {
+/// 			SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			TargetSecureTags: compute.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArray{
@@ -390,6 +393,86 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "fw-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_networkfirewallpolicy" "basic_network_firewall_policy" {
+///   name        = "fw-policy"
+///   description = "Sample global network firewall policy"
+///   project     = "my-project-name"
+/// }
+/// resource "gcp_compute_networkfirewallpolicypacketmirroringrule" "primary" {
+///   action          = "mirror"
+///   description     = "This is a simple packet mirroring rule description"
+///   direction       = "INGRESS"
+///   disabled        = false
+///   firewall_policy = gcp_compute_networkfirewallpolicy.basic_network_firewall_policy.id
+///   priority        = 1000
+///   rule_name       = "test-rule"
+///   match = {
+///     src_ip_ranges = ["10.100.0.1/32"]
+///     layer4_configs = [{
+///       "ipProtocol" = "all"
+///     }]
+///   }
+///   security_profile_group ="//networksecurity.googleapis.com/${gcp_networksecurity_securityprofilegroup.security_profile_group_1.id}"
+///   target_secure_tags {
+///     name ="tagValues/${gcp_tags_tagvalue.secure_tag_value_1.name}"
+///   }
+/// }
+/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+///   mirroring_deployment_group_id = "deployment-group"
+///   location                      = "global"
+///   network                       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+///   mirroring_endpoint_group_id = "endpoint-group"
+///   location                    = "global"
+///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.default.id
+/// }
+/// resource "gcp_networksecurity_securityprofile" "default" {
+///   name        = "sec-profile"
+///   parent      = "organizations/123456789"
+///   description = "my description"
+///   type        = "CUSTOM_MIRRORING"
+///   custom_mirroring_profile = {
+///     mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.default.id
+///   }
+/// }
+/// resource "gcp_networksecurity_securityprofilegroup" "security_profile_group_1" {
+///   name                     = "sec-profile-group"
+///   parent                   = "organizations/123456789"
+///   description              = "my description"
+///   custom_mirroring_profile = gcp_networksecurity_securityprofile.default.id
+/// }
+/// resource "gcp_tags_tagkey" "secure_tag_key_1" {
+///   description = "Test tag key description"
+///   parent      = "organizations/123456789"
+///   purpose     = "GCE_FIREWALL"
+///   short_name  = "tag-key"
+///   purpose_data = {
+///     "network" ="my-project-name/${gcp_compute_network.default.name}"
+///   }
+/// }
+/// resource "gcp_tags_tagvalue" "secure_tag_value_1" {
+///   description = "Test tag value description."
+///   parent      = gcp_tags_tagkey.secure_tag_key_1.id
+///   short_name  = "tag-value"
 /// }
 /// ```
 /// ```java
@@ -420,9 +503,10 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// import com.pulumi.gcp.compute.NetworkFirewallPolicyPacketMirroringRule;
 /// import com.pulumi.gcp.compute.NetworkFirewallPolicyPacketMirroringRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyPacketMirroringRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -496,7 +580,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 ///             .description("This is a simple packet mirroring rule description")
 ///             .direction("INGRESS")
 ///             .disabled(false)
-///             .firewallPolicy(basicNetworkFirewallPolicy.name())
+///             .firewallPolicy(basicNetworkFirewallPolicy.id())
 ///             .priority(1000)
 ///             .ruleName("test-rule")
 ///             .match(NetworkFirewallPolicyPacketMirroringRuleMatchArgs.builder()
@@ -535,7 +619,7 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 ///       description: This is a simple packet mirroring rule description
 ///       direction: INGRESS
 ///       disabled: false
-///       firewallPolicy: ${basicNetworkFirewallPolicy.name}
+///       firewallPolicy: ${basicNetworkFirewallPolicy.id}
 ///       priority: 1000
 ///       ruleName: test-rule
 ///       match:
@@ -608,29 +692,29 @@ import 'network_firewall_policy_packet_mirroring_rule_state.dart';
 /// NetworkFirewallPolicyPacketMirroringRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}`
-///
 /// * `{{project}}/{{firewall_policy}}/{{priority}}`
-///
 /// * `{{firewall_policy}}/{{priority}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkFirewallPolicyPacketMirroringRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{project}}/{{firewall_policy}}/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{firewall_policy}}/{{priority}}
 /// ```
 class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
   late final pulumi.Output<String> action;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description for this resource.
   late final pulumi.Output<String?> description;
   /// The direction in which this rule applies.
@@ -687,6 +771,7 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
@@ -727,6 +812,7 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');

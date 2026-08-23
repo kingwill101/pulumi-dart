@@ -115,7 +115,7 @@ import 'intercept_endpoint_group_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "deployment_group", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    network.ID(),
+/// 			Network:                    network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,7 +123,7 @@ import 'intercept_endpoint_group_state.dart';
 /// 		_, err = networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 /// 			InterceptEndpointGroupId: pulumi.String("example-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			InterceptDeploymentGroup: deploymentGroup.ID(),
+/// 			InterceptDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:              pulumi.String("some description"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -134,6 +134,34 @@ import 'intercept_endpoint_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "example-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networksecurity_interceptdeploymentgroup" "deployment_group" {
+///   intercept_deployment_group_id = "example-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_networksecurity_interceptendpointgroup" "default" {
+///   intercept_endpoint_group_id = "example-eg"
+///   location                    = "global"
+///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.deployment_group.id
+///   description                 = "some description"
+///   labels = {
+///     "foo" = "bar"
+///   }
 /// }
 /// ```
 /// ```java
@@ -148,8 +176,8 @@ import 'intercept_endpoint_group_state.dart';
 /// import com.pulumi.gcp.networksecurity.InterceptDeploymentGroupArgs;
 /// import com.pulumi.gcp.networksecurity.InterceptEndpointGroup;
 /// import com.pulumi.gcp.networksecurity.InterceptEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,22 +242,15 @@ import 'intercept_endpoint_group_state.dart';
 /// InterceptEndpointGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}`
-///
 /// * `{{project}}/{{location}}/{{intercept_endpoint_group_id}}`
-///
 /// * `{{location}}/{{intercept_endpoint_group_id}}`
+///
 ///
 /// When using the `pulumi import` command, InterceptEndpointGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{project}}/{{location}}/{{intercept_endpoint_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
 /// ```
 class InterceptEndpointGroup extends pulumi.CustomResource {
@@ -242,6 +263,13 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description of the endpoint group.
   /// Used as additional context for the endpoint group.
   late final pulumi.Output<String?> description;
@@ -256,7 +284,7 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> interceptEndpointGroupId;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The cloud location of the endpoint group, currently restricted to `global`.
   late final pulumi.Output<String> location;
@@ -304,6 +332,7 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
     associations = registerOutput<List<Map<String, dynamic>>>('associations');
     connectedDeploymentGroups = registerOutput<List<Map<String, dynamic>>>('connectedDeploymentGroups');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interceptDeploymentGroup = registerOutput<String>('interceptDeploymentGroup');
@@ -344,6 +373,7 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
     associations = registerOutput<List<Map<String, dynamic>>>('associations');
     connectedDeploymentGroups = registerOutput<List<Map<String, dynamic>>>('connectedDeploymentGroups');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interceptDeploymentGroup = registerOutput<String>('interceptDeploymentGroup');

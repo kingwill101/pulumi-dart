@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_service_template_container.dart';
 import 'get_service_template_node_selector.dart';
+import 'get_service_template_sandbox.dart';
 import 'get_service_template_scaling.dart';
 import 'get_service_template_service_mesh.dart';
 import 'get_service_template_volume.dart';
@@ -39,6 +40,8 @@ class GetServiceTemplate {
   final pulumi.Input<List<GetServiceTemplateNodeSelector>> nodeSelectors;
   /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
   final pulumi.Input<String> revision;
+  /// Configuration for sandboxes.
+  final pulumi.Input<List<GetServiceTemplateSandbox>> sandboxes;
   /// Scaling settings for this Revision.
   final pulumi.Input<List<GetServiceTemplateScaling>> scalings;
   /// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -67,6 +70,7 @@ class GetServiceTemplate {
   /// [maxInstanceRequestConcurrency] Sets the maximum number of requests that each serving instance can receive.
   /// [nodeSelectors] Node Selector describes the hardware requirements of the resources.
   /// [revision] The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+  /// [sandboxes] Configuration for sandboxes.
   /// [scalings] Scaling settings for this Revision.
   /// [serviceAccount] Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   /// [serviceMeshes] Enables Cloud Service Mesh for this Revision.
@@ -85,6 +89,7 @@ class GetServiceTemplate {
     required this.maxInstanceRequestConcurrency,
     required this.nodeSelectors,
     required this.revision,
+    required this.sandboxes,
     required this.scalings,
     required this.serviceAccount,
     required this.serviceMeshes,
@@ -106,6 +111,7 @@ class GetServiceTemplate {
       'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency,
       'nodeSelectors': pulumi.Input.mapInputValue<List<GetServiceTemplateNodeSelector>, List<Map<String, dynamic>>>(nodeSelectors, (value) => pulumi.Input.encodeList<GetServiceTemplateNodeSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'revision': revision,
+      'sandboxes': pulumi.Input.mapInputValue<List<GetServiceTemplateSandbox>, List<Map<String, dynamic>>>(sandboxes, (value) => pulumi.Input.encodeList<GetServiceTemplateSandbox, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scalings': pulumi.Input.mapInputValue<List<GetServiceTemplateScaling>, List<Map<String, dynamic>>>(scalings, (value) => pulumi.Input.encodeList<GetServiceTemplateScaling, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceAccount': serviceAccount,
       'serviceMeshes': pulumi.Input.mapInputValue<List<GetServiceTemplateServiceMesh>, List<Map<String, dynamic>>>(serviceMeshes, (value) => pulumi.Input.encodeList<GetServiceTemplateServiceMesh, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -128,6 +134,7 @@ class GetServiceTemplate {
       maxInstanceRequestConcurrency: pulumi.Input.fromValue(map['maxInstanceRequestConcurrency'] as int),
       nodeSelectors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateNodeSelector>(map['nodeSelectors']!, (value) => GetServiceTemplateNodeSelector.fromMap((value as Map).cast<String, dynamic>()))),
       revision: pulumi.Input.fromValue(map['revision'] as String),
+      sandboxes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSandbox>(map['sandboxes']!, (value) => GetServiceTemplateSandbox.fromMap((value as Map).cast<String, dynamic>()))),
       scalings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateScaling>(map['scalings']!, (value) => GetServiceTemplateScaling.fromMap((value as Map).cast<String, dynamic>()))),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       serviceMeshes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateServiceMesh>(map['serviceMeshes']!, (value) => GetServiceTemplateServiceMesh.fromMap((value as Map).cast<String, dynamic>()))),
@@ -138,4 +145,3 @@ class GetServiceTemplate {
     );
   }
 }
-

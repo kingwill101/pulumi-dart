@@ -64,3 +64,6 @@ export 'organizations/policy_state.dart';
 export 'organizations/project.dart';
 export 'organizations/project_args.dart';
 export 'organizations/project_state.dart';
+export 'organizations/service_identity.dart';
+export 'organizations/service_identity_args.dart';
+export 'organizations/service_identity_state.dart';

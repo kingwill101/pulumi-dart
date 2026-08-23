@@ -8,6 +8,13 @@ import 'network_firewall_policy_with_rules_rule.dart';
 class NetworkFirewallPolicyWithRulesState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -44,6 +51,7 @@ class NetworkFirewallPolicyWithRulesState {
 
   /// Creates a new [NetworkFirewallPolicyWithRulesState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [fingerprint] Fingerprint of the resource. This field is used internally during updates of this resource.
   /// [name] User-provided name of the Network firewall policy.
@@ -57,6 +65,7 @@ class NetworkFirewallPolicyWithRulesState {
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   const NetworkFirewallPolicyWithRulesState({
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.name,
@@ -73,6 +82,7 @@ class NetworkFirewallPolicyWithRulesState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'name': ?name,
@@ -90,6 +100,7 @@ class NetworkFirewallPolicyWithRulesState {
   factory NetworkFirewallPolicyWithRulesState.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyWithRulesState(
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -104,4 +115,3 @@ class NetworkFirewallPolicyWithRulesState {
     );
   }
 }
-

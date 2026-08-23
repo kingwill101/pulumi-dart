@@ -22,7 +22,7 @@ class AppVersionSnapshotAppLanguageSetting {
   final pulumi.Input<String>? fallbackAction;
   /// (Output)
   /// List of languages codes supported by the app, in addition to the
-  /// `default_language_code`.
+  /// `defaultLanguageCode`.
   final pulumi.Input<List<String>>? supportedLanguageCodes;
 
   /// Creates a new [AppVersionSnapshotAppLanguageSetting].
@@ -55,4 +55,3 @@ class AppVersionSnapshotAppLanguageSetting {
     );
   }
 }
-

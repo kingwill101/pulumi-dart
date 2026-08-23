@@ -78,6 +78,21 @@ import 'edge_cache_origin_timeout.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_edgecacheorigin" "default" {
+///   name           = "my-origin"
+///   origin_address = "gs://media-edge-default"
+///   description    = "The default bucket for media edge test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +101,8 @@ import 'edge_cache_origin_timeout.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkservices.EdgeCacheOrigin;
 /// import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,7 +393,7 @@ import 'edge_cache_origin_timeout.dart';
 /// 		_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
 /// 			Name:           pulumi.String("my-origin"),
 /// 			OriginAddress:  pulumi.String("gs://media-edge-default"),
-/// 			FailoverOrigin: fallback.ID(),
+/// 			FailoverOrigin: fallback.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:    pulumi.String("The default bucket for media edge test"),
 /// 			MaxAttempts:    pulumi.Int(2),
 /// 			Labels: pulumi.StringMap{
@@ -395,6 +410,59 @@ import 'edge_cache_origin_timeout.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_edgecacheorigin" "fallback" {
+///   name             = "my-fallback"
+///   origin_address   = "fallback.example.com"
+///   description      = "The default bucket for media edge test"
+///   max_attempts     = 3
+///   protocol         = "HTTP"
+///   port             = 80
+///   retry_conditions = ["CONNECT_FAILURE", "NOT_FOUND", "HTTP_5XX", "FORBIDDEN"]
+///   timeout = {
+///     connect_timeout      = "10s"
+///     max_attempts_timeout = "20s"
+///     response_timeout     = "60s"
+///     read_timeout         = "5s"
+///   }
+///   origin_override_action = {
+///     url_rewrite = {
+///       host_rewrite = "example.com"
+///     }
+///     header_action = {
+///       request_headers_to_adds = [{
+///         "headerName"  = "x-header"
+///         "headerValue" = "value"
+///         "replace"     = true
+///       }]
+///     }
+///   }
+///   origin_redirect = {
+///     redirect_conditions = ["MOVED_PERMANENTLY", "FOUND", "SEE_OTHER", "TEMPORARY_REDIRECT", "PERMANENT_REDIRECT"]
+///   }
+/// }
+/// resource "gcp_networkservices_edgecacheorigin" "default" {
+///   name            = "my-origin"
+///   origin_address  = "gs://media-edge-default"
+///   failover_origin = gcp_networkservices_edgecacheorigin.fallback.id
+///   description     = "The default bucket for media edge test"
+///   max_attempts    = 2
+///   labels = {
+///     "a" = "b"
+///   }
+///   timeout = {
+///     connect_timeout = "10s"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,9 +475,10 @@ import 'edge_cache_origin_timeout.dart';
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionHeaderActionArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginRedirectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -636,7 +705,7 @@ import 'edge_cache_origin_timeout.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID(),
+/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -648,7 +717,7 @@ import 'edge_cache_origin_timeout.dart';
 /// 			Description:   pulumi.String("The default bucket for V4 authentication"),
 /// 			AwsV4Authentication: &networkservices.EdgeCacheOriginAwsV4AuthenticationArgs{
 /// 				AccessKeyId:            pulumi.String("ACCESSKEYID"),
-/// 				SecretAccessKeyVersion: secret_version_basic.ID(),
+/// 				SecretAccessKeyVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
 /// 				OriginRegion:           pulumi.String("auto"),
 /// 			},
 /// 		})
@@ -657,6 +726,36 @@ import 'edge_cache_origin_timeout.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-name"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+///   secret      = gcp_secretmanager_secret.secret-basic.id
+///   secret_data = "secret-data"
+/// }
+/// resource "gcp_networkservices_edgecacheorigin" "default" {
+///   name           = "my-origin"
+///   origin_address = "gs://media-edge-default"
+///   description    = "The default bucket for V4 authentication"
+///   aws_v4_authentication = {
+///     access_key_id             = "ACCESSKEYID"
+///     secret_access_key_version = gcp_secretmanager_secretversion.secret-version-basic.id
+///     origin_region             = "auto"
+///   }
 /// }
 /// ```
 /// ```java
@@ -674,8 +773,8 @@ import 'edge_cache_origin_timeout.dart';
 /// import com.pulumi.gcp.networkservices.EdgeCacheOrigin;
 /// import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginAwsV4AuthenticationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -745,28 +844,28 @@ import 'edge_cache_origin_timeout.dart';
 /// EdgeCacheOrigin can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
 /// ```
 class EdgeCacheOrigin extends pulumi.CustomResource {
   /// Enable AWS Signature Version 4 origin authentication.
   /// Structure is documented below.
   late final pulumi.Output<EdgeCacheOriginAwsV4Authentication?> awsV4Authentication;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -782,7 +881,7 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
   late final pulumi.Output<EdgeCacheOriginFlexShielding?> flexShielding;
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
   /// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -856,6 +955,7 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginAwsV4Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     failoverOrigin = registerOutput<String?>('failoverOrigin');
@@ -898,6 +998,7 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginAwsV4Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     failoverOrigin = registerOutput<String?>('failoverOrigin');

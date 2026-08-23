@@ -18,6 +18,13 @@ class RegionSecurityPolicyRuleArgs {
   /// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
   final pulumi.Input<String> action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// A match condition that incoming traffic is evaluated against.
@@ -30,8 +37,8 @@ class RegionSecurityPolicyRuleArgs {
   /// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
   /// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
   /// Example:
-  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
-  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
+  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
   /// Structure is documented below.
   final pulumi.Input<RegionSecurityPolicyRuleNetworkMatch>? networkMatch;
   /// Preconfigured WAF configuration to be applied for the rule.
@@ -47,7 +54,7 @@ class RegionSecurityPolicyRuleArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// Structure is documented below.
   final pulumi.Input<RegionSecurityPolicyRuleRateLimitOptions>? rateLimitOptions;
   /// The Region in which the created Region Security Policy rule should reside.
@@ -57,6 +64,7 @@ class RegionSecurityPolicyRuleArgs {
 
   /// Creates a new [RegionSecurityPolicyRuleArgs].
   /// [action] The Action to perform when the rule is matched. The following are the valid actions:
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [match] A match condition that incoming traffic is evaluated against.
   /// [networkMatch] A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
@@ -64,11 +72,12 @@ class RegionSecurityPolicyRuleArgs {
   /// [preview] If set to true, the specified action is not enforced.
   /// [priority] An integer indicating the priority of a rule in the list.
   /// [project] The ID of the project in which the resource belongs.
-  /// [rateLimitOptions] Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// [rateLimitOptions] Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// [region] The Region in which the created Region Security Policy rule should reside.
   /// [securityPolicy] The name of the security policy this rule belongs to.
   const RegionSecurityPolicyRuleArgs({
     required this.action,
+    this.deletionPolicy,
     this.description,
     this.match,
     this.networkMatch,
@@ -84,6 +93,7 @@ class RegionSecurityPolicyRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'match': ?pulumi.Input.mapOptionalInputValue<RegionSecurityPolicyRuleMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
       'networkMatch': ?pulumi.Input.mapOptionalInputValue<RegionSecurityPolicyRuleNetworkMatch, Map<String, dynamic>>(networkMatch, (value) => value.toMap()),
@@ -100,6 +110,7 @@ class RegionSecurityPolicyRuleArgs {
   factory RegionSecurityPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleArgs(
       action: pulumi.Input.fromValue(map['action'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       match: (() { final guardedValue = map['match']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkMatch: (() { final guardedValue = map['networkMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyRuleNetworkMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -113,4 +124,3 @@ class RegionSecurityPolicyRuleArgs {
     );
   }
 }
-

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_environment_config_node_config_ip_allocation_policy.dart';
+import 'get_environment_config_node_config_traffic_routing_config.dart';
 
 class GetEnvironmentConfigNodeConfig {
   /// IPv4 cidr range that will be used by Composer internal components.
@@ -28,6 +29,8 @@ class GetEnvironmentConfigNodeConfig {
   final pulumi.Input<String> subnetwork;
   /// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
   final pulumi.Input<List<String>> tags;
+  /// Traffic routing configuration for Cloud Composer environment.
+  final pulumi.Input<List<GetEnvironmentConfigNodeConfigTrafficRoutingConfig>> trafficRoutingConfigs;
   /// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   final pulumi.Input<String> zone;
 
@@ -44,6 +47,7 @@ class GetEnvironmentConfigNodeConfig {
   /// [serviceAccount] The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
   /// [subnetwork] The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
   /// [tags] The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+  /// [trafficRoutingConfigs] Traffic routing configuration for Cloud Composer environment.
   /// [zone] The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   const GetEnvironmentConfigNodeConfig({
     required this.composerInternalIpv4CidrBlock,
@@ -58,6 +62,7 @@ class GetEnvironmentConfigNodeConfig {
     required this.serviceAccount,
     required this.subnetwork,
     required this.tags,
+    required this.trafficRoutingConfigs,
     required this.zone,
   });
 
@@ -75,6 +80,7 @@ class GetEnvironmentConfigNodeConfig {
       'serviceAccount': serviceAccount,
       'subnetwork': subnetwork,
       'tags': tags,
+      'trafficRoutingConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigNodeConfigTrafficRoutingConfig>, List<Map<String, dynamic>>>(trafficRoutingConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigNodeConfigTrafficRoutingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'zone': zone,
     };
   }
@@ -93,8 +99,8 @@ class GetEnvironmentConfigNodeConfig {
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
+      trafficRoutingConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigNodeConfigTrafficRoutingConfig>(map['trafficRoutingConfigs']!, (value) => GetEnvironmentConfigNodeConfigTrafficRoutingConfig.fromMap((value as Map).cast<String, dynamic>()))),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

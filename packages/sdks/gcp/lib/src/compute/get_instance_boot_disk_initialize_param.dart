@@ -17,9 +17,11 @@ class GetInstanceBootDiskInitializeParam {
   final pulumi.Input<int> provisionedIops;
   /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
   final pulumi.Input<int> provisionedThroughput;
+  /// A list of short names or selfLinks of zones in which to create a regional disk.
+  final pulumi.Input<List<String>> replicaZones;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
   final pulumi.Input<Map<String, String>> resourceManagerTags;
-  /// A list of self_links to resource policies attached to the selected `boot_disk`
+  /// A list of selfLinks to resource policies attached to the selected `bootDisk`
   final pulumi.Input<List<String>> resourcePolicies;
   /// The size of the image in gigabytes.
   final pulumi.Input<int> size;
@@ -41,8 +43,9 @@ class GetInstanceBootDiskInitializeParam {
   /// [labels] A set of key/value label pairs assigned to the disk.
   /// [provisionedIops] Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
   /// [provisionedThroughput] Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+  /// [replicaZones] A list of short names or selfLinks of zones in which to create a regional disk.
   /// [resourceManagerTags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-  /// [resourcePolicies] A list of self_links to resource policies attached to the selected `boot_disk`
+  /// [resourcePolicies] A list of selfLinks to resource policies attached to the selected `bootDisk`
   /// [size] The size of the image in gigabytes.
   /// [snapshot] The snapshot from which this disk was initialised.
   /// [sourceImageEncryptionKeys] The encryption key used to decrypt the source image.
@@ -56,6 +59,7 @@ class GetInstanceBootDiskInitializeParam {
     required this.labels,
     required this.provisionedIops,
     required this.provisionedThroughput,
+    required this.replicaZones,
     required this.resourceManagerTags,
     required this.resourcePolicies,
     required this.size,
@@ -74,6 +78,7 @@ class GetInstanceBootDiskInitializeParam {
       'labels': labels,
       'provisionedIops': provisionedIops,
       'provisionedThroughput': provisionedThroughput,
+      'replicaZones': replicaZones,
       'resourceManagerTags': resourceManagerTags,
       'resourcePolicies': resourcePolicies,
       'size': size,
@@ -93,6 +98,7 @@ class GetInstanceBootDiskInitializeParam {
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       provisionedIops: pulumi.Input.fromValue(map['provisionedIops'] as int),
       provisionedThroughput: pulumi.Input.fromValue(map['provisionedThroughput'] as int),
+      replicaZones: pulumi.Input.fromValue((map['replicaZones'] as List).cast<String>()),
       resourceManagerTags: pulumi.Input.fromValue((map['resourceManagerTags'] as Map).cast<String, String>()),
       resourcePolicies: pulumi.Input.fromValue((map['resourcePolicies'] as List).cast<String>()),
       size: pulumi.Input.fromValue(map['size'] as int),
@@ -104,4 +110,3 @@ class GetInstanceBootDiskInitializeParam {
     );
   }
 }
-

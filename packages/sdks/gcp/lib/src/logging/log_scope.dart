@@ -100,6 +100,23 @@ import 'log_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_logscope" "logging_log_scope" {
+///   parent         = "projects/my-project-name"
+///   location       = "global"
+///   name           = "projects/my-project-name/locations/global/logScopes/my-log-scope"
+///   resource_names = ["projects/my-project-name", "projects/my-project-name/locations/global/buckets/_Default/views/view1", "projects/my-project-name/locations/global/buckets/_Default/views/view2"]
+///   description    = "A log scope configured with Terraform"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +125,8 @@ import 'log_scope_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.LogScope;
 /// import com.pulumi.gcp.logging.LogScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,6 +175,7 @@ import 'log_scope_state.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/logScopes/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, LogScope can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -166,6 +184,13 @@ import 'log_scope_state.dart';
 class LogScope extends pulumi.CustomResource {
   /// Output only. The creation timestamp of the log scopes.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this log scopes.
   late final pulumi.Output<String?> description;
   /// The location of the resource. The only supported location is global so far.
@@ -194,6 +219,7 @@ class LogScope extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -226,6 +252,7 @@ class LogScope extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

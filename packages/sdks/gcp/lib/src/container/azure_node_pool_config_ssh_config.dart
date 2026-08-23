@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureNodePoolConfigSshConfig {
-  /// The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+  /// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
   final pulumi.Input<String> authorizedKey;
 
   /// Creates a new [AzureNodePoolConfigSshConfig].
-  /// [authorizedKey] The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+  /// [authorizedKey] The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
   const AzureNodePoolConfigSshConfig({
     required this.authorizedKey,
   });
@@ -24,4 +24,3 @@ class AzureNodePoolConfigSshConfig {
     );
   }
 }
-

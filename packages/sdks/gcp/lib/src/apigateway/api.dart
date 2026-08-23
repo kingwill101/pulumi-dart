@@ -4,6 +4,9 @@ import 'api_state.dart';
 
 /// A consumable API that can be used by multiple Gateways.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Api, see:
 ///
 /// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
@@ -63,6 +66,19 @@ import 'api_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigateway_api" "api" {
+///   api_id = "my-api"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +87,8 @@ import 'api_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.Api;
 /// import com.pulumi.gcp.apigateway.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -105,22 +121,15 @@ import 'api_state.dart';
 /// Api can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/apis/{{api_id}}`
-///
 /// * `{{project}}/{{api_id}}`
-///
 /// * `{{api_id}}`
+///
 ///
 /// When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigateway/api:Api default {{api_id}}
 /// ```
 class Api extends pulumi.CustomResource {
@@ -128,6 +137,13 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String> apiId;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-visible name for the API.
   late final pulumi.Output<String> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -135,7 +151,7 @@ class Api extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
   /// If not specified, a new Service will automatically be created in the same project as this API.
@@ -165,6 +181,7 @@ class Api extends pulumi.CustomResource {
         ) {
     apiId = registerOutput<String>('apiId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -199,6 +216,7 @@ class Api extends pulumi.CustomResource {
         ) {
     apiId = registerOutput<String>('apiId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

@@ -10,7 +10,7 @@ class RouterNatSubnetwork {
   /// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
   /// sourceIpRangesToNat
   ///
-  /// &lt;a name="nested_nat64_subnetwork"&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+  /// &lt;a name="nestedNat64Subnetwork"&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
   final pulumi.Input<List<String>>? secondaryIpRangeNames;
   /// List of options for which source IPs in the subnetwork
   /// should have NAT enabled. Supported values include:
@@ -44,4 +44,3 @@ class RouterNatSubnetwork {
     );
   }
 }
-

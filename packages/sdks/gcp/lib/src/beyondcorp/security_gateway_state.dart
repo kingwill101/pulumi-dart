@@ -11,6 +11,13 @@ class SecurityGatewayState {
   final pulumi.Input<String>? createTime;
   /// Service account used for operations that involve resources in consumer projects.
   final pulumi.Input<String>? delegatingServiceAccount;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. An arbitrary user-provided name for the SecurityGateway.
   /// Cannot exceed 64 characters.
   final pulumi.Input<String>? displayName;
@@ -26,6 +33,8 @@ class SecurityGatewayState {
   ///
   /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
   final pulumi.Input<String>? location;
+  /// Settings related to Cloud Logging.
+  final pulumi.Input<Map<String, dynamic>>? logging;
   /// Identifier. Name of the resource.
   final pulumi.Input<String>? name;
   /// The ID of the project in which the resource belongs.
@@ -58,10 +67,12 @@ class SecurityGatewayState {
   /// Creates a new [SecurityGatewayState].
   /// [createTime] Output only. Timestamp when the resource was created.
   /// [delegatingServiceAccount] Service account used for operations that involve resources in consumer projects.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Optional. An arbitrary user-provided name for the SecurityGateway.
   /// [externalIps] Output only. IP addresses that will be used for establishing
   /// [hubs] Optional. Map of Hubs that represents regional data path deployment with GCP region
   /// [location] (Optional, Deprecated)
+  /// [logging] Settings related to Cloud Logging.
   /// [name] Identifier. Name of the resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [proxyProtocolConfig] Shared proxy configuration for all apps.
@@ -72,10 +83,12 @@ class SecurityGatewayState {
   const SecurityGatewayState({
     this.createTime,
     this.delegatingServiceAccount,
+    this.deletionPolicy,
     this.displayName,
     this.externalIps,
     this.hubs,
     this.location,
+    this.logging,
     this.name,
     this.project,
     this.proxyProtocolConfig,
@@ -89,10 +102,12 @@ class SecurityGatewayState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'delegatingServiceAccount': ?delegatingServiceAccount,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'externalIps': ?externalIps,
       'hubs': ?pulumi.Input.mapOptionalInputValue<List<SecurityGatewayHub>, List<Map<String, dynamic>>>(hubs, (value) => pulumi.Input.encodeList<SecurityGatewayHub, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
+      'logging': ?logging,
       'name': ?name,
       'project': ?project,
       'proxyProtocolConfig': ?pulumi.Input.mapOptionalInputValue<SecurityGatewayProxyProtocolConfig, Map<String, dynamic>>(proxyProtocolConfig, (value) => value.toMap()),
@@ -107,10 +122,12 @@ class SecurityGatewayState {
     return SecurityGatewayState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       delegatingServiceAccount: (() { final guardedValue = map['delegatingServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalIps: (() { final guardedValue = map['externalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hubs: (() { final guardedValue = map['hubs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecurityGatewayHub>(guardedValue, (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyProtocolConfig: (() { final guardedValue = map['proxyProtocolConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityGatewayProxyProtocolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -121,4 +138,3 @@ class SecurityGatewayState {
     );
   }
 }
-

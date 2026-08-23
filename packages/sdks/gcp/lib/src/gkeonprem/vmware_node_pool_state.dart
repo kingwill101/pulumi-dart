@@ -17,7 +17,7 @@ class VMwareNodePoolState {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The node configuration of the node pool.
   /// Structure is documented below.
@@ -26,8 +26,16 @@ class VMwareNodePoolState {
   final pulumi.Input<String>? createTime;
   /// The time the cluster was deleted, in RFC3339 text format.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name for the node pool.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
@@ -67,8 +75,9 @@ class VMwareNodePoolState {
   /// [config] The node configuration of the node pool.
   /// [createTime] The time the cluster was created, in RFC3339 text format.
   /// [deleteTime] The time the cluster was deleted, in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name for the node pool.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [etag] This checksum is computed by the server based on the value of other
   /// [location] The location of the resource.
   /// [name] The vmware node pool name.
@@ -86,6 +95,7 @@ class VMwareNodePoolState {
     this.config,
     this.createTime,
     this.deleteTime,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveAnnotations,
     this.etag,
@@ -108,6 +118,7 @@ class VMwareNodePoolState {
       'config': ?pulumi.Input.mapOptionalInputValue<VMwareNodePoolConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
       'etag': ?etag,
@@ -131,6 +142,7 @@ class VMwareNodePoolState {
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -148,4 +160,3 @@ class VMwareNodePoolState {
     );
   }
 }
-

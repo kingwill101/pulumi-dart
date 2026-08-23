@@ -415,6 +415,96 @@ import 'azure_node_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getazureversions" "versions" {
+///   project  = "my-project-name"
+///   location = "us-west1"
+/// }
+///
+/// resource "gcp_container_azurecluster" "primary" {
+///   authorization = {
+///     admin_users = [{
+///       "username" = "mmv2@google.com"
+///     }]
+///   }
+///   azure_region = "westus2"
+///   client       ="projects/my-project-number/locations/us-west1/azureClients/${gcp_container_azureclient.basic.name}"
+///   control_plane = {
+///     ssh_config = {
+///       authorized_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"
+///     }
+///     subnet_id = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"
+///     version   = data.gcp_container_getazureversions.versions.valid_versions[0]
+///   }
+///   fleet = {
+///     project = "my-project-number"
+///   }
+///   location = "us-west1"
+///   name     = "name"
+///   networking = {
+///     pod_address_cidr_blocks     = ["10.200.0.0/16"]
+///     service_address_cidr_blocks = ["10.32.0.0/24"]
+///     virtual_network_id          = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet"
+///   }
+///   resource_group_id = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster"
+///   project           = "my-project-name"
+/// }
+/// resource "gcp_container_azureclient" "basic" {
+///   application_id = "12345678-1234-1234-1234-123456789111"
+///   location       = "us-west1"
+///   name           = "client-name"
+///   tenant_id      = "12345678-1234-1234-1234-123456789111"
+///   project        = "my-project-name"
+/// }
+/// resource "gcp_container_azurenodepool" "primary" {
+///   autoscaling = {
+///     max_node_count = 3
+///     min_node_count = 2
+///   }
+///   cluster = gcp_container_azurecluster.primary.name
+///   config = {
+///     ssh_config = {
+///       authorized_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"
+///     }
+///     proxy_config = {
+///       resource_group_id = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster"
+///       secret_id         = "https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000"
+///     }
+///     root_volume = {
+///       size_gib = 32
+///     }
+///     tags = {
+///       "owner" = "mmv2"
+///     }
+///     labels = {
+///       "key_one" = "label_one"
+///     }
+///     vm_size = "Standard_DS2_v2"
+///   }
+///   location = "us-west1"
+///   max_pods_constraint = {
+///     max_pods_per_node = 110
+///   }
+///   name      = "node-pool-name"
+///   subnet_id = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"
+///   version   = data.gcp_container_getazureversions.versions.valid_versions[0]
+///   annotations = {
+///     "annotation-one" = "value-one"
+///   }
+///   management = {
+///     auto_repair = true
+///   }
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -428,6 +518,7 @@ import 'azure_node_pool_state.dart';
 /// import com.pulumi.gcp.container.AzureCluster;
 /// import com.pulumi.gcp.container.AzureClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationArgs;
+/// import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneArgs;
 /// import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneSshConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AzureClusterFleetArgs;
@@ -441,8 +532,8 @@ import 'azure_node_pool_state.dart';
 /// import com.pulumi.gcp.container.inputs.AzureNodePoolConfigRootVolumeArgs;
 /// import com.pulumi.gcp.container.inputs.AzureNodePoolMaxPodsConstraintArgs;
 /// import com.pulumi.gcp.container.inputs.AzureNodePoolManagementArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -614,31 +705,23 @@ import 'azure_node_pool_state.dart';
 /// ## Import
 ///
 /// NodePool can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{cluster}}/{{name}}`
-///
 /// * `{{location}}/{{cluster}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
 /// ```
 class AzureNodePool extends pulumi.CustomResource {
   /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Autoscaler configuration for this node pool.
   late final pulumi.Output<AzureNodePoolAutoscaling> autoscaling;
@@ -650,6 +733,14 @@ class AzureNodePool extends pulumi.CustomResource {
   late final pulumi.Output<AzureNodePoolConfig> config;
   /// Output only. The time at which this node pool was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
@@ -696,6 +787,7 @@ class AzureNodePool extends pulumi.CustomResource {
     cluster = registerOutput<String>('cluster');
     config = registerOutput<AzureNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -740,6 +832,7 @@ class AzureNodePool extends pulumi.CustomResource {
     cluster = registerOutput<String>('cluster');
     config = registerOutput<AzureNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

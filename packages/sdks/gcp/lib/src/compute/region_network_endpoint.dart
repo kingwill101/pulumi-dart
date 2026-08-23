@@ -111,7 +111,7 @@ import 'region_network_endpoint_state.dart';
 /// 		}
 /// 		group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("ip-port-neg"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
 /// 		})
@@ -131,6 +131,32 @@ import 'region_network_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkendpoint" "region-internet-ip-port-endpoint" {
+///   region_network_endpoint_group = gcp_compute_regionnetworkendpointgroup.group.name
+///   region                        = "us-central1"
+///   ip_address                    = "8.8.8.8"
+///   port                          = 443
+/// }
+/// resource "gcp_compute_regionnetworkendpointgroup" "group" {
+///   name                  = "ip-port-neg"
+///   network               = gcp_compute_network.default.id
+///   region                = "us-central1"
+///   network_endpoint_type = "INTERNET_IP_PORT"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +169,8 @@ import 'region_network_endpoint_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpoint;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,7 +321,7 @@ import 'region_network_endpoint_state.dart';
 /// 		}
 /// 		group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("fqdn-port-neg"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 /// 		})
@@ -315,6 +341,32 @@ import 'region_network_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkendpoint" "region-internet-fqdn-port-endpoint" {
+///   region_network_endpoint_group = gcp_compute_regionnetworkendpointgroup.group.name
+///   region                        = "us-central1"
+///   fqdn                          = "backend.example.com"
+///   port                          = 443
+/// }
+/// resource "gcp_compute_regionnetworkendpointgroup" "group" {
+///   name                  = "fqdn-port-neg"
+///   network               = gcp_compute_network.default.id
+///   region                = "us-central1"
+///   network_endpoint_type = "INTERNET_FQDN_PORT"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -327,8 +379,8 @@ import 'region_network_endpoint_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpoint;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -433,7 +485,7 @@ import 'region_network_endpoint_state.dart';
 ///     region: "us-central1",
 ///     instance: defaultInstance.selfLink,
 ///     port: 80,
-///     ipAddress: defaultInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+///     ipAddress: defaultInstance.networkInterfaces[0].networkIp,
 ///     clientDestinationPort: 8080,
 /// });
 /// ```
@@ -573,7 +625,7 @@ import 'region_network_endpoint_state.dart';
 /// 			Name:        pulumi.String("subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -581,8 +633,8 @@ import 'region_network_endpoint_state.dart';
 /// 		defaultRegionNetworkEndpointGroup, err := compute.NewRegionNetworkEndpointGroup(ctx, "default", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("portmap-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID(),
-/// 			Subnetwork:          defaultSubnetwork.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORTMAP"),
 /// 		})
 /// 		if err != nil {
@@ -601,7 +653,7 @@ import 'region_network_endpoint_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("instance"),
@@ -621,9 +673,9 @@ import 'region_network_endpoint_state.dart';
 /// 			Region:                     pulumi.String("us-central1"),
 /// 			Instance:                   defaultInstance.SelfLink,
 /// 			Port:                       pulumi.Int(80),
-/// 			IpAddress: pulumi.String(defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-/// 				return &networkInterfaces[0].NetworkIp, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			IpAddress: defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+/// 				return networkInterfaces[0].NetworkIp, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 			ClientDestinationPort: pulumi.Int(8080),
 /// 		})
 /// 		if err != nil {
@@ -631,6 +683,61 @@ import 'region_network_endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "subnetwork"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_regionnetworkendpointgroup" "default" {
+///   name                  = "portmap-neg"
+///   region                = "us-central1"
+///   network               = gcp_compute_network.default.id
+///   subnetwork            = gcp_compute_subnetwork.default.id
+///   network_endpoint_type = "GCE_VM_IP_PORTMAP"
+/// }
+/// resource "gcp_compute_regionnetworkendpoint" "region_network_endpoint_portmap" {
+///   region_network_endpoint_group = gcp_compute_regionnetworkendpointgroup.default.name
+///   region                        = "us-central1"
+///   instance                      = gcp_compute_instance.default.self_link
+///   port                          = 80
+///   ip_address                    = gcp_compute_instance.default.network_interfaces[0].network_ip
+///   client_destination_port       = 8080
+/// }
+/// resource "gcp_compute_instance" "default" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   name         = "instance"
+///   machine_type = "e2-medium"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -650,12 +757,13 @@ import 'region_network_endpoint_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpoint;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -713,7 +821,7 @@ import 'region_network_endpoint_state.dart';
 ///             .region("us-central1")
 ///             .instance(defaultInstance.selfLink())
 ///             .port(80)
-///             .ipAddress(defaultInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+///             .ipAddress(defaultInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///             .clientDestinationPort(8080)
 ///             .build());
 ///
@@ -783,41 +891,37 @@ import 'region_network_endpoint_state.dart';
 /// RegionNetworkEndpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
-///
 /// * `{{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
-///
 /// * `{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
-///
 /// * `{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+///
 ///
 /// When using the `pulumi import` command, RegionNetworkEndpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
 /// ```
 class RegionNetworkEndpoint extends pulumi.CustomResource {
   /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
   late final pulumi.Output<int?> clientDestinationPort;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Fully qualified domain name of network endpoint.
-  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+  /// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
   late final pulumi.Output<String?> fqdn;
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
   late final pulumi.Output<String?> instance;
   /// IPv4 address external endpoint.
-  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+  /// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
   late final pulumi.Output<String?> ipAddress;
   /// The unique identifier number for the resource. This identifier is defined by the server.
   late final pulumi.Output<int> networkEndpointId;
@@ -846,6 +950,7 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clientDestinationPort = registerOutput<int?>('clientDestinationPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');
     instance = registerOutput<String?>('instance');
     ipAddress = registerOutput<String?>('ipAddress');
@@ -880,6 +985,7 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clientDestinationPort = registerOutput<int?>('clientDestinationPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');
     instance = registerOutput<String?>('instance');
     ipAddress = registerOutput<String?>('ipAddress');

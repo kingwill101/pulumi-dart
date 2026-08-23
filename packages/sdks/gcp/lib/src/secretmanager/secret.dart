@@ -139,6 +139,32 @@ import 'secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///         }, {
+///         "location" = "us-east1"
+///       }]
+///     }
+///   }
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +175,9 @@ import 'secret_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,6 +334,32 @@ import 'secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-with-annotations" {
+///   secret_id = "secret"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   annotations = {
+///     "key1" = "someval"
+///     "key2" = "someval2"
+///     "key3" = "someval3"
+///     "key4" = "someval4"
+///     "key5" = "someval5"
+///   }
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +370,8 @@ import 'secret_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,6 +491,23 @@ import 'secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-with-version-destroy-ttl" {
+///   secret_id           = "secret"
+///   version_destroy_ttl = "2592000s"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -448,8 +518,8 @@ import 'secret_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,8 +645,6 @@ import 'secret_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -616,6 +684,35 @@ import 'secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "kms-secret-binding" {
+///   crypto_key_id = "kms-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_secretmanager_secret" "secret-with-automatic-cmek" {
+///   depends_on = [gcp_kms_cryptokeyiammember.kms-secret-binding]
+///   secret_id  = "secret"
+///   replication = {
+///     auto = {
+///       customer_managed_encryption = {
+///         kms_key_name = "kms-key"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -632,8 +729,8 @@ import 'secret_state.dart';
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoCustomerManagedEncryptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,22 +799,15 @@ import 'secret_state.dart';
 /// Secret can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/secrets/{{secret_id}}`
-///
 /// * `{{project}}/{{secret_id}}`
-///
 /// * `{{secret_id}}`
+///
 ///
 /// When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
 /// ```
 class Secret extends pulumi.CustomResource {
@@ -733,17 +823,28 @@ class Secret extends pulumi.CustomResource {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The time at which the Secret was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+  /// When the field is set to true in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the secret will fail.
   late final pulumi.Output<bool?> deletionProtection;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  /// Only one of `expire_time` or `ttl` can be provided.
+  /// Only one of `expireTime` or `ttl` can be provided.
   late final pulumi.Output<String> expireTime;
   /// The labels assigned to this Secret.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -755,7 +856,7 @@ class Secret extends pulumi.CustomResource {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name of the Secret. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}`
@@ -770,7 +871,7 @@ class Secret extends pulumi.CustomResource {
   /// after the Secret has been created.
   /// Structure is documented below.
   late final pulumi.Output<SecretReplication> replication;
-  /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+  /// The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
   /// Structure is documented below.
   late final pulumi.Output<SecretRotation?> rotation;
   /// This must be unique within the project.
@@ -784,7 +885,7 @@ class Secret extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> topics;
   /// The TTL for the Secret.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  /// Only one of `ttl` or `expire_time` can be provided.
+  /// Only one of `ttl` or `expireTime` can be provided.
   late final pulumi.Output<String?> ttl;
   /// Mapping from version alias to version name.
   /// A version alias is a string with a maximum length of 63 characters and can contain
@@ -817,6 +918,7 @@ class Secret extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -860,6 +962,7 @@ class Secret extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

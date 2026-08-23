@@ -8,7 +8,7 @@ import 'get_machine_types_machine_type_deprecated.dart';
 class GetMachineTypesMachineType {
   /// A list of accelerator configurations assigned to this machine type. Structure is documented below.
   final pulumi.Input<List<GetMachineTypesMachineTypeAccelerator>> accelerators;
-  /// The configuration of bundled local SSD for the machine type. Structure is documented below.
+  /// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
   final pulumi.Input<List<GetMachineTypesMachineTypeBundledLocalSsd>> bundledLocalSsds;
   /// The deprecation status associated with this machine type. Structure is documented below.
   final pulumi.Input<List<GetMachineTypesMachineTypeDeprecated>> deprecateds;
@@ -31,7 +31,7 @@ class GetMachineTypesMachineType {
 
   /// Creates a new [GetMachineTypesMachineType].
   /// [accelerators] A list of accelerator configurations assigned to this machine type. Structure is documented below.
-  /// [bundledLocalSsds] The configuration of bundled local SSD for the machine type. Structure is documented below.
+  /// [bundledLocalSsds] (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
   /// [deprecateds] The deprecation status associated with this machine type. Structure is documented below.
   /// [description] A textual description of the machine type.
   /// [guestCpus] The number of virtual CPUs that are available to the instance.
@@ -87,4 +87,3 @@ class GetMachineTypesMachineType {
     );
   }
 }
-

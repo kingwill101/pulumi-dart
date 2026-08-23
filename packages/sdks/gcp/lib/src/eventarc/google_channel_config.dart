@@ -115,8 +115,6 @@ import 'google_channel_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -167,6 +165,39 @@ import 'google_channel_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "testProject" {
+///   project_id = "my-project-name"
+/// }
+/// data "gcp_kms_getkmskeyring" "testKeyRing" {
+///   name     = "keyring"
+///   location = "us-centra1"
+/// }
+/// data "gcp_kms_getkmscryptokey" "key" {
+///   name     = "key"
+///   key_ring = data.gcp_kms_getkmskeyring.testKeyRing.id
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "key_member" {
+///   crypto_key_id = data.gcp_kms_getkmscryptokey.key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_eventarc_googlechannelconfig" "primary" {
+///   depends_on      = [gcp_kms_cryptokeyiammember.key_member]
+///   location        = "us-central1"
+///   name            = "googleChannelConfig"
+///   crypto_key_name = data.gcp_kms_getkmscryptokey.key.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +214,8 @@ import 'google_channel_config_state.dart';
 /// import com.pulumi.gcp.eventarc.GoogleChannelConfig;
 /// import com.pulumi.gcp.eventarc.GoogleChannelConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,22 +302,15 @@ import 'google_channel_config_state.dart';
 /// GoogleChannelConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
-///
 /// * `{{project}}/{{location}}`
-///
 /// * `{{location}}`
+///
 ///
 /// When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default projects/{{project}}/locations/{{location}}/googleChannelConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{project}}/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{location}}
 /// ```
 class GoogleChannelConfig extends pulumi.CustomResource {

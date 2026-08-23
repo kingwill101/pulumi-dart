@@ -9,7 +9,7 @@ class InstanceNetworkConfig {
   /// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
   final pulumi.Input<String>? allocatedIpRangeOverride;
   /// A list of external networks authorized to access this instance. This
-  /// field is only allowed to be set when `enable_public_ip` is set to
+  /// field is only allowed to be set when `enablePublicIp` is set to
   /// true.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceNetworkConfigAuthorizedExternalNetwork>>? authorizedExternalNetworks;
@@ -50,4 +50,3 @@ class InstanceNetworkConfig {
     );
   }
 }
-

@@ -69,6 +69,19 @@ import 'get_project_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_projects_getancestry" "example" {
+///   project = "example-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +90,8 @@ import 'get_project_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.ProjectsFunctions;
 /// import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +213,26 @@ Future<GetAncestryResult> getAncestry(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_projects_getiamcustomrole" "example" {
+///   project = "your-project-id"
+///   role_id = "your-role-id"
+/// }
+///
+/// resource "gcp_projects_iammember" "project" {
+///   project = "your-project-id"
+///   role    = data.gcp_projects_getiamcustomrole.example.name
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +243,8 @@ Future<GetAncestryResult> getAncestry(
 /// import com.pulumi.gcp.projects.inputs.GetIamCustomRoleArgs;
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,6 +364,21 @@ Future<GetIamCustomRoleResult> getIamCustomRole(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_projects_getiamcustomroles" "example" {
+///   project      = "your-project-id"
+///   show_deleted = true
+///   view         = "FULL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +387,8 @@ Future<GetIamCustomRoleResult> getIamCustomRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.ProjectsFunctions;
 /// import com.pulumi.gcp.projects.inputs.GetIamCustomRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -440,6 +488,19 @@ Future<GetIamCustomRolesResult> getIamCustomRoles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_projects_getiampolicy" "policy" {
+///   project = "myproject"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -448,8 +509,8 @@ Future<GetIamCustomRolesResult> getIamCustomRoles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.ProjectsFunctions;
 /// import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -558,6 +619,24 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_projects_getorganizationpolicy" "policy" {
+///   project    = "project-id"
+///   constraint = "constraints/serviceuser.services"
+/// }
+///
+/// output "version" {
+///   value = data.gcp_projects_getorganizationpolicy.policy.version
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -566,8 +645,8 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.ProjectsFunctions;
 /// import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -688,6 +767,22 @@ Future<GetOrganizationPolicyResult> getOrganizationPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_projects_getproject" "my-org-projects" {
+///   filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED"
+/// }
+/// data "gcp_organizations_getproject" "deletion-candidate" {
+///   project_id = data.gcp_projects_getproject.my-org-projects.projects[0].project_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -696,8 +791,8 @@ Future<GetOrganizationPolicyResult> getOrganizationPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.ProjectsFunctions;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -709,11 +804,11 @@ Future<GetOrganizationPolicyResult> getOrganizationPolicy(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
+///         final var my-org-projects = ProjectsFunctions.getProject(com.pulumi.gcp.projects.inputs.GetProjectArgs.builder()
 ///             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
 ///             .build());
 ///
-///         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///         final var deletion-candidate = OrganizationsFunctions.getProject(com.pulumi.gcp.organizations.inputs.GetProjectArgs.builder()
 ///             .projectId(my_org_projects.projects()[0].projectId())
 ///             .build());
 ///
@@ -815,6 +910,19 @@ Future<GetProjectResult> getProject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_projects_getprojectservice" "my-project-service" {
+///   service = "my-project-service"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -823,8 +931,8 @@ Future<GetProjectResult> getProject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.ProjectsFunctions;
 /// import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -94,8 +94,6 @@ import 'organization_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -132,6 +130,32 @@ import 'organization_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getorganizationsettings" "settings" {
+///   organization = "123456789"
+/// }
+///
+/// resource "gcp_logging_organizationsettings" "example" {
+///   depends_on           = [gcp_kms_cryptokeyiammember.iam]
+///   disable_default_sink = true
+///   kms_key_name         = "kms-key"
+///   organization         = "123456789"
+///   storage_location     = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = "kms-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:${data.gcp_logging_getorganizationsettings.settings.kms_service_account_id}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +169,8 @@ import 'organization_settings_state.dart';
 /// import com.pulumi.gcp.logging.OrganizationSettings;
 /// import com.pulumi.gcp.logging.OrganizationSettingsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,16 +236,13 @@ import 'organization_settings_state.dart';
 /// OrganizationSettings can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/settings`
-///
 /// * `{{organization}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:logging/organizationSettings:OrganizationSettings default organizations/{{organization}}/settings
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:logging/organizationSettings:OrganizationSettings default {{organization}}
 /// ```
 class OrganizationSettings extends pulumi.CustomResource {

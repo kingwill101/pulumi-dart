@@ -17,6 +17,13 @@ class PluginArgs {
   /// ConfigTemplate represents the configuration template for a plugin.
   /// Structure is documented below.
   final pulumi.Input<PluginConfigTemplate>? configTemplate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The plugin description. Max length is 2000 characters (Unicode code
   /// points).
   final pulumi.Input<String>? description;
@@ -56,6 +63,7 @@ class PluginArgs {
   /// Creates a new [PluginArgs].
   /// [actionsConfigs] The configuration of actions supported by the plugin.
   /// [configTemplate] ConfigTemplate represents the configuration template for a plugin.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The plugin description. Max length is 2000 characters (Unicode code
   /// [displayName] The display name of the plugin. Max length is 50 characters (Unicode code
   /// [documentation] Documentation details.
@@ -67,6 +75,7 @@ class PluginArgs {
   const PluginArgs({
     this.actionsConfigs,
     this.configTemplate,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.documentation,
@@ -81,6 +90,7 @@ class PluginArgs {
     return <String, dynamic>{
       'actionsConfigs': ?pulumi.Input.mapOptionalInputValue<List<PluginActionsConfig>, List<Map<String, dynamic>>>(actionsConfigs, (value) => pulumi.Input.encodeList<PluginActionsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configTemplate': ?pulumi.Input.mapOptionalInputValue<PluginConfigTemplate, Map<String, dynamic>>(configTemplate, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'documentation': ?pulumi.Input.mapOptionalInputValue<PluginDocumentation, Map<String, dynamic>>(documentation, (value) => value.toMap()),
@@ -96,6 +106,7 @@ class PluginArgs {
     return PluginArgs(
       actionsConfigs: (() { final guardedValue = map['actionsConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PluginActionsConfig>(guardedValue, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       configTemplate: (() { final guardedValue = map['configTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       documentation: (() { final guardedValue = map['documentation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PluginDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -107,4 +118,3 @@ class PluginArgs {
     );
   }
 }
-

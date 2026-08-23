@@ -8,13 +8,14 @@ import 'get_user_workloads_config_map_result.dart';
 import 'get_user_workloads_secret_args.dart';
 import 'get_user_workloads_secret_result.dart';
 
-/// Provides access to Cloud Composer environment configuration in a region for a given project.
+/// Provides access to Managed Airflow environment configuration in a region for a
+/// given project.
 ///
-/// To get more information about Composer Environment, see:
+/// To get more information about Managed Airflow Environment, see:
 ///
 /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
 /// * How-to Guides
-/// * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+/// * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
 ///
 /// ## Example Usage
 ///
@@ -88,6 +89,26 @@ import 'get_user_workloads_secret_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_composer_getenvironment" "composerEnv" {
+///   name = test.name
+/// }
+///
+/// resource "gcp_composer_environment" "composer_env" {
+///   name = "composer-environment"
+/// }
+/// output "debug" {
+///   value = data.gcp_composer_getenvironment.composerEnv.configs
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +119,8 @@ import 'get_user_workloads_secret_result.dart';
 /// import com.pulumi.gcp.composer.EnvironmentArgs;
 /// import com.pulumi.gcp.composer.ComposerFunctions;
 /// import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,7 +137,7 @@ import 'get_user_workloads_secret_result.dart';
 ///             .build());
 ///
 ///         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
-///             .name(test.name())
+///             .name(test.get("name"))
 ///             .build());
 ///
 ///         ctx.export("debug", composerEnv.configs());
@@ -154,13 +175,13 @@ Future<GetEnvironmentResult> getEnvironment(
   return GetEnvironmentResult.fromMap(result);
 }
 
-/// Provides access to available Cloud Composer versions in a region for a given project.
+/// Provides access to available Managed Airflow versions in a region for a given project.
 ///
-/// To get more information about Composer Image Versions, see:
+/// To get more information about Managed Airflow image versions, see:
 ///
 /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
 /// * How-to Guides
-/// * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+/// * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
 ///
 /// ## Example Usage
 ///
@@ -249,6 +270,28 @@ Future<GetEnvironmentResult> getEnvironment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_composer_getimageversions" "all" {
+/// }
+///
+/// resource "gcp_composer_environment" "test" {
+///   name   = "test-env"
+///   region = "us-central1"
+///   config = {
+///     software_config = {
+///       image_version = data.gcp_composer_getimageversions.all.image_versions[0].image_version_id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -261,8 +304,8 @@ Future<GetEnvironmentResult> getEnvironment(
 /// import com.pulumi.gcp.composer.EnvironmentArgs;
 /// import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
 /// import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -321,13 +364,13 @@ Future<GetImageVersionsResult> getImageVersions(
   return GetImageVersionsResult.fromMap(result);
 }
 
-/// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+/// Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
 ///
-/// To get more information about Composer User Workloads Config Map, see:
+/// To get more information about Managed Airflow User Workloads Config Map, see:
 ///
 /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
 /// * How-to Guides
-/// * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+/// * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 ///
 /// ## Example Usage
 ///
@@ -352,10 +395,10 @@ Future<GetImageVersionsResult> getImageVersions(
 ///         api_host: "apihost:443",
 ///     },
 /// });
-/// const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMapOutput({
-///     environment: name,
+/// const example = gcp.composer.getUserWorkloadsConfigMapOutput({
+///     environment: exampleEnvironment.name,
 ///     name: googleComposerUserWorkloadsConfigMap.example.name,
-/// }));
+/// });
 /// export const debug = example;
 /// ```
 /// ```python
@@ -376,8 +419,8 @@ Future<GetImageVersionsResult> getImageVersions(
 ///         "db_host": "dbhost:5432",
 ///         "api_host": "apihost:443",
 ///     })
-/// example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_config_map_output(environment=name,
-///     name=google_composer_user_workloads_config_map["example"]["name"]))
+/// example = gcp.composer.get_user_workloads_config_map_output(environment=example_environment.name,
+///     name=google_composer_user_workloads_config_map["example"]["name"])
 /// pulumi.export("debug", example)
 /// ```
 /// ```csharp
@@ -455,15 +498,47 @@ Future<GetImageVersionsResult> getImageVersions(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsConfigMapResult, error) {
-/// 			return composer.GetUserWorkloadsConfigMapResult(interface{}(composer.LookupUserWorkloadsConfigMap(ctx, &composer.LookupUserWorkloadsConfigMapArgs{
-/// 				Environment: name,
-/// 				Name:        googleComposerUserWorkloadsConfigMap.Example.Name,
-/// 			}, nil))), nil
-/// 		}).(composer.GetUserWorkloadsConfigMapResultOutput)
+/// 		example := composer.LookupUserWorkloadsConfigMapOutput(ctx, composer.GetUserWorkloadsConfigMapOutputArgs{
+/// 			Environment: exampleEnvironment.Name,
+/// 			Name:        pulumi.Any(googleComposerUserWorkloadsConfigMap.Example.Name),
+/// 		}, nil)
 /// 		ctx.Export("debug", example)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_composer_getuserworkloadsconfigmap" "example" {
+///   environment = gcp_composer_environment.example.name
+///   name        = googleComposerUserWorkloadsConfigMap.example.name
+/// }
+///
+/// resource "gcp_composer_environment" "example" {
+///   name = "example-environment"
+///   config = {
+///     software_config = {
+///       image_version = "composer-3-airflow-2"
+///     }
+///   }
+/// }
+/// resource "gcp_composer_userworkloadsconfigmap" "example" {
+///   environment = gcp_composer_environment.example.name
+///   name        = "example-config-map"
+///   data = {
+///     "db_host"  = "dbhost:5432"
+///     "api_host" = "apihost:443"
+///   }
+/// }
+/// output "debug" {
+///   value = data.gcp_composer_getuserworkloadsconfigmap.example
 /// }
 /// ```
 /// ```java
@@ -480,8 +555,8 @@ Future<GetImageVersionsResult> getImageVersions(
 /// import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
 /// import com.pulumi.gcp.composer.ComposerFunctions;
 /// import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,10 +586,10 @@ Future<GetImageVersionsResult> getImageVersions(
 ///             ))
 ///             .build());
 ///
-///         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-///             .environment(_name)
-///             .name(googleComposerUserWorkloadsConfigMap.example().name())
-///             .build()));
+///         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+///             .environment(exampleEnvironment.name())
+///             .name(googleComposerUserWorkloadsConfigMap.get("example").get("name"))
+///             .build());
 ///
 ///         ctx.export("debug", example);
 ///     }
@@ -564,13 +639,14 @@ Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
   return GetUserWorkloadsConfigMapResult.fromMap(result);
 }
 
-/// Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+/// Provides access to Kubernetes Secret configuration for a given project, region
+/// and Managed Airflow Environment.
 ///
-/// To get more information about Composer User Workloads Secrets, see:
+/// To get more information about Managed Airflow User Workloads Secrets, see:
 ///
 /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
 /// * How-to Guides
-/// * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+/// * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 ///
 /// ## Example Usage
 ///
@@ -600,10 +676,10 @@ Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
 ///         }).then(invoke => invoke.result),
 ///     },
 /// });
-/// const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecretOutput({
-///     environment: name,
+/// const example = gcp.composer.getUserWorkloadsSecretOutput({
+///     environment: exampleEnvironment.name,
 ///     name: googleComposerUserWorkloadsSecret.example.name,
-/// }));
+/// });
 /// export const debug = example;
 /// ```
 /// ```python
@@ -625,8 +701,8 @@ Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
 ///         "username": std.base64encode(input="username").result,
 ///         "password": std.base64encode(input="password").result,
 ///     })
-/// example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-///     name=google_composer_user_workloads_secret["example"]["name"]))
+/// example = gcp.composer.get_user_workloads_secret_output(environment=example_environment.name,
+///     name=google_composer_user_workloads_secret["example"]["name"])
 /// pulumi.export("debug", example)
 /// ```
 /// ```csharp
@@ -724,15 +800,50 @@ Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsSecretResult, error) {
-/// 			return composer.GetUserWorkloadsSecretResult(interface{}(composer.LookupUserWorkloadsSecret(ctx, &composer.LookupUserWorkloadsSecretArgs{
-/// 				Environment: name,
-/// 				Name:        googleComposerUserWorkloadsSecret.Example.Name,
-/// 			}, nil))), nil
-/// 		}).(composer.GetUserWorkloadsSecretResultOutput)
+/// 		example := composer.LookupUserWorkloadsSecretOutput(ctx, composer.GetUserWorkloadsSecretOutputArgs{
+/// 			Environment: exampleEnvironment.Name,
+/// 			Name:        pulumi.Any(googleComposerUserWorkloadsSecret.Example.Name),
+/// 		}, nil)
 /// 		ctx.Export("debug", example)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_composer_getuserworkloadssecret" "example" {
+///   environment = gcp_composer_environment.example.name
+///   name        = googleComposerUserWorkloadsSecret.example.name
+/// }
+///
+/// resource "gcp_composer_environment" "example" {
+///   name = "example-environment"
+///   config = {
+///     software_config = {
+///       image_version = "composer-3-airflow-2"
+///     }
+///   }
+/// }
+/// resource "gcp_composer_userworkloadssecret" "example" {
+///   environment = gcp_composer_environment.example.name
+///   name        = "example-secret"
+///   data = {
+///     "username" = base64encode("username")
+///     "password" = base64encode("password")
+///   }
+/// }
+/// output "debug" {
+///   value = data.gcp_composer_getuserworkloadssecret.example
 /// }
 /// ```
 /// ```java
@@ -751,8 +862,8 @@ Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
 /// import com.pulumi.std.inputs.Base64encodeArgs;
 /// import com.pulumi.gcp.composer.ComposerFunctions;
 /// import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -786,10 +897,10 @@ Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
 ///             ))
 ///             .build());
 ///
-///         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-///             .environment(_name)
-///             .name(googleComposerUserWorkloadsSecret.example().name())
-///             .build()));
+///         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+///             .environment(exampleEnvironment.name())
+///             .name(googleComposerUserWorkloadsSecret.get("example").get("name"))
+///             .build());
 ///
 ///         ctx.export("debug", example);
 ///     }

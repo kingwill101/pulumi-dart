@@ -25,6 +25,13 @@ class OrganizationArgs {
   /// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
   /// Only used for the data residency region "US" or "EU".
   final pulumi.Input<String>? controlPlaneEncryptionKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the Apigee organization.
   final pulumi.Input<String>? description;
   /// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -64,6 +71,7 @@ class OrganizationArgs {
   /// [authorizedNetwork] Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
   /// [billingType] Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
   /// [controlPlaneEncryptionKeyName] Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the Apigee organization.
   /// [disableVpcPeering] Flag that specifies whether the VPC Peering through Private Google Access should be
   /// [displayName] The display name of the Apigee organization.
@@ -79,6 +87,7 @@ class OrganizationArgs {
     this.authorizedNetwork,
     this.billingType,
     this.controlPlaneEncryptionKeyName,
+    this.deletionPolicy,
     this.description,
     this.disableVpcPeering,
     this.displayName,
@@ -97,6 +106,7 @@ class OrganizationArgs {
       'authorizedNetwork': ?authorizedNetwork,
       'billingType': ?billingType,
       'controlPlaneEncryptionKeyName': ?controlPlaneEncryptionKeyName,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disableVpcPeering': ?disableVpcPeering,
       'displayName': ?displayName,
@@ -116,6 +126,7 @@ class OrganizationArgs {
       authorizedNetwork: (() { final guardedValue = map['authorizedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       billingType: (() { final guardedValue = map['billingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       controlPlaneEncryptionKeyName: (() { final guardedValue = map['controlPlaneEncryptionKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableVpcPeering: (() { final guardedValue = map['disableVpcPeering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -127,4 +138,3 @@ class OrganizationArgs {
     );
   }
 }
-

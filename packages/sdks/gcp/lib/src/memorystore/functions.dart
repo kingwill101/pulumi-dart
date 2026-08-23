@@ -49,6 +49,18 @@ import 'get_instance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_memorystore_getinstance" "qa" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -57,8 +69,8 @@ import 'get_instance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.memorystore.MemorystoreFunctions;
 /// import com.pulumi.gcp.memorystore.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

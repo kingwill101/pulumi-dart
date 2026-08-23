@@ -6,6 +6,7 @@ import 'get_cluster_istio_service_telemetry.dart';
 /// Result data returned by getClusterIstioService.
 class GetClusterIstioServiceResult {
   final String clusterName;
+  final String deletionPolicy;
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
   /// The provider-assigned unique ID for this managed resource.
@@ -24,6 +25,7 @@ class GetClusterIstioServiceResult {
 
   /// Creates a new [GetClusterIstioServiceResult].
   /// [clusterName] Required.
+  /// [deletionPolicy] Required.
   /// [displayName] Name used for UI elements listing this (Monitoring) Service.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
@@ -36,6 +38,7 @@ class GetClusterIstioServiceResult {
   /// [userLabels] Required.
   const GetClusterIstioServiceResult({
     required this.clusterName,
+    required this.deletionPolicy,
     required this.displayName,
     required this.id,
     required this.location,
@@ -51,6 +54,7 @@ class GetClusterIstioServiceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterName': clusterName,
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'id': id,
       'location': location,
@@ -67,6 +71,7 @@ class GetClusterIstioServiceResult {
   factory GetClusterIstioServiceResult.fromMap(Map<String, dynamic> map) {
     return GetClusterIstioServiceResult(
       clusterName: map['clusterName'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
@@ -80,4 +85,3 @@ class GetClusterIstioServiceResult {
     );
   }
 }
-

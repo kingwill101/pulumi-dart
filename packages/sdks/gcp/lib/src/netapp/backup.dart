@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_args.dart';
+import 'backup_ontap_source.dart';
 import 'backup_state.dart';
 
 /// NetApp Volumes supports volume backups, which are copies of your volumes
@@ -166,7 +167,7 @@ import 'backup_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "network",
+/// 			Name: pulumi.StringRef("network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -199,7 +200,7 @@ import 'backup_state.dart';
 /// 			},
 /// 			DeletionPolicy: pulumi.String("FORCE"),
 /// 			BackupConfig: &netapp.VolumeBackupConfigArgs{
-/// 				BackupVault: defaultBackupVault.ID(),
+/// 				BackupVault: defaultBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -209,13 +210,56 @@ import 'backup_state.dart';
 /// 			Name:         pulumi.String("test-backup"),
 /// 			Location:     defaultBackupVault.Location,
 /// 			VaultName:    defaultBackupVault.Name,
-/// 			SourceVolume: defaultVolume.ID(),
+/// 			SourceVolume: defaultVolume.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "network"
+/// }
+///
+/// resource "gcp_netapp_storagepool" "default" {
+///   name          = "backup-pool"
+///   location      = "us-central1"
+///   service_level = "PREMIUM"
+///   capacity_gib  = "2048"
+///   network       = data.gcp_compute_getnetwork.default.id
+/// }
+/// resource "gcp_netapp_volume" "default" {
+///   name            = "backup-volume"
+///   location        = gcp_netapp_storagepool.default.location
+///   capacity_gib    = "100"
+///   share_name      = "backup-volume"
+///   storage_pool    = gcp_netapp_storagepool.default.name
+///   protocols       = ["NFSV3"]
+///   deletion_policy = "FORCE"
+///   backup_config = {
+///     backup_vault = gcp_netapp_backupvault.default.id
+///   }
+/// }
+/// resource "gcp_netapp_backupvault" "default" {
+///   name     = "backup-vault"
+///   location = gcp_netapp_storagepool.default.location
+/// }
+/// resource "gcp_netapp_backup" "test_backup" {
+///   name          = "test-backup"
+///   location      = gcp_netapp_backupvault.default.location
+///   vault_name    = gcp_netapp_backupvault.default.name
+///   source_volume = gcp_netapp_volume.default.id
 /// }
 /// ```
 /// ```java
@@ -235,8 +279,8 @@ import 'backup_state.dart';
 /// import com.pulumi.gcp.netapp.inputs.VolumeBackupConfigArgs;
 /// import com.pulumi.gcp.netapp.Backup;
 /// import com.pulumi.gcp.netapp.BackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,22 +385,15 @@ import 'backup_state.dart';
 /// Backup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{vault_name}}/{{name}}`
-///
 /// * `{{location}}/{{vault_name}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
 /// ```
 class Backup extends pulumi.CustomResource {
@@ -369,6 +406,13 @@ class Backup extends pulumi.CustomResource {
   late final pulumi.Output<String> chainStorageBytes;
   /// Create time of the backup. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -376,12 +420,15 @@ class Backup extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location of the backup.
   late final pulumi.Output<String> location;
   /// The resource name of the backup. Needs to be unique per location.
   late final pulumi.Output<String> name;
+  /// Details of the ONTAP source volume and snapshot.
+  /// Structure is documented below.
+  late final pulumi.Output<BackupOntapSource?> ontapSource;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -421,11 +468,13 @@ class Backup extends pulumi.CustomResource {
     backupType = registerOutput<String>('backupType');
     chainStorageBytes = registerOutput<String>('chainStorageBytes');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    ontapSource = registerOutput<BackupOntapSource?>('ontapSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupOntapSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     sourceSnapshot = registerOutput<String?>('sourceSnapshot');
@@ -463,11 +512,13 @@ class Backup extends pulumi.CustomResource {
     backupType = registerOutput<String>('backupType');
     chainStorageBytes = registerOutput<String>('chainStorageBytes');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    ontapSource = registerOutput<BackupOntapSource?>('ontapSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupOntapSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     sourceSnapshot = registerOutput<String?>('sourceSnapshot');

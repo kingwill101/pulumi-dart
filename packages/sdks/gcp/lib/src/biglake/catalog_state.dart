@@ -12,6 +12,13 @@ class CatalogState {
   /// is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Output only. The time when this catalog is considered expired. Only set
   /// after the catalog is deleted. Only set after the catalog is deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -33,6 +40,7 @@ class CatalogState {
   /// Creates a new [CatalogState].
   /// [createTime] Output only. The creation time of the catalog. A timestamp in RFC3339 UTC
   /// [deleteTime] Output only. The deletion time of the catalog. Only set after the catalog
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [expireTime] Output only. The time when this catalog is considered expired. Only set
   /// [location] The geographic location where the Catalog should reside.
   /// [name] The name of the Catalog. Format:
@@ -41,6 +49,7 @@ class CatalogState {
   const CatalogState({
     this.createTime,
     this.deleteTime,
+    this.deletionPolicy,
     this.expireTime,
     this.location,
     this.name,
@@ -52,6 +61,7 @@ class CatalogState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'expireTime': ?expireTime,
       'location': ?location,
       'name': ?name,
@@ -64,6 +74,7 @@ class CatalogState {
     return CatalogState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -72,4 +83,3 @@ class CatalogState {
     );
   }
 }
-

@@ -7,6 +7,9 @@ import 'flex_template_job_state.dart';
 /// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
 /// and [Dataflow](https://cloud.google.com/dataflow/).
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// ## Example Usage
 ///
 ///
@@ -77,6 +80,23 @@ import 'flex_template_job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataflow_flextemplatejob" "big_data_job" {
+///   name                    = "dataflow-flextemplates-job"
+///   container_spec_gcs_path = "gs://my-bucket/templates/template.json"
+///   parameters = {
+///     "inputSubscription" = "messages"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +105,8 @@ import 'flex_template_job_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataflow.FlexTemplateJob;
 /// import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,15 +158,15 @@ import 'flex_template_job_state.dart';
 /// "cancelled", the job terminates - any data written remains where it is, but no
 /// new data will be processed.  If "drained", no new data will enter the pipeline,
 /// but any data currently in the pipeline will finish being processed.  The default
-/// is "cancelled", but if a user sets `on_delete` to `"drain"` in the
+/// is "cancelled", but if a user sets `onDelete` to `"drain"` in the
 /// configuration, you may experience a long wait for your `pulumi destroy` to
 /// complete.
 ///
-/// You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
+/// You can potentially short-circuit the wait by setting `skipWaitOnJobTermination`
 /// to `true`, but beware that unless you take active steps to ensure that the job
 /// `name` parameter changes between instances, the name will conflict and the launch
 /// of the new job will fail. One way to do this is with a
-/// random_id
+/// randomId
 /// resource, for example:
 ///
 ///
@@ -183,7 +203,7 @@ import 'flex_template_job_state.dart';
 /// big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
 /// if big_data_job_subscription_id is None:
 ///     big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-/// big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+/// big_data_job_name_suffix = random.Id("big_data_job_name_suffix",
 ///     byte_length=4,
 ///     keepers={
 ///         region: region,
@@ -209,7 +229,7 @@ import 'flex_template_job_state.dart';
 /// {
 ///     var config = new Config();
 ///     var bigDataJobSubscriptionId = config.Get("bigDataJobSubscriptionId") ?? "projects/myproject/subscriptions/messages";
-///     var bigDataJobNameSuffix = new Random.Index.Id("big_data_job_name_suffix", new()
+///     var bigDataJobNameSuffix = new Random.Id("big_data_job_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///         Keepers =
@@ -237,8 +257,6 @@ import 'flex_template_job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -278,6 +296,39 @@ import 'flex_template_job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "big_data_job_name_suffix" {
+///   byte_length = 4
+///   keepers = {
+///     "region"         = region
+///     "subscriptionId" = var.bigDataJobSubscriptionId
+///   }
+/// }
+/// resource "gcp_dataflow_flextemplatejob" "big_data_job" {
+///   name                         ="dataflow-flextemplates-job-${random_id.big_data_job_name_suffix.dec}"
+///   region                       = region
+///   container_spec_gcs_path      = "gs://my-bucket/templates/template.json"
+///   skip_wait_on_job_termination = true
+///   parameters = {
+///     "inputSubscription" = var.bigDataJobSubscriptionId
+///   }
+/// }
+/// variable "bigDataJobSubscriptionId" {
+///   type    = string
+///   default = "projects/myproject/subscriptions/messages"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -288,8 +339,8 @@ import 'flex_template_job_state.dart';
 /// import com.pulumi.random.IdArgs;
 /// import com.pulumi.gcp.dataflow.FlexTemplateJob;
 /// import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,7 +363,7 @@ import 'flex_template_job_state.dart';
 ///             .build());
 ///
 ///         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
-///             .name(String.format("dataflow-flextemplates-job-%s", bigDataJobNameSuffix.dec()))
+///             .name(String.format("dataflow-flextemplates-job-%s", bigDataJobNameSuffix.get("dec")))
 ///             .region(region)
 ///             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
 ///             .skipWaitOnJobTermination(true)
@@ -353,7 +404,7 @@ import 'flex_template_job_state.dart';
 ///
 /// This resource does not support import.
 class FlexTemplateJob extends pulumi.CustomResource {
-  /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+  /// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
   late final pulumi.Output<List<String>> additionalExperiments;
   /// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
   late final pulumi.Output<List<String>?> additionalPipelineOptions;
@@ -361,9 +412,19 @@ class FlexTemplateJob extends pulumi.CustomResource {
   late final pulumi.Output<String> autoscalingAlgorithm;
   /// The GCS path to the Dataflow job Flex
   /// Template.
+  late final pulumi.Output<String> containerSpecGcsPath;
+  /// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
   ///
   /// - - -
-  late final pulumi.Output<String> containerSpecGcsPath;
+  late final pulumi.Output<bool?> createIgnoreAlreadyExists;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Immutable. Indicates if the job should use the streaming engine feature.
   late final pulumi.Output<bool?> enableStreamingEngine;
@@ -375,11 +436,8 @@ class FlexTemplateJob extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyName;
   /// User labels to be specified for the job. Keys and values
   /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-  /// page. **Note**: This field is marked as deprecated as the API does not currently
-  /// support adding labels.
-  /// **NOTE**: Google-provided Dataflow templates often provide default labels
-  /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-  /// labels will be ignored to prevent diffs on re-apply.
+  /// page.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The machine type to use for launching the job. The default is n1-standard-1.
   late final pulumi.Output<String> launcherMachineType;
@@ -411,6 +469,9 @@ class FlexTemplateJob extends pulumi.CustomResource {
   late final pulumi.Output<String> sdkContainerImage;
   /// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
   late final pulumi.Output<String> serviceAccountEmail;
+  /// If set to `true`, terraform will
+  /// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+  /// and will remove the resource from terraform state and move on.  See above note.
   late final pulumi.Output<bool?> skipWaitOnJobTermination;
   /// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
   late final pulumi.Output<String> stagingLocation;
@@ -443,6 +504,8 @@ class FlexTemplateJob extends pulumi.CustomResource {
     additionalPipelineOptions = registerOutput<List<String>?>('additionalPipelineOptions');
     autoscalingAlgorithm = registerOutput<String>('autoscalingAlgorithm');
     containerSpecGcsPath = registerOutput<String>('containerSpecGcsPath');
+    createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
     ipConfiguration = registerOutput<String?>('ipConfiguration');
@@ -498,6 +561,8 @@ class FlexTemplateJob extends pulumi.CustomResource {
     additionalPipelineOptions = registerOutput<List<String>?>('additionalPipelineOptions');
     autoscalingAlgorithm = registerOutput<String>('autoscalingAlgorithm');
     containerSpecGcsPath = registerOutput<String>('containerSpecGcsPath');
+    createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
     ipConfiguration = registerOutput<String?>('ipConfiguration');

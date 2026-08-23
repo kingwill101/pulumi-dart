@@ -7,6 +7,13 @@ class MuteConfigState {
   /// The time at which the mute config was created. This field is set by
   /// the server and will be ignored if provided on config creation.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the mute config.
   final pulumi.Input<String>? description;
   /// Optional. The expiry of the mute config. Only applicable for dynamic configs.
@@ -32,8 +39,8 @@ class MuteConfigState {
   /// or projects/{project}/muteConfigs/{configId}
   final pulumi.Input<String>? name;
   /// Resource name of the new mute configs's parent. Its format is
-  /// "organizations/[organization_id]", "folders/[folder_id]", or
-  /// "projects/[project_id]".
+  /// "organizations/[organizationId]", "folders/[folderId]", or
+  /// "projects/[projectId]".
   final pulumi.Input<String>? parent;
   /// The type of the mute config, which determines what type of mute state the config affects.
   /// Default value is `DYNAMIC`.
@@ -46,6 +53,7 @@ class MuteConfigState {
 
   /// Creates a new [MuteConfigState].
   /// [createTime] The time at which the mute config was created. This field is set by
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the mute config.
   /// [expiryTime] Optional. The expiry of the mute config. Only applicable for dynamic configs.
   /// [filter] An expression that defines the filter to apply across create/update
@@ -57,6 +65,7 @@ class MuteConfigState {
   /// [updateTime] Output only. The most recent time at which the mute config was
   const MuteConfigState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.expiryTime,
     this.filter,
@@ -71,6 +80,7 @@ class MuteConfigState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'expiryTime': ?expiryTime,
       'filter': ?filter,
@@ -86,6 +96,7 @@ class MuteConfigState {
   factory MuteConfigState.fromMap(Map<String, dynamic> map) {
     return MuteConfigState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expiryTime: (() { final guardedValue = map['expiryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -98,4 +109,3 @@ class MuteConfigState {
     );
   }
 }
-

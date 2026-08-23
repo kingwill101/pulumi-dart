@@ -25,4 +25,3 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
     );
   }
 }
-

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_commitment_license_resource.dart';
+import 'region_commitment_params.dart';
 import 'region_commitment_resource.dart';
 
 /// Input properties used for looking up and filtering RegionCommitment resources.
@@ -25,7 +26,9 @@ class RegionCommitmentState {
   final pulumi.Input<String>? description;
   /// Commitment end time in RFC3339 text format.
   final pulumi.Input<String>? endTimestamp;
-  /// Specifies the already existing reservations to attach to the Commitment.
+  /// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+  /// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+  /// change another field at the same time.
   final pulumi.Input<String>? existingReservations;
   /// The license specification required as part of a license commitment.
   /// Structure is documented below.
@@ -36,6 +39,9 @@ class RegionCommitmentState {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<RegionCommitmentParams>? params;
   /// The plan for this commitment, which determines duration and discount rate.
   /// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
   /// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -72,9 +78,10 @@ class RegionCommitmentState {
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [description] An optional description of this resource.
   /// [endTimestamp] Commitment end time in RFC3339 text format.
-  /// [existingReservations] Specifies the already existing reservations to attach to the Commitment.
+  /// [existingReservations] Specifies the already existing reservations to attach to the Commitment. This field will suppress
   /// [licenseResource] The license specification required as part of a license commitment.
   /// [name] Name of the resource. The name must be 1-63 characters long and match
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [plan] The plan for this commitment, which determines duration and discount rate.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] URL of the region where this commitment may be used.
@@ -94,6 +101,7 @@ class RegionCommitmentState {
     this.existingReservations,
     this.licenseResource,
     this.name,
+    this.params,
     this.plan,
     this.project,
     this.region,
@@ -116,6 +124,7 @@ class RegionCommitmentState {
       'existingReservations': ?existingReservations,
       'licenseResource': ?pulumi.Input.mapOptionalInputValue<RegionCommitmentLicenseResource, Map<String, dynamic>>(licenseResource, (value) => value.toMap()),
       'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<RegionCommitmentParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'plan': ?plan,
       'project': ?project,
       'region': ?region,
@@ -139,6 +148,7 @@ class RegionCommitmentState {
       existingReservations: (() { final guardedValue = map['existingReservations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseResource: (() { final guardedValue = map['licenseResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionCommitmentLicenseResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionCommitmentParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -151,4 +161,3 @@ class RegionCommitmentState {
     );
   }
 }
-

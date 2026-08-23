@@ -192,13 +192,13 @@ import 'api_product_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -210,7 +210,7 @@ import 'api_product_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -220,14 +220,14 @@ import 'api_product_state.dart';
 /// 		apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:             pulumi.String("my-instance"),
 /// 			Location:         pulumi.String("us-central1"),
-/// 			OrgId:            apigeeOrg.ID(),
+/// 			OrgId:            apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			PeeringCidrRange: pulumi.String("SLASH_22"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apigee.NewApiProduct(ctx, "basic_api_product", &apigee.ApiProductArgs{
-/// 			OrgId:        apigeeOrg.ID(),
+/// 			OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:         pulumi.String("my-product"),
 /// 			DisplayName:  pulumi.String("My Basic API Product"),
 /// 			ApprovalType: pulumi.String("auto"),
@@ -239,6 +239,53 @@ import 'api_product_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_compute_network" "apigee_network" {
+///   name = "apigee-network"
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   analytics_region   = "us-central1"
+///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_instance" "apigee_instance" {
+///   name               = "my-instance"
+///   location           = "us-central1"
+///   org_id             = gcp_apigee_organization.apigee_org.id
+///   peering_cidr_range = "SLASH_22"
+/// }
+/// resource "gcp_apigee_apiproduct" "basic_api_product" {
+///   depends_on    = [gcp_apigee_instance.apigee_instance]
+///   org_id        = gcp_apigee_organization.apigee_org.id
+///   name          = "my-product"
+///   display_name  = "My Basic API Product"
+///   approval_type = "auto"
 /// }
 /// ```
 /// ```java
@@ -261,8 +308,8 @@ import 'api_product_state.dart';
 /// import com.pulumi.gcp.apigee.ApiProduct;
 /// import com.pulumi.gcp.apigee.ApiProductArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -665,13 +712,13 @@ import 'api_product_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -683,7 +730,7 @@ import 'api_product_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -693,7 +740,7 @@ import 'api_product_state.dart';
 /// 		apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:             pulumi.String("my-instance"),
 /// 			Location:         pulumi.String("us-central1"),
-/// 			OrgId:            apigeeOrg.ID(),
+/// 			OrgId:            apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			PeeringCidrRange: pulumi.String("SLASH_22"),
 /// 		})
 /// 		if err != nil {
@@ -701,7 +748,7 @@ import 'api_product_state.dart';
 /// 		}
 /// 		envDev, err := apigee.NewEnvironment(ctx, "env_dev", &apigee.EnvironmentArgs{
 /// 			Name:  pulumi.String("dev"),
-/// 			OrgId: apigeeOrg.ID(),
+/// 			OrgId: apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -715,7 +762,7 @@ import 'api_product_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigee.NewApiProduct(ctx, "full_api_product", &apigee.ApiProductArgs{
-/// 			OrgId:        apigeeOrg.ID(),
+/// 			OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:         pulumi.String("my-product"),
 /// 			DisplayName:  pulumi.String("My full API Product"),
 /// 			ApprovalType: pulumi.String("auto"),
@@ -756,6 +803,75 @@ import 'api_product_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_compute_network" "apigee_network" {
+///   name = "apigee-network"
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   analytics_region   = "us-central1"
+///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_instance" "apigee_instance" {
+///   name               = "my-instance"
+///   location           = "us-central1"
+///   org_id             = gcp_apigee_organization.apigee_org.id
+///   peering_cidr_range = "SLASH_22"
+/// }
+/// resource "gcp_apigee_environment" "env_dev" {
+///   name   = "dev"
+///   org_id = gcp_apigee_organization.apigee_org.id
+/// }
+/// resource "gcp_apigee_api" "test_apigee_api" {
+///   name          = "hello-world"
+///   org_id        = gcp_apigee_organization.apigee_org.name
+///   config_bundle = "apigee_api_bundle.zip"
+/// }
+/// resource "gcp_apigee_apiproduct" "full_api_product" {
+///   depends_on    = [gcp_apigee_instance.apigee_instance, gcp_apigee_environment.env_dev, gcp_apigee_api.test_apigee_api]
+///   org_id        = gcp_apigee_organization.apigee_org.id
+///   name          = "my-product"
+///   display_name  = "My full API Product"
+///   approval_type = "auto"
+///   description   = "This is a sample API Product created with Terraform."
+///   attributes {
+///     name  = "access"
+///     value = "private"
+///   }
+///   environments        = ["dev"]
+///   proxies             = ["hello-world"]
+///   api_resources       = ["/", "/weather/**"]
+///   scopes              = ["read:weather", "write:reports"]
+///   quota               = "10000"
+///   quota_interval      = "1"
+///   quota_time_unit     = "day"
+///   quota_counter_scope = "PROXY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -781,8 +897,8 @@ import 'api_product_state.dart';
 /// import com.pulumi.gcp.apigee.ApiProductArgs;
 /// import com.pulumi.gcp.apigee.inputs.ApiProductAttributeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -970,16 +1086,13 @@ import 'api_product_state.dart';
 /// ApiProduct can be imported using any of these accepted formats:
 ///
 /// * `{{org_id}}/apiproducts/{{name}}`
-///
 /// * `{{org_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ApiProduct can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/apiProduct:ApiProduct default {{org_id}}/apiproducts/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/apiProduct:ApiProduct default {{org_id}}/{{name}}
 /// ```
 class ApiProduct extends pulumi.CustomResource {
@@ -996,6 +1109,13 @@ class ApiProduct extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
   /// Response only. Creation time of this environment as milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the API product. Include key information about the API product that is not captured by other fields.
   late final pulumi.Output<String?> description;
   /// Name displayed in the UI or developer portal to developers registering for API access.
@@ -1056,6 +1176,7 @@ class ApiProduct extends pulumi.CustomResource {
     approvalType = registerOutput<String?>('approvalType');
     attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
     createdAt = registerOutput<String>('createdAt');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     environments = registerOutput<List<String>?>('environments');
@@ -1101,6 +1222,7 @@ class ApiProduct extends pulumi.CustomResource {
     approvalType = registerOutput<String?>('approvalType');
     attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
     createdAt = registerOutput<String>('createdAt');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     environments = registerOutput<List<String>?>('environments');

@@ -118,6 +118,30 @@ import 'ai_feature_online_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestore" "feature_online_store" {
+///   name = "example_feature_online_store"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region = "us-central1"
+///   bigtable = {
+///     auto_scaling = {
+///       min_node_count         = 1
+///       max_node_count         = 3
+///       cpu_utilization_target = 50
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +152,8 @@ import 'ai_feature_online_store_state.dart';
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,6 +313,33 @@ import 'ai_feature_online_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+///   name = "example_feature_online_store_optimized"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region    = "us-central1"
+///   optimized = {}
+///   dedicated_serving_endpoint = {
+///     private_service_connect_config = {
+///       enable_private_service_connect = true
+///       project_allowlists             = [data.gcp_organizations_getproject.project.number]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -302,8 +353,8 @@ import 'ai_feature_online_store_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreOptimizedArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +535,37 @@ import 'ai_feature_online_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+///   name = "example_feature_online_store_beta_bigtable"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region = "us-central1"
+///   bigtable = {
+///     auto_scaling = {
+///       min_node_count         = 1
+///       max_node_count         = 2
+///       cpu_utilization_target = 80
+///     }
+///   }
+///   embedding_management = {
+///     enabled = true
+///   }
+///   force_destroy = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -497,8 +579,8 @@ import 'ai_feature_online_store_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreEmbeddingManagementArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -563,28 +645,17 @@ import 'ai_feature_online_store_state.dart';
 /// FeatureOnlineStore can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, FeatureOnlineStore can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default {{name}}
 /// ```
 class AiFeatureOnlineStore extends pulumi.CustomResource {
@@ -596,12 +667,20 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
   /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
   /// Structure is documented below.
   late final pulumi.Output<AiFeatureOnlineStoreDedicatedServingEndpoint> dedicatedServingEndpoint;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// (Optional, Beta, Deprecated)
   /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+  /// &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
   late final pulumi.Output<AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement;
   /// If set, both of the online and offline data storage will be secured by this key.
   /// Structure is documented below.
@@ -612,7 +691,7 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
   late final pulumi.Output<bool?> forceDestroy;
   /// The labels with user-defined metadata to organize your feature online stores.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
@@ -648,6 +727,7 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
     bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dedicatedServingEndpoint = registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>('dedicatedServingEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     embeddingManagement = registerOutput<AiFeatureOnlineStoreEmbeddingManagement>('embeddingManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEmbeddingManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -689,6 +769,7 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
     bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dedicatedServingEndpoint = registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>('dedicatedServingEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     embeddingManagement = registerOutput<AiFeatureOnlineStoreEmbeddingManagement>('embeddingManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEmbeddingManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

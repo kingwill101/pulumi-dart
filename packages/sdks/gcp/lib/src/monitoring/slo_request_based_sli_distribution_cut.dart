@@ -9,7 +9,7 @@ class SloRequestBasedSliDistributionCut {
   /// Must have ValueType = DISTRIBUTION and
   /// MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String> distributionFilter;
-  /// Range of numerical values. The computed good_service
+  /// Range of numerical values. The computed goodService
   /// will be the count of values x in the Distribution such
   /// that range.min &lt;= x &lt;= range.max. inclusive of min and
   /// max. Open ranges can be defined by setting
@@ -19,7 +19,7 @@ class SloRequestBasedSliDistributionCut {
 
   /// Creates a new [SloRequestBasedSliDistributionCut].
   /// [distributionFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-  /// [range] Range of numerical values. The computed good_service
+  /// [range] Range of numerical values. The computed goodService
   const SloRequestBasedSliDistributionCut({
     required this.distributionFilter,
     required this.range,
@@ -39,4 +39,3 @@ class SloRequestBasedSliDistributionCut {
     );
   }
 }
-

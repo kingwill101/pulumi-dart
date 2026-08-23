@@ -69,6 +69,21 @@ import 'get_discovered_workload_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apphub_getapplication" "application" {
+///   project        = "project-id"
+///   application_id = "application"
+///   location       = "location"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'get_discovered_workload_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apphub.ApphubFunctions;
 /// import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,6 +198,20 @@ Future<GetApplicationResult> getApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apphub_getdiscoveredservice" "my-service" {
+///   location    = "my-location"
+///   service_uri = "my-service-uri"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +220,8 @@ Future<GetApplicationResult> getApplication(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apphub.ApphubFunctions;
 /// import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,6 +324,20 @@ Future<GetDiscoveredServiceResult> getDiscoveredService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apphub_getdiscoveredworkload" "my-workload" {
+///   location     = "us-central1"
+///   workload_uri = "my-workload-uri"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -303,8 +346,8 @@ Future<GetDiscoveredServiceResult> getDiscoveredService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apphub.ApphubFunctions;
 /// import com.pulumi.gcp.apphub.inputs.GetDiscoveredWorkloadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

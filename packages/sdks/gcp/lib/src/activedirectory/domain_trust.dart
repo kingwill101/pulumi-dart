@@ -98,6 +98,25 @@ import 'domain_trust_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_activedirectory_domaintrust" "ad-domain-trust" {
+///   domain                  = "test-managed-ad.com"
+///   target_domain_name      = "example-gcp.com"
+///   target_dns_ip_addresses = ["10.1.0.100"]
+///   trust_direction         = "OUTBOUND"
+///   trust_type              = "FOREST"
+///   trust_handshake_secret  = "Testing1!"
+///   deletion_protection     = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +125,8 @@ import 'domain_trust_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.activedirectory.DomainTrust;
 /// import com.pulumi.gcp.activedirectory.DomainTrustArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,25 +172,25 @@ import 'domain_trust_state.dart';
 /// DomainTrust can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}`
-///
 /// * `{{project}}/{{domain}}/{{target_domain_name}}`
-///
 /// * `{{domain}}/{{target_domain_name}}`
+///
 ///
 /// When using the `pulumi import` command, DomainTrust can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{project}}/{{domain}}/{{target_domain_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
 /// ```
 class DomainTrust extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
   late final pulumi.Output<String> domain;
@@ -208,6 +227,7 @@ class DomainTrust extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');
     project = registerOutput<String>('project');
     selectiveAuthentication = registerOutput<bool?>('selectiveAuthentication');
@@ -241,6 +261,7 @@ class DomainTrust extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');
     project = registerOutput<String>('project');
     selectiveAuthentication = registerOutput<bool?>('selectiveAuthentication');

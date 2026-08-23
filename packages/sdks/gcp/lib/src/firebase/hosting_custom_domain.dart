@@ -6,6 +6,9 @@ import 'hosting_custom_domain_state.dart';
 /// domain names with Firebase Hosting sites, allowing Hosting to serve content
 /// on those domain names.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about CustomDomain, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
@@ -76,6 +79,21 @@ import 'hosting_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingcustomdomain" "default" {
+///   project       = "my-project-name"
+///   site_id       = "site-id"
+///   custom_domain = "custom.domain.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +102,8 @@ import 'hosting_custom_domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.firebase.HostingCustomDomain;
 /// import com.pulumi.gcp.firebase.HostingCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,6 +228,28 @@ import 'hosting_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id-full"
+/// }
+/// resource "gcp_firebase_hostingcustomdomain" "default" {
+///   project               = "my-project-name"
+///   site_id               = gcp_firebase_hostingsite.default.site_id
+///   custom_domain         = "source.domain.com"
+///   cert_preference       = "GROUPED"
+///   redirect_target       = "destination.domain.com"
+///   wait_dns_verification = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +260,8 @@ import 'hosting_custom_domain_state.dart';
 /// import com.pulumi.gcp.firebase.HostingSiteArgs;
 /// import com.pulumi.gcp.firebase.HostingCustomDomain;
 /// import com.pulumi.gcp.firebase.HostingCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -499,6 +539,55 @@ import 'hosting_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_cloudrunv2_service" "default" {
+///   project  = "my-project-name"
+///   name     = "cloud-run-service-via-hosting"
+///   location = "us-central1"
+///   ingress  = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     rewrites = [{
+///       "glob" = "/hello/**"
+///       "run" = {
+///         "serviceId" = gcp_cloudrunv2_service.default.name
+///         "region"    = gcp_cloudrunv2_service.default.location
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "Cloud Run Integration"
+/// }
+/// resource "gcp_firebase_hostingcustomdomain" "default" {
+///   project               = "my-project-name"
+///   site_id               = gcp_firebase_hostingsite.default.site_id
+///   custom_domain         = "run.custom.domain.com"
+///   wait_dns_verification = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -510,15 +599,18 @@ import 'hosting_custom_domain_state.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteRunArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
 /// import com.pulumi.gcp.firebase.HostingCustomDomain;
 /// import com.pulumi.gcp.firebase.HostingCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -630,28 +722,17 @@ import 'hosting_custom_domain_state.dart';
 /// CustomDomain can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
-///
 /// * `sites/{{site_id}}/customDomains/{{custom_domain}}`
-///
 /// * `{{project}}/{{site_id}}/{{custom_domain}}`
-///
 /// * `{{site_id}}/{{custom_domain}}`
+///
 ///
 /// When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
 /// ```
 class HostingCustomDomain extends pulumi.CustomResource {
@@ -674,6 +755,13 @@ class HostingCustomDomain extends pulumi.CustomResource {
   /// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
   /// days, after which time Hosting removes them completely.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A string that represents the current state of the `CustomDomain` and
   /// allows you to confirm its initial state in requests that would modify it.
   late final pulumi.Output<String> etag;
@@ -747,11 +835,11 @@ class HostingCustomDomain extends pulumi.CustomResource {
   /// if true, indicates that Hosting's systems are attempting to
   /// make the `CustomDomain`'s state match your preferred state. This is most
   /// frequently `true` when initially provisioning a `CustomDomain` or when creating
-  /// a new SSL certificate to match an updated `cert_preference`
+  /// a new SSL certificate to match an updated `certPreference`
   late final pulumi.Output<bool> reconciling;
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
-  /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
+  /// with an HTTP 301 code, and route traffic to the specified `redirectTarget`
   /// instead.
   late final pulumi.Output<String?> redirectTarget;
   /// A set of updates you should make to the domain name's DNS records to
@@ -762,6 +850,9 @@ class HostingCustomDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> siteId;
   /// The last time the `CustomDomain` was updated.
   late final pulumi.Output<String> updateTime;
+  /// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+  /// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+  /// the `CustomDomain` will be returned and stored in the Terraform state.
   late final pulumi.Output<bool?> waitDnsVerification;
 
   /// Creates a new [HostingCustomDomain].
@@ -783,6 +874,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customDomain = registerOutput<String>('customDomain');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     hostState = registerOutput<String>('hostState');
@@ -826,6 +918,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customDomain = registerOutput<String>('customDomain');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     hostState = registerOutput<String>('hostState');

@@ -59,6 +59,18 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrun_getlocations" "available" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +79,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrun.CloudrunFunctions;
 /// import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -108,9 +120,11 @@ Future<GetLocationsResult> getLocations(
   return GetLocationsResult.fromMap(result);
 }
 
-/// Get information about a Google Cloud Run Service. For more information see
-/// the [official documentation](https://cloud.google.com/run/docs/)
-/// and [API](https://cloud.google.com/run/docs/apis).
+/// Get information about a Cloud Run Service.
+///
+///
+/// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+/// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
 ///
 /// ## Example Usage
 ///
@@ -119,17 +133,17 @@ Future<GetLocationsResult> getLocations(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const run_service = gcp.cloudrun.getService({
-///     name: "my-service",
-///     location: "us-central1",
+/// const _default = gcp.cloudrun.getService({
+///     location: defaultGoogleCloudRunService.location,
+///     name: defaultGoogleCloudRunService.name,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// run_service = gcp.cloudrun.get_service(name="my-service",
-///     location="us-central1")
+/// default = gcp.cloudrun.get_service(location=default_google_cloud_run_service["location"],
+///     name=default_google_cloud_run_service["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -139,10 +153,10 @@ Future<GetLocationsResult> getLocations(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
+///     var @default = Gcp.CloudRun.GetService.Invoke(new()
 ///     {
-///         Name = "my-service",
-///         Location = "us-central1",
+///         Location = defaultGoogleCloudRunService.Location,
+///         Name = defaultGoogleCloudRunService.Name,
 ///     });
 ///
 /// });
@@ -158,14 +172,28 @@ Future<GetLocationsResult> getLocations(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudrun.LookupService(ctx, &cloudrun.LookupServiceArgs{
-/// 			Name:     "my-service",
-/// 			Location: "us-central1",
+/// 			Location: defaultGoogleCloudRunService.Location,
+/// 			Name:     defaultGoogleCloudRunService.Name,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrun_getservice" "default" {
+///   location = defaultGoogleCloudRunService.location
+///   name     = defaultGoogleCloudRunService.name
 /// }
 /// ```
 /// ```java
@@ -176,8 +204,8 @@ Future<GetLocationsResult> getLocations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrun.CloudrunFunctions;
 /// import com.pulumi.gcp.cloudrun.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,9 +217,9 @@ Future<GetLocationsResult> getLocations(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-///             .name("my-service")
-///             .location("us-central1")
+///         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
+///             .location(defaultGoogleCloudRunService.get("location"))
+///             .name(defaultGoogleCloudRunService.get("name"))
 ///             .build());
 ///
 ///     }
@@ -199,12 +227,12 @@ Future<GetLocationsResult> getLocations(
 /// ```
 /// ```yaml
 /// variables:
-///   run-service:
+///   default:
 ///     fn::invoke:
 ///       function: gcp:cloudrun:getService
 ///       arguments:
-///         name: my-service
-///         location: us-central1
+///         location: ${defaultGoogleCloudRunService.location}
+///         name: ${defaultGoogleCloudRunService.name}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudrun_get_service_get_service_args_doc}
 /// [options] Invoke options controlling this call.
@@ -284,6 +312,21 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrun_getserviceiampolicy" "policy" {
+///   location = default.location
+///   project  = default.project
+///   service  = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +335,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrun.CloudrunFunctions;
 /// import com.pulumi.gcp.cloudrun.inputs.GetServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -306,9 +349,9 @@ Future<GetServiceResult> getService(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-///             .location(default_.location())
-///             .project(default_.project())
-///             .service(default_.name())
+///             .location(default_.get("location"))
+///             .project(default_.get("project"))
+///             .service(default_.get("name"))
 ///             .build());
 ///
 ///     }

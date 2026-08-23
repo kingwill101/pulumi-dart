@@ -8,6 +8,8 @@ class DatabaseInstanceSettingsPasswordValidationPolicy {
   /// Prevents the use of the username in the password.
   final pulumi.Input<bool>? disallowUsernameSubstring;
   /// Enables or disable the password validation policy.
+  ///
+  /// The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
   final pulumi.Input<bool> enablePasswordPolicy;
   /// Specifies the minimum number of characters that the password must have.
   final pulumi.Input<int>? minLength;
@@ -54,4 +56,3 @@ class DatabaseInstanceSettingsPasswordValidationPolicy {
     );
   }
 }
-

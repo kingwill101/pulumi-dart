@@ -77,6 +77,21 @@ import 'region_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "region-sec-policy-basic" {
+///   name        = "my-sec-policy-basic"
+///   description = "basic region security policy"
+///   type        = "CLOUD_ARMOR"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +100,8 @@ import 'region_security_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RegionSecurityPolicy;
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +207,24 @@ import 'region_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "region-sec-policy-ddos-protection" {
+///   name        = "my-sec-policy-ddos-protection"
+///   description = "with ddos protection config"
+///   type        = "CLOUD_ARMOR_NETWORK"
+///   ddos_protection_config = {
+///     ddos_protection = "ADVANCED_PREVIEW"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +234,8 @@ import 'region_security_policy_state.dart';
 /// import com.pulumi.gcp.compute.RegionSecurityPolicy;
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyDdosProtectionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,6 +400,35 @@ import 'region_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "region-sec-policy-user-defined-fields" {
+///   name        = "my-sec-policy-user-defined-fields"
+///   description = "with user defined fields"
+///   type        = "CLOUD_ARMOR_NETWORK"
+///   user_defined_fields {
+///     name   = "SIG1_AT_0"
+///     base   = "UDP"
+///     offset = 8
+///     size   = 2
+///     mask   = "0x8F00"
+///   }
+///   user_defined_fields {
+///     name   = "SIG2_AT_8"
+///     base   = "UDP"
+///     offset = 16
+///     size   = 4
+///     mask   = "0xFFFFFFFF"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -376,8 +438,8 @@ import 'region_security_policy_state.dart';
 /// import com.pulumi.gcp.compute.RegionSecurityPolicy;
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyUserDefinedFieldArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -596,6 +658,41 @@ import 'region_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "region-sec-policy-with-rules" {
+///   name        = "my-sec-policy-with-rules"
+///   description = "basic region security policy with multiple rules"
+///   type        = "CLOUD_ARMOR"
+///   rules {
+///     action   = "deny"
+///     priority = "1000"
+///     match = {
+///       expr = {
+///         expression = "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2"
+///       }
+///     }
+///   }
+///   rules {
+///     action   = "deny"
+///     priority = "2147483647"
+///     match = {
+///       versioned_expr = "SRC_IPS_V1"
+///       config = {
+///         src_ip_ranges = ["*"]
+///       }
+///     }
+///     description = "default rule"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -608,8 +705,8 @@ import 'region_security_policy_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchExprArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -681,28 +778,17 @@ import 'region_security_policy_state.dart';
 /// RegionSecurityPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{name}}
 /// ```
 class RegionSecurityPolicy extends pulumi.CustomResource {
@@ -712,6 +798,13 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
   /// Configuration for Google Cloud Armor DDOS Proctection Config.
   /// Structure is documented below.
   late final pulumi.Output<RegionSecurityPolicyDdosProtectionConfig?> ddosProtectionConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// Fingerprint of this resource. This field is used internally during
@@ -764,6 +857,7 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
         ) {
     advancedOptionsConfig = registerOutput<RegionSecurityPolicyAdvancedOptionsConfig?>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ddosProtectionConfig = registerOutput<RegionSecurityPolicyDdosProtectionConfig?>('ddosProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyDdosProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
@@ -802,6 +896,7 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
         ) {
     advancedOptionsConfig = registerOutput<RegionSecurityPolicyAdvancedOptionsConfig?>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ddosProtectionConfig = registerOutput<RegionSecurityPolicyDdosProtectionConfig?>('ddosProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyDdosProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');

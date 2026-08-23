@@ -69,6 +69,19 @@ import 'get_sresult.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_getaccount" "objectViewer" {
+///   account_id = "object-viewer"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +90,8 @@ import 'get_sresult.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,7 +152,7 @@ import 'get_sresult.dart';
 ///
 /// myaccount = gcp.serviceaccount.get_account(account_id="myaccount-id")
 /// mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
-/// google_application_credentials = kubernetes.index.Secret("google-application-credentials",
+/// google_application_credentials = kubernetes.Secret("google-application-credentials",
 ///     metadata=[{
 ///         name: google-application-credentials,
 ///     }],
@@ -167,7 +180,7 @@ import 'get_sresult.dart';
 ///         ServiceAccountId = myaccount.Apply(getAccountResult => getAccountResult.Name),
 ///     });
 ///
-///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+///     var google_application_credentials = new Kubernetes.Secret("google-application-credentials", new()
 ///     {
 ///         Metadata = new[]
 ///         {
@@ -212,8 +225,8 @@ import 'get_sresult.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kubernetes.NewSecret(ctx, "google-application-credentials", &kubernetes.SecretArgs{
-/// 			Metadata: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Metadata: []map[string]string{
+/// 				{
 /// 					"name": "google-application-credentials",
 /// 				},
 /// 			},
@@ -230,6 +243,37 @@ import 'get_sresult.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     kubernetes = {
+///       source = "pulumi/kubernetes"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_getaccount" "myaccount" {
+///   account_id = "myaccount-id"
+/// }
+///
+/// resource "gcp_serviceaccount_key" "mykey" {
+///   service_account_id = data.gcp_serviceaccount_getaccount.myaccount.name
+/// }
+/// resource "kubernetes_secret" "google-application-credentials" {
+///   metadata = [{
+///     "name" = "google-application-credentials"
+///   }]
+///   data = {
+///     "json" = base64decode(gcp_serviceaccount_key.mykey.private_key)
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +288,8 @@ import 'get_sresult.dart';
 /// import com.pulumi.kubernetes.SecretArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64decodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -266,7 +310,7 @@ import 'get_sresult.dart';
 ///             .build());
 ///
 ///         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-///             .metadata(List.of(Map.of("name", "google-application-credentials")))
+///             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
 ///             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
 ///                 .input(mykey.privateKey())
 ///                 .build()).result()))
@@ -315,7 +359,7 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
-/// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+/// This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
 ///
 /// For more information see
 /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -390,6 +434,21 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_iambinding" "token-creator-iam" {
+///   service_account_id = "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com"
+///   role               = "roles/iam.serviceAccountTokenCreator"
+///   members            = ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -398,8 +457,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.IAMBinding;
 /// import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -535,6 +594,29 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "default" {
+/// }
+/// data "gcp_serviceaccount_getaccountaccesstoken" "defaultGetAccountAccessToken" {
+///   target_service_account = "service_B@projectB.iam.gserviceaccount.com"
+///   scopes                 = ["userinfo-email", "cloud-platform"]
+///   lifetime               = "300s"
+/// }
+/// data "gcp_organizations_getclientopeniduserinfo" "me" {
+/// }
+///
+/// output "target-email" {
+///   value = data.gcp_organizations_getclientopeniduserinfo.me.email
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -544,8 +626,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,7 +695,7 @@ Future<GetAccountAccessTokenResult> getAccountAccessToken(
   return GetAccountAccessTokenResult.fromMap(result);
 }
 
-/// This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+/// This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
 ///
 /// For more information see
 /// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -680,6 +762,23 @@ Future<GetAccountAccessTokenResult> getAccountAccessToken(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_getaccountidtoken" "oidc" {
+///   target_audience = "https://foo.bar/"
+/// }
+///
+/// output "oidcToken" {
+///   value = data.gcp_serviceaccount_getaccountidtoken.oidc.id_token
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -688,8 +787,8 @@ Future<GetAccountAccessTokenResult> getAccountAccessToken(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -724,7 +823,7 @@ Future<GetAccountAccessTokenResult> getAccountAccessToken(
 /// ### Service Account Impersonation.
 /// `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
 ///
-/// Note: to use the following, you must grant `target_service_account` the
+/// Note: to use the following, you must grant `targetServiceAccount` the
 /// `roles/iam.serviceAccountTokenCreator` role on itself.
 ///
 ///
@@ -836,6 +935,32 @@ Future<GetAccountAccessTokenResult> getAccountAccessToken(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_getaccountaccesstoken" "impersonated" {
+///   target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
+///   delegates              = []
+///   scopes                 = ["userinfo-email", "cloud-platform"]
+///   lifetime               = "300s"
+/// }
+/// data "gcp_serviceaccount_getaccountidtoken" "oidc" {
+///   target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
+///   delegates              = []
+///   include_email          = true
+///   target_audience        = "https://foo.bar/"
+/// }
+///
+/// output "oidcToken" {
+///   value = data.gcp_serviceaccount_getaccountidtoken.oidc.id_token
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -845,8 +970,8 @@ Future<GetAccountAccessTokenResult> getAccountAccessToken(
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -920,7 +1045,7 @@ Future<GetAccountIdTokenResult> getAccountIdToken(
 ///
 /// ## Example Usage
 ///
-/// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+/// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
 ///
 ///
 /// ```typescript
@@ -988,7 +1113,7 @@ Future<GetAccountIdTokenResult> getAccountIdToken(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"foo": "bar",
 /// 			"sub": "subject",
 /// 		})
@@ -1009,6 +1134,28 @@ Future<GetAccountIdTokenResult> getAccountIdToken(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_getaccountjwt" "foo" {
+///   target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
+///   payload = jsonencode({
+///     "foo" = "bar"
+///     "sub" = "subject"
+///   })
+///   expires_in = 60
+/// }
+///
+/// output "jwt" {
+///   value = data.gcp_serviceaccount_getaccountjwt.foo.jwt
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1018,8 +1165,8 @@ Future<GetAccountIdTokenResult> getAccountIdToken(
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetAccountJwtArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1156,6 +1303,27 @@ Future<GetAccountJwtResult> getAccountJwt(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_getaccountkey" "mykey" {
+///   name            = gcp_serviceaccount_key.mykey.name
+///   public_key_type = "TYPE_X509_PEM_FILE"
+/// }
+///
+/// resource "gcp_serviceaccount_account" "myaccount" {
+///   account_id = "dev-foo-account"
+/// }
+/// resource "gcp_serviceaccount_key" "mykey" {
+///   service_account_id = gcp_serviceaccount_account.myaccount.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1168,8 +1336,8 @@ Future<GetAccountJwtResult> getAccountJwt(
 /// import com.pulumi.gcp.serviceaccount.KeyArgs;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetAccountKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1285,6 +1453,19 @@ Future<GetAccountKeyResult> getAccountKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_getiampolicy" "foo" {
+///   service_account_id = testAccount.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1293,8 +1474,8 @@ Future<GetAccountKeyResult> getAccountKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1307,7 +1488,7 @@ Future<GetAccountKeyResult> getAccountKey(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-///             .serviceAccountId(testAccount.name())
+///             .serviceAccountId(testAccount.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1394,6 +1575,19 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_gets" "example" {
+///   project = "example-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1402,8 +1596,8 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1484,6 +1678,19 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_gets" "foo" {
+///   prefix = "foo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1492,8 +1699,8 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1574,6 +1781,19 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_gets" "bar" {
+///   regex = ".*bar.*"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1582,8 +1802,8 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1668,6 +1888,20 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_serviceaccount_gets" "fooBar" {
+///   prefix = "foo"
+///   regex  = ".*bar.*"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1676,8 +1910,8 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
 /// import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

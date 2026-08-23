@@ -9,7 +9,7 @@ class VolumeBlockDevice {
   /// This field can be updated after the block device is created.
   final pulumi.Input<List<String>>? hostGroups;
   /// (Output)
-  /// Device identifier of the Block volume. This represents lun_serial_number
+  /// Device identifier of the Block volume. This represents lunSerialNumber
   /// for ISCSI volumes
   final pulumi.Input<String>? identifier;
   /// User-defined name for the block device, unique within the Volume. In case
@@ -28,7 +28,7 @@ class VolumeBlockDevice {
   /// The size of the block device in GiB.
   /// Any value provided in this field during Volume creation is IGNORED.
   /// The block device's size is system-managed and will be set to match
-  /// the parent Volume's `capacity_gib`.
+  /// the parent Volume's `capacityGib`.
   final pulumi.Input<int>? sizeGib;
 
   /// Creates a new [VolumeBlockDevice].
@@ -65,4 +65,3 @@ class VolumeBlockDevice {
     );
   }
 }
-

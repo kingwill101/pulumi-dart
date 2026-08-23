@@ -11,14 +11,18 @@ import 'instance_from_machine_image_service_account.dart';
 import 'instance_from_machine_image_shielded_instance_config.dart';
 import 'instance_from_machine_image_source_machine_image_encryption_key.dart';
 import 'instance_from_machine_image_state.dart';
+import 'instance_from_machine_image_workload_identity_config.dart';
 
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// Manages a VM instance resource within GCE. For more information see
 /// [the official documentation](https://cloud.google.com/compute/docs/instances)
 /// and
 /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 ///
 /// This resource is specifically to create a compute instance from a given
-/// `source_machine_image`. To create an instance without a machine image, use the
+/// `sourceMachineImage`. To create an instance without a machine image, use the
 /// `gcp.compute.Instance` resource.
 ///
 ///
@@ -100,6 +104,25 @@ import 'instance_from_machine_image_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancefrommachineimage" "tpl" {
+///   name                 = "instance-from-machine-image"
+///   zone                 = "us-central1-a"
+///   source_machine_image = "projects/PROJECT-ID/global/machineImages/NAME"
+///   can_ip_forward       = false
+///   labels = {
+///     "my_key" = "my_value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +131,8 @@ import 'instance_from_machine_image_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.InstanceFromMachineImage;
 /// import com.pulumi.gcp.compute.InstanceFromMachineImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,6 +170,7 @@ import 'instance_from_machine_image_state.dart';
 class InstanceFromMachineImage extends pulumi.CustomResource {
   /// Controls for advanced machine-related behavior features.
   late final pulumi.Output<InstanceFromMachineImageAdvancedMachineFeatures> advancedMachineFeatures;
+  /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
   late final pulumi.Output<bool> allowStoppingForUpdate;
   /// List of disks attached to the instance
   late final pulumi.Output<List<Map<String, dynamic>>> attachedDisks;
@@ -154,7 +178,7 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> bootDisks;
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
   late final pulumi.Output<bool> canIpForward;
-  /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+  /// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
   late final pulumi.Output<InstanceFromMachineImageConfidentialInstanceConfig> confidentialInstanceConfig;
   /// The CPU platform used by this instance.
   late final pulumi.Output<String> cpuPlatform;
@@ -164,15 +188,25 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
   /// This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
   /// For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
   late final pulumi.Output<String> currentStatus;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether deletion protection is enabled on this instance.
   late final pulumi.Output<bool> deletionProtection;
   /// A brief description of the resource.
   late final pulumi.Output<String> description;
   /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
   late final pulumi.Output<String> desiredStatus;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Whether the instance has virtual displays enabled.
   late final pulumi.Output<bool> enableDisplay;
+  /// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+  late final pulumi.Output<bool> eraseWindowsVssSignature;
   /// List of the type and count of accelerator cards attached to the instance.
   late final pulumi.Output<List<Map<String, dynamic>>> guestAccelerators;
   /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -211,13 +245,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
   late final pulumi.Output<InstanceFromMachineImageParams> params;
   /// Partner Metadata Map made available within the instance.
   late final pulumi.Output<Map<String, String>> partnerMetadata;
-  /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Specifies the reservations that this instance can consume from.
   late final pulumi.Output<InstanceFromMachineImageReservationAffinity> reservationAffinity;
-  /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   late final pulumi.Output<String> resourcePolicies;
   /// The scheduling strategy being used by the instance.
   late final pulumi.Output<InstanceFromMachineImageScheduling> scheduling;
@@ -240,6 +274,8 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> tags;
   /// The unique fingerprint of the tags.
   late final pulumi.Output<String> tagsFingerprint;
+  /// Workload identity config.
+  late final pulumi.Output<InstanceFromMachineImageWorkloadIdentityConfig> workloadIdentityConfig;
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
@@ -247,7 +283,7 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
   /// as a way to override the properties in the machine image. All exported attributes
   /// from `gcp.compute.Instance` are likewise exported here.
   ///
-  /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
+  /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
   late final pulumi.Output<String> zone;
 
   /// Creates a new [InstanceFromMachineImage].
@@ -273,11 +309,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     cpuPlatform = registerOutput<String>('cpuPlatform');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     currentStatus = registerOutput<String>('currentStatus');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String>('description');
     desiredStatus = registerOutput<String>('desiredStatus');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableDisplay = registerOutput<bool>('enableDisplay');
+    eraseWindowsVssSignature = registerOutput<bool>('eraseWindowsVssSignature');
     guestAccelerators = registerOutput<List<Map<String, dynamic>>>('guestAccelerators');
     hostname = registerOutput<String>('hostname');
     instanceEncryptionKey = registerOutput<InstanceFromMachineImageInstanceEncryptionKey>('instanceEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageInstanceEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -308,6 +346,7 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     sourceMachineImageEncryptionKey = registerOutput<InstanceFromMachineImageSourceMachineImageEncryptionKey?>('sourceMachineImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageSourceMachineImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<String>>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    workloadIdentityConfig = registerOutput<InstanceFromMachineImageWorkloadIdentityConfig>('workloadIdentityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String>('zone');
   }
 
@@ -343,11 +382,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     cpuPlatform = registerOutput<String>('cpuPlatform');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     currentStatus = registerOutput<String>('currentStatus');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String>('description');
     desiredStatus = registerOutput<String>('desiredStatus');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableDisplay = registerOutput<bool>('enableDisplay');
+    eraseWindowsVssSignature = registerOutput<bool>('eraseWindowsVssSignature');
     guestAccelerators = registerOutput<List<Map<String, dynamic>>>('guestAccelerators');
     hostname = registerOutput<String>('hostname');
     instanceEncryptionKey = registerOutput<InstanceFromMachineImageInstanceEncryptionKey>('instanceEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageInstanceEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -378,6 +419,7 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     sourceMachineImageEncryptionKey = registerOutput<InstanceFromMachineImageSourceMachineImageEncryptionKey?>('sourceMachineImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageSourceMachineImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<String>>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    workloadIdentityConfig = registerOutput<InstanceFromMachineImageWorkloadIdentityConfig>('workloadIdentityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String>('zone');
   }
 }

@@ -11,6 +11,8 @@ class GetDatabaseInstancesInstancePointInTimeRestoreContext {
   final pulumi.Input<String> pointInTime;
   /// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
   final pulumi.Input<String> preferredZone;
+  /// To filter out the Cloud SQL instances which are located in the specified region.
+  final pulumi.Input<String> region;
   /// The name of the target instance to restore to.
   final pulumi.Input<String> targetInstance;
 
@@ -19,12 +21,14 @@ class GetDatabaseInstancesInstancePointInTimeRestoreContext {
   /// [datasource] The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
   /// [pointInTime] The date and time to which you want to restore the instance.
   /// [preferredZone] Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+  /// [region] To filter out the Cloud SQL instances which are located in the specified region.
   /// [targetInstance] The name of the target instance to restore to.
   const GetDatabaseInstancesInstancePointInTimeRestoreContext({
     required this.allocatedIpRange,
     required this.datasource,
     required this.pointInTime,
     required this.preferredZone,
+    required this.region,
     required this.targetInstance,
   });
 
@@ -34,6 +38,7 @@ class GetDatabaseInstancesInstancePointInTimeRestoreContext {
       'datasource': datasource,
       'pointInTime': pointInTime,
       'preferredZone': preferredZone,
+      'region': region,
       'targetInstance': targetInstance,
     };
   }
@@ -44,8 +49,8 @@ class GetDatabaseInstancesInstancePointInTimeRestoreContext {
       datasource: pulumi.Input.fromValue(map['datasource'] as String),
       pointInTime: pulumi.Input.fromValue(map['pointInTime'] as String),
       preferredZone: pulumi.Input.fromValue(map['preferredZone'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
       targetInstance: pulumi.Input.fromValue(map['targetInstance'] as String),
     );
   }
 }
-

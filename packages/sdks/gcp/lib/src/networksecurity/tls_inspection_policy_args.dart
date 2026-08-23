@@ -9,8 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsInspectionPolicyArgs {
   /// A CA pool resource used to issue interception certificates.
   final pulumi.Input<String> caPool;
-  /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+  /// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
   final pulumi.Input<List<String>>? customTlsFeatures;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Free-text description of the resource.
   final pulumi.Input<String>? description;
   /// If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
@@ -35,7 +42,8 @@ class TlsInspectionPolicyArgs {
 
   /// Creates a new [TlsInspectionPolicyArgs].
   /// [caPool] A CA pool resource used to issue interception certificates.
-  /// [customTlsFeatures] List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+  /// [customTlsFeatures] List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Free-text description of the resource.
   /// [excludePublicCaSet] If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
   /// [location] The location of the tls inspection policy.
@@ -47,6 +55,7 @@ class TlsInspectionPolicyArgs {
   const TlsInspectionPolicyArgs({
     required this.caPool,
     this.customTlsFeatures,
+    this.deletionPolicy,
     this.description,
     this.excludePublicCaSet,
     this.location,
@@ -61,6 +70,7 @@ class TlsInspectionPolicyArgs {
     return <String, dynamic>{
       'caPool': caPool,
       'customTlsFeatures': ?customTlsFeatures,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'excludePublicCaSet': ?excludePublicCaSet,
       'location': ?location,
@@ -76,6 +86,7 @@ class TlsInspectionPolicyArgs {
     return TlsInspectionPolicyArgs(
       caPool: pulumi.Input.fromValue(map['caPool'] as String),
       customTlsFeatures: (() { final guardedValue = map['customTlsFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       excludePublicCaSet: (() { final guardedValue = map['excludePublicCaSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -87,4 +98,3 @@ class TlsInspectionPolicyArgs {
     );
   }
 }
-

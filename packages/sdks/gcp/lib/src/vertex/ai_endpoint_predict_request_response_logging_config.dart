@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_endpoint_predict_request_response_logging_config_bigquery_destination.dart';
 
 class AiEndpointPredictRequestResponseLoggingConfig {
-  /// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+  /// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
   /// Structure is documented below.
   final pulumi.Input<AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination>? bigqueryDestination;
   /// If logging is enabled or not.
@@ -13,7 +13,7 @@ class AiEndpointPredictRequestResponseLoggingConfig {
   final pulumi.Input<double>? samplingRate;
 
   /// Creates a new [AiEndpointPredictRequestResponseLoggingConfig].
-  /// [bigqueryDestination] BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+  /// [bigqueryDestination] BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
   /// [enabled] If logging is enabled or not.
   /// [samplingRate] Percentage of requests to be logged, expressed as a fraction in range(0,1]
   const AiEndpointPredictRequestResponseLoggingConfig({
@@ -38,4 +38,3 @@ class AiEndpointPredictRequestResponseLoggingConfig {
     );
   }
 }
-

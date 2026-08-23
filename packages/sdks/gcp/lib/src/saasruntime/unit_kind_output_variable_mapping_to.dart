@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UnitKindOutputVariableMappingTo {
   /// Alias of the dependency that the inputVariable will pass its value to
   final pulumi.Input<String> dependency;
-  /// Tells SaaS Runtime if this mapping should be used during lookup or not
+  /// Tells App Lifecycle Manager if this mapping should be used during lookup or not
   final pulumi.Input<bool>? ignoreForLookup;
   /// Name of the inputVariable on the dependency
   final pulumi.Input<String> inputVariable;
 
   /// Creates a new [UnitKindOutputVariableMappingTo].
   /// [dependency] Alias of the dependency that the inputVariable will pass its value to
-  /// [ignoreForLookup] Tells SaaS Runtime if this mapping should be used during lookup or not
+  /// [ignoreForLookup] Tells App Lifecycle Manager if this mapping should be used during lookup or not
   /// [inputVariable] Name of the inputVariable on the dependency
   const UnitKindOutputVariableMappingTo({
     required this.dependency,
@@ -36,4 +36,3 @@ class UnitKindOutputVariableMappingTo {
     );
   }
 }
-

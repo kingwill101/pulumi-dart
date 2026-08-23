@@ -258,6 +258,63 @@ import 'pipeline_workload.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   account_id   = "my-account"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_dataflow_pipeline" "primary" {
+///   name         = "my-pipeline"
+///   display_name = "my-pipeline"
+///   type         = "PIPELINE_TYPE_BATCH"
+///   state        = "STATE_ACTIVE"
+///   region       = "us-central1"
+///   workload = {
+///     dataflow_launch_template_request = {
+///       project_id = "my-project"
+///       gcs_path   = "gs://my-bucket/path"
+///       launch_parameters = {
+///         job_name = "my-job"
+///         parameters = {
+///           "name" = "wrench"
+///         }
+///         environment = {
+///           num_workers                = 5
+///           max_workers                = 5
+///           zone                       = "us-centra1-a"
+///           service_account_email      = gcp_serviceaccount_account.service_account.email
+///           network                    = "default"
+///           temp_location              = "gs://my-bucket/tmp_dir"
+///           bypass_temp_dir_validation = false
+///           machine_type               = "E2"
+///           additional_user_labels = {
+///             "context" = "test"
+///           }
+///           worker_region           = "us-central1"
+///           worker_zone             = "us-central1-a"
+///           enable_streaming_engine = "false"
+///         }
+///         update = false
+///         transform_name_mapping = {
+///           "name" = "wrench"
+///         }
+///       }
+///       location = "us-central1"
+///     }
+///   }
+///   schedule_info = {
+///     schedule = "* */2 * * *"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -273,8 +330,8 @@ import 'pipeline_workload.dart';
 /// import com.pulumi.gcp.dataflow.inputs.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs;
 /// import com.pulumi.gcp.dataflow.inputs.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs;
 /// import com.pulumi.gcp.dataflow.inputs.PipelineScheduleInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -384,34 +441,30 @@ import 'pipeline_workload.dart';
 /// Pipeline can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/pipelines/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataflow/pipeline:Pipeline default projects/{{project}}/locations/{{region}}/pipelines/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataflow/pipeline:Pipeline default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataflow/pipeline:Pipeline default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataflow/pipeline:Pipeline default {{name}}
 /// ```
 class Pipeline extends pulumi.CustomResource {
   /// The timestamp when the pipeline was initially created. Set by the Data Pipelines service.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
   late final pulumi.Output<String?> displayName;
   /// Number of jobs.
@@ -466,6 +519,7 @@ class Pipeline extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     jobCount = registerOutput<int>('jobCount');
     lastUpdateTime = registerOutput<String>('lastUpdateTime');
@@ -504,6 +558,7 @@ class Pipeline extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     jobCount = registerOutput<int>('jobCount');
     lastUpdateTime = registerOutput<String>('lastUpdateTime');

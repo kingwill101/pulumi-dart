@@ -130,8 +130,8 @@ import 'network_peering_state.dart';
 /// 		_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
 /// 			Name:                           pulumi.String("sample-network-peering"),
 /// 			Description:                    pulumi.String("Sample description"),
-/// 			VmwareEngineNetwork:            network_peering_nw.ID(),
-/// 			PeerNetwork:                    network_peering_peer_nw.ID(),
+/// 			VmwareEngineNetwork:            network_peering_nw.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerNetwork:                    network_peering_peer_nw.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerNetworkType:                pulumi.String("VMWARE_ENGINE_NETWORK"),
 /// 			ExportCustomRoutes:             pulumi.Bool(false),
 /// 			ImportCustomRoutes:             pulumi.Bool(false),
@@ -145,6 +145,37 @@ import 'network_peering_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "network-peering-nw" {
+///   name     = "default-np-nw"
+///   location = "global"
+///   type     = "STANDARD"
+/// }
+/// resource "gcp_vmwareengine_network" "network-peering-peer-nw" {
+///   name     = "peer-np-nw"
+///   location = "global"
+///   type     = "STANDARD"
+/// }
+/// resource "gcp_vmwareengine_networkpeering" "vmw-engine-network-peering" {
+///   name                                = "sample-network-peering"
+///   description                         = "Sample description"
+///   vmware_engine_network               = gcp_vmwareengine_network.network-peering-nw.id
+///   peer_network                        = gcp_vmwareengine_network.network-peering-peer-nw.id
+///   peer_network_type                   = "VMWARE_ENGINE_NETWORK"
+///   export_custom_routes                = false
+///   import_custom_routes                = false
+///   export_custom_routes_with_public_ip = false
+///   import_custom_routes_with_public_ip = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +186,8 @@ import 'network_peering_state.dart';
 /// import com.pulumi.gcp.vmwareengine.NetworkArgs;
 /// import com.pulumi.gcp.vmwareengine.NetworkPeering;
 /// import com.pulumi.gcp.vmwareengine.NetworkPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,15 +351,40 @@ import 'network_peering_state.dart';
 /// 		_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
 /// 			Name:                pulumi.String("sample-network-peering"),
 /// 			Description:         pulumi.String("Sample description"),
-/// 			PeerNetwork:         network_peering_vpc.ID(),
+/// 			PeerNetwork:         network_peering_vpc.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerNetworkType:     pulumi.String("STANDARD"),
-/// 			VmwareEngineNetwork: network_peering_standard_nw.ID(),
+/// 			VmwareEngineNetwork: network_peering_standard_nw.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network-peering-vpc" {
+///   name = "default-vpc"
+/// }
+/// resource "gcp_vmwareengine_network" "network-peering-standard-nw" {
+///   name     = "default-standard-nw-np"
+///   location = "global"
+///   type     = "STANDARD"
+/// }
+/// resource "gcp_vmwareengine_networkpeering" "vmw-engine-network-peering" {
+///   name                  = "sample-network-peering"
+///   description           = "Sample description"
+///   peer_network          = gcp_compute_network.network-peering-vpc.id
+///   peer_network_type     = "STANDARD"
+///   vmware_engine_network = gcp_vmwareengine_network.network-peering-standard-nw.id
 /// }
 /// ```
 /// ```java
@@ -339,8 +395,8 @@ import 'network_peering_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.NetworkPeering;
 /// import com.pulumi.gcp.vmwareengine.NetworkPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,22 +457,15 @@ import 'network_peering_state.dart';
 /// NetworkPeering can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default projects/{{project}}/locations/global/networkPeerings/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{name}}
 /// ```
 class NetworkPeering extends pulumi.CustomResource {
@@ -424,6 +473,13 @@ class NetworkPeering extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description for this network peering.
   late final pulumi.Output<String?> description;
   /// True if custom routes are exported to the peered network; false otherwise.
@@ -480,6 +536,7 @@ class NetworkPeering extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
     exportCustomRoutesWithPublicIp = registerOutput<bool?>('exportCustomRoutesWithPublicIp');
@@ -521,6 +578,7 @@ class NetworkPeering extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
     exportCustomRoutesWithPublicIp = registerOutput<bool?>('exportCustomRoutesWithPublicIp');

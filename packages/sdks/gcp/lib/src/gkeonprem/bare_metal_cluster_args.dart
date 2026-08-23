@@ -33,7 +33,7 @@ class BareMetalClusterArgs {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// A human readable description of this Bare Metal User Cluster.
   final pulumi.Input<String> bareMetalVersion;
@@ -46,6 +46,13 @@ class BareMetalClusterArgs {
   /// Specifies the control plane configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterControlPlane> controlPlane;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human readable description of this Bare Metal User Cluster.
   final pulumi.Input<String>? description;
   /// Specifies the load balancer configuration.
@@ -93,6 +100,7 @@ class BareMetalClusterArgs {
   /// [binaryAuthorization] Binary Authorization related configurations.
   /// [clusterOperations] Specifies the User Cluster's observability infrastructure.
   /// [controlPlane] Specifies the control plane configuration.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human readable description of this Bare Metal User Cluster.
   /// [loadBalancer] Specifies the load balancer configuration.
   /// [location] The location of the resource.
@@ -114,6 +122,7 @@ class BareMetalClusterArgs {
     this.binaryAuthorization,
     this.clusterOperations,
     required this.controlPlane,
+    this.deletionPolicy,
     this.description,
     required this.loadBalancer,
     required this.location,
@@ -138,6 +147,7 @@ class BareMetalClusterArgs {
       'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
       'clusterOperations': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterClusterOperations, Map<String, dynamic>>(clusterOperations, (value) => value.toMap()),
       'controlPlane': pulumi.Input.mapInputValue<BareMetalClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'loadBalancer': pulumi.Input.mapInputValue<BareMetalClusterLoadBalancer, Map<String, dynamic>>(loadBalancer, (value) => value.toMap()),
       'location': location,
@@ -163,6 +173,7 @@ class BareMetalClusterArgs {
       binaryAuthorization: (() { final guardedValue = map['binaryAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterOperations: (() { final guardedValue = map['clusterOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalClusterClusterOperations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       controlPlane: pulumi.Input.fromValue(BareMetalClusterControlPlane.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancer: pulumi.Input.fromValue(BareMetalClusterLoadBalancer.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -180,4 +191,3 @@ class BareMetalClusterArgs {
     );
   }
 }
-

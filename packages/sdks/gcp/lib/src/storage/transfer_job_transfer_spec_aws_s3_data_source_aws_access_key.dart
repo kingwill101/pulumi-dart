@@ -30,4 +30,3 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
     );
   }
 }
-

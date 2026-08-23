@@ -21,6 +21,13 @@ class AuthConfigState {
   /// Raw auth credentials.
   /// Structure is documented below.
   final pulumi.Input<AuthConfigDecryptedCredential>? decryptedCredential;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the auth config.
   final pulumi.Input<String>? description;
   /// The name of the auth config.
@@ -64,6 +71,7 @@ class AuthConfigState {
   /// [creatorEmail] The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   /// [credentialType] Credential type of the encrypted credential.
   /// [decryptedCredential] Raw auth credentials.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the auth config.
   /// [displayName] The name of the auth config.
   /// [encryptedCredential] Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
@@ -85,6 +93,7 @@ class AuthConfigState {
     this.creatorEmail,
     this.credentialType,
     this.decryptedCredential,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.encryptedCredential,
@@ -109,6 +118,7 @@ class AuthConfigState {
       'creatorEmail': ?creatorEmail,
       'credentialType': ?credentialType,
       'decryptedCredential': ?pulumi.Input.mapOptionalInputValue<AuthConfigDecryptedCredential, Map<String, dynamic>>(decryptedCredential, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'encryptedCredential': ?encryptedCredential,
@@ -134,6 +144,7 @@ class AuthConfigState {
       creatorEmail: (() { final guardedValue = map['creatorEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       credentialType: (() { final guardedValue = map['credentialType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       decryptedCredential: (() { final guardedValue = map['decryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthConfigDecryptedCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -151,4 +162,3 @@ class AuthConfigState {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class GetAccountIdTokenArgs {
   final pulumi.Input<List<String>>? delegates;
   /// Include the verified email in the claim. Used only when using impersonation mode.
   final pulumi.Input<bool>? includeEmail;
-  /// The audience claim for the `id_token`.
+  /// The audience claim for the `idToken`.
   final pulumi.Input<String> targetAudience;
   /// The email of the service account being impersonated.  Used only when using impersonation mode.
   final pulumi.Input<String>? targetServiceAccount;
@@ -19,7 +19,7 @@ class GetAccountIdTokenArgs {
   /// Creates a new [GetAccountIdTokenArgs].
   /// [delegates] Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
   /// [includeEmail] Include the verified email in the claim. Used only when using impersonation mode.
-  /// [targetAudience] The audience claim for the `id_token`.
+  /// [targetAudience] The audience claim for the `idToken`.
   /// [targetServiceAccount] The email of the service account being impersonated.  Used only when using impersonation mode.
   const GetAccountIdTokenArgs({
     this.delegates,
@@ -46,4 +46,3 @@ class GetAccountIdTokenArgs {
     );
   }
 }
-

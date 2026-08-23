@@ -4,27 +4,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiLogicConfigGenerativeLanguageConfig {
   /// The value of the API key. The API key must have
-  /// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+  /// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
   /// Note that this API is sometimes called the *Generative Language API* in
   /// the Google Cloud console.
-  ///
   /// Do **not** add this Gemini API key into your app's codebase
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? apiKey;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// (Optional, Write-Only)
   /// The value of the API key. The API key must have
-  /// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+  /// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
   /// Note that this API is sometimes called the *Generative Language API* in
   /// the Google Cloud console.
-  ///
   /// Do **not** add this Gemini API key into your app's codebase
+  /// **Note**: This property is write-only and will not be read from the API.
+  ///
+  /// &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.
   final pulumi.Input<String>? apiKeyWo;
-  /// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final pulumi.Input<String>? apiKeyWoVersion;
 
   /// Creates a new [AiLogicConfigGenerativeLanguageConfig].
   /// [apiKey] The value of the API key. The API key must have
   /// [apiKeyWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [apiKeyWoVersion] Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// [apiKeyWoVersion] Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   const AiLogicConfigGenerativeLanguageConfig({
     this.apiKey,
     this.apiKeyWo,
@@ -47,4 +50,3 @@ class AiLogicConfigGenerativeLanguageConfig {
     );
   }
 }
-

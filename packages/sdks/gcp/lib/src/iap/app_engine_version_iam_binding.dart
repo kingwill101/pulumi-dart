@@ -6,8 +6,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineVersion. Each of these resources serves a different use case:
 ///
 /// * `gcp.iap.AppEngineVersionIamPolicy`: Authoritative. Sets the IAM policy for the appengineversion and replaces any existing policy already attached.
-/// * `gcp.iap.AppEngineVersionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the appengineversion are preserved.
-/// * `gcp.iap.AppEngineVersionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the appengineversion are preserved.
+/// * `gcp.iap.AppEngineVersionIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the appengineversion are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.iap.AppEngineVersionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the appengineversion are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,7 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 /// &gt; **Note:** `gcp.iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineVersionIamBinding` and `gcp.iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -128,6 +128,30 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+///   project     = version.project
+///   app_id      = version.project
+///   service     = version.service
+///   version_id  = version.versionId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,10 +160,11 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicy;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,10 +184,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -320,6 +345,35 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+///   project     = version.project
+///   app_id      = version.project
+///   service     = version.service
+///   version_id  = version.versionId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -328,10 +382,12 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicy;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,10 +412,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -469,6 +525,24 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniambinding" "binding" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +551,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBinding;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,10 +565,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -616,6 +690,29 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniambinding" "binding" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   members    = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -625,8 +722,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBinding;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBindingArgs;
 /// import com.pulumi.gcp.iap.inputs.AppEngineVersionIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -639,10 +736,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .condition(AppEngineVersionIamBindingConditionArgs.builder()
@@ -746,6 +843,24 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniammember" "member" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -754,8 +869,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMember;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -768,10 +883,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -887,6 +1002,29 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniammember" "member" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   member     = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -896,8 +1034,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMember;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMemberArgs;
 /// import com.pulumi.gcp.iap.inputs.AppEngineVersionIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -910,10 +1048,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .condition(AppEngineVersionIamMemberConditionArgs.builder()
@@ -953,8 +1091,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineVersion. Each of these resources serves a different use case:
 ///
 /// * `gcp.iap.AppEngineVersionIamPolicy`: Authoritative. Sets the IAM policy for the appengineversion and replaces any existing policy already attached.
-/// * `gcp.iap.AppEngineVersionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the appengineversion are preserved.
-/// * `gcp.iap.AppEngineVersionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the appengineversion are preserved.
+/// * `gcp.iap.AppEngineVersionIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the appengineversion are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.iap.AppEngineVersionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the appengineversion are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -962,7 +1100,7 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 /// &gt; **Note:** `gcp.iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineVersionIamBinding` and `gcp.iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -1075,6 +1213,30 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+///   project     = version.project
+///   app_id      = version.project
+///   service     = version.service
+///   version_id  = version.versionId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1083,10 +1245,11 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicy;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1106,10 +1269,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1267,6 +1430,35 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+///   project     = version.project
+///   app_id      = version.project
+///   service     = version.service
+///   version_id  = version.versionId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1275,10 +1467,12 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicy;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1303,10 +1497,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new AppEngineVersionIamPolicy("policy", AppEngineVersionIamPolicyArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1416,6 +1610,24 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniambinding" "binding" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1424,8 +1636,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBinding;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1438,10 +1650,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1563,6 +1775,29 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniambinding" "binding" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   members    = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1572,8 +1807,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBinding;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamBindingArgs;
 /// import com.pulumi.gcp.iap.inputs.AppEngineVersionIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1586,10 +1821,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AppEngineVersionIamBinding("binding", AppEngineVersionIamBindingArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .condition(AppEngineVersionIamBindingConditionArgs.builder()
@@ -1693,6 +1928,24 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniammember" "member" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1701,8 +1954,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMember;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1715,10 +1968,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1834,6 +2087,29 @@ import 'app_engine_version_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_appengineversioniammember" "member" {
+///   project    = version.project
+///   app_id     = version.project
+///   service    = version.service
+///   version_id = version.versionId
+///   role       = "roles/iap.httpsResourceAccessor"
+///   member     = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1843,8 +2119,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMember;
 /// import com.pulumi.gcp.iap.AppEngineVersionIamMemberArgs;
 /// import com.pulumi.gcp.iap.inputs.AppEngineVersionIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1857,10 +2133,10 @@ import 'app_engine_version_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AppEngineVersionIamMember("member", AppEngineVersionIamMemberArgs.builder()
-///             .project(version.project())
-///             .appId(version.project())
-///             .service(version.service())
-///             .versionId(version.versionId())
+///             .project(version.get("project"))
+///             .appId(version.get("project"))
+///             .service(version.get("service"))
+///             .versionId(version.get("versionId"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .condition(AppEngineVersionIamMemberConditionArgs.builder()
@@ -1896,11 +2172,8 @@ import 'app_engine_version_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}}
-///
 /// * {{project}}/{{appId}}/{{service}}/{{versionId}}
-///
 /// * {{appId}}/{{service}}/{{versionId}}
-///
 /// * {{version}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1908,25 +2181,21 @@ import 'app_engine_version_iam_binding_state.dart';
 /// Identity-Aware Proxy appengineversion IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor user:jane@example.com"
+/// $ terraform import google_iap_app_engine_version_iam_member.editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor"
+/// $ terraform import google_iap_app_engine_version_iam_binding.editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class AppEngineVersionIamBinding extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to
@@ -1953,7 +2222,7 @@ class AppEngineVersionIamBinding extends pulumi.CustomResource {
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
   /// The role that should be applied. Only one
-  /// `gcp.iap.AppEngineVersionIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `gcp.iap.AppEngineVersionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
   /// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to

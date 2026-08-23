@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'datapolicyv2_data_policy_args.dart';
+import 'datapolicyv2_data_policy_data_governance_tag.dart';
 import 'datapolicyv2_data_policy_data_masking_policy.dart';
 import 'datapolicyv2_data_policy_state.dart';
 
@@ -76,6 +77,21 @@ import 'datapolicyv2_data_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_datapolicyv2datapolicy" "basic_data_policy" {
+///   location         = "us-central1"
+///   data_policy_type = "RAW_DATA_ACCESS_POLICY"
+///   data_policy_id   = "basic_data_policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +100,8 @@ import 'datapolicyv2_data_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicy;
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +208,24 @@ import 'datapolicyv2_data_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_datapolicyv2datapolicy" "predefined_masking_data_policy" {
+///   location         = "us-central1"
+///   data_policy_type = "DATA_MASKING_POLICY"
+///   data_masking_policy = {
+///     predefined_expression = "SHA256"
+///   }
+///   data_policy_id = "predefined_masking_data_policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +235,8 @@ import 'datapolicyv2_data_policy_state.dart';
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicy;
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicyArgs;
 /// import com.pulumi.gcp.bigquery.inputs.Datapolicyv2DataPolicyDataMaskingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,7 +420,7 @@ import 'datapolicyv2_data_policy_state.dart';
 /// 			DataPolicyId:   pulumi.String("routine_data_policy"),
 /// 			DataPolicyType: pulumi.String("DATA_MASKING_POLICY"),
 /// 			DataMaskingPolicy: &bigquery.Datapolicyv2DataPolicyDataMaskingPolicyArgs{
-/// 				Routine: customMaskingRoutine.ID(),
+/// 				Routine: customMaskingRoutine.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -394,6 +428,41 @@ import 'datapolicyv2_data_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_datapolicyv2datapolicy" "routine_data_policy" {
+///   location         = "us-central1"
+///   data_policy_id   = "routine_data_policy"
+///   data_policy_type = "DATA_MASKING_POLICY"
+///   data_masking_policy = {
+///     routine = gcp_bigquery_routine.custom_masking_routine.id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+///   location   = "us-central1"
+/// }
+/// resource "gcp_bigquery_routine" "custom_masking_routine" {
+///   dataset_id           = gcp_bigquery_dataset.test.dataset_id
+///   routine_id           = "custom_masking_routine"
+///   routine_type         = "SCALAR_FUNCTION"
+///   language             = "SQL"
+///   data_governance_type = "DATA_MASKING"
+///   definition_body      = "SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')"
+///   return_type          = "{\"typeKind\" :  \"STRING\"}"
+///   arguments {
+///     name      = "ssn"
+///     data_type = "{\"typeKind\" :  \"STRING\"}"
+///   }
 /// }
 /// ```
 /// ```java
@@ -410,8 +479,8 @@ import 'datapolicyv2_data_policy_state.dart';
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicy;
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicyArgs;
 /// import com.pulumi.gcp.bigquery.inputs.Datapolicyv2DataPolicyDataMaskingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -557,6 +626,22 @@ import 'datapolicyv2_data_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_datapolicyv2datapolicy" "data_policy_with_grantees" {
+///   location         = "us-central1"
+///   data_policy_type = "RAW_DATA_ACCESS_POLICY"
+///   grantees         = ["principal://goog/subject/jane@example.com"]
+///   data_policy_id   = "data_policy_with_grantees"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -565,8 +650,8 @@ import 'datapolicyv2_data_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicy;
 /// import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -607,25 +692,21 @@ import 'datapolicyv2_data_policy_state.dart';
 /// DataPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
-///
 /// * `{{project}}/{{location}}/{{data_policy_id}}`
-///
 /// * `{{location}}/{{data_policy_id}}`
+///
 ///
 /// When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default {{project}}/{{location}}/{{data_policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default {{location}}/{{data_policy_id}}
 /// ```
 class Datapolicyv2DataPolicy extends pulumi.CustomResource {
+  /// Data Governance tag bound to the Data Policy.
+  /// Structure is documented below.
+  late final pulumi.Output<Datapolicyv2DataPolicyDataGovernanceTag?> dataGovernanceTag;
   /// The policy used to specify data masking rule.
   /// Structure is documented below.
   late final pulumi.Output<Datapolicyv2DataPolicyDataMaskingPolicy?> dataMaskingPolicy;
@@ -639,6 +720,13 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
   /// RAW_DATA_ACCESS_POLICY
   /// COLUMN_LEVEL_SECURITY_POLICY
   late final pulumi.Output<String> dataPolicyType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The etag for this Data Policy.
   /// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
   /// field is required and must match the server's etag. It will also be
@@ -651,7 +739,7 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
   /// syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
   /// supports principal types users, groups, serviceaccounts, cloudidentity.
   /// This field is supported in V2 Data Policy only. In case of V1 data policies
-  /// (i.e. verion = 1 and policy_tag is set), this field is not populated.
+  /// (i.e. verion = 1 and policyTag is set), this field is not populated.
   late final pulumi.Output<List<String>> grantees;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -660,7 +748,7 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Policy tag resource name, in the format of
   /// `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-  /// policy_tag is supported only for V1 data policies.
+  /// policyTag is supported only for V1 data policies.
   late final pulumi.Output<String> policyTag;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -685,9 +773,11 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataGovernanceTag = registerOutput<Datapolicyv2DataPolicyDataGovernanceTag?>('dataGovernanceTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataGovernanceTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataMaskingPolicy = registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     grantees = registerOutput<List<String>>('grantees');
     location = registerOutput<String>('location');
@@ -720,9 +810,11 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataGovernanceTag = registerOutput<Datapolicyv2DataPolicyDataGovernanceTag?>('dataGovernanceTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataGovernanceTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataMaskingPolicy = registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     grantees = registerOutput<List<String>>('grantees');
     location = registerOutput<String>('location');

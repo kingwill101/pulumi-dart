@@ -68,6 +68,20 @@ import 'shared_vpcservice_project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_sharedvpcserviceproject" "service1" {
+///   host_project    = "host-project-id"
+///   service_project = "service-project-id-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +90,8 @@ import 'shared_vpcservice_project_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SharedVPCServiceProject;
 /// import com.pulumi.gcp.compute.SharedVPCServiceProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -112,14 +126,15 @@ import 'shared_vpcservice_project_state.dart';
 ///
 /// ## Import
 ///
-/// Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
+/// Google Compute Engine Shared VPC service project feature can be imported using the `hostProject` and `serviceProject`, e.g.
 ///
 /// * `{{host_project}/{{service_project}}`
 ///
+///
 /// When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
 ///
-/// ```sh
-/// $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
+/// ```
+/// $ terraform import google_compute_shared_vpc_service_project.default {{host_project}/{{service_project}}
 /// ```
 class SharedVPCServiceProject extends pulumi.CustomResource {
   /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".

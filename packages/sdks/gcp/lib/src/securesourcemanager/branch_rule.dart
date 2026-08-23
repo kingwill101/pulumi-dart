@@ -131,6 +131,33 @@ import 'branch_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securesourcemanager_instance" "instance" {
+///   location        = "us-central1"
+///   instance_id     = "my-basic-instance"
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_securesourcemanager_repository" "repository" {
+///   repository_id   = "my-basic-repository"
+///   location        = gcp_securesourcemanager_instance.instance.location
+///   instance        = gcp_securesourcemanager_instance.instance.name
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_securesourcemanager_branchrule" "basic" {
+///   branch_rule_id  = "my-basic-branchrule"
+///   repository_id   = gcp_securesourcemanager_repository.repository.repository_id
+///   location        = gcp_securesourcemanager_repository.repository.location
+///   include_pattern = "main"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +170,8 @@ import 'branch_rule_state.dart';
 /// import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
 /// import com.pulumi.gcp.securesourcemanager.BranchRule;
 /// import com.pulumi.gcp.securesourcemanager.BranchRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,6 +376,40 @@ import 'branch_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securesourcemanager_instance" "instance" {
+///   location        = "us-central1"
+///   instance_id     = "my-initial-instance"
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_securesourcemanager_repository" "repository" {
+///   repository_id   = "my-initial-repository"
+///   instance        = gcp_securesourcemanager_instance.instance.name
+///   location        = gcp_securesourcemanager_instance.instance.location
+///   deletion_policy = "PREVENT"
+/// }
+/// resource "gcp_securesourcemanager_branchrule" "default" {
+///   branch_rule_id            = "my-initial-branchrule"
+///   location                  = gcp_securesourcemanager_repository.repository.location
+///   repository_id             = gcp_securesourcemanager_repository.repository.repository_id
+///   include_pattern           = "test"
+///   minimum_approvals_count   = 2
+///   minimum_reviews_count     = 2
+///   require_comments_resolved = true
+///   require_linear_history    = true
+///   require_pull_request      = true
+///   disabled                  = false
+///   allow_stale_reviews       = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -361,8 +422,8 @@ import 'branch_rule_state.dart';
 /// import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
 /// import com.pulumi.gcp.securesourcemanager.BranchRule;
 /// import com.pulumi.gcp.securesourcemanager.BranchRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,28 +502,17 @@ import 'branch_rule_state.dart';
 /// BranchRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}`
-///
 /// * `{{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}`
-///
 /// * `{{location}}/{{repository_id}}/{{branch_rule_id}}`
-///
 /// * `{{branch_rule_id}}`
+///
 ///
 /// When using the `pulumi import` command, BranchRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{location}}/{{repository_id}}/{{branch_rule_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{branch_rule_id}}
 /// ```
 class BranchRule extends pulumi.CustomResource {
@@ -472,6 +522,13 @@ class BranchRule extends pulumi.CustomResource {
   late final pulumi.Output<String> branchRuleId;
   /// Time the BranchRule was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Determines if the branch rule is disabled or not.
   late final pulumi.Output<bool?> disabled;
   /// The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
@@ -517,6 +574,7 @@ class BranchRule extends pulumi.CustomResource {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     includePattern = registerOutput<String>('includePattern');
     location = registerOutput<String>('location');
@@ -558,6 +616,7 @@ class BranchRule extends pulumi.CustomResource {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     includePattern = registerOutput<String>('includePattern');
     location = registerOutput<String>('location');

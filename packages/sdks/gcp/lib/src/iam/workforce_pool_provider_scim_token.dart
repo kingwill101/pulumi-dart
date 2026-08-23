@@ -12,6 +12,8 @@ import 'workforce_pool_provider_scim_token_state.dart';
 /// * How-to Guides
 /// * [Create a SCIM Token for the SCIM Tenant](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
 ///
+///
+///
 /// ## Example Usage
 ///
 /// ### Iam Workforce Pool Provider Scim Token Basic
@@ -295,6 +297,68 @@ import 'workforce_pool_provider_scim_token_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workforcepool" "pool" {
+///   workforce_pool_id = "example-pool"
+///   parent            = "organizations/123456789"
+///   location          = "global"
+/// }
+/// resource "gcp_iam_workforcepoolprovider" "provider" {
+///   location          = "global"
+///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   provider_id       = "example-prvdr"
+///   attribute_mapping = {
+///     "google.subject" = "assertion.sub"
+///   }
+///   oidc = {
+///     issuer_uri = "https://accounts.thirdparty.com"
+///     client_id  = "client-id"
+///     client_secret = {
+///       value = {
+///         plain_text = "client-secret"
+///       }
+///     }
+///     web_sso_config = {
+///       response_type             = "CODE"
+///       assertion_claims_behavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"
+///       additional_scopes         = ["groups", "roles"]
+///     }
+///   }
+///   display_name        = "Display name"
+///   description         = "A sample OIDC workforce pool provider."
+///   disabled            = false
+///   attribute_condition = "true"
+/// }
+/// resource "gcp_iam_workforcepoolproviderscimtenant" "tenant" {
+///   location          = "global"
+///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   provider_id       = gcp_iam_workforcepoolprovider.provider.provider_id
+///   scim_tenant_id    = "example-tenant"
+///   display_name      = "SCIM Tenant display Name"
+///   description       = "A SCIM Tenant for IAM Workforce Pool Provider"
+///   claim_mapping = {
+///     "google.subject" = "user.externalId"
+///     "google.group"   = "group.externalId"
+///   }
+///   hard_delete = true
+/// }
+/// resource "gcp_iam_workforcepoolproviderscimtoken" "example" {
+///   location          = "global"
+///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   provider_id       = gcp_iam_workforcepoolprovider.provider.provider_id
+///   scim_tenant_id    = gcp_iam_workforcepoolproviderscimtenant.tenant.scim_tenant_id
+///   scim_token_id     = "example-scim-token"
+///   display_name      = "SCIM Token display Name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -313,8 +377,8 @@ import 'workforce_pool_provider_scim_token_state.dart';
 /// import com.pulumi.gcp.iam.WorkforcePoolProviderScimTenantArgs;
 /// import com.pulumi.gcp.iam.WorkforcePoolProviderScimToken;
 /// import com.pulumi.gcp.iam.WorkforcePoolProviderScimTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,19 +511,23 @@ import 'workforce_pool_provider_scim_token_state.dart';
 /// WorkforcePoolProviderScimToken can be imported using any of these accepted formats:
 ///
 /// * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}/tokens/{{scim_token_id}}`
-///
 /// * `{{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}/{{scim_token_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkforcePoolProviderScimToken can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}/tokens/{{scim_token_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}/{{scim_token_id}}
 /// ```
 class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-specified display name for the scim token. Cannot exceed 32 characters.
   late final pulumi.Output<String?> displayName;
   /// The location for the resource.
@@ -474,6 +542,7 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
   /// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
   late final pulumi.Output<String> scimTokenId;
   /// The token string provided to the IdP for authentication and will be set only during creation.
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> securityToken;
   /// The current state of the scim token.
   /// * ACTIVE: The token is active and may be used to provision users and groups.
@@ -496,6 +565,7 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -530,6 +600,7 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

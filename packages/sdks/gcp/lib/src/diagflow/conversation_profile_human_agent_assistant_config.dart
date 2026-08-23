@@ -13,7 +13,7 @@ class ConversationProfileHumanAgentAssistantConfig {
   /// Configuration for agent assistance of human agent participant.
   /// Structure is documented below.
   final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig>? humanAgentSuggestionConfig;
-  /// desc
+  /// Configuration for analyzing conversation messages.
   /// Structure is documented below.
   final pulumi.Input<ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig>? messageAnalysisConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
@@ -24,7 +24,7 @@ class ConversationProfileHumanAgentAssistantConfig {
   /// Creates a new [ConversationProfileHumanAgentAssistantConfig].
   /// [endUserSuggestionConfig] Configuration for agent assistance of end user participant.
   /// [humanAgentSuggestionConfig] Configuration for agent assistance of human agent participant.
-  /// [messageAnalysisConfig] desc
+  /// [messageAnalysisConfig] Configuration for analyzing conversation messages.
   /// [notificationConfig] Pub/Sub topic on which to publish new agent assistant events.
   const ConversationProfileHumanAgentAssistantConfig({
     this.endUserSuggestionConfig,
@@ -51,4 +51,3 @@ class ConversationProfileHumanAgentAssistantConfig {
     );
   }
 }
-

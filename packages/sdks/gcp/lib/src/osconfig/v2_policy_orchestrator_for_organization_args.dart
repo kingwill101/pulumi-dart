@@ -11,15 +11,22 @@ import 'v2_policy_orchestrator_for_organization_orchestration_scope.dart';
 class V2PolicyOrchestratorForOrganizationArgs {
   /// Required. Action to be done by the orchestrator in
   /// `projects/{project_id}/zones/{zone_id}` locations defined by the
-  /// `orchestration_scope`. Allowed values:
+  /// `orchestrationScope`. Allowed values:
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   final pulumi.Input<String> action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Freeform text describing the purpose of the resource.
   final pulumi.Input<String>? description;
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
@@ -52,6 +59,7 @@ class V2PolicyOrchestratorForOrganizationArgs {
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationArgs].
   /// [action] Required. Action to be done by the orchestrator in
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. Freeform text describing the purpose of the resource.
   /// [labels] Optional. Labels as key value pairs
   /// [orchestratedResource] Represents a resource that is being orchestrated by the policy orchestrator.
@@ -61,6 +69,7 @@ class V2PolicyOrchestratorForOrganizationArgs {
   /// [state] Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   const V2PolicyOrchestratorForOrganizationArgs({
     required this.action,
+    this.deletionPolicy,
     this.description,
     this.labels,
     required this.orchestratedResource,
@@ -73,6 +82,7 @@ class V2PolicyOrchestratorForOrganizationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'orchestratedResource': pulumi.Input.mapInputValue<V2PolicyOrchestratorForOrganizationOrchestratedResource, Map<String, dynamic>>(orchestratedResource, (value) => value.toMap()),
@@ -86,6 +96,7 @@ class V2PolicyOrchestratorForOrganizationArgs {
   factory V2PolicyOrchestratorForOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationArgs(
       action: pulumi.Input.fromValue(map['action'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       orchestratedResource: pulumi.Input.fromValue(V2PolicyOrchestratorForOrganizationOrchestratedResource.fromMap((map['orchestratedResource']! as Map).cast<String, dynamic>())),
@@ -96,4 +107,3 @@ class V2PolicyOrchestratorForOrganizationArgs {
     );
   }
 }
-

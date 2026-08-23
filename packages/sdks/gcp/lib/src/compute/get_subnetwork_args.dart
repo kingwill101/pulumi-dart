@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_get_subnetwork_get_subnetwork_args_doc}
 class GetSubnetworkArgs {
-  /// The name of the subnetwork. One of `name` or `self_link`
+  /// The name of the subnetwork. One of `name` or `selfLink`
   /// must be specified.
   final pulumi.Input<String>? name;
   /// The ID of the project in which the resource belongs. If it
@@ -16,15 +16,15 @@ class GetSubnetworkArgs {
   /// The region this subnetwork has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
   final pulumi.Input<String>? region;
-  /// The self link of the subnetwork. If `self_link` is
+  /// The self link of the subnetwork. If `selfLink` is
   /// specified, `name`, `project`, and `region` are ignored.
   final pulumi.Input<String>? selfLink;
 
   /// Creates a new [GetSubnetworkArgs].
-  /// [name] The name of the subnetwork. One of `name` or `self_link`
+  /// [name] The name of the subnetwork. One of `name` or `selfLink`
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region this subnetwork has been created in. If
-  /// [selfLink] The self link of the subnetwork. If `self_link` is
+  /// [selfLink] The self link of the subnetwork. If `selfLink` is
   const GetSubnetworkArgs({
     this.name,
     this.project,
@@ -50,4 +50,3 @@ class GetSubnetworkArgs {
     );
   }
 }
-

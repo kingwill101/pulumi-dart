@@ -20,12 +20,21 @@ class GetAutonomousDatabasesAutonomousDatabase {
   /// the project. The name must begin with a letter and can
   /// contain a maximum of 30 alphanumeric characters.
   final pulumi.Input<String> database;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
   final pulumi.Input<bool> deletionProtection;
   /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
   final pulumi.Input<List<String>> disasterRecoverySupportedLocations;
   /// The display name for the Autonomous Database. The name does not have to
   /// be unique within your project.
   final pulumi.Input<String> displayName;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveLabels;
   /// The ID of the subscription entitlement associated with the Autonomous
   /// Database.
@@ -49,7 +58,7 @@ class GetAutonomousDatabasesAutonomousDatabase {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
-  /// the odb_subnet and backup_odb_subnet.
+  /// the odbSubnet and backup_odb_subnet.
   final pulumi.Input<String> odbNetwork;
   /// The name of the OdbSubnet associated with the Autonomous Database for
   /// IP allocation. Format:
@@ -74,10 +83,11 @@ class GetAutonomousDatabasesAutonomousDatabase {
   /// [cidr] The subnet CIDR range for the Autonmous Database.
   /// [createTime] The date and time that the Autonomous Database was created.
   /// [database] The name of the Autonomous Database. The database name must be unique in
-  /// [deletionProtection] Required.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// [deletionProtection] Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
   /// [disasterRecoverySupportedLocations] List of supported GCP region to clone the Autonomous Database for disaster recovery.
   /// [displayName] The display name for the Autonomous Database. The name does not have to
-  /// [effectiveLabels] Required.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   /// [entitlementId] The ID of the subscription entitlement associated with the Autonomous
   /// [labels] The labels or tags associated with the Autonomous Database.
   /// [location] The location of the resource.
@@ -96,6 +106,7 @@ class GetAutonomousDatabasesAutonomousDatabase {
     required this.cidr,
     required this.createTime,
     required this.database,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.disasterRecoverySupportedLocations,
     required this.displayName,
@@ -121,6 +132,7 @@ class GetAutonomousDatabasesAutonomousDatabase {
       'cidr': cidr,
       'createTime': createTime,
       'database': database,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'disasterRecoverySupportedLocations': disasterRecoverySupportedLocations,
       'displayName': displayName,
@@ -147,6 +159,7 @@ class GetAutonomousDatabasesAutonomousDatabase {
       cidr: pulumi.Input.fromValue(map['cidr'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       database: pulumi.Input.fromValue(map['database'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       disasterRecoverySupportedLocations: pulumi.Input.fromValue((map['disasterRecoverySupportedLocations'] as List).cast<String>()),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
@@ -166,4 +179,3 @@ class GetAutonomousDatabasesAutonomousDatabase {
     );
   }
 }
-

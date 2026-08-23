@@ -6,10 +6,17 @@ import 'access_approval_settings_enrolled_service.dart';
 /// Input properties used for looking up and filtering AccessApprovalSettings resources.
 class AccessApprovalSettingsState {
   /// The asymmetric crypto key version to use for signing approval requests.
-  /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+  /// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
   final pulumi.Input<String>? activeKeyVersion;
   /// This field will always be unset for the organization since organizations do not have ancestors.
   final pulumi.Input<bool>? ancestorHasActiveKeyVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// This field will always be unset for the organization since organizations do not have ancestors.
   final pulumi.Input<bool>? enrolledAncestor;
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -18,7 +25,7 @@ class AccessApprovalSettingsState {
   /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
   /// Structure is documented below.
   final pulumi.Input<List<AccessApprovalSettingsEnrolledService>>? enrolledServices;
-  /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+  /// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
   /// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
   /// correct permissions on it, etc.).
   final pulumi.Input<bool>? invalidKeyVersion;
@@ -34,15 +41,17 @@ class AccessApprovalSettingsState {
   /// Creates a new [AccessApprovalSettingsState].
   /// [activeKeyVersion] The asymmetric crypto key version to use for signing approval requests.
   /// [ancestorHasActiveKeyVersion] This field will always be unset for the organization since organizations do not have ancestors.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [enrolledAncestor] This field will always be unset for the organization since organizations do not have ancestors.
   /// [enrolledServices] A list of Google Cloud Services for which the given resource has Access Approval enrolled.
-  /// [invalidKeyVersion] If the field is true, that indicates that there is some configuration issue with the active_key_version
+  /// [invalidKeyVersion] If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
   /// [name] The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
   /// [organizationId] ID of the organization of the access approval settings.
   const AccessApprovalSettingsState({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
+    this.deletionPolicy,
     this.enrolledAncestor,
     this.enrolledServices,
     this.invalidKeyVersion,
@@ -55,6 +64,7 @@ class AccessApprovalSettingsState {
     return <String, dynamic>{
       'activeKeyVersion': ?activeKeyVersion,
       'ancestorHasActiveKeyVersion': ?ancestorHasActiveKeyVersion,
+      'deletionPolicy': ?deletionPolicy,
       'enrolledAncestor': ?enrolledAncestor,
       'enrolledServices': ?pulumi.Input.mapOptionalInputValue<List<AccessApprovalSettingsEnrolledService>, List<Map<String, dynamic>>>(enrolledServices, (value) => pulumi.Input.encodeList<AccessApprovalSettingsEnrolledService, Map<String, dynamic>>(value, (value) => value.toMap())),
       'invalidKeyVersion': ?invalidKeyVersion,
@@ -68,6 +78,7 @@ class AccessApprovalSettingsState {
     return AccessApprovalSettingsState(
       activeKeyVersion: (() { final guardedValue = map['activeKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ancestorHasActiveKeyVersion: (() { final guardedValue = map['ancestorHasActiveKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enrolledAncestor: (() { final guardedValue = map['enrolledAncestor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enrolledServices: (() { final guardedValue = map['enrolledServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(guardedValue, (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))); })(),
       invalidKeyVersion: (() { final guardedValue = map['invalidKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -77,4 +88,3 @@ class AccessApprovalSettingsState {
     );
   }
 }
-

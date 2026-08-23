@@ -136,7 +136,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                pulumi.String("website-backend"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
-/// 			HealthChecks:        hc.ID(),
+/// 			HealthChecks:        hc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -146,13 +146,45 @@ import 'forwarding_rule_state.dart';
 /// 			Name:           pulumi.String("website-forwarding-rule"),
 /// 			Region:         pulumi.String("us-central1"),
 /// 			PortRange:      pulumi.String("80"),
-/// 			BackendService: backend.ID(),
+/// 			BackendService: backend.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Forwarding rule for External Network Load Balancing using Backend Services
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name            = "website-forwarding-rule"
+///   region          = "us-central1"
+///   port_range      = 80
+///   backend_service = gcp_compute_regionbackendservice.backend.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name                  = "website-backend"
+///   region                = "us-central1"
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_regionhealthcheck.hc.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "hc" {
+///   name               = "check-website-backend"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   region             = "us-central1"
+///   tcp_health_check = {
+///     port = "80"
+///   }
 /// }
 /// ```
 /// ```java
@@ -168,8 +200,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,7 +425,7 @@ import 'forwarding_rule_state.dart';
 /// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("website-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: hc.ID(),
+/// 			HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -409,7 +441,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("website-net"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -419,7 +451,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                pulumi.String("website-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      backend.ID(),
+/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			AllowGlobalAccess:   pulumi.Bool(true),
 /// 			Network:             defaultNetwork.Name,
@@ -430,6 +462,50 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Forwarding rule for Internal Load Balancing
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                  = "website-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   all_ports             = true
+///   allow_global_access   = true
+///   network               = gcp_compute_network.default.name
+///   subnetwork            = gcp_compute_subnetwork.default.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name          = "website-backend"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.hc.id
+/// }
+/// resource "gcp_compute_healthcheck" "hc" {
+///   name               = "check-website-backend"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "website-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "website-net"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -449,8 +525,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,7 +689,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		_, err = compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
 /// 			Name:      pulumi.String("website-forwarding-rule"),
-/// 			Target:    defaultTargetPool.ID(),
+/// 			Target:    defaultTargetPool.ID().ToIDOutput().ToStringOutput(),
 /// 			PortRange: pulumi.String("80"),
 /// 		})
 /// 		if err != nil {
@@ -621,6 +697,24 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name       = "website-forwarding-rule"
+///   target     = gcp_compute_targetpool.default.id
+///   port_range = "80"
+/// }
+/// resource "gcp_compute_targetpool" "default" {
+///   name = "website-target-pool"
 /// }
 /// ```
 /// ```java
@@ -633,8 +727,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.TargetPoolArgs;
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -785,7 +879,7 @@ import 'forwarding_rule_state.dart';
 /// 		service, err := compute.NewRegionBackendService(ctx, "service", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Name:                pulumi.String("service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocol:            pulumi.String("UNSPECIFIED"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 /// 		})
@@ -794,7 +888,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		_, err = compute.NewForwardingRule(ctx, "fwd_rule", &compute.ForwardingRuleArgs{
 /// 			Name:           pulumi.String("l3-forwarding-rule"),
-/// 			BackendService: service.ID(),
+/// 			BackendService: service.ID().ToIDOutput().ToStringOutput(),
 /// 			IpProtocol:     pulumi.String("L3_DEFAULT"),
 /// 			AllPorts:       pulumi.Bool(true),
 /// 		})
@@ -803,6 +897,36 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_forwardingrule" "fwd_rule" {
+///   name            = "l3-forwarding-rule"
+///   backend_service = gcp_compute_regionbackendservice.service.id
+///   ip_protocol     = "L3_DEFAULT"
+///   all_ports       = true
+/// }
+/// resource "gcp_compute_regionbackendservice" "service" {
+///   region                = "us-central1"
+///   name                  = "service"
+///   health_checks         = gcp_compute_regionhealthcheck.health_check.id
+///   protocol              = "UNSPECIFIED"
+///   load_balancing_scheme = "EXTERNAL"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "health_check" {
+///   name   = "health-check"
+///   region = "us-central1"
+///   tcp_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -818,8 +942,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1041,7 +1165,7 @@ import 'forwarding_rule_state.dart';
 /// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("website-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: hc.ID(),
+/// 			HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1057,7 +1181,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("website-net"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1067,7 +1191,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                pulumi.String("website-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      backend.ID(),
+/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             defaultNetwork.Name,
 /// 			Subnetwork:          defaultSubnetwork.Name,
@@ -1078,6 +1202,50 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Forwarding rule for Internal Load Balancing
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                  = "website-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.default.name
+///   subnetwork            = gcp_compute_subnetwork.default.name
+///   ip_version            = "IPV4"
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name          = "website-backend"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.hc.id
+/// }
+/// resource "gcp_compute_healthcheck" "hc" {
+///   name               = "check-website-backend"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "website-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "website-net"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -1097,8 +1265,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1482,7 +1650,7 @@ import 'forwarding_rule_state.dart';
 ///     backends=[{
 ///         "group": rigm.instance_group,
 ///         "balancing_mode": "UTILIZATION",
-///         "capacity_scaler": 1,
+///         "capacity_scaler": float(1),
 ///     }],
 ///     region="us-central1",
 ///     name="website-backend",
@@ -1750,7 +1918,7 @@ import 'forwarding_rule_state.dart';
 ///             {
 ///                 Group = rigm.InstanceGroup,
 ///                 BalancingMode = "UTILIZATION",
-///                 CapacityScaler = 1,
+///                 CapacityScaler = 1.0,
 ///             },
 ///         },
 ///         Region = "us-central1",
@@ -1835,7 +2003,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("website-net-default"),
 /// 			IpCidrRange: pulumi.String("10.1.2.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1845,8 +2013,8 @@ import 'forwarding_rule_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-/// 					Network:    defaultNetwork.ID(),
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Network:    defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Disks: compute.InstanceTemplateDiskArray{
@@ -1869,7 +2037,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:   pulumi.String("website-rigm"),
 /// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
 /// 				&compute.RegionInstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: instanceTemplate.ID(),
+/// 					InstanceTemplate: instanceTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 					Name:             pulumi.String("primary"),
 /// 				},
 /// 			},
@@ -1881,7 +2049,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw1, err := compute.NewFirewall(ctx, "fw1", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-1"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("10.1.2.0/24"),
 /// 			},
@@ -1903,7 +2071,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw2, err := compute.NewFirewall(ctx, "fw2", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-2"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("0.0.0.0/0"),
 /// 			},
@@ -1927,7 +2095,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw3, err := compute.NewFirewall(ctx, "fw3", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-3"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("130.211.0.0/22"),
 /// 				pulumi.String("35.191.0.0/16"),
@@ -1949,7 +2117,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw4, err := compute.NewFirewall(ctx, "fw4", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-4"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("10.129.0.0/26"),
 /// 			},
@@ -2008,7 +2176,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:         pulumi.String("website-backend"),
 /// 			Protocol:     pulumi.String("HTTP"),
 /// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultRegionHealthCheck.ID(),
+/// 			HealthChecks: defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2016,7 +2184,7 @@ import 'forwarding_rule_state.dart';
 /// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("website-map"),
-/// 			DefaultService: defaultRegionBackendService.ID(),
+/// 			DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2024,7 +2192,7 @@ import 'forwarding_rule_state.dart';
 /// 		defaultRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
 /// 			Region: pulumi.String("us-central1"),
 /// 			Name:   pulumi.String("website-proxy"),
-/// 			UrlMap: defaultRegionUrlMap.ID(),
+/// 			UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2033,7 +2201,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("website-net-proxy"),
 /// 			IpCidrRange: pulumi.String("10.129.0.0/26"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
@@ -2047,9 +2215,9 @@ import 'forwarding_rule_state.dart';
 /// 			IpProtocol:          pulumi.String("TCP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			PortRange:           pulumi.String("80"),
-/// 			Target:              defaultRegionTargetHttpProxy.ID(),
-/// 			Network:             defaultNetwork.ID(),
-/// 			Subnetwork:          defaultSubnetwork.ID(),
+/// 			Target:              defaultRegionTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkTier:         pulumi.String("PREMIUM"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxy,
@@ -2059,6 +2227,166 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debianImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// // Forwarding rule for Internal Load Balancing
+/// resource "gcp_compute_forwardingrule" "default" {
+///   depends_on            = [gcp_compute_subnetwork.proxy]
+///   name                  = "website-forwarding-rule"
+///   region                = "us-central1"
+///   ip_protocol           = "TCP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   port_range            = "80"
+///   target                = gcp_compute_regiontargethttpproxy.default.id
+///   network               = gcp_compute_network.default.id
+///   subnetwork            = gcp_compute_subnetwork.default.id
+///   network_tier          = "PREMIUM"
+/// }
+/// resource "gcp_compute_regiontargethttpproxy" "default" {
+///   region  = "us-central1"
+///   name    = "website-proxy"
+///   url_map = gcp_compute_regionurlmap.default.id
+/// }
+/// resource "gcp_compute_regionurlmap" "default" {
+///   region          = "us-central1"
+///   name            = "website-map"
+///   default_service = gcp_compute_regionbackendservice.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   backends {
+///     group           = gcp_compute_regioninstancegroupmanager.rigm.instance_group
+///     balancing_mode  = "UTILIZATION"
+///     capacity_scaler = 1
+///   }
+///   region        = "us-central1"
+///   name          = "website-backend"
+///   protocol      = "HTTP"
+///   timeout_sec   = 10
+///   health_checks = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "rigm" {
+///   region = "us-central1"
+///   name   = "website-rigm"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.instance_template.id
+///     name              = "primary"
+///   }
+///   base_instance_name = "internal-glb"
+///   target_size        = 1
+/// }
+/// resource "gcp_compute_instancetemplate" "instance_template" {
+///   name         = "template-website-backend"
+///   machine_type = "e2-medium"
+///   network_interfaces {
+///     network    = gcp_compute_network.default.id
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   disks {
+///     source_image = data.gcp_compute_getimage.debianImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   tags = ["allow-ssh", "load-balanced-backend"]
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   depends_on = [gcp_compute_firewall.fw4]
+///   region     = "us-central1"
+///   name       = "website-hc"
+///   http_health_check = {
+///     port_specification = "USE_SERVING_PORT"
+///   }
+/// }
+/// resource "gcp_compute_firewall" "fw1" {
+///   name          = "website-fw-1"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["10.1.2.0/24"]
+///   allows {
+///     protocol = "tcp"
+///   }
+///   allows {
+///     protocol = "udp"
+///   }
+///   allows {
+///     protocol = "icmp"
+///   }
+///   direction = "INGRESS"
+/// }
+/// resource "gcp_compute_firewall" "fw2" {
+///   depends_on    = [gcp_compute_firewall.fw1]
+///   name          = "website-fw-2"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["0.0.0.0/0"]
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["22"]
+///   }
+///   target_tags = ["allow-ssh"]
+///   direction   = "INGRESS"
+/// }
+/// resource "gcp_compute_firewall" "fw3" {
+///   depends_on    = [gcp_compute_firewall.fw2]
+///   name          = "website-fw-3"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
+///   allows {
+///     protocol = "tcp"
+///   }
+///   target_tags = ["load-balanced-backend"]
+///   direction   = "INGRESS"
+/// }
+/// resource "gcp_compute_firewall" "fw4" {
+///   depends_on    = [gcp_compute_firewall.fw3]
+///   name          = "website-fw-4"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["10.129.0.0/26"]
+///   target_tags   = ["load-balanced-backend"]
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["80"]
+///   }
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["443"]
+///   }
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["8000"]
+///   }
+///   direction = "INGRESS"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "website-net"
+///   auto_create_subnetworks = false
+///   routing_mode            = "REGIONAL"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "website-net-default"
+///   ip_cidr_range = "10.1.2.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_subnetwork" "proxy" {
+///   name          = "website-net-proxy"
+///   ip_cidr_range = "10.129.0.0/26"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+///   purpose       = "REGIONAL_MANAGED_PROXY"
+///   role          = "ACTIVE"
 /// }
 /// ```
 /// ```java
@@ -2096,8 +2424,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2762,7 +3090,7 @@ import 'forwarding_rule_state.dart';
 ///     backends=[{
 ///         "group": rigm.instance_group,
 ///         "balancing_mode": "UTILIZATION",
-///         "capacity_scaler": 1,
+///         "capacity_scaler": float(1),
 ///     }],
 ///     region="us-central1",
 ///     name="website-backend",
@@ -3034,7 +3362,7 @@ import 'forwarding_rule_state.dart';
 ///             {
 ///                 Group = rigm.InstanceGroup,
 ///                 BalancingMode = "UTILIZATION",
-///                 CapacityScaler = 1,
+///                 CapacityScaler = 1.0,
 ///             },
 ///         },
 ///         Region = "us-central1",
@@ -3126,7 +3454,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("website-net-default"),
 /// 			IpCidrRange: pulumi.String("10.1.2.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3136,8 +3464,8 @@ import 'forwarding_rule_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-/// 					Network:    defaultNetwork.ID(),
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Network:    defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Disks: compute.InstanceTemplateDiskArray{
@@ -3160,7 +3488,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:   pulumi.String("website-rigm"),
 /// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
 /// 				&compute.RegionInstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: instanceTemplate.ID(),
+/// 					InstanceTemplate: instanceTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 					Name:             pulumi.String("primary"),
 /// 				},
 /// 			},
@@ -3172,7 +3500,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw1, err := compute.NewFirewall(ctx, "fw1", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-1"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("10.1.2.0/24"),
 /// 			},
@@ -3194,7 +3522,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw2, err := compute.NewFirewall(ctx, "fw2", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-2"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("0.0.0.0/0"),
 /// 			},
@@ -3218,7 +3546,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw3, err := compute.NewFirewall(ctx, "fw3", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-3"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("130.211.0.0/22"),
 /// 				pulumi.String("35.191.0.0/16"),
@@ -3240,7 +3568,7 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		fw4, err := compute.NewFirewall(ctx, "fw4", &compute.FirewallArgs{
 /// 			Name:    pulumi.String("website-fw-4"),
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRanges: pulumi.StringArray{
 /// 				pulumi.String("10.129.0.0/26"),
 /// 			},
@@ -3299,7 +3627,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:         pulumi.String("website-backend"),
 /// 			Protocol:     pulumi.String("HTTP"),
 /// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultRegionHealthCheck.ID(),
+/// 			HealthChecks: defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3307,7 +3635,7 @@ import 'forwarding_rule_state.dart';
 /// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("website-map"),
-/// 			DefaultService: defaultRegionBackendService.ID(),
+/// 			DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3315,7 +3643,7 @@ import 'forwarding_rule_state.dart';
 /// 		defaultRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
 /// 			Region: pulumi.String("us-central1"),
 /// 			Name:   pulumi.String("website-proxy"),
-/// 			UrlMap: defaultRegionUrlMap.ID(),
+/// 			UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3332,7 +3660,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("website-net-proxy"),
 /// 			IpCidrRange: pulumi.String("10.129.0.0/26"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
@@ -3346,8 +3674,8 @@ import 'forwarding_rule_state.dart';
 /// 			IpProtocol:          pulumi.String("TCP"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			PortRange:           pulumi.String("80"),
-/// 			Target:              defaultRegionTargetHttpProxy.ID(),
-/// 			Network:             defaultNetwork.ID(),
+/// 			Target:              defaultRegionTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpAddress:           defaultAddress.Address,
 /// 			NetworkTier:         pulumi.String("STANDARD"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -3358,6 +3686,171 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debianImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// // Forwarding rule for Regional External Load Balancing
+/// resource "gcp_compute_forwardingrule" "default" {
+///   depends_on            = [gcp_compute_subnetwork.proxy]
+///   name                  = "website-forwarding-rule"
+///   region                = "us-central1"
+///   ip_protocol           = "TCP"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   port_range            = "80"
+///   target                = gcp_compute_regiontargethttpproxy.default.id
+///   network               = gcp_compute_network.default.id
+///   ip_address            = gcp_compute_address.default.address
+///   network_tier          = "STANDARD"
+/// }
+/// resource "gcp_compute_regiontargethttpproxy" "default" {
+///   region  = "us-central1"
+///   name    = "website-proxy"
+///   url_map = gcp_compute_regionurlmap.default.id
+/// }
+/// resource "gcp_compute_regionurlmap" "default" {
+///   region          = "us-central1"
+///   name            = "website-map"
+///   default_service = gcp_compute_regionbackendservice.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   backends {
+///     group           = gcp_compute_regioninstancegroupmanager.rigm.instance_group
+///     balancing_mode  = "UTILIZATION"
+///     capacity_scaler = 1
+///   }
+///   region        = "us-central1"
+///   name          = "website-backend"
+///   protocol      = "HTTP"
+///   timeout_sec   = 10
+///   health_checks = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "rigm" {
+///   region = "us-central1"
+///   name   = "website-rigm"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.instance_template.id
+///     name              = "primary"
+///   }
+///   base_instance_name = "internal-glb"
+///   target_size        = 1
+/// }
+/// resource "gcp_compute_instancetemplate" "instance_template" {
+///   name         = "template-website-backend"
+///   machine_type = "e2-medium"
+///   network_interfaces {
+///     network    = gcp_compute_network.default.id
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   disks {
+///     source_image = data.gcp_compute_getimage.debianImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   tags = ["allow-ssh", "load-balanced-backend"]
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   depends_on = [gcp_compute_firewall.fw4]
+///   region     = "us-central1"
+///   name       = "website-hc"
+///   http_health_check = {
+///     port_specification = "USE_SERVING_PORT"
+///   }
+/// }
+/// resource "gcp_compute_address" "default" {
+///   name         = "website-ip-1"
+///   region       = "us-central1"
+///   network_tier = "STANDARD"
+/// }
+/// resource "gcp_compute_firewall" "fw1" {
+///   name          = "website-fw-1"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["10.1.2.0/24"]
+///   allows {
+///     protocol = "tcp"
+///   }
+///   allows {
+///     protocol = "udp"
+///   }
+///   allows {
+///     protocol = "icmp"
+///   }
+///   direction = "INGRESS"
+/// }
+/// resource "gcp_compute_firewall" "fw2" {
+///   depends_on    = [gcp_compute_firewall.fw1]
+///   name          = "website-fw-2"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["0.0.0.0/0"]
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["22"]
+///   }
+///   target_tags = ["allow-ssh"]
+///   direction   = "INGRESS"
+/// }
+/// resource "gcp_compute_firewall" "fw3" {
+///   depends_on    = [gcp_compute_firewall.fw2]
+///   name          = "website-fw-3"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
+///   allows {
+///     protocol = "tcp"
+///   }
+///   target_tags = ["load-balanced-backend"]
+///   direction   = "INGRESS"
+/// }
+/// resource "gcp_compute_firewall" "fw4" {
+///   depends_on    = [gcp_compute_firewall.fw3]
+///   name          = "website-fw-4"
+///   network       = gcp_compute_network.default.id
+///   source_ranges = ["10.129.0.0/26"]
+///   target_tags   = ["load-balanced-backend"]
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["80"]
+///   }
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["443"]
+///   }
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["8000"]
+///   }
+///   direction = "INGRESS"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "website-net"
+///   auto_create_subnetworks = false
+///   routing_mode            = "REGIONAL"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "website-net-default"
+///   ip_cidr_range = "10.1.2.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_subnetwork" "proxy" {
+///   name          = "website-net-proxy"
+///   ip_cidr_range = "10.129.0.0/26"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+///   purpose       = "REGIONAL_MANAGED_PROXY"
+///   role          = "ACTIVE"
 /// }
 /// ```
 /// ```java
@@ -3397,8 +3890,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4074,7 +4567,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("consumer-net"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4082,7 +4575,7 @@ import 'forwarding_rule_state.dart';
 /// 		consumerAddress, err := compute.NewAddress(ctx, "consumer_address", &compute.AddressArgs{
 /// 			Name:        pulumi.String("website-ip-1"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  consumerSubnet.ID(),
+/// 			Subnetwork:  consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -4101,7 +4594,7 @@ import 'forwarding_rule_state.dart';
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4110,7 +4603,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("producer-net"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4129,7 +4622,7 @@ import 'forwarding_rule_state.dart';
 /// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("producer-service-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: producerServiceHealthCheck.ID(),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4138,7 +4631,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                pulumi.String("producer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      producerServiceBackend.ID(),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             producerNet.Name,
 /// 			Subnetwork:          producerSubnet.Name,
@@ -4155,7 +4648,7 @@ import 'forwarding_rule_state.dart';
 /// 			NatSubnets: pulumi.StringArray{
 /// 				pscProducerSubnet.Name,
 /// 			},
-/// 			TargetService: producerTargetService.ID(),
+/// 			TargetService: producerTargetService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4165,9 +4658,9 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                 pulumi.String("psc-endpoint"),
 /// 			Region:               pulumi.String("us-central1"),
 /// 			LoadBalancingScheme:  pulumi.String(""),
-/// 			Target:               producerServiceAttachment.ID(),
+/// 			Target:               producerServiceAttachment.ID().ToIDOutput().ToStringOutput(),
 /// 			Network:              consumerNet.Name,
-/// 			IpAddress:            consumerAddress.ID(),
+/// 			IpAddress:            consumerAddress.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowPscGlobalAccess: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -4175,6 +4668,92 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Forwarding rule for VPC private service connect
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                    = "psc-endpoint"
+///   region                  = "us-central1"
+///   load_balancing_scheme   = ""
+///   target                  = gcp_compute_serviceattachment.producer_service_attachment.id
+///   network                 = gcp_compute_network.consumer_net.name
+///   ip_address              = gcp_compute_address.consumer_address.id
+///   allow_psc_global_access = true
+/// }
+/// // Consumer service endpoint
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "consumer-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "consumer-net"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_address" "consumer_address" {
+///   name         = "website-ip-1"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.consumer_subnet.id
+///   address_type = "INTERNAL"
+/// }
+/// // Producer service attachment
+/// resource "gcp_compute_network" "producer_net" {
+///   name                    = "producer-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   name          = "producer-net"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_subnetwork" "psc_producer_subnet" {
+///   name          = "producer-psc-net"
+///   ip_cidr_range = "10.1.0.0/16"
+///   region        = "us-central1"
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_serviceattachment" "producer_service_attachment" {
+///   name                  = "producer-service"
+///   region                = "us-central1"
+///   description           = "A service attachment configured with Terraform"
+///   enable_proxy_protocol = true
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_producer_subnet.name]
+///   target_service        = gcp_compute_forwardingrule.producer_target_service.id
+/// }
+/// resource "gcp_compute_forwardingrule" "producer_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.producer_net.name
+///   subnetwork            = gcp_compute_subnetwork.producer_subnet.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service-backend"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
 /// }
 /// ```
 /// ```java
@@ -4198,8 +4777,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
 /// import com.pulumi.gcp.compute.ServiceAttachment;
 /// import com.pulumi.gcp.compute.ServiceAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4684,7 +5263,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("consumer-net"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4692,7 +5271,7 @@ import 'forwarding_rule_state.dart';
 /// 		consumerAddress, err := compute.NewAddress(ctx, "consumer_address", &compute.AddressArgs{
 /// 			Name:        pulumi.String("website-ip-1"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  consumerSubnet.ID(),
+/// 			Subnetwork:  consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -4710,7 +5289,7 @@ import 'forwarding_rule_state.dart';
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4719,7 +5298,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:        pulumi.String("producer-net"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4738,7 +5317,7 @@ import 'forwarding_rule_state.dart';
 /// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("producer-service-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: producerServiceHealthCheck.ID(),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4747,7 +5326,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                pulumi.String("producer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      producerServiceBackend.ID(),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             producerNet.Name,
 /// 			Subnetwork:          producerSubnet.Name,
@@ -4764,7 +5343,7 @@ import 'forwarding_rule_state.dart';
 /// 			NatSubnets: pulumi.StringArray{
 /// 				pscProducerSubnet.Name,
 /// 			},
-/// 			TargetService: producerTargetService.ID(),
+/// 			TargetService: producerTargetService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4773,9 +5352,9 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                 pulumi.String("psc-endpoint"),
 /// 			Region:               pulumi.String("us-central1"),
 /// 			LoadBalancingScheme:  pulumi.String(""),
-/// 			Target:               producerServiceAttachment.ID(),
+/// 			Target:               producerServiceAttachment.ID().ToIDOutput().ToStringOutput(),
 /// 			Network:              consumerNet.Name,
-/// 			IpAddress:            consumerAddress.ID(),
+/// 			IpAddress:            consumerAddress.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowPscGlobalAccess: pulumi.Bool(true),
 /// 			NoAutomateDnsZone:    pulumi.Bool(true),
 /// 		})
@@ -4784,6 +5363,90 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                    = "psc-endpoint"
+///   region                  = "us-central1"
+///   load_balancing_scheme   = ""
+///   target                  = gcp_compute_serviceattachment.producer_service_attachment.id
+///   network                 = gcp_compute_network.consumer_net.name
+///   ip_address              = gcp_compute_address.consumer_address.id
+///   allow_psc_global_access = true
+///   no_automate_dns_zone    = true
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "consumer-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "consumer-net"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_address" "consumer_address" {
+///   name         = "website-ip-1"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.consumer_subnet.id
+///   address_type = "INTERNAL"
+/// }
+/// resource "gcp_compute_network" "producer_net" {
+///   name                    = "producer-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   name          = "producer-net"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_subnetwork" "psc_producer_subnet" {
+///   name          = "producer-psc-net"
+///   ip_cidr_range = "10.1.0.0/16"
+///   region        = "us-central1"
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_serviceattachment" "producer_service_attachment" {
+///   name                  = "producer-service"
+///   region                = "us-central1"
+///   description           = "A service attachment configured with Terraform"
+///   enable_proxy_protocol = true
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_producer_subnet.name]
+///   target_service        = gcp_compute_forwardingrule.producer_target_service.id
+/// }
+/// resource "gcp_compute_forwardingrule" "producer_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.producer_net.name
+///   subnetwork            = gcp_compute_subnetwork.producer_subnet.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service-backend"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
 /// }
 /// ```
 /// ```java
@@ -4807,8 +5470,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
 /// import com.pulumi.gcp.compute.ServiceAttachment;
 /// import com.pulumi.gcp.compute.ServiceAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5181,6 +5844,41 @@ import 'forwarding_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_forwardingrule" "steering" {
+///   depends_on            = [gcp_compute_forwardingrule.external]
+///   name                  = "steering-rule"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.basic.address
+///   backend_service       = gcp_compute_regionbackendservice.external.self_link
+///   load_balancing_scheme = "EXTERNAL"
+///   source_ip_ranges      = ["34.121.88.0/24", "35.187.239.137"]
+/// }
+/// resource "gcp_compute_address" "basic" {
+///   name   = "website-ip"
+///   region = "us-central1"
+/// }
+/// resource "gcp_compute_regionbackendservice" "external" {
+///   name                  = "service-backend"
+///   region                = "us-central1"
+///   load_balancing_scheme = "EXTERNAL"
+/// }
+/// resource "gcp_compute_forwardingrule" "external" {
+///   name                  = "external-forwarding-rule"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.basic.address
+///   backend_service       = gcp_compute_regionbackendservice.external.self_link
+///   load_balancing_scheme = "EXTERNAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5194,8 +5892,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5445,7 +6143,7 @@ import 'forwarding_rule_state.dart';
 /// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("ilb-ipv6-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: hc.ID(),
+/// 			HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5464,7 +6162,7 @@ import 'forwarding_rule_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			StackType:      pulumi.String("IPV4_IPV6"),
 /// 			Ipv6AccessType: pulumi.String("INTERNAL"),
-/// 			Network:        defaultNetwork.ID(),
+/// 			Network:        defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5474,7 +6172,7 @@ import 'forwarding_rule_state.dart';
 /// 			Name:                pulumi.String("ilb-ipv6-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      backend.ID(),
+/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             defaultNetwork.Name,
 /// 			Subnetwork:          defaultSubnetwork.Name,
@@ -5485,6 +6183,53 @@ import 'forwarding_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Forwarding rule for Internal Load Balancing
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                  = "ilb-ipv6-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.default.name
+///   subnetwork            = gcp_compute_subnetwork.default.name
+///   ip_version            = "IPV6"
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name          = "ilb-ipv6-backend"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.hc.id
+/// }
+/// resource "gcp_compute_healthcheck" "hc" {
+///   name               = "check-ilb-ipv6-backend"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                     = "net-ipv6"
+///   auto_create_subnetworks  = false
+///   enable_ula_internal_ipv6 = true
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name             = "subnet-internal-ipv6"
+///   ip_cidr_range    = "10.0.0.0/16"
+///   region           = "us-central1"
+///   stack_type       = "IPV4_IPV6"
+///   ipv6_access_type = "INTERNAL"
+///   network          = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -5504,8 +6249,8 @@ import 'forwarding_rule_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.compute.ForwardingRule;
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5615,28 +6360,17 @@ import 'forwarding_rule_state.dart';
 /// ForwardingRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
 /// ```
 class ForwardingRule extends pulumi.CustomResource {
@@ -5655,7 +6389,7 @@ class ForwardingRule extends pulumi.CustomResource {
   /// forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
   /// true.
   late final pulumi.Output<bool?> allPorts;
-  /// This field is used along with the `backend_service` field for
+  /// This field is used along with the `backendService` field for
   /// internal load balancing or with the `target` field for internal
   /// TargetInstance.
   /// If the field is set to `TRUE`, clients can access ILB from all
@@ -5673,6 +6407,13 @@ class ForwardingRule extends pulumi.CustomResource {
   late final pulumi.Output<String> baseForwardingRule;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -5753,7 +6494,7 @@ class ForwardingRule extends pulumi.CustomResource {
   /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Specifies the forwarding rule type.
   /// Note that an empty string value (`""`) is also supported for some use
@@ -5848,6 +6589,7 @@ class ForwardingRule extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
   late final pulumi.Output<bool?> recreateClosedPsc;
   /// A reference to the region where the regional forwarding rule resides.
   /// This field is not applicable to global forwarding rules.
@@ -5910,6 +6652,7 @@ class ForwardingRule extends pulumi.CustomResource {
     backendService = registerOutput<String?>('backendService');
     baseForwardingRule = registerOutput<String>('baseForwardingRule');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forwardingRuleId = registerOutput<int>('forwardingRuleId');
@@ -5971,6 +6714,7 @@ class ForwardingRule extends pulumi.CustomResource {
     backendService = registerOutput<String?>('backendService');
     baseForwardingRule = registerOutput<String>('baseForwardingRule');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forwardingRuleId = registerOutput<int>('forwardingRuleId');

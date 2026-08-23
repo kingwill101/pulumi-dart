@@ -2,6 +2,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_args.dart';
 import 'key_state.dart';
 
+/// Creates and manages service account keys, which allow the use of a service account with Google Cloud.
+///
+/// &gt; **Warning**: This resource persists a sensitive credential in plaintext in the remote state used by Terraform.
+/// Please take appropriate measures to protect your remote state.
+///
+/// * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
+/// * How-to Guides
+/// * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+///
+///
 /// ## Example Usage
 ///
 /// ### Creating A New Key
@@ -81,6 +91,24 @@ import 'key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "myaccount" {
+///   account_id   = "myaccount"
+///   display_name = "My Service Account"
+/// }
+/// resource "gcp_serviceaccount_key" "mykey" {
+///   service_account_id = gcp_serviceaccount_account.myaccount.name
+///   public_key_type    = "TYPE_X509_PEM_FILE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +119,8 @@ import 'key_state.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.serviceaccount.Key;
 /// import com.pulumi.gcp.serviceaccount.KeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,6 +268,33 @@ import 'key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "myaccount" {
+///   account_id   = "myaccount"
+///   display_name = "My Service Account"
+/// }
+/// # note this requires the terraform to be run regularly
+/// resource "time_rotating" "mykey_rotation" {
+///   rotation_days = 30
+/// }
+/// resource "gcp_serviceaccount_key" "mykey" {
+///   service_account_id = gcp_serviceaccount_account.myaccount.name
+///   keepers = {
+///     "rotation_time" = time_rotating.mykey_rotation.rotation_rfc3339
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +307,8 @@ import 'key_state.dart';
 /// import com.pulumiverse.time.RotatingArgs;
 /// import com.pulumi.gcp.serviceaccount.Key;
 /// import com.pulumi.gcp.serviceaccount.KeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,7 +400,7 @@ import 'key_state.dart';
 ///     account_id="myaccount",
 ///     display_name="My Service Account")
 /// mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
-/// google_application_credentials = kubernetes.index.Secret("google-application-credentials",
+/// google_application_credentials = kubernetes.Secret("google-application-credentials",
 ///     metadata=[{
 ///         name: google-application-credentials,
 ///     }],
@@ -376,7 +431,7 @@ import 'key_state.dart';
 ///         ServiceAccountId = myaccount.Name,
 ///     });
 ///
-///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+///     var google_application_credentials = new Kubernetes.Secret("google-application-credentials", new()
 ///     {
 ///         Metadata = new[]
 ///         {
@@ -424,8 +479,8 @@ import 'key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kubernetes.NewSecret(ctx, "google-application-credentials", &kubernetes.SecretArgs{
-/// 			Metadata: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Metadata: []map[string]string{
+/// 				{
 /// 					"name": "google-application-credentials",
 /// 				},
 /// 			},
@@ -442,6 +497,39 @@ import 'key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     kubernetes = {
+///       source = "pulumi/kubernetes"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// # Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
+/// # https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+/// resource "gcp_serviceaccount_account" "myaccount" {
+///   account_id   = "myaccount"
+///   display_name = "My Service Account"
+/// }
+/// resource "gcp_serviceaccount_key" "mykey" {
+///   service_account_id = gcp_serviceaccount_account.myaccount.name
+/// }
+/// resource "kubernetes_secret" "google-application-credentials" {
+///   metadata = [{
+///     "name" = "google-application-credentials"
+///   }]
+///   data = {
+///     "credentials.json" = base64decode(gcp_serviceaccount_key.mykey.private_key)
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -456,8 +544,8 @@ import 'key_state.dart';
 /// import com.pulumi.kubernetes.SecretArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64decodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -481,7 +569,7 @@ import 'key_state.dart';
 ///             .build());
 ///
 ///         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-///             .metadata(List.of(Map.of("name", "google-application-credentials")))
+///             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
 ///             .data(Map.of("credentials.json", StdFunctions.base64decode(Base64decodeArgs.builder()
 ///                 .input(mykey.privateKey())
 ///                 .build()).result()))
@@ -522,6 +610,13 @@ import 'key_state.dart';
 ///
 /// This resource does not support import.
 class Key extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
   late final pulumi.Output<Map<String, String>?> keepers;
   /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -538,7 +633,7 @@ class Key extends pulumi.CustomResource {
   late final pulumi.Output<String?> privateKeyType;
   /// The public key, base64 encoded
   late final pulumi.Output<String> publicKey;
-  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
   late final pulumi.Output<String?> publicKeyData;
   /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   late final pulumi.Output<String?> publicKeyType;
@@ -569,6 +664,7 @@ class Key extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     keepers = registerOutput<Map<String, String>?>('keepers');
     keyAlgorithm = registerOutput<String?>('keyAlgorithm');
     this.name = registerOutput<String>('name');
@@ -605,6 +701,7 @@ class Key extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     keepers = registerOutput<Map<String, String>?>('keepers');
     keyAlgorithm = registerOutput<String?>('keyAlgorithm');
     this.name = registerOutput<String>('name');

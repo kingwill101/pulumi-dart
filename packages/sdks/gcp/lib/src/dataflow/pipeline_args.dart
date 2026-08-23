@@ -9,6 +9,13 @@ import 'pipeline_workload.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataflow_pipeline_pipeline_args_doc}
 class PipelineArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
   final pulumi.Input<String>? displayName;
   /// "The pipeline name. For example': 'projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID."
@@ -44,6 +51,7 @@ class PipelineArgs {
   final pulumi.Input<PipelineWorkload>? workload;
 
   /// Creates a new [PipelineArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
   /// [name] "The pipeline name. For example': 'projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID."
   /// [pipelineSources] The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
@@ -55,6 +63,7 @@ class PipelineArgs {
   /// [type] The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
   /// [workload] Workload information for creating new jobs.
   const PipelineArgs({
+    this.deletionPolicy,
     this.displayName,
     this.name,
     this.pipelineSources,
@@ -69,6 +78,7 @@ class PipelineArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'name': ?name,
       'pipelineSources': ?pipelineSources,
@@ -84,6 +94,7 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipelineSources: (() { final guardedValue = map['pipelineSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -97,4 +108,3 @@ class PipelineArgs {
     );
   }
 }
-

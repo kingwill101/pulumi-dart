@@ -154,6 +154,35 @@ import 'cx_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxversion" "version_1" {
+///   parent       = gcp_diagflow_cxagent.agent.start_flow
+///   display_name = "1.0.0"
+///   description  = "version 1.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +194,8 @@ import 'cx_version_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
 /// import com.pulumi.gcp.diagflow.CxVersion;
 /// import com.pulumi.gcp.diagflow.CxVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,21 +268,25 @@ import 'cx_version_state.dart';
 /// Version can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/versions/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/{{name}}
 /// ```
 class CxVersion extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
   late final pulumi.Output<String?> description;
   /// The human-readable name of the version. Limit of 64 characters.
@@ -287,6 +320,7 @@ class CxVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
@@ -319,6 +353,7 @@ class CxVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

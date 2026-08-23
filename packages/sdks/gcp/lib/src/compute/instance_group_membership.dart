@@ -11,7 +11,7 @@ import 'instance_group_membership_state.dart';
 /// &gt; **NOTE** This resource has been added to avoid a situation, where after
 /// Instance is recreated, it's removed from Instance Group and it's needed to
 /// perform `apply` twice. To avoid situations like this, please use this resource
-/// with the lifecycle `replace_triggered_by` method, with the passed Instance's ID.
+/// with the lifecycle `replaceTriggeredBy` method, with the passed Instance's ID.
 ///
 ///
 /// To get more information about InstanceGroupMembership, see:
@@ -168,6 +168,38 @@ import 'instance_group_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default-network" {
+///   name = "network"
+/// }
+/// resource "gcp_compute_instance" "default-instance" {
+///   name         = "instance"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+///   network_interfaces {
+///     network = gcp_compute_network.default-network.name
+///   }
+/// }
+/// resource "gcp_compute_instancegroup" "default-instance-group" {
+///   name = "instance-group"
+/// }
+/// resource "gcp_compute_instancegroupmembership" "default-ig-membership" {
+///   instance       = gcp_compute_instance.default-instance.self_link
+///   instance_group = gcp_compute_instancegroup.default-instance-group.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +217,8 @@ import 'instance_group_membership_state.dart';
 /// import com.pulumi.gcp.compute.InstanceGroupArgs;
 /// import com.pulumi.gcp.compute.InstanceGroupMembership;
 /// import com.pulumi.gcp.compute.InstanceGroupMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,31 +292,27 @@ import 'instance_group_membership_state.dart';
 /// InstanceGroupMembership can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}`
-///
 /// * `{{project}}/{{zone}}/{{instance_group}}/{{instance}}`
-///
 /// * `{{zone}}/{{instance_group}}/{{instance}}`
-///
 /// * `{{instance_group}}/{{instance}}`
+///
 ///
 /// When using the `pulumi import` command, InstanceGroupMembership can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{project}}/{{zone}}/{{instance_group}}/{{instance}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{zone}}/{{instance_group}}/{{instance}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{instance_group}}/{{instance}}
 /// ```
 class InstanceGroupMembership extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An instance being added to the InstanceGroup
   late final pulumi.Output<String> instance;
   /// Represents an Instance Group resource name that the instance belongs to.
@@ -309,6 +337,7 @@ class InstanceGroupMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
     instanceGroup = registerOutput<String>('instanceGroup');
     project = registerOutput<String>('project');
@@ -338,6 +367,7 @@ class InstanceGroupMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
     instanceGroup = registerOutput<String>('instanceGroup');
     project = registerOutput<String>('project');

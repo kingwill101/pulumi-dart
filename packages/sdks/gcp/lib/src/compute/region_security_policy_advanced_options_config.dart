@@ -13,6 +13,7 @@ class RegionSecurityPolicyAdvancedOptionsConfig {
   /// Logging level. Supported values include: "NORMAL", "VERBOSE".
   /// Possible values are: `NORMAL`, `VERBOSE`.
   final pulumi.Input<String>? logLevel;
+  /// (Optional, Beta)
   /// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
   /// Values are case insensitive.
   /// Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
@@ -24,7 +25,7 @@ class RegionSecurityPolicyAdvancedOptionsConfig {
   /// [jsonCustomConfig] Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
   /// [jsonParsing] JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL".
   /// [logLevel] Logging level. Supported values include: "NORMAL", "VERBOSE".
-  /// [requestBodyInspectionSize] The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+  /// [requestBodyInspectionSize] (Optional, Beta)
   /// [userIpRequestHeaders] An optional list of case-insensitive request header names to use for resolving the callers client IP address.
   const RegionSecurityPolicyAdvancedOptionsConfig({
     this.jsonCustomConfig,
@@ -54,4 +55,3 @@ class RegionSecurityPolicyAdvancedOptionsConfig {
     );
   }
 }
-

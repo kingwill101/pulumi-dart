@@ -152,7 +152,7 @@ import 'subnet_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.50.0/24"),
-/// 				VmwareEngineNetwork: subnet_nw.ID(),
+/// 				VmwareEngineNetwork: subnet_nw.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -169,7 +169,7 @@ import 'subnet_state.dart';
 /// 		}
 /// 		_, err = vmwareengine.NewSubnet(ctx, "vmw-engine-subnet", &vmwareengine.SubnetArgs{
 /// 			Name:        pulumi.String("service-1"),
-/// 			Parent:      subnet_pc.ID(),
+/// 			Parent:      subnet_pc.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("192.168.100.0/26"),
 /// 		})
 /// 		if err != nil {
@@ -177,6 +177,43 @@ import 'subnet_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "subnet-nw" {
+///   name        = "pc-nw"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "PC network description."
+/// }
+/// resource "gcp_vmwareengine_privatecloud" "subnet-pc" {
+///   location    = "us-west1-a"
+///   name        = "sample-pc"
+///   description = "Sample test PC."
+///   network_config = {
+///     management_cidr       = "192.168.50.0/24"
+///     vmware_engine_network = gcp_vmwareengine_network.subnet-nw.id
+///   }
+///   management_cluster = {
+///     cluster_id = "sample-mgmt-cluster"
+///     node_type_configs = [{
+///       "nodeTypeId" = "standard-72"
+///       "nodeCount"  = 3
+///     }]
+///   }
+/// }
+/// resource "gcp_vmwareengine_subnet" "vmw-engine-subnet" {
+///   name          = "service-1"
+///   parent        = gcp_vmwareengine_privatecloud.subnet-pc.id
+///   ip_cidr_range = "192.168.100.0/26"
 /// }
 /// ```
 /// ```java
@@ -191,10 +228,11 @@ import 'subnet_state.dart';
 /// import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.Subnet;
 /// import com.pulumi.gcp.vmwareengine.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,6 +314,7 @@ import 'subnet_state.dart';
 /// Subnet can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/subnets/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 ///

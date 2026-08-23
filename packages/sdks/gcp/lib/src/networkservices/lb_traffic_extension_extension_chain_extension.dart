@@ -12,6 +12,13 @@ class LbTrafficExtensionExtensionChainExtension {
   /// a generic 500 error is returned to the client. The error response can be tailored by
   /// configuring a custom error response in the load balancer.
   final pulumi.Input<bool>? failOpen;
+  /// List of the Envoy attributes to forward to the extension server. The attributes
+  /// provided here are included as part of the `ProcessingRequest.attributes` field
+  /// (of type `map`), where the keys are the attribute names. Refer to the
+  /// [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+  /// for the names of attributes that can be forwarded. If omitted, no attributes
+  /// are sent. Each element is a string indicating the attribute name.
+  final pulumi.Input<List<String>>? forwardAttributes;
   /// List of the HTTP headers to forward to the extension (from the client or backend).
   /// If omitted, all headers are sent. Each element is a string indicating the header name.
   final pulumi.Input<List<String>>? forwardHeaders;
@@ -40,6 +47,7 @@ class LbTrafficExtensionExtensionChainExtension {
   /// Creates a new [LbTrafficExtensionExtensionChainExtension].
   /// [authority] The :authority header in the gRPC request sent from Envoy to the extension service.
   /// [failOpen] Determines how the proxy behaves if the call to the extension fails or times out.
+  /// [forwardAttributes] List of the Envoy attributes to forward to the extension server. The attributes
   /// [forwardHeaders] List of the HTTP headers to forward to the extension (from the client or backend).
   /// [metadata] Metadata associated with the extension. This field is used to pass metadata to the extension service.
   /// [name] The name for this extension. The name is logged as part of the HTTP request logs.
@@ -49,6 +57,7 @@ class LbTrafficExtensionExtensionChainExtension {
   const LbTrafficExtensionExtensionChainExtension({
     this.authority,
     this.failOpen,
+    this.forwardAttributes,
     this.forwardHeaders,
     this.metadata,
     required this.name,
@@ -61,6 +70,7 @@ class LbTrafficExtensionExtensionChainExtension {
     return <String, dynamic>{
       'authority': ?authority,
       'failOpen': ?failOpen,
+      'forwardAttributes': ?forwardAttributes,
       'forwardHeaders': ?forwardHeaders,
       'metadata': ?metadata,
       'name': name,
@@ -74,6 +84,7 @@ class LbTrafficExtensionExtensionChainExtension {
     return LbTrafficExtensionExtensionChainExtension(
       authority: (() { final guardedValue = map['authority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       failOpen: (() { final guardedValue = map['failOpen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forwardAttributes: (() { final guardedValue = map['forwardAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       forwardHeaders: (() { final guardedValue = map['forwardHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -83,4 +94,3 @@ class LbTrafficExtensionExtensionChainExtension {
     );
   }
 }
-

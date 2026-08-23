@@ -54,6 +54,27 @@ class GcpConfig {
 
   bool get addPulumiAttributionLabelIsSecret => _isSecret('addPulumiAttributionLabel');
 
+  String? get agentIdentityCustomEndpoint {
+    final raw = _raw('agentIdentityCustomEndpoint');
+    return raw;
+  }
+
+  bool get agentIdentityCustomEndpointIsSecret => _isSecret('agentIdentityCustomEndpoint');
+
+  String? get agentRegistryCustomEndpoint {
+    final raw = _raw('agentRegistryCustomEndpoint');
+    return raw;
+  }
+
+  bool get agentRegistryCustomEndpointIsSecret => _isSecret('agentRegistryCustomEndpoint');
+
+  String? get agenticApplicationsCustomEndpoint {
+    final raw = _raw('agenticApplicationsCustomEndpoint');
+    return raw;
+  }
+
+  bool get agenticApplicationsCustomEndpointIsSecret => _isSecret('agenticApplicationsCustomEndpoint');
+
   String? get alloydbCustomEndpoint {
     final raw = _raw('alloydbCustomEndpoint');
     return raw;
@@ -152,6 +173,13 @@ class GcpConfig {
 
   bool get biglakeCustomEndpointIsSecret => _isSecret('biglakeCustomEndpoint');
 
+  String? get biglakeHiveCustomEndpoint {
+    final raw = _raw('biglakeHiveCustomEndpoint');
+    return raw;
+  }
+
+  bool get biglakeHiveCustomEndpointIsSecret => _isSecret('biglakeHiveCustomEndpoint');
+
   String? get biglakeIcebergCustomEndpoint {
     final raw = _raw('biglakeIcebergCustomEndpoint');
     return raw;
@@ -207,6 +235,13 @@ class GcpConfig {
   }
 
   bool get bigtableCustomEndpointIsSecret => _isSecret('bigtableCustomEndpoint');
+
+  String? get billingBudgetsCustomEndpoint {
+    final raw = _raw('billingBudgetsCustomEndpoint');
+    return raw;
+  }
+
+  bool get billingBudgetsCustomEndpointIsSecret => _isSecret('billingBudgetsCustomEndpoint');
 
   String? get billingCustomEndpoint {
     final raw = _raw('billingCustomEndpoint');
@@ -341,6 +376,13 @@ class GcpConfig {
 
   bool get cloudSecurityComplianceCustomEndpointIsSecret => _isSecret('cloudSecurityComplianceCustomEndpoint');
 
+  String? get cloudSupportCustomEndpoint {
+    final raw = _raw('cloudSupportCustomEndpoint');
+    return raw;
+  }
+
+  bool get cloudSupportCustomEndpointIsSecret => _isSecret('cloudSupportCustomEndpoint');
+
   String? get cloudTasksCustomEndpoint {
     final raw = _raw('cloudTasksCustomEndpoint');
     return raw;
@@ -396,6 +438,13 @@ class GcpConfig {
   }
 
   bool get computeCustomEndpointIsSecret => _isSecret('computeCustomEndpoint');
+
+  String? get configCustomEndpoint {
+    final raw = _raw('configCustomEndpoint');
+    return raw;
+  }
+
+  bool get configCustomEndpointIsSecret => _isSecret('configCustomEndpoint');
 
   String? get contactCenterInsightsCustomEndpoint {
     final raw = _raw('contactCenterInsightsCustomEndpoint');
@@ -466,6 +515,13 @@ class GcpConfig {
   }
 
   bool get dataFusionCustomEndpointIsSecret => _isSecret('dataFusionCustomEndpoint');
+
+  String? get dataLineageCustomEndpoint {
+    final raw = _raw('dataLineageCustomEndpoint');
+    return raw;
+  }
+
+  bool get dataLineageCustomEndpointIsSecret => _isSecret('dataLineageCustomEndpoint');
 
   String? get dataLossPreventionCustomEndpoint {
     final raw = _raw('dataLossPreventionCustomEndpoint');
@@ -543,6 +599,13 @@ class GcpConfig {
   }
 
   bool get defaultLabelsIsSecret => _isSecret('defaultLabels');
+
+  String? get deletionPolicy {
+    final raw = _raw('deletionPolicy');
+    return raw;
+  }
+
+  bool get deletionPolicyIsSecret => _isSecret('deletionPolicy');
 
   String? get deploymentManagerCustomEndpoint {
     final raw = _raw('deploymentManagerCustomEndpoint');
@@ -712,6 +775,13 @@ class GcpConfig {
 
   bool get firebaseHostingCustomEndpointIsSecret => _isSecret('firebaseHostingCustomEndpoint');
 
+  String? get firebaseRemoteConfigCustomEndpoint {
+    final raw = _raw('firebaseRemoteConfigCustomEndpoint');
+    return raw;
+  }
+
+  bool get firebaseRemoteConfigCustomEndpointIsSecret => _isSecret('firebaseRemoteConfigCustomEndpoint');
+
   String? get firebaseStorageCustomEndpoint {
     final raw = _raw('firebaseStorageCustomEndpoint');
     return raw;
@@ -781,6 +851,13 @@ class GcpConfig {
   }
 
   bool get healthcareCustomEndpointIsSecret => _isSecret('healthcareCustomEndpoint');
+
+  String? get hypercomputeclusterCustomEndpoint {
+    final raw = _raw('hypercomputeclusterCustomEndpoint');
+    return raw;
+  }
+
+  bool get hypercomputeclusterCustomEndpointIsSecret => _isSecret('hypercomputeclusterCustomEndpoint');
 
   String? get iam2CustomEndpoint {
     final raw = _raw('iam2CustomEndpoint');
@@ -872,6 +949,13 @@ class GcpConfig {
   }
 
   bool get kmsCustomEndpointIsSecret => _isSecret('kmsCustomEndpoint');
+
+  String? get licenseManagerCustomEndpoint {
+    final raw = _raw('licenseManagerCustomEndpoint');
+    return raw;
+  }
+
+  bool get licenseManagerCustomEndpointIsSecret => _isSecret('licenseManagerCustomEndpoint');
 
   String? get loggingCustomEndpoint {
     final raw = _raw('loggingCustomEndpoint');
@@ -1061,6 +1145,27 @@ class GcpConfig {
   }
 
   bool get parameterManagerRegionalCustomEndpointIsSecret => _isSecret('parameterManagerRegionalCustomEndpoint');
+
+  String? get pollInterval {
+    final raw = _raw('pollInterval');
+    return raw;
+  }
+
+  bool get pollIntervalIsSecret => _isSecret('pollInterval');
+
+  bool? get preferGlobalEndpoints {
+    final raw = _raw('preferGlobalEndpoints');
+    return (raw).toBool();
+  }
+
+  bool get preferGlobalEndpointsIsSecret => _isSecret('preferGlobalEndpoints');
+
+  bool? get preferRegionalEndpoints {
+    final raw = _raw('preferRegionalEndpoints');
+    return (raw).toBool();
+  }
+
+  bool get preferRegionalEndpointsIsSecret => _isSecret('preferRegionalEndpoints');
 
   String? get privatecaCustomEndpoint {
     final raw = _raw('privatecaCustomEndpoint');
@@ -1391,6 +1496,13 @@ class GcpConfig {
 
   bool get userProjectOverrideIsSecret => _isSecret('userProjectOverride');
 
+  String? get vectorSearchCustomEndpoint {
+    final raw = _raw('vectorSearchCustomEndpoint');
+    return raw;
+  }
+
+  bool get vectorSearchCustomEndpointIsSecret => _isSecret('vectorSearchCustomEndpoint');
+
   String? get vertexAiCustomEndpoint {
     final raw = _raw('vertexAiCustomEndpoint');
     return raw;
@@ -1426,6 +1538,13 @@ class GcpConfig {
 
   bool get workflowsCustomEndpointIsSecret => _isSecret('workflowsCustomEndpoint');
 
+  String? get workloadIdentityCustomEndpoint {
+    final raw = _raw('workloadIdentityCustomEndpoint');
+    return raw;
+  }
+
+  bool get workloadIdentityCustomEndpointIsSecret => _isSecret('workloadIdentityCustomEndpoint');
+
   String? get workstationsCustomEndpoint {
     final raw = _raw('workstationsCustomEndpoint');
     return raw;
@@ -1443,4 +1562,3 @@ class GcpConfig {
 }
 
 const config = GcpConfig();
-

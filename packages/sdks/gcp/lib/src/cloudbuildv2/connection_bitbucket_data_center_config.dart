@@ -15,7 +15,7 @@ class ConnectionBitbucketDataCenterConfig {
   /// Structure is documented below.
   final pulumi.Input<ConnectionBitbucketDataCenterConfigReadAuthorizerCredential> readAuthorizerCredential;
   /// (Output)
-  /// Output only. Version of the Bitbucket Data Center running on the `host_uri`.
+  /// Output only. Version of the Bitbucket Data Center running on the `hostUri`.
   final pulumi.Input<String>? serverVersion;
   /// Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
   /// Structure is documented below.
@@ -67,4 +67,3 @@ class ConnectionBitbucketDataCenterConfig {
     );
   }
 }
-

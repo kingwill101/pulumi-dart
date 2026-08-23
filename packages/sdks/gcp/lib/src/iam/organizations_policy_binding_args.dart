@@ -12,7 +12,7 @@ class OrganizationsPolicyBindingArgs {
   /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -39,6 +39,13 @@ class OrganizationsPolicyBindingArgs {
   /// additional information.
   /// Structure is documented below.
   final pulumi.Input<OrganizationsPolicyBindingCondition>? condition;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
   final pulumi.Input<String>? displayName;
   /// The location of the Policy Binding
@@ -60,6 +67,7 @@ class OrganizationsPolicyBindingArgs {
   /// Creates a new [OrganizationsPolicyBindingArgs].
   /// [annotations] Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
   /// [condition] Represents a textual expression in the Common Expression Language
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Optional. The description of the policy binding. Must be less than or equal to 63 characters.
   /// [location] The location of the Policy Binding
   /// [organization] The parent organization of the Policy Binding.
@@ -70,6 +78,7 @@ class OrganizationsPolicyBindingArgs {
   const OrganizationsPolicyBindingArgs({
     this.annotations,
     this.condition,
+    this.deletionPolicy,
     this.displayName,
     required this.location,
     required this.organization,
@@ -83,6 +92,7 @@ class OrganizationsPolicyBindingArgs {
     return <String, dynamic>{
       'annotations': ?annotations,
       'condition': ?pulumi.Input.mapOptionalInputValue<OrganizationsPolicyBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'location': location,
       'organization': organization,
@@ -97,6 +107,7 @@ class OrganizationsPolicyBindingArgs {
     return OrganizationsPolicyBindingArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       organization: pulumi.Input.fromValue(map['organization'] as String),
@@ -107,4 +118,3 @@ class OrganizationsPolicyBindingArgs {
     );
   }
 }
-

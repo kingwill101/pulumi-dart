@@ -7,6 +7,7 @@ import 'get_membership_endpoint.dart';
 /// Result data returned by getMembership.
 class GetMembershipResult {
   final List<GetMembershipAuthority> authorities;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final List<GetMembershipEndpoint> endpoints;
   /// The provider-assigned unique ID for this managed resource.
@@ -20,6 +21,7 @@ class GetMembershipResult {
 
   /// Creates a new [GetMembershipResult].
   /// [authorities] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [endpoints] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -31,6 +33,7 @@ class GetMembershipResult {
   /// [pulumiLabels] Required.
   const GetMembershipResult({
     required this.authorities,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.endpoints,
     required this.id,
@@ -45,6 +48,7 @@ class GetMembershipResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorities': pulumi.Input.encodeList<GetMembershipAuthority, Map<String, dynamic>>(authorities, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'endpoints': pulumi.Input.encodeList<GetMembershipEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
       'id': id,
@@ -60,6 +64,7 @@ class GetMembershipResult {
   factory GetMembershipResult.fromMap(Map<String, dynamic> map) {
     return GetMembershipResult(
       authorities: pulumi.Input.decodeList<GetMembershipAuthority>(map['authorities']!, (value) => GetMembershipAuthority.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       endpoints: pulumi.Input.decodeList<GetMembershipEndpoint>(map['endpoints']!, (value) => GetMembershipEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
@@ -72,4 +77,3 @@ class GetMembershipResult {
     );
   }
 }
-

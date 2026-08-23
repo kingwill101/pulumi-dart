@@ -69,6 +69,20 @@ import 'get_hl7_v2_store_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_healthcare_getconsentstoreiampolicy" "policy" {
+///   dataset          = my-consent.dataset
+///   consent_store_id = my-consent.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +91,8 @@ import 'get_hl7_v2_store_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.HealthcareFunctions;
 /// import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -91,8 +105,8 @@ import 'get_hl7_v2_store_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = HealthcareFunctions.getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs.builder()
-///             .dataset(my_consent.dataset())
-///             .consentStoreId(my_consent.name())
+///             .dataset(my_consent.get("dataset"))
+///             .consentStoreId(my_consent.get("name"))
 ///             .build());
 ///
 ///     }
@@ -176,6 +190,19 @@ Future<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_healthcare_getdatasetiampolicy" "foo" {
+///   dataset_id = dataset.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +211,8 @@ Future<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.HealthcareFunctions;
 /// import com.pulumi.gcp.healthcare.inputs.GetDatasetIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,7 +225,7 @@ Future<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = HealthcareFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-///             .datasetId(dataset.id())
+///             .datasetId(dataset.get("id"))
 ///             .build());
 ///
 ///     }
@@ -281,6 +308,19 @@ Future<GetDatasetIamPolicyResult> getDatasetIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_healthcare_getdicomstoreiampolicy" "foo" {
+///   dicom_store_id = dicomStore.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +329,8 @@ Future<GetDatasetIamPolicyResult> getDatasetIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.HealthcareFunctions;
 /// import com.pulumi.gcp.healthcare.inputs.GetDicomStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,7 +343,7 @@ Future<GetDatasetIamPolicyResult> getDatasetIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = HealthcareFunctions.getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs.builder()
-///             .dicomStoreId(dicomStore.id())
+///             .dicomStoreId(dicomStore.get("id"))
 ///             .build());
 ///
 ///     }
@@ -386,6 +426,19 @@ Future<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_healthcare_getfhirstoreiampolicy" "foo" {
+///   fhir_store_id = fhirStore.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -394,8 +447,8 @@ Future<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.HealthcareFunctions;
 /// import com.pulumi.gcp.healthcare.inputs.GetFhirStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,7 +461,7 @@ Future<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = HealthcareFunctions.getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs.builder()
-///             .fhirStoreId(fhirStore.id())
+///             .fhirStoreId(fhirStore.get("id"))
 ///             .build());
 ///
 ///     }
@@ -491,6 +544,19 @@ Future<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_healthcare_gethl7v2storeiampolicy" "foo" {
+///   hl7_v2_store_id = hl7V2Store.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -499,8 +565,8 @@ Future<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.HealthcareFunctions;
 /// import com.pulumi.gcp.healthcare.inputs.GetHl7V2StoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -513,7 +579,7 @@ Future<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = HealthcareFunctions.getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs.builder()
-///             .hl7V2StoreId(hl7V2Store.id())
+///             .hl7V2StoreId(hl7V2Store.get("id"))
 ///             .build());
 ///
 ///     }

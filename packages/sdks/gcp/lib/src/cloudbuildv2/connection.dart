@@ -102,6 +102,26 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudbuildv2_connection" "my-connection" {
+///   location = "us-central1"
+///   name     = "tf-test-connection"
+///   github_config = {
+///     app_installation_id = 0
+///     authorizer_credential = {
+///       oauth_token_secret_version = "projects/gcb-terraform-creds/secrets/github-pat/versions/1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +132,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
 /// import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigArgs;
 /// import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -384,7 +404,7 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		private_key_secret_version, err := secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     private_key_secret.ID(),
+/// 			Secret:     private_key_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -400,7 +420,7 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		webhook_secret_secret_version, err := secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     webhook_secret_secret.ID(),
+/// 			Secret:     webhook_secret_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("<webhook-secret-data>"),
 /// 		})
 /// 		if err != nil {
@@ -438,8 +458,8 @@ import 'connection_state.dart';
 /// 			Name:     pulumi.String("my-terraform-ghe-connection"),
 /// 			GithubEnterpriseConfig: &cloudbuildv2.ConnectionGithubEnterpriseConfigArgs{
 /// 				HostUri:                    pulumi.String("https://ghe.com"),
-/// 				PrivateKeySecretVersion:    private_key_secret_version.ID(),
-/// 				WebhookSecretSecretVersion: webhook_secret_secret_version.ID(),
+/// 				PrivateKeySecretVersion:    private_key_secret_version.ID().ToIDOutput().ToStringOutput(),
+/// 				WebhookSecretSecretVersion: webhook_secret_secret_version.ID().ToIDOutput().ToStringOutput(),
 /// 				AppId:                      pulumi.Int(200),
 /// 				AppSlug:                    pulumi.String("gcb-app"),
 /// 				AppInstallationId:          pulumi.Int(300),
@@ -453,6 +473,68 @@ import 'connection_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+///   bindings {
+///     role    = "roles/secretmanager.secretAccessor"
+///     members = ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"]
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "private-key-secret" {
+///   secret_id = "ghe-pk-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "private-key-secret-version" {
+///   secret      = gcp_secretmanager_secret.private-key-secret.id
+///   secret_data = file("private-key.pem")
+/// }
+/// resource "gcp_secretmanager_secret" "webhook-secret-secret" {
+///   secret_id = "github-token-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "webhook-secret-secret-version" {
+///   secret      = gcp_secretmanager_secret.webhook-secret-secret.id
+///   secret_data = "<webhook-secret-data>"
+/// }
+/// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
+/// resource "gcp_secretmanager_secretiampolicy" "policy-pk" {
+///   secret_id   = gcp_secretmanager_secret.private-key-secret.secret_id
+///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+/// }
+/// resource "gcp_secretmanager_secretiampolicy" "policy-whs" {
+///   secret_id   = gcp_secretmanager_secret.webhook-secret-secret.secret_id
+///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+/// }
+/// resource "gcp_cloudbuildv2_connection" "my-connection" {
+///   depends_on = [gcp_secretmanager_secretiampolicy.policy-pk, gcp_secretmanager_secretiampolicy.policy-whs]
+///   location   = "us-central1"
+///   name       = "my-terraform-ghe-connection"
+///   github_enterprise_config = {
+///     host_uri                      = "https://ghe.com"
+///     private_key_secret_version    = gcp_secretmanager_secretversion.private-key-secret-version.id
+///     webhook_secret_secret_version = gcp_secretmanager_secretversion.webhook-secret-secret-version.id
+///     app_id                        = 200
+///     app_slug                      = "gcb-app"
+///     app_installation_id           = 300
+///   }
 /// }
 /// ```
 /// ```java
@@ -471,14 +553,15 @@ import 'connection_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicy;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
 /// import com.pulumi.gcp.cloudbuildv2.Connection;
 /// import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
 /// import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -786,7 +869,7 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     github_token_secret.ID(),
+/// 			Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -818,7 +901,7 @@ import 'connection_state.dart';
 /// 			GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
 /// 				AppInstallationId: pulumi.Int(123123),
 /// 				AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{
-/// 					OauthTokenSecretVersion: github_token_secret_version.ID(),
+/// 					OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -827,6 +910,51 @@ import 'connection_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+///   bindings {
+///     role    = "roles/secretmanager.secretAccessor"
+///     members = ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"]
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "github-token-secret" {
+///   secret_id = "github-token-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "github-token-secret-version" {
+///   secret      = gcp_secretmanager_secret.github-token-secret.id
+///   secret_data = file("my-github-token.txt")
+/// }
+/// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
+/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+///   secret_id   = gcp_secretmanager_secret.github-token-secret.secret_id
+///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+/// }
+/// resource "gcp_cloudbuildv2_connection" "my-connection" {
+///   location = "us-central1"
+///   name     = "my-connection"
+///   github_config = {
+///     app_installation_id = 123123
+///     authorizer_credential = {
+///       oauth_token_secret_version = gcp_secretmanager_secretversion.github-token-secret-version.id
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -845,14 +973,15 @@ import 'connection_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicy;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
 /// import com.pulumi.gcp.cloudbuildv2.Connection;
 /// import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
 /// import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigArgs;
 /// import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -954,34 +1083,23 @@ import 'connection_state.dart';
 /// Connection can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudbuildv2/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudbuildv2/connection:Connection default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
 /// ```
 class Connection extends pulumi.CustomResource {
   /// Allows clients to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Configuration for connections to Bitbucket Cloud.
   /// Structure is documented below.
@@ -991,8 +1109,16 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<ConnectionBitbucketDataCenterConfig?> bitbucketDataCenterConfig;
   /// Output only. Server assigned timestamp for when the connection was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
   late final pulumi.Output<bool?> disabled;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
@@ -1038,6 +1164,7 @@ class Connection extends pulumi.CustomResource {
     bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBitbucketCloudConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bitbucketDataCenterConfig = registerOutput<ConnectionBitbucketDataCenterConfig?>('bitbucketDataCenterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBitbucketDataCenterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
@@ -1079,6 +1206,7 @@ class Connection extends pulumi.CustomResource {
     bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBitbucketCloudConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bitbucketDataCenterConfig = registerOutput<ConnectionBitbucketDataCenterConfig?>('bitbucketDataCenterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBitbucketDataCenterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');

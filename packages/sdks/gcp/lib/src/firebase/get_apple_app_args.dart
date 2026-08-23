@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebase_get_apple_app_get_apple_app_args_doc}
 class GetAppleAppArgs {
-  /// The app_id of name of the Firebase iosApp.
+  /// The appId of name of the Firebase iosApp.
   ///
   ///
   /// - - -
@@ -17,7 +17,7 @@ class GetAppleAppArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetAppleAppArgs].
-  /// [appId] The app_id of name of the Firebase iosApp.
+  /// [appId] The appId of name of the Firebase iosApp.
   /// [project] The ID of the project in which the resource belongs.
   const GetAppleAppArgs({
     required this.appId,
@@ -38,4 +38,3 @@ class GetAppleAppArgs {
     );
   }
 }
-

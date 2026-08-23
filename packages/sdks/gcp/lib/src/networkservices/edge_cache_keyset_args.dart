@@ -9,11 +9,18 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_edge_cache_keyset_edge_cache_keyset_args_doc}
 class EdgeCacheKeysetArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of the resource.
   final pulumi.Input<String>? description;
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -23,21 +30,22 @@ class EdgeCacheKeysetArgs {
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
   /// An ordered list of Ed25519 public keys to use for validating signed requests.
-  /// You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+  /// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
   /// You may specify no more than one Google-managed public key.
-  /// If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
+  /// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
   /// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
   /// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
   /// Structure is documented below.
   final pulumi.Input<List<EdgeCacheKeysetPublicKey>>? publicKeys;
   /// An ordered list of shared keys to use for validating signed requests.
-  /// Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
-  /// You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
-  /// You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+  /// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+  /// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+  /// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
   /// Structure is documented below.
   final pulumi.Input<List<EdgeCacheKeysetValidationSharedKey>>? validationSharedKeys;
 
   /// Creates a new [EdgeCacheKeysetArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of the resource.
   /// [labels] Set of label tags associated with the EdgeCache resource.
   /// [name] Name of the resource; provided by the client when the resource is created.
@@ -45,6 +53,7 @@ class EdgeCacheKeysetArgs {
   /// [publicKeys] An ordered list of Ed25519 public keys to use for validating signed requests.
   /// [validationSharedKeys] An ordered list of shared keys to use for validating signed requests.
   const EdgeCacheKeysetArgs({
+    this.deletionPolicy,
     this.description,
     this.labels,
     this.name,
@@ -55,6 +64,7 @@ class EdgeCacheKeysetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'name': ?name,
@@ -66,6 +76,7 @@ class EdgeCacheKeysetArgs {
 
   factory EdgeCacheKeysetArgs.fromMap(Map<String, dynamic> map) {
     return EdgeCacheKeysetArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -75,4 +86,3 @@ class EdgeCacheKeysetArgs {
     );
   }
 }
-

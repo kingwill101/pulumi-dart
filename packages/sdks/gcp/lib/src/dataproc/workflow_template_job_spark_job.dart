@@ -14,7 +14,7 @@ class WorkflowTemplateJobSparkJob {
   final pulumi.Input<List<String>>? jarFileUris;
   /// The runtime log config for job execution.
   final pulumi.Input<WorkflowTemplateJobSparkJobLoggingConfig>? loggingConfig;
-  /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+  /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
   final pulumi.Input<String>? mainClass;
   /// The HCFS URI of the jar file that contains the main class.
   final pulumi.Input<String>? mainJarFileUri;
@@ -27,7 +27,7 @@ class WorkflowTemplateJobSparkJob {
   /// [fileUris] HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
   /// [jarFileUris] HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
   /// [loggingConfig] The runtime log config for job execution.
-  /// [mainClass] The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+  /// [mainClass] The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
   /// [mainJarFileUri] The HCFS URI of the jar file that contains the main class.
   /// [properties] A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
   const WorkflowTemplateJobSparkJob({
@@ -67,4 +67,3 @@ class WorkflowTemplateJobSparkJob {
     );
   }
 }
-

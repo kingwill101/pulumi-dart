@@ -9,7 +9,7 @@ import 'access_level_condition_state.dart';
 /// to enable them to be added separately.
 ///
 /// &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.AccessLevel` resource,
-/// the access level resource must have a `lifecycle` block with `ignore_changes = [basic[0].conditions]` so
+/// the access level resource must have a `lifecycle` block with `ignoreChanges = [basic[0].conditions]` so
 /// they don't fight over which service accounts should be included.
 ///
 ///
@@ -20,10 +20,10 @@ import 'access_level_condition_state.dart';
 /// * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
 ///
 /// ## Example Usage
 ///
@@ -312,6 +312,54 @@ import 'access_level_condition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesslevel" "access-level-service-account" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+///   title  = "chromeos_no_lock"
+///   basic = {
+///     conditions = [{
+///       "devicePolicy" = {
+///         "requireScreenLock" = true
+///         "osConstraints" = [{
+///           "osType" = "DESKTOP_CHROME_OS"
+///         }]
+///       }
+///       "regions" = ["CH", "IT", "US"]
+///     }]
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "created-later" {
+///   account_id = "my-account-id"
+/// }
+/// resource "gcp_accesscontextmanager_accesslevelcondition" "access-level-conditions" {
+///   access_level   = gcp_accesscontextmanager_accesslevel.access-level-service-account.name
+///   ip_subnetworks = ["192.0.4.0/24"]
+///   members        = ["user:test@google.com", "user:test2@google.com", "serviceAccount:${gcp_serviceaccount_account.created-later.email}"]
+///   negate         = false
+///   device_policy = {
+///     require_screen_lock    = false
+///     require_admin_approval = false
+///     require_corp_owned     = true
+///     os_constraints = [{
+///       "osType" = "DESKTOP_CHROME_OS"
+///     }]
+///   }
+///   regions = ["IT", "US"]
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -323,13 +371,17 @@ import 'access_level_condition_state.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevel;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
 /// import com.pulumi.gcp.serviceaccount.Account;
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelCondition;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelConditionArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionDevicePolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionDevicePolicyOsConstraintArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -452,6 +504,13 @@ class AccessLevelCondition extends pulumi.CustomResource {
   late final pulumi.Output<String> accessLevel;
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Device specific restrictions, all restrictions must hold for
   /// the Condition to be true. If not specified, all devices are
   /// allowed.
@@ -490,7 +549,7 @@ class AccessLevelCondition extends pulumi.CustomResource {
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   late final pulumi.Output<List<String>?> requiredAccessLevels;
-  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> vpcNetworkSources;
 
@@ -510,6 +569,7 @@ class AccessLevelCondition extends pulumi.CustomResource {
         ) {
     accessLevel = registerOutput<String>('accessLevel');
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
     members = registerOutput<List<String>?>('members');
@@ -544,6 +604,7 @@ class AccessLevelCondition extends pulumi.CustomResource {
         ) {
     accessLevel = registerOutput<String>('accessLevel');
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
     members = registerOutput<List<String>?>('members');

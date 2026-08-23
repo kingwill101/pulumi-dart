@@ -5,302 +5,9 @@ import 'feature_membership_mesh.dart';
 import 'feature_membership_policycontroller.dart';
 import 'feature_membership_state.dart';
 
-/// Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The google_gke_hub is the Fleet API.
+/// Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The googleGkeHub is the Fleet API.
 ///
 /// ## Example Usage
-///
-/// ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
-///
-/// With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
-/// and overseeing the lifecycle of its components.
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const cluster = new gcp.container.Cluster("cluster", {
-///     name: "my-cluster",
-///     location: "us-central1-a",
-///     initialNodeCount: 1,
-/// });
-/// const membership = new gcp.gkehub.Membership("membership", {
-///     membershipId: "my-membership",
-///     endpoint: {
-///         gkeCluster: {
-///             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
-///         },
-///     },
-/// });
-/// const feature = new gcp.gkehub.Feature("feature", {
-///     name: "configmanagement",
-///     location: "global",
-///     labels: {
-///         foo: "bar",
-///     },
-/// });
-/// const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
-///     location: "global",
-///     feature: feature.name,
-///     membership: membership.membershipId,
-///     configmanagement: {
-///         management: "MANAGEMENT_AUTOMATIC",
-///         configSync: {
-///             enabled: true,
-///         },
-///     },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// cluster = gcp.container.Cluster("cluster",
-///     name="my-cluster",
-///     location="us-central1-a",
-///     initial_node_count=1)
-/// membership = gcp.gkehub.Membership("membership",
-///     membership_id="my-membership",
-///     endpoint={
-///         "gke_cluster": {
-///             "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-///         },
-///     })
-/// feature = gcp.gkehub.Feature("feature",
-///     name="configmanagement",
-///     location="global",
-///     labels={
-///         "foo": "bar",
-///     })
-/// feature_member = gcp.gkehub.FeatureMembership("feature_member",
-///     location="global",
-///     feature=feature.name,
-///     membership=membership.membership_id,
-///     configmanagement={
-///         "management": "MANAGEMENT_AUTOMATIC",
-///         "config_sync": {
-///             "enabled": True,
-///         },
-///     })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var cluster = new Gcp.Container.Cluster("cluster", new()
-///     {
-///         Name = "my-cluster",
-///         Location = "us-central1-a",
-///         InitialNodeCount = 1,
-///     });
-///
-///     var membership = new Gcp.GkeHub.Membership("membership", new()
-///     {
-///         MembershipId = "my-membership",
-///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
-///         {
-///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
-///             {
-///                 ResourceLink = cluster.Id.Apply(id => $"//container.googleapis.com/{id}"),
-///             },
-///         },
-///     });
-///
-///     var feature = new Gcp.GkeHub.Feature("feature", new()
-///     {
-///         Name = "configmanagement",
-///         Location = "global",
-///         Labels =
-///         {
-///             { "foo", "bar" },
-///         },
-///     });
-///
-///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
-///     {
-///         Location = "global",
-///         Feature = feature.Name,
-///         Membership = membership.MembershipId,
-///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
-///         {
-///             Management = "MANAGEMENT_AUTOMATIC",
-///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"fmt"
-///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
-/// 			Name:             pulumi.String("my-cluster"),
-/// 			Location:         pulumi.String("us-central1-a"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-/// 			MembershipId: pulumi.String("my-membership"),
-/// 			Endpoint: &gkehub.MembershipEndpointArgs{
-/// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
-/// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
-/// 					}).(pulumi.StringOutput),
-/// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-/// 			Name:     pulumi.String("configmanagement"),
-/// 			Location: pulumi.String("global"),
-/// 			Labels: pulumi.StringMap{
-/// 				"foo": pulumi.String("bar"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
-/// 			Location:   pulumi.String("global"),
-/// 			Feature:    feature.Name,
-/// 			Membership: membership.MembershipId,
-/// 			Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
-/// 				Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
-/// 				ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.gkehub.Membership;
-/// import com.pulumi.gcp.gkehub.MembershipArgs;
-/// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
-/// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
-/// import com.pulumi.gcp.gkehub.Feature;
-/// import com.pulumi.gcp.gkehub.FeatureArgs;
-/// import com.pulumi.gcp.gkehub.FeatureMembership;
-/// import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
-/// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
-/// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var cluster = new Cluster("cluster", ClusterArgs.builder()
-///             .name("my-cluster")
-///             .location("us-central1-a")
-///             .initialNodeCount(1)
-///             .build());
-///
-///         var membership = new Membership("membership", MembershipArgs.builder()
-///             .membershipId("my-membership")
-///             .endpoint(MembershipEndpointArgs.builder()
-///                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
-///                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
-///                     .build())
-///                 .build())
-///             .build());
-///
-///         var feature = new Feature("feature", FeatureArgs.builder()
-///             .name("configmanagement")
-///             .location("global")
-///             .labels(Map.of("foo", "bar"))
-///             .build());
-///
-///         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()
-///             .location("global")
-///             .feature(feature.name())
-///             .membership(membership.membershipId())
-///             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
-///                 .management("MANAGEMENT_AUTOMATIC")
-///                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   cluster:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: my-cluster
-///       location: us-central1-a
-///       initialNodeCount: 1
-///   membership:
-///     type: gcp:gkehub:Membership
-///     properties:
-///       membershipId: my-membership
-///       endpoint:
-///         gkeCluster:
-///           resourceLink: //container.googleapis.com/${cluster.id}
-///   feature:
-///     type: gcp:gkehub:Feature
-///     properties:
-///       name: configmanagement
-///       location: global
-///       labels:
-///         foo: bar
-///   featureMember:
-///     type: gcp:gkehub:FeatureMembership
-///     name: feature_member
-///     properties:
-///       location: global
-///       feature: ${feature.name}
-///       membership: ${membership.membershipId}
-///       configmanagement:
-///         management: MANAGEMENT_AUTOMATIC
-///         configSync:
-///           enabled: true
-/// ```
-///
 ///
 /// ### Config Management With Git
 ///
@@ -462,7 +169,7 @@ import 'feature_membership_state.dart';
 /// 			MembershipId: pulumi.String("my-membership"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -502,6 +209,50 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "my-membership"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.cluster.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "configmanagement"
+///   location = "global"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_gkehub_featuremembership" "feature_member" {
+///   location   = "global"
+///   feature    = gcp_gkehub_feature.feature.name
+///   membership = gcp_gkehub_membership.membership.membership_id
+///   configmanagement = {
+///     version = "1.19.0"
+///     config_sync = {
+///       enabled = true
+///       git = {
+///         sync_repo = "https://github.com/hashicorp/terraform"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -521,8 +272,8 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -783,7 +534,7 @@ import 'feature_membership_state.dart';
 /// 			MembershipId: pulumi.String("my-membership"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -827,6 +578,54 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "my-membership"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.cluster.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "configmanagement"
+///   location = "global"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_gkehub_featuremembership" "feature_member" {
+///   location   = "global"
+///   feature    = gcp_gkehub_feature.feature.name
+///   membership = gcp_gkehub_membership.membership.membership_id
+///   configmanagement = {
+///     version = "1.19.0"
+///     config_sync = {
+///       enabled = true
+///       oci = {
+///         sync_repo                 = "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest"
+///         policy_dir                = "config-connector"
+///         sync_wait_secs            = "20"
+///         secret_type               = "gcpserviceaccount"
+///         gcp_service_account_email = "sa@project-id.iam.gserviceaccount.com"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -846,8 +645,8 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1136,7 +935,7 @@ import 'feature_membership_state.dart';
 /// 			MembershipId: pulumi.String("my-membership"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -1188,6 +987,58 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "my-membership"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.cluster.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "configmanagement"
+///   location = "global"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_gkehub_featuremembership" "feature_member" {
+///   location   = "global"
+///   feature    = gcp_gkehub_feature.feature.name
+///   membership = gcp_gkehub_membership.membership.membership_id
+///   configmanagement = {
+///     version = "1.20.1"
+///     config_sync = {
+///       enabled = true
+///       deployment_overrides = [{
+///         "deploymentName"      = "reconciler-manager"
+///         "deploymentNamespace" = "config-management-system"
+///         "containers" = [{
+///           "containerName" = "reconciler-manager"
+///           "cpuRequest"    = "100m"
+///           "memoryRequest" = "64Mi"
+///           "cpuLimit"      = "250m"
+///           "memoryLimit"   = "128Mi"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1206,8 +1057,10 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs;
+/// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1478,7 +1331,7 @@ import 'feature_membership_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -1519,6 +1372,52 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "my-membership"
+///   location      = "us-central1"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.cluster.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "configmanagement"
+///   location = "global"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_gkehub_featuremembership" "feature_member" {
+///   location            = "global"
+///   feature             = gcp_gkehub_feature.feature.name
+///   membership          = gcp_gkehub_membership.membership.membership_id
+///   membership_location = gcp_gkehub_membership.membership.location
+///   configmanagement = {
+///     version = "1.19.0"
+///     config_sync = {
+///       enabled = true
+///       git = {
+///         sync_repo = "https://github.com/hashicorp/terraform"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1538,8 +1437,8 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1702,6 +1601,23 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "multiclusterservicediscovery"
+///   location = "global"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1710,8 +1626,8 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.Feature;
 /// import com.pulumi.gcp.gkehub.FeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1874,7 +1790,7 @@ import 'feature_membership_state.dart';
 /// 			MembershipId: pulumi.String("my-membership"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -1905,6 +1821,41 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "my-membership"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.cluster.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "servicemesh"
+///   location = "global"
+/// }
+/// resource "gcp_gkehub_featuremembership" "feature_member" {
+///   location   = "global"
+///   feature    = gcp_gkehub_feature.feature.name
+///   membership = gcp_gkehub_membership.membership.membership_id
+///   mesh = {
+///     management = "MANAGEMENT_AUTOMATIC"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1922,8 +1873,8 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.gcp.gkehub.FeatureMembership;
 /// import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipMeshArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2136,7 +2087,7 @@ import 'feature_membership_state.dart';
 /// 			MembershipId: pulumi.String("my-membership"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -2169,6 +2120,43 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "my-membership"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.cluster.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "policycontroller"
+///   location = "global"
+/// }
+/// resource "gcp_gkehub_featuremembership" "feature_member" {
+///   location   = "global"
+///   feature    = gcp_gkehub_feature.feature.name
+///   membership = gcp_gkehub_membership.membership.membership_id
+///   policycontroller = {
+///     policy_controller_hub_config = {
+///       install_spec = "INSTALL_SPEC_ENABLED"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2187,8 +2175,8 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2439,7 +2427,7 @@ import 'feature_membership_state.dart';
 /// 			MembershipId: pulumi.String("my-membership"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -2483,6 +2471,54 @@ import 'feature_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "my-membership"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.cluster.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_feature" "feature" {
+///   name     = "policycontroller"
+///   location = "global"
+/// }
+/// resource "gcp_gkehub_featuremembership" "feature_member" {
+///   location   = "global"
+///   feature    = gcp_gkehub_feature.feature.name
+///   membership = gcp_gkehub_membership.membership.membership_id
+///   policycontroller = {
+///     policy_controller_hub_config = {
+///       install_spec = "INSTALL_SPEC_SUSPENDED"
+///       policy_content = {
+///         template_library = {
+///           installation = "NOT_INSTALLED"
+///         }
+///       }
+///       constraint_violation_limit = 50
+///       audit_interval_seconds     = 120
+///       referential_rules_enabled  = true
+///       log_denies_enabled         = true
+///       mutation_enabled           = true
+///     }
+///     version = "1.17.0"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2503,8 +2539,8 @@ import 'feature_membership_state.dart';
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2608,27 +2644,27 @@ import 'feature_membership_state.dart';
 /// FeatureMembership can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
-///
 /// * `{{project}}/{{location}}/{{feature}}/{{membership}}`
-///
 /// * `{{location}}/{{feature}}/{{membership}}`
+///
 ///
 /// When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{project}}/{{location}}/{{feature}}/{{membership}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
 /// ```
 class FeatureMembership extends pulumi.CustomResource {
   /// Config Management-specific spec. Structure is documented below.
   late final pulumi.Output<FeatureMembershipConfigmanagement?> configmanagement;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the feature
   late final pulumi.Output<String> feature;
   /// The location of the feature
@@ -2659,6 +2695,7 @@ class FeatureMembership extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configmanagement = registerOutput<FeatureMembershipConfigmanagement?>('configmanagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipConfigmanagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     feature = registerOutput<String>('feature');
     location = registerOutput<String>('location');
     membership = registerOutput<String>('membership');
@@ -2692,6 +2729,7 @@ class FeatureMembership extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configmanagement = registerOutput<FeatureMembershipConfigmanagement?>('configmanagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipConfigmanagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     feature = registerOutput<String>('feature');
     location = registerOutput<String>('location');
     membership = registerOutput<String>('membership');

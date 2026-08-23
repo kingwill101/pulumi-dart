@@ -27,12 +27,12 @@ import 'task_trigger_spec.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const example = new gcp.dataplex.Lake("example", {
-///     name: "tf-test-lake_13293",
+///     name: "tf-test-lake_67903",
 ///     location: "us-central1",
 ///     project: "my-project-name",
 /// });
 /// const exampleTask = new gcp.dataplex.Task("example", {
-///     taskId: "tf-test-task_40289",
+///     taskId: "tf-test-task_40816",
 ///     location: "us-central1",
 ///     lake: example.name,
 ///     description: "Test Task Basic",
@@ -65,11 +65,11 @@ import 'task_trigger_spec.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// example = gcp.dataplex.Lake("example",
-///     name="tf-test-lake_13293",
+///     name="tf-test-lake_67903",
 ///     location="us-central1",
 ///     project="my-project-name")
 /// example_task = gcp.dataplex.Task("example",
-///     task_id="tf-test-task_40289",
+///     task_id="tf-test-task_40816",
 ///     location="us-central1",
 ///     lake=example.name,
 ///     description="Test Task Basic",
@@ -107,14 +107,14 @@ import 'task_trigger_spec.dart';
 ///
 ///     var example = new Gcp.DataPlex.Lake("example", new()
 ///     {
-///         Name = "tf-test-lake_13293",
+///         Name = "tf-test-lake_67903",
 ///         Location = "us-central1",
 ///         Project = "my-project-name",
 ///     });
 ///
 ///     var exampleTask = new Gcp.DataPlex.Task("example", new()
 ///     {
-///         TaskId = "tf-test-task_40289",
+///         TaskId = "tf-test-task_40816",
 ///         Location = "us-central1",
 ///         Lake = example.Name,
 ///         Description = "Test Task Basic",
@@ -151,8 +151,6 @@ import 'task_trigger_spec.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -165,7 +163,7 @@ import 'task_trigger_spec.dart';
 /// 			return err
 /// 		}
 /// 		example, err := dataplex.NewLake(ctx, "example", &dataplex.LakeArgs{
-/// 			Name:     pulumi.String("tf-test-lake_13293"),
+/// 			Name:     pulumi.String("tf-test-lake_67903"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			Project:  pulumi.String("my-project-name"),
 /// 		})
@@ -173,7 +171,7 @@ import 'task_trigger_spec.dart';
 /// 			return err
 /// 		}
 /// 		_, err = dataplex.NewTask(ctx, "example", &dataplex.TaskArgs{
-/// 			TaskId:      pulumi.String("tf-test-task_40289"),
+/// 			TaskId:      pulumi.String("tf-test-task_40816"),
 /// 			Location:    pulumi.String("us-central1"),
 /// 			Lake:        example.Name,
 /// 			Description: pulumi.String("Test Task Basic"),
@@ -206,6 +204,51 @@ import 'task_trigger_spec.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_dataplex_lake" "example" {
+///   name     = "tf-test-lake_67903"
+///   location = "us-central1"
+///   project  = "my-project-name"
+/// }
+/// resource "gcp_dataplex_task" "example" {
+///   task_id      = "tf-test-task_40816"
+///   location     = "us-central1"
+///   lake         = gcp_dataplex_lake.example.name
+///   description  = "Test Task Basic"
+///   display_name = "task-basic"
+///   labels = {
+///     "count" = "3"
+///   }
+///   trigger_spec = {
+///     type        = "RECURRING"
+///     disabled    = false
+///     max_retries = 3
+///     start_time  = "2023-10-02T15:01:23Z"
+///     schedule    = "1 * * * *"
+///   }
+///   execution_spec = {
+///     service_account            ="${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///     project                    = "my-project-name"
+///     max_job_execution_lifetime = "100s"
+///     kms_key                    = "234jn2kjn42k3n423"
+///   }
+///   spark = {
+///     python_script_file = "gs://dataproc-examples/pyspark/hello-world/hello-world.py"
+///   }
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -221,8 +264,8 @@ import 'task_trigger_spec.dart';
 /// import com.pulumi.gcp.dataplex.inputs.TaskTriggerSpecArgs;
 /// import com.pulumi.gcp.dataplex.inputs.TaskExecutionSpecArgs;
 /// import com.pulumi.gcp.dataplex.inputs.TaskSparkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,13 +281,13 @@ import 'task_trigger_spec.dart';
 ///             .build());
 ///
 ///         var example = new Lake("example", LakeArgs.builder()
-///             .name("tf-test-lake_13293")
+///             .name("tf-test-lake_67903")
 ///             .location("us-central1")
 ///             .project("my-project-name")
 ///             .build());
 ///
 ///         var exampleTask = new Task("exampleTask", TaskArgs.builder()
-///             .taskId("tf-test-task_40289")
+///             .taskId("tf-test-task_40816")
 ///             .location("us-central1")
 ///             .lake(example.name())
 ///             .description("Test Task Basic")
@@ -277,14 +320,14 @@ import 'task_trigger_spec.dart';
 ///   example:
 ///     type: gcp:dataplex:Lake
 ///     properties:
-///       name: tf-test-lake_13293
+///       name: tf-test-lake_67903
 ///       location: us-central1
 ///       project: my-project-name
 ///   exampleTask:
 ///     type: gcp:dataplex:Task
 ///     name: example
 ///     properties:
-///       taskId: tf-test-task_40289
+///       taskId: tf-test-task_40816
 ///       location: us-central1
 ///       lake: ${example.name}
 ///       description: Test Task Basic
@@ -322,17 +365,17 @@ import 'task_trigger_spec.dart';
 ///
 /// // VPC network
 /// const _default = new gcp.compute.Network("default", {
-///     name: "tf-test-workstation-cluster_33395",
+///     name: "tf-test-workstation-cluster_94690",
 ///     autoCreateSubnetworks: true,
 /// });
 /// const project = gcp.organizations.getProject({});
 /// const exampleSpark = new gcp.dataplex.Lake("example_spark", {
-///     name: "tf-test-lake_76044",
+///     name: "tf-test-lake_29947",
 ///     location: "us-central1",
 ///     project: "my-project-name",
 /// });
 /// const exampleSparkTask = new gcp.dataplex.Task("example_spark", {
-///     taskId: "tf-test-task_69391",
+///     taskId: "tf-test-task_28257",
 ///     location: "us-central1",
 ///     lake: exampleSpark.name,
 ///     triggerSpec: {
@@ -379,15 +422,15 @@ import 'task_trigger_spec.dart';
 ///
 /// # VPC network
 /// default = gcp.compute.Network("default",
-///     name="tf-test-workstation-cluster_33395",
+///     name="tf-test-workstation-cluster_94690",
 ///     auto_create_subnetworks=True)
 /// project = gcp.organizations.get_project()
 /// example_spark = gcp.dataplex.Lake("example_spark",
-///     name="tf-test-lake_76044",
+///     name="tf-test-lake_29947",
 ///     location="us-central1",
 ///     project="my-project-name")
 /// example_spark_task = gcp.dataplex.Task("example_spark",
-///     task_id="tf-test-task_69391",
+///     task_id="tf-test-task_28257",
 ///     location="us-central1",
 ///     lake=example_spark.name,
 ///     trigger_spec={
@@ -438,7 +481,7 @@ import 'task_trigger_spec.dart';
 ///     // VPC network
 ///     var @default = new Gcp.Compute.Network("default", new()
 ///     {
-///         Name = "tf-test-workstation-cluster_33395",
+///         Name = "tf-test-workstation-cluster_94690",
 ///         AutoCreateSubnetworks = true,
 ///     });
 ///
@@ -446,14 +489,14 @@ import 'task_trigger_spec.dart';
 ///
 ///     var exampleSpark = new Gcp.DataPlex.Lake("example_spark", new()
 ///     {
-///         Name = "tf-test-lake_76044",
+///         Name = "tf-test-lake_29947",
 ///         Location = "us-central1",
 ///         Project = "my-project-name",
 ///     });
 ///
 ///     var exampleSparkTask = new Gcp.DataPlex.Task("example_spark", new()
 ///     {
-///         TaskId = "tf-test-task_69391",
+///         TaskId = "tf-test-task_28257",
 ///         Location = "us-central1",
 ///         Lake = exampleSpark.Name,
 ///         TriggerSpec = new Gcp.DataPlex.Inputs.TaskTriggerSpecArgs
@@ -524,8 +567,6 @@ import 'task_trigger_spec.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -536,7 +577,7 @@ import 'task_trigger_spec.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// VPC network
 /// 		_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("tf-test-workstation-cluster_33395"),
+/// 			Name:                  pulumi.String("tf-test-workstation-cluster_94690"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -547,7 +588,7 @@ import 'task_trigger_spec.dart';
 /// 			return err
 /// 		}
 /// 		exampleSpark, err := dataplex.NewLake(ctx, "example_spark", &dataplex.LakeArgs{
-/// 			Name:     pulumi.String("tf-test-lake_76044"),
+/// 			Name:     pulumi.String("tf-test-lake_29947"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			Project:  pulumi.String("my-project-name"),
 /// 		})
@@ -555,7 +596,7 @@ import 'task_trigger_spec.dart';
 /// 			return err
 /// 		}
 /// 		_, err = dataplex.NewTask(ctx, "example_spark", &dataplex.TaskArgs{
-/// 			TaskId:   pulumi.String("tf-test-task_69391"),
+/// 			TaskId:   pulumi.String("tf-test-task_28257"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			Lake:     exampleSpark.Name,
 /// 			TriggerSpec: &dataplex.TaskTriggerSpecArgs{
@@ -592,7 +633,7 @@ import 'task_trigger_spec.dart';
 /// 						NetworkTags: pulumi.StringArray{
 /// 							pulumi.String("test-network-tag"),
 /// 						},
-/// 						SubNetwork: _default.ID(),
+/// 						SubNetwork: _default.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 				FileUris: pulumi.StringArray{
@@ -610,6 +651,70 @@ import 'task_trigger_spec.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// # VPC network
+/// resource "gcp_compute_network" "default" {
+///   name                    = "tf-test-workstation-cluster_94690"
+///   auto_create_subnetworks = true
+/// }
+/// resource "gcp_dataplex_lake" "example_spark" {
+///   name     = "tf-test-lake_29947"
+///   location = "us-central1"
+///   project  = "my-project-name"
+/// }
+/// resource "gcp_dataplex_task" "example_spark" {
+///   task_id  = "tf-test-task_28257"
+///   location = "us-central1"
+///   lake     = gcp_dataplex_lake.example_spark.name
+///   trigger_spec = {
+///     type = "ON_DEMAND"
+///   }
+///   description = "task-spark-terraform"
+///   execution_spec = {
+///     service_account ="${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///     args = {
+///       "TASK_ARGS" = "--output_location,gs://spark-job/task-result, --output_format, json"
+///     }
+///   }
+///   spark = {
+///     infrastructure_spec = {
+///       batch = {
+///         executors_count     = 2
+///         max_executors_count = 100
+///       }
+///       container_image = {
+///         image           = "test-image"
+///         java_jars       = ["test-java-jars.jar"]
+///         python_packages = ["gs://bucket-name/my/path/to/lib.tar.gz"]
+///         properties = {
+///           "name"  = "wrench"
+///           "mass"  = "1.3kg"
+///           "count" = "3"
+///         }
+///       }
+///       vpc_network = {
+///         network_tags = ["test-network-tag"]
+///         sub_network  = gcp_compute_network.default.id
+///       }
+///     }
+///     file_uris    = ["gs://terrafrom-test/test.csv"]
+///     archive_uris = ["gs://terraform-test/test.csv"]
+///     sql_script   = "show databases"
+///   }
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -633,8 +738,8 @@ import 'task_trigger_spec.dart';
 /// import com.pulumi.gcp.dataplex.inputs.TaskSparkInfrastructureSpecBatchArgs;
 /// import com.pulumi.gcp.dataplex.inputs.TaskSparkInfrastructureSpecContainerImageArgs;
 /// import com.pulumi.gcp.dataplex.inputs.TaskSparkInfrastructureSpecVpcNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -648,7 +753,7 @@ import 'task_trigger_spec.dart';
 ///     public static void stack(Context ctx) {
 ///         // VPC network
 ///         var default_ = new Network("default", NetworkArgs.builder()
-///             .name("tf-test-workstation-cluster_33395")
+///             .name("tf-test-workstation-cluster_94690")
 ///             .autoCreateSubnetworks(true)
 ///             .build());
 ///
@@ -656,13 +761,13 @@ import 'task_trigger_spec.dart';
 ///             .build());
 ///
 ///         var exampleSpark = new Lake("exampleSpark", LakeArgs.builder()
-///             .name("tf-test-lake_76044")
+///             .name("tf-test-lake_29947")
 ///             .location("us-central1")
 ///             .project("my-project-name")
 ///             .build());
 ///
 ///         var exampleSparkTask = new Task("exampleSparkTask", TaskArgs.builder()
-///             .taskId("tf-test-task_69391")
+///             .taskId("tf-test-task_28257")
 ///             .location("us-central1")
 ///             .lake(exampleSpark.name())
 ///             .triggerSpec(TaskTriggerSpecArgs.builder()
@@ -710,20 +815,20 @@ import 'task_trigger_spec.dart';
 ///   default:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: tf-test-workstation-cluster_33395
+///       name: tf-test-workstation-cluster_94690
 ///       autoCreateSubnetworks: true
 ///   exampleSpark:
 ///     type: gcp:dataplex:Lake
 ///     name: example_spark
 ///     properties:
-///       name: tf-test-lake_76044
+///       name: tf-test-lake_29947
 ///       location: us-central1
 ///       project: my-project-name
 ///   exampleSparkTask:
 ///     type: gcp:dataplex:Task
 ///     name: example_spark
 ///     properties:
-///       taskId: tf-test-task_69391
+///       taskId: tf-test-task_28257
 ///       location: us-central1
 ///       lake: ${exampleSpark.name}
 ///       triggerSpec:
@@ -775,17 +880,17 @@ import 'task_trigger_spec.dart';
 ///
 /// // VPC network
 /// const _default = new gcp.compute.Network("default", {
-///     name: "tf-test-workstation-cluster_8270",
+///     name: "tf-test-workstation-cluster_49175",
 ///     autoCreateSubnetworks: true,
 /// });
 /// const project = gcp.organizations.getProject({});
 /// const exampleNotebook = new gcp.dataplex.Lake("example_notebook", {
-///     name: "tf-test-lake_41150",
+///     name: "tf-test-lake_79411",
 ///     location: "us-central1",
 ///     project: "my-project-name",
 /// });
 /// const exampleNotebookTask = new gcp.dataplex.Task("example_notebook", {
-///     taskId: "tf-test-task_89313",
+///     taskId: "tf-test-task_2234",
 ///     location: "us-central1",
 ///     lake: exampleNotebook.name,
 ///     triggerSpec: {
@@ -832,15 +937,15 @@ import 'task_trigger_spec.dart';
 ///
 /// # VPC network
 /// default = gcp.compute.Network("default",
-///     name="tf-test-workstation-cluster_8270",
+///     name="tf-test-workstation-cluster_49175",
 ///     auto_create_subnetworks=True)
 /// project = gcp.organizations.get_project()
 /// example_notebook = gcp.dataplex.Lake("example_notebook",
-///     name="tf-test-lake_41150",
+///     name="tf-test-lake_79411",
 ///     location="us-central1",
 ///     project="my-project-name")
 /// example_notebook_task = gcp.dataplex.Task("example_notebook",
-///     task_id="tf-test-task_89313",
+///     task_id="tf-test-task_2234",
 ///     location="us-central1",
 ///     lake=example_notebook.name,
 ///     trigger_spec={
@@ -891,7 +996,7 @@ import 'task_trigger_spec.dart';
 ///     // VPC network
 ///     var @default = new Gcp.Compute.Network("default", new()
 ///     {
-///         Name = "tf-test-workstation-cluster_8270",
+///         Name = "tf-test-workstation-cluster_49175",
 ///         AutoCreateSubnetworks = true,
 ///     });
 ///
@@ -899,14 +1004,14 @@ import 'task_trigger_spec.dart';
 ///
 ///     var exampleNotebook = new Gcp.DataPlex.Lake("example_notebook", new()
 ///     {
-///         Name = "tf-test-lake_41150",
+///         Name = "tf-test-lake_79411",
 ///         Location = "us-central1",
 ///         Project = "my-project-name",
 ///     });
 ///
 ///     var exampleNotebookTask = new Gcp.DataPlex.Task("example_notebook", new()
 ///     {
-///         TaskId = "tf-test-task_89313",
+///         TaskId = "tf-test-task_2234",
 ///         Location = "us-central1",
 ///         Lake = exampleNotebook.Name,
 ///         TriggerSpec = new Gcp.DataPlex.Inputs.TaskTriggerSpecArgs
@@ -977,8 +1082,6 @@ import 'task_trigger_spec.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -989,7 +1092,7 @@ import 'task_trigger_spec.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// VPC network
 /// 		_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("tf-test-workstation-cluster_8270"),
+/// 			Name:                  pulumi.String("tf-test-workstation-cluster_49175"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -1000,7 +1103,7 @@ import 'task_trigger_spec.dart';
 /// 			return err
 /// 		}
 /// 		exampleNotebook, err := dataplex.NewLake(ctx, "example_notebook", &dataplex.LakeArgs{
-/// 			Name:     pulumi.String("tf-test-lake_41150"),
+/// 			Name:     pulumi.String("tf-test-lake_79411"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			Project:  pulumi.String("my-project-name"),
 /// 		})
@@ -1008,7 +1111,7 @@ import 'task_trigger_spec.dart';
 /// 			return err
 /// 		}
 /// 		_, err = dataplex.NewTask(ctx, "example_notebook", &dataplex.TaskArgs{
-/// 			TaskId:   pulumi.String("tf-test-task_89313"),
+/// 			TaskId:   pulumi.String("tf-test-task_2234"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			Lake:     exampleNotebook.Name,
 /// 			TriggerSpec: &dataplex.TaskTriggerSpecArgs{
@@ -1046,7 +1149,7 @@ import 'task_trigger_spec.dart';
 /// 						NetworkTags: pulumi.StringArray{
 /// 							pulumi.String("test-network-tag"),
 /// 						},
-/// 						Network: _default.ID(),
+/// 						Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 				FileUris: pulumi.StringArray{
@@ -1063,6 +1166,70 @@ import 'task_trigger_spec.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// # VPC network
+/// resource "gcp_compute_network" "default" {
+///   name                    = "tf-test-workstation-cluster_49175"
+///   auto_create_subnetworks = true
+/// }
+/// resource "gcp_dataplex_lake" "example_notebook" {
+///   name     = "tf-test-lake_79411"
+///   location = "us-central1"
+///   project  = "my-project-name"
+/// }
+/// resource "gcp_dataplex_task" "example_notebook" {
+///   task_id  = "tf-test-task_2234"
+///   location = "us-central1"
+///   lake     = gcp_dataplex_lake.example_notebook.name
+///   trigger_spec = {
+///     type     = "RECURRING"
+///     schedule = "1 * * * *"
+///   }
+///   execution_spec = {
+///     service_account ="${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///     args = {
+///       "TASK_ARGS" = "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json"
+///     }
+///   }
+///   notebook = {
+///     notebook = "gs://terraform-test/test-notebook.ipynb"
+///     infrastructure_spec = {
+///       batch = {
+///         executors_count     = 2
+///         max_executors_count = 100
+///       }
+///       container_image = {
+///         image           = "test-image"
+///         java_jars       = ["test-java-jars.jar"]
+///         python_packages = ["gs://bucket-name/my/path/to/lib.tar.gz"]
+///         properties = {
+///           "name"  = "wrench"
+///           "mass"  = "1.3kg"
+///           "count" = "3"
+///         }
+///       }
+///       vpc_network = {
+///         network_tags = ["test-network-tag"]
+///         network      = gcp_compute_network.default.id
+///       }
+///     }
+///     file_uris    = ["gs://terraform-test/test.csv"]
+///     archive_uris = ["gs://terraform-test/test.csv"]
+///   }
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -1086,8 +1253,8 @@ import 'task_trigger_spec.dart';
 /// import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecBatchArgs;
 /// import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecContainerImageArgs;
 /// import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecVpcNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1101,7 +1268,7 @@ import 'task_trigger_spec.dart';
 ///     public static void stack(Context ctx) {
 ///         // VPC network
 ///         var default_ = new Network("default", NetworkArgs.builder()
-///             .name("tf-test-workstation-cluster_8270")
+///             .name("tf-test-workstation-cluster_49175")
 ///             .autoCreateSubnetworks(true)
 ///             .build());
 ///
@@ -1109,13 +1276,13 @@ import 'task_trigger_spec.dart';
 ///             .build());
 ///
 ///         var exampleNotebook = new Lake("exampleNotebook", LakeArgs.builder()
-///             .name("tf-test-lake_41150")
+///             .name("tf-test-lake_79411")
 ///             .location("us-central1")
 ///             .project("my-project-name")
 ///             .build());
 ///
 ///         var exampleNotebookTask = new Task("exampleNotebookTask", TaskArgs.builder()
-///             .taskId("tf-test-task_89313")
+///             .taskId("tf-test-task_2234")
 ///             .location("us-central1")
 ///             .lake(exampleNotebook.name())
 ///             .triggerSpec(TaskTriggerSpecArgs.builder()
@@ -1163,20 +1330,20 @@ import 'task_trigger_spec.dart';
 ///   default:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: tf-test-workstation-cluster_8270
+///       name: tf-test-workstation-cluster_49175
 ///       autoCreateSubnetworks: true
 ///   exampleNotebook:
 ///     type: gcp:dataplex:Lake
 ///     name: example_notebook
 ///     properties:
-///       name: tf-test-lake_41150
+///       name: tf-test-lake_79411
 ///       location: us-central1
 ///       project: my-project-name
 ///   exampleNotebookTask:
 ///     type: gcp:dataplex:Task
 ///     name: example_notebook
 ///     properties:
-///       taskId: tf-test-task_89313
+///       taskId: tf-test-task_2234
 ///       location: us-central1
 ///       lake: ${exampleNotebook.name}
 ///       triggerSpec:
@@ -1224,27 +1391,27 @@ import 'task_trigger_spec.dart';
 /// Task can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
-///
 /// * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
-///
 /// * `{{location}}/{{lake}}/{{task_id}}`
+///
 ///
 /// When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/task:Task default {{project}}/{{location}}/{{lake}}/{{task_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
 /// ```
 class Task extends pulumi.CustomResource {
   /// The time when the task was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description of the task.
   late final pulumi.Output<String?> description;
   /// User friendly display name.
@@ -1260,7 +1427,7 @@ class Task extends pulumi.CustomResource {
   /// User-defined labels for the task.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The lake in which the task will be created in.
   late final pulumi.Output<String?> lake;
@@ -1311,6 +1478,7 @@ class Task extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1355,6 +1523,7 @@ class Task extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

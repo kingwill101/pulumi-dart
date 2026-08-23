@@ -8,6 +8,13 @@ import 'datastore_nfs_datastore.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vmwareengine_datastore_datastore_args_doc}
 class DatastoreArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for this datastore
   final pulumi.Input<String>? description;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -31,12 +38,14 @@ class DatastoreArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [DatastoreArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for this datastore
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [name] The user-provided identifier of the datastore to be created.
   /// [nfsDatastore] The NFS datastore configuration.
   /// [project] The ID of the project in which the resource belongs.
   const DatastoreArgs({
+    this.deletionPolicy,
     this.description,
     required this.location,
     this.name,
@@ -46,6 +55,7 @@ class DatastoreArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'location': location,
       'name': ?name,
@@ -56,6 +66,7 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -64,4 +75,3 @@ class DatastoreArgs {
     );
   }
 }
-

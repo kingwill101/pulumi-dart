@@ -17,7 +17,7 @@ class GetInstanceNetwork {
   /// instance is connected.
   final pulumi.Input<String> network;
   /// Private Service Connect configuration.
-  /// Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+  /// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
   final pulumi.Input<List<GetInstanceNetworkPscConfig>> pscConfigs;
   /// A /29 CIDR block that identifies the range of IP
   /// addresses reserved for this instance.
@@ -61,4 +61,3 @@ class GetInstanceNetwork {
     );
   }
 }
-

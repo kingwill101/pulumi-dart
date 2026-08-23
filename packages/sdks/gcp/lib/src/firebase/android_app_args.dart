@@ -11,6 +11,12 @@ class AndroidAppArgs {
   /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
   final pulumi.Input<String>? apiKeyId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
   /// The user-assigned display name of the AndroidApp.
   final pulumi.Input<String> displayName;
@@ -27,7 +33,7 @@ class AndroidAppArgs {
 
   /// Creates a new [AndroidAppArgs].
   /// [apiKeyId] The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
-  /// [deletionPolicy] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The user-assigned display name of the AndroidApp.
   /// [packageName] The canonical package name of the Android app as would appear in the Google Play
   /// [project] The ID of the project in which the resource belongs.
@@ -67,4 +73,3 @@ class AndroidAppArgs {
     );
   }
 }
-

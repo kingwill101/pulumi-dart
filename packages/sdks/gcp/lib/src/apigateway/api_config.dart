@@ -5,6 +5,9 @@ import 'api_config_state.dart';
 
 /// An API Configuration is an association of an API Controller Config and a Gateway Config
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about ApiConfig, see:
 ///
 /// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
@@ -18,22 +21,15 @@ import 'api_config_state.dart';
 /// ApiConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
-///
 /// * `{{project}}/{{api}}/{{api_config_id}}`
-///
 /// * `{{api}}/{{api_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
 /// ```
 class ApiConfig extends pulumi.CustomResource {
@@ -42,8 +38,15 @@ class ApiConfig extends pulumi.CustomResource {
   /// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
   late final pulumi.Output<String> apiConfigId;
   /// Creates a unique name beginning with the
-  /// specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+  /// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
   late final pulumi.Output<String> apiConfigIdPrefix;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-visible name for the API.
   late final pulumi.Output<String> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -58,7 +61,7 @@ class ApiConfig extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
   /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -95,6 +98,7 @@ class ApiConfig extends pulumi.CustomResource {
     api = registerOutput<String>('api');
     apiConfigId = registerOutput<String>('apiConfigId');
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -134,6 +138,7 @@ class ApiConfig extends pulumi.CustomResource {
     api = registerOutput<String>('api');
     apiConfigId = registerOutput<String>('apiConfigId');
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

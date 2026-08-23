@@ -6,8 +6,8 @@ import 'snapshot_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.SnapshotIamPolicy`: Authoritative. Sets the IAM policy for the snapshot and replaces any existing policy already attached.
-/// * `gcp.compute.SnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the snapshot are preserved.
-/// * `gcp.compute.SnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the snapshot are preserved.
+/// * `gcp.compute.SnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the snapshot are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.SnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the snapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'snapshot_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.compute.SnapshotIamPolicy` **cannot** be used in conjunction with `gcp.compute.SnapshotIamBinding` and `gcp.compute.SnapshotIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.compute.SnapshotIamBinding` resources **can be** used in conjunction with `gcp.compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.compute.SnapshotIamPolicy
@@ -119,6 +118,28 @@ import 'snapshot_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_snapshotiampolicy" "policy" {
+///   project     = snapshot.project
+///   name        = snapshot.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,10 +148,11 @@ import 'snapshot_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.SnapshotIamPolicy;
 /// import com.pulumi.gcp.compute.SnapshotIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,8 +172,8 @@ import 'snapshot_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()
-///             .project(snapshot.project())
-///             .name(snapshot.name())
+///             .project(snapshot.get("project"))
+///             .name(snapshot.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -248,6 +270,22 @@ import 'snapshot_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_snapshotiambinding" "binding" {
+///   project = snapshot.project
+///   name    = snapshot.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -256,8 +294,8 @@ import 'snapshot_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SnapshotIamBinding;
 /// import com.pulumi.gcp.compute.SnapshotIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,8 +308,8 @@ import 'snapshot_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SnapshotIamBinding("binding", SnapshotIamBindingArgs.builder()
-///             .project(snapshot.project())
-///             .name(snapshot.name())
+///             .project(snapshot.get("project"))
+///             .name(snapshot.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -357,6 +395,22 @@ import 'snapshot_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_snapshotiammember" "member" {
+///   project = snapshot.project
+///   name    = snapshot.name
+///   role    = "roles/viewer"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +419,8 @@ import 'snapshot_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SnapshotIamMember;
 /// import com.pulumi.gcp.compute.SnapshotIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -379,8 +433,8 @@ import 'snapshot_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SnapshotIamMember("member", SnapshotIamMemberArgs.builder()
-///             .project(snapshot.project())
-///             .name(snapshot.name())
+///             .project(snapshot.get("project"))
+///             .name(snapshot.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -410,8 +464,8 @@ import 'snapshot_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.SnapshotIamPolicy`: Authoritative. Sets the IAM policy for the snapshot and replaces any existing policy already attached.
-/// * `gcp.compute.SnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the snapshot are preserved.
-/// * `gcp.compute.SnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the snapshot are preserved.
+/// * `gcp.compute.SnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the snapshot are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.SnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the snapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -420,7 +474,6 @@ import 'snapshot_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.compute.SnapshotIamPolicy` **cannot** be used in conjunction with `gcp.compute.SnapshotIamBinding` and `gcp.compute.SnapshotIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.compute.SnapshotIamBinding` resources **can be** used in conjunction with `gcp.compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.compute.SnapshotIamPolicy
@@ -523,6 +576,28 @@ import 'snapshot_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_snapshotiampolicy" "policy" {
+///   project     = snapshot.project
+///   name        = snapshot.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -531,10 +606,11 @@ import 'snapshot_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.SnapshotIamPolicy;
 /// import com.pulumi.gcp.compute.SnapshotIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -554,8 +630,8 @@ import 'snapshot_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()
-///             .project(snapshot.project())
-///             .name(snapshot.name())
+///             .project(snapshot.get("project"))
+///             .name(snapshot.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -652,6 +728,22 @@ import 'snapshot_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_snapshotiambinding" "binding" {
+///   project = snapshot.project
+///   name    = snapshot.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -660,8 +752,8 @@ import 'snapshot_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SnapshotIamBinding;
 /// import com.pulumi.gcp.compute.SnapshotIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -674,8 +766,8 @@ import 'snapshot_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SnapshotIamBinding("binding", SnapshotIamBindingArgs.builder()
-///             .project(snapshot.project())
-///             .name(snapshot.name())
+///             .project(snapshot.get("project"))
+///             .name(snapshot.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -761,6 +853,22 @@ import 'snapshot_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_snapshotiammember" "member" {
+///   project = snapshot.project
+///   name    = snapshot.name
+///   role    = "roles/viewer"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -769,8 +877,8 @@ import 'snapshot_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SnapshotIamMember;
 /// import com.pulumi.gcp.compute.SnapshotIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -783,8 +891,8 @@ import 'snapshot_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SnapshotIamMember("member", SnapshotIamMemberArgs.builder()
-///             .project(snapshot.project())
-///             .name(snapshot.name())
+///             .project(snapshot.get("project"))
+///             .name(snapshot.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -809,9 +917,7 @@ import 'snapshot_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/global/snapshots/{{name}}
-///
 /// * {{project}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -819,25 +925,21 @@ import 'snapshot_iam_binding_state.dart';
 /// Compute Engine snapshot IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/snapshotIamBinding:SnapshotIamBinding editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer user:jane@example.com"
+/// $ terraform import google_compute_snapshot_iam_member.editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/snapshotIamBinding:SnapshotIamBinding editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer"
+/// $ terraform import google_compute_snapshot_iam_binding.editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:compute/snapshotIamBinding:SnapshotIamBinding editor projects/{{project}}/global/snapshots/{{snapshot}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class SnapshotIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<SnapshotIamBindingCondition?> condition;

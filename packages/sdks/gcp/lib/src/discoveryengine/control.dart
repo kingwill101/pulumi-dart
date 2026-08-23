@@ -217,6 +217,46 @@ import 'control_synonyms_action.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                    = "global"
+///   data_store_id               = "data-store-id"
+///   display_name                = "tf-test-datastore"
+///   industry_vertical           = "GENERIC"
+///   content_config              = "NO_CONTENT"
+///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search = false
+/// }
+/// resource "gcp_discoveryengine_searchengine" "basic" {
+///   engine_id            = "engine-id"
+///   collection_id        = "default_collection"
+///   location             = gcp_discoveryengine_datastore.basic.location
+///   display_name         = "tf-test-engine"
+///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   industry_vertical    = "GENERIC"
+///   app_type             = "APP_TYPE_INTRANET"
+///   search_engine_config = {}
+/// }
+/// resource "gcp_discoveryengine_control" "basic" {
+///   location      = gcp_discoveryengine_searchengine.basic.location
+///   engine_id     = gcp_discoveryengine_searchengine.basic.engine_id
+///   control_id    = "control-id"
+///   display_name  = "tf-test-control"
+///   solution_type = "SOLUTION_TYPE_SEARCH"
+///   use_cases     = ["SEARCH_USE_CASE_SEARCH"]
+///   synonyms_action = {
+///     synonyms = ["test", "experiment"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -231,8 +271,8 @@ import 'control_synonyms_action.dart';
 /// import com.pulumi.gcp.discoveryengine.Control;
 /// import com.pulumi.gcp.discoveryengine.ControlArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.ControlSynonymsActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -332,35 +372,35 @@ import 'control_synonyms_action.dart';
 /// Control can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/controls/{{control_id}}`
-///
 /// * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}`
-///
 /// * `{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}`
+///
 ///
 /// When using the `pulumi import` command, Control can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/control:Control default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/controls/{{control_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/control:Control default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/control:Control default {{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
 /// ```
 class Control extends pulumi.CustomResource {
   /// Changes the returned order of results.
   /// Structure is documented below.
   late final pulumi.Output<ControlBoostAction?> boostAction;
-  /// The collection ID. Currently only accepts "default_collection".
+  /// The collection ID. Currently only accepts "defaultCollection".
   late final pulumi.Output<String?> collectionId;
   /// The conditions under which the control is active.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
   /// The unique id of the control.
   late final pulumi.Output<String> controlId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the control. This field must be a UTF-8 encoded
   /// string with a length limit of 128 characters.
   late final pulumi.Output<String> displayName;
@@ -414,6 +454,7 @@ class Control extends pulumi.CustomResource {
     collectionId = registerOutput<String?>('collectionId');
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     controlId = registerOutput<String>('controlId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     filterAction = registerOutput<ControlFilterAction?>('filterAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlFilterAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -454,6 +495,7 @@ class Control extends pulumi.CustomResource {
     collectionId = registerOutput<String?>('collectionId');
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     controlId = registerOutput<String>('controlId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     filterAction = registerOutput<ControlFilterAction?>('filterAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlFilterAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

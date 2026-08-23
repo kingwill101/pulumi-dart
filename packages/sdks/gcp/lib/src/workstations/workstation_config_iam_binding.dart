@@ -6,8 +6,8 @@ import 'workstation_config_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Workstations WorkstationConfig. Each of these resources serves a different use case:
 ///
 /// * `gcp.workstations.WorkstationConfigIamPolicy`: Authoritative. Sets the IAM policy for the workstationconfig and replaces any existing policy already attached.
-/// * `gcp.workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved.
-/// * `gcp.workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved.
+/// * `gcp.workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -126,6 +126,30 @@ import 'workstation_config_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_workstations_workstationconfigiampolicy" "policy" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+///   policy_data            = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,10 +158,11 @@ import 'workstation_config_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamPolicy;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,10 +182,10 @@ import 'workstation_config_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new WorkstationConfigIamPolicy("policy", WorkstationConfigIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -267,6 +292,24 @@ import 'workstation_config_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workstations_workstationconfigiambinding" "binding" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+///   role                   = "roles/viewer"
+///   members                = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +318,8 @@ import 'workstation_config_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamBinding;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,10 +332,10 @@ import 'workstation_config_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new WorkstationConfigIamBinding("binding", WorkstationConfigIamBindingArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -388,6 +431,24 @@ import 'workstation_config_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workstations_workstationconfigiammember" "member" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+///   role                   = "roles/viewer"
+///   member                 = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -396,8 +457,8 @@ import 'workstation_config_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamMember;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -410,10 +471,10 @@ import 'workstation_config_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new WorkstationConfigIamMember("member", WorkstationConfigIamMemberArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -445,8 +506,8 @@ import 'workstation_config_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Workstations WorkstationConfig. Each of these resources serves a different use case:
 ///
 /// * `gcp.workstations.WorkstationConfigIamPolicy`: Authoritative. Sets the IAM policy for the workstationconfig and replaces any existing policy already attached.
-/// * `gcp.workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved.
-/// * `gcp.workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved.
+/// * `gcp.workstations.WorkstationConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstationconfig are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.workstations.WorkstationConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstationconfig are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -565,6 +626,30 @@ import 'workstation_config_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_workstations_workstationconfigiampolicy" "policy" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+///   policy_data            = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -573,10 +658,11 @@ import 'workstation_config_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamPolicy;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -596,10 +682,10 @@ import 'workstation_config_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new WorkstationConfigIamPolicy("policy", WorkstationConfigIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -706,6 +792,24 @@ import 'workstation_config_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workstations_workstationconfigiambinding" "binding" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+///   role                   = "roles/viewer"
+///   members                = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -714,8 +818,8 @@ import 'workstation_config_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamBinding;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -728,10 +832,10 @@ import 'workstation_config_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new WorkstationConfigIamBinding("binding", WorkstationConfigIamBindingArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -827,6 +931,24 @@ import 'workstation_config_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workstations_workstationconfigiammember" "member" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+///   role                   = "roles/viewer"
+///   member                 = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -835,8 +957,8 @@ import 'workstation_config_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamMember;
 /// import com.pulumi.gcp.workstations.WorkstationConfigIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -849,10 +971,10 @@ import 'workstation_config_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new WorkstationConfigIamMember("member", WorkstationConfigIamMemberArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -879,11 +1001,8 @@ import 'workstation_config_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
-///
 /// * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-///
 /// * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-///
 /// * {{workstation_config_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -891,25 +1010,21 @@ import 'workstation_config_iam_binding_state.dart';
 /// Cloud Workstations workstationconfig IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
+/// $ terraform import google_workstations_workstation_config_iam_member.editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
+/// $ terraform import google_workstations_workstation_config_iam_binding.editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class WorkstationConfigIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<WorkstationConfigIamBindingCondition?> condition;

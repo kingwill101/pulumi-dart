@@ -6,7 +6,7 @@ class GetAccountIdTokenResult {
   final List<String>? delegates;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// The `id_token` representing the new generated identity.
+  /// The `idToken` representing the new generated identity.
   final String idToken;
   final bool? includeEmail;
   final String targetAudience;
@@ -15,7 +15,7 @@ class GetAccountIdTokenResult {
   /// Creates a new [GetAccountIdTokenResult].
   /// [delegates] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [idToken] The `id_token` representing the new generated identity.
+  /// [idToken] The `idToken` representing the new generated identity.
   /// [includeEmail] Optional.
   /// [targetAudience] Required.
   /// [targetServiceAccount] Optional.
@@ -50,4 +50,3 @@ class GetAccountIdTokenResult {
     );
   }
 }
-

@@ -79,6 +79,23 @@ import 'project_metadata_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_projectmetadata" "default" {
+///   metadata = {
+///     "foo"  = "bar"
+///     "fizz" = "buzz"
+///     "13"   = "42"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +104,8 @@ import 'project_metadata_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ProjectMetadata;
 /// import com.pulumi.gcp.compute.ProjectMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +217,26 @@ import 'project_metadata_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// /*
+/// A key set in project metadata is propagated to every instance in the project.
+/// This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
+/// It is better to use OS Login instead.
+/// */
+/// resource "gcp_compute_projectmetadata" "my_ssh_key" {
+///   metadata = {
+///     "ssh-keys" = "      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev\n      foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar\n"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +245,8 @@ import 'project_metadata_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ProjectMetadata;
 /// import com.pulumi.gcp.compute.ProjectMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,12 +295,20 @@ import 'project_metadata_state.dart';
 ///
 /// * `{{project_id}}`
 ///
+///
 /// When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}
 /// ```
 class ProjectMetadata extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A series of key value pairs.
   ///
   /// - - -
@@ -286,6 +331,7 @@ class ProjectMetadata extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     metadata = registerOutput<Map<String, String>>('metadata');
     project = registerOutput<String>('project');
   }
@@ -313,6 +359,7 @@ class ProjectMetadata extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     metadata = registerOutput<Map<String, String>>('metadata');
     project = registerOutput<String>('project');
   }

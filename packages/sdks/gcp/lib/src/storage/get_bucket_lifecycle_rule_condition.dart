@@ -26,12 +26,16 @@ class GetBucketLifecycleRuleCondition {
   final pulumi.Input<int> numNewerVersions;
   /// While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
   final pulumi.Input<bool> sendAgeIfZero;
-  /// While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
+  /// While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
   final pulumi.Input<bool> sendDaysSinceCustomTimeIfZero;
-  /// While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
+  /// While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
   final pulumi.Input<bool> sendDaysSinceNoncurrentTimeIfZero;
-  /// While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+  /// While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
   final pulumi.Input<bool> sendNumNewerVersionsIfZero;
+  /// Objects having a size greater than this value in bytes will be matched.
+  final pulumi.Input<int> sizeAboveBytes;
+  /// Objects having a size less than this value in bytes will be matched.
+  final pulumi.Input<int> sizeBelowBytes;
   /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
   final pulumi.Input<String> withState;
 
@@ -47,9 +51,11 @@ class GetBucketLifecycleRuleCondition {
   /// [noncurrentTimeBefore] Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
   /// [numNewerVersions] Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
   /// [sendAgeIfZero] While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
-  /// [sendDaysSinceCustomTimeIfZero] While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
-  /// [sendDaysSinceNoncurrentTimeIfZero] While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
-  /// [sendNumNewerVersionsIfZero] While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+  /// [sendDaysSinceCustomTimeIfZero] While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
+  /// [sendDaysSinceNoncurrentTimeIfZero] While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
+  /// [sendNumNewerVersionsIfZero] While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
+  /// [sizeAboveBytes] Objects having a size greater than this value in bytes will be matched.
+  /// [sizeBelowBytes] Objects having a size less than this value in bytes will be matched.
   /// [withState] Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
   const GetBucketLifecycleRuleCondition({
     required this.age,
@@ -66,6 +72,8 @@ class GetBucketLifecycleRuleCondition {
     required this.sendDaysSinceCustomTimeIfZero,
     required this.sendDaysSinceNoncurrentTimeIfZero,
     required this.sendNumNewerVersionsIfZero,
+    required this.sizeAboveBytes,
+    required this.sizeBelowBytes,
     required this.withState,
   });
 
@@ -85,6 +93,8 @@ class GetBucketLifecycleRuleCondition {
       'sendDaysSinceCustomTimeIfZero': sendDaysSinceCustomTimeIfZero,
       'sendDaysSinceNoncurrentTimeIfZero': sendDaysSinceNoncurrentTimeIfZero,
       'sendNumNewerVersionsIfZero': sendNumNewerVersionsIfZero,
+      'sizeAboveBytes': sizeAboveBytes,
+      'sizeBelowBytes': sizeBelowBytes,
       'withState': withState,
     };
   }
@@ -105,8 +115,9 @@ class GetBucketLifecycleRuleCondition {
       sendDaysSinceCustomTimeIfZero: pulumi.Input.fromValue(map['sendDaysSinceCustomTimeIfZero'] as bool),
       sendDaysSinceNoncurrentTimeIfZero: pulumi.Input.fromValue(map['sendDaysSinceNoncurrentTimeIfZero'] as bool),
       sendNumNewerVersionsIfZero: pulumi.Input.fromValue(map['sendNumNewerVersionsIfZero'] as bool),
+      sizeAboveBytes: pulumi.Input.fromValue(map['sizeAboveBytes'] as int),
+      sizeBelowBytes: pulumi.Input.fromValue(map['sizeBelowBytes'] as int),
       withState: pulumi.Input.fromValue(map['withState'] as String),
     );
   }
 }
-

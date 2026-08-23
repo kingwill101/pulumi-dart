@@ -31,7 +31,7 @@ import 'application_url_dispatch_rules_state.dart';
 /// const adminV3 = new gcp.appengine.StandardAppVersion("admin_v3", {
 ///     versionId: "v3",
 ///     service: "admin",
-///     runtime: "nodejs20",
+///     runtime: "nodejs22",
 ///     entrypoint: {
 ///         shell: "node ./app.js",
 ///     },
@@ -72,7 +72,7 @@ import 'application_url_dispatch_rules_state.dart';
 /// admin_v3 = gcp.appengine.StandardAppVersion("admin_v3",
 ///     version_id="v3",
 ///     service="admin",
-///     runtime="nodejs20",
+///     runtime="nodejs22",
 ///     entrypoint={
 ///         "shell": "node ./app.js",
 ///     },
@@ -127,7 +127,7 @@ import 'application_url_dispatch_rules_state.dart';
 ///     {
 ///         VersionId = "v3",
 ///         Service = "admin",
-///         Runtime = "nodejs20",
+///         Runtime = "nodejs22",
 ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
 ///         {
 ///             Shell = "node ./app.js",
@@ -203,7 +203,7 @@ import 'application_url_dispatch_rules_state.dart';
 /// 		adminV3, err := appengine.NewStandardAppVersion(ctx, "admin_v3", &appengine.StandardAppVersionArgs{
 /// 			VersionId: pulumi.String("v3"),
 /// 			Service:   pulumi.String("admin"),
-/// 			Runtime:   pulumi.String("nodejs20"),
+/// 			Runtime:   pulumi.String("nodejs22"),
 /// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 /// 				Shell: pulumi.String("node ./app.js"),
 /// 			},
@@ -245,6 +245,54 @@ import 'application_url_dispatch_rules_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_appengine_applicationurldispatchrules" "web_service" {
+///   dispatch_rules {
+///     domain  = "*"
+///     path    = "/*"
+///     service = "default"
+///   }
+///   dispatch_rules {
+///     domain  = "*"
+///     path    = "/admin/*"
+///     service = gcp_appengine_standardappversion.admin_v3.service
+///   }
+/// }
+/// resource "gcp_appengine_standardappversion" "admin_v3" {
+///   version_id = "v3"
+///   service    = "admin"
+///   runtime    = "nodejs22"
+///   entrypoint = {
+///     shell = "node ./app.js"
+///   }
+///   deployment = {
+///     zip = {
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///     }
+///   }
+///   env_variables = {
+///     "port" = "8080"
+///   }
+///   delete_service_on_destroy = true
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "appengine-test-bucket"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "hello-world.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./test-fixtures/hello-world.zip")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +312,8 @@ import 'application_url_dispatch_rules_state.dart';
 /// import com.pulumi.gcp.appengine.ApplicationUrlDispatchRulesArgs;
 /// import com.pulumi.gcp.appengine.inputs.ApplicationUrlDispatchRulesDispatchRuleArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +339,7 @@ import 'application_url_dispatch_rules_state.dart';
 ///         var adminV3 = new StandardAppVersion("adminV3", StandardAppVersionArgs.builder()
 ///             .versionId("v3")
 ///             .service("admin")
-///             .runtime("nodejs20")
+///             .runtime("nodejs22")
 ///             .entrypoint(StandardAppVersionEntrypointArgs.builder()
 ///                 .shell("node ./app.js")
 ///                 .build())
@@ -344,7 +392,7 @@ import 'application_url_dispatch_rules_state.dart';
 ///     properties:
 ///       versionId: v3
 ///       service: admin
-///       runtime: nodejs20
+///       runtime: nodejs22
 ///       entrypoint:
 ///         shell: node ./app.js
 ///       deployment:
@@ -364,7 +412,7 @@ import 'application_url_dispatch_rules_state.dart';
 ///       name: hello-world.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/hello-world.zip
+///         fn::fileAsset: ./test-fixtures/hello-world.zip
 /// ```
 ///
 ///
@@ -374,12 +422,20 @@ import 'application_url_dispatch_rules_state.dart';
 ///
 /// * `{{project}}`
 ///
+///
 /// When using the `pulumi import` command, ApplicationUrlDispatchRules can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
 /// ```
 class ApplicationUrlDispatchRules extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Rules to match an HTTP request and dispatch that request to a service.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> dispatchRules;
@@ -401,6 +457,7 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
     project = registerOutput<String>('project');
   }
@@ -428,6 +485,7 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
     project = registerOutput<String>('project');
   }

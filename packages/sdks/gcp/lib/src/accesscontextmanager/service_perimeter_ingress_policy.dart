@@ -14,11 +14,8 @@ import 'service_perimeter_ingress_policy_state.dart';
 /// Individual ingress policies can be limited by restricting which services and/
 /// or actions they match using the ingressTo field.
 ///
-/// &gt; **Note:** By default, updates to this resource will remove the IngressPolicy from the
-/// from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
-/// is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
 /// &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
-/// the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].ingress_policies]` so
+/// the service perimeter resource must have a `lifecycle` block with `ignoreChanges = [status[0].ingress_policies]` so
 /// they don't fight over which ingress rules should be in the policy.
 ///
 ///
@@ -30,6 +27,13 @@ import 'service_perimeter_ingress_policy_state.dart';
 class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
   late final pulumi.Output<String> etag;
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -60,6 +64,7 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     ingressFrom = registerOutput<ServicePerimeterIngressPolicyIngressFrom?>('ingressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterIngressPolicyIngressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingressTo = registerOutput<ServicePerimeterIngressPolicyIngressTo?>('ingressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterIngressPolicyIngressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -91,6 +96,7 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     ingressFrom = registerOutput<ServicePerimeterIngressPolicyIngressFrom?>('ingressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterIngressPolicyIngressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingressTo = registerOutput<ServicePerimeterIngressPolicyIngressTo?>('ingressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterIngressPolicyIngressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });

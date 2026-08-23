@@ -22,7 +22,7 @@ import 'get_project_result.dart';
 import 'get_sargs.dart';
 import 'get_sresult.dart';
 
-/// Get an active folder within GCP by `display_name` and `parent`.
+/// Get an active folder within GCP by `displayName` and `parent`.
 ///
 /// ## Example Usage
 ///
@@ -80,6 +80,20 @@ import 'get_sresult.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getactivefolder" "department1" {
+///   display_name = "Department 1"
+///   parent       = "organizations/1234567"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +102,8 @@ import 'get_sresult.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,6 +231,27 @@ Future<GetActiveFolderResult> getActiveFolder(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getbillingaccount" "acct" {
+///   display_name = "My Billing Account"
+///   open         = true
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name            = "My Project"
+///   project_id      = "your-project-id"
+///   org_id          = "1234567"
+///   billing_account = data.gcp_organizations_getbillingaccount.acct.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +262,8 @@ Future<GetActiveFolderResult> getActiveFolder(
 /// import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
 /// import com.pulumi.gcp.organizations.Project;
 /// import com.pulumi.gcp.organizations.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,6 +323,11 @@ Future<GetBillingAccountResult> getBillingAccount(
   return GetBillingAccountResult.fromMap(result);
 }
 
+/// Use this data source to access the configuration of the Google Cloud provider.
+///
+/// &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+/// Please take appropriate measures to protect your remote state.
+///
 /// ## Example Usage
 ///
 ///
@@ -340,6 +380,22 @@ Future<GetBillingAccountResult> getBillingAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// output "project" {
+///   value = data.gcp_organizations_getclientconfig.current.project
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -347,8 +403,8 @@ Future<GetBillingAccountResult> getBillingAccount(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -381,6 +437,22 @@ Future<GetBillingAccountResult> getBillingAccount(
 /// ### Configure Kubernetes Provider With OAuth2 Access Token
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "default" {
+/// }
+/// data "gcp_container_getcluster" "myCluster" {
+///   name = "my-cluster"
+///   zone = "us-east1-a"
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   default:
@@ -413,7 +485,7 @@ Future<GetClientConfigResult> getClientConfig(
 ///
 /// This datasource enables you to export the email of the account you've
 /// authenticated the provider with; this can be used alongside
-/// `data.google_client_config`'s `access_token` to perform OpenID Connect
+/// `data.google_client_config`'s `accessToken` to perform OpenID Connect
 /// authentication with GKE and configure an RBAC role for the email used.
 ///
 /// &gt; This resource will only work as expected if the provider is configured to
@@ -478,6 +550,22 @@ Future<GetClientConfigResult> getClientConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientopeniduserinfo" "me" {
+/// }
+///
+/// output "my-email" {
+///   value = data.gcp_organizations_getclientopeniduserinfo.me.email
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -485,8 +573,8 @@ Future<GetClientConfigResult> getClientConfig(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -518,6 +606,42 @@ Future<GetClientConfigResult> getClientConfig(
 /// ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     kubernetes = {
+///       source = "pulumi/kubernetes"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientopeniduserinfo" "providerIdentity" {
+/// }
+/// data "gcp_organizations_getclientconfig" "provider" {
+/// }
+/// data "gcp_container_getcluster" "myCluster" {
+///   name = "my-cluster"
+///   zone = "us-east1-a"
+/// }
+///
+/// resource "kubernetes_clusterrolebinding" "user" {
+///   metadata = [{
+///     "name" = "provider-user-admin"
+///   }]
+///   role_ref = [{
+///     "apiGroup" = "rbac.authorization.k8s.io"
+///     "kind"     = "ClusterRole"
+///     "name"     = "cluster-admin"
+///   }]
+///   subject = [{
+///     "kind" = "User"
+///     "name" = data.gcp_organizations_getclientopeniduserinfo.providerIdentity.email
+///   }]
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   user:
@@ -644,6 +768,30 @@ Future<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getfolder" "myFolder1" {
+///   folder              = "folders/12345"
+///   lookup_organization = true
+/// }
+/// data "gcp_organizations_getfolder" "myFolder2" {
+///   folder = "folders/23456"
+/// }
+///
+/// output "myFolder1Organization" {
+///   value = data.gcp_organizations_getfolder.myFolder1.organization
+/// }
+/// output "myFolder2Parent" {
+///   value = data.gcp_organizations_getfolder.myFolder2.parent
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -652,8 +800,8 @@ Future<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -786,6 +934,22 @@ Future<GetFolderResult> getFolder(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getfolders" "my-org-folders" {
+///   parent_id ="organizations/${organizationId}"
+/// }
+/// data "gcp_organizations_getfolder" "first-folder" {
+///   folder = data.gcp_organizations_getfolders.my-org-folders.folders[0].name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -795,8 +959,8 @@ Future<GetFolderResult> getFolder(
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
 /// import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -947,6 +1111,26 @@ Future<GetIAMPolicyResult> getIAMPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiamcustomrole" "example" {
+///   org_id  = "1234567890"
+///   role_id = "your-role-id"
+/// }
+///
+/// resource "gcp_projects_iammember" "project" {
+///   project = "your-project-id"
+///   role    = data.gcp_organizations_getiamcustomrole.example.name
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -957,8 +1141,8 @@ Future<GetIAMPolicyResult> getIAMPolicy(
 /// import com.pulumi.gcp.organizations.inputs.GetIamCustomRoleArgs;
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1078,6 +1262,21 @@ Future<GetIamCustomRoleResult> getIamCustomRole(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiamcustomroles" "example" {
+///   org_id       = "1234567890"
+///   show_deleted = true
+///   view         = "FULL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1086,8 +1285,8 @@ Future<GetIamCustomRoleResult> getIamCustomRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIamCustomRolesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1205,6 +1404,24 @@ Future<GetIamCustomRolesResult> getIamCustomRoles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getorganization" "org" {
+///   domain = "example.com"
+/// }
+///
+/// resource "gcp_organizations_folder" "sales" {
+///   display_name = "Sales"
+///   parent       = data.gcp_organizations_getorganization.org.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1215,8 +1432,8 @@ Future<GetIamCustomRolesResult> getIamCustomRoles(
 /// import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
 /// import com.pulumi.gcp.organizations.Folder;
 /// import com.pulumi.gcp.organizations.FolderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1325,6 +1542,22 @@ Future<GetOrganizationResult> getOrganization(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// output "projectNumber" {
+///   value = data.gcp_organizations_getproject.project.number
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1333,8 +1566,8 @@ Future<GetOrganizationResult> getOrganization(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1433,6 +1666,19 @@ Future<GetProjectResult> getProject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_gets" "example" {
+///   filter = "domain:example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1441,8 +1687,8 @@ Future<GetProjectResult> getProject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetSArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

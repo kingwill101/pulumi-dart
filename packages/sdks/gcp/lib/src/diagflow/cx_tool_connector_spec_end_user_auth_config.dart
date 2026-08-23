@@ -5,19 +5,19 @@ import 'cx_tool_connector_spec_end_user_auth_config_oauth2_auth_code_config.dart
 import 'cx_tool_connector_spec_end_user_auth_config_oauth2_jwt_bearer_config.dart';
 
 class CxToolConnectorSpecEndUserAuthConfig {
-  /// Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+  /// Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig>? oauth2AuthCodeConfig;
-  /// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+  /// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"&gt;&lt;/a&gt;The `oauth2_auth_code_config` block supports:
+  /// &lt;a name="nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"&gt;&lt;/a&gt;The `oauth2AuthCodeConfig` block supports:
   final pulumi.Input<CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig>? oauth2JwtBearerConfig;
 
   /// Creates a new [CxToolConnectorSpecEndUserAuthConfig].
-  /// [oauth2AuthCodeConfig] Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
-  /// [oauth2JwtBearerConfig] JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+  /// [oauth2AuthCodeConfig] Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+  /// [oauth2JwtBearerConfig] JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   const CxToolConnectorSpecEndUserAuthConfig({
     this.oauth2AuthCodeConfig,
     this.oauth2JwtBearerConfig,
@@ -37,4 +37,3 @@ class CxToolConnectorSpecEndUserAuthConfig {
     );
   }
 }
-

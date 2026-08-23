@@ -160,6 +160,40 @@ import 'document_ai_warehouse_document_schema_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_essentialcontacts_documentaiwarehousedocumentschema" "example_text" {
+///   project_number     = data.gcp_organizations_getproject.project.number
+///   display_name       = "test-property-text"
+///   location           = "us"
+///   document_is_folder = false
+///   property_definitions {
+///     name                 = "prop3"
+///     display_name         = "propdisp3"
+///     is_repeatable        = false
+///     is_filterable        = true
+///     is_searchable        = true
+///     is_metadata          = false
+///     is_required          = false
+///     retrieval_importance = "HIGHEST"
+///     schema_sources {
+///       name           = "dummy_source"
+///       processor_type = "dummy_processor"
+///     }
+///     text_type_options = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,9 +205,10 @@ import 'document_ai_warehouse_document_schema_state.dart';
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema;
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs;
 /// import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs;
+/// import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs;
 /// import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -250,19 +285,23 @@ import 'document_ai_warehouse_document_schema_state.dart';
 /// DocumentSchema can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
-///
 /// * `{{project_number}}/{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default {{project_number}}/{{location}}/{{name}}
 /// ```
 class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name of the schema given by the user.
   late final pulumi.Output<String> displayName;
   /// Tells whether the document is a folder or a typical document.
@@ -291,6 +330,7 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentIsFolder = registerOutput<bool?>('documentIsFolder');
     location = registerOutput<String>('location');
@@ -322,6 +362,7 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentIsFolder = registerOutput<bool?>('documentIsFolder');
     location = registerOutput<String>('location');

@@ -81,6 +81,22 @@ import 'kmsconfig_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_netapp_kmsconfig" "kmsConfig" {
+///   name            = "kms-test"
+///   description     = "this is a test description"
+///   crypto_key_name = "crypto-name"
+///   location        = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +105,8 @@ import 'kmsconfig_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.netapp.Kmsconfig;
 /// import com.pulumi.gcp.netapp.KmsconfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,27 +145,27 @@ import 'kmsconfig_state.dart';
 /// kmsconfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, kmsconfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{location}}/{{name}}
 /// ```
 class Kmsconfig extends pulumi.CustomResource {
   /// Resource name of the KMS key to use. Only regional keys are supported. Format: `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}`.
   late final pulumi.Output<String> cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description for the CMEK policy.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -160,7 +176,7 @@ class Kmsconfig extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the policy location. CMEK policies apply to the whole region.
   late final pulumi.Output<String> location;
@@ -190,6 +206,7 @@ class Kmsconfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cryptoKeyName = registerOutput<String>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     instructions = registerOutput<String>('instructions');
@@ -225,6 +242,7 @@ class Kmsconfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cryptoKeyName = registerOutput<String>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     instructions = registerOutput<String>('instructions');

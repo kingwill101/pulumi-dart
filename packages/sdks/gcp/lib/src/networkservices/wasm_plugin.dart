@@ -59,7 +59,7 @@ import 'wasm_plugin_state.dart';
 ///     },
 ///     log_config={
 ///         "enable": True,
-///         "sample_rate": 1,
+///         "sample_rate": float(1),
 ///         "min_log_level": "WARN",
 ///     },
 ///     versions=[{
@@ -93,7 +93,7 @@ import 'wasm_plugin_state.dart';
 ///         LogConfig = new Gcp.NetworkServices.Inputs.WasmPluginLogConfigArgs
 ///         {
 ///             Enable = true,
-///             SampleRate = 1,
+///             SampleRate = 1.0,
 ///             MinLogLevel = "WARN",
 ///         },
 ///         Versions = new[]
@@ -117,8 +117,6 @@ import 'wasm_plugin_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -160,6 +158,40 @@ import 'wasm_plugin_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_networkservices_wasmplugin" "wasm_plugin" {
+///   name            = "my-wasm-plugin"
+///   description     = "my wasm plugin from a docker repository"
+///   main_version_id = "v1"
+///   labels = {
+///     "test_label" = "test_value"
+///   }
+///   log_config = {
+///     enable        = true
+///     sample_rate   = 1
+///     min_log_level = "WARN"
+///   }
+///   versions {
+///     version_name = "v1"
+///     description  = "v1 version of my wasm plugin"
+///     image_uri    ="us-central1-docker.pkg.dev/${data.gcp_organizations_getproject.project.name}/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod"
+///     labels = {
+///       "test_label" = "test_value"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +204,8 @@ import 'wasm_plugin_state.dart';
 /// import com.pulumi.gcp.networkservices.WasmPluginArgs;
 /// import com.pulumi.gcp.networkservices.inputs.WasmPluginLogConfigArgs;
 /// import com.pulumi.gcp.networkservices.inputs.WasmPluginVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,7 +314,7 @@ import 'wasm_plugin_state.dart';
 ///     },
 ///     log_config={
 ///         "enable": True,
-///         "sample_rate": 1,
+///         "sample_rate": float(1),
 ///         "min_log_level": "WARN",
 ///     },
 ///     versions=[{
@@ -316,7 +348,7 @@ import 'wasm_plugin_state.dart';
 ///         LogConfig = new Gcp.NetworkServices.Inputs.WasmPluginLogConfigArgs
 ///         {
 ///             Enable = true,
-///             SampleRate = 1,
+///             SampleRate = 1.0,
 ///             MinLogLevel = "WARN",
 ///         },
 ///         Versions = new[]
@@ -340,8 +372,6 @@ import 'wasm_plugin_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -383,6 +413,40 @@ import 'wasm_plugin_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_networkservices_wasmplugin" "wasm_plugin" {
+///   name            = "my-wasm-plugin"
+///   description     = "my wasm plugin from a generic repository"
+///   main_version_id = "v1"
+///   labels = {
+///     "test_label" = "test_value"
+///   }
+///   log_config = {
+///     enable        = true
+///     sample_rate   = 1
+///     min_log_level = "WARN"
+///   }
+///   versions {
+///     version_name = "v1"
+///     description  = "v1 version of my wasm plugin"
+///     image_uri    ="projects/${data.gcp_organizations_getproject.project.name}/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1"
+///     labels = {
+///       "test_label" = "test_value"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -395,8 +459,8 @@ import 'wasm_plugin_state.dart';
 /// import com.pulumi.gcp.networkservices.WasmPluginArgs;
 /// import com.pulumi.gcp.networkservices.inputs.WasmPluginLogConfigArgs;
 /// import com.pulumi.gcp.networkservices.inputs.WasmPluginVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -466,34 +530,34 @@ import 'wasm_plugin_state.dart';
 /// WasmPlugin can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/wasmPlugins/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, WasmPlugin can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default projects/{{project}}/locations/{{location}}/wasmPlugins/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/wasmPlugin:WasmPlugin default {{location}}/{{name}}
 /// ```
 class WasmPlugin extends pulumi.CustomResource {
   /// Output only. The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Optional. Set of labels associated with the WasmPlugin resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the traffic extension
   late final pulumi.Output<String?> location;
@@ -535,6 +599,7 @@ class WasmPlugin extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -573,6 +638,7 @@ class WasmPlugin extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

@@ -231,7 +231,7 @@ import 'connectivity_test_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Network: vpc.ID(),
+/// 					Network: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("source-vm"),
@@ -251,7 +251,7 @@ import 'connectivity_test_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Network: vpc.ID(),
+/// 					Network: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("dest-vm"),
@@ -268,10 +268,10 @@ import 'connectivity_test_state.dart';
 /// 		_, err = networkmanagement.NewConnectivityTest(ctx, "instance-test", &networkmanagement.ConnectivityTestArgs{
 /// 			Name: pulumi.String("conn-test-instances"),
 /// 			Source: &networkmanagement.ConnectivityTestSourceArgs{
-/// 				Instance: source.ID(),
+/// 				Instance: source.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Destination: &networkmanagement.ConnectivityTestDestinationArgs{
-/// 				Instance: destination.ID(),
+/// 				Instance: destination.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Protocol: pulumi.String("TCP"),
 /// 			Labels: pulumi.StringMap{
@@ -283,6 +283,65 @@ import 'connectivity_test_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian9" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_networkmanagement_connectivitytest" "instance-test" {
+///   name = "conn-test-instances"
+///   source = {
+///     instance = gcp_compute_instance.source.id
+///   }
+///   destination = {
+///     instance = gcp_compute_instance.destination.id
+///   }
+///   protocol = "TCP"
+///   labels = {
+///     "env" = "test"
+///   }
+/// }
+/// resource "gcp_compute_instance" "source" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = gcp_compute_network.vpc.id
+///   }
+///   name         = "source-vm"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.debian9.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_instance" "destination" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = gcp_compute_network.vpc.id
+///   }
+///   name         = "dest-vm"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.debian9.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_network" "vpc" {
+///   name = "conn-test-net"
 /// }
 /// ```
 /// ```java
@@ -298,14 +357,15 @@ import 'connectivity_test_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.networkmanagement.ConnectivityTest;
 /// import com.pulumi.gcp.networkmanagement.ConnectivityTestArgs;
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -584,14 +644,14 @@ import 'connectivity_test_state.dart';
 /// 			Name:        pulumi.String("connectivity-vpc-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     vpc.ID(),
+/// 			Network:     vpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		source_addr, err := compute.NewAddress(ctx, "source-addr", &compute.AddressArgs{
 /// 			Name:        pulumi.String("src-addr"),
-/// 			Subnetwork:  subnet.ID(),
+/// 			Subnetwork:  subnet.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Address:     pulumi.String("10.0.42.42"),
 /// 			Region:      pulumi.String("us-central1"),
@@ -601,7 +661,7 @@ import 'connectivity_test_state.dart';
 /// 		}
 /// 		dest_addr, err := compute.NewAddress(ctx, "dest-addr", &compute.AddressArgs{
 /// 			Name:        pulumi.String("dest-addr"),
-/// 			Subnetwork:  subnet.ID(),
+/// 			Subnetwork:  subnet.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Address:     pulumi.String("10.0.43.43"),
 /// 			Region:      pulumi.String("us-central1"),
@@ -614,13 +674,13 @@ import 'connectivity_test_state.dart';
 /// 			Source: &networkmanagement.ConnectivityTestSourceArgs{
 /// 				IpAddress:   source_addr.Address,
 /// 				ProjectId:   source_addr.Project,
-/// 				Network:     vpc.ID(),
+/// 				Network:     vpc.ID().ToIDOutput().ToStringOutput(),
 /// 				NetworkType: pulumi.String("GCP_NETWORK"),
 /// 			},
 /// 			Destination: &networkmanagement.ConnectivityTestDestinationArgs{
 /// 				IpAddress: dest_addr.Address,
 /// 				ProjectId: dest_addr.Project,
-/// 				Network:   vpc.ID(),
+/// 				Network:   vpc.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Protocol: pulumi.String("UDP"),
 /// 		})
@@ -629,6 +689,54 @@ import 'connectivity_test_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkmanagement_connectivitytest" "address-test" {
+///   name = "conn-test-addr"
+///   source = {
+///     ip_address   = gcp_compute_address.source-addr.address
+///     project_id   = gcp_compute_address.source-addr.project
+///     network      = gcp_compute_network.vpc.id
+///     network_type = "GCP_NETWORK"
+///   }
+///   destination = {
+///     ip_address = gcp_compute_address.dest-addr.address
+///     project_id = gcp_compute_address.dest-addr.project
+///     network    = gcp_compute_network.vpc.id
+///   }
+///   protocol = "UDP"
+/// }
+/// resource "gcp_compute_network" "vpc" {
+///   name = "connectivity-vpc"
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "connectivity-vpc-subnet"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.vpc.id
+/// }
+/// resource "gcp_compute_address" "source-addr" {
+///   name         = "src-addr"
+///   subnetwork   = gcp_compute_subnetwork.subnet.id
+///   address_type = "INTERNAL"
+///   address      = "10.0.42.42"
+///   region       = "us-central1"
+/// }
+/// resource "gcp_compute_address" "dest-addr" {
+///   name         = "dest-addr"
+///   subnetwork   = gcp_compute_subnetwork.subnet.id
+///   address_type = "INTERNAL"
+///   address      = "10.0.43.43"
+///   region       = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -647,8 +755,8 @@ import 'connectivity_test_state.dart';
 /// import com.pulumi.gcp.networkmanagement.ConnectivityTestArgs;
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -910,6 +1018,44 @@ import 'connectivity_test_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkmanagement_connectivitytest" "endpoints-test" {
+///   name = "conn-test-endpoints"
+///   source = {
+///     gke_master_cluster = "projects/test-project/locations/us-central1/clusters/name"
+///     cloud_sql_instance = "projects/test-project/instances/name"
+///     app_engine_version = {
+///       uri = "apps/test-project/services/default/versions/name"
+///     }
+///     cloud_function = {
+///       uri = "projects/test-project/locations/us-central1/functions/name"
+///     }
+///     cloud_run_revision = {
+///       uri = "projects/test-project/locations/us-central1/revisions/name"
+///     }
+///     port = 80
+///   }
+///   destination = {
+///     port               = 443
+///     forwarding_rule    = "projects/test-project/regions/us-central1/forwardingRules/name"
+///     gke_master_cluster = "projects/test-project/locations/us-central1/clusters/name"
+///     fqdn               = "name.us-central1.gke.goog"
+///     cloud_sql_instance = "projects/test-project/instances/name"
+///     redis_instance     = "projects/test-project/locations/us-central1/instances/name"
+///     redis_cluster      = "projects/test-project/locations/us-central1/clusters/name"
+///   }
+///   bypass_firewall_checks = true
+///   round_trip             = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -923,8 +1069,8 @@ import 'connectivity_test_state.dart';
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceCloudFunctionArgs;
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceCloudRunRevisionArgs;
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -996,33 +1142,222 @@ import 'connectivity_test_state.dart';
 ///       roundTrip: true
 /// ```
 ///
+/// ### Network Management Connectivity Test Gke Pod
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const pod_test = new gcp.networkmanagement.ConnectivityTest("pod-test", {
+///     name: "conn-test-pod",
+///     source: {
+///         ipAddress: "10.0.0.1",
+///         projectId: "test-project",
+///         networkType: "GCP_NETWORK",
+///     },
+///     destination: {
+///         ipAddress: "10.0.0.2",
+///         projectId: "test-project",
+///         networkType: "GCP_NETWORK",
+///         gkePod: "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name",
+///     },
+///     protocol: "TCP",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// pod_test = gcp.networkmanagement.ConnectivityTest("pod-test",
+///     name="conn-test-pod",
+///     source={
+///         "ip_address": "10.0.0.1",
+///         "project_id": "test-project",
+///         "network_type": "GCP_NETWORK",
+///     },
+///     destination={
+///         "ip_address": "10.0.0.2",
+///         "project_id": "test-project",
+///         "network_type": "GCP_NETWORK",
+///         "gke_pod": "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name",
+///     },
+///     protocol="TCP")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var pod_test = new Gcp.NetworkManagement.ConnectivityTest("pod-test", new()
+///     {
+///         Name = "conn-test-pod",
+///         Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
+///         {
+///             IpAddress = "10.0.0.1",
+///             ProjectId = "test-project",
+///             NetworkType = "GCP_NETWORK",
+///         },
+///         Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
+///         {
+///             IpAddress = "10.0.0.2",
+///             ProjectId = "test-project",
+///             NetworkType = "GCP_NETWORK",
+///             GkePod = "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name",
+///         },
+///         Protocol = "TCP",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := networkmanagement.NewConnectivityTest(ctx, "pod-test", &networkmanagement.ConnectivityTestArgs{
+/// 			Name: pulumi.String("conn-test-pod"),
+/// 			Source: &networkmanagement.ConnectivityTestSourceArgs{
+/// 				IpAddress:   pulumi.String("10.0.0.1"),
+/// 				ProjectId:   pulumi.String("test-project"),
+/// 				NetworkType: pulumi.String("GCP_NETWORK"),
+/// 			},
+/// 			Destination: &networkmanagement.ConnectivityTestDestinationArgs{
+/// 				IpAddress:   pulumi.String("10.0.0.2"),
+/// 				ProjectId:   pulumi.String("test-project"),
+/// 				NetworkType: pulumi.String("GCP_NETWORK"),
+/// 				GkePod:      pulumi.String("projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name"),
+/// 			},
+/// 			Protocol: pulumi.String("TCP"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkmanagement_connectivitytest" "pod-test" {
+///   name = "conn-test-pod"
+///   source = {
+///     ip_address   = "10.0.0.1"
+///     project_id   = "test-project"
+///     network_type = "GCP_NETWORK"
+///   }
+///   destination = {
+///     ip_address   = "10.0.0.2"
+///     project_id   = "test-project"
+///     network_type = "GCP_NETWORK"
+///     gke_pod      = "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name"
+///   }
+///   protocol = "TCP"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.networkmanagement.ConnectivityTest;
+/// import com.pulumi.gcp.networkmanagement.ConnectivityTestArgs;
+/// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
+/// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var pod_test = new ConnectivityTest("pod-test", ConnectivityTestArgs.builder()
+///             .name("conn-test-pod")
+///             .source(ConnectivityTestSourceArgs.builder()
+///                 .ipAddress("10.0.0.1")
+///                 .projectId("test-project")
+///                 .networkType("GCP_NETWORK")
+///                 .build())
+///             .destination(ConnectivityTestDestinationArgs.builder()
+///                 .ipAddress("10.0.0.2")
+///                 .projectId("test-project")
+///                 .networkType("GCP_NETWORK")
+///                 .gkePod("projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name")
+///                 .build())
+///             .protocol("TCP")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   pod-test:
+///     type: gcp:networkmanagement:ConnectivityTest
+///     properties:
+///       name: conn-test-pod
+///       source:
+///         ipAddress: 10.0.0.1
+///         projectId: test-project
+///         networkType: GCP_NETWORK
+///       destination:
+///         ipAddress: 10.0.0.2
+///         projectId: test-project
+///         networkType: GCP_NETWORK
+///         gkePod: projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name
+///       protocol: TCP
+/// ```
+///
 ///
 /// ## Import
 ///
 /// ConnectivityTest can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
 /// ```
 class ConnectivityTest extends pulumi.CustomResource {
   /// Whether the analysis should skip firewall checking. Default value is false.
   late final pulumi.Output<bool?> bypassFirewallChecks;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The user-supplied description of the Connectivity Test.
   /// Maximum of 512 characters.
   late final pulumi.Output<String?> description;
@@ -1039,7 +1374,7 @@ class ConnectivityTest extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Unique name for the connectivity test.
   late final pulumi.Output<String> name;
@@ -1082,6 +1417,7 @@ class ConnectivityTest extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destination = registerOutput<ConnectivityTestDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectivityTestDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1119,6 +1455,7 @@ class ConnectivityTest extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destination = registerOutput<ConnectivityTestDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectivityTestDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

@@ -3,6 +3,7 @@
 
 /// Result data returned by getPeeredDnsDomain.
 class GetPeeredDnsDomainResult {
+  final String deletionPolicy;
   final String dnsSuffix;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -13,6 +14,7 @@ class GetPeeredDnsDomainResult {
   final String service;
 
   /// Creates a new [GetPeeredDnsDomainResult].
+  /// [deletionPolicy] Required.
   /// [dnsSuffix] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
@@ -21,6 +23,7 @@ class GetPeeredDnsDomainResult {
   /// [project] Required.
   /// [service] Required.
   const GetPeeredDnsDomainResult({
+    required this.deletionPolicy,
     required this.dnsSuffix,
     required this.id,
     required this.name,
@@ -32,6 +35,7 @@ class GetPeeredDnsDomainResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'dnsSuffix': dnsSuffix,
       'id': id,
       'name': name,
@@ -44,6 +48,7 @@ class GetPeeredDnsDomainResult {
 
   factory GetPeeredDnsDomainResult.fromMap(Map<String, dynamic> map) {
     return GetPeeredDnsDomainResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       dnsSuffix: map['dnsSuffix'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -54,4 +59,3 @@ class GetPeeredDnsDomainResult {
     );
   }
 }
-

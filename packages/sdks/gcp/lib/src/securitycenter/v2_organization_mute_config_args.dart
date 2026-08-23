@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_securitycenter_v2_organization_mute_config_v2_organization_mute_config_args_doc}
 class V2OrganizationMuteConfigArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the mute config.
   final pulumi.Input<String>? description;
   /// An expression that defines the filter to apply across create/update
@@ -26,6 +33,7 @@ class V2OrganizationMuteConfigArgs {
   final pulumi.Input<String> type;
 
   /// Creates a new [V2OrganizationMuteConfigArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the mute config.
   /// [filter] An expression that defines the filter to apply across create/update
   /// [location] location Id is provided by organization. If not provided, Use global as default.
@@ -33,6 +41,7 @@ class V2OrganizationMuteConfigArgs {
   /// [organization] The organization whose Cloud Security Command Center the Mute
   /// [type] The type of the mute config.
   const V2OrganizationMuteConfigArgs({
+    this.deletionPolicy,
     this.description,
     required this.filter,
     this.location,
@@ -43,6 +52,7 @@ class V2OrganizationMuteConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'filter': filter,
       'location': ?location,
@@ -54,6 +64,7 @@ class V2OrganizationMuteConfigArgs {
 
   factory V2OrganizationMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationMuteConfigArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: pulumi.Input.fromValue(map['filter'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -63,4 +74,3 @@ class V2OrganizationMuteConfigArgs {
     );
   }
 }
-

@@ -6,6 +6,11 @@ import 'get_api_iam_policy_result.dart';
 import 'get_gateway_iam_policy_args.dart';
 import 'get_gateway_iam_policy_result.dart';
 
+/// Retrieves the current IAM policy data for apiconfig
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -62,6 +67,20 @@ import 'get_gateway_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apigateway_getapiconfigiampolicy" "policy" {
+///   api        = apiCfg.api
+///   api_config = apiCfg.apiConfigId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +89,8 @@ import 'get_gateway_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.ApigatewayFunctions;
 /// import com.pulumi.gcp.apigateway.inputs.GetApiConfigIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -84,8 +103,8 @@ import 'get_gateway_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ApigatewayFunctions.getApiConfigIamPolicy(GetApiConfigIamPolicyArgs.builder()
-///             .api(apiCfg.api())
-///             .apiConfig(apiCfg.apiConfigId())
+///             .api(apiCfg.get("api"))
+///             .apiConfig(apiCfg.get("apiConfigId"))
 ///             .build());
 ///
 ///     }
@@ -115,6 +134,11 @@ Future<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(
   return GetApiConfigIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for api
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -171,6 +195,20 @@ Future<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apigateway_getapiiampolicy" "policy" {
+///   project = api.project
+///   api     = api.apiId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +217,8 @@ Future<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.ApigatewayFunctions;
 /// import com.pulumi.gcp.apigateway.inputs.GetApiIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -193,8 +231,8 @@ Future<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ApigatewayFunctions.getApiIamPolicy(GetApiIamPolicyArgs.builder()
-///             .project(api.project())
-///             .api(api.apiId())
+///             .project(api.get("project"))
+///             .api(api.get("apiId"))
 ///             .build());
 ///
 ///     }
@@ -224,6 +262,11 @@ Future<GetApiIamPolicyResult> getApiIamPolicy(
   return GetApiIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for gateway
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -284,6 +327,21 @@ Future<GetApiIamPolicyResult> getApiIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apigateway_getgatewayiampolicy" "policy" {
+///   project = apiGw.project
+///   region  = apiGw.region
+///   gateway = apiGw.gatewayId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +350,8 @@ Future<GetApiIamPolicyResult> getApiIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.ApigatewayFunctions;
 /// import com.pulumi.gcp.apigateway.inputs.GetGatewayIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -306,9 +364,9 @@ Future<GetApiIamPolicyResult> getApiIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ApigatewayFunctions.getGatewayIamPolicy(GetGatewayIamPolicyArgs.builder()
-///             .project(apiGw.project())
-///             .region(apiGw.region())
-///             .gateway(apiGw.gatewayId())
+///             .project(apiGw.get("project"))
+///             .region(apiGw.get("region"))
+///             .gateway(apiGw.get("gatewayId"))
 ///             .build());
 ///
 ///     }

@@ -9,7 +9,7 @@ class AppDataStoreSettings {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_data_store_settings_engines"&gt;&lt;/a&gt;The `engines` block contains:
+  /// &lt;a name="nestedDataStoreSettingsEngines"&gt;&lt;/a&gt;The `engines` block contains:
   final pulumi.Input<List<AppDataStoreSettingsEngine>>? engines;
 
   /// Creates a new [AppDataStoreSettings].
@@ -30,4 +30,3 @@ class AppDataStoreSettings {
     );
   }
 }
-

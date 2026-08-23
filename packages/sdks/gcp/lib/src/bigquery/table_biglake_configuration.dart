@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableBiglakeConfiguration {
   /// The connection specifying the credentials to be used to
-  /// read and write to external storage, such as Cloud Storage. The connection_id can
+  /// read and write to external storage, such as Cloud Storage. The connectionId can
   /// have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
   /// projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
   final pulumi.Input<String> connectionId;
@@ -46,4 +46,3 @@ class TableBiglakeConfiguration {
     );
   }
 }
-

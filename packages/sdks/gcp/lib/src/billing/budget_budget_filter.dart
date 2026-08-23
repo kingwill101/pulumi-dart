@@ -7,7 +7,7 @@ class BudgetBudgetFilter {
   /// A CalendarPeriod represents the abstract concept of a recurring time period that has a
   /// canonical start. Grammatically, "the start of the current CalendarPeriod".
   /// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
-  /// Exactly one of `calendar_period`, `custom_period` must be provided.
+  /// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
   /// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
   final pulumi.Input<String>? calendarPeriod;
   /// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
@@ -21,7 +21,7 @@ class BudgetBudgetFilter {
   final pulumi.Input<String>? creditTypesTreatment;
   /// Specifies to track usage from any start date (required) to any end date (optional).
   /// This time period is static, it does not recur.
-  /// Exactly one of `calendar_period`, `custom_period` must be provided.
+  /// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
   /// Structure is documented below.
   final pulumi.Input<BudgetBudgetFilterCustomPeriod>? customPeriod;
   /// A single label and value pair specifying that usage from only
@@ -103,4 +103,3 @@ class BudgetBudgetFilter {
     );
   }
 }
-

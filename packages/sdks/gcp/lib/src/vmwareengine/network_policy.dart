@@ -98,13 +98,35 @@ import 'network_policy_state.dart';
 /// 			Location:            pulumi.String("us-west1"),
 /// 			Name:                pulumi.String("sample-network-policy"),
 /// 			EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-/// 			VmwareEngineNetwork: network_policy_nw.ID(),
+/// 			VmwareEngineNetwork: network_policy_nw.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "network-policy-nw" {
+///   name        = "sample-network"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "VMwareEngine standard network sample"
+/// }
+/// resource "gcp_vmwareengine_networkpolicy" "vmw-engine-network-policy" {
+///   location              = "us-west1"
+///   name                  = "sample-network-policy"
+///   edge_services_cidr    = "192.168.30.0/26"
+///   vmware_engine_network = gcp_vmwareengine_network.network-policy-nw.id
 /// }
 /// ```
 /// ```java
@@ -117,8 +139,8 @@ import 'network_policy_state.dart';
 /// import com.pulumi.gcp.vmwareengine.NetworkArgs;
 /// import com.pulumi.gcp.vmwareengine.NetworkPolicy;
 /// import com.pulumi.gcp.vmwareengine.NetworkPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,7 +295,7 @@ import 'network_policy_state.dart';
 /// 			Location:            pulumi.String("us-west1"),
 /// 			Name:                pulumi.String("sample-network-policy"),
 /// 			EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-/// 			VmwareEngineNetwork: network_policy_nw.ID(),
+/// 			VmwareEngineNetwork: network_policy_nw.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:         pulumi.String("Sample Network Policy"),
 /// 			InternetAccess: &vmwareengine.NetworkPolicyInternetAccessArgs{
 /// 				Enabled: pulumi.Bool(true),
@@ -289,6 +311,35 @@ import 'network_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "network-policy-nw" {
+///   name        = "sample-network"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "VMwareEngine standard network sample"
+/// }
+/// resource "gcp_vmwareengine_networkpolicy" "vmw-engine-network-policy" {
+///   location              = "us-west1"
+///   name                  = "sample-network-policy"
+///   edge_services_cidr    = "192.168.30.0/26"
+///   vmware_engine_network = gcp_vmwareengine_network.network-policy-nw.id
+///   description           = "Sample Network Policy"
+///   internet_access = {
+///     enabled = true
+///   }
+///   external_ip = {
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +352,8 @@ import 'network_policy_state.dart';
 /// import com.pulumi.gcp.vmwareengine.NetworkPolicyArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.NetworkPolicyInternetAccessArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.NetworkPolicyExternalIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,22 +418,15 @@ import 'network_policy_state.dart';
 /// NetworkPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{location}}/{{name}}
 /// ```
 class NetworkPolicy extends pulumi.CustomResource {
@@ -390,6 +434,13 @@ class NetworkPolicy extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description for this network policy.
   late final pulumi.Output<String?> description;
   /// IP address range in CIDR notation used to create internet access and external IP access.
@@ -441,6 +492,7 @@ class NetworkPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
     externalIp = registerOutput<NetworkPolicyExternalIp>('externalIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyExternalIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -478,6 +530,7 @@ class NetworkPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
     externalIp = registerOutput<NetworkPolicyExternalIp>('externalIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyExternalIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });

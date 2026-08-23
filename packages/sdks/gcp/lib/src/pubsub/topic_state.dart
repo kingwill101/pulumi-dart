@@ -8,6 +8,13 @@ import 'topic_schema_settings.dart';
 
 /// Input properties used for looking up and filtering Topic resources.
 class TopicState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Settings for ingestion from a data source into this topic.
@@ -22,7 +29,7 @@ class TopicState {
   /// A set of key/value label pairs to assign to this Topic.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Indicates the minimum duration to retain a message after it is published
   /// to the topic. If this field is set, messages published to the topic in
@@ -64,6 +71,7 @@ class TopicState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [TopicState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [ingestionDataSourceSettings] Settings for ingestion from a data source into this topic.
   /// [kmsKeyName] The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -77,6 +85,7 @@ class TopicState {
   /// [schemaSettings] Settings for validating messages published against a schema.
   /// [tags] Input only. Resource manager tags to be bound to the topic. Tag keys and
   const TopicState({
+    this.deletionPolicy,
     this.effectiveLabels,
     this.ingestionDataSourceSettings,
     this.kmsKeyName,
@@ -93,6 +102,7 @@ class TopicState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'ingestionDataSourceSettings': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettings, Map<String, dynamic>>(ingestionDataSourceSettings, (value) => value.toMap()),
       'kmsKeyName': ?kmsKeyName,
@@ -110,6 +120,7 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       ingestionDataSourceSettings: (() { final guardedValue = map['ingestionDataSourceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -125,4 +136,3 @@ class TopicState {
     );
   }
 }
-

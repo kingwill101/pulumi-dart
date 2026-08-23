@@ -132,7 +132,7 @@ import 'regional_endpoint_state.dart';
 /// 			Name:        pulumi.String("my-subnetwork"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     myNetwork.ID(),
+/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -143,8 +143,8 @@ import 'regional_endpoint_state.dart';
 /// 			TargetGoogleApi: pulumi.String("storage.us-central1.rep.googleapis.com"),
 /// 			AccessType:      pulumi.String("REGIONAL"),
 /// 			Address:         pulumi.String("192.168.0.5"),
-/// 			Network:         myNetwork.ID(),
-/// 			Subnetwork:      mySubnetwork.ID(),
+/// 			Network:         myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:      mySubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:     pulumi.String("My RegionalEndpoint targeting Google API storage.us-central1.rep.googleapis.com"),
 /// 			Labels: pulumi.StringMap{
 /// 				"env": pulumi.String("default"),
@@ -155,6 +155,39 @@ import 'regional_endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "my_network" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   name          = "my-subnetwork"
+///   ip_cidr_range = "192.168.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.my_network.id
+/// }
+/// resource "gcp_networkconnectivity_regionalendpoint" "default" {
+///   name              = "my-rep"
+///   location          = "us-central1"
+///   target_google_api = "storage.us-central1.rep.googleapis.com"
+///   access_type       = "REGIONAL"
+///   address           = "192.168.0.5"
+///   network           = gcp_compute_network.my_network.id
+///   subnetwork        = gcp_compute_subnetwork.my_subnetwork.id
+///   description       = "My RegionalEndpoint targeting Google API storage.us-central1.rep.googleapis.com"
+///   labels = {
+///     "env" = "default"
+///   }
 /// }
 /// ```
 /// ```java
@@ -169,8 +202,8 @@ import 'regional_endpoint_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.networkconnectivity.RegionalEndpoint;
 /// import com.pulumi.gcp.networkconnectivity.RegionalEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,7 +379,7 @@ import 'regional_endpoint_state.dart';
 /// 			Name:        pulumi.String("my-subnetwork"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     myNetwork.ID(),
+/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -357,14 +390,43 @@ import 'regional_endpoint_state.dart';
 /// 			TargetGoogleApi: pulumi.String("storage.us-central1.rep.googleapis.com"),
 /// 			AccessType:      pulumi.String("GLOBAL"),
 /// 			Address:         pulumi.String("192.168.0.4"),
-/// 			Network:         myNetwork.ID(),
-/// 			Subnetwork:      mySubnetwork.ID(),
+/// 			Network:         myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:      mySubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "my_network" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   name          = "my-subnetwork"
+///   ip_cidr_range = "192.168.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.my_network.id
+/// }
+/// resource "gcp_networkconnectivity_regionalendpoint" "default" {
+///   name              = "my-rep"
+///   location          = "us-central1"
+///   target_google_api = "storage.us-central1.rep.googleapis.com"
+///   access_type       = "GLOBAL"
+///   address           = "192.168.0.4"
+///   network           = gcp_compute_network.my_network.id
+///   subnetwork        = gcp_compute_subnetwork.my_subnetwork.id
 /// }
 /// ```
 /// ```java
@@ -379,8 +441,8 @@ import 'regional_endpoint_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.networkconnectivity.RegionalEndpoint;
 /// import com.pulumi.gcp.networkconnectivity.RegionalEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -451,22 +513,15 @@ import 'regional_endpoint_state.dart';
 /// RegionalEndpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionalEndpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default projects/{{project}}/locations/{{location}}/regionalEndpoints/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint default {{location}}/{{name}}
 /// ```
 class RegionalEndpoint extends pulumi.CustomResource {
@@ -478,6 +533,13 @@ class RegionalEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> address;
   /// Time when the RegionalEndpoint was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -485,7 +547,7 @@ class RegionalEndpoint extends pulumi.CustomResource {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the RegionalEndpoint.
   late final pulumi.Output<String> location;
@@ -525,6 +587,7 @@ class RegionalEndpoint extends pulumi.CustomResource {
     accessType = registerOutput<String>('accessType');
     address = registerOutput<String>('address');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -565,6 +628,7 @@ class RegionalEndpoint extends pulumi.CustomResource {
     accessType = registerOutput<String>('accessType');
     address = registerOutput<String>('address');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

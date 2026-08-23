@@ -30,6 +30,13 @@ class FlexibleAppVersionState {
   final pulumi.Input<String>? defaultExpiration;
   /// If set to `true`, the service will be deleted if it is the last version.
   final pulumi.Input<bool>? deleteServiceOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
   final pulumi.Input<FlexibleAppVersionDeployment>? deployment;
@@ -112,6 +119,7 @@ class FlexibleAppVersionState {
   /// [betaSettings] Metadata settings that are supplied to this version to enable beta runtime features.
   /// [defaultExpiration] Duration that static files should be cached by web proxies and browsers.
   /// [deleteServiceOnDestroy] If set to `true`, the service will be deleted if it is the last version.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deployment] Code and application artifacts that make up this version.
   /// [endpointsApiService] Code and application artifacts that make up this version.
   /// [entrypoint] The entrypoint for the application.
@@ -144,6 +152,7 @@ class FlexibleAppVersionState {
     this.betaSettings,
     this.defaultExpiration,
     this.deleteServiceOnDestroy,
+    this.deletionPolicy,
     this.deployment,
     this.endpointsApiService,
     this.entrypoint,
@@ -179,6 +188,7 @@ class FlexibleAppVersionState {
       'betaSettings': ?betaSettings,
       'defaultExpiration': ?defaultExpiration,
       'deleteServiceOnDestroy': ?deleteServiceOnDestroy,
+      'deletionPolicy': ?deletionPolicy,
       'deployment': ?pulumi.Input.mapOptionalInputValue<FlexibleAppVersionDeployment, Map<String, dynamic>>(deployment, (value) => value.toMap()),
       'endpointsApiService': ?pulumi.Input.mapOptionalInputValue<FlexibleAppVersionEndpointsApiService, Map<String, dynamic>>(endpointsApiService, (value) => value.toMap()),
       'entrypoint': ?pulumi.Input.mapOptionalInputValue<FlexibleAppVersionEntrypoint, Map<String, dynamic>>(entrypoint, (value) => value.toMap()),
@@ -215,6 +225,7 @@ class FlexibleAppVersionState {
       betaSettings: (() { final guardedValue = map['betaSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       defaultExpiration: (() { final guardedValue = map['defaultExpiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteServiceOnDestroy: (() { final guardedValue = map['deleteServiceOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployment: (() { final guardedValue = map['deployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       endpointsApiService: (() { final guardedValue = map['endpointsApiService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleAppVersionEndpointsApiService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       entrypoint: (() { final guardedValue = map['entrypoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -244,4 +255,3 @@ class FlexibleAppVersionState {
     );
   }
 }
-

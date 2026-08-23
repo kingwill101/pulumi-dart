@@ -13,9 +13,16 @@ class V2FolderSccBigQueryExportState {
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
   /// The dataset to write findings' updates to.
-  /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+  /// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   final pulumi.Input<String>? dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
   /// Expression that defines the filter to apply across create/update
@@ -61,6 +68,7 @@ class V2FolderSccBigQueryExportState {
   /// [bigQueryExportId] This must be unique within the organization.  It must consist of only lowercase letters,
   /// [createTime] The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
   /// [dataset] The dataset to write findings' updates to.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the notification config (max of 1024 characters).
   /// [filter] Expression that defines the filter to apply across create/update
   /// [folder] The folder where Cloud Security Command Center Big Query Export
@@ -73,6 +81,7 @@ class V2FolderSccBigQueryExportState {
     this.bigQueryExportId,
     this.createTime,
     this.dataset,
+    this.deletionPolicy,
     this.description,
     this.filter,
     this.folder,
@@ -88,6 +97,7 @@ class V2FolderSccBigQueryExportState {
       'bigQueryExportId': ?bigQueryExportId,
       'createTime': ?createTime,
       'dataset': ?dataset,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'filter': ?filter,
       'folder': ?folder,
@@ -104,6 +114,7 @@ class V2FolderSccBigQueryExportState {
       bigQueryExportId: (() { final guardedValue = map['bigQueryExportId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -115,4 +126,3 @@ class V2FolderSccBigQueryExportState {
     );
   }
 }
-

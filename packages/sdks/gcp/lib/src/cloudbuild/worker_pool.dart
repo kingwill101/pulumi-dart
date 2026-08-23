@@ -85,6 +85,25 @@ import 'worker_pool_worker_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudbuild_workerpool" "pool" {
+///   name     = "my-pool"
+///   location = "europe-west1"
+///   worker_config = {
+///     disk_size_gb   = 100
+///     machine_type   = "e2-standard-4"
+///     no_external_ip = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +113,8 @@ import 'worker_pool_worker_config.dart';
 /// import com.pulumi.gcp.cloudbuild.WorkerPool;
 /// import com.pulumi.gcp.cloudbuild.WorkerPoolArgs;
 /// import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolWorkerConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -300,7 +319,7 @@ import 'worker_pool_worker_config.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+/// 		servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 		})
 /// 		if err != nil {
@@ -310,7 +329,7 @@ import 'worker_pool_worker_config.dart';
 /// 			Name:                  pulumi.String("my-network"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(false),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			servicenetworking,
+/// 			servicenetworking2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -320,19 +339,19 @@ import 'worker_pool_worker_config.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      network.ID(),
+/// 			Network:      network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		workerPoolConn, err := servicenetworking.NewConnection(ctx, "worker_pool_conn", &servicenetworking.ConnectionArgs{
-/// 			Network: network.ID(),
+/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				workerRange.Name,
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			servicenetworking,
+/// 			servicenetworking2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -346,7 +365,7 @@ import 'worker_pool_worker_config.dart';
 /// 				NoExternalIp: pulumi.Bool(false),
 /// 			},
 /// 			NetworkConfig: &cloudbuild.WorkerPoolNetworkConfigArgs{
-/// 				PeeredNetwork:        network.ID(),
+/// 				PeeredNetwork:        network.ID().ToIDOutput().ToStringOutput(),
 /// 				PeeredNetworkIpRange: pulumi.String("/29"),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -357,6 +376,51 @@ import 'worker_pool_worker_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_service" "servicenetworking" {
+///   service = "servicenetworking.googleapis.com"
+/// }
+/// resource "gcp_compute_network" "network" {
+///   depends_on              = [gcp_projects_service.servicenetworking]
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_globaladdress" "worker_range" {
+///   name          = "worker-pool-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "worker_pool_conn" {
+///   depends_on              = [gcp_projects_service.servicenetworking]
+///   network                 = gcp_compute_network.network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.worker_range.name]
+/// }
+/// resource "gcp_cloudbuild_workerpool" "pool" {
+///   depends_on = [gcp_servicenetworking_connection.worker_pool_conn]
+///   name       = "my-pool"
+///   location   = "europe-west1"
+///   worker_config = {
+///     disk_size_gb   = 100
+///     machine_type   = "e2-standard-4"
+///     no_external_ip = false
+///   }
+///   network_config = {
+///     peered_network          = gcp_compute_network.network.id
+///     peered_network_ip_range = "/29"
+///   }
 /// }
 /// ```
 /// ```java
@@ -378,8 +442,8 @@ import 'worker_pool_worker_config.dart';
 /// import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolWorkerConfigArgs;
 /// import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolNetworkConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -494,36 +558,37 @@ import 'worker_pool_worker_config.dart';
 /// WorkerPool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
 /// ```
 class WorkerPool extends pulumi.CustomResource {
   /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Output only. Time at which the request to create the `WorkerPool` was received.
   late final pulumi.Output<String> createTime;
   /// Output only. Time at which the request to delete the `WorkerPool` was received.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -564,6 +629,7 @@ class WorkerPool extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     location = registerOutput<String>('location');
@@ -603,6 +669,7 @@ class WorkerPool extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     location = registerOutput<String>('location');

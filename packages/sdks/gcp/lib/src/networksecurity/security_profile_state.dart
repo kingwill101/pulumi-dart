@@ -18,6 +18,13 @@ class SecurityProfileState {
   /// mirror traffic to third-party collectors.
   /// Structure is documented below.
   final pulumi.Input<SecurityProfileCustomMirroringProfile>? customMirroringProfile;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of the security profile. The Max length is 512 characters.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -29,7 +36,7 @@ class SecurityProfileState {
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the security profile.
   /// The default value is `global`.
@@ -37,7 +44,7 @@ class SecurityProfileState {
   /// The name of the security profile resource.
   final pulumi.Input<String>? name;
   /// The name of the parent this security profile belongs to.
-  /// Format: organizations/{organization_id}.
+  /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
   final pulumi.Input<String>? parent;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
@@ -60,6 +67,7 @@ class SecurityProfileState {
   /// [createTime] Time the security profile was created in UTC.
   /// [customInterceptProfile] The configuration for defining the Intercept Endpoint Group used to
   /// [customMirroringProfile] The configuration for defining the Mirroring Endpoint Group used to
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of the security profile. The Max length is 512 characters.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] This checksum is computed by the server based on the value of other fields,
@@ -77,6 +85,7 @@ class SecurityProfileState {
     this.createTime,
     this.customInterceptProfile,
     this.customMirroringProfile,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.etag,
@@ -97,6 +106,7 @@ class SecurityProfileState {
       'createTime': ?createTime,
       'customInterceptProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileCustomInterceptProfile, Map<String, dynamic>>(customInterceptProfile, (value) => value.toMap()),
       'customMirroringProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileCustomMirroringProfile, Map<String, dynamic>>(customMirroringProfile, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
@@ -118,6 +128,7 @@ class SecurityProfileState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customInterceptProfile: (() { final guardedValue = map['customInterceptProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfileCustomInterceptProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customMirroringProfile: (() { final guardedValue = map['customMirroringProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -134,4 +145,3 @@ class SecurityProfileState {
     );
   }
 }
-

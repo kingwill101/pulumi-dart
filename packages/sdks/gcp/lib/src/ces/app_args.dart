@@ -35,6 +35,13 @@ class AppArgs {
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
   final pulumi.Input<AppDefaultChannelProfile>? defaultChannelProfile;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable description of the app.
   final pulumi.Input<String>? description;
   /// Display name of the app.
@@ -75,6 +82,9 @@ class AppArgs {
   /// TimeZone settings of the app.
   /// Structure is documented below.
   final pulumi.Input<AppTimeZoneSettings>? timeZoneSettings;
+  /// The tool execution mode for the app.
+  /// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+  final pulumi.Input<String>? toolExecutionMode;
   /// The declarations of the variables.
   /// Structure is documented below.
   final pulumi.Input<List<AppVariableDeclaration>>? variableDeclarations;
@@ -85,6 +95,7 @@ class AppArgs {
   /// [clientCertificateSettings] The default client certificate settings for the app.
   /// [dataStoreSettings] Data store related settings for the app.
   /// [defaultChannelProfile] A ChannelProfile configures the agent's behavior for a specific communication
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human-readable description of the app.
   /// [displayName] Display name of the app.
   /// [evaluationMetricsThresholds] Threshold settings for metrics in an Evaluation.
@@ -99,6 +110,7 @@ class AppArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rootAgent] The root agent is the entry point of the app.
   /// [timeZoneSettings] TimeZone settings of the app.
+  /// [toolExecutionMode] The tool execution mode for the app.
   /// [variableDeclarations] The declarations of the variables.
   const AppArgs({
     required this.appId,
@@ -106,6 +118,7 @@ class AppArgs {
     this.clientCertificateSettings,
     this.dataStoreSettings,
     this.defaultChannelProfile,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.evaluationMetricsThresholds,
@@ -120,6 +133,7 @@ class AppArgs {
     this.project,
     this.rootAgent,
     this.timeZoneSettings,
+    this.toolExecutionMode,
     this.variableDeclarations,
   });
 
@@ -130,6 +144,7 @@ class AppArgs {
       'clientCertificateSettings': ?pulumi.Input.mapOptionalInputValue<AppClientCertificateSettings, Map<String, dynamic>>(clientCertificateSettings, (value) => value.toMap()),
       'dataStoreSettings': ?pulumi.Input.mapOptionalInputValue<AppDataStoreSettings, Map<String, dynamic>>(dataStoreSettings, (value) => value.toMap()),
       'defaultChannelProfile': ?pulumi.Input.mapOptionalInputValue<AppDefaultChannelProfile, Map<String, dynamic>>(defaultChannelProfile, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'evaluationMetricsThresholds': ?pulumi.Input.mapOptionalInputValue<AppEvaluationMetricsThresholds, Map<String, dynamic>>(evaluationMetricsThresholds, (value) => value.toMap()),
@@ -144,6 +159,7 @@ class AppArgs {
       'project': ?project,
       'rootAgent': ?rootAgent,
       'timeZoneSettings': ?pulumi.Input.mapOptionalInputValue<AppTimeZoneSettings, Map<String, dynamic>>(timeZoneSettings, (value) => value.toMap()),
+      'toolExecutionMode': ?toolExecutionMode,
       'variableDeclarations': ?pulumi.Input.mapOptionalInputValue<List<AppVariableDeclaration>, List<Map<String, dynamic>>>(variableDeclarations, (value) => pulumi.Input.encodeList<AppVariableDeclaration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
@@ -155,6 +171,7 @@ class AppArgs {
       clientCertificateSettings: (() { final guardedValue = map['clientCertificateSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppClientCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataStoreSettings: (() { final guardedValue = map['dataStoreSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDataStoreSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultChannelProfile: (() { final guardedValue = map['defaultChannelProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDefaultChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       evaluationMetricsThresholds: (() { final guardedValue = map['evaluationMetricsThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -169,8 +186,8 @@ class AppArgs {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rootAgent: (() { final guardedValue = map['rootAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZoneSettings: (() { final guardedValue = map['timeZoneSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      toolExecutionMode: (() { final guardedValue = map['toolExecutionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variableDeclarations: (() { final guardedValue = map['variableDeclarations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

@@ -4,6 +4,9 @@ import 'tenant_state.dart';
 
 /// The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 ///
 /// ## Example Usage
 ///
@@ -101,7 +104,7 @@ import 'tenant_state.dart';
 /// 		_, err = saasruntime.NewTenant(ctx, "example", &saasruntime.TenantArgs{
 /// 			Location:         pulumi.String("global"),
 /// 			TenantId:         pulumi.String("example-tenant"),
-/// 			Saas:             exampleSaas.ID(),
+/// 			Saas:             exampleSaas.ID().ToIDOutput().ToStringOutput(),
 /// 			ConsumerResource: pulumi.String("//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance"),
 /// 		})
 /// 		if err != nil {
@@ -109,6 +112,29 @@ import 'tenant_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_saasruntime_saas" "example_saas" {
+///   saas_id  = "example-saas"
+///   location = "global"
+///   locations {
+///     name = "us-central1"
+///   }
+/// }
+/// resource "gcp_saasruntime_tenant" "example" {
+///   location          = "global"
+///   tenant_id         = "example-tenant"
+///   saas              = gcp_saasruntime_saas.example_saas.id
+///   consumer_resource = "//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance"
 /// }
 /// ```
 /// ```java
@@ -122,8 +148,8 @@ import 'tenant_state.dart';
 /// import com.pulumi.gcp.saasruntime.inputs.SaaSLocationArgs;
 /// import com.pulumi.gcp.saasruntime.Tenant;
 /// import com.pulumi.gcp.saasruntime.TenantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -178,22 +204,15 @@ import 'tenant_state.dart';
 /// Tenant can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}`
-///
 /// * `{{project}}/{{location}}/{{tenant_id}}`
-///
 /// * `{{location}}/{{tenant_id}}`
+///
 ///
 /// When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:saasruntime/tenant:Tenant default projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
 /// ```
 class Tenant extends pulumi.CustomResource {
@@ -202,22 +221,30 @@ class Tenant extends pulumi.CustomResource {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// A reference to the consumer resource this SaaS Tenant is representing.
-  /// The relationship with a consumer resource can be used by SaaS Runtime for
+  /// The relationship with a consumer resource can be used by App Lifecycle Manager for
   /// retrieving consumer-defined settings and policies such as maintenance
   /// policies (using Unified Maintenance Policy API).
   late final pulumi.Output<String?> consumerResource;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -232,8 +259,8 @@ class Tenant extends pulumi.CustomResource {
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// A reference to the Saas that defines the product (managed service) that
-  /// the producer wants to manage with SaaS Runtime. Part of the
-  /// SaaS Runtime common data model.
+  /// the producer wants to manage with App Lifecycle Manager. Part of the
+  /// App Lifecycle Manager common data model.
   late final pulumi.Output<String> saas;
   /// The ID value for the new tenant.
   late final pulumi.Output<String> tenantId;
@@ -265,6 +292,7 @@ class Tenant extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     consumerResource = registerOutput<String?>('consumerResource');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -304,6 +332,7 @@ class Tenant extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     consumerResource = registerOutput<String?>('consumerResource');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

@@ -231,7 +231,7 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// 		multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-domain-mgca"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID(),
+/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
@@ -244,7 +244,7 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// 		multicastDomainActivation, err := networkservices.NewMulticastDomainActivation(ctx, "multicast_domain_activation", &networkservices.MulticastDomainActivationArgs{
 /// 			MulticastDomainActivationId: pulumi.String("test-domain-activation-mgca"),
 /// 			Location:                    pulumi.String("us-central1-b"),
-/// 			MulticastDomain:             multicastDomain.ID(),
+/// 			MulticastDomain:             multicastDomain.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -252,8 +252,8 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// 		consumerAssociation, err := networkservices.NewMulticastConsumerAssociation(ctx, "consumer_association", &networkservices.MulticastConsumerAssociationArgs{
 /// 			MulticastConsumerAssociationId: pulumi.String("test-consumer-association-mgca"),
 /// 			Location:                       pulumi.String("us-central1-b"),
-/// 			Network:                        network.ID(),
-/// 			MulticastDomainActivation:      multicastDomainActivation.ID(),
+/// 			Network:                        network.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomainActivation:      multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			network,
 /// 		}))
@@ -273,8 +273,8 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// 		groupRange, err := networkservices.NewMulticastGroupRange(ctx, "group_range", &networkservices.MulticastGroupRangeArgs{
 /// 			MulticastGroupRangeId: pulumi.String("test-group-range-mgca"),
 /// 			Location:              pulumi.String("global"),
-/// 			ReservedInternalRange: internalRange.ID(),
-/// 			MulticastDomain:       multicastDomain.ID(),
+/// 			ReservedInternalRange: internalRange.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomain:       multicastDomain.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -282,8 +282,8 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// 		groupRangeActivation, err := networkservices.NewMulticastGroupRangeActivation(ctx, "group_range_activation", &networkservices.MulticastGroupRangeActivationArgs{
 /// 			MulticastGroupRangeActivationId: pulumi.String("test-mgra-mgca"),
 /// 			Location:                        pulumi.String("us-central1-b"),
-/// 			MulticastGroupRange:             groupRange.ID(),
-/// 			MulticastDomainActivation:       multicastDomainActivation.ID(),
+/// 			MulticastGroupRange:             groupRange.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomainActivation:       multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -291,14 +291,74 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// 		_, err = networkservices.NewMulticastGroupConsumerActivation(ctx, "mgca_test", &networkservices.MulticastGroupConsumerActivationArgs{
 /// 			MulticastGroupConsumerActivationId: pulumi.String("test-mgca-mgca"),
 /// 			Location:                           pulumi.String("us-central1-b"),
-/// 			MulticastGroupRangeActivation:      groupRangeActivation.ID(),
-/// 			MulticastConsumerAssociation:       consumerAssociation.ID(),
+/// 			MulticastGroupRangeActivation:      groupRangeActivation.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastConsumerAssociation:       consumerAssociation.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-network-mgca"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkservices_multicastdomain" "multicast_domain" {
+///   depends_on          = [gcp_compute_network.network]
+///   multicast_domain_id = "test-domain-mgca"
+///   location            = "global"
+///   admin_network       = gcp_compute_network.network.id
+///   connection_config = {
+///     connection_type = "SAME_VPC"
+///   }
+/// }
+/// resource "gcp_networkservices_multicastdomainactivation" "multicast_domain_activation" {
+///   multicast_domain_activation_id = "test-domain-activation-mgca"
+///   location                       = "us-central1-b"
+///   multicast_domain               = gcp_networkservices_multicastdomain.multicast_domain.id
+/// }
+/// resource "gcp_networkservices_multicastconsumerassociation" "consumer_association" {
+///   depends_on                        = [gcp_compute_network.network]
+///   multicast_consumer_association_id = "test-consumer-association-mgca"
+///   location                          = "us-central1-b"
+///   network                           = gcp_compute_network.network.id
+///   multicast_domain_activation       = gcp_networkservices_multicastdomainactivation.multicast_domain_activation.id
+/// }
+/// resource "gcp_networkconnectivity_internalrange" "internal_range" {
+///   name          = "test-internal-range-mgca"
+///   network       = gcp_compute_network.network.self_link
+///   usage         = "FOR_VPC"
+///   peering       = "FOR_SELF"
+///   ip_cidr_range = "224.2.0.2/32"
+/// }
+/// resource "gcp_networkservices_multicastgrouprange" "group_range" {
+///   multicast_group_range_id = "test-group-range-mgca"
+///   location                 = "global"
+///   reserved_internal_range  = gcp_networkconnectivity_internalrange.internal_range.id
+///   multicast_domain         = gcp_networkservices_multicastdomain.multicast_domain.id
+/// }
+/// resource "gcp_networkservices_multicastgrouprangeactivation" "group_range_activation" {
+///   multicast_group_range_activation_id = "test-mgra-mgca"
+///   location                            = "us-central1-b"
+///   multicast_group_range               = gcp_networkservices_multicastgrouprange.group_range.id
+///   multicast_domain_activation         = gcp_networkservices_multicastdomainactivation.multicast_domain_activation.id
+/// }
+/// resource "gcp_networkservices_multicastgroupconsumeractivation" "mgca_test" {
+///   multicast_group_consumer_activation_id = "test-mgca-mgca"
+///   location                               = "us-central1-b"
+///   multicast_group_range_activation       = gcp_networkservices_multicastgrouprangeactivation.group_range_activation.id
+///   multicast_consumer_association         = gcp_networkservices_multicastconsumerassociation.consumer_association.id
 /// }
 /// ```
 /// ```java
@@ -325,8 +385,8 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// import com.pulumi.gcp.networkservices.MulticastGroupConsumerActivation;
 /// import com.pulumi.gcp.networkservices.MulticastGroupConsumerActivationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -479,35 +539,35 @@ import 'multicast_group_consumer_activation_networkservices_state.dart';
 /// MulticastGroupConsumerActivation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}`
-///
 /// * `{{project}}/{{location}}/{{multicast_group_consumer_activation_id}}`
-///
 /// * `{{location}}/{{multicast_group_consumer_activation_id}}`
+///
 ///
 /// When using the `pulumi import` command, MulticastGroupConsumerActivation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default projects/{{project}}/locations/{{location}}/multicastGroupConsumerActivations/{{multicast_group_consumer_activation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{project}}/{{location}}/{{multicast_group_consumer_activation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation default {{location}}/{{multicast_group_consumer_activation_id}}
 /// ```
 class MulticastGroupConsumerActivation extends pulumi.CustomResource {
   /// The timestamp when the multicast group consumer activation
   /// was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional text description of the multicast group consumer activation.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -574,6 +634,7 @@ class MulticastGroupConsumerActivation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -614,6 +675,7 @@ class MulticastGroupConsumerActivation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

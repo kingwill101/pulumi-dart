@@ -3,11 +3,13 @@ import 'instance_iam_binding_args.dart';
 import 'instance_iam_binding_condition.dart';
 import 'instance_iam_binding_state.dart';
 
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+///
 /// Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 ///
 /// * `gcp.notebooks.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-/// * `gcp.notebooks.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-/// * `gcp.notebooks.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+/// * `gcp.notebooks.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.notebooks.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +18,6 @@ import 'instance_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.notebooks.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.notebooks.InstanceIamBinding` and `gcp.notebooks.InstanceIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.notebooks.InstanceIamBinding` resources **can be** used in conjunction with `gcp.notebooks.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.notebooks.InstanceIamPolicy
@@ -123,6 +124,29 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instanceiampolicy" "policy" {
+///   project       = instance.project
+///   location      = instance.location
+///   instance_name = instance.name
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,10 +155,11 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.notebooks.InstanceIamPolicy;
 /// import com.pulumi.gcp.notebooks.InstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,9 +179,9 @@ import 'instance_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()
-///             .project(instance.project())
-///             .location(instance.location())
-///             .instanceName(instance.name())
+///             .project(instance.get("project"))
+///             .location(instance.get("location"))
+///             .instanceName(instance.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -258,6 +283,23 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instanceiambinding" "binding" {
+///   project       = instance.project
+///   location      = instance.location
+///   instance_name = instance.name
+///   role          = "roles/viewer"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +308,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.InstanceIamBinding;
 /// import com.pulumi.gcp.notebooks.InstanceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,9 +322,9 @@ import 'instance_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()
-///             .project(instance.project())
-///             .location(instance.location())
-///             .instanceName(instance.name())
+///             .project(instance.get("project"))
+///             .location(instance.get("location"))
+///             .instanceName(instance.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -373,6 +415,23 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instanceiammember" "member" {
+///   project       = instance.project
+///   location      = instance.location
+///   instance_name = instance.name
+///   role          = "roles/viewer"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +440,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.InstanceIamMember;
 /// import com.pulumi.gcp.notebooks.InstanceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,9 +454,9 @@ import 'instance_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()
-///             .project(instance.project())
-///             .location(instance.location())
-///             .instanceName(instance.name())
+///             .project(instance.get("project"))
+///             .location(instance.get("location"))
+///             .instanceName(instance.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -424,12 +483,13 @@ import 'instance_iam_binding_state.dart';
 /// -
 ///
 /// # IAM policy for Cloud AI Notebooks Instance
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
 ///
 /// Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 ///
 /// * `gcp.notebooks.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-/// * `gcp.notebooks.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-/// * `gcp.notebooks.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+/// * `gcp.notebooks.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.notebooks.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -438,7 +498,6 @@ import 'instance_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.notebooks.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.notebooks.InstanceIamBinding` and `gcp.notebooks.InstanceIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.notebooks.InstanceIamBinding` resources **can be** used in conjunction with `gcp.notebooks.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.notebooks.InstanceIamPolicy
@@ -545,6 +604,29 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instanceiampolicy" "policy" {
+///   project       = instance.project
+///   location      = instance.location
+///   instance_name = instance.name
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -553,10 +635,11 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.notebooks.InstanceIamPolicy;
 /// import com.pulumi.gcp.notebooks.InstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,9 +659,9 @@ import 'instance_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()
-///             .project(instance.project())
-///             .location(instance.location())
-///             .instanceName(instance.name())
+///             .project(instance.get("project"))
+///             .location(instance.get("location"))
+///             .instanceName(instance.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -680,6 +763,23 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instanceiambinding" "binding" {
+///   project       = instance.project
+///   location      = instance.location
+///   instance_name = instance.name
+///   role          = "roles/viewer"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -688,8 +788,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.InstanceIamBinding;
 /// import com.pulumi.gcp.notebooks.InstanceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,9 +802,9 @@ import 'instance_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()
-///             .project(instance.project())
-///             .location(instance.location())
-///             .instanceName(instance.name())
+///             .project(instance.get("project"))
+///             .location(instance.get("location"))
+///             .instanceName(instance.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -795,6 +895,23 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_instanceiammember" "member" {
+///   project       = instance.project
+///   location      = instance.location
+///   instance_name = instance.name
+///   role          = "roles/viewer"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -803,8 +920,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.InstanceIamMember;
 /// import com.pulumi.gcp.notebooks.InstanceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,9 +934,9 @@ import 'instance_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()
-///             .project(instance.project())
-///             .location(instance.location())
-///             .instanceName(instance.name())
+///             .project(instance.get("project"))
+///             .location(instance.get("location"))
+///             .instanceName(instance.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -845,11 +962,8 @@ import 'instance_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/instances/{{instance_name}}
-///
 /// * {{project}}/{{location}}/{{instance_name}}
-///
 /// * {{location}}/{{instance_name}}
-///
 /// * {{instance_name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -857,25 +971,21 @@ import 'instance_iam_binding_state.dart';
 /// Cloud AI Notebooks instance IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:notebooks/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer user:jane@example.com"
+/// $ terraform import google_notebooks_instance_iam_member.editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:notebooks/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer"
+/// $ terraform import google_notebooks_instance_iam_binding.editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:notebooks/instanceIamBinding:InstanceIamBinding editor projects/{{project}}/locations/{{location}}/instances/{{instance_name}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class InstanceIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<InstanceIamBindingCondition?> condition;

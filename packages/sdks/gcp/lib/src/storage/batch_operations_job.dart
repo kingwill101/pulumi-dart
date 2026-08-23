@@ -159,6 +159,38 @@ import 'batch_operations_job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name          = "tf-sample-bucket"
+///   location      = "us-central1"
+///   force_destroy = true
+/// }
+/// resource "gcp_storage_batchoperationsjob" "tf-job" {
+///   job_id = "tf-job"
+///   bucket_list = {
+///     buckets = {
+///       bucket = gcp_storage_bucket.bucket.name
+///       prefix_list = {
+///         included_object_prefixes = ["bkt"]
+///       }
+///     }
+///   }
+///   put_metadata = {
+///     custom_metadata = {
+///       "key" = "value"
+///     }
+///   }
+///   delete_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +205,8 @@ import 'batch_operations_job_state.dart';
 /// import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsArgs;
 /// import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsPrefixListArgs;
 /// import com.pulumi.gcp.storage.inputs.BatchOperationsJobPutMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,28 +267,280 @@ import 'batch_operations_job_state.dart';
 ///       deleteProtection: false
 /// ```
 ///
+/// ### Storage Batch Operations Description
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const bucket = new gcp.storage.Bucket("bucket", {
+///     name: "tf-sample-bucket",
+///     location: "us-central1",
+///     forceDestroy: true,
+/// });
+/// const tf_job = new gcp.storage.BatchOperationsJob("tf-job", {
+///     jobId: "tf-job",
+///     description: "A sample job description",
+///     bucketList: {
+///         buckets: {
+///             bucket: bucket.name,
+///             prefixList: {
+///                 includedObjectPrefixes: ["bkt"],
+///             },
+///         },
+///     },
+///     putMetadata: {
+///         customMetadata: {
+///             key: "value",
+///         },
+///     },
+///     deleteProtection: false,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// bucket = gcp.storage.Bucket("bucket",
+///     name="tf-sample-bucket",
+///     location="us-central1",
+///     force_destroy=True)
+/// tf_job = gcp.storage.BatchOperationsJob("tf-job",
+///     job_id="tf-job",
+///     description="A sample job description",
+///     bucket_list={
+///         "buckets": {
+///             "bucket": bucket.name,
+///             "prefix_list": {
+///                 "included_object_prefixes": ["bkt"],
+///             },
+///         },
+///     },
+///     put_metadata={
+///         "custom_metadata": {
+///             "key": "value",
+///         },
+///     },
+///     delete_protection=False)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+///     {
+///         Name = "tf-sample-bucket",
+///         Location = "us-central1",
+///         ForceDestroy = true,
+///     });
+///
+///     var tf_job = new Gcp.Storage.BatchOperationsJob("tf-job", new()
+///     {
+///         JobId = "tf-job",
+///         Description = "A sample job description",
+///         BucketList = new Gcp.Storage.Inputs.BatchOperationsJobBucketListArgs
+///         {
+///             Buckets = new Gcp.Storage.Inputs.BatchOperationsJobBucketListBucketsArgs
+///             {
+///                 Bucket = bucket.Name,
+///                 PrefixList = new Gcp.Storage.Inputs.BatchOperationsJobBucketListBucketsPrefixListArgs
+///                 {
+///                     IncludedObjectPrefixes = new[]
+///                     {
+///                         "bkt",
+///                     },
+///                 },
+///             },
+///         },
+///         PutMetadata = new Gcp.Storage.Inputs.BatchOperationsJobPutMetadataArgs
+///         {
+///             CustomMetadata =
+///             {
+///                 { "key", "value" },
+///             },
+///         },
+///         DeleteProtection = false,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+/// 			Name:         pulumi.String("tf-sample-bucket"),
+/// 			Location:     pulumi.String("us-central1"),
+/// 			ForceDestroy: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = storage.NewBatchOperationsJob(ctx, "tf-job", &storage.BatchOperationsJobArgs{
+/// 			JobId:       pulumi.String("tf-job"),
+/// 			Description: pulumi.String("A sample job description"),
+/// 			BucketList: &storage.BatchOperationsJobBucketListArgs{
+/// 				Buckets: &storage.BatchOperationsJobBucketListBucketsArgs{
+/// 					Bucket: bucket.Name,
+/// 					PrefixList: &storage.BatchOperationsJobBucketListBucketsPrefixListArgs{
+/// 						IncludedObjectPrefixes: pulumi.StringArray{
+/// 							pulumi.String("bkt"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			PutMetadata: &storage.BatchOperationsJobPutMetadataArgs{
+/// 				CustomMetadata: pulumi.StringMap{
+/// 					"key": pulumi.String("value"),
+/// 				},
+/// 			},
+/// 			DeleteProtection: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name          = "tf-sample-bucket"
+///   location      = "us-central1"
+///   force_destroy = true
+/// }
+/// resource "gcp_storage_batchoperationsjob" "tf-job" {
+///   job_id      = "tf-job"
+///   description = "A sample job description"
+///   bucket_list = {
+///     buckets = {
+///       bucket = gcp_storage_bucket.bucket.name
+///       prefix_list = {
+///         included_object_prefixes = ["bkt"]
+///       }
+///     }
+///   }
+///   put_metadata = {
+///     custom_metadata = {
+///       "key" = "value"
+///     }
+///   }
+///   delete_protection = false
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.storage.BatchOperationsJob;
+/// import com.pulumi.gcp.storage.BatchOperationsJobArgs;
+/// import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListArgs;
+/// import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsArgs;
+/// import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsPrefixListArgs;
+/// import com.pulumi.gcp.storage.inputs.BatchOperationsJobPutMetadataArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var bucket = new Bucket("bucket", BucketArgs.builder()
+///             .name("tf-sample-bucket")
+///             .location("us-central1")
+///             .forceDestroy(true)
+///             .build());
+///
+///         var tf_job = new BatchOperationsJob("tf-job", BatchOperationsJobArgs.builder()
+///             .jobId("tf-job")
+///             .description("A sample job description")
+///             .bucketList(BatchOperationsJobBucketListArgs.builder()
+///                 .buckets(BatchOperationsJobBucketListBucketsArgs.builder()
+///                     .bucket(bucket.name())
+///                     .prefixList(BatchOperationsJobBucketListBucketsPrefixListArgs.builder()
+///                         .includedObjectPrefixes("bkt")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .putMetadata(BatchOperationsJobPutMetadataArgs.builder()
+///                 .customMetadata(Map.of("key", "value"))
+///                 .build())
+///             .deleteProtection(false)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   bucket:
+///     type: gcp:storage:Bucket
+///     properties:
+///       name: tf-sample-bucket
+///       location: us-central1
+///       forceDestroy: true
+///   tf-job:
+///     type: gcp:storage:BatchOperationsJob
+///     properties:
+///       jobId: tf-job
+///       description: A sample job description
+///       bucketList:
+///         buckets:
+///           bucket: ${bucket.name}
+///           prefixList:
+///             includedObjectPrefixes:
+///               - bkt
+///       putMetadata:
+///         customMetadata:
+///           key: value
+///       deleteProtection: false
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Job can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/jobs/{{job_id}}`
-///
 /// * `{{project}}/{{job_id}}`
-///
 /// * `{{job_id}}`
+///
 ///
 /// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default projects/{{project}}/locations/global/jobs/{{job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{project}}/{{job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{job_id}}
 /// ```
 class BatchOperationsJob extends pulumi.CustomResource {
@@ -272,6 +556,15 @@ class BatchOperationsJob extends pulumi.CustomResource {
   late final pulumi.Output<BatchOperationsJobDeleteObject?> deleteObject;
   /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
   late final pulumi.Output<bool?> deleteProtection;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+  late final pulumi.Output<String?> description;
   /// The ID of the job.
   late final pulumi.Output<String?> jobId;
   /// The ID of the project in which the resource belongs.
@@ -312,6 +605,8 @@ class BatchOperationsJob extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteObject = registerOutput<BatchOperationsJobDeleteObject?>('deleteObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobDeleteObject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
     jobId = registerOutput<String?>('jobId');
     project = registerOutput<String>('project');
     putMetadata = registerOutput<BatchOperationsJobPutMetadata?>('putMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobPutMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -350,6 +645,8 @@ class BatchOperationsJob extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteObject = registerOutput<BatchOperationsJobDeleteObject?>('deleteObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobDeleteObject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
     jobId = registerOutput<String?>('jobId');
     project = registerOutput<String>('project');
     putMetadata = registerOutput<BatchOperationsJobPutMetadata?>('putMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobPutMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });

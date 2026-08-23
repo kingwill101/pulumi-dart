@@ -16,6 +16,7 @@ class GetDatasetResult {
   final int defaultPartitionExpirationMs;
   final int defaultTableExpirationMs;
   final bool deleteContentsOnDestroy;
+  final String deletionPolicy;
   final String description;
   final Map<String, String> effectiveLabels;
   final String etag;
@@ -44,6 +45,7 @@ class GetDatasetResult {
   /// [defaultPartitionExpirationMs] Required.
   /// [defaultTableExpirationMs] Required.
   /// [deleteContentsOnDestroy] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
   /// [etag] Required.
@@ -70,6 +72,7 @@ class GetDatasetResult {
     required this.defaultPartitionExpirationMs,
     required this.defaultTableExpirationMs,
     required this.deleteContentsOnDestroy,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.etag,
@@ -99,6 +102,7 @@ class GetDatasetResult {
       'defaultPartitionExpirationMs': defaultPartitionExpirationMs,
       'defaultTableExpirationMs': defaultTableExpirationMs,
       'deleteContentsOnDestroy': deleteContentsOnDestroy,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'etag': etag,
@@ -129,6 +133,7 @@ class GetDatasetResult {
       defaultPartitionExpirationMs: map['defaultPartitionExpirationMs'] as int,
       defaultTableExpirationMs: map['defaultTableExpirationMs'] as int,
       deleteContentsOnDestroy: map['deleteContentsOnDestroy'] as bool,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       etag: map['etag'] as String,
@@ -149,4 +154,3 @@ class GetDatasetResult {
     );
   }
 }
-

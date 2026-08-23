@@ -73,4 +73,3 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
     );
   }
 }
-

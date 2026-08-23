@@ -90,6 +90,24 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securesourcemanager_instance" "default" {
+///   location    = "us-central1"
+///   instance_id = "my-instance"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   deletion_policy = "PREVENT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +116,8 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securesourcemanager.Instance;
 /// import com.pulumi.gcp.securesourcemanager.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,8 +227,6 @@ import 'instance_workforce_identity_federation_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
@@ -246,6 +262,31 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key_binding" {
+///   crypto_key_id = "my-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_securesourcemanager_instance" "default" {
+///   depends_on      = [gcp_kms_cryptokeyiammember.crypto_key_binding]
+///   location        = "us-central1"
+///   instance_id     = "my-instance"
+///   kms_key         = "my-key"
+///   deletion_policy = "PREVENT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -259,8 +300,8 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import com.pulumi.gcp.securesourcemanager.Instance;
 /// import com.pulumi.gcp.securesourcemanager.InstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,8 +616,6 @@ import 'instance_workforce_identity_federation_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
@@ -639,7 +678,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			return err
 /// 		}
 /// 		caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-/// 			CaPool: caPool.ID(),
+/// 			CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/privateca.certificateRequester"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
@@ -662,7 +701,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			Location:   pulumi.String("us-central1"),
 /// 			PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 /// 				IsPrivate: pulumi.Bool(true),
-/// 				CaPool:    caPool.ID(),
+/// 				CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionPolicy: pulumi.String("PREVENT"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -674,6 +713,84 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "ca_pool" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   publishing_options = {
+///     publish_ca_cert = true
+///     publish_crl     = true
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "root_ca" {
+///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   certificate_authority_id = "root-ca"
+///   location                 = "us-central1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "google"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   ignore_active_certificates_on_deletion = true
+///   skip_grace_period                      = true
+/// }
+/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
+///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+///   role    = "roles/privateca.certificateRequester"
+///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+/// }
+/// resource "gcp_securesourcemanager_instance" "default" {
+///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   instance_id = "my-instance"
+///   location    = "us-central1"
+///   private_config = {
+///     is_private = true
+///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///   }
+///   deletion_policy = "PREVENT"
+/// }
+/// # ca pool IAM permissions can take time to propagate
+/// resource "time_sleep" "wait_120_seconds" {
+///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   create_duration = "120s"
 /// }
 /// ```
 /// ```java
@@ -706,8 +823,8 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import com.pulumi.gcp.securesourcemanager.InstanceArgs;
 /// import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -850,6 +967,677 @@ import 'instance_workforce_identity_federation_config.dart';
 ///       privateConfig:
 ///         isPrivate: true
 ///         caPool: ${caPool.id}
+///       deletionPolicy: PREVENT
+///     options:
+///       dependsOn:
+///         - ${rootCa}
+///         - ${wait120Seconds}
+///   # ca pool IAM permissions can take time to propagate
+///   wait120Seconds:
+///     type: time:Sleep
+///     name: wait_120_seconds
+///     properties:
+///       createDuration: 120s
+///     options:
+///       dependsOn:
+///         - ${caPoolBinding}
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
+/// ### Secure Source Manager Instance Private Custom Host
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as time from "@pulumiverse/time";
+///
+/// const project = gcp.organizations.getProject({});
+/// const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
+///     name: "ca-pool",
+///     location: "us-central1",
+///     tier: "ENTERPRISE",
+///     publishingOptions: {
+///         publishCaCert: true,
+///         publishCrl: true,
+///     },
+/// });
+/// const rootCa = new gcp.certificateauthority.Authority("root_ca", {
+///     pool: caPool.name,
+///     certificateAuthorityId: "root-ca",
+///     location: "us-central1",
+///     config: {
+///         subjectConfig: {
+///             subject: {
+///                 organization: "google",
+///                 commonName: "my-certificate-authority",
+///             },
+///         },
+///         x509Config: {
+///             caOptions: {
+///                 isCa: true,
+///             },
+///             keyUsage: {
+///                 baseKeyUsage: {
+///                     certSign: true,
+///                     crlSign: true,
+///                 },
+///                 extendedKeyUsage: {
+///                     serverAuth: true,
+///                 },
+///             },
+///         },
+///     },
+///     keySpec: {
+///         algorithm: "RSA_PKCS1_4096_SHA256",
+///     },
+///     deletionProtection: false,
+///     ignoreActiveCertificatesOnDeletion: true,
+///     skipGracePeriod: true,
+/// });
+/// const caPoolBinding = new gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding", {
+///     caPool: caPool.id,
+///     role: "roles/privateca.certificateRequester",
+///     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
+/// });
+/// // ca pool IAM permissions can take time to propagate
+/// const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+///     dependsOn: [caPoolBinding],
+/// });
+/// const _default = new gcp.securesourcemanager.Instance("default", {
+///     instanceId: "my-instance",
+///     location: "us-central1",
+///     privateConfig: {
+///         isPrivate: true,
+///         caPool: caPool.id,
+///         customHostConfig: {
+///             api: "api.example.com",
+///             gitHttp: "git-http.example.com",
+///             gitSsh: "git-ssh.example.com",
+///             html: "html.example.com",
+///         },
+///     },
+///     deletionPolicy: "PREVENT",
+/// }, {
+///     dependsOn: [
+///         rootCa,
+///         wait120Seconds,
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumiverse_time as time
+///
+/// project = gcp.organizations.get_project()
+/// ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+///     name="ca-pool",
+///     location="us-central1",
+///     tier="ENTERPRISE",
+///     publishing_options={
+///         "publish_ca_cert": True,
+///         "publish_crl": True,
+///     })
+/// root_ca = gcp.certificateauthority.Authority("root_ca",
+///     pool=ca_pool.name,
+///     certificate_authority_id="root-ca",
+///     location="us-central1",
+///     config={
+///         "subject_config": {
+///             "subject": {
+///                 "organization": "google",
+///                 "common_name": "my-certificate-authority",
+///             },
+///         },
+///         "x509_config": {
+///             "ca_options": {
+///                 "is_ca": True,
+///             },
+///             "key_usage": {
+///                 "base_key_usage": {
+///                     "cert_sign": True,
+///                     "crl_sign": True,
+///                 },
+///                 "extended_key_usage": {
+///                     "server_auth": True,
+///                 },
+///             },
+///         },
+///     },
+///     key_spec={
+///         "algorithm": "RSA_PKCS1_4096_SHA256",
+///     },
+///     deletion_protection=False,
+///     ignore_active_certificates_on_deletion=True,
+///     skip_grace_period=True)
+/// ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
+///     ca_pool=ca_pool.id,
+///     role="roles/privateca.certificateRequester",
+///     members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
+/// # ca pool IAM permissions can take time to propagate
+/// wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+/// opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
+/// default = gcp.securesourcemanager.Instance("default",
+///     instance_id="my-instance",
+///     location="us-central1",
+///     private_config={
+///         "is_private": True,
+///         "ca_pool": ca_pool.id,
+///         "custom_host_config": {
+///             "api": "api.example.com",
+///             "git_http": "git-http.example.com",
+///             "git_ssh": "git-ssh.example.com",
+///             "html": "html.example.com",
+///         },
+///     },
+///     deletion_policy="PREVENT",
+///     opts = pulumi.ResourceOptions(depends_on=[
+///             root_ca,
+///             wait120_seconds,
+///         ]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Time = Pulumiverse.Time;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var caPool = new Gcp.CertificateAuthority.CaPool("ca_pool", new()
+///     {
+///         Name = "ca-pool",
+///         Location = "us-central1",
+///         Tier = "ENTERPRISE",
+///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+///         {
+///             PublishCaCert = true,
+///             PublishCrl = true,
+///         },
+///     });
+///
+///     var rootCa = new Gcp.CertificateAuthority.Authority("root_ca", new()
+///     {
+///         Pool = caPool.Name,
+///         CertificateAuthorityId = "root-ca",
+///         Location = "us-central1",
+///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+///         {
+///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+///             {
+///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+///                 {
+///                     Organization = "google",
+///                     CommonName = "my-certificate-authority",
+///                 },
+///             },
+///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+///             {
+///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+///                 {
+///                     IsCa = true,
+///                 },
+///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+///                 {
+///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+///                     {
+///                         CertSign = true,
+///                         CrlSign = true,
+///                     },
+///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+///                     {
+///                         ServerAuth = true,
+///                     },
+///                 },
+///             },
+///         },
+///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+///         {
+///             Algorithm = "RSA_PKCS1_4096_SHA256",
+///         },
+///         DeletionProtection = false,
+///         IgnoreActiveCertificatesOnDeletion = true,
+///         SkipGracePeriod = true,
+///     });
+///
+///     var caPoolBinding = new Gcp.CertificateAuthority.CaPoolIamBinding("ca_pool_binding", new()
+///     {
+///         CaPool = caPool.Id,
+///         Role = "roles/privateca.certificateRequester",
+///         Members = new[]
+///         {
+///             $"serviceAccount:service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
+///         },
+///     });
+///
+///     // ca pool IAM permissions can take time to propagate
+///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+///     {
+///         CreateDuration = "120s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             caPoolBinding,
+///         },
+///     });
+///
+///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
+///     {
+///         InstanceId = "my-instance",
+///         Location = "us-central1",
+///         PrivateConfig = new Gcp.SecureSourceManager.Inputs.InstancePrivateConfigArgs
+///         {
+///             IsPrivate = true,
+///             CaPool = caPool.Id,
+///             CustomHostConfig = new Gcp.SecureSourceManager.Inputs.InstancePrivateConfigCustomHostConfigArgs
+///             {
+///                 Api = "api.example.com",
+///                 GitHttp = "git-http.example.com",
+///                 GitSsh = "git-ssh.example.com",
+///                 Html = "html.example.com",
+///             },
+///         },
+///         DeletionPolicy = "PREVENT",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             rootCa,
+///             wait120Seconds,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		caPool, err := certificateauthority.NewCaPool(ctx, "ca_pool", &certificateauthority.CaPoolArgs{
+/// 			Name:     pulumi.String("ca-pool"),
+/// 			Location: pulumi.String("us-central1"),
+/// 			Tier:     pulumi.String("ENTERPRISE"),
+/// 			PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+/// 				PublishCaCert: pulumi.Bool(true),
+/// 				PublishCrl:    pulumi.Bool(true),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		rootCa, err := certificateauthority.NewAuthority(ctx, "root_ca", &certificateauthority.AuthorityArgs{
+/// 			Pool:                   caPool.Name,
+/// 			CertificateAuthorityId: pulumi.String("root-ca"),
+/// 			Location:               pulumi.String("us-central1"),
+/// 			Config: &certificateauthority.AuthorityConfigArgs{
+/// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+/// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+/// 						Organization: pulumi.String("google"),
+/// 						CommonName:   pulumi.String("my-certificate-authority"),
+/// 					},
+/// 				},
+/// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+/// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+/// 						IsCa: pulumi.Bool(true),
+/// 					},
+/// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+/// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+/// 							CertSign: pulumi.Bool(true),
+/// 							CrlSign:  pulumi.Bool(true),
+/// 						},
+/// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+/// 							ServerAuth: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+/// 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+/// 			},
+/// 			DeletionProtection:                 pulumi.Bool(false),
+/// 			IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+/// 			SkipGracePeriod:                    pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
+/// 			CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   pulumi.String("roles/privateca.certificateRequester"),
+/// 			Members: pulumi.StringArray{
+/// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// ca pool IAM permissions can take time to propagate
+/// 		wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("120s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			caPoolBinding,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
+/// 			InstanceId: pulumi.String("my-instance"),
+/// 			Location:   pulumi.String("us-central1"),
+/// 			PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
+/// 				IsPrivate: pulumi.Bool(true),
+/// 				CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
+/// 				CustomHostConfig: &securesourcemanager.InstancePrivateConfigCustomHostConfigArgs{
+/// 					Api:     pulumi.String("api.example.com"),
+/// 					GitHttp: pulumi.String("git-http.example.com"),
+/// 					GitSsh:  pulumi.String("git-ssh.example.com"),
+/// 					Html:    pulumi.String("html.example.com"),
+/// 				},
+/// 			},
+/// 			DeletionPolicy: pulumi.String("PREVENT"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			rootCa,
+/// 			wait120Seconds,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "ca_pool" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   publishing_options = {
+///     publish_ca_cert = true
+///     publish_crl     = true
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "root_ca" {
+///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   certificate_authority_id = "root-ca"
+///   location                 = "us-central1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "google"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   ignore_active_certificates_on_deletion = true
+///   skip_grace_period                      = true
+/// }
+/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
+///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+///   role    = "roles/privateca.certificateRequester"
+///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+/// }
+/// resource "gcp_securesourcemanager_instance" "default" {
+///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   instance_id = "my-instance"
+///   location    = "us-central1"
+///   private_config = {
+///     is_private = true
+///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///     custom_host_config = {
+///       api      = "api.example.com"
+///       git_http = "git-http.example.com"
+///       git_ssh  = "git-ssh.example.com"
+///       html     = "html.example.com"
+///     }
+///   }
+///   deletion_policy = "PREVENT"
+/// }
+/// # ca pool IAM permissions can take time to propagate
+/// resource "time_sleep" "wait_120_seconds" {
+///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   create_duration = "120s"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.certificateauthority.CaPool;
+/// import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+/// import com.pulumi.gcp.certificateauthority.Authority;
+/// import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+/// import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
+/// import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
+/// import com.pulumiverse.time.Sleep;
+/// import com.pulumiverse.time.SleepArgs;
+/// import com.pulumi.gcp.securesourcemanager.Instance;
+/// import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+/// import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
+/// import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigCustomHostConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var caPool = new CaPool("caPool", CaPoolArgs.builder()
+///             .name("ca-pool")
+///             .location("us-central1")
+///             .tier("ENTERPRISE")
+///             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+///                 .publishCaCert(true)
+///                 .publishCrl(true)
+///                 .build())
+///             .build());
+///
+///         var rootCa = new Authority("rootCa", AuthorityArgs.builder()
+///             .pool(caPool.name())
+///             .certificateAuthorityId("root-ca")
+///             .location("us-central1")
+///             .config(AuthorityConfigArgs.builder()
+///                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+///                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+///                         .organization("google")
+///                         .commonName("my-certificate-authority")
+///                         .build())
+///                     .build())
+///                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+///                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+///                         .isCa(true)
+///                         .build())
+///                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+///                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+///                             .certSign(true)
+///                             .crlSign(true)
+///                             .build())
+///                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+///                             .serverAuth(true)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .keySpec(AuthorityKeySpecArgs.builder()
+///                 .algorithm("RSA_PKCS1_4096_SHA256")
+///                 .build())
+///             .deletionProtection(false)
+///             .ignoreActiveCertificatesOnDeletion(true)
+///             .skipGracePeriod(true)
+///             .build());
+///
+///         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
+///             .caPool(caPool.id())
+///             .role("roles/privateca.certificateRequester")
+///             .members(String.format("serviceAccount:service-%s@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
+///             .build());
+///
+///         // ca pool IAM permissions can take time to propagate
+///         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+///             .createDuration("120s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(caPoolBinding)
+///                 .build());
+///
+///         var default_ = new Instance("default", InstanceArgs.builder()
+///             .instanceId("my-instance")
+///             .location("us-central1")
+///             .privateConfig(InstancePrivateConfigArgs.builder()
+///                 .isPrivate(true)
+///                 .caPool(caPool.id())
+///                 .customHostConfig(InstancePrivateConfigCustomHostConfigArgs.builder()
+///                     .api("api.example.com")
+///                     .gitHttp("git-http.example.com")
+///                     .gitSsh("git-ssh.example.com")
+///                     .html("html.example.com")
+///                     .build())
+///                 .build())
+///             .deletionPolicy("PREVENT")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     rootCa,
+///                     wait120Seconds)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   caPool:
+///     type: gcp:certificateauthority:CaPool
+///     name: ca_pool
+///     properties:
+///       name: ca-pool
+///       location: us-central1
+///       tier: ENTERPRISE
+///       publishingOptions:
+///         publishCaCert: true
+///         publishCrl: true
+///   rootCa:
+///     type: gcp:certificateauthority:Authority
+///     name: root_ca
+///     properties:
+///       pool: ${caPool.name}
+///       certificateAuthorityId: root-ca
+///       location: us-central1
+///       config:
+///         subjectConfig:
+///           subject:
+///             organization: google
+///             commonName: my-certificate-authority
+///         x509Config:
+///           caOptions:
+///             isCa: true
+///           keyUsage:
+///             baseKeyUsage:
+///               certSign: true
+///               crlSign: true
+///             extendedKeyUsage:
+///               serverAuth: true
+///       keySpec:
+///         algorithm: RSA_PKCS1_4096_SHA256
+///       deletionProtection: false
+///       ignoreActiveCertificatesOnDeletion: true
+///       skipGracePeriod: true
+///   caPoolBinding:
+///     type: gcp:certificateauthority:CaPoolIamBinding
+///     name: ca_pool_binding
+///     properties:
+///       caPool: ${caPool.id}
+///       role: roles/privateca.certificateRequester
+///       members:
+///         - serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com
+///   default:
+///     type: gcp:securesourcemanager:Instance
+///     properties:
+///       instanceId: my-instance
+///       location: us-central1
+///       privateConfig:
+///         isPrivate: true
+///         caPool: ${caPool.id}
+///         customHostConfig:
+///           api: api.example.com
+///           gitHttp: git-http.example.com
+///           gitSsh: git-ssh.example.com
+///           html: html.example.com
 ///       deletionPolicy: PREVENT
 ///     options:
 ///       dependsOn:
@@ -1015,21 +1803,21 @@ import 'instance_workforce_identity_federation_config.dart';
 ///     },
 /// });
 /// const ssmInstanceHtmlRecord = new gcp.dns.RecordSet("ssm_instance_html_record", {
-///     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].html}.`),
+///     name: pulumi.interpolate`${_default.hostConfigs[0].html}.`,
 ///     type: "A",
 ///     ttl: 300,
 ///     managedZone: privateZone.name,
 ///     rrdatas: [fwRuleTargetProxy.ipAddress],
 /// });
 /// const ssmInstanceApiRecord = new gcp.dns.RecordSet("ssm_instance_api_record", {
-///     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].api}.`),
+///     name: pulumi.interpolate`${_default.hostConfigs[0].api}.`,
 ///     type: "A",
 ///     ttl: 300,
 ///     managedZone: privateZone.name,
 ///     rrdatas: [fwRuleTargetProxy.ipAddress],
 /// });
 /// const ssmInstanceGitRecord = new gcp.dns.RecordSet("ssm_instance_git_record", {
-///     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].gitHttp}.`),
+///     name: pulumi.interpolate`${_default.hostConfigs[0].gitHttp}.`,
 ///     type: "A",
 ///     ttl: 300,
 ///     managedZone: privateZone.name,
@@ -1127,7 +1915,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///     backends=[{
 ///         "group": psc_neg.id,
 ///         "balancing_mode": "UTILIZATION",
-///         "capacity_scaler": 1,
+///         "capacity_scaler": float(1),
 ///     }])
 /// proxy_subnet = gcp.compute.Subnetwork("proxy_subnet",
 ///     name="my-proxy-subnet",
@@ -1326,7 +2114,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///             {
 ///                 Group = pscNeg.Id,
 ///                 BalancingMode = "UTILIZATION",
-///                 CapacityScaler = 1,
+///                 CapacityScaler = 1.0,
 ///             },
 ///         },
 ///     });
@@ -1492,7 +2280,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			return err
 /// 		}
 /// 		caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-/// 			CaPool: caPool.ID(),
+/// 			CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/privateca.certificateRequester"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
@@ -1516,7 +2304,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			Location:   pulumi.String("us-central1"),
 /// 			PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 /// 				IsPrivate: pulumi.Bool(true),
-/// 				CaPool:    caPool.ID(),
+/// 				CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionPolicy: pulumi.String("PREVENT"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -1537,7 +2325,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:                  pulumi.String("my-subnet"),
 /// 			Region:                pulumi.String("us-central1"),
-/// 			Network:               network.ID(),
+/// 			Network:               network.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange:           pulumi.String("10.0.1.0/24"),
 /// 			PrivateIpGoogleAccess: pulumi.Bool(true),
 /// 		})
@@ -1548,11 +2336,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			Name:                pulumi.String("my-neg"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
-/// 			PscTargetService: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
-/// 				return &privateConfig.HttpServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Network:    network.ID(),
-/// 			Subnetwork: subnet.ID(),
+/// 			PscTargetService:    _default.PrivateConfig.HttpServiceAttachment(),
+/// 			Network:             network.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          subnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1564,7 +2350,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			Backends: compute.RegionBackendServiceBackendArray{
 /// 				&compute.RegionBackendServiceBackendArgs{
-/// 					Group:          pscNeg.ID(),
+/// 					Group:          pscNeg.ID().ToIDOutput().ToStringOutput(),
 /// 					BalancingMode:  pulumi.String("UTILIZATION"),
 /// 					CapacityScaler: pulumi.Float64(1),
 /// 				},
@@ -1576,7 +2362,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 		proxySubnet, err := compute.NewSubnetwork(ctx, "proxy_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-proxy-subnet"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/24"),
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			Role:        pulumi.String("ACTIVE"),
@@ -1587,7 +2373,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 		targetProxy, err := compute.NewRegionTargetTcpProxy(ctx, "target_proxy", &compute.RegionTargetTcpProxyArgs{
 /// 			Name:           pulumi.String("my-target-proxy"),
 /// 			Region:         pulumi.String("us-central1"),
-/// 			BackendService: backendService.ID(),
+/// 			BackendService: backendService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1598,9 +2384,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			IpProtocol:          pulumi.String("TCP"),
 /// 			PortRange:           pulumi.String("443"),
-/// 			Target:              targetProxy.ID(),
-/// 			Network:             network.ID(),
-/// 			Subnetwork:          subnet.ID(),
+/// 			Target:              targetProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             network.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          subnet.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkTier:         pulumi.String("PREMIUM"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxySubnet,
@@ -1615,7 +2401,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network.ID(),
+/// 						NetworkUrl: network.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -1669,6 +2455,172 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "ca_pool" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   publishing_options = {
+///     publish_ca_cert = true
+///     publish_crl     = true
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "root_ca" {
+///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   certificate_authority_id = "root-ca"
+///   location                 = "us-central1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "google"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   ignore_active_certificates_on_deletion = true
+///   skip_grace_period                      = true
+/// }
+/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
+///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+///   role    = "roles/privateca.certificateRequester"
+///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+/// }
+/// // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+/// resource "gcp_securesourcemanager_instance" "default" {
+///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   instance_id = "my-instance"
+///   location    = "us-central1"
+///   private_config = {
+///     is_private = true
+///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///   }
+///   deletion_policy = "PREVENT"
+/// }
+/// # ca pool IAM permissions can take time to propagate
+/// resource "time_sleep" "wait_120_seconds" {
+///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   create_duration = "120s"
+/// }
+/// // Connect SSM private instance with L4 proxy ILB.
+/// resource "gcp_compute_network" "network" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name                     = "my-subnet"
+///   region                   = "us-central1"
+///   network                  = gcp_compute_network.network.id
+///   ip_cidr_range            = "10.0.1.0/24"
+///   private_ip_google_access = true
+/// }
+/// resource "gcp_compute_regionnetworkendpointgroup" "psc_neg" {
+///   name                  = "my-neg"
+///   region                = "us-central1"
+///   network_endpoint_type = "PRIVATE_SERVICE_CONNECT"
+///   psc_target_service    = gcp_securesourcemanager_instance.default.private_config.http_service_attachment
+///   network               = gcp_compute_network.network.id
+///   subnetwork            = gcp_compute_subnetwork.subnet.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend_service" {
+///   name                  = "my-backend-service"
+///   region                = "us-central1"
+///   protocol              = "TCP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   backends {
+///     group           = gcp_compute_regionnetworkendpointgroup.psc_neg.id
+///     balancing_mode  = "UTILIZATION"
+///     capacity_scaler = 1
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "proxy_subnet" {
+///   name          = "my-proxy-subnet"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+///   ip_cidr_range = "10.0.2.0/24"
+///   purpose       = "REGIONAL_MANAGED_PROXY"
+///   role          = "ACTIVE"
+/// }
+/// resource "gcp_compute_regiontargettcpproxy" "target_proxy" {
+///   name            = "my-target-proxy"
+///   region          = "us-central1"
+///   backend_service = gcp_compute_regionbackendservice.backend_service.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fw_rule_target_proxy" {
+///   depends_on            = [gcp_compute_subnetwork.proxy_subnet]
+///   name                  = "fw-rule-target-proxy"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   ip_protocol           = "TCP"
+///   port_range            = "443"
+///   target                = gcp_compute_regiontargettcpproxy.target_proxy.id
+///   network               = gcp_compute_network.network.id
+///   subnetwork            = gcp_compute_subnetwork.subnet.id
+///   network_tier          = "PREMIUM"
+/// }
+/// resource "gcp_dns_managedzone" "private_zone" {
+///   name       = "my-dns-zone"
+///   dns_name   = "p.sourcemanager.dev."
+///   visibility = "private"
+///   private_visibility_config = {
+///     networks = [{
+///       "networkUrl" = gcp_compute_network.network.id
+///     }]
+///   }
+/// }
+/// resource "gcp_dns_recordset" "ssm_instance_html_record" {
+///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].html}."
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.private_zone.name
+///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_target_proxy.ip_address]
+/// }
+/// resource "gcp_dns_recordset" "ssm_instance_api_record" {
+///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].api}."
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.private_zone.name
+///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_target_proxy.ip_address]
+/// }
+/// resource "gcp_dns_recordset" "ssm_instance_git_record" {
+///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].git_http}."
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.private_zone.name
+///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_target_proxy.ip_address]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1714,11 +2666,12 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import com.pulumi.gcp.dns.ManagedZone;
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+/// import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1881,7 +2834,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///             .build());
 ///
 ///         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
-///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].html())))
+///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).html())))
 ///             .type("A")
 ///             .ttl(300)
 ///             .managedZone(privateZone.name())
@@ -1889,7 +2842,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///             .build());
 ///
 ///         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
-///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].api())))
+///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).api())))
 ///             .type("A")
 ///             .ttl(300)
 ///             .managedZone(privateZone.name())
@@ -1897,7 +2850,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///             .build());
 ///
 ///         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
-///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].gitHttp())))
+///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).gitHttp())))
 ///             .type("A")
 ///             .ttl(300)
 ///             .managedZone(privateZone.name())
@@ -2206,21 +3159,21 @@ import 'instance_workforce_identity_federation_config.dart';
 ///     },
 /// });
 /// const ssmInstanceHtmlRecord = new gcp.dns.RecordSet("ssm_instance_html_record", {
-///     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].html}.`),
+///     name: pulumi.interpolate`${_default.hostConfigs[0].html}.`,
 ///     type: "A",
 ///     ttl: 300,
 ///     managedZone: privateZone.name,
 ///     rrdatas: [fwRuleServiceAttachment.ipAddress],
 /// });
 /// const ssmInstanceApiRecord = new gcp.dns.RecordSet("ssm_instance_api_record", {
-///     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].api}.`),
+///     name: pulumi.interpolate`${_default.hostConfigs[0].api}.`,
 ///     type: "A",
 ///     ttl: 300,
 ///     managedZone: privateZone.name,
 ///     rrdatas: [fwRuleServiceAttachment.ipAddress],
 /// });
 /// const ssmInstanceGitRecord = new gcp.dns.RecordSet("ssm_instance_git_record", {
-///     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].gitHttp}.`),
+///     name: pulumi.interpolate`${_default.hostConfigs[0].gitHttp}.`,
 ///     type: "A",
 ///     ttl: 300,
 ///     managedZone: privateZone.name,
@@ -2613,7 +3566,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			return err
 /// 		}
 /// 		caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-/// 			CaPool: caPool.ID(),
+/// 			CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/privateca.certificateRequester"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
@@ -2637,7 +3590,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			Location:   pulumi.String("us-central1"),
 /// 			PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 /// 				IsPrivate: pulumi.Bool(true),
-/// 				CaPool:    caPool.ID(),
+/// 				CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionPolicy: pulumi.String("PREVENT"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -2658,7 +3611,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:                  pulumi.String("my-subnet"),
 /// 			Region:                pulumi.String("us-central1"),
-/// 			Network:               network.ID(),
+/// 			Network:               network.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange:           pulumi.String("10.0.60.0/24"),
 /// 			PrivateIpGoogleAccess: pulumi.Bool(true),
 /// 		})
@@ -2670,7 +3623,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Address:     pulumi.String("10.0.60.100"),
 /// 			AddressType: pulumi.String("INTERNAL"),
-/// 			Subnetwork:  subnet.ID(),
+/// 			Subnetwork:  subnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2679,11 +3632,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			Name:                pulumi.String("fw-rule-service-attachment"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			IpAddress:           address.ID(),
-/// 			Network:             network.ID(),
-/// 			Target: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
-/// 				return &privateConfig.HttpServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			IpAddress:           address.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             network.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:              _default.PrivateConfig.HttpServiceAttachment(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2695,7 +3646,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network.ID(),
+/// 						NetworkUrl: network.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -2749,6 +3700,143 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "ca_pool" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   publishing_options = {
+///     publish_ca_cert = true
+///     publish_crl     = true
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "root_ca" {
+///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   certificate_authority_id = "root-ca"
+///   location                 = "us-central1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "google"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   ignore_active_certificates_on_deletion = true
+///   skip_grace_period                      = true
+/// }
+/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
+///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+///   role    = "roles/privateca.certificateRequester"
+///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+/// }
+/// // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+/// resource "gcp_securesourcemanager_instance" "default" {
+///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   instance_id = "my-instance"
+///   location    = "us-central1"
+///   private_config = {
+///     is_private = true
+///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///   }
+///   deletion_policy = "PREVENT"
+/// }
+/// # ca pool IAM permissions can take time to propagate
+/// resource "time_sleep" "wait_120_seconds" {
+///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   create_duration = "120s"
+/// }
+/// // Connect SSM private instance with endpoint.
+/// resource "gcp_compute_network" "network" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name                     = "my-subnet"
+///   region                   = "us-central1"
+///   network                  = gcp_compute_network.network.id
+///   ip_cidr_range            = "10.0.60.0/24"
+///   private_ip_google_access = true
+/// }
+/// resource "gcp_compute_address" "address" {
+///   name         = "my-address"
+///   region       = "us-central1"
+///   address      = "10.0.60.100"
+///   address_type = "INTERNAL"
+///   subnetwork   = gcp_compute_subnetwork.subnet.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fw_rule_service_attachment" {
+///   name                  = "fw-rule-service-attachment"
+///   region                = "us-central1"
+///   load_balancing_scheme = ""
+///   ip_address            = gcp_compute_address.address.id
+///   network               = gcp_compute_network.network.id
+///   target                = gcp_securesourcemanager_instance.default.private_config.http_service_attachment
+/// }
+/// resource "gcp_dns_managedzone" "private_zone" {
+///   name       = "my-dns-zone"
+///   dns_name   = "p.sourcemanager.dev."
+///   visibility = "private"
+///   private_visibility_config = {
+///     networks = [{
+///       "networkUrl" = gcp_compute_network.network.id
+///     }]
+///   }
+/// }
+/// resource "gcp_dns_recordset" "ssm_instance_html_record" {
+///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].html}."
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.private_zone.name
+///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_service_attachment.ip_address]
+/// }
+/// resource "gcp_dns_recordset" "ssm_instance_api_record" {
+///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].api}."
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.private_zone.name
+///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_service_attachment.ip_address]
+/// }
+/// resource "gcp_dns_recordset" "ssm_instance_git_record" {
+///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].git_http}."
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.private_zone.name
+///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_service_attachment.ip_address]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2789,11 +3877,12 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import com.pulumi.gcp.dns.ManagedZone;
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+/// import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2923,7 +4012,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///             .build());
 ///
 ///         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
-///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].html())))
+///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).html())))
 ///             .type("A")
 ///             .ttl(300)
 ///             .managedZone(privateZone.name())
@@ -2931,7 +4020,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///             .build());
 ///
 ///         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
-///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].api())))
+///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).api())))
 ///             .type("A")
 ///             .ttl(300)
 ///             .managedZone(privateZone.name())
@@ -2939,7 +4028,7 @@ import 'instance_workforce_identity_federation_config.dart';
 ///             .build());
 ///
 ///         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
-///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].gitHttp())))
+///             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).gitHttp())))
 ///             .type("A")
 ///             .ttl(300)
 ///             .managedZone(privateZone.name())
@@ -3172,6 +4261,24 @@ import 'instance_workforce_identity_federation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securesourcemanager_instance" "default" {
+///   location    = "us-central1"
+///   instance_id = "my-instance"
+///   workforce_identity_federation_config = {
+///     enabled = true
+///   }
+///   deletion_policy = "PREVENT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3181,8 +4288,8 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import com.pulumi.gcp.securesourcemanager.Instance;
 /// import com.pulumi.gcp.securesourcemanager.InstanceArgs;
 /// import com.pulumi.gcp.securesourcemanager.inputs.InstanceWorkforceIdentityFederationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3224,42 +4331,29 @@ import 'instance_workforce_identity_federation_config.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance_id}}`
-///
 /// * `{{location}}/{{instance_id}}`
-///
 /// * `{{instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/instance:Instance default {{location}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/instance:Instance default {{instance_id}}
 /// ```
 class Instance extends pulumi.CustomResource {
   /// Time the Instance was created in UTC.
   late final pulumi.Output<String> createTime;
-  /// The deletion policy for the instance. Setting `ABANDON` allows the resource
-  /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-  /// and all its contents. Setting `PREVENT` prevents the resource from accidental
-  /// deletion by erroring out during plan.
-  /// Default is `PREVENT`.  Possible values are:
-  /// * DELETE
-  /// * PREVENT
-  /// * ABANDON
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// A list of hostnames for this instance.
@@ -3272,7 +4366,7 @@ class Instance extends pulumi.CustomResource {
   /// Labels as key value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the Instance.
   late final pulumi.Output<String> location;
@@ -3313,7 +4407,7 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostConfigs = registerOutput<List<Map<String, dynamic>>>('hostConfigs');
     instanceId = registerOutput<String>('instanceId');
@@ -3354,7 +4448,7 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostConfigs = registerOutput<List<Map<String, dynamic>>>('hostConfigs');
     instanceId = registerOutput<String>('instanceId');

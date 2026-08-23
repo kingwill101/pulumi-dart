@@ -17,6 +17,13 @@ class CurationArgs {
   /// This value should be 4-500 characters, and valid characters
   /// are /a-z[0-9]-_/.
   final pulumi.Input<String> curationId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the curation.
   final pulumi.Input<String>? description;
   /// The display name of the curation.
@@ -36,6 +43,7 @@ class CurationArgs {
 
   /// Creates a new [CurationArgs].
   /// [curationId] The ID to use for the curation resource, which will become the final
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the curation.
   /// [displayName] The display name of the curation.
   /// [endpoint] The endpoint to be triggered for curation.
@@ -43,6 +51,7 @@ class CurationArgs {
   /// [project] The ID of the project in which the resource belongs.
   const CurationArgs({
     required this.curationId,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     required this.endpoint,
@@ -53,6 +62,7 @@ class CurationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'curationId': curationId,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'endpoint': pulumi.Input.mapInputValue<CurationEndpoint, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
@@ -64,6 +74,7 @@ class CurationArgs {
   factory CurationArgs.fromMap(Map<String, dynamic> map) {
     return CurationArgs(
       curationId: pulumi.Input.fromValue(map['curationId'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       endpoint: pulumi.Input.fromValue(CurationEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())),
@@ -72,4 +83,3 @@ class CurationArgs {
     );
   }
 }
-

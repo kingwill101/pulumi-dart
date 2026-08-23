@@ -5,8 +5,8 @@ import 'api_config_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
 ///
 /// * `gcp.apigateway.ApiConfigIamPolicy`: Authoritative. Sets the IAM policy for the apiconfig and replaces any existing policy already attached.
-/// * `gcp.apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved.
-/// * `gcp.apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved.
+/// * `gcp.apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,6 +16,8 @@ import 'api_config_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.apigateway.ApiConfigIamPolicy
 ///
@@ -117,6 +119,28 @@ import 'api_config_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/apigateway.viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_apigateway_apiconfigiampolicy" "policy" {
+///   api         = apiCfg.api
+///   api_config  = apiCfg.apiConfigId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,10 +149,11 @@ import 'api_config_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamPolicy;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,8 +173,8 @@ import 'api_config_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()
-///             .api(apiCfg.api())
-///             .apiConfig(apiCfg.apiConfigId())
+///             .api(apiCfg.get("api"))
+///             .apiConfig(apiCfg.get("apiConfigId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -246,6 +271,22 @@ import 'api_config_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigateway_apiconfigiambinding" "binding" {
+///   api        = apiCfg.api
+///   api_config = apiCfg.apiConfigId
+///   role       = "roles/apigateway.viewer"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +295,8 @@ import 'api_config_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamBinding;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,8 +309,8 @@ import 'api_config_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ApiConfigIamBinding("binding", ApiConfigIamBindingArgs.builder()
-///             .api(apiCfg.api())
-///             .apiConfig(apiCfg.apiConfigId())
+///             .api(apiCfg.get("api"))
+///             .apiConfig(apiCfg.get("apiConfigId"))
 ///             .role("roles/apigateway.viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -355,6 +396,22 @@ import 'api_config_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigateway_apiconfigiammember" "member" {
+///   api        = apiCfg.api
+///   api_config = apiCfg.apiConfigId
+///   role       = "roles/apigateway.viewer"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -363,8 +420,8 @@ import 'api_config_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamMember;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,8 +434,8 @@ import 'api_config_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ApiConfigIamMember("member", ApiConfigIamMemberArgs.builder()
-///             .api(apiCfg.api())
-///             .apiConfig(apiCfg.apiConfigId())
+///             .api(apiCfg.get("api"))
+///             .apiConfig(apiCfg.get("apiConfigId"))
 ///             .role("roles/apigateway.viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -408,8 +465,8 @@ import 'api_config_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
 ///
 /// * `gcp.apigateway.ApiConfigIamPolicy`: Authoritative. Sets the IAM policy for the apiconfig and replaces any existing policy already attached.
-/// * `gcp.apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved.
-/// * `gcp.apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved.
+/// * `gcp.apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -419,6 +476,8 @@ import 'api_config_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.apigateway.ApiConfigIamPolicy
 ///
@@ -520,6 +579,28 @@ import 'api_config_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/apigateway.viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_apigateway_apiconfigiampolicy" "policy" {
+///   api         = apiCfg.api
+///   api_config  = apiCfg.apiConfigId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -528,10 +609,11 @@ import 'api_config_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamPolicy;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -551,8 +633,8 @@ import 'api_config_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()
-///             .api(apiCfg.api())
-///             .apiConfig(apiCfg.apiConfigId())
+///             .api(apiCfg.get("api"))
+///             .apiConfig(apiCfg.get("apiConfigId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -649,6 +731,22 @@ import 'api_config_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigateway_apiconfigiambinding" "binding" {
+///   api        = apiCfg.api
+///   api_config = apiCfg.apiConfigId
+///   role       = "roles/apigateway.viewer"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -657,8 +755,8 @@ import 'api_config_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamBinding;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -671,8 +769,8 @@ import 'api_config_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ApiConfigIamBinding("binding", ApiConfigIamBindingArgs.builder()
-///             .api(apiCfg.api())
-///             .apiConfig(apiCfg.apiConfigId())
+///             .api(apiCfg.get("api"))
+///             .apiConfig(apiCfg.get("apiConfigId"))
 ///             .role("roles/apigateway.viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -758,6 +856,22 @@ import 'api_config_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigateway_apiconfigiammember" "member" {
+///   api        = apiCfg.api
+///   api_config = apiCfg.apiConfigId
+///   role       = "roles/apigateway.viewer"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -766,8 +880,8 @@ import 'api_config_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamMember;
 /// import com.pulumi.gcp.apigateway.ApiConfigIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -780,8 +894,8 @@ import 'api_config_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ApiConfigIamMember("member", ApiConfigIamMemberArgs.builder()
-///             .api(apiCfg.api())
-///             .apiConfig(apiCfg.apiConfigId())
+///             .api(apiCfg.get("api"))
+///             .apiConfig(apiCfg.get("apiConfigId"))
 ///             .role("roles/apigateway.viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -806,11 +920,8 @@ import 'api_config_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}}
-///
 /// * {{project}}/{{api}}/{{api_config}}
-///
 /// * {{api}}/{{api_config}}
-///
 /// * {{api_config}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -818,25 +929,21 @@ import 'api_config_iam_policy_state.dart';
 /// API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:apigateway/apiConfigIamPolicy:ApiConfigIamPolicy editor "projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} roles/apigateway.viewer user:jane@example.com"
+/// $ terraform import google_api_gateway_api_config_iam_member.editor "projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} roles/apigateway.viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:apigateway/apiConfigIamPolicy:ApiConfigIamPolicy editor "projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} roles/apigateway.viewer"
+/// $ terraform import google_api_gateway_api_config_iam_binding.editor "projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} roles/apigateway.viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:apigateway/apiConfigIamPolicy:ApiConfigIamPolicy editor projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ApiConfigIamPolicy extends pulumi.CustomResource {
   /// The API to attach the config to.

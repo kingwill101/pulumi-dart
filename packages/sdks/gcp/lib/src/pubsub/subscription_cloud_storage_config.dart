@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscription_cloud_storage_config_avro_config.dart';
+import 'subscription_cloud_storage_config_text_config.dart';
 
 class SubscriptionCloudStorageConfig {
   /// If set, message data will be written to Cloud Storage in Avro format.
@@ -31,6 +32,9 @@ class SubscriptionCloudStorageConfig {
   /// (Output)
   /// An output-only field that indicates whether or not the subscription can receive messages.
   final pulumi.Input<String>? state;
+  /// If set, message data will be written to Cloud Storage in text format.
+  /// Structure is documented below.
+  final pulumi.Input<SubscriptionCloudStorageConfigTextConfig>? textConfig;
 
   /// Creates a new [SubscriptionCloudStorageConfig].
   /// [avroConfig] If set, message data will be written to Cloud Storage in Avro format.
@@ -43,6 +47,7 @@ class SubscriptionCloudStorageConfig {
   /// [maxMessages] The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
   /// [serviceAccountEmail] The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
   /// [state] (Output)
+  /// [textConfig] If set, message data will be written to Cloud Storage in text format.
   const SubscriptionCloudStorageConfig({
     this.avroConfig,
     required this.bucket,
@@ -54,6 +59,7 @@ class SubscriptionCloudStorageConfig {
     this.maxMessages,
     this.serviceAccountEmail,
     this.state,
+    this.textConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -68,6 +74,7 @@ class SubscriptionCloudStorageConfig {
       'maxMessages': ?maxMessages,
       'serviceAccountEmail': ?serviceAccountEmail,
       'state': ?state,
+      'textConfig': ?pulumi.Input.mapOptionalInputValue<SubscriptionCloudStorageConfigTextConfig, Map<String, dynamic>>(textConfig, (value) => value.toMap()),
     };
   }
 
@@ -83,7 +90,7 @@ class SubscriptionCloudStorageConfig {
       maxMessages: (() { final guardedValue = map['maxMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       serviceAccountEmail: (() { final guardedValue = map['serviceAccountEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      textConfig: (() { final guardedValue = map['textConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionCloudStorageConfigTextConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

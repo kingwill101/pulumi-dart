@@ -142,6 +142,35 @@ import 'wire_group_wire_properties.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_crosssitenetwork" "example-cross-site-network" {
+///   name        = "test-cross-site-network"
+///   description = "Example cross site network"
+/// }
+/// resource "gcp_compute_wiregroup" "example-test-wire-group" {
+///   depends_on         = [gcp_compute_crosssitenetwork.example-cross-site-network]
+///   name               = "test-wire-group"
+///   description        = "Example Wire Group"
+///   cross_site_network = "test-cross-site-network"
+///   wire_properties = {
+///     bandwidth_unmetered  = 10
+///     fault_response       = "NONE"
+///     bandwidth_allocation = "ALLOCATE_PER_WIRE"
+///   }
+///   admin_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +185,8 @@ import 'wire_group_wire_properties.dart';
 /// import com.pulumi.gcp.compute.WireGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.WireGroupWirePropertiesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,6 +391,38 @@ import 'wire_group_wire_properties.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_crosssitenetwork" "example-cross-site-network" {
+///   name        = "test-cross-site-network-beta"
+///   description = "Example cross site network"
+/// }
+/// resource "gcp_compute_wiregroup" "example-test-wire-group-beta" {
+///   depends_on         = [gcp_compute_crosssitenetwork.example-cross-site-network]
+///   name               = "test-wire-group-beta"
+///   description        = "Example Wire Group Beta"
+///   cross_site_network = "test-cross-site-network-beta"
+///   wire_properties = {
+///     bandwidth_unmetered  = 10
+///     fault_response       = "NONE"
+///     bandwidth_allocation = "ALLOCATE_PER_WIRE"
+///   }
+///   wire_group_properties = {
+///     type = "WIRE"
+///   }
+///   admin_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -377,8 +438,8 @@ import 'wire_group_wire_properties.dart';
 /// import com.pulumi.gcp.compute.inputs.WireGroupWirePropertiesArgs;
 /// import com.pulumi.gcp.compute.inputs.WireGroupWireGroupPropertiesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -454,22 +515,15 @@ import 'wire_group_wire_properties.dart';
 /// WireGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/crossSiteNetworks/{{cross_site_network}}/wireGroups/{{name}}`
-///
 /// * `{{project}}/{{cross_site_network}}/{{name}}`
-///
 /// * `{{cross_site_network}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, WireGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/wireGroup:WireGroup default projects/{{project}}/global/crossSiteNetworks/{{cross_site_network}}/wireGroups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/wireGroup:WireGroup default {{project}}/{{cross_site_network}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/wireGroup:WireGroup default {{cross_site_network}}/{{name}}
 /// ```
 class WireGroup extends pulumi.CustomResource {
@@ -479,6 +533,13 @@ class WireGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> creationTimestamp;
   /// Required cross site network to which wire group belongs.
   late final pulumi.Output<String> crossSiteNetwork;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// Endpoints grouped by location, each mapping to interconnect configurations.
@@ -496,6 +557,7 @@ class WireGroup extends pulumi.CustomResource {
   /// Topology details for the wire group configuration.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> topologies;
+  /// (Optional, Beta)
   /// Properties specific to the wire group.
   /// Structure is documented below.
   late final pulumi.Output<WireGroupWireGroupProperties?> wireGroupProperties;
@@ -523,6 +585,7 @@ class WireGroup extends pulumi.CustomResource {
     adminEnabled = registerOutput<bool?>('adminEnabled');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     this.name = registerOutput<String>('name');
@@ -559,6 +622,7 @@ class WireGroup extends pulumi.CustomResource {
     adminEnabled = registerOutput<bool?>('adminEnabled');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     this.name = registerOutput<String>('name');

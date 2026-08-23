@@ -20,7 +20,7 @@ class InstanceFileSharesNfsExportOption {
   /// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
   /// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
   final pulumi.Input<List<String>>? ipRanges;
-  /// The source VPC network for `ip_ranges`.
+  /// The source VPC network for `ipRanges`.
   /// Required for instances using Private Service Connect, optional otherwise.
   final pulumi.Input<String>? network;
   /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
@@ -34,7 +34,7 @@ class InstanceFileSharesNfsExportOption {
   /// [anonGid] An integer representing the anonymous group id with a default value of 65534.
   /// [anonUid] An integer representing the anonymous user id with a default value of 65534.
   /// [ipRanges] List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
-  /// [network] The source VPC network for `ip_ranges`.
+  /// [network] The source VPC network for `ipRanges`.
   /// [squashMode] Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
   const InstanceFileSharesNfsExportOption({
     this.accessMode,
@@ -67,4 +67,3 @@ class InstanceFileSharesNfsExportOption {
     );
   }
 }
-

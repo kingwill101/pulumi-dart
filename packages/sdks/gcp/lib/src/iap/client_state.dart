@@ -10,6 +10,13 @@ class ClientState {
   final pulumi.Input<String>? brand;
   /// Output only. Unique identifier of the OAuth client.
   final pulumi.Input<String>? clientId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-friendly name given to the OAuth client.
   final pulumi.Input<String>? displayName;
   /// Output only. Client secret of the OAuth client.
@@ -19,11 +26,13 @@ class ClientState {
   /// Creates a new [ClientState].
   /// [brand] Identifier of the brand to which this client
   /// [clientId] Output only. Unique identifier of the OAuth client.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [secret] Output only. Client secret of the OAuth client.
   const ClientState({
     this.brand,
     this.clientId,
+    this.deletionPolicy,
     this.displayName,
     this.secret,
   });
@@ -32,6 +41,7 @@ class ClientState {
     return <String, dynamic>{
       'brand': ?brand,
       'clientId': ?clientId,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'secret': ?secret,
     };
@@ -41,9 +51,9 @@ class ClientState {
     return ClientState(
       brand: (() { final guardedValue = map['brand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

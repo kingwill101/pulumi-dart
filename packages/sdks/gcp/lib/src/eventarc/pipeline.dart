@@ -118,7 +118,7 @@ import 'pipeline_state.dart';
 /// 			PipelineId: pulumi.String("some-pipeline"),
 /// 			Destinations: eventarc.PipelineDestinationArray{
 /// 				&eventarc.PipelineDestinationArgs{
-/// 					Topic: topic.ID(),
+/// 					Topic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -136,6 +136,33 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "some-topic"
+/// }
+/// resource "gcp_eventarc_pipeline" "primary" {
+///   location    = "us-central1"
+///   pipeline_id = "some-pipeline"
+///   destinations {
+///     topic = gcp_pubsub_topic.topic.id
+///   }
+///   labels = {
+///     "test_label" = "test-eventarc-label"
+///   }
+///   annotations = {
+///     "test_annotation" = "test-eventarc-annotation"
+///   }
+///   display_name = "Testing Pipeline"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +174,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.gcp.eventarc.Pipeline;
 /// import com.pulumi.gcp.eventarc.PipelineArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +323,28 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_eventarc_pipeline" "primary" {
+///   location    = "us-central1"
+///   pipeline_id = "some-pipeline"
+///   destinations {
+///     http_endpoint = {
+///       uri = "https://10.77.0.0:80/route"
+///     }
+///     network_config = {
+///       network_attachment = "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +356,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.gcp.eventarc.inputs.PipelineDestinationArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineDestinationHttpEndpointArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineDestinationNetworkConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -544,7 +593,7 @@ import 'pipeline_state.dart';
 /// 			PipelineId: pulumi.String("some-pipeline"),
 /// 			Destinations: eventarc.PipelineDestinationArray{
 /// 				&eventarc.PipelineDestinationArgs{
-/// 					Workflow: workflow.ID(),
+/// 					Workflow: workflow.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -553,6 +602,29 @@ import 'pipeline_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workflows_workflow" "workflow" {
+///   name                = "some-workflow"
+///   deletion_protection = false
+///   region              = "us-central1"
+///   source_contents     = "# This is a sample workflow, feel free to replace it with your source code\n#\n# This workflow does the following:\n# - reads current time and date information from an external API and stores\n#   the response in CurrentDateTime variable\n# - retrieves a list of Wikipedia articles related to the day of the week\n#   from CurrentDateTime\n# - returns the list of articles as an output of the workflow\n# FYI, In terraform you need to escape the $$ or it will cause errors.\n\n- getCurrentTime:\n    call: http.get\n    args:\n        url: $${sys.get_env(\\\"url\\\")}\n    result: CurrentDateTime\n- readWikipedia:\n    call: http.get\n    args:\n        url: https://en.wikipedia.org/w/api.php\n        query:\n            action: opensearch\n            search: $${CurrentDateTime.body.dayOfTheWeek}\n    result: WikiResult\n- returnOutput:\n    return: $${WikiResult.body[1]}\n"
+/// }
+/// resource "gcp_eventarc_pipeline" "primary" {
+///   location    = "us-central1"
+///   pipeline_id = "some-pipeline"
+///   destinations {
+///     workflow = gcp_workflows_workflow.workflow.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -566,8 +638,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.gcp.eventarc.Pipeline;
 /// import com.pulumi.gcp.eventarc.PipelineArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -901,6 +973,54 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_eventarc_pipeline" "primary" {
+///   location    = "us-central1"
+///   pipeline_id = "some-pipeline"
+///   destinations {
+///     http_endpoint = {
+///       uri                      = "https://10.77.0.0:80/route"
+///       message_binding_template = "{\"headers\":{\"new-header-key\": \"new-header-value\"}}"
+///     }
+///     network_config = {
+///       network_attachment = "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment"
+///     }
+///     authentication_config = {
+///       google_oidc = {
+///         service_account = "my@service-account.com"
+///         audience        = "http://www.example.com"
+///       }
+///     }
+///     output_payload_format = {
+///       json = {}
+///     }
+///   }
+///   input_payload_format = {
+///     json = {}
+///   }
+///   retry_policy = {
+///     max_retry_delay = "50s"
+///     max_attempts    = 2
+///     min_retry_delay = "40s"
+///   }
+///   mediations {
+///     transformation = {
+///       transformation_template = "{\n\\\"id\\\": message.id,\n\\\"datacontenttype\\\": \\\"application/json\\\",\n\\\"data\\\": \\\"{ \\\\\\\"scrubbed\\\\\\\": \\\\\\\"true\\\\\\\" }\\\"\n}\n"
+///     }
+///   }
+///   logging_config = {
+///     log_severity = "DEBUG"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -922,8 +1042,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.gcp.eventarc.inputs.PipelineMediationArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineMediationTransformationArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineLoggingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1315,6 +1435,58 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_eventarc_pipeline" "primary" {
+///   location    = "us-central1"
+///   pipeline_id = "some-pipeline"
+///   destinations {
+///     http_endpoint = {
+///       uri                      = "https://10.77.0.0:80/route"
+///       message_binding_template = "{\"headers\":{\"new-header-key\": \"new-header-value\"}}"
+///     }
+///     network_config = {
+///       network_attachment = "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment"
+///     }
+///     authentication_config = {
+///       oauth_token = {
+///         service_account = "my@service-account.com"
+///         scope           = "https://www.googleapis.com/auth/cloud-platform"
+///       }
+///     }
+///     output_payload_format = {
+///       protobuf = {
+///         schema_definition = "syntax = \\\"proto3\\\";\nmessage schema {\nstring name = 1;\nstring severity = 2;\n}\n"
+///       }
+///     }
+///   }
+///   input_payload_format = {
+///     protobuf = {
+///       schema_definition = "syntax = \\\"proto3\\\";\nmessage schema {\nstring name = 1;\nstring severity = 2;\n}\n"
+///     }
+///   }
+///   retry_policy = {
+///     max_retry_delay = "50s"
+///     max_attempts    = 2
+///     min_retry_delay = "40s"
+///   }
+///   mediations {
+///     transformation = {
+///       transformation_template = "{\n\\\"id\\\": message.id,\n\\\"datacontenttype\\\": \\\"application/json\\\",\n\\\"data\\\": \\\"{ \\\\\\\"scrubbed\\\\\\\": \\\\\\\"true\\\\\\\" }\\\"\n}\n"
+///     }
+///   }
+///   logging_config = {
+///     log_severity = "DEBUG"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1336,8 +1508,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.gcp.eventarc.inputs.PipelineMediationArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineMediationTransformationArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineLoggingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1693,6 +1865,53 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_eventarc_pipeline" "primary" {
+///   location        = "us-central1"
+///   pipeline_id     = "some-pipeline"
+///   crypto_key_name = "some-key"
+///   destinations {
+///     http_endpoint = {
+///       uri                      = "https://10.77.0.0:80/route"
+///       message_binding_template = "{\"headers\":{\"new-header-key\": \"new-header-value\"}}"
+///     }
+///     network_config = {
+///       network_attachment = "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment"
+///     }
+///     output_payload_format = {
+///       avro = {
+///         schema_definition = "{\"type\": \"record\", \"name\": \"my_record\", \"fields\": [{\"name\": \"my_field\", \"type\": \"string\"}]}"
+///       }
+///     }
+///   }
+///   input_payload_format = {
+///     avro = {
+///       schema_definition = "{\"type\": \"record\", \"name\": \"my_record\", \"fields\": [{\"name\": \"my_field\", \"type\": \"string\"}]}"
+///     }
+///   }
+///   retry_policy = {
+///     max_retry_delay = "50s"
+///     max_attempts    = 2
+///     min_retry_delay = "40s"
+///   }
+///   mediations {
+///     transformation = {
+///       transformation_template = "{\n\\\"id\\\": message.id,\n\\\"datacontenttype\\\": \\\"application/json\\\",\n\\\"data\\\": \\\"{ \\\\\\\"scrubbed\\\\\\\": \\\\\\\"true\\\\\\\" }\\\"\n}\n"
+///     }
+///   }
+///   logging_config = {
+///     log_severity = "DEBUG"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1712,8 +1931,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.gcp.eventarc.inputs.PipelineMediationArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineMediationTransformationArgs;
 /// import com.pulumi.gcp.eventarc.inputs.PipelineLoggingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1814,28 +2033,21 @@ import 'pipeline_state.dart';
 /// Pipeline can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}`
-///
 /// * `{{project}}/{{location}}/{{pipeline_id}}`
-///
 /// * `{{location}}/{{pipeline_id}}`
+///
 ///
 /// When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:eventarc/pipeline:Pipeline default projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/pipeline:Pipeline default {{project}}/{{location}}/{{pipeline_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/pipeline:Pipeline default {{location}}/{{pipeline_id}}
 /// ```
 class Pipeline extends pulumi.CustomResource {
   /// User-defined annotations. See https://google.aip.dev/128#annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
@@ -1847,12 +2059,20 @@ class Pipeline extends pulumi.CustomResource {
   /// will be used to encrypt messages. It must match the pattern
   /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
   late final pulumi.Output<String?> cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// List of destinations to which messages will be forwarded. Currently,
   /// exactly one destination is supported per Pipeline.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> destinations;
   /// Display name of resource.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -1867,7 +2087,7 @@ class Pipeline extends pulumi.CustomResource {
   /// resources. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -1898,7 +2118,7 @@ class Pipeline extends pulumi.CustomResource {
   /// The backoff starts with a 5 second delay and doubles the
   /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
   /// The delay is capped at 60 seconds by default.
-  /// Please note that if you set the min_retry_delay and max_retry_delay fields
+  /// Please note that if you set the minRetryDelay and maxRetryDelay fields
   /// to the same value this will make the duration between retries constant.
   /// Structure is documented below.
   late final pulumi.Output<PipelineRetryPolicy> retryPolicy;
@@ -1929,6 +2149,7 @@ class Pipeline extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1974,6 +2195,7 @@ class Pipeline extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

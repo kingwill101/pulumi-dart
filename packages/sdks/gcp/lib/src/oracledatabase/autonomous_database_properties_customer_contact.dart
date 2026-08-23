@@ -6,7 +6,7 @@ class AutonomousDatabasePropertiesCustomerContact {
   /// The email address used by Oracle to send notifications regarding databases
   /// and infrastructure.
   ///
-  /// &lt;a name="nested_properties_apex_details"&gt;&lt;/a&gt;The `apex_details` block contains:
+  /// &lt;a name="nestedPropertiesApexDetails"&gt;&lt;/a&gt;The `apexDetails` block contains:
   final pulumi.Input<String> email;
 
   /// Creates a new [AutonomousDatabasePropertiesCustomerContact].
@@ -27,4 +27,3 @@ class AutonomousDatabasePropertiesCustomerContact {
     );
   }
 }
-

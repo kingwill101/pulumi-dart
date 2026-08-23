@@ -39,4 +39,3 @@ class CertificateConfigX509ConfigAdditionalExtension {
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'service_template_container_build_info.dart';
 import 'service_template_container_env.dart';
 import 'service_template_container_liveness_probe.dart';
 import 'service_template_container_ports.dart';
+import 'service_template_container_readiness_probe.dart';
 import 'service_template_container_resources.dart';
 import 'service_template_container_source_code.dart';
 import 'service_template_container_startup_probe.dart';
@@ -37,9 +38,15 @@ class ServiceTemplateContainer {
   /// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateContainerPorts>? ports;
+  /// Periodic probe of container readiness.
+  /// Structure is documented below.
+  final pulumi.Input<ServiceTemplateContainerReadinessProbe>? readinessProbe;
   /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateContainerResources>? resources;
+  /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+  final pulumi.Input<bool>? sandboxLauncher;
+  /// (Optional, Beta)
   /// Location of the source.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateContainerSourceCode>? sourceCode;
@@ -63,8 +70,10 @@ class ServiceTemplateContainer {
   /// [livenessProbe] Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   /// [name] Name of the container specified as a DNS_LABEL.
   /// [ports] List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+  /// [readinessProbe] Periodic probe of container readiness.
   /// [resources] Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-  /// [sourceCode] Location of the source.
+  /// [sandboxLauncher] Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+  /// [sourceCode] (Optional, Beta)
   /// [startupProbe] Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -79,7 +88,9 @@ class ServiceTemplateContainer {
     this.livenessProbe,
     this.name,
     this.ports,
+    this.readinessProbe,
     this.resources,
+    this.sandboxLauncher,
     this.sourceCode,
     this.startupProbe,
     this.volumeMounts,
@@ -98,7 +109,9 @@ class ServiceTemplateContainer {
       'livenessProbe': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateContainerLivenessProbe, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
       'name': ?name,
       'ports': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateContainerPorts, Map<String, dynamic>>(ports, (value) => value.toMap()),
+      'readinessProbe': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateContainerReadinessProbe, Map<String, dynamic>>(readinessProbe, (value) => value.toMap()),
       'resources': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateContainerResources, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'sandboxLauncher': ?sandboxLauncher,
       'sourceCode': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateContainerSourceCode, Map<String, dynamic>>(sourceCode, (value) => value.toMap()),
       'startupProbe': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateContainerStartupProbe, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
       'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<ServiceTemplateContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<ServiceTemplateContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -118,7 +131,9 @@ class ServiceTemplateContainer {
       livenessProbe: (() { final guardedValue = map['livenessProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateContainerLivenessProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateContainerPorts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      readinessProbe: (() { final guardedValue = map['readinessProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateContainerReadinessProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sandboxLauncher: (() { final guardedValue = map['sandboxLauncher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sourceCode: (() { final guardedValue = map['sourceCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateContainerSourceCode.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       startupProbe: (() { final guardedValue = map['startupProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateContainerStartupProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       volumeMounts: (() { final guardedValue = map['volumeMounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTemplateContainerVolumeMount>(guardedValue, (value) => ServiceTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -126,4 +141,3 @@ class ServiceTemplateContainer {
     );
   }
 }
-

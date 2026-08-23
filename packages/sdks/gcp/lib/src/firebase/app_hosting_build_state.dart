@@ -10,7 +10,7 @@ class AppHostingBuildState {
   /// store and arbitrary metadata. They are not queryable and should be
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The ID of the Backend that this Build applies to
   final pulumi.Input<String>? backend;
@@ -24,6 +24,7 @@ class AppHostingBuildState {
   final pulumi.Input<String>? createTime;
   /// Human-readable name. 63 character limit.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -55,7 +56,7 @@ class AppHostingBuildState {
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the Backend that this Build applies to
   final pulumi.Input<String>? location;
@@ -92,7 +93,7 @@ class AppHostingBuildState {
   /// [buildLogsUri] The location of the [Cloud Build
   /// [createTime] Time at which the build was created.
   /// [displayName] Human-readable name. 63 character limit.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [environment] The environment name of the backend when this build was created.
   /// [errorSource] The source of the error for the build, if in a `FAILED` state.
@@ -187,4 +188,3 @@ class AppHostingBuildState {
     );
   }
 }
-

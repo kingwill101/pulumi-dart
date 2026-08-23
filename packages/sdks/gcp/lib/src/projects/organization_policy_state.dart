@@ -13,6 +13,15 @@ class OrganizationPolicyState {
   ///
   /// - - -
   final pulumi.Input<String>? constraint;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  final pulumi.Input<String>? deletionPolicy;
   /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
   final pulumi.Input<String>? etag;
   /// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
@@ -21,10 +30,8 @@ class OrganizationPolicyState {
   final pulumi.Input<String>? project;
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
-  /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+  /// &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
   /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-  ///
-  /// - - -
   final pulumi.Input<OrganizationPolicyRestorePolicy>? restorePolicy;
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
   final pulumi.Input<String>? updateTime;
@@ -34,6 +41,7 @@ class OrganizationPolicyState {
   /// Creates a new [OrganizationPolicyState].
   /// [booleanPolicy] A boolean policy is a constraint that is either enforced or not. Structure is documented below.
   /// [constraint] The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [etag] (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
   /// [listPolicy] A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
   /// [project] The project id of the project to set the policy for.
@@ -43,6 +51,7 @@ class OrganizationPolicyState {
   const OrganizationPolicyState({
     this.booleanPolicy,
     this.constraint,
+    this.deletionPolicy,
     this.etag,
     this.listPolicy,
     this.project,
@@ -55,6 +64,7 @@ class OrganizationPolicyState {
     return <String, dynamic>{
       'booleanPolicy': ?pulumi.Input.mapOptionalInputValue<OrganizationPolicyBooleanPolicy, Map<String, dynamic>>(booleanPolicy, (value) => value.toMap()),
       'constraint': ?constraint,
+      'deletionPolicy': ?deletionPolicy,
       'etag': ?etag,
       'listPolicy': ?pulumi.Input.mapOptionalInputValue<OrganizationPolicyListPolicy, Map<String, dynamic>>(listPolicy, (value) => value.toMap()),
       'project': ?project,
@@ -68,6 +78,7 @@ class OrganizationPolicyState {
     return OrganizationPolicyState(
       booleanPolicy: (() { final guardedValue = map['booleanPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       constraint: (() { final guardedValue = map['constraint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       listPolicy: (() { final guardedValue = map['listPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -77,4 +88,3 @@ class OrganizationPolicyState {
     );
   }
 }
-

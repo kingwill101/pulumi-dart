@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'storage_pool_params.dart';
 import 'storage_pool_resource_status.dart';
 import 'storage_pool_status.dart';
 
@@ -11,6 +12,17 @@ class StoragePoolState {
   final pulumi.Input<String>? capacityProvisioningType;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the StoragePool.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the StoragePool will fail.
+  /// When the field is set to false, deleting the StoragePool is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// A description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
@@ -24,7 +36,7 @@ class StoragePoolState {
   /// Labels to apply to this storage pool. These can be later modified by the setLabels method.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -34,6 +46,9 @@ class StoragePoolState {
   /// and all following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<StoragePoolParams>? params;
   /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
   /// Possible values are: `STANDARD`, `ADVANCED`.
   final pulumi.Input<String>? performanceProvisioningType;
@@ -69,13 +84,15 @@ class StoragePoolState {
   /// Creates a new [StoragePoolState].
   /// [capacityProvisioningType] Provisioning type of the byte capacity of the pool.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the StoragePool.
   /// [description] A description of this resource. Provide this property when you create the resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [kind] Type of the resource.
   /// [labelFingerprint] The fingerprint used for optimistic locking of this resource.
   /// [labels] Labels to apply to this storage pool. These can be later modified by the setLabels method.
   /// [name] Name of the resource. Provided by the client when the resource is created.
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [performanceProvisioningType] Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
   /// [poolProvisionedCapacityGb] Size, in GiB, of the storage pool. For more information about the size limits,
   /// [poolProvisionedIops] Provisioned IOPS of the storage pool.
@@ -89,6 +106,7 @@ class StoragePoolState {
   const StoragePoolState({
     this.capacityProvisioningType,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.deletionProtection,
     this.description,
     this.effectiveLabels,
@@ -96,6 +114,7 @@ class StoragePoolState {
     this.labelFingerprint,
     this.labels,
     this.name,
+    this.params,
     this.performanceProvisioningType,
     this.poolProvisionedCapacityGb,
     this.poolProvisionedIops,
@@ -112,6 +131,7 @@ class StoragePoolState {
     return <String, dynamic>{
       'capacityProvisioningType': ?capacityProvisioningType,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
@@ -119,6 +139,7 @@ class StoragePoolState {
       'labelFingerprint': ?labelFingerprint,
       'labels': ?labels,
       'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<StoragePoolParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'performanceProvisioningType': ?performanceProvisioningType,
       'poolProvisionedCapacityGb': ?poolProvisionedCapacityGb,
       'poolProvisionedIops': ?poolProvisionedIops,
@@ -136,6 +157,7 @@ class StoragePoolState {
     return StoragePoolState(
       capacityProvisioningType: (() { final guardedValue = map['capacityProvisioningType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -143,6 +165,7 @@ class StoragePoolState {
       labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StoragePoolParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       performanceProvisioningType: (() { final guardedValue = map['performanceProvisioningType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolProvisionedCapacityGb: (() { final guardedValue = map['poolProvisionedCapacityGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolProvisionedIops: (() { final guardedValue = map['poolProvisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -156,4 +179,3 @@ class StoragePoolState {
     );
   }
 }
-

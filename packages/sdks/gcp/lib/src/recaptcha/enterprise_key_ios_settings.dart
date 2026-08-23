@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseKeyIosSettings {
-  /// If set to true, it means allowed_bundle_ids will not be enforced.
+  /// If set to true, it means allowedBundleIds will not be enforced.
   final pulumi.Input<bool>? allowAllBundleIds;
   /// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
   final pulumi.Input<List<String>>? allowedBundleIds;
 
   /// Creates a new [EnterpriseKeyIosSettings].
-  /// [allowAllBundleIds] If set to true, it means allowed_bundle_ids will not be enforced.
+  /// [allowAllBundleIds] If set to true, it means allowedBundleIds will not be enforced.
   /// [allowedBundleIds] iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
   const EnterpriseKeyIosSettings({
     this.allowAllBundleIds,
@@ -30,4 +30,3 @@ class EnterpriseKeyIosSettings {
     );
   }
 }
-

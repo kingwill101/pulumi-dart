@@ -2,6 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_account_exclusion_args.dart';
 import 'billing_account_exclusion_state.dart';
 
+/// Manages a billing account logging exclusion. For more information see:
+///
+/// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.exclusions)
+/// * How-to Guides
+/// * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+///
+/// &gt; You can specify exclusions for log sinks created by terraform by using the exclusions field of `gcp.logging.BillingAccountSink`
+///
 /// ## Example Usage
 ///
 ///
@@ -67,6 +75,22 @@ import 'billing_account_exclusion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_billingaccountexclusion" "my-exclusion" {
+///   name            = "my-instance-debug-exclusion"
+///   billing_account = "ABCDEF-012345-GHIJKL"
+///   description     = "Exclude GCE instance debug logs"
+///   filter          = "resource.type = gce_instance AND severity <= DEBUG"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +99,8 @@ import 'billing_account_exclusion_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.BillingAccountExclusion;
 /// import com.pulumi.gcp.logging.BillingAccountExclusionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,6 +139,7 @@ import 'billing_account_exclusion_state.dart';
 /// Billing account logging exclusions can be imported using their URI, e.g.
 ///
 /// * `billingAccounts/{{billing_account}}/exclusions/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, billing account logging exclusions can be imported using one of the formats above. For example:
 ///

@@ -107,6 +107,27 @@ import 'custom_service_telemetry.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_customservice" "custom" {
+///   service_id   = "custom-srv"
+///   display_name = "My Custom Service custom-srv"
+///   telemetry = {
+///     resource_name = "//product.googleapis.com/foo/foo/services/test"
+///   }
+///   user_labels = {
+///     "my_key"       = "my_value"
+///     "my_other_key" = "my_other_value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +137,8 @@ import 'custom_service_telemetry.dart';
 /// import com.pulumi.gcp.monitoring.CustomService;
 /// import com.pulumi.gcp.monitoring.CustomServiceArgs;
 /// import com.pulumi.gcp.monitoring.inputs.CustomServiceTelemetryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,25 +185,25 @@ import 'custom_service_telemetry.dart';
 /// Service can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:monitoring/customService:CustomService default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:monitoring/customService:CustomService default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_monitoring_custom_service.default "{{project}} {{name}}"
 /// $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
 /// ```
 class CustomService extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name used for UI elements listing this Service.
   late final pulumi.Output<String?> displayName;
   /// The full resource name for this service. The syntax is:
@@ -219,6 +240,7 @@ class CustomService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -250,6 +272,7 @@ class CustomService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

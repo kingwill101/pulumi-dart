@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleAppVersionNetwork {
   /// List of ports, or port pairs, to forward from the virtual machine to the application container.
   final pulumi.Input<List<String>>? forwardedPorts;
+  /// (Optional, Beta)
   /// Prevent instances from receiving an ephemeral external IP address.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   final pulumi.Input<String>? instanceIpMode;
@@ -23,7 +24,7 @@ class FlexibleAppVersionNetwork {
 
   /// Creates a new [FlexibleAppVersionNetwork].
   /// [forwardedPorts] List of ports, or port pairs, to forward from the virtual machine to the application container.
-  /// [instanceIpMode] Prevent instances from receiving an ephemeral external IP address.
+  /// [instanceIpMode] (Optional, Beta)
   /// [instanceTag] Tag to apply to the instance during creation.
   /// [name] Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
   /// [sessionAffinity] Enable session affinity.
@@ -59,4 +60,3 @@ class FlexibleAppVersionNetwork {
     );
   }
 }
-

@@ -15,7 +15,7 @@ class RegionBackendServiceBackend {
   /// ~&gt;**NOTE**: This field cannot be set for
   /// INTERNAL region backend services (default loadBalancingScheme),
   /// but is required for non-INTERNAL backend service. The total
-  /// capacity_scaler for all backends must be non-zero.
+  /// capacityScaler for all backends must be non-zero.
   /// A setting of 0 means the group is completely drained, offering
   /// 0% of its available Capacity. Valid range is [0.0,1.0].
   final pulumi.Input<double>? capacityScaler;
@@ -39,7 +39,7 @@ class RegionBackendServiceBackend {
   /// located in the same zone as the Network Endpoint Group.
   /// Backend services cannot mix Instance Group and
   /// Network Endpoint Group backends.
-  /// When the `load_balancing_scheme` is INTERNAL, only instance groups
+  /// When the `loadBalancingScheme` is INTERNAL, only instance groups
   /// are supported.
   /// Note that you must specify an Instance Group or Network Endpoint
   /// Group resource using the fully-qualified URL, rather than a
@@ -68,13 +68,16 @@ class RegionBackendServiceBackend {
   /// For CONNECTION mode, either maxConnections or
   /// maxConnectionsPerInstance must be set.
   final pulumi.Input<int>? maxConnectionsPerInstance;
+  /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for the whole NEG
   /// or instance group. Not available if backend's balancingMode is RATE
   /// or CONNECTION.
   final pulumi.Input<int>? maxInFlightRequests;
+  /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for a single endpoint.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
   final pulumi.Input<int>? maxInFlightRequestsPerEndpoint;
+  /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for a single VM.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
   final pulumi.Input<int>? maxInFlightRequestsPerInstance;
@@ -101,6 +104,7 @@ class RegionBackendServiceBackend {
   /// CPU utilization target for the group. Valid range is [0.0, 1.0].
   /// Cannot be set for INTERNAL backend services.
   final pulumi.Input<double>? maxUtilization;
+  /// (Optional, Beta)
   /// This field specifies how long a connection should be kept alive for:
   /// - LONG: Most of the requests are expected to take more than multiple
   /// seconds to finish.
@@ -118,14 +122,14 @@ class RegionBackendServiceBackend {
   /// [maxConnections] The max number of simultaneous connections for the group. Can
   /// [maxConnectionsPerEndpoint] The max number of simultaneous connections that a single backend
   /// [maxConnectionsPerInstance] The max number of simultaneous connections that a single
-  /// [maxInFlightRequests] Defines a maximum number of in-flight requests for the whole NEG
-  /// [maxInFlightRequestsPerEndpoint] Defines a maximum number of in-flight requests for a single endpoint.
-  /// [maxInFlightRequestsPerInstance] Defines a maximum number of in-flight requests for a single VM.
+  /// [maxInFlightRequests] (Optional, Beta)
+  /// [maxInFlightRequestsPerEndpoint] (Optional, Beta)
+  /// [maxInFlightRequestsPerInstance] (Optional, Beta)
   /// [maxRate] The max requests per second (RPS) of the group. Cannot be set
   /// [maxRatePerEndpoint] The max requests per second (RPS) that a single backend network
   /// [maxRatePerInstance] The max requests per second (RPS) that a single backend
   /// [maxUtilization] Used when balancingMode is UTILIZATION. This ratio defines the
-  /// [trafficDuration] This field specifies how long a connection should be kept alive for:
+  /// [trafficDuration] (Optional, Beta)
   const RegionBackendServiceBackend({
     this.balancingMode,
     this.capacityScaler,
@@ -190,4 +194,3 @@ class RegionBackendServiceBackend {
     );
   }
 }
-

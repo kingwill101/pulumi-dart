@@ -16,6 +16,13 @@ class RouterNatArgs {
   /// project-level default tier is used.
   /// Possible values are: `PREMIUM`, `STANDARD`.
   final pulumi.Input<String>? autoNetworkTier;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A list of URLs of the IP resources to be drained. These IPs must be
   /// valid static external IPs that have been assigned to the NAT.
   final pulumi.Input<List<String>>? drainNatIps;
@@ -51,7 +58,7 @@ class RouterNatArgs {
   /// comply with RFC1035.
   final pulumi.Input<String>? name;
   /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-  /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+  /// Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
   /// Structure is documented below.
   final pulumi.Input<List<RouterNatNat64Subnetwork>>? nat64Subnetworks;
   /// How external IPs should be allocated for this NAT. Valid values are
@@ -62,7 +69,7 @@ class RouterNatArgs {
   /// Self-links of NAT IPs. Only valid if natIpAllocateOption
   /// is set to MANUAL_ONLY.
   /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-  /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+  /// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
   /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
   final pulumi.Input<List<String>>? natIps;
   /// The ID of the project in which the resource belongs.
@@ -95,7 +102,7 @@ class RouterNatArgs {
   /// Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
   final pulumi.Input<String>? sourceSubnetworkIpRangesToNat64;
   /// One or more subnetwork NAT configurations. Only used if
-  /// `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+  /// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
   /// Structure is documented below.
   final pulumi.Input<List<RouterNatSubnetwork>>? subnetworks;
   /// Timeout (in seconds) for TCP established connections.
@@ -119,6 +126,7 @@ class RouterNatArgs {
 
   /// Creates a new [RouterNatArgs].
   /// [autoNetworkTier] The network tier to use when automatically reserving NAT IP addresses.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [drainNatIps] A list of URLs of the IP resources to be drained. These IPs must be
   /// [enableDynamicPortAllocation] Enable Dynamic Port Allocation.
   /// [enableEndpointIndependentMapping] Enable endpoint independent mapping.
@@ -146,6 +154,7 @@ class RouterNatArgs {
   /// [udpIdleTimeoutSec] Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
   const RouterNatArgs({
     this.autoNetworkTier,
+    this.deletionPolicy,
     this.drainNatIps,
     this.enableDynamicPortAllocation,
     this.enableEndpointIndependentMapping,
@@ -176,6 +185,7 @@ class RouterNatArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoNetworkTier': ?autoNetworkTier,
+      'deletionPolicy': ?deletionPolicy,
       'drainNatIps': ?drainNatIps,
       'enableDynamicPortAllocation': ?enableDynamicPortAllocation,
       'enableEndpointIndependentMapping': ?enableEndpointIndependentMapping,
@@ -207,6 +217,7 @@ class RouterNatArgs {
   factory RouterNatArgs.fromMap(Map<String, dynamic> map) {
     return RouterNatArgs(
       autoNetworkTier: (() { final guardedValue = map['autoNetworkTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       drainNatIps: (() { final guardedValue = map['drainNatIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       enableDynamicPortAllocation: (() { final guardedValue = map['enableDynamicPortAllocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableEndpointIndependentMapping: (() { final guardedValue = map['enableEndpointIndependentMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -235,4 +246,3 @@ class RouterNatArgs {
     );
   }
 }
-

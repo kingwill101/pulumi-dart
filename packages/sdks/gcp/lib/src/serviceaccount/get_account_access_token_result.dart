@@ -3,7 +3,7 @@
 
 /// Result data returned by getAccountAccessToken.
 class GetAccountAccessTokenResult {
-  /// The `access_token` representing the new generated identity.
+  /// The `accessToken` representing the new generated identity.
   final String accessToken;
   final List<String>? delegates;
   /// The provider-assigned unique ID for this managed resource.
@@ -13,7 +13,7 @@ class GetAccountAccessTokenResult {
   final String targetServiceAccount;
 
   /// Creates a new [GetAccountAccessTokenResult].
-  /// [accessToken] The `access_token` representing the new generated identity.
+  /// [accessToken] The `accessToken` representing the new generated identity.
   /// [delegates] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [lifetime] Optional.
@@ -50,4 +50,3 @@ class GetAccountAccessTokenResult {
     );
   }
 }
-

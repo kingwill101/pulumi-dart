@@ -131,6 +131,33 @@ import 'target_site_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_targetsite" "basic" {
+///   location             = gcp_discoveryengine_datastore.basic.location
+///   data_store_id        = gcp_discoveryengine_datastore.basic.data_store_id
+///   provided_uri_pattern = "cloud.google.com/docs/*"
+///   type                 = "INCLUDE"
+///   exact_match          = false
+/// }
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                     = "global"
+///   data_store_id                = "data-store-id"
+///   display_name                 = "tf-test-basic-site-search-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "PUBLIC_WEBSITE"
+///   solution_types               = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search  = false
+///   skip_default_schema_creation = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +168,8 @@ import 'target_site_state.dart';
 /// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
 /// import com.pulumi.gcp.discoveryengine.TargetSite;
 /// import com.pulumi.gcp.discoveryengine.TargetSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,6 +347,33 @@ import 'target_site_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_targetsite" "advanced" {
+///   location             = gcp_discoveryengine_datastore.advanced.location
+///   data_store_id        = gcp_discoveryengine_datastore.advanced.data_store_id
+///   provided_uri_pattern = "cloud.google.com/docs/*"
+///   type                 = "INCLUDE"
+///   exact_match          = false
+/// }
+/// resource "gcp_discoveryengine_datastore" "advanced" {
+///   location                     = "global"
+///   data_store_id                = "data-store-id"
+///   display_name                 = "tf-test-advanced-site-search-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "PUBLIC_WEBSITE"
+///   solution_types               = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search  = true
+///   skip_default_schema_creation = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -330,8 +384,8 @@ import 'target_site_state.dart';
 /// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
 /// import com.pulumi.gcp.discoveryengine.TargetSite;
 /// import com.pulumi.gcp.discoveryengine.TargetSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -396,38 +450,38 @@ import 'target_site_state.dart';
 /// TargetSite can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/siteSearchEngine/targetSites/{{target_site_id}}`
-///
 /// * `{{project}}/{{location}}/{{data_store_id}}/{{target_site_id}}`
-///
 /// * `{{location}}/{{data_store_id}}/{{target_site_id}}`
+///
 ///
 /// When using the `pulumi import` command, TargetSite can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/targetSite:TargetSite default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/siteSearchEngine/targetSites/{{target_site_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/targetSite:TargetSite default {{project}}/{{location}}/{{data_store_id}}/{{target_site_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/targetSite:TargetSite default {{location}}/{{data_store_id}}/{{target_site_id}}
 /// ```
 class TargetSite extends pulumi.CustomResource {
   /// The unique id of the data store.
   late final pulumi.Output<String> dataStoreId;
-  /// If set to false, a uri_pattern is generated to include all pages whose
-  /// address contains the provided_uri_pattern. If set to true, an uri_pattern
-  /// is generated to try to be an exact match of the provided_uri_pattern or
-  /// just the specific page if the provided_uri_pattern is a specific one.
-  /// provided_uri_pattern is always normalized to generate the URI pattern to
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// If set to false, a uriPattern is generated to include all pages whose
+  /// address contains the provided_uri_pattern. If set to true, an uriPattern
+  /// is generated to try to be an exact match of the providedUriPattern or
+  /// just the specific page if the providedUriPattern is a specific one.
+  /// providedUriPattern is always normalized to generate the URI pattern to
   /// be used by the search engine.
   late final pulumi.Output<bool?> exactMatch;
   /// Site search indexing failure reasons.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> failureReasons;
-  /// This is system-generated based on the `provided_uri_pattern`.
+  /// This is system-generated based on the `providedUriPattern`.
   late final pulumi.Output<String> generatedUriPattern;
   /// The indexing status.
   late final pulumi.Output<String> indexingStatus;
@@ -442,10 +496,10 @@ class TargetSite extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// The user provided URI pattern from which the `generated_uri_pattern` is
+  /// The user provided URI pattern from which the `generatedUriPattern` is
   /// generated.
   late final pulumi.Output<String> providedUriPattern;
-  /// Root domain of the `provided_uri_pattern`.
+  /// Root domain of the `providedUriPattern`.
   late final pulumi.Output<String> rootDomainUri;
   /// Site ownership and validity verification status.
   /// Structure is documented below.
@@ -473,6 +527,7 @@ class TargetSite extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     exactMatch = registerOutput<bool?>('exactMatch');
     failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
     generatedUriPattern = registerOutput<String>('generatedUriPattern');
@@ -512,6 +567,7 @@ class TargetSite extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     exactMatch = registerOutput<bool?>('exactMatch');
     failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
     generatedUriPattern = registerOutput<String>('generatedUriPattern');

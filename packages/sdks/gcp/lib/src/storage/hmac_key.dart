@@ -14,6 +14,9 @@ import 'hmac_key_state.dart';
 /// * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 ///
 ///
+/// On import, the `secret` value will not be retrieved.
+///
+///
 ///
 /// ## Example Usage
 ///
@@ -90,6 +93,24 @@ import 'hmac_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Create a new service account
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   account_id = "my-svc-acc"
+/// }
+/// #Create the HMAC key for the associated service account
+/// resource "gcp_storage_hmackey" "key" {
+///   service_account_email = gcp_serviceaccount_account.service_account.email
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +121,8 @@ import 'hmac_key_state.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.storage.HmacKey;
 /// import com.pulumi.gcp.storage.HmacKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,27 +168,27 @@ import 'hmac_key_state.dart';
 /// HmacKey can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/hmacKeys/{{access_id}}`
-///
 /// * `{{project}}/{{access_id}}`
-///
 /// * `{{access_id}}`
+///
 ///
 /// When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/hmacKey:HmacKey default {{project}}/{{access_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
 /// ```
 class HmacKey extends pulumi.CustomResource {
   /// The access ID of the HMAC Key.
   late final pulumi.Output<String> accessId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -200,6 +221,7 @@ class HmacKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessId = registerOutput<String>('accessId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
     secret = registerOutput<String>('secret');
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
@@ -232,6 +254,7 @@ class HmacKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessId = registerOutput<String>('accessId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
     secret = registerOutput<String>('secret');
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');

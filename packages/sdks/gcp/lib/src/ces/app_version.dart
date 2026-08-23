@@ -115,6 +115,31 @@ import 'app_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_appversion" "my-app-version" {
+///   location       = "us"
+///   display_name   = "my-app-version"
+///   app            = gcp_ces_app.my-app.name
+///   app_version_id = "app-version-id"
+///   description    = "example-app-version"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'app_version_state.dart';
 /// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
 /// import com.pulumi.gcp.ces.AppVersion;
 /// import com.pulumi.gcp.ces.AppVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,22 +210,15 @@ import 'app_version_state.dart';
 /// AppVersion can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/apps/{{app}}/versions/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{app}}/{{name}}`
-///
 /// * `{{location}}/{{app}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AppVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:ces/appVersion:AppVersion default projects/{{project}}/locations/{{location}}/apps/{{app}}/versions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/appVersion:AppVersion default {{project}}/{{location}}/{{app}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/appVersion:AppVersion default {{location}}/{{app}}/{{name}}
 /// ```
 class AppVersion extends pulumi.CustomResource {
@@ -215,6 +233,13 @@ class AppVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Email of the user who created the app version.
   late final pulumi.Output<String> creator;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the app version.
   late final pulumi.Output<String?> description;
   /// The display name of the app version.
@@ -256,6 +281,7 @@ class AppVersion extends pulumi.CustomResource {
     appVersionId = registerOutput<String>('appVersionId');
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
@@ -292,6 +318,7 @@ class AppVersion extends pulumi.CustomResource {
     appVersionId = registerOutput<String>('appVersionId');
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');

@@ -12,7 +12,7 @@ import 'get_tag_value_result.dart';
 import 'get_tag_values_args.dart';
 import 'get_tag_values_result.dart';
 
-/// Get a tag key by org or project `parent` and `short_name`.
+/// Get a tag key by org or project `parent` and `shortName`.
 ///
 /// ## Example Usage
 ///
@@ -70,6 +70,20 @@ import 'get_tag_values_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagkey" "environmentTagKey" {
+///   parent     = "organizations/12345"
+///   short_name = "environment"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +92,8 @@ import 'get_tag_values_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,6 +177,20 @@ import 'get_tag_values_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagkey" "environmentTagKey" {
+///   parent     = "projects/abc"
+///   short_name = "environment"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +199,8 @@ import 'get_tag_values_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,6 +299,19 @@ Future<GetTagKeyResult> getTagKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagkeyiampolicy" "policy" {
+///   tag_key = key.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +320,8 @@ Future<GetTagKeyResult> getTagKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,7 +334,7 @@ Future<GetTagKeyResult> getTagKey(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-///             .tagKey(key.name())
+///             .tagKey(key.get("name"))
 ///             .build());
 ///
 ///     }
@@ -376,6 +417,19 @@ Future<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagkeys" "environmentTagKey" {
+///   parent = "organizations/12345"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -384,8 +438,8 @@ Future<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -463,6 +517,19 @@ Future<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagkeys" "environmentTagKey" {
+///   parent = "projects/abc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -471,8 +538,8 @@ Future<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -514,7 +581,7 @@ Future<GetTagKeysResult> getTagKeys(
   return GetTagKeysResult.fromMap(result);
 }
 
-/// Get a tag value by `parent` key and `short_name`.
+/// Get a tag value by `parent` key and `shortName`.
 ///
 /// ## Example Usage
 ///
@@ -572,6 +639,20 @@ Future<GetTagKeysResult> getTagKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagvalue" "environmentProdTagValue" {
+///   parent     = "tagKeys/56789"
+///   short_name = "production"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -580,8 +661,8 @@ Future<GetTagKeysResult> getTagKeys(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,6 +761,19 @@ Future<GetTagValueResult> getTagValue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagvalueiampolicy" "policy" {
+///   tag_value = value.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -688,8 +782,8 @@ Future<GetTagValueResult> getTagValue(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,7 +796,7 @@ Future<GetTagValueResult> getTagValue(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-///             .tagValue(value.name())
+///             .tagValue(value.get("name"))
 ///             .build());
 ///
 ///     }
@@ -785,6 +879,19 @@ Future<GetTagValueIamPolicyResult> getTagValueIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tags_gettagvalues" "environmentTagValues" {
+///   parent = "tagKeys/56789"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -793,8 +900,8 @@ Future<GetTagValueIamPolicyResult> getTagValueIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagsFunctions;
 /// import com.pulumi.gcp.tags.inputs.GetTagValuesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

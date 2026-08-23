@@ -6,6 +6,13 @@ import 'inbound_saml_config_sp_config.dart';
 
 /// Input properties used for looking up and filtering InboundSamlConfig resources.
 class InboundSamlConfigState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human friendly display name.
   final pulumi.Input<String>? displayName;
   /// If this config allows users to sign in with the provider.
@@ -26,6 +33,7 @@ class InboundSamlConfigState {
   final pulumi.Input<InboundSamlConfigSpConfig>? spConfig;
 
   /// Creates a new [InboundSamlConfigState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Human friendly display name.
   /// [enabled] If this config allows users to sign in with the provider.
   /// [idpConfig] SAML IdP configuration when the project acts as the relying party
@@ -33,6 +41,7 @@ class InboundSamlConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [spConfig] SAML SP (Service Provider) configuration when the project acts as the relying party to receive
   const InboundSamlConfigState({
+    this.deletionPolicy,
     this.displayName,
     this.enabled,
     this.idpConfig,
@@ -43,6 +52,7 @@ class InboundSamlConfigState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'enabled': ?enabled,
       'idpConfig': ?pulumi.Input.mapOptionalInputValue<InboundSamlConfigIdpConfig, Map<String, dynamic>>(idpConfig, (value) => value.toMap()),
@@ -54,6 +64,7 @@ class InboundSamlConfigState {
 
   factory InboundSamlConfigState.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       idpConfig: (() { final guardedValue = map['idpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -63,4 +74,3 @@ class InboundSamlConfigState {
     );
   }
 }
-

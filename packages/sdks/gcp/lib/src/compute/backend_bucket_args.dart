@@ -19,6 +19,13 @@ class BackendBucketArgs {
   final pulumi.Input<String>? compressionMode;
   /// Headers that the HTTP/S load balancer should add to proxied responses.
   final pulumi.Input<List<String>>? customResponseHeaders;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional textual description of the resource; provided by the
   /// client when the resource is created.
   final pulumi.Input<String>? description;
@@ -52,6 +59,7 @@ class BackendBucketArgs {
   /// [cdnPolicy] Cloud CDN configuration for this Backend Bucket.
   /// [compressionMode] Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
   /// [customResponseHeaders] Headers that the HTTP/S load balancer should add to proxied responses.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional textual description of the resource; provided by the
   /// [edgeSecurityPolicy] The security policy associated with this backend bucket.
   /// [enableCdn] If true, enable Cloud CDN for this BackendBucket.
@@ -64,6 +72,7 @@ class BackendBucketArgs {
     this.cdnPolicy,
     this.compressionMode,
     this.customResponseHeaders,
+    this.deletionPolicy,
     this.description,
     this.edgeSecurityPolicy,
     this.enableCdn,
@@ -79,6 +88,7 @@ class BackendBucketArgs {
       'cdnPolicy': ?pulumi.Input.mapOptionalInputValue<BackendBucketCdnPolicy, Map<String, dynamic>>(cdnPolicy, (value) => value.toMap()),
       'compressionMode': ?compressionMode,
       'customResponseHeaders': ?customResponseHeaders,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'edgeSecurityPolicy': ?edgeSecurityPolicy,
       'enableCdn': ?enableCdn,
@@ -95,6 +105,7 @@ class BackendBucketArgs {
       cdnPolicy: (() { final guardedValue = map['cdnPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendBucketCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compressionMode: (() { final guardedValue = map['compressionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customResponseHeaders: (() { final guardedValue = map['customResponseHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edgeSecurityPolicy: (() { final guardedValue = map['edgeSecurityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableCdn: (() { final guardedValue = map['enableCdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -105,4 +116,3 @@ class BackendBucketArgs {
     );
   }
 }
-

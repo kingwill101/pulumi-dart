@@ -179,6 +179,39 @@ import 'target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_target" "primary" {
+///   location          = "us-west1"
+///   name              = "target"
+///   deploy_parameters = {}
+///   description       = "multi-target description"
+///   execution_configs {
+///     usages            = ["RENDER", "DEPLOY"]
+///     execution_timeout = "3600s"
+///   }
+///   multi_target = {
+///     target_ids = ["1", "2"]
+///   }
+///   project          = "my-project-name"
+///   require_approval = false
+///   annotations = {
+///     "my_first_annotation"  = "example-annotation-1"
+///     "my_second_annotation" = "example-annotation-2"
+///   }
+///   labels = {
+///     "my_first_label"  = "example-label-1"
+///     "my_second_label" = "example-label-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +222,8 @@ import 'target_state.dart';
 /// import com.pulumi.gcp.clouddeploy.TargetArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.TargetMultiTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -417,6 +450,39 @@ import 'target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_target" "primary" {
+///   location          = "us-west1"
+///   name              = "target"
+///   deploy_parameters = {}
+///   description       = "basic description"
+///   execution_configs {
+///     usages            = ["RENDER", "DEPLOY"]
+///     execution_timeout = "3600s"
+///   }
+///   project          = "my-project-name"
+///   require_approval = false
+///   run = {
+///     location = "projects/my-project-name/locations/us-west1"
+///   }
+///   annotations = {
+///     "my_first_annotation"  = "example-annotation-1"
+///     "my_second_annotation" = "example-annotation-2"
+///   }
+///   labels = {
+///     "my_first_label"  = "example-label-1"
+///     "my_second_label" = "example-label-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -427,8 +493,8 @@ import 'target_state.dart';
 /// import com.pulumi.gcp.clouddeploy.TargetArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.TargetRunArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -625,6 +691,37 @@ import 'target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_target" "primary" {
+///   location = "us-west1"
+///   name     = "target"
+///   deploy_parameters = {
+///     "deployParameterKey" = "deployParameterValue"
+///   }
+///   description = "basic description"
+///   gke = {
+///     cluster = "projects/my-project-name/locations/us-west1/clusters/example-cluster-name"
+///   }
+///   project          = "my-project-name"
+///   require_approval = false
+///   annotations = {
+///     "my_first_annotation"  = "example-annotation-1"
+///     "my_second_annotation" = "example-annotation-2"
+///   }
+///   labels = {
+///     "my_first_label"  = "example-label-1"
+///     "my_second_label" = "example-label-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -634,8 +731,8 @@ import 'target_state.dart';
 /// import com.pulumi.gcp.clouddeploy.Target;
 /// import com.pulumi.gcp.clouddeploy.TargetArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.TargetGkeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,31 +793,23 @@ import 'target_state.dart';
 /// ## Import
 ///
 /// Target can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/target:Target default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/target:Target default {{location}}/{{name}}
 /// ```
 class Target extends pulumi.CustomResource {
   /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Information specifying an Anthos Cluster.
   late final pulumi.Output<TargetAnthosCluster?> anthosCluster;
@@ -730,10 +819,18 @@ class Target extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Optional. Information specifying a Custom Target.
   late final pulumi.Output<TargetCustomTarget?> customTarget;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The deploy parameters to use for this target.
   late final pulumi.Output<Map<String, String>?> deployParameters;
   /// Optional. Description of the `Target`. Max length is 255 characters.
   late final pulumi.Output<String?> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -746,7 +843,7 @@ class Target extends pulumi.CustomResource {
   /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -792,6 +889,7 @@ class Target extends pulumi.CustomResource {
     associatedEntities = registerOutput<List<Map<String, dynamic>>?>('associatedEntities');
     createTime = registerOutput<String>('createTime');
     customTarget = registerOutput<TargetCustomTarget?>('customTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetCustomTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployParameters = registerOutput<Map<String, String>?>('deployParameters');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -840,6 +938,7 @@ class Target extends pulumi.CustomResource {
     associatedEntities = registerOutput<List<Map<String, dynamic>>?>('associatedEntities');
     createTime = registerOutput<String>('createTime');
     customTarget = registerOutput<TargetCustomTarget?>('customTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetCustomTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployParameters = registerOutput<Map<String, String>?>('deployParameters');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

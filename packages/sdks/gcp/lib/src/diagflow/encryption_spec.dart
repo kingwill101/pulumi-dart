@@ -73,7 +73,7 @@ import 'encryption_spec_state.dart';
 ///         text: gcpSa.member,
 ///         search: "@gcp-sa-dialogflow.iam",
 ///         replace: "@gcp-sa-ccai-cmek.iam",
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
 /// }, {
 ///     dependsOn: [waitCreateSa],
@@ -130,7 +130,7 @@ import 'encryption_spec_state.dart';
 ///     crypto_key_id=key.id,
 ///     member=std.replace_output(text=gcp_sa.member,
 ///         search="@gcp-sa-dialogflow.iam",
-///         replace="@gcp-sa-ccai-cmek.iam").apply(lambda invoke: invoke.result),
+///         replace="@gcp-sa-ccai-cmek.iam").result,
 ///     role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
 ///     opts = pulumi.ResourceOptions(depends_on=[wait_create_sa]))
 /// my_encryption_spec = gcp.diagflow.EncryptionSpec("my-encryption-spec",
@@ -340,21 +340,19 @@ import 'encryption_spec_state.dart';
 /// 		}
 /// 		key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-key"),
-/// 			KeyRing: keyring.ID(),
+/// 			KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: key.ID(),
-/// 			Member: pulumi.String(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+/// 			CryptoKeyId: key.ID().ToIDOutput().ToStringOutput(),
+/// 			Member: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
 /// 				Text:    gcpSa.Member,
 /// 				Search:  pulumi.String("@gcp-sa-dialogflow.iam"),
 /// 				Replace: pulumi.String("@gcp-sa-ccai-cmek.iam"),
-/// 			}, nil).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-/// 				return invoke.Result, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			Role: pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			waitCreateSa,
@@ -366,7 +364,7 @@ import 'encryption_spec_state.dart';
 /// 			Project:  project.ProjectId,
 /// 			Location: pulumi.String("us-central1"),
 /// 			EncryptionSpec: &diagflow.EncryptionSpecEncryptionSpecArgs{
-/// 				KmsKey: key.ID(),
+/// 				KmsKey: key.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			cryptoKey,
@@ -376,6 +374,75 @@ import 'encryption_spec_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-proj"
+///   name            = "my-proj"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "cloudkms" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "cloudkms.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "dialogflow" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "dialogflow.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_enable_service_api" {
+///   depends_on      = [gcp_projects_service.cloudkms, gcp_projects_service.dialogflow]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_projects_serviceidentity" "gcp_sa" {
+///   depends_on = [time_sleep.wait_enable_service_api]
+///   service    = "dialogflow.googleapis.com"
+///   project    = gcp_organizations_project.project.project_id
+/// }
+/// resource "time_sleep" "wait_create_sa" {
+///   depends_on      = [gcp_projects_serviceidentity.gcp_sa]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_kms_keyring" "keyring" {
+///   depends_on = [time_sleep.wait_enable_service_api]
+///   name       = "my-keyring"
+///   location   = "us-central1"
+///   project    = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_kms_cryptokey" "key" {
+///   name     = "my-key"
+///   key_ring = gcp_kms_keyring.keyring.id
+///   purpose  = "ENCRYPT_DECRYPT"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   depends_on    = [time_sleep.wait_create_sa]
+///   crypto_key_id = gcp_kms_cryptokey.key.id
+///   member        = replace(gcp_projects_serviceidentity.gcp_sa.member, "@gcp-sa-dialogflow.iam", "@gcp-sa-ccai-cmek.iam")
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+/// }
+/// resource "gcp_diagflow_encryptionspec" "my-encryption-spec" {
+///   depends_on = [gcp_kms_cryptokeyiammember.crypto_key]
+///   project    = gcp_organizations_project.project.project_id
+///   location   = "us-central1"
+///   encryption_spec = {
+///     kms_key = gcp_kms_cryptokey.key.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -404,8 +471,8 @@ import 'encryption_spec_state.dart';
 /// import com.pulumi.gcp.diagflow.EncryptionSpecArgs;
 /// import com.pulumi.gcp.diagflow.inputs.EncryptionSpecEncryptionSpecArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

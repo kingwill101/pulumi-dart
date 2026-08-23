@@ -62,6 +62,19 @@ import 'parameter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   parameter_id = "parameter"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'parameter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.Parameter;
 /// import com.pulumi.gcp.parametermanager.ParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,6 +169,20 @@ import 'parameter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-with-format" {
+///   parameter_id = "parameter"
+///   format       = "JSON"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +191,8 @@ import 'parameter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.Parameter;
 /// import com.pulumi.gcp.parametermanager.ParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,6 +304,26 @@ import 'parameter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-with-labels" {
+///   parameter_id = "parameter"
+///   labels = {
+///     "key1" = "val1"
+///     "key2" = "val2"
+///     "key3" = "val3"
+///     "key4" = "val4"
+///     "key5" = "val5"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +332,8 @@ import 'parameter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.Parameter;
 /// import com.pulumi.gcp.parametermanager.ParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,6 +440,23 @@ import 'parameter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-with-kms-key" {
+///   parameter_id = "parameter"
+///   kms_key      = "kms-key"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -403,8 +467,8 @@ import 'parameter_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.parametermanager.Parameter;
 /// import com.pulumi.gcp.parametermanager.ParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,27 +511,27 @@ import 'parameter_state.dart';
 /// Parameter can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
-///
 /// * `{{project}}/{{parameter_id}}`
-///
 /// * `{{parameter_id}}`
+///
 ///
 /// When using the `pulumi import` command, Parameter can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:parametermanager/parameter:Parameter default projects/{{project}}/locations/global/parameters/{{parameter_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:parametermanager/parameter:Parameter default {{project}}/{{parameter_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:parametermanager/parameter:Parameter default {{parameter_id}}
 /// ```
 class Parameter extends pulumi.CustomResource {
   /// The time at which the Parameter was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The format type of the parameter resource.
@@ -487,7 +551,7 @@ class Parameter extends pulumi.CustomResource {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name of the Parameter. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
@@ -521,6 +585,7 @@ class Parameter extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     format = registerOutput<String?>('format');
     kmsKey = registerOutput<String?>('kmsKey');
@@ -557,6 +622,7 @@ class Parameter extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     format = registerOutput<String?>('format');
     kmsKey = registerOutput<String?>('kmsKey');

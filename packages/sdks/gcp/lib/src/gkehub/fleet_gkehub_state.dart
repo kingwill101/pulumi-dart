@@ -13,6 +13,13 @@ class FleetGkehubState {
   final pulumi.Input<FleetDefaultClusterConfig>? defaultClusterConfig;
   /// The time the fleet was deleted, in RFC3339 text format.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
   final pulumi.Input<String>? displayName;
@@ -33,6 +40,7 @@ class FleetGkehubState {
   /// [createTime] The time the fleet was created, in RFC3339 text format.
   /// [defaultClusterConfig] The default cluster configurations to apply across the fleet.
   /// [deleteTime] The time the fleet was deleted, in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// [project] The ID of the project in which the resource belongs.
   /// [states] The state of the fleet resource.
@@ -42,6 +50,7 @@ class FleetGkehubState {
     this.createTime,
     this.defaultClusterConfig,
     this.deleteTime,
+    this.deletionPolicy,
     this.displayName,
     this.project,
     this.states,
@@ -54,6 +63,7 @@ class FleetGkehubState {
       'createTime': ?createTime,
       'defaultClusterConfig': ?pulumi.Input.mapOptionalInputValue<FleetDefaultClusterConfig, Map<String, dynamic>>(defaultClusterConfig, (value) => value.toMap()),
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'project': ?project,
       'states': ?pulumi.Input.mapOptionalInputValue<List<FleetState>, List<Map<String, dynamic>>>(states, (value) => pulumi.Input.encodeList<FleetState, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -67,6 +77,7 @@ class FleetGkehubState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultClusterConfig: (() { final guardedValue = map['defaultClusterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       states: (() { final guardedValue = map['states']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FleetState>(guardedValue, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -75,4 +86,3 @@ class FleetGkehubState {
     );
   }
 }
-

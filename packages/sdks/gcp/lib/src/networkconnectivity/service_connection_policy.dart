@@ -131,7 +131,7 @@ import 'service_connection_policy_state.dart';
 /// 			Name:        pulumi.String("producer-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -141,10 +141,10 @@ import 'service_connection_policy_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("my-basic-service-class"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      producerNet.ID(),
+/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID(),
+/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Limit: pulumi.String("2"),
 /// 			},
@@ -154,6 +154,37 @@ import 'service_connection_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "producer_net" {
+///   name                    = "producer-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   name          = "producer-subnet"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-network-connectivity-policy"
+///   location      = "us-central1"
+///   service_class = "my-basic-service-class"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.producer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.producer_subnet.id]
+///     limit       = 2
+///   }
 /// }
 /// ```
 /// ```java
@@ -169,8 +200,8 @@ import 'service_connection_policy_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
 /// import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,27 +276,27 @@ import 'service_connection_policy_state.dart';
 /// ServiceConnectionPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{location}}/{{name}}
 /// ```
 class ServiceConnectionPolicy extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Free-text description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -277,7 +308,7 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the ServiceConnectionPolicy.
   late final pulumi.Output<String> location;
@@ -298,7 +329,8 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-  /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+  /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
+  /// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
   late final pulumi.Output<String> serviceClass;
   /// The timestamp when the resource was updated.
   late final pulumi.Output<String> updateTime;
@@ -318,6 +350,7 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -358,6 +391,7 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');

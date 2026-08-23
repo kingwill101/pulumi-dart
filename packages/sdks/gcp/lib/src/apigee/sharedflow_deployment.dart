@@ -16,27 +16,30 @@ import 'sharedflow_deployment_state.dart';
 /// SharedflowDeployment can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}`
-///
 /// * `{{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, SharedflowDeployment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default {{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}
 /// ```
 class SharedflowDeployment extends pulumi.CustomResource {
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  late final pulumi.Output<String> deletionPolicy;
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
   /// The Apigee Organization associated with the Sharedflow
   late final pulumi.Output<String> orgId;
   /// Revision of the Sharedflow to be deployed.
-  ///
-  ///
-  /// - - -
   late final pulumi.Output<String> revision;
   /// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   late final pulumi.Output<String?> serviceAccount;
@@ -57,6 +60,7 @@ class SharedflowDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');
     revision = registerOutput<String>('revision');
@@ -87,6 +91,7 @@ class SharedflowDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');
     revision = registerOutput<String>('revision');

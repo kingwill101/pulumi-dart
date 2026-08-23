@@ -10,6 +10,13 @@ class VpcFlowLogsConfigArgs {
   /// Optional. The aggregation interval for the logs. Default value is
   /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
   final pulumi.Input<String>? aggregationInterval;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
   /// of 512 characters.
   final pulumi.Input<String>? description;
@@ -25,7 +32,7 @@ class VpcFlowLogsConfigArgs {
   /// Optional. Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource
   /// within its parent collection as described in https://google.aip.dev/122. See documentation
@@ -56,6 +63,7 @@ class VpcFlowLogsConfigArgs {
 
   /// Creates a new [VpcFlowLogsConfigArgs].
   /// [aggregationInterval] Optional. The aggregation interval for the logs. Default value is
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
   /// [filterExpr] Optional. Export filter used to define which VPC Flow Logs should be logged.
   /// [flowSampling] Optional. The value of the field must be in (0, 1]. The sampling rate
@@ -72,6 +80,7 @@ class VpcFlowLogsConfigArgs {
   /// [vpnTunnel] Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
   const VpcFlowLogsConfigArgs({
     this.aggregationInterval,
+    this.deletionPolicy,
     this.description,
     this.filterExpr,
     this.flowSampling,
@@ -91,6 +100,7 @@ class VpcFlowLogsConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aggregationInterval': ?aggregationInterval,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'filterExpr': ?filterExpr,
       'flowSampling': ?flowSampling,
@@ -111,6 +121,7 @@ class VpcFlowLogsConfigArgs {
   factory VpcFlowLogsConfigArgs.fromMap(Map<String, dynamic> map) {
     return VpcFlowLogsConfigArgs(
       aggregationInterval: (() { final guardedValue = map['aggregationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filterExpr: (() { final guardedValue = map['filterExpr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       flowSampling: (() { final guardedValue = map['flowSampling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
@@ -128,4 +139,3 @@ class VpcFlowLogsConfigArgs {
     );
   }
 }
-

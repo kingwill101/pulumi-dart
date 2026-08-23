@@ -252,7 +252,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
-/// 			EntryGroup:          entryGroup.ID(),
+/// 			EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			EntryId:             pulumi.String("my_entry"),
 /// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
 /// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -306,8 +306,8 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewTag(ctx, "basic_tag", &datacatalog.TagArgs{
-/// 			Parent:   entry.ID(),
-/// 			Template: tagTemplate.ID(),
+/// 			Parent:   entry.ID().ToIDOutput().ToStringOutput(),
+/// 			Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 			Fields: datacatalog.TagFieldArray{
 /// 				&datacatalog.TagFieldArgs{
 /// 					FieldName:   pulumi.String("source"),
@@ -320,6 +320,69 @@ import 'tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entry" "entry" {
+///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   entry_id              = "my_entry"
+///   user_specified_type   = "my_custom_type"
+///   user_specified_system = "SomethingExternal"
+/// }
+/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+///   entry_group_id = "my_entry_group"
+/// }
+/// resource "gcp_datacatalog_tagtemplate" "tag_template" {
+///   tag_template_id = "my_template"
+///   region          = "us-central1"
+///   display_name    = "Demo Tag Template"
+///   fields {
+///     field_id     = "source"
+///     display_name = "Source of data asset"
+///     type = {
+///       primitive_type = "STRING"
+///     }
+///     is_required = true
+///   }
+///   fields {
+///     field_id     = "num_rows"
+///     display_name = "Number of rows in the data asset"
+///     type = {
+///       primitive_type = "DOUBLE"
+///     }
+///   }
+///   fields {
+///     field_id     = "pii_type"
+///     display_name = "PII type"
+///     type = {
+///       enum_type = {
+///         allowed_values = [{
+///           "displayName" = "EMAIL"
+///           }, {
+///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           }, {
+///           "displayName" = "NONE"
+///         }]
+///       }
+///     }
+///   }
+///   force_delete = "false"
+/// }
+/// resource "gcp_datacatalog_tag" "basic_tag" {
+///   parent   = gcp_datacatalog_entry.entry.id
+///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   fields {
+///     field_name   = "source"
+///     string_value = "my-string"
+///   }
 /// }
 /// ```
 /// ```java
@@ -337,11 +400,12 @@ import 'tag_state.dart';
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
+/// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs;
 /// import com.pulumi.gcp.datacatalog.Tag;
 /// import com.pulumi.gcp.datacatalog.TagArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagFieldArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -722,7 +786,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewEntry(ctx, "first_entry", &datacatalog.EntryArgs{
-/// 			EntryGroup:          entryGroup.ID(),
+/// 			EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			EntryId:             pulumi.String("first_entry"),
 /// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
 /// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -731,7 +795,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewEntry(ctx, "second_entry", &datacatalog.EntryArgs{
-/// 			EntryGroup:          entryGroup.ID(),
+/// 			EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			EntryId:             pulumi.String("second_entry"),
 /// 			UserSpecifiedType:   pulumi.String("another_custom_type"),
 /// 			UserSpecifiedSystem: pulumi.String("SomethingElseExternal"),
@@ -785,8 +849,8 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewTag(ctx, "entry_group_tag", &datacatalog.TagArgs{
-/// 			Parent:   entryGroup.ID(),
-/// 			Template: tagTemplate.ID(),
+/// 			Parent:   entryGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 			Fields: datacatalog.TagFieldArray{
 /// 				&datacatalog.TagFieldArgs{
 /// 					FieldName:   pulumi.String("source"),
@@ -799,6 +863,75 @@ import 'tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entry" "first_entry" {
+///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   entry_id              = "first_entry"
+///   user_specified_type   = "my_custom_type"
+///   user_specified_system = "SomethingExternal"
+/// }
+/// resource "gcp_datacatalog_entry" "second_entry" {
+///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   entry_id              = "second_entry"
+///   user_specified_type   = "another_custom_type"
+///   user_specified_system = "SomethingElseExternal"
+/// }
+/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+///   entry_group_id = "my_entry_group"
+/// }
+/// resource "gcp_datacatalog_tagtemplate" "tag_template" {
+///   tag_template_id = "my_template"
+///   region          = "us-central1"
+///   display_name    = "Demo Tag Template"
+///   fields {
+///     field_id     = "source"
+///     display_name = "Source of data asset"
+///     type = {
+///       primitive_type = "STRING"
+///     }
+///     is_required = true
+///   }
+///   fields {
+///     field_id     = "num_rows"
+///     display_name = "Number of rows in the data asset"
+///     type = {
+///       primitive_type = "DOUBLE"
+///     }
+///   }
+///   fields {
+///     field_id     = "pii_type"
+///     display_name = "PII type"
+///     type = {
+///       enum_type = {
+///         allowed_values = [{
+///           "displayName" = "EMAIL"
+///           }, {
+///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           }, {
+///           "displayName" = "NONE"
+///         }]
+///       }
+///     }
+///   }
+///   force_delete = "false"
+/// }
+/// resource "gcp_datacatalog_tag" "entry_group_tag" {
+///   parent   = gcp_datacatalog_entrygroup.entry_group.id
+///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   fields {
+///     field_name   = "source"
+///     string_value = "my-string"
+///   }
 /// }
 /// ```
 /// ```java
@@ -816,11 +949,12 @@ import 'tag_state.dart';
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
+/// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs;
 /// import com.pulumi.gcp.datacatalog.Tag;
 /// import com.pulumi.gcp.datacatalog.TagArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagFieldArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1190,7 +1324,7 @@ import 'tag_state.dart';
 ///         },
 ///         {
 ///             "field_name": "num_rows",
-///             "double_value": 5,
+///             "double_value": float(5),
 ///         },
 ///         {
 ///             "field_name": "pii_type",
@@ -1341,7 +1475,7 @@ import 'tag_state.dart';
 ///             new Gcp.DataCatalog.Inputs.TagFieldArgs
 ///             {
 ///                 FieldName = "num_rows",
-///                 DoubleValue = 5,
+///                 DoubleValue = 5.0,
 ///             },
 ///             new Gcp.DataCatalog.Inputs.TagFieldArgs
 ///             {
@@ -1391,7 +1525,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
-/// 			EntryGroup:          entryGroup.ID(),
+/// 			EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			EntryId:             pulumi.String("my_entry"),
 /// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
 /// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -1482,8 +1616,8 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewTag(ctx, "basic_tag", &datacatalog.TagArgs{
-/// 			Parent:   entry.ID(),
-/// 			Template: tagTemplate.ID(),
+/// 			Parent:   entry.ID().ToIDOutput().ToStringOutput(),
+/// 			Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 			Fields: datacatalog.TagFieldArray{
 /// 				&datacatalog.TagFieldArgs{
 /// 					FieldName:   pulumi.String("source"),
@@ -1504,8 +1638,8 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewTag(ctx, "second-tag", &datacatalog.TagArgs{
-/// 			Parent:   entry.ID(),
-/// 			Template: tagTemplate.ID(),
+/// 			Parent:   entry.ID().ToIDOutput().ToStringOutput(),
+/// 			Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 			Fields: datacatalog.TagFieldArray{
 /// 				&datacatalog.TagFieldArgs{
 /// 					FieldName:   pulumi.String("source"),
@@ -1525,6 +1659,92 @@ import 'tag_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entry" "entry" {
+///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   entry_id              = "my_entry"
+///   user_specified_type   = "my_custom_type"
+///   user_specified_system = "SomethingExternal"
+///   schema                = "{\n  \\\"columns\\\": [\n    {\n      \\\"column\\\": \\\"first_name\\\",\n      \\\"description\\\": \\\"First name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"last_name\\\",\n      \\\"description\\\": \\\"Last name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"address\\\",\n      \\\"description\\\": \\\"Address\\\",\n      \\\"mode\\\": \\\"REPEATED\\\",\n      \\\"subcolumns\\\": [\n        {\n          \\\"column\\\": \\\"city\\\",\n          \\\"description\\\": \\\"City\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        },\n        {\n          \\\"column\\\": \\\"state\\\",\n          \\\"description\\\": \\\"State\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        }\n      ],\n      \\\"type\\\": \\\"RECORD\\\"\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+///   entry_group_id = "my_entry_group"
+/// }
+/// resource "gcp_datacatalog_tagtemplate" "tag_template" {
+///   tag_template_id = "my_template"
+///   region          = "us-central1"
+///   display_name    = "Demo Tag Template"
+///   fields {
+///     field_id     = "source"
+///     display_name = "Source of data asset"
+///     type = {
+///       primitive_type = "STRING"
+///     }
+///     is_required = true
+///   }
+///   fields {
+///     field_id     = "num_rows"
+///     display_name = "Number of rows in the data asset"
+///     type = {
+///       primitive_type = "DOUBLE"
+///     }
+///   }
+///   fields {
+///     field_id     = "pii_type"
+///     display_name = "PII type"
+///     type = {
+///       enum_type = {
+///         allowed_values = [{
+///           "displayName" = "EMAIL"
+///           }, {
+///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           }, {
+///           "displayName" = "NONE"
+///         }]
+///       }
+///     }
+///   }
+///   force_delete = "false"
+/// }
+/// resource "gcp_datacatalog_tag" "basic_tag" {
+///   parent   = gcp_datacatalog_entry.entry.id
+///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   fields {
+///     field_name   = "source"
+///     string_value = "my-string"
+///   }
+///   fields {
+///     field_name   = "num_rows"
+///     double_value = 5
+///   }
+///   fields {
+///     field_name = "pii_type"
+///     enum_value = "EMAIL"
+///   }
+///   column = "address"
+/// }
+/// resource "gcp_datacatalog_tag" "second-tag" {
+///   parent   = gcp_datacatalog_entry.entry.id
+///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   fields {
+///     field_name   = "source"
+///     string_value = "my-string"
+///   }
+///   fields {
+///     field_name = "pii_type"
+///     enum_value = "NONE"
+///   }
+///   column = "first_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1540,11 +1760,12 @@ import 'tag_state.dart';
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
+/// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs;
 /// import com.pulumi.gcp.datacatalog.Tag;
 /// import com.pulumi.gcp.datacatalog.TagArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagFieldArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1794,6 +2015,7 @@ import 'tag_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Tag can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -1805,6 +2027,13 @@ class Tag extends pulumi.CustomResource {
   /// For attaching a tag to a nested column, use `.` to separate the column names. Example:
   /// `outer_column.inner_column`
   late final pulumi.Output<String?> column;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// This maps the ID of a tag field to the value of and additional information about that field.
   /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
   /// Structure is documented below.
@@ -1812,7 +2041,7 @@ class Tag extends pulumi.CustomResource {
   /// The resource name of the tag in URL format. Example:
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
-  /// where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
+  /// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
   late final pulumi.Output<String> name;
   /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
   /// all entries in that group.
@@ -1839,6 +2068,7 @@ class Tag extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     column = registerOutput<String?>('column');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
@@ -1870,6 +2100,7 @@ class Tag extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     column = registerOutput<String?>('column');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');

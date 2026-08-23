@@ -293,7 +293,7 @@ import 'settings_state.dart';
 /// 		_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                         pulumi.String("iap-settings-tf"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			HealthChecks:                 defaultHealthCheck.ID(),
+/// 			HealthChecks:                 defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 /// 			SessionAffinity:              pulumi.String("CLIENT_IP"),
 /// 		})
@@ -362,6 +362,81 @@ import 'settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                            = "iap-settings-tf"
+///   region                          = "us-central1"
+///   health_checks                   = gcp_compute_healthcheck.default.id
+///   connection_draining_timeout_sec = 10
+///   session_affinity                = "CLIENT_IP"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "iap-bs-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_iap_settings" "iap_settings" {
+///   name ="projects/${data.gcp_organizations_getproject.project.number}/iap_web/compute-us-central1/services/${gcp_compute_regionbackendservice.default.name}"
+///   access_settings = {
+///     identity_sources = ["WORKFORCE_IDENTITY_FEDERATION"]
+///     allowed_domains_settings = {
+///       domains = ["test.abc.com"]
+///       enable  = true
+///     }
+///     cors_settings = {
+///       allow_http_options = true
+///     }
+///     reauth_settings = {
+///       method      = "SECURE_KEY"
+///       max_age     = "305s"
+///       policy_type = "MINIMUM"
+///     }
+///     gcip_settings = {
+///       login_page_uri = "https://test.com/?apiKey=abc"
+///     }
+///     oauth_settings = {
+///       login_hint = "test"
+///     }
+///     workforce_identity_settings = {
+///       workforce_pools = "wif-pool"
+///       oauth2 = {
+///         client_id     = "test-client-id"
+///         client_secret = "test-client-secret"
+///       }
+///     }
+///   }
+///   application_settings = {
+///     cookie_domain = "test.abc.com"
+///     csm_settings = {
+///       rctoken_aud = "test-aud-set"
+///     }
+///     access_denied_page_settings = {
+///       access_denied_page_uri               = "test-uri"
+///       generate_troubleshooting_uri         = true
+///       remediation_token_generation_enabled = false
+///     }
+///     attribute_propagation_settings = {
+///       output_credentials = ["HEADER"]
+///       expression         = "attributes.saml_attributes.filter(attribute, attribute.name in [\"test1\", \"test2\"])"
+///       enable             = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -389,8 +464,8 @@ import 'settings_state.dart';
 /// import com.pulumi.gcp.iap.inputs.SettingsApplicationSettingsCsmSettingsArgs;
 /// import com.pulumi.gcp.iap.inputs.SettingsApplicationSettingsAccessDeniedPageSettingsArgs;
 /// import com.pulumi.gcp.iap.inputs.SettingsApplicationSettingsAttributePropagationSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -539,22 +614,322 @@ import 'settings_state.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Iap Settings Oauth Storage
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+///     name: "iap-bs-health-check-oauth",
+///     checkIntervalSec: 1,
+///     timeoutSec: 1,
+///     tcpHealthCheck: {
+///         port: 80,
+///     },
+/// });
+/// const _default = new gcp.compute.RegionBackendService("default", {
+///     name: "iap-settings-oauth",
+///     region: "us-central1",
+///     healthChecks: defaultHealthCheck.id,
+///     connectionDrainingTimeoutSec: 10,
+///     sessionAffinity: "CLIENT_IP",
+/// });
+/// const iapSettingsOauth = new gcp.iap.Settings("iap_settings_oauth", {
+///     name: pulumi.all([project, _default.name]).apply(([project, name]) => `projects/${project.number}/iap_web/compute-us-central1/services/${name}`),
+///     accessSettings: {
+///         oauthSettings: {
+///             clientId: "test-client-id",
+///             clientSecret: "test-client-secret",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// default_health_check = gcp.compute.HealthCheck("default",
+///     name="iap-bs-health-check-oauth",
+///     check_interval_sec=1,
+///     timeout_sec=1,
+///     tcp_health_check={
+///         "port": 80,
+///     })
+/// default = gcp.compute.RegionBackendService("default",
+///     name="iap-settings-oauth",
+///     region="us-central1",
+///     health_checks=default_health_check.id,
+///     connection_draining_timeout_sec=10,
+///     session_affinity="CLIENT_IP")
+/// iap_settings_oauth = gcp.iap.Settings("iap_settings_oauth",
+///     name=default.name.apply(lambda name: f"projects/{project.number}/iap_web/compute-us-central1/services/{name}"),
+///     access_settings={
+///         "oauth_settings": {
+///             "client_id": "test-client-id",
+///             "client_secret": "test-client-secret",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+///     {
+///         Name = "iap-bs-health-check-oauth",
+///         CheckIntervalSec = 1,
+///         TimeoutSec = 1,
+///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
+///     });
+///
+///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+///     {
+///         Name = "iap-settings-oauth",
+///         Region = "us-central1",
+///         HealthChecks = defaultHealthCheck.Id,
+///         ConnectionDrainingTimeoutSec = 10,
+///         SessionAffinity = "CLIENT_IP",
+///     });
+///
+///     var iapSettingsOauth = new Gcp.Iap.Settings("iap_settings_oauth", new()
+///     {
+///         Name = Output.Tuple(project, @default.Name).Apply(values =>
+///         {
+///             var project = values.Item1;
+///             var name = values.Item2;
+///             return $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}/iap_web/compute-us-central1/services/{name}";
+///         }),
+///         AccessSettings = new Gcp.Iap.Inputs.SettingsAccessSettingsArgs
+///         {
+///             OauthSettings = new Gcp.Iap.Inputs.SettingsAccessSettingsOauthSettingsArgs
+///             {
+///                 ClientId = "test-client-id",
+///                 ClientSecret = "test-client-secret",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name:             pulumi.String("iap-bs-health-check-oauth"),
+/// 			CheckIntervalSec: pulumi.Int(1),
+/// 			TimeoutSec:       pulumi.Int(1),
+/// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+/// 			Name:                         pulumi.String("iap-settings-oauth"),
+/// 			Region:                       pulumi.String("us-central1"),
+/// 			HealthChecks:                 defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
+/// 			SessionAffinity:              pulumi.String("CLIENT_IP"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iap.NewSettings(ctx, "iap_settings_oauth", &iap.SettingsArgs{
+/// 			Name: _default.Name.ApplyT(func(name string) (string, error) {
+/// 				return fmt.Sprintf("projects/%v/iap_web/compute-us-central1/services/%v", project.Number, name), nil
+/// 			}).(pulumi.StringOutput),
+/// 			AccessSettings: &iap.SettingsAccessSettingsArgs{
+/// 				OauthSettings: &iap.SettingsAccessSettingsOauthSettingsArgs{
+/// 					ClientId:     pulumi.String("test-client-id"),
+/// 					ClientSecret: pulumi.String("test-client-secret"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                            = "iap-settings-oauth"
+///   region                          = "us-central1"
+///   health_checks                   = gcp_compute_healthcheck.default.id
+///   connection_draining_timeout_sec = 10
+///   session_affinity                = "CLIENT_IP"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "iap-bs-health-check-oauth"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_iap_settings" "iap_settings_oauth" {
+///   name ="projects/${data.gcp_organizations_getproject.project.number}/iap_web/compute-us-central1/services/${gcp_compute_regionbackendservice.default.name}"
+///   access_settings = {
+///     oauth_settings = {
+///       client_id     = "test-client-id"
+///       client_secret = "test-client-secret"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import com.pulumi.gcp.iap.Settings;
+/// import com.pulumi.gcp.iap.SettingsArgs;
+/// import com.pulumi.gcp.iap.inputs.SettingsAccessSettingsArgs;
+/// import com.pulumi.gcp.iap.inputs.SettingsAccessSettingsOauthSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+///             .name("iap-bs-health-check-oauth")
+///             .checkIntervalSec(1)
+///             .timeoutSec(1)
+///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
+///             .build());
+///
+///         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+///             .name("iap-settings-oauth")
+///             .region("us-central1")
+///             .healthChecks(defaultHealthCheck.id())
+///             .connectionDrainingTimeoutSec(10)
+///             .sessionAffinity("CLIENT_IP")
+///             .build());
+///
+///         var iapSettingsOauth = new Settings("iapSettingsOauth", SettingsArgs.builder()
+///             .name(default_.name().applyValue(_name -> String.format("projects/%s/iap_web/compute-us-central1/services/%s", project.number(),_name)))
+///             .accessSettings(SettingsAccessSettingsArgs.builder()
+///                 .oauthSettings(SettingsAccessSettingsOauthSettingsArgs.builder()
+///                     .clientId("test-client-id")
+///                     .clientSecret("test-client-secret")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:RegionBackendService
+///     properties:
+///       name: iap-settings-oauth
+///       region: us-central1
+///       healthChecks: ${defaultHealthCheck.id}
+///       connectionDrainingTimeoutSec: 10
+///       sessionAffinity: CLIENT_IP
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
+///     name: default
+///     properties:
+///       name: iap-bs-health-check-oauth
+///       checkIntervalSec: 1
+///       timeoutSec: 1
+///       tcpHealthCheck:
+///         port: '80'
+///   iapSettingsOauth:
+///     type: gcp:iap:Settings
+///     name: iap_settings_oauth
+///     properties:
+///       name: projects/${project.number}/iap_web/compute-us-central1/services/${default.name}
+///       accessSettings:
+///         oauthSettings:
+///           clientId: test-client-id
+///           clientSecret: test-client-secret
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Settings can be imported using any of these accepted formats:
 ///
 /// * `{{name}}/iapSettings`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Settings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iap/settings:Settings default {{name}}/iapSettings
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iap/settings:Settings default {{name}}
 /// ```
 class Settings extends pulumi.CustomResource {
@@ -564,6 +939,13 @@ class Settings extends pulumi.CustomResource {
   /// Top level wrapper for all application related settings in IAP.
   /// Structure is documented below.
   late final pulumi.Output<SettingsApplicationSettings?> applicationSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The resource name of the IAP protected resource. Name can have below resources:
   /// * organizations/{organization_id}
   /// * folders/{folder_id}
@@ -594,6 +976,7 @@ class Settings extends pulumi.CustomResource {
         ) {
     accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
   }
 
@@ -622,6 +1005,7 @@ class Settings extends pulumi.CustomResource {
         ) {
     accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
   }
 }

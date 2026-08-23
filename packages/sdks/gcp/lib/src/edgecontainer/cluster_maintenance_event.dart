@@ -9,7 +9,7 @@ class ClusterMaintenanceEvent {
   /// (Output)
   /// The time when the maintenance event ended, either successfully or not. If
   /// the maintenance event is split into multiple maintenance windows,
-  /// end_time is only updated when the whole flow ends.
+  /// endTime is only updated when the whole flow ends.
   final pulumi.Input<String>? endTime;
   /// (Output)
   /// The operation for running the maintenance event. Specified in the format
@@ -92,4 +92,3 @@ class ClusterMaintenanceEvent {
     );
   }
 }
-

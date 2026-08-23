@@ -12,6 +12,13 @@ class AppProfileState {
   /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
   /// Structure is documented below.
   final pulumi.Input<AppProfileDataBoostIsolationReadOnly>? dataBoostIsolationReadOnly;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Long form description of the use case for this app profile.
   final pulumi.Input<String>? description;
   /// If true, ignore safety checks when deleting/updating the app profile.
@@ -41,6 +48,7 @@ class AppProfileState {
   /// Creates a new [AppProfileState].
   /// [appProfileId] The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   /// [dataBoostIsolationReadOnly] Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Long form description of the use case for this app profile.
   /// [ignoreWarnings] If true, ignore safety checks when deleting/updating the app profile.
   /// [instance] The name of the instance to create the app profile within.
@@ -54,6 +62,7 @@ class AppProfileState {
   const AppProfileState({
     this.appProfileId,
     this.dataBoostIsolationReadOnly,
+    this.deletionPolicy,
     this.description,
     this.ignoreWarnings,
     this.instance,
@@ -70,6 +79,7 @@ class AppProfileState {
     return <String, dynamic>{
       'appProfileId': ?appProfileId,
       'dataBoostIsolationReadOnly': ?pulumi.Input.mapOptionalInputValue<AppProfileDataBoostIsolationReadOnly, Map<String, dynamic>>(dataBoostIsolationReadOnly, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'ignoreWarnings': ?ignoreWarnings,
       'instance': ?instance,
@@ -87,6 +97,7 @@ class AppProfileState {
     return AppProfileState(
       appProfileId: (() { final guardedValue = map['appProfileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataBoostIsolationReadOnly: (() { final guardedValue = map['dataBoostIsolationReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppProfileDataBoostIsolationReadOnly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ignoreWarnings: (() { final guardedValue = map['ignoreWarnings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -100,4 +111,3 @@ class AppProfileState {
     );
   }
 }
-

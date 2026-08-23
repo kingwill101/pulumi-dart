@@ -82,6 +82,22 @@ import 'cx_security_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxsecuritysettings" "basic_security_settings" {
+///   display_name          = "dialogflowcx-security-settings"
+///   location              = "global"
+///   purge_data_types      = []
+///   retention_window_days = 7
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +106,8 @@ import 'cx_security_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.diagflow.CxSecuritySettings;
 /// import com.pulumi.gcp.diagflow.CxSecuritySettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,13 +399,13 @@ import 'cx_security_settings_state.dart';
 /// 			Location:           pulumi.String("global"),
 /// 			RedactionStrategy:  pulumi.String("REDACT_WITH_SERVICE"),
 /// 			RedactionScope:     pulumi.String("REDACT_DISK_STORAGE"),
-/// 			InspectTemplate:    inspect.ID(),
-/// 			DeidentifyTemplate: deidentify.ID(),
+/// 			InspectTemplate:    inspect.ID().ToIDOutput().ToStringOutput(),
+/// 			DeidentifyTemplate: deidentify.ID().ToIDOutput().ToStringOutput(),
 /// 			PurgeDataTypes: pulumi.StringArray{
 /// 				pulumi.String("DIALOGFLOW_HISTORY"),
 /// 			},
 /// 			AudioExportSettings: &diagflow.CxSecuritySettingsAudioExportSettingsArgs{
-/// 				GcsBucket:            bucket.ID(),
+/// 				GcsBucket:            bucket.ID().ToIDOutput().ToStringOutput(),
 /// 				AudioExportPattern:   pulumi.String("export"),
 /// 				EnableAudioRedaction: pulumi.Bool(true),
 /// 				AudioFormat:          pulumi.String("OGG"),
@@ -406,6 +422,66 @@ import 'cx_security_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventioninspecttemplate" "inspect" {
+///   parent       = "projects/my-project-name/locations/global"
+///   display_name = "dialogflowcx-inspect-template"
+///   inspect_config = {
+///     info_types = [{
+///       "name" = "EMAIL_ADDRESS"
+///     }]
+///   }
+/// }
+/// resource "gcp_dataloss_preventiondeidentifytemplate" "deidentify" {
+///   parent       = "projects/my-project-name/locations/global"
+///   display_name = "dialogflowcx-deidentify-template"
+///   deidentify_config = {
+///     info_type_transformations = {
+///       transformations = [{
+///         "primitiveTransformation" = {
+///           "replaceConfig" = {
+///             "newValue" = {
+///               "stringValue" = "[REDACTED]"
+///             }
+///           }
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "dialogflowcx-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_diagflow_cxsecuritysettings" "basic_security_settings" {
+///   display_name        = "dialogflowcx-security-settings"
+///   location            = "global"
+///   redaction_strategy  = "REDACT_WITH_SERVICE"
+///   redaction_scope     = "REDACT_DISK_STORAGE"
+///   inspect_template    = gcp_dataloss_preventioninspecttemplate.inspect.id
+///   deidentify_template = gcp_dataloss_preventiondeidentifytemplate.deidentify.id
+///   purge_data_types    = ["DIALOGFLOW_HISTORY"]
+///   audio_export_settings = {
+///     gcs_bucket             = gcp_storage_bucket.bucket.id
+///     audio_export_pattern   = "export"
+///     enable_audio_redaction = true
+///     audio_format           = "OGG"
+///   }
+///   insights_export_settings = {
+///     enable_insights_export = true
+///   }
+///   retention_strategy = "REMOVE_AFTER_CONVERSATION"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -415,18 +491,23 @@ import 'cx_security_settings_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplate;
 /// import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs;
 /// import com.pulumi.gcp.storage.Bucket;
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.diagflow.CxSecuritySettings;
 /// import com.pulumi.gcp.diagflow.CxSecuritySettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxSecuritySettingsAudioExportSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxSecuritySettingsInsightsExportSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -551,27 +632,20 @@ import 'cx_security_settings_state.dart';
 /// SecuritySettings can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default projects/{{project}}/locations/{{location}}/securitySettings/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default {{location}}/{{name}}
 /// ```
 class CxSecuritySettings extends pulumi.CustomResource {
   /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
-  /// If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
+  /// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION or gcsBucket is empty, audio export is disabled.
   /// If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
   /// This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
   /// Structure is documented below.
@@ -580,6 +654,13 @@ class CxSecuritySettings extends pulumi.CustomResource {
   /// Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/deidentifyTemplates/&lt;Template ID&gt; OR organizations/&lt;Organization ID&gt;/locations/&lt;Location ID&gt;/deidentifyTemplates/&lt;Template ID&gt;
   late final pulumi.Output<String?> deidentifyTemplate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human-readable name of the security settings, unique within the location.
   late final pulumi.Output<String> displayName;
   /// Controls conversation exporting settings to Insights after conversation is completed.
@@ -610,12 +691,12 @@ class CxSecuritySettings extends pulumi.CustomResource {
   /// * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
   /// Possible values are: `REDACT_WITH_SERVICE`.
   late final pulumi.Output<String?> redactionStrategy;
-  /// Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+  /// Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
   /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
   /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
   late final pulumi.Output<String?> retentionStrategy;
   /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-  /// Only one of `retention_window_days` and `retention_strategy` may be set.
+  /// Only one of `retentionWindowDays` and `retentionStrategy` may be set.
   late final pulumi.Output<int?> retentionWindowDays;
 
   /// Creates a new [CxSecuritySettings].
@@ -634,6 +715,7 @@ class CxSecuritySettings extends pulumi.CustomResource {
         ) {
     audioExportSettings = registerOutput<CxSecuritySettingsAudioExportSettings?>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     insightsExportSettings = registerOutput<CxSecuritySettingsInsightsExportSettings?>('insightsExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsInsightsExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inspectTemplate = registerOutput<String?>('inspectTemplate');
@@ -672,6 +754,7 @@ class CxSecuritySettings extends pulumi.CustomResource {
         ) {
     audioExportSettings = registerOutput<CxSecuritySettingsAudioExportSettings?>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     insightsExportSettings = registerOutput<CxSecuritySettingsInsightsExportSettings?>('insightsExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsInsightsExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inspectTemplate = registerOutput<String?>('inspectTemplate');

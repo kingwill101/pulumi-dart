@@ -7,6 +7,7 @@ import 'get_network_policy_internet_access.dart';
 /// Result data returned by getNetworkPolicy.
 class GetNetworkPolicyResult {
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final String edgeServicesCidr;
   final List<GetNetworkPolicyExternalIp> externalIps;
@@ -23,6 +24,7 @@ class GetNetworkPolicyResult {
 
   /// Creates a new [GetNetworkPolicyResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [edgeServicesCidr] Required.
   /// [externalIps] Required.
@@ -37,6 +39,7 @@ class GetNetworkPolicyResult {
   /// [vmwareEngineNetworkCanonical] Required.
   const GetNetworkPolicyResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.edgeServicesCidr,
     required this.externalIps,
@@ -54,6 +57,7 @@ class GetNetworkPolicyResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'edgeServicesCidr': edgeServicesCidr,
       'externalIps': pulumi.Input.encodeList<GetNetworkPolicyExternalIp, Map<String, dynamic>>(externalIps, (value) => value.toMap()),
@@ -72,6 +76,7 @@ class GetNetworkPolicyResult {
   factory GetNetworkPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPolicyResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       edgeServicesCidr: map['edgeServicesCidr'] as String,
       externalIps: pulumi.Input.decodeList<GetNetworkPolicyExternalIp>(map['externalIps']!, (value) => GetNetworkPolicyExternalIp.fromMap((value as Map).cast<String, dynamic>())),
@@ -87,4 +92,3 @@ class GetNetworkPolicyResult {
     );
   }
 }
-

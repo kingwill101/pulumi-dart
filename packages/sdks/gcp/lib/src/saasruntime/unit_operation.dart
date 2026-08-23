@@ -593,7 +593,7 @@ import 'unit_operation_upgrade.dart';
 /// 		clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
 /// 			Location:       pulumi.String(location),
 /// 			UnitKindId:     pulumi.String("vm-unitkind"),
-/// 			Saas:           exampleSaas.ID(),
+/// 			Saas:           exampleSaas.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultRelease: pulumi.Sprintf("projects/my-project-name/locations/%v/releases/example-release", location),
 /// 		})
 /// 		if err != nil {
@@ -602,7 +602,7 @@ import 'unit_operation_upgrade.dart';
 /// 		exampleRelease, err := saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
 /// 			Location:  pulumi.String(location),
 /// 			ReleaseId: pulumi.String("example-release"),
-/// 			UnitKind:  clusterUnitKind.ID(),
+/// 			UnitKind:  clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
 /// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
 /// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
 /// 			},
@@ -613,7 +613,7 @@ import 'unit_operation_upgrade.dart';
 /// 		exampleUnit, err := saasruntime.NewUnit(ctx, "example_unit", &saasruntime.UnitArgs{
 /// 			Location: pulumi.String(location),
 /// 			UnitId:   pulumi.String("example-unit"),
-/// 			UnitKind: clusterUnitKind.ID(),
+/// 			UnitKind: clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -684,10 +684,10 @@ import 'unit_operation_upgrade.dart';
 /// 		provisionUnitOperation, err := saasruntime.NewUnitOperation(ctx, "provision_unit_operation", &saasruntime.UnitOperationArgs{
 /// 			Location:          pulumi.String(location),
 /// 			UnitOperationId:   pulumi.String("provision-unit-operation"),
-/// 			Unit:              exampleUnit.ID(),
+/// 			Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
 /// 			WaitForCompletion: pulumi.Bool(true),
 /// 			Provision: &saasruntime.UnitOperationProvisionArgs{
-/// 				Release: exampleRelease.ID(),
+/// 				Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
 /// 				InputVariables: saasruntime.UnitOperationProvisionInputVariableArray{
 /// 					&saasruntime.UnitOperationProvisionInputVariableArgs{
 /// 						Variable: pulumi.String("tenant_project_id"),
@@ -735,10 +735,10 @@ import 'unit_operation_upgrade.dart';
 /// 		noopUpgradeUnitOperation, err := saasruntime.NewUnitOperation(ctx, "noop_upgrade_unit_operation", &saasruntime.UnitOperationArgs{
 /// 			Location:          pulumi.String(location),
 /// 			UnitOperationId:   pulumi.String("upgrade-unit-operation"),
-/// 			Unit:              exampleUnit.ID(),
+/// 			Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
 /// 			WaitForCompletion: pulumi.Bool(true),
 /// 			Upgrade: &saasruntime.UnitOperationUpgradeArgs{
-/// 				Release: exampleRelease.ID(),
+/// 				Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
 /// 				InputVariables: saasruntime.UnitOperationUpgradeInputVariableArray{
 /// 					&saasruntime.UnitOperationUpgradeInputVariableArgs{
 /// 						Variable: pulumi.String("tenant_project_id"),
@@ -776,7 +776,7 @@ import 'unit_operation_upgrade.dart';
 /// 		_, err = saasruntime.NewUnitOperation(ctx, "deprovision_operation", &saasruntime.UnitOperationArgs{
 /// 			Location:          pulumi.String(location),
 /// 			UnitOperationId:   pulumi.String("deprovision-unit-operation"),
-/// 			Unit:              exampleUnit.ID(),
+/// 			Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
 /// 			WaitForCompletion: pulumi.Bool(true),
 /// 			Deprovision:       &saasruntime.UnitOperationDeprovisionArgs{},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -787,6 +787,160 @@ import 'unit_operation_upgrade.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_saasruntime_saas" "example_saas" {
+///   saas_id  = "example-saas"
+///   location = local.location
+///   locations {
+///     name = local.location
+///   }
+/// }
+/// resource "gcp_saasruntime_unitkind" "cluster_unit_kind" {
+///   location        = local.location
+///   unit_kind_id    = "vm-unitkind"
+///   saas            = gcp_saasruntime_saas.example_saas.id
+///   default_release ="projects/my-project-name/locations/${local.location}/releases/example-release"
+/// }
+/// resource "gcp_saasruntime_release" "example_release" {
+///   location   = local.location
+///   release_id = "example-release"
+///   unit_kind  = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///   blueprint = {
+///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
+///   }
+/// }
+/// resource "gcp_saasruntime_unit" "example_unit" {
+///   location  = local.location
+///   unit_id   = "example-unit"
+///   unit_kind = gcp_saasruntime_unitkind.cluster_unit_kind.id
+/// }
+/// resource "gcp_organizations_project" "tenant_project" {
+///   project_id      = local.tenantProjectId
+///   name            = local.tenantProjectId
+///   billing_account = "000000-0000000-0000000-000000"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "saas_services" {
+///   project                    = gcp_organizations_project.tenant_project.project_id
+///   service                    = "compute.googleapis.com"
+///   disable_dependent_services = true
+/// }
+/// resource "gcp_serviceaccount_account" "actuation_service_account" {
+///   account_id   = "actuator"
+///   display_name = "SaaS Actuation Service Account"
+/// }
+/// resource "gcp_projects_iammember" "tenant_config_admin" {
+///   project = gcp_organizations_project.tenant_project.project_id
+///   role    = "roles/config.admin"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
+/// }
+/// resource "gcp_projects_iammember" "tenant_storage_admin" {
+///   project = gcp_organizations_project.tenant_project.project_id
+///   role    = "roles/storage.admin"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
+/// }
+/// resource "gcp_projects_iammember" "tenant_compute_admin" {
+///   project = gcp_organizations_project.tenant_project.project_id
+///   role    = "roles/compute.admin"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
+/// }
+/// resource "gcp_serviceaccount_iammember" "actuation_token_creator" {
+///   service_account_id = gcp_serviceaccount_account.actuation_service_account.name
+///   role               = "roles/iam.serviceAccountTokenCreator"
+///   member             = "serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_saasruntime_unitoperation" "provision_unit_operation" {
+///   depends_on          = [gcp_projects_iammember.tenant_config_admin, gcp_projects_iammember.tenant_storage_admin, gcp_projects_iammember.tenant_compute_admin, gcp_serviceaccount_iammember.actuation_token_creator, gcp_projects_service.saas_services]
+///   location            = local.location
+///   unit_operation_id   = "provision-unit-operation"
+///   unit                = gcp_saasruntime_unit.example_unit.id
+///   wait_for_completion = true
+///   provision = {
+///     release = gcp_saasruntime_release.example_release.id
+///     input_variables = [{
+///       "variable" = "tenant_project_id"
+///       "value"    = gcp_organizations_project.tenant_project.project_id
+///       "type"     = "STRING"
+///       }, {
+///       "variable" = "tenant_project_number"
+///       "value"    = gcp_organizations_project.tenant_project.number
+///       "type"     = "INT"
+///       }, {
+///       "variable" = "zone"
+///       "value"    = "us-central1-a"
+///       "type"     = "STRING"
+///       }, {
+///       "variable" = "instance_name"
+///       "value"    = "terraform-test-instance"
+///       "type"     = "STRING"
+///       }, {
+///       "variable" = "actuation_sa"
+///       "value"    = gcp_serviceaccount_account.actuation_service_account.email
+///       "type"     = "STRING"
+///     }]
+///   }
+///   labels = {
+///     "label-one" = "foo"
+///   }
+///   annotations = {
+///     "annotation-one" = "bar"
+///   }
+/// }
+/// resource "gcp_saasruntime_unitoperation" "noop_upgrade_unit_operation" {
+///   depends_on          = [gcp_saasruntime_unitoperation.provision_unit_operation]
+///   location            = local.location
+///   unit_operation_id   = "upgrade-unit-operation"
+///   unit                = gcp_saasruntime_unit.example_unit.id
+///   wait_for_completion = true
+///   upgrade = {
+///     release = gcp_saasruntime_release.example_release.id
+///     input_variables = [{
+///       "variable" = "tenant_project_id"
+///       "value"    = gcp_organizations_project.tenant_project.project_id
+///       "type"     = "STRING"
+///       }, {
+///       "variable" = "tenant_project_number"
+///       "value"    = gcp_organizations_project.tenant_project.number
+///       "type"     = "INT"
+///       }, {
+///       "variable" = "zone"
+///       "value"    = "us-central1-a"
+///       "type"     = "STRING"
+///       }, {
+///       "variable" = "instance_name"
+///       "value"    = "terraform-test-instance"
+///       "type"     = "STRING"
+///       }, {
+///       "variable" = "actuation_sa"
+///       "value"    = gcp_serviceaccount_account.actuation_service_account.email
+///       "type"     = "STRING"
+///     }]
+///   }
+/// }
+/// resource "gcp_saasruntime_unitoperation" "deprovision_operation" {
+///   depends_on          = [gcp_saasruntime_unitoperation.noop_upgrade_unit_operation]
+///   location            = local.location
+///   unit_operation_id   = "deprovision-unit-operation"
+///   unit                = gcp_saasruntime_unit.example_unit.id
+///   wait_for_completion = true
+///   deprovision         = {}
+/// }
+/// locals {
+///   location = "us-east1"
+/// }
+/// locals {
+///   tenantProjectId = "tenant"
 /// }
 /// ```
 /// ```java
@@ -814,11 +968,13 @@ import 'unit_operation_upgrade.dart';
 /// import com.pulumi.gcp.saasruntime.UnitOperation;
 /// import com.pulumi.gcp.saasruntime.UnitOperationArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.UnitOperationProvisionArgs;
+/// import com.pulumi.gcp.saasruntime.inputs.UnitOperationProvisionInputVariableArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.UnitOperationUpgradeArgs;
+/// import com.pulumi.gcp.saasruntime.inputs.UnitOperationUpgradeInputVariableArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.UnitOperationDeprovisionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1177,22 +1333,15 @@ import 'unit_operation_upgrade.dart';
 /// UnitOperation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}`
-///
 /// * `{{project}}/{{location}}/{{unit_operation_id}}`
-///
 /// * `{{location}}/{{unit_operation_id}}`
+///
 ///
 /// When using the `pulumi import` command, UnitOperation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{project}}/{{location}}/{{unit_operation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
 /// ```
 class UnitOperation extends pulumi.CustomResource {
@@ -1201,7 +1350,7 @@ class UnitOperation extends pulumi.CustomResource {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
@@ -1209,10 +1358,18 @@ class UnitOperation extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> conditions;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Deprovision is the unit operation that deprovision the underlying
   /// resources represented by a Unit. Can only execute if the Unit is currently
   /// provisioned.
   late final pulumi.Output<Map<String, dynamic>?> deprovision;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -1234,7 +1391,7 @@ class UnitOperation extends pulumi.CustomResource {
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -1303,6 +1460,7 @@ class UnitOperation extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deprovision = registerOutput<Map<String, dynamic>?>('deprovision');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1350,6 +1508,7 @@ class UnitOperation extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deprovision = registerOutput<Map<String, dynamic>?>('deprovision');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

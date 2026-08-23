@@ -11,7 +11,7 @@ import 'workforce_pool_provider_saml.dart';
 /// {@endtemplate}
 /// {@macro pulumi_iam_workforce_pool_provider_workforce_pool_provider_args_doc}
 class WorkforcePoolProviderArgs {
-  /// A [Common Expression Language](https://opensource.google/projects/cel) expression, in
+  /// A [Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// plain text, to restrict what otherwise valid authentication credentials issued by the
   /// provider should not be accepted.
   /// The expression must output a boolean representing whether to allow the federation.
@@ -44,7 +44,7 @@ class WorkforcePoolProviderArgs {
   /// `principalSet://iam.googleapis.com/locations/{location}/workforcePools/{pool}/group/{value}`
   /// * `attribute.{custom_attribute}`:
   /// `principalSet://iam.googleapis.com/locations/{location}/workforcePools/{pool}/attribute.{custom_attribute}/{value}`
-  /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+  /// Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
   /// function that maps an identity provider credential to the normalized attribute specified
   /// by the corresponding map key.
   /// You can use the `assertion` keyword in the expression to access a JSON representation of
@@ -60,13 +60,23 @@ class WorkforcePoolProviderArgs {
   /// An object containing a list of `"key": value` pairs.
   /// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
   final pulumi.Input<Map<String, String>>? attributeMapping;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-specified description of the provider. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
+  /// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+  final pulumi.Input<bool>? detailedAuditLogging;
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// However, existing tokens still grant access.
   final pulumi.Input<bool>? disabled;
   /// A user-specified display name for the provider. Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
+  /// (Optional, Deprecated)
   /// The configuration for OAuth 2.0 client used to get the extended group
   /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
   /// type is supported. Extended groups supports a subset of Google Cloud
@@ -78,6 +88,8 @@ class WorkforcePoolProviderArgs {
   /// active session. Each user identity in the workforce identity pool must map
   /// to a unique Microsoft Entra ID user.
   /// Structure is documented below.
+  ///
+  /// &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
   final pulumi.Input<WorkforcePoolProviderExtendedAttributesOauth2Client>? extendedAttributesOauth2Client;
   /// The configuration for OAuth 2.0 client used to get the additional user
   /// attributes. This should be used when users can't get the desired claims
@@ -115,12 +127,14 @@ class WorkforcePoolProviderArgs {
   final pulumi.Input<String> workforcePoolId;
 
   /// Creates a new [WorkforcePoolProviderArgs].
-  /// [attributeCondition] A [Common Expression Language](https://opensource.google/projects/cel) expression, in
+  /// [attributeCondition] A [Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// [attributeMapping] Maps attributes from the authentication credentials issued by an external identity provider
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A user-specified description of the provider. Cannot exceed 256 characters.
+  /// [detailedAuditLogging] If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
   /// [disabled] Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// [displayName] A user-specified display name for the provider. Cannot exceed 32 characters.
-  /// [extendedAttributesOauth2Client] The configuration for OAuth 2.0 client used to get the extended group
+  /// [extendedAttributesOauth2Client] (Optional, Deprecated)
   /// [extraAttributesOauth2Client] The configuration for OAuth 2.0 client used to get the additional user
   /// [location] The location for the resource.
   /// [oidc] Represents an OpenId Connect 1.0 identity provider.
@@ -131,7 +145,9 @@ class WorkforcePoolProviderArgs {
   const WorkforcePoolProviderArgs({
     this.attributeCondition,
     this.attributeMapping,
+    this.deletionPolicy,
     this.description,
+    this.detailedAuditLogging,
     this.disabled,
     this.displayName,
     this.extendedAttributesOauth2Client,
@@ -148,7 +164,9 @@ class WorkforcePoolProviderArgs {
     return <String, dynamic>{
       'attributeCondition': ?attributeCondition,
       'attributeMapping': ?attributeMapping,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
+      'detailedAuditLogging': ?detailedAuditLogging,
       'disabled': ?disabled,
       'displayName': ?displayName,
       'extendedAttributesOauth2Client': ?pulumi.Input.mapOptionalInputValue<WorkforcePoolProviderExtendedAttributesOauth2Client, Map<String, dynamic>>(extendedAttributesOauth2Client, (value) => value.toMap()),
@@ -166,7 +184,9 @@ class WorkforcePoolProviderArgs {
     return WorkforcePoolProviderArgs(
       attributeCondition: (() { final guardedValue = map['attributeCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attributeMapping: (() { final guardedValue = map['attributeMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      detailedAuditLogging: (() { final guardedValue = map['detailedAuditLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extendedAttributesOauth2Client: (() { final guardedValue = map['extendedAttributesOauth2Client']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -180,4 +200,3 @@ class WorkforcePoolProviderArgs {
     );
   }
 }
-

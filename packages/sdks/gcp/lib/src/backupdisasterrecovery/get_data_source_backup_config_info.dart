@@ -7,21 +7,22 @@ import 'get_data_source_backup_config_info_gcp_backup_config.dart';
 class GetDataSourceBackupConfigInfo {
   /// Configuration for an application backed up by a Backup Appliance.
   final pulumi.Input<List<GetDataSourceBackupConfigInfoBackupApplianceBackupConfig>> backupApplianceBackupConfigs;
-  /// Configuration for a Google Cloud resource.
+  /// Details about the GCP backup configuration. Structure is documented below.
+  /// The `gcpBackupConfig` block contains:
   final pulumi.Input<List<GetDataSourceBackupConfigInfoGcpBackupConfig>> gcpBackupConfigs;
   /// If the last backup failed, this field has the error message.
   final pulumi.Input<Map<String, String>> lastBackupError;
-  /// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+  /// The state of the last backup attempt.
   final pulumi.Input<String> lastBackupState;
-  /// If the last backup were successful, this field has the consistency date.
+  /// The consistency time of the last successful backup.
   final pulumi.Input<String> lastSuccessfulBackupConsistencyTime;
 
   /// Creates a new [GetDataSourceBackupConfigInfo].
   /// [backupApplianceBackupConfigs] Configuration for an application backed up by a Backup Appliance.
-  /// [gcpBackupConfigs] Configuration for a Google Cloud resource.
+  /// [gcpBackupConfigs] Details about the GCP backup configuration. Structure is documented below.
   /// [lastBackupError] If the last backup failed, this field has the error message.
-  /// [lastBackupState] LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
-  /// [lastSuccessfulBackupConsistencyTime] If the last backup were successful, this field has the consistency date.
+  /// [lastBackupState] The state of the last backup attempt.
+  /// [lastSuccessfulBackupConsistencyTime] The consistency time of the last successful backup.
   const GetDataSourceBackupConfigInfo({
     required this.backupApplianceBackupConfigs,
     required this.gcpBackupConfigs,
@@ -50,4 +51,3 @@ class GetDataSourceBackupConfigInfo {
     );
   }
 }
-

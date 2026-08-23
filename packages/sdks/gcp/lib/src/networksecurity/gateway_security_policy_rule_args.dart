@@ -12,6 +12,13 @@ class GatewaySecurityPolicyRuleArgs {
   /// Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
   /// Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
   final pulumi.Input<String> basicProfile;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Free-text description of the resource.
   final pulumi.Input<String>? description;
   /// Whether the rule is enforced.
@@ -37,6 +44,7 @@ class GatewaySecurityPolicyRuleArgs {
   /// Creates a new [GatewaySecurityPolicyRuleArgs].
   /// [applicationMatcher] CEL expression for matching on L7/application level criteria.
   /// [basicProfile] Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Free-text description of the resource.
   /// [enabled] Whether the rule is enforced.
   /// [gatewaySecurityPolicy] The name of the gatewat security policy this rule belongs to.
@@ -49,6 +57,7 @@ class GatewaySecurityPolicyRuleArgs {
   const GatewaySecurityPolicyRuleArgs({
     this.applicationMatcher,
     required this.basicProfile,
+    this.deletionPolicy,
     this.description,
     required this.enabled,
     required this.gatewaySecurityPolicy,
@@ -64,6 +73,7 @@ class GatewaySecurityPolicyRuleArgs {
     return <String, dynamic>{
       'applicationMatcher': ?applicationMatcher,
       'basicProfile': basicProfile,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'enabled': enabled,
       'gatewaySecurityPolicy': gatewaySecurityPolicy,
@@ -80,6 +90,7 @@ class GatewaySecurityPolicyRuleArgs {
     return GatewaySecurityPolicyRuleArgs(
       applicationMatcher: (() { final guardedValue = map['applicationMatcher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       basicProfile: pulumi.Input.fromValue(map['basicProfile'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       gatewaySecurityPolicy: pulumi.Input.fromValue(map['gatewaySecurityPolicy'] as String),
@@ -92,4 +103,3 @@ class GatewaySecurityPolicyRuleArgs {
     );
   }
 }
-

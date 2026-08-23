@@ -98,13 +98,35 @@ import 'reservation_assignment_state.dart';
 /// 		_, err = bigquery.NewReservationAssignment(ctx, "assignment", &bigquery.ReservationAssignmentArgs{
 /// 			Assignee:    pulumi.String("projects/my-project-name"),
 /// 			JobType:     pulumi.String("PIPELINE"),
-/// 			Reservation: basic.ID(),
+/// 			Reservation: basic.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_reservation" "basic" {
+///   name              = "example-reservation"
+///   project           = "my-project-name"
+///   location          = "us-central1"
+///   slot_capacity     = 0
+///   ignore_idle_slots = false
+/// }
+/// resource "gcp_bigquery_reservationassignment" "assignment" {
+///   assignee    = "projects/my-project-name"
+///   job_type    = "PIPELINE"
+///   reservation = gcp_bigquery_reservation.basic.id
 /// }
 /// ```
 /// ```java
@@ -117,8 +139,8 @@ import 'reservation_assignment_state.dart';
 /// import com.pulumi.gcp.bigquery.ReservationArgs;
 /// import com.pulumi.gcp.bigquery.ReservationAssignment;
 /// import com.pulumi.gcp.bigquery.ReservationAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,33 +193,39 @@ import 'reservation_assignment_state.dart';
 /// ReservationAssignment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{reservation}}/{{name}}`
-///
 /// * `{{location}}/{{reservation}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{project}}/{{location}}/{{reservation}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{location}}/{{reservation}}/{{name}}
 /// ```
 class ReservationAssignment extends pulumi.CustomResource {
   /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
   late final pulumi.Output<String> assignee;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
   late final pulumi.Output<String> jobType;
   /// The location for the resource
   late final pulumi.Output<String> location;
   /// Output only. The resource name of the assignment.
   late final pulumi.Output<String> name;
+  /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+  /// * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+  /// * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+  /// * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+  /// * The special value `unknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
+  late final pulumi.Output<String?> principal;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -222,9 +250,11 @@ class ReservationAssignment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     assignee = registerOutput<String>('assignee');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     jobType = registerOutput<String>('jobType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    principal = registerOutput<String?>('principal');
     project = registerOutput<String>('project');
     reservation = registerOutput<String>('reservation');
     state = registerOutput<String>('state');
@@ -254,9 +284,11 @@ class ReservationAssignment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     assignee = registerOutput<String>('assignee');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     jobType = registerOutput<String>('jobType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    principal = registerOutput<String?>('principal');
     project = registerOutput<String>('project');
     reservation = registerOutput<String>('reservation');
     this.state = registerOutput<String>('state');

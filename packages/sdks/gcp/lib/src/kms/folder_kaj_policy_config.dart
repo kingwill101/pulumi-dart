@@ -3,6 +3,22 @@ import 'folder_kaj_policy_config_args.dart';
 import 'folder_kaj_policy_config_default_key_access_justification_policy.dart';
 import 'folder_kaj_policy_config_state.dart';
 
+/// `FolderKajPolicyConfigs` is a folder-level singleton resource
+/// used to configure the default KAJ policy of newly created key.
+///
+/// &gt; **Note:** FolderKajPolicyConfigs cannot be deleted from Google Cloud Platform.
+/// Destroying a Terraform-managed FolderKajPolicyConfigs will remove it from state but
+/// *will not delete the resource from Google Cloud Platform.*
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+/// To get more information about FolderKajPolicyConfig, see:
+///
+/// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+/// * How-to Guides
+/// * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+///
 /// ## Example Usage
 ///
 /// ### Kms Folder Kaj Policy Config Basic
@@ -67,7 +83,7 @@ import 'folder_kaj_policy_config_state.dart';
 ///     display_name="folder-kajc",
 ///     parent="organizations/123456789",
 ///     deletion_protection=False)
-/// project_suffix = random.index.Id("project_suffix", byte_length=4)
+/// project_suffix = random.Id("project_suffix", byte_length=4)
 /// # Create a project for enabling KMS API.
 /// kms_project = gcp.organizations.Project("kms_project",
 ///     project_id=f"kms-api-project{project_suffix['hex']}",
@@ -113,7 +129,7 @@ import 'folder_kaj_policy_config_state.dart';
 ///         DeletionProtection = false,
 ///     });
 ///
-///     var projectSuffix = new Random.Index.Id("project_suffix", new()
+///     var projectSuffix = new Random.Id("project_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -185,8 +201,6 @@ import 'folder_kaj_policy_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -263,6 +277,59 @@ import 'folder_kaj_policy_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// # Create Folder in GCP Organization.
+/// resource "gcp_organizations_folder" "kaj_folder" {
+///   display_name        = "folder-kajc"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "random_id" "project_suffix" {
+///   byte_length = 4
+/// }
+/// # Create a project for enabling KMS API.
+/// resource "gcp_organizations_project" "kms_project" {
+///   depends_on      = [gcp_organizations_folder.kaj_folder]
+///   project_id      ="kms-api-project${random_id.project_suffix.hex}"
+///   name            ="kms-api-project${random_id.project_suffix.hex}"
+///   folder_id       = gcp_organizations_folder.kaj_folder.folder_id
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// # Enable the Cloud KMS API.
+/// resource "gcp_projects_service" "kms_api_service" {
+///   depends_on                 = [gcp_organizations_project.kms_project]
+///   service                    = "cloudkms.googleapis.com"
+///   project                    = gcp_organizations_project.kms_project.project_id
+///   disable_dependent_services = true
+/// }
+/// resource "time_sleep" "wait_enable_service_api" {
+///   depends_on      = [gcp_projects_service.kms_api_service]
+///   create_duration = "30s"
+/// }
+/// # Update folder level KAJ default policy
+/// resource "gcp_kms_folderkajpolicyconfig" "example" {
+///   depends_on = [time_sleep.wait_enable_service_api]
+///   folder     = gcp_organizations_folder.kaj_folder.folder_id
+///   default_key_access_justification_policy = {
+///     allowed_access_reasons = ["CUSTOMER_INITIATED_ACCESS", "GOOGLE_INITIATED_SYSTEM_OPERATION"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -283,8 +350,8 @@ import 'folder_kaj_policy_config_state.dart';
 /// import com.pulumi.gcp.kms.FolderKajPolicyConfigArgs;
 /// import com.pulumi.gcp.kms.inputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,8 +376,8 @@ import 'folder_kaj_policy_config_state.dart';
 ///
 ///         // Create a project for enabling KMS API.
 ///         var kmsProject = new Project("kmsProject", ProjectArgs.builder()
-///             .projectId(String.format("kms-api-project%s", projectSuffix.hex()))
-///             .name(String.format("kms-api-project%s", projectSuffix.hex()))
+///             .projectId(String.format("kms-api-project%s", projectSuffix.get("hex")))
+///             .name(String.format("kms-api-project%s", projectSuffix.get("hex")))
 ///             .folderId(kajFolder.folderId())
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -415,16 +482,13 @@ import 'folder_kaj_policy_config_state.dart';
 /// FolderKajPolicyConfig can be imported using any of these accepted formats:
 ///
 /// * `folders/{{folder}}/kajPolicyConfig`
-///
 /// * `{{folder}}`
+///
 ///
 /// When using the `pulumi import` command, FolderKajPolicyConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default folders/{{folder}}/kajPolicyConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default {{folder}}
 /// ```
 class FolderKajPolicyConfig extends pulumi.CustomResource {

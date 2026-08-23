@@ -16,10 +16,13 @@ import 'access_policy_state.dart';
 /// * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
+///
+/// &gt; **Note:** When importing this resource by ID, use only the numeric access policy ID
+/// (for example, `123456789`) and omit the `accessPolicies/` prefix.
 ///
 /// ## Example Usage
 ///
@@ -81,6 +84,20 @@ import 'access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "Org Access Policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +106,8 @@ import 'access_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +231,27 @@ import 'access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-project-name"
+///   name            = "my-project-name"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "Scoped Access Policy"
+///   scopes ="projects/${gcp_organizations_project.project.number}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +262,8 @@ import 'access_policy_state.dart';
 /// import com.pulumi.gcp.organizations.ProjectArgs;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,6 +315,7 @@ import 'access_policy_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -285,6 +324,13 @@ import 'access_policy_state.dart';
 class AccessPolicy extends pulumi.CustomResource {
   /// Time the AccessPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Resource name of the AccessPolicy. Format: '{{policy_id}}'
   late final pulumi.Output<String> name;
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
@@ -313,6 +359,7 @@ class AccessPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     scopes = registerOutput<String?>('scopes');
@@ -344,6 +391,7 @@ class AccessPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     scopes = registerOutput<String?>('scopes');

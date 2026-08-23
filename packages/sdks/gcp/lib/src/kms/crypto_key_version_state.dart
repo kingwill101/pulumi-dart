@@ -15,6 +15,13 @@ class CryptoKeyVersionState {
   /// The name of the cryptoKey associated with the CryptoKeyVersions.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
   final pulumi.Input<String>? cryptoKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// Structure is documented below.
   final pulumi.Input<CryptoKeyVersionExternalProtectionLevelOptions>? externalProtectionLevelOptions;
@@ -33,6 +40,7 @@ class CryptoKeyVersionState {
   /// [algorithm] The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
   /// [attestations] Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
   /// [cryptoKey] The name of the cryptoKey associated with the CryptoKeyVersions.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [externalProtectionLevelOptions] ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// [generateTime] The time this CryptoKeyVersion key material was generated
   /// [name] The resource name for this CryptoKeyVersion.
@@ -42,6 +50,7 @@ class CryptoKeyVersionState {
     this.algorithm,
     this.attestations,
     this.cryptoKey,
+    this.deletionPolicy,
     this.externalProtectionLevelOptions,
     this.generateTime,
     this.name,
@@ -54,6 +63,7 @@ class CryptoKeyVersionState {
       'algorithm': ?algorithm,
       'attestations': ?pulumi.Input.mapOptionalInputValue<List<CryptoKeyVersionAttestation>, List<Map<String, dynamic>>>(attestations, (value) => pulumi.Input.encodeList<CryptoKeyVersionAttestation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cryptoKey': ?cryptoKey,
+      'deletionPolicy': ?deletionPolicy,
       'externalProtectionLevelOptions': ?pulumi.Input.mapOptionalInputValue<CryptoKeyVersionExternalProtectionLevelOptions, Map<String, dynamic>>(externalProtectionLevelOptions, (value) => value.toMap()),
       'generateTime': ?generateTime,
       'name': ?name,
@@ -67,6 +77,7 @@ class CryptoKeyVersionState {
       algorithm: (() { final guardedValue = map['algorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attestations: (() { final guardedValue = map['attestations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CryptoKeyVersionAttestation>(guardedValue, (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cryptoKey: (() { final guardedValue = map['cryptoKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalProtectionLevelOptions: (() { final guardedValue = map['externalProtectionLevelOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CryptoKeyVersionExternalProtectionLevelOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       generateTime: (() { final guardedValue = map['generateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -75,4 +86,3 @@ class CryptoKeyVersionState {
     );
   }
 }
-

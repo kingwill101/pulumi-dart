@@ -30,7 +30,7 @@ class UserStoreArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// The ID of the user store. Currently only accepts "default_user_store".
+  /// The ID of the user store. Currently only accepts "defaultUserStore".
   final pulumi.Input<String>? userStoreId;
 
   /// Creates a new [UserStoreArgs].
@@ -39,7 +39,7 @@ class UserStoreArgs {
   /// [enableLicenseAutoRegister] Whether to enable automatic license registration for new users created in
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
-  /// [userStoreId] The ID of the user store. Currently only accepts "default_user_store".
+  /// [userStoreId] The ID of the user store. Currently only accepts "defaultUserStore".
   const UserStoreArgs({
     this.defaultLicenseConfig,
     this.enableExpiredLicenseAutoUpdate,
@@ -71,4 +71,3 @@ class UserStoreArgs {
     );
   }
 }
-

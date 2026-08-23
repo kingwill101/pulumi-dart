@@ -111,8 +111,6 @@ import 'attached_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -152,6 +150,37 @@ import 'attached_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+/// data "gcp_container_getattachedversions" "versions" {
+///   location = "us-west1"
+///   project  = data.gcp_organizations_getproject.project.project_id
+/// }
+///
+/// resource "gcp_container_attachedcluster" "primary" {
+///   name         = "basic"
+///   location     = "us-west1"
+///   project      = data.gcp_organizations_getproject.project.project_id
+///   description  = "Test cluster"
+///   distribution = "aks"
+///   oidc_config = {
+///     issuer_url = "https://oidc.issuer.url"
+///   }
+///   platform_version = data.gcp_container_getattachedversions.versions.valid_versions[0]
+///   fleet = {
+///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +195,8 @@ import 'attached_cluster_state.dart';
 /// import com.pulumi.gcp.container.AttachedClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AttachedClusterOidcConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AttachedClusterFleetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -450,8 +479,6 @@ import 'attached_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
@@ -534,6 +561,67 @@ import 'attached_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+/// data "gcp_container_getattachedversions" "versions" {
+///   location = "us-west1"
+///   project  = data.gcp_organizations_getproject.project.project_id
+/// }
+///
+/// resource "gcp_container_attachedcluster" "primary" {
+///   name         = "basic"
+///   project      = data.gcp_organizations_getproject.project.project_id
+///   location     = "us-west1"
+///   description  = "Test cluster"
+///   distribution = "aks"
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   authorization = {
+///     admin_users  = ["user1@example.com", "user2@example.com"]
+///     admin_groups = ["group1@example.com", "group2@example.com"]
+///   }
+///   oidc_config = {
+///     issuer_url = "https://oidc.issuer.url"
+///     jwks       = base64encode("{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}")
+///   }
+///   platform_version = data.gcp_container_getattachedversions.versions.valid_versions[0]
+///   fleet = {
+///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///   }
+///   logging_config = {
+///     component_config = {
+///       enable_components = ["SYSTEM_COMPONENTS", "WORKLOADS"]
+///     }
+///   }
+///   monitoring_config = {
+///     managed_prometheus_config = {
+///       enabled = true
+///     }
+///   }
+///   binary_authorization = {
+///     evaluation_mode = "PROJECT_SINGLETON_POLICY_ENFORCE"
+///   }
+///   proxy_config = {
+///     kubernetes_secret = {
+///       name      = "proxy-config"
+///       namespace = "default"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -558,8 +646,8 @@ import 'attached_cluster_state.dart';
 /// import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigKubernetesSecretArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -779,8 +867,6 @@ import 'attached_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -821,6 +907,38 @@ import 'attached_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+/// data "gcp_container_getattachedversions" "versions" {
+///   location = "us-west1"
+///   project  = data.gcp_organizations_getproject.project.project_id
+/// }
+///
+/// resource "gcp_container_attachedcluster" "primary" {
+///   name         = "basic"
+///   location     = "us-west1"
+///   project      = data.gcp_organizations_getproject.project.project_id
+///   description  = "Test cluster"
+///   distribution = "aks"
+///   oidc_config = {
+///     issuer_url = "https://oidc.issuer.url"
+///   }
+///   platform_version = data.gcp_container_getattachedversions.versions.valid_versions[0]
+///   fleet = {
+///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///   }
+///   deletion_policy = "DELETE_IGNORE_ERRORS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -835,8 +953,8 @@ import 'attached_cluster_state.dart';
 /// import com.pulumi.gcp.container.AttachedClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AttachedClusterOidcConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AttachedClusterFleetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -910,22 +1028,15 @@ import 'attached_cluster_state.dart';
 /// Cluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
 /// ```
 class AttachedCluster extends pulumi.CustomResource {
@@ -937,7 +1048,7 @@ class AttachedCluster extends pulumi.CustomResource {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
@@ -951,8 +1062,15 @@ class AttachedCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterRegion;
   /// Output only. The time at which this cluster was created.
   late final pulumi.Output<String> createTime;
-  /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Policy to determine what flags to send on delete.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  ///
+  /// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
   late final pulumi.Output<String?> description;
@@ -960,6 +1078,7 @@ class AttachedCluster extends pulumi.CustomResource {
   /// "eks", "aks", "generic". The generic distribution provides the ability to register
   /// or migrate any CNCF conformant cluster.
   late final pulumi.Output<String> distribution;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// A set of errors found in the cluster.
   /// Structure is documented below.
@@ -985,9 +1104,9 @@ class AttachedCluster extends pulumi.CustomResource {
   /// validate KSA tokens in order to allow system workloads (such as GKE Connect
   /// and telemetry agents) to authenticate back to GCP.
   /// Both clusters with public and private issuer URLs are supported.
-  /// Clusters with public issuers only need to specify the `issuer_url` field
+  /// Clusters with public issuers only need to specify the `issuerUrl` field
   /// while clusters with private issuers need to provide both
-  /// `issuer_url` and `jwks`.
+  /// `issuerUrl` and `jwks`.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterOidcConfig> oidcConfig;
   /// The platform version for the cluster (e.g. `1.23.0-gke.1`).
@@ -1004,7 +1123,7 @@ class AttachedCluster extends pulumi.CustomResource {
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+  /// &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
   late final pulumi.Output<AttachedClusterSecurityPostureConfig> securityPostureConfig;
   /// The current state of the cluster. Possible values:
   /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -1037,7 +1156,7 @@ class AttachedCluster extends pulumi.CustomResource {
     binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterRegion = registerOutput<String>('clusterRegion');
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String>('distribution');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1088,7 +1207,7 @@ class AttachedCluster extends pulumi.CustomResource {
     binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterRegion = registerOutput<String>('clusterRegion');
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String>('distribution');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

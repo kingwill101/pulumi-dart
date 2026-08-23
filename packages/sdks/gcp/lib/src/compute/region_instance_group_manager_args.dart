@@ -7,10 +7,12 @@ import 'region_instance_group_manager_instance_flexibility_policy.dart';
 import 'region_instance_group_manager_instance_lifecycle_policy.dart';
 import 'region_instance_group_manager_named_port.dart';
 import 'region_instance_group_manager_params.dart';
+import 'region_instance_group_manager_resource_policies.dart';
 import 'region_instance_group_manager_standby_policy.dart';
 import 'region_instance_group_manager_stateful_disk.dart';
 import 'region_instance_group_manager_stateful_external_ip.dart';
 import 'region_instance_group_manager_stateful_internal_ip.dart';
+import 'region_instance_group_manager_target_size_policy.dart';
 import 'region_instance_group_manager_update_policy.dart';
 import 'region_instance_group_manager_version.dart';
 
@@ -33,6 +35,15 @@ class RegionInstanceGroupManagerArgs {
   /// appending a hyphen and a random four-character string to the base instance
   /// name.
   final pulumi.Input<String> baseInstanceName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional textual description of the instance
   /// group manager.
   final pulumi.Input<String>? description;
@@ -42,7 +53,6 @@ class RegionInstanceGroupManagerArgs {
   /// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
   final pulumi.Input<List<String>>? distributionPolicyZones;
   /// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-  /// - - -
   final pulumi.Input<RegionInstanceGroupManagerInstanceFlexibilityPolicy>? instanceFlexibilityPolicy;
   /// The instance lifecycle policy for this managed instance group.
   final pulumi.Input<RegionInstanceGroupManagerInstanceLifecyclePolicy>? instanceLifecyclePolicy;
@@ -61,18 +71,20 @@ class RegionInstanceGroupManagerArgs {
   /// The named port configuration. See the section below
   /// for details on configuration.
   final pulumi.Input<List<RegionInstanceGroupManagerNamedPort>>? namedPorts;
-  /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+  /// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
   final pulumi.Input<RegionInstanceGroupManagerParams>? params;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
   /// The region where the managed instance group resides. If not provided, the provider region is used.
+  final pulumi.Input<String>? region;
+  /// Resource policies for this managed instance group. Structure is documented below.
   ///
   /// - - -
-  final pulumi.Input<String>? region;
+  final pulumi.Input<RegionInstanceGroupManagerResourcePolicies>? resourcePolicies;
   /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
   final pulumi.Input<RegionInstanceGroupManagerStandbyPolicy>? standbyPolicy;
-  /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+  /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
   final pulumi.Input<List<RegionInstanceGroupManagerStatefulDisk>>? statefulDisks;
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
   final pulumi.Input<List<RegionInstanceGroupManagerStatefulExternalIp>>? statefulExternalIps;
@@ -82,8 +94,13 @@ class RegionInstanceGroupManagerArgs {
   /// instances in the group are added. Updating the target pools attribute does
   /// not affect existing instances.
   final pulumi.Input<List<String>>? targetPools;
-  /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+  /// The target number of running instances for this managed
+  /// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+  /// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+  /// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
   final pulumi.Input<int>? targetSize;
+  /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+  final pulumi.Input<List<RegionInstanceGroupManagerTargetSizePolicy>>? targetSizePolicies;
   /// The target number of stopped instances for this managed instance group.
   final pulumi.Input<int>? targetStoppedSize;
   /// The target number of suspended instances for this managed instance group.
@@ -98,7 +115,7 @@ class RegionInstanceGroupManagerArgs {
   /// returning. Note that if this is set to true and the operation does not succeed, the provider will
   /// continue trying until it times out.
   final pulumi.Input<bool>? waitForInstances;
-  /// When used with `wait_for_instances` it specifies the status to wait for.
+  /// When used with `waitForInstances` it specifies the status to wait for.
   /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
   /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
   /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
@@ -108,6 +125,7 @@ class RegionInstanceGroupManagerArgs {
   /// [allInstancesConfig] Properties to set on all instances in the group. After setting
   /// [autoHealingPolicies] The autohealing policies for this managed instance
   /// [baseInstanceName] The base instance name to use for
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] An optional textual description of the instance
   /// [distributionPolicyTargetShape] The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
   /// [distributionPolicyZones] The distribution policy for this managed instance
@@ -116,25 +134,28 @@ class RegionInstanceGroupManagerArgs {
   /// [listManagedInstancesResults] Pagination behavior of the `listManagedInstances` API
   /// [name] The name of the instance group manager. Must be 1-63
   /// [namedPorts] The named port configuration. See the section below
-  /// [params] Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+  /// [params] ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region where the managed instance group resides. If not provided, the provider region is used.
+  /// [resourcePolicies] Resource policies for this managed instance group. Structure is documented below.
   /// [standbyPolicy] The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
-  /// [statefulDisks] Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+  /// [statefulDisks] Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
   /// [statefulExternalIps] External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
   /// [statefulInternalIps] Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
   /// [targetPools] The full URL of all target pools to which new
-  /// [targetSize] The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+  /// [targetSize] The target number of running instances for this managed
+  /// [targetSizePolicies] The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
   /// [targetStoppedSize] The target number of stopped instances for this managed instance group.
   /// [targetSuspendedSize] The target number of suspended instances for this managed instance group.
   /// [updatePolicy] The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
   /// [versions] Application versions managed by this instance group. Each
   /// [waitForInstances] Whether to wait for all instances to be created/updated before
-  /// [waitForInstancesStatus] When used with `wait_for_instances` it specifies the status to wait for.
+  /// [waitForInstancesStatus] When used with `waitForInstances` it specifies the status to wait for.
   const RegionInstanceGroupManagerArgs({
     this.allInstancesConfig,
     this.autoHealingPolicies,
     required this.baseInstanceName,
+    this.deletionPolicy,
     this.description,
     this.distributionPolicyTargetShape,
     this.distributionPolicyZones,
@@ -146,12 +167,14 @@ class RegionInstanceGroupManagerArgs {
     this.params,
     this.project,
     this.region,
+    this.resourcePolicies,
     this.standbyPolicy,
     this.statefulDisks,
     this.statefulExternalIps,
     this.statefulInternalIps,
     this.targetPools,
     this.targetSize,
+    this.targetSizePolicies,
     this.targetStoppedSize,
     this.targetSuspendedSize,
     this.updatePolicy,
@@ -165,6 +188,7 @@ class RegionInstanceGroupManagerArgs {
       'allInstancesConfig': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerAllInstancesConfig, Map<String, dynamic>>(allInstancesConfig, (value) => value.toMap()),
       'autoHealingPolicies': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerAutoHealingPolicies, Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap()),
       'baseInstanceName': baseInstanceName,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'distributionPolicyTargetShape': ?distributionPolicyTargetShape,
       'distributionPolicyZones': ?distributionPolicyZones,
@@ -176,12 +200,14 @@ class RegionInstanceGroupManagerArgs {
       'params': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
+      'resourcePolicies': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerResourcePolicies, Map<String, dynamic>>(resourcePolicies, (value) => value.toMap()),
       'standbyPolicy': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerStandbyPolicy, Map<String, dynamic>>(standbyPolicy, (value) => value.toMap()),
       'statefulDisks': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatefulDisk>, List<Map<String, dynamic>>>(statefulDisks, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatefulDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulExternalIps': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatefulExternalIp>, List<Map<String, dynamic>>>(statefulExternalIps, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatefulExternalIp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulInternalIps': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatefulInternalIp>, List<Map<String, dynamic>>>(statefulInternalIps, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatefulInternalIp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetPools': ?targetPools,
       'targetSize': ?targetSize,
+      'targetSizePolicies': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerTargetSizePolicy>, List<Map<String, dynamic>>>(targetSizePolicies, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerTargetSizePolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetStoppedSize': ?targetStoppedSize,
       'targetSuspendedSize': ?targetSuspendedSize,
       'updatePolicy': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerUpdatePolicy, Map<String, dynamic>>(updatePolicy, (value) => value.toMap()),
@@ -196,6 +222,7 @@ class RegionInstanceGroupManagerArgs {
       allInstancesConfig: (() { final guardedValue = map['allInstancesConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerAllInstancesConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       autoHealingPolicies: (() { final guardedValue = map['autoHealingPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerAutoHealingPolicies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       baseInstanceName: pulumi.Input.fromValue(map['baseInstanceName'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       distributionPolicyTargetShape: (() { final guardedValue = map['distributionPolicyTargetShape']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       distributionPolicyZones: (() { final guardedValue = map['distributionPolicyZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -207,12 +234,14 @@ class RegionInstanceGroupManagerArgs {
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       standbyPolicy: (() { final guardedValue = map['standbyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statefulDisks: (() { final guardedValue = map['statefulDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulDisk>(guardedValue, (value) => RegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statefulExternalIps: (() { final guardedValue = map['statefulExternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statefulInternalIps: (() { final guardedValue = map['statefulInternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetPools: (() { final guardedValue = map['targetPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetSizePolicies: (() { final guardedValue = map['targetSizePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => RegionInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -222,4 +251,3 @@ class RegionInstanceGroupManagerArgs {
     );
   }
 }
-

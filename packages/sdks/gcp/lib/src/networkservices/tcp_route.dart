@@ -21,15 +21,16 @@ import 'tcp_route_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "backend-service-health-check",
-///     requestPath: "/",
-///     checkIntervalSec: 1,
-///     timeoutSec: 1,
+///     tcpHealthCheck: {
+///         port: 80,
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "my-backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultTcpRoute = new gcp.networkservices.TcpRoute("default", {
 ///     name: "my-tcp-route",
@@ -56,14 +57,15 @@ import 'tcp_route_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="backend-service-health-check",
-///     request_path="/",
-///     check_interval_sec=1,
-///     timeout_sec=1)
+///     tcp_health_check={
+///         "port": 80,
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="my-backend-service",
-///     health_checks=default_http_health_check.id)
+///     load_balancing_scheme="INTERNAL_SELF_MANAGED",
+///     health_checks=default_health_check.id)
 /// default_tcp_route = gcp.networkservices.TcpRoute("default",
 ///     name="my-tcp-route",
 ///     labels={
@@ -92,18 +94,20 @@ import 'tcp_route_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "backend-service-health-check",
-///         RequestPath = "/",
-///         CheckIntervalSec = 1,
-///         TimeoutSec = 1,
+///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "my-backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 ///     var defaultTcpRoute = new Gcp.NetworkServices.TcpRoute("default", new()
@@ -155,18 +159,19 @@ import 'tcp_route_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-/// 			Name:             pulumi.String("backend-service-health-check"),
-/// 			RequestPath:      pulumi.String("/"),
-/// 			CheckIntervalSec: pulumi.Int(1),
-/// 			TimeoutSec:       pulumi.Int(1),
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name: pulumi.String("backend-service-health-check"),
+/// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("my-backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			Name:                pulumi.String("my-backend-service"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -188,7 +193,7 @@ import 'tcp_route_state.dart';
 /// 					Action: &networkservices.TcpRouteRuleActionArgs{
 /// 						Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 /// 							&networkservices.TcpRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID(),
+/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 /// 								Weight:      pulumi.Int(1),
 /// 							},
 /// 						},
@@ -204,22 +209,66 @@ import 'tcp_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "my-backend-service"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   health_checks         = gcp_compute_healthcheck.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "backend-service-health-check"
+///   tcp_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_networkservices_tcproute" "default" {
+///   name = "my-tcp-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   rules {
+///     matches {
+///       address = "10.0.0.1/32"
+///       port    = "8081"
+///     }
+///     action = {
+///       destinations = [{
+///         "serviceName" = gcp_compute_backendservice.default.id
+///         "weight"      = 1
+///       }]
+///       original_destination = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.networkservices.TcpRoute;
 /// import com.pulumi.gcp.networkservices.TcpRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleMatchArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionDestinationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,16 +280,17 @@ import 'tcp_route_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("backend-service-health-check")
-///             .requestPath("/")
-///             .checkIntervalSec(1)
-///             .timeoutSec(1)
+///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("my-backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
@@ -271,15 +321,15 @@ import 'tcp_route_state.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: my-backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///       loadBalancingScheme: INTERNAL_SELF_MANAGED
+///       healthChecks: ${defaultHealthCheck.id}
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: backend-service-health-check
-///       requestPath: /
-///       checkIntervalSec: 1
-///       timeoutSec: 1
+///       tcpHealthCheck:
+///         port: 80
 ///   defaultTcpRoute:
 ///     type: gcp:networkservices:TcpRoute
 ///     name: default
@@ -307,15 +357,16 @@ import 'tcp_route_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "backend-service-health-check",
-///     requestPath: "/",
-///     checkIntervalSec: 1,
-///     timeoutSec: 1,
+///     tcpHealthCheck: {
+///         port: 80,
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "my-backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultTcpRoute = new gcp.networkservices.TcpRoute("default", {
 ///     name: "my-tcp-route",
@@ -339,14 +390,15 @@ import 'tcp_route_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="backend-service-health-check",
-///     request_path="/",
-///     check_interval_sec=1,
-///     timeout_sec=1)
+///     tcp_health_check={
+///         "port": 80,
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="my-backend-service",
-///     health_checks=default_http_health_check.id)
+///     load_balancing_scheme="INTERNAL_SELF_MANAGED",
+///     health_checks=default_health_check.id)
 /// default_tcp_route = gcp.networkservices.TcpRoute("default",
 ///     name="my-tcp-route",
 ///     labels={
@@ -372,18 +424,20 @@ import 'tcp_route_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "backend-service-health-check",
-///         RequestPath = "/",
-///         CheckIntervalSec = 1,
-///         TimeoutSec = 1,
+///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "my-backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 ///     var defaultTcpRoute = new Gcp.NetworkServices.TcpRoute("default", new()
@@ -428,18 +482,19 @@ import 'tcp_route_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-/// 			Name:             pulumi.String("backend-service-health-check"),
-/// 			RequestPath:      pulumi.String("/"),
-/// 			CheckIntervalSec: pulumi.Int(1),
-/// 			TimeoutSec:       pulumi.Int(1),
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name: pulumi.String("backend-service-health-check"),
+/// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("my-backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			Name:                pulumi.String("my-backend-service"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -455,7 +510,7 @@ import 'tcp_route_state.dart';
 /// 					Action: &networkservices.TcpRouteRuleActionArgs{
 /// 						Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 /// 							&networkservices.TcpRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID(),
+/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 /// 								Weight:      pulumi.Int(1),
 /// 							},
 /// 						},
@@ -472,22 +527,62 @@ import 'tcp_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "my-backend-service"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   health_checks         = gcp_compute_healthcheck.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "backend-service-health-check"
+///   tcp_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_networkservices_tcproute" "default" {
+///   name = "my-tcp-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   rules {
+///     action = {
+///       destinations = [{
+///         "serviceName" = gcp_compute_backendservice.default.id
+///         "weight"      = 1
+///       }]
+///       original_destination = false
+///       idle_timeout         = "60s"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.networkservices.TcpRoute;
 /// import com.pulumi.gcp.networkservices.TcpRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionDestinationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -499,16 +594,17 @@ import 'tcp_route_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("backend-service-health-check")
-///             .requestPath("/")
-///             .checkIntervalSec(1)
-///             .timeoutSec(1)
+///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("my-backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
@@ -536,15 +632,15 @@ import 'tcp_route_state.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: my-backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///       loadBalancingScheme: INTERNAL_SELF_MANAGED
+///       healthChecks: ${defaultHealthCheck.id}
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: backend-service-health-check
-///       requestPath: /
-///       checkIntervalSec: 1
-///       timeoutSec: 1
+///       tcpHealthCheck:
+///         port: 80
 ///   defaultTcpRoute:
 ///     type: gcp:networkservices:TcpRoute
 ///     name: default
@@ -570,15 +666,16 @@ import 'tcp_route_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "backend-service-health-check",
-///     requestPath: "/",
-///     checkIntervalSec: 1,
-///     timeoutSec: 1,
+///     tcpHealthCheck: {
+///         port: 80,
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "my-backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultMesh = new gcp.networkservices.Mesh("default", {
 ///     name: "my-tcp-route",
@@ -613,14 +710,15 @@ import 'tcp_route_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="backend-service-health-check",
-///     request_path="/",
-///     check_interval_sec=1,
-///     timeout_sec=1)
+///     tcp_health_check={
+///         "port": 80,
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="my-backend-service",
-///     health_checks=default_http_health_check.id)
+///     load_balancing_scheme="INTERNAL_SELF_MANAGED",
+///     health_checks=default_health_check.id)
 /// default_mesh = gcp.networkservices.Mesh("default",
 ///     name="my-tcp-route",
 ///     labels={
@@ -656,18 +754,20 @@ import 'tcp_route_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "backend-service-health-check",
-///         RequestPath = "/",
-///         CheckIntervalSec = 1,
-///         TimeoutSec = 1,
+///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "my-backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 ///     var defaultMesh = new Gcp.NetworkServices.Mesh("default", new()
@@ -733,18 +833,19 @@ import 'tcp_route_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-/// 			Name:             pulumi.String("backend-service-health-check"),
-/// 			RequestPath:      pulumi.String("/"),
-/// 			CheckIntervalSec: pulumi.Int(1),
-/// 			TimeoutSec:       pulumi.Int(1),
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name: pulumi.String("backend-service-health-check"),
+/// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("my-backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			Name:                pulumi.String("my-backend-service"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -766,7 +867,7 @@ import 'tcp_route_state.dart';
 /// 			},
 /// 			Description: pulumi.String("my description"),
 /// 			Meshes: pulumi.StringArray{
-/// 				defaultMesh.ID(),
+/// 				defaultMesh.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Rules: networkservices.TcpRouteRuleArray{
 /// 				&networkservices.TcpRouteRuleArgs{
@@ -779,7 +880,7 @@ import 'tcp_route_state.dart';
 /// 					Action: &networkservices.TcpRouteRuleActionArgs{
 /// 						Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 /// 							&networkservices.TcpRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID(),
+/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 /// 								Weight:      pulumi.Int(1),
 /// 							},
 /// 						},
@@ -795,14 +896,64 @@ import 'tcp_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "my-backend-service"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   health_checks         = gcp_compute_healthcheck.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "backend-service-health-check"
+///   tcp_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_networkservices_mesh" "default" {
+///   name = "my-tcp-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+/// }
+/// resource "gcp_networkservices_tcproute" "default" {
+///   name = "my-tcp-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   meshes      = [gcp_networkservices_mesh.default.id]
+///   rules {
+///     matches {
+///       address = "10.0.0.1/32"
+///       port    = "8081"
+///     }
+///     action = {
+///       destinations = [{
+///         "serviceName" = gcp_compute_backendservice.default.id
+///         "weight"      = 1
+///       }]
+///       original_destination = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.networkservices.Mesh;
@@ -810,9 +961,11 @@ import 'tcp_route_state.dart';
 /// import com.pulumi.gcp.networkservices.TcpRoute;
 /// import com.pulumi.gcp.networkservices.TcpRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleMatchArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionDestinationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -824,16 +977,17 @@ import 'tcp_route_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("backend-service-health-check")
-///             .requestPath("/")
-///             .checkIntervalSec(1)
-///             .timeoutSec(1)
+///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("my-backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()
@@ -871,15 +1025,15 @@ import 'tcp_route_state.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: my-backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///       loadBalancingScheme: INTERNAL_SELF_MANAGED
+///       healthChecks: ${defaultHealthCheck.id}
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: backend-service-health-check
-///       requestPath: /
-///       checkIntervalSec: 1
-///       timeoutSec: 1
+///       tcpHealthCheck:
+///         port: 80
 ///   defaultMesh:
 ///     type: gcp:networkservices:Mesh
 ///     name: default
@@ -917,15 +1071,16 @@ import 'tcp_route_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "backend-service-health-check",
-///     requestPath: "/",
-///     checkIntervalSec: 1,
-///     timeoutSec: 1,
+///     tcpHealthCheck: {
+///         port: 80,
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "my-backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultGateway = new gcp.networkservices.Gateway("default", {
 ///     name: "my-tcp-route",
@@ -963,14 +1118,15 @@ import 'tcp_route_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="backend-service-health-check",
-///     request_path="/",
-///     check_interval_sec=1,
-///     timeout_sec=1)
+///     tcp_health_check={
+///         "port": 80,
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="my-backend-service",
-///     health_checks=default_http_health_check.id)
+///     load_balancing_scheme="INTERNAL_SELF_MANAGED",
+///     health_checks=default_health_check.id)
 /// default_gateway = gcp.networkservices.Gateway("default",
 ///     name="my-tcp-route",
 ///     labels={
@@ -1009,18 +1165,20 @@ import 'tcp_route_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "backend-service-health-check",
-///         RequestPath = "/",
-///         CheckIntervalSec = 1,
-///         TimeoutSec = 1,
+///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "my-backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 ///     var defaultGateway = new Gcp.NetworkServices.Gateway("default", new()
@@ -1092,18 +1250,19 @@ import 'tcp_route_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-/// 			Name:             pulumi.String("backend-service-health-check"),
-/// 			RequestPath:      pulumi.String("/"),
-/// 			CheckIntervalSec: pulumi.Int(1),
-/// 			TimeoutSec:       pulumi.Int(1),
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name: pulumi.String("backend-service-health-check"),
+/// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("my-backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			Name:                pulumi.String("my-backend-service"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1130,7 +1289,7 @@ import 'tcp_route_state.dart';
 /// 			},
 /// 			Description: pulumi.String("my description"),
 /// 			Gateways: pulumi.StringArray{
-/// 				defaultGateway.ID(),
+/// 				defaultGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Rules: networkservices.TcpRouteRuleArray{
 /// 				&networkservices.TcpRouteRuleArgs{
@@ -1143,7 +1302,7 @@ import 'tcp_route_state.dart';
 /// 					Action: &networkservices.TcpRouteRuleActionArgs{
 /// 						Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 /// 							&networkservices.TcpRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID(),
+/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 /// 								Weight:      pulumi.Int(1),
 /// 							},
 /// 						},
@@ -1159,14 +1318,67 @@ import 'tcp_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "my-backend-service"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   health_checks         = gcp_compute_healthcheck.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "backend-service-health-check"
+///   tcp_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_networkservices_gateway" "default" {
+///   name = "my-tcp-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   scope       = "my-scope"
+///   type        = "OPEN_MESH"
+///   ports       = [443]
+/// }
+/// resource "gcp_networkservices_tcproute" "default" {
+///   name = "my-tcp-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   gateways    = [gcp_networkservices_gateway.default.id]
+///   rules {
+///     matches {
+///       address = "10.0.0.1/32"
+///       port    = "8081"
+///     }
+///     action = {
+///       destinations = [{
+///         "serviceName" = gcp_compute_backendservice.default.id
+///         "weight"      = 1
+///       }]
+///       original_destination = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.networkservices.Gateway;
@@ -1174,9 +1386,11 @@ import 'tcp_route_state.dart';
 /// import com.pulumi.gcp.networkservices.TcpRoute;
 /// import com.pulumi.gcp.networkservices.TcpRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleMatchArgs;
 /// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionDestinationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1188,16 +1402,17 @@ import 'tcp_route_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("backend-service-health-check")
-///             .requestPath("/")
-///             .checkIntervalSec(1)
-///             .timeoutSec(1)
+///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("my-backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
@@ -1238,15 +1453,15 @@ import 'tcp_route_state.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: my-backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///       loadBalancingScheme: INTERNAL_SELF_MANAGED
+///       healthChecks: ${defaultHealthCheck.id}
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: backend-service-health-check
-///       requestPath: /
-///       checkIntervalSec: 1
-///       timeoutSec: 1
+///       tcpHealthCheck:
+///         port: 80
 ///   defaultGateway:
 ///     type: gcp:networkservices:Gateway
 ///     name: default
@@ -1286,27 +1501,27 @@ import 'tcp_route_state.dart';
 /// TcpRoute can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/tcpRoutes/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{name}}
 /// ```
 class TcpRoute extends pulumi.CustomResource {
   /// Time the TcpRoute was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1316,7 +1531,7 @@ class TcpRoute extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> gateways;
   /// Set of label tags associated with the TcpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
@@ -1354,6 +1569,7 @@ class TcpRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateways = registerOutput<List<String>?>('gateways');
@@ -1391,6 +1607,7 @@ class TcpRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateways = registerOutput<List<String>?>('gateways');

@@ -14,6 +14,7 @@ class FirewallPolicyWithRulesRuleMatch {
   /// Destination IP address range in CIDR format. Required for
   /// EGRESS rules.
   final pulumi.Input<List<String>>? destIpRanges;
+  /// (Optional, Beta)
   /// Network scope of the traffic destination.
   /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
   final pulumi.Input<String>? destNetworkScope;
@@ -37,9 +38,11 @@ class FirewallPolicyWithRulesRuleMatch {
   /// Source IP address range in CIDR format. Required for
   /// INGRESS rules.
   final pulumi.Input<List<String>>? srcIpRanges;
+  /// (Optional, Beta)
   /// Network scope of the traffic source.
   /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
   final pulumi.Input<String>? srcNetworkScope;
+  /// (Optional, Beta)
   /// Networks of the traffic source. It can be either a full or partial url.
   final pulumi.Input<List<String>>? srcNetworks;
   /// Region codes whose IP addresses will be used to match for source
@@ -62,15 +65,15 @@ class FirewallPolicyWithRulesRuleMatch {
   /// [destAddressGroups] Address groups which should be matched against the traffic destination.
   /// [destFqdns] Fully Qualified Domain Name (FQDN) which should be matched against
   /// [destIpRanges] Destination IP address range in CIDR format. Required for
-  /// [destNetworkScope] Network scope of the traffic destination.
+  /// [destNetworkScope] (Optional, Beta)
   /// [destRegionCodes] Region codes whose IP addresses will be used to match for destination
   /// [destThreatIntelligences] Names of Network Threat Intelligence lists.
   /// [layer4Configs] Pairs of IP protocols and ports that the rule should match.
   /// [srcAddressGroups] Address groups which should be matched against the traffic source.
   /// [srcFqdns] Fully Qualified Domain Name (FQDN) which should be matched against
   /// [srcIpRanges] Source IP address range in CIDR format. Required for
-  /// [srcNetworkScope] Network scope of the traffic source.
-  /// [srcNetworks] Networks of the traffic source. It can be either a full or partial url.
+  /// [srcNetworkScope] (Optional, Beta)
+  /// [srcNetworks] (Optional, Beta)
   /// [srcRegionCodes] Region codes whose IP addresses will be used to match for source
   /// [srcSecureTags] List of secure tag values, which should be matched at the source
   /// [srcThreatIntelligences] Names of Network Threat Intelligence lists.
@@ -132,4 +135,3 @@ class FirewallPolicyWithRulesRuleMatch {
     );
   }
 }
-

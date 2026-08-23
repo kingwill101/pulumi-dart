@@ -3,7 +3,7 @@ import 'app_check_device_check_config_args.dart';
 import 'app_check_device_check_config_state.dart';
 
 /// An app's DeviceCheck configuration object. Note that the Team ID registered with your
-/// app is used as part of the validation process. Make sure your `gcp.firebase.AppleApp` has a team_id present.
+/// app is used as part of the validation process. Make sure your `gcp.firebase.AppleApp` has a teamId present.
 ///
 ///
 /// To get more information about DeviceCheckConfig, see:
@@ -176,6 +176,42 @@ import 'app_check_device_check_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_appleapp" "default" {
+///   project      = "my-project-name"
+///   display_name = "Apple app"
+///   bundle_id    = "bundle.id.devicecheck"
+///   team_id      = "9987654321"
+/// }
+/// # It takes a while for App Check to recognize the new app
+/// # If your app already exists, you don't have to wait 30 seconds.
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_firebase_appleapp.default]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_appcheckdevicecheckconfig" "default" {
+///   depends_on  = [time_sleep.wait_30s]
+///   project     = "my-project-name"
+///   app_id      = gcp_firebase_appleapp.default.app_id
+///   token_ttl   = "7200s"
+///   key_id      = "Key ID"
+///   private_key = file("path/to/private-key.p8")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +227,8 @@ import 'app_check_device_check_config_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,22 +314,15 @@ import 'app_check_device_check_config_state.dart';
 /// DeviceCheckConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/apps/{{app_id}}/deviceCheckConfig`
-///
 /// * `{{project}}/{{app_id}}`
-///
 /// * `{{app_id}}`
+///
 ///
 /// When using the `pulumi import` command, DeviceCheckConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default projects/{{project}}/apps/{{app_id}}/deviceCheckConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{project}}/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{app_id}}
 /// ```
 class AppCheckDeviceCheckConfig extends pulumi.CustomResource {

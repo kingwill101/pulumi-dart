@@ -101,7 +101,7 @@ import 'notification_config_streaming_config.dart';
 /// 			ConfigId:     pulumi.String("my-config"),
 /// 			Organization: pulumi.String("123456789"),
 /// 			Description:  pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic:  sccNotification.ID(),
+/// 			PubsubTopic:  sccNotification.ID().ToIDOutput().ToStringOutput(),
 /// 			StreamingConfig: &securitycenter.NotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -111,6 +111,28 @@ import 'notification_config_streaming_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "scc_notification" {
+///   name = "my-topic"
+/// }
+/// resource "gcp_securitycenter_notificationconfig" "custom_notification_config" {
+///   config_id    = "my-config"
+///   organization = "123456789"
+///   description  = "My custom Cloud Security Command Center Finding Notification Configuration"
+///   pubsub_topic = gcp_pubsub_topic.scc_notification.id
+///   streaming_config = {
+///     filter = "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""
+///   }
 /// }
 /// ```
 /// ```java
@@ -124,8 +146,8 @@ import 'notification_config_streaming_config.dart';
 /// import com.pulumi.gcp.securitycenter.NotificationConfig;
 /// import com.pulumi.gcp.securitycenter.NotificationConfigArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.NotificationConfigStreamingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +202,7 @@ import 'notification_config_streaming_config.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -188,6 +211,13 @@ import 'notification_config_streaming_config.dart';
 class NotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
   /// The resource name of this notification config, in the format
@@ -197,7 +227,7 @@ class NotificationConfig extends pulumi.CustomResource {
   /// Config lives in.
   late final pulumi.Output<String> organization;
   /// The Pub/Sub topic to send notifications to. Its format is
-  /// "projects/[project_id]/topics/[topic]".
+  /// "projects/[projectId]/topics/[topic]".
   late final pulumi.Output<String> pubsubTopic;
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
@@ -221,6 +251,7 @@ class NotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
@@ -253,6 +284,7 @@ class NotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');

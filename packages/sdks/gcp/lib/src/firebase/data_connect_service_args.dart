@@ -9,19 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectServiceArgs {
   /// Optional. Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The deletion policy for the database. Setting the field to FORCE allows the
   /// Service to be deleted even if a Schema or Connector is present. By default,
   /// the Service deletion will only succeed when no Schema or Connectors are
   /// present.
-  /// Possible values: DEFAULT, FORCE
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
   final pulumi.Input<String>? deletionPolicy;
   /// Optional. Mutable human-readable name. 63 character limit.
   final pulumi.Input<String>? displayName;
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The region in which the service resides, e.g. "us-central1" or "asia-east1".
   final pulumi.Input<String> location;
@@ -74,4 +81,3 @@ class DataConnectServiceArgs {
     );
   }
 }
-

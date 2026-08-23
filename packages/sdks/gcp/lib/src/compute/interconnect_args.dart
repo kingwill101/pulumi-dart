@@ -10,12 +10,14 @@ import 'interconnect_params.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_interconnect_interconnect_args_doc}
 class InterconnectArgs {
+  /// (Optional, Beta)
   /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
   final pulumi.Input<bool>? aaiEnabled;
   /// Administrative status of the interconnect. When this is set to true, the Interconnect is
   /// functional and can carry traffic. When set to false, no packets can be carried over the
   /// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
   final pulumi.Input<bool>? adminEnabled;
+  /// (Optional, Beta)
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud
   /// Interconnect connection between Google and your on-premises router.
   /// Structure is documented below.
@@ -24,6 +26,13 @@ class InterconnectArgs {
   /// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
   /// for cross-cloud interconnect.
   final pulumi.Input<String>? customerName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
@@ -36,7 +45,7 @@ class InterconnectArgs {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Type of link requested. Note that this field indicates the speed of each of the links in the
   /// bundle, not the speed of the entire bundle. Can take one of the following values:
@@ -45,7 +54,7 @@ class InterconnectArgs {
   /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
   /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
   final pulumi.Input<String> linkType;
-  /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+  /// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
   /// Specifies the location inside Google's Networks.
   final pulumi.Input<String> location;
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -88,15 +97,16 @@ class InterconnectArgs {
   final pulumi.Input<int> requestedLinkCount;
 
   /// Creates a new [InterconnectArgs].
-  /// [aaiEnabled] Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+  /// [aaiEnabled] (Optional, Beta)
   /// [adminEnabled] Administrative status of the interconnect. When this is set to true, the Interconnect is
-  /// [applicationAwareInterconnect] Configuration that enables Media Access Control security (MACsec) on the Cloud
+  /// [applicationAwareInterconnect] (Optional, Beta)
   /// [customerName] Customer name, to put in the Letter of Authorization as the party authorized to request a
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [interconnectType] Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
   /// [labels] Labels for this resource. These can only be added or modified by the setLabels
   /// [linkType] Type of link requested. Note that this field indicates the speed of each of the links in the
-  /// [location] URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+  /// [location] URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
   /// [macsec] Configuration that enables Media Access Control security (MACsec) on the Cloud
   /// [macsecEnabled] Enable or disable MACsec on this Interconnect connection.
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be
@@ -111,6 +121,7 @@ class InterconnectArgs {
     this.adminEnabled,
     this.applicationAwareInterconnect,
     this.customerName,
+    this.deletionPolicy,
     this.description,
     required this.interconnectType,
     this.labels,
@@ -133,6 +144,7 @@ class InterconnectArgs {
       'adminEnabled': ?adminEnabled,
       'applicationAwareInterconnect': ?pulumi.Input.mapOptionalInputValue<InterconnectApplicationAwareInterconnect, Map<String, dynamic>>(applicationAwareInterconnect, (value) => value.toMap()),
       'customerName': ?customerName,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'interconnectType': interconnectType,
       'labels': ?labels,
@@ -156,6 +168,7 @@ class InterconnectArgs {
       adminEnabled: (() { final guardedValue = map['adminEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       applicationAwareInterconnect: (() { final guardedValue = map['applicationAwareInterconnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InterconnectApplicationAwareInterconnect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customerName: (() { final guardedValue = map['customerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interconnectType: pulumi.Input.fromValue(map['interconnectType'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -173,4 +186,3 @@ class InterconnectArgs {
     );
   }
 }
-

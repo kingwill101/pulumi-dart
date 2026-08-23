@@ -118,7 +118,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:               pulumi.String("example-subscription"),
-/// 			Topic:              example.ID(),
+/// 			Topic:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			AckDeadlineSeconds: pulumi.Int(20),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -137,6 +137,33 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name                 = "example-subscription"
+///   topic                = gcp_pubsub_topic.example.id
+///   ack_deadline_seconds = 20
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   push_config = {
+///     push_endpoint = "https://example.com/push"
+///     attributes = {
+///       "x-goog-version" = "v1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +175,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.Subscription;
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -304,7 +331,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -326,6 +353,36 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   message_retention_duration = "1200s"
+///   retain_acked_messages      = true
+///   ack_deadline_seconds       = 20
+///   expiration_policy = {
+///     ttl = "300000.5s"
+///   }
+///   retry_policy = {
+///     minimum_backoff = "10s"
+///   }
+///   enable_message_ordering = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -338,8 +395,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionExpirationPolicyArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionRetryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -482,7 +539,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -496,6 +553,28 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   filter               = "    attributes.foo = \\\"foo\\\"\n    AND attributes.bar = \\\"bar\\\"\n"
+///   ack_deadline_seconds = 20
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -506,8 +585,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.Subscription;
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -645,9 +724,9 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DeadLetterPolicy: &pubsub.SubscriptionDeadLetterPolicyArgs{
-/// 				DeadLetterTopic:     exampleDeadLetter.ID(),
+/// 				DeadLetterTopic:     exampleDeadLetter.ID().ToIDOutput().ToStringOutput(),
 /// 				MaxDeliveryAttempts: pulumi.Int(10),
 /// 			},
 /// 		})
@@ -656,6 +735,30 @@ import 'subscription_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_topic" "example_dead_letter" {
+///   name = "example-topic-dead-letter"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   dead_letter_policy = {
+///     dead_letter_topic     = gcp_pubsub_topic.example_dead_letter.id
+///     max_delivery_attempts = 10
+///   }
 /// }
 /// ```
 /// ```java
@@ -669,8 +772,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.Subscription;
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionDeadLetterPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -888,7 +991,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
 /// 				Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 /// 					project := _args[0].(string)
@@ -909,6 +1012,38 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   bigquery_config = {
+///     table ="${gcp_bigquery_table.test.project}.${gcp_bigquery_table.test.dataset_id}.${gcp_bigquery_table.test.table_id}"
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "example_dataset"
+/// }
+/// resource "gcp_bigquery_table" "test" {
+///   table_id            = "example_table"
+///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"data\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The data\\\"\n  }\n]\n"
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -926,8 +1061,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1190,7 +1325,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
 /// 				Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 /// 					project := _args[0].(string)
@@ -1212,6 +1347,39 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   bigquery_config = {
+///     table            ="${gcp_bigquery_table.test.project}.${gcp_bigquery_table.test.dataset_id}.${gcp_bigquery_table.test.table_id}"
+///     use_table_schema = true
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "example_dataset"
+/// }
+/// resource "gcp_bigquery_table" "test" {
+///   table_id            = "example_table"
+///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"data\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The data\\\"\n  }\n]\n"
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1229,8 +1397,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1592,7 +1760,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
 /// 				Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 /// 					project := _args[0].(string)
@@ -1612,6 +1780,54 @@ import 'subscription_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   depends_on = [gcp_serviceaccount_account.bq_write_service_account, gcp_projects_iammember.bigquery_metadata_viewer, gcp_projects_iammember.bigquery_data_editor]
+///   name       = "example-subscription"
+///   topic      = gcp_pubsub_topic.example.id
+///   bigquery_config = {
+///     table                 ="${gcp_bigquery_table.test.project}.${gcp_bigquery_table.test.dataset_id}.${gcp_bigquery_table.test.table_id}"
+///     service_account_email = gcp_serviceaccount_account.bq_write_service_account.email
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "bq_write_service_account" {
+///   account_id   = "example-bqw"
+///   display_name = "BQ Write Service Account"
+/// }
+/// resource "gcp_projects_iammember" "bigquery_metadata_viewer" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/bigquery.metadataViewer"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.bq_write_service_account.email}"
+/// }
+/// resource "gcp_projects_iammember" "bigquery_data_editor" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/bigquery.dataEditor"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.bq_write_service_account.email}"
+/// }
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "example_dataset"
+/// }
+/// resource "gcp_bigquery_table" "test" {
+///   deletion_protection = false
+///   table_id            = "example_table"
+///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"data\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The data\\\"\n  }\n]\n"
 /// }
 /// ```
 /// ```java
@@ -1636,8 +1852,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1808,7 +2024,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_89648",
+///         filenameSuffix: "-_75303",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -1841,7 +2057,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_89648",
+///         "filename_suffix": "-_75303",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -1889,7 +2105,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_89648",
+///             FilenameSuffix = "-_75303",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -1910,8 +2126,6 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -1948,11 +2162,11 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: exampleTopic.ID(),
+/// 			Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_89648"),
+/// 				FilenameSuffix:         pulumi.String("-_75303"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -1967,6 +2181,46 @@ import 'subscription_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_storage_bucket" "example" {
+///   name                        = "example-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
+///   name       = "example-subscription"
+///   topic      = gcp_pubsub_topic.example.id
+///   cloud_storage_config = {
+///     bucket                   = gcp_storage_bucket.example.name
+///     filename_prefix          = "pre-"
+///     filename_suffix          = "-_75303"
+///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
+///     max_bytes                = 1000
+///     max_duration             = "300s"
+///     max_messages             = 1000
+///   }
+/// }
+/// resource "gcp_storage_bucketiammember" "admin" {
+///   bucket = gcp_storage_bucket.example.name
+///   role   = "roles/storage.admin"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -1987,8 +2241,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2025,7 +2279,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_89648")
+///                 .filenameSuffix("-_75303")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -2062,11 +2316,360 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_89648
+///         filenameSuffix: -_75303
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
 ///         maxMessages: 1000
+///     options:
+///       dependsOn:
+///         - ${example}
+///         - ${admin}
+///   admin:
+///     type: gcp:storage:BucketIAMMember
+///     properties:
+///       bucket: ${example.name}
+///       role: roles/storage.admin
+///       member: serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
+/// ### Pubsub Subscription Push Cloudstorage Text
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = new gcp.storage.Bucket("example", {
+///     name: "example-bucket",
+///     location: "US",
+///     uniformBucketLevelAccess: true,
+/// });
+/// const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
+/// const project = gcp.organizations.getProject({});
+/// const admin = new gcp.storage.BucketIAMMember("admin", {
+///     bucket: example.name,
+///     role: "roles/storage.admin",
+///     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+/// });
+/// const exampleSubscription = new gcp.pubsub.Subscription("example", {
+///     name: "example-subscription",
+///     topic: exampleTopic.id,
+///     cloudStorageConfig: {
+///         bucket: example.name,
+///         filenamePrefix: "pre-",
+///         filenameSuffix: "-_72437",
+///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
+///         maxBytes: 1000,
+///         maxDuration: "300s",
+///         maxMessages: 1000,
+///         textConfig: {},
+///     },
+/// }, {
+///     dependsOn: [
+///         example,
+///         admin,
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.storage.Bucket("example",
+///     name="example-bucket",
+///     location="US",
+///     uniform_bucket_level_access=True)
+/// example_topic = gcp.pubsub.Topic("example", name="example-topic")
+/// project = gcp.organizations.get_project()
+/// admin = gcp.storage.BucketIAMMember("admin",
+///     bucket=example.name,
+///     role="roles/storage.admin",
+///     member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+/// example_subscription = gcp.pubsub.Subscription("example",
+///     name="example-subscription",
+///     topic=example_topic.id,
+///     cloud_storage_config={
+///         "bucket": example.name,
+///         "filename_prefix": "pre-",
+///         "filename_suffix": "-_72437",
+///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+///         "max_bytes": 1000,
+///         "max_duration": "300s",
+///         "max_messages": 1000,
+///         "text_config": {},
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[
+///             example,
+///             admin,
+///         ]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Gcp.Storage.Bucket("example", new()
+///     {
+///         Name = "example-bucket",
+///         Location = "US",
+///         UniformBucketLevelAccess = true,
+///     });
+///
+///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
+///     {
+///         Name = "example-topic",
+///     });
+///
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var admin = new Gcp.Storage.BucketIAMMember("admin", new()
+///     {
+///         Bucket = example.Name,
+///         Role = "roles/storage.admin",
+///         Member = $"serviceAccount:service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+///     });
+///
+///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+///     {
+///         Name = "example-subscription",
+///         Topic = exampleTopic.Id,
+///         CloudStorageConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigArgs
+///         {
+///             Bucket = example.Name,
+///             FilenamePrefix = "pre-",
+///             FilenameSuffix = "-_72437",
+///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
+///             MaxBytes = 1000,
+///             MaxDuration = "300s",
+///             MaxMessages = 1000,
+///             TextConfig = null,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             example,
+///             admin,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := storage.NewBucket(ctx, "example", &storage.BucketArgs{
+/// 			Name:                     pulumi.String("example-bucket"),
+/// 			Location:                 pulumi.String("US"),
+/// 			UniformBucketLevelAccess: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleTopic, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+/// 			Name: pulumi.String("example-topic"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
+/// 			Bucket: example.Name,
+/// 			Role:   pulumi.String("roles/storage.admin"),
+/// 			Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+/// 			Name:  pulumi.String("example-subscription"),
+/// 			Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
+/// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
+/// 				Bucket:                 example.Name,
+/// 				FilenamePrefix:         pulumi.String("pre-"),
+/// 				FilenameSuffix:         pulumi.String("-_72437"),
+/// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
+/// 				MaxBytes:               pulumi.Int(1000),
+/// 				MaxDuration:            pulumi.String("300s"),
+/// 				MaxMessages:            pulumi.Int(1000),
+/// 				TextConfig:             &pubsub.SubscriptionCloudStorageConfigTextConfigArgs{},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			example,
+/// 			admin,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_storage_bucket" "example" {
+///   name                        = "example-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
+///   name       = "example-subscription"
+///   topic      = gcp_pubsub_topic.example.id
+///   cloud_storage_config = {
+///     bucket                   = gcp_storage_bucket.example.name
+///     filename_prefix          = "pre-"
+///     filename_suffix          = "-_72437"
+///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
+///     max_bytes                = 1000
+///     max_duration             = "300s"
+///     max_messages             = 1000
+///     text_config              = {}
+///   }
+/// }
+/// resource "gcp_storage_bucketiammember" "admin" {
+///   bucket = gcp_storage_bucket.example.name
+///   role   = "roles/storage.admin"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.pubsub.Topic;
+/// import com.pulumi.gcp.pubsub.TopicArgs;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.storage.BucketIAMMember;
+/// import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+/// import com.pulumi.gcp.pubsub.Subscription;
+/// import com.pulumi.gcp.pubsub.SubscriptionArgs;
+/// import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
+/// import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigTextConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Bucket("example", BucketArgs.builder()
+///             .name("example-bucket")
+///             .location("US")
+///             .uniformBucketLevelAccess(true)
+///             .build());
+///
+///         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()
+///             .name("example-topic")
+///             .build());
+///
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
+///             .bucket(example.name())
+///             .role("roles/storage.admin")
+///             .member(String.format("serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com", project.number()))
+///             .build());
+///
+///         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+///             .name("example-subscription")
+///             .topic(exampleTopic.id())
+///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
+///                 .bucket(example.name())
+///                 .filenamePrefix("pre-")
+///                 .filenameSuffix("-_72437")
+///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
+///                 .maxBytes(1000)
+///                 .maxDuration("300s")
+///                 .maxMessages(1000)
+///                 .textConfig(SubscriptionCloudStorageConfigTextConfigArgs.builder()
+///                     .build())
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     example,
+///                     admin)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:storage:Bucket
+///     properties:
+///       name: example-bucket
+///       location: US
+///       uniformBucketLevelAccess: true
+///   exampleTopic:
+///     type: gcp:pubsub:Topic
+///     name: example
+///     properties:
+///       name: example-topic
+///   exampleSubscription:
+///     type: gcp:pubsub:Subscription
+///     name: example
+///     properties:
+///       name: example-subscription
+///       topic: ${exampleTopic.id}
+///       cloudStorageConfig:
+///         bucket: ${example.name}
+///         filenamePrefix: pre-
+///         filenameSuffix: -_72437
+///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
+///         maxBytes: 1000
+///         maxDuration: 300s
+///         maxMessages: 1000
+///         textConfig: {}
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -2110,7 +2713,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_64612",
+///         filenameSuffix: "-_7864",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2147,7 +2750,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_64612",
+///         "filename_suffix": "-_7864",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2199,7 +2802,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_64612",
+///             FilenameSuffix = "-_7864",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2225,8 +2828,6 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -2263,11 +2864,11 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: exampleTopic.ID(),
+/// 			Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_64612"),
+/// 				FilenameSuffix:         pulumi.String("-_7864"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2286,6 +2887,50 @@ import 'subscription_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_storage_bucket" "example" {
+///   name                        = "example-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
+///   name       = "example-subscription"
+///   topic      = gcp_pubsub_topic.example.id
+///   cloud_storage_config = {
+///     bucket                   = gcp_storage_bucket.example.name
+///     filename_prefix          = "pre-"
+///     filename_suffix          = "-_7864"
+///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
+///     max_bytes                = 1000
+///     max_duration             = "300s"
+///     max_messages             = 1000
+///     avro_config = {
+///       write_metadata   = true
+///       use_topic_schema = true
+///     }
+///   }
+/// }
+/// resource "gcp_storage_bucketiammember" "admin" {
+///   bucket = gcp_storage_bucket.example.name
+///   role   = "roles/storage.admin"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2307,8 +2952,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigAvroConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2345,7 +2990,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_64612")
+///                 .filenameSuffix("-_7864")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -2386,7 +3031,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_64612
+///         filenameSuffix: -_7864
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -2440,7 +3085,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_34242",
+///         filenameSuffix: "-_70324",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2477,7 +3122,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_34242",
+///         "filename_suffix": "-_70324",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2531,7 +3176,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_34242",
+///             FilenameSuffix = "-_70324",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2599,11 +3244,11 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: exampleTopic.ID(),
+/// 			Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_34242"),
+/// 				FilenameSuffix:         pulumi.String("-_70324"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2623,6 +3268,50 @@ import 'subscription_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_storage_bucket" "example" {
+///   name                        = "example-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   depends_on = [gcp_serviceaccount_account.storage_write_service_account, gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
+///   name       = "example-subscription"
+///   topic      = gcp_pubsub_topic.example.id
+///   cloud_storage_config = {
+///     bucket                   = gcp_storage_bucket.example.name
+///     filename_prefix          = "pre-"
+///     filename_suffix          = "-_70324"
+///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
+///     max_bytes                = 1000
+///     max_duration             = "300s"
+///     service_account_email    = gcp_serviceaccount_account.storage_write_service_account.email
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "storage_write_service_account" {
+///   account_id   = "example-stw"
+///   display_name = "Storage Write Service Account"
+/// }
+/// resource "gcp_storage_bucketiammember" "admin" {
+///   bucket = gcp_storage_bucket.example.name
+///   role   = "roles/storage.admin"
+///   member ="serviceAccount:${gcp_serviceaccount_account.storage_write_service_account.email}"
 /// }
 /// ```
 /// ```java
@@ -2645,8 +3334,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2685,7 +3374,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_34242")
+///                 .filenameSuffix("-_70324")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -2726,7 +3415,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_34242
+///         filenameSuffix: -_70324
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -2852,7 +3541,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			MessageTransforms: pubsub.SubscriptionMessageTransformArray{
 /// 				&pubsub.SubscriptionMessageTransformArgs{
 /// 					JavascriptUdf: &pubsub.SubscriptionMessageTransformJavascriptUdfArgs{
@@ -2869,6 +3558,29 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   message_transforms {
+///     javascript_udf = {
+///       function_name = "isYearEven"
+///       code          = "function isYearEven(message, metadata) {\n  const data = JSON.parse(message.data);\n  return message.year %2 === 0;\n}\n"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2881,8 +3593,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformJavascriptUdfArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3098,7 +3810,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 /// 			Name:  pulumi.String("example-subscription"),
-/// 			Topic: example.ID(),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
 /// 			MessageTransforms: pubsub.SubscriptionMessageTransformArray{
 /// 				&pubsub.SubscriptionMessageTransformArgs{
 /// 					JavascriptUdf: &pubsub.SubscriptionMessageTransformJavascriptUdfArgs{
@@ -3134,6 +3846,42 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   message_transforms {
+///     javascript_udf = {
+///       function_name = "redactSSN"
+///       code          = "function redactSSN(message, metadata) {\n  const data = JSON.parse(message.data);\n  delete data['ssn'];\n  message.data = JSON.stringify(data);\n  return message;\n}\n"
+///     }
+///   }
+///   message_transforms {
+///     javascript_udf = {
+///       function_name = "otherFunc"
+///       code          = "function otherFunc(message, metadata) {\n  return null;\n}\n"
+///     }
+///   }
+///   message_transforms {
+///     disabled = true
+///     javascript_udf = {
+///       function_name = "someSMTWeDisabled"
+///       code          = "..."
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3146,8 +3894,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformJavascriptUdfArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3347,51 +4095,83 @@ import 'subscription_state.dart';
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-/// Name: pulumi.String("example-topic"),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+/// 			Name: pulumi.String("example-topic"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+/// 			Parent:    pulumi.String(project.Id),
+/// 			ShortName: pulumi.String("tag_key"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			example,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+/// 			Parent:    tagKey.ID().ToIDOutput().ToStringOutput(),
+/// 			ShortName: pulumi.String("tag_value"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+/// 			Name:  pulumi.String("example-subscription"),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Tags: pulumi.All(tagKey.NamespacedName, tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
+/// 				namespacedName := _args[0].(string)
+/// 				shortName := _args[1].(string)
+/// 				return map[string]string{
+/// 					namespacedName: shortName,
+/// 				}, nil
+/// 			}).(pulumi.StringMapOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
 /// }
-/// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-/// Parent: pulumi.String(project.Id),
-/// ShortName: pulumi.String("tag_key"),
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// example,
-/// }))
-/// if err != nil {
-/// return err
+///
+/// data "gcp_organizations_getproject" "project" {
 /// }
-/// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-/// Parent: tagKey.ID(),
-/// ShortName: pulumi.String("tag_value"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
 /// }
-/// _, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
-/// Name: pulumi.String("example-subscription"),
-/// Topic: example.ID(),
-/// Tags: pulumi.All(tagKey.NamespacedName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-/// namespacedName := _args[0].(string)
-/// shortName := _args[1].(string)
-/// return map[string]string{
-/// namespacedName: shortName,
-/// }, nil
-/// }).(pulumi.Map[string]stringOutput),
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_pubsub_subscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
+///   tags = {
+///     gcp_tags_tagkey.tag_key.namespaced_name = gcp_tags_tagvalue.tag_value.short_name
+///   }
 /// }
-/// return nil
-/// })
+/// resource "gcp_tags_tagkey" "tag_key" {
+///   depends_on = [gcp_pubsub_topic.example]
+///   parent     = data.gcp_organizations_getproject.project.id
+///   short_name = "tag_key"
+/// }
+/// resource "gcp_tags_tagvalue" "tag_value" {
+///   parent     = gcp_tags_tagkey.tag_key.id
+///   short_name = "tag_value"
 /// }
 /// ```
 /// ```java
@@ -3411,8 +4191,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.Subscription;
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3492,28 +4272,397 @@ import 'subscription_state.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Pubsub Subscription Ai Inference
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as time from "@pulumiverse/time";
+///
+/// const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
+/// const geminiQueryServiceAccount = new gcp.serviceaccount.Account("gemini_query_service_account", {
+///     accountId: "example-sa",
+///     displayName: "Gemini Query Service Account",
+/// });
+/// const geminiInferenceGet = new gcp.projects.IAMMember("gemini_inference_get", {
+///     project: "my-project-name",
+///     role: "roles/aiplatform.user",
+///     member: pulumi.interpolate`serviceAccount:${geminiQueryServiceAccount.email}`,
+/// });
+/// const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+///     dependsOn: [geminiInferenceGet],
+/// });
+/// const exampleSubscription = new gcp.pubsub.Subscription("example", {
+///     name: "example-subscription",
+///     topic: example.id,
+///     messageTransforms: [{
+///         aiInference: {
+///             endpoint: "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///             unstructuredInference: {
+///                 parameters: {
+///                     max_tokens: "25000",
+///                 },
+///             },
+///             serviceAccountEmail: geminiQueryServiceAccount.email,
+///         },
+///     }],
+/// }, {
+///     dependsOn: [wait120Seconds],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumiverse_time as time
+///
+/// example = gcp.pubsub.Topic("example", name="example-topic")
+/// gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
+///     account_id="example-sa",
+///     display_name="Gemini Query Service Account")
+/// gemini_inference_get = gcp.projects.IAMMember("gemini_inference_get",
+///     project="my-project-name",
+///     role="roles/aiplatform.user",
+///     member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+/// wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+/// opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
+/// example_subscription = gcp.pubsub.Subscription("example",
+///     name="example-subscription",
+///     topic=example.id,
+///     message_transforms=[{
+///         "ai_inference": {
+///             "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///             "unstructured_inference": {
+///                 "parameters": {
+///                     "max_tokens": "25000",
+///                 },
+///             },
+///             "service_account_email": gemini_query_service_account.email,
+///         },
+///     }],
+///     opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Time = Pulumiverse.Time;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Gcp.PubSub.Topic("example", new()
+///     {
+///         Name = "example-topic",
+///     });
+///
+///     var geminiQueryServiceAccount = new Gcp.ServiceAccount.Account("gemini_query_service_account", new()
+///     {
+///         AccountId = "example-sa",
+///         DisplayName = "Gemini Query Service Account",
+///     });
+///
+///     var geminiInferenceGet = new Gcp.Projects.IAMMember("gemini_inference_get", new()
+///     {
+///         Project = "my-project-name",
+///         Role = "roles/aiplatform.user",
+///         Member = geminiQueryServiceAccount.Email.Apply(email => $"serviceAccount:{email}"),
+///     });
+///
+///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+///     {
+///         CreateDuration = "120s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             geminiInferenceGet,
+///         },
+///     });
+///
+///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+///     {
+///         Name = "example-subscription",
+///         Topic = example.Id,
+///         MessageTransforms = new[]
+///         {
+///             new Gcp.PubSub.Inputs.SubscriptionMessageTransformArgs
+///             {
+///                 AiInference = new Gcp.PubSub.Inputs.SubscriptionMessageTransformAiInferenceArgs
+///                 {
+///                     Endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                     UnstructuredInference = new Gcp.PubSub.Inputs.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs
+///                     {
+///                         Parameters =
+///                         {
+///                             { "max_tokens", "25000" },
+///                         },
+///                     },
+///                     ServiceAccountEmail = geminiQueryServiceAccount.Email,
+///                 },
+///             },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             wait120Seconds,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+/// 			Name: pulumi.String("example-topic"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		geminiQueryServiceAccount, err := serviceaccount.NewAccount(ctx, "gemini_query_service_account", &serviceaccount.AccountArgs{
+/// 			AccountId:   pulumi.String("example-sa"),
+/// 			DisplayName: pulumi.String("Gemini Query Service Account"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		geminiInferenceGet, err := projects.NewIAMMember(ctx, "gemini_inference_get", &projects.IAMMemberArgs{
+/// 			Project: pulumi.String("my-project-name"),
+/// 			Role:    pulumi.String("roles/aiplatform.user"),
+/// 			Member: geminiQueryServiceAccount.Email.ApplyT(func(email string) (string, error) {
+/// 				return fmt.Sprintf("serviceAccount:%v", email), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("120s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			geminiInferenceGet,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+/// 			Name:  pulumi.String("example-subscription"),
+/// 			Topic: example.ID().ToIDOutput().ToStringOutput(),
+/// 			MessageTransforms: pubsub.SubscriptionMessageTransformArray{
+/// 				&pubsub.SubscriptionMessageTransformArgs{
+/// 					AiInference: &pubsub.SubscriptionMessageTransformAiInferenceArgs{
+/// 						Endpoint: pulumi.String("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"),
+/// 						UnstructuredInference: &pubsub.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{
+/// 							Parameters: pulumi.StringMap{
+/// 								"max_tokens": pulumi.String("25000"),
+/// 							},
+/// 						},
+/// 						ServiceAccountEmail: geminiQueryServiceAccount.Email,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			wait120Seconds,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "gcp_serviceaccount_account" "gemini_query_service_account" {
+///   account_id   = "example-sa"
+///   display_name = "Gemini Query Service Account"
+/// }
+/// resource "gcp_projects_iammember" "gemini_inference_get" {
+///   project = "my-project-name"
+///   role    = "roles/aiplatform.user"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.gemini_query_service_account.email}"
+/// }
+/// resource "time_sleep" "wait_120_seconds" {
+///   depends_on      = [gcp_projects_iammember.gemini_inference_get]
+///   create_duration = "120s"
+/// }
+/// resource "gcp_pubsub_subscription" "example" {
+///   depends_on = [time_sleep.wait_120_seconds]
+///   name       = "example-subscription"
+///   topic      = gcp_pubsub_topic.example.id
+///   message_transforms {
+///     ai_inference = {
+///       endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///       unstructured_inference = {
+///         parameters = {
+///           "max_tokens" = 25000
+///         }
+///       }
+///       service_account_email = gcp_serviceaccount_account.gemini_query_service_account.email
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.pubsub.Topic;
+/// import com.pulumi.gcp.pubsub.TopicArgs;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.projects.IAMMember;
+/// import com.pulumi.gcp.projects.IAMMemberArgs;
+/// import com.pulumiverse.time.Sleep;
+/// import com.pulumiverse.time.SleepArgs;
+/// import com.pulumi.gcp.pubsub.Subscription;
+/// import com.pulumi.gcp.pubsub.SubscriptionArgs;
+/// import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformArgs;
+/// import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformAiInferenceArgs;
+/// import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Topic("example", TopicArgs.builder()
+///             .name("example-topic")
+///             .build());
+///
+///         var geminiQueryServiceAccount = new Account("geminiQueryServiceAccount", AccountArgs.builder()
+///             .accountId("example-sa")
+///             .displayName("Gemini Query Service Account")
+///             .build());
+///
+///         var geminiInferenceGet = new IAMMember("geminiInferenceGet", IAMMemberArgs.builder()
+///             .project("my-project-name")
+///             .role("roles/aiplatform.user")
+///             .member(geminiQueryServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+///             .build());
+///
+///         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+///             .createDuration("120s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(geminiInferenceGet)
+///                 .build());
+///
+///         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+///             .name("example-subscription")
+///             .topic(example.id())
+///             .messageTransforms(SubscriptionMessageTransformArgs.builder()
+///                 .aiInference(SubscriptionMessageTransformAiInferenceArgs.builder()
+///                     .endpoint("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash")
+///                     .unstructuredInference(SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs.builder()
+///                         .parameters(Map.of("max_tokens", "25000"))
+///                         .build())
+///                     .serviceAccountEmail(geminiQueryServiceAccount.email())
+///                     .build())
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(wait120Seconds)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:pubsub:Topic
+///     properties:
+///       name: example-topic
+///   geminiQueryServiceAccount:
+///     type: gcp:serviceaccount:Account
+///     name: gemini_query_service_account
+///     properties:
+///       accountId: example-sa
+///       displayName: Gemini Query Service Account
+///   geminiInferenceGet:
+///     type: gcp:projects:IAMMember
+///     name: gemini_inference_get
+///     properties:
+///       project: my-project-name
+///       role: roles/aiplatform.user
+///       member: serviceAccount:${geminiQueryServiceAccount.email}
+///   wait120Seconds:
+///     type: time:Sleep
+///     name: wait_120_seconds
+///     properties:
+///       createDuration: 120s
+///     options:
+///       dependsOn:
+///         - ${geminiInferenceGet}
+///   exampleSubscription:
+///     type: gcp:pubsub:Subscription
+///     name: example
+///     properties:
+///       name: example-subscription
+///       topic: ${example.id}
+///       messageTransforms:
+///         - aiInference:
+///             endpoint: projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///             unstructuredInference:
+///               parameters:
+///                 max_tokens: 25000
+///             serviceAccountEmail: ${geminiQueryServiceAccount.email}
+///     options:
+///       dependsOn:
+///         - ${wait120Seconds}
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Subscription can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/subscriptions/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
 /// ```
 class Subscription extends pulumi.CustomResource {
@@ -3544,7 +4693,7 @@ class Subscription extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<SubscriptionCloudStorageConfig?> cloudStorageConfig;
   /// A policy that specifies the conditions for dead lettering messages in
-  /// this subscription. If dead_letter_policy is not set, dead lettering
+  /// this subscription. If deadLetterPolicy is not set, dead lettering
   /// is disabled.
   /// The Cloud Pub/Sub service account associated with this subscription's
   /// parent project (i.e.,
@@ -3552,13 +4701,20 @@ class Subscription extends pulumi.CustomResource {
   /// permission to Acknowledge() messages on this subscription.
   /// Structure is documented below.
   late final pulumi.Output<SubscriptionDeadLetterPolicy?> deadLetterPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// If `true`, Pub/Sub provides the following guarantees for the delivery
   /// of a message with a given value of messageId on this Subscriptions':
   /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
   /// - An acknowledged message will not be resent to a subscriber.
-  /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+  /// Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
   /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
   late final pulumi.Output<bool?> enableExactlyOnceDelivery;
   /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
@@ -3582,11 +4738,11 @@ class Subscription extends pulumi.CustomResource {
   /// A set of key/value label pairs to assign to this Subscription.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// How long to retain unacknowledged messages in the subscription's
   /// backlog, from the moment a message is published. If
-  /// retain_acked_messages is true, then this also configures the retention
+  /// retainAckedMessages is true, then this also configures the retention
   /// of acknowledged messages, and thus configures how far back in time a
   /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
   /// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
@@ -3652,6 +4808,7 @@ class Subscription extends pulumi.CustomResource {
     bigqueryConfig = registerOutput<SubscriptionBigqueryConfig?>('bigqueryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionBigqueryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudStorageConfig = registerOutput<SubscriptionCloudStorageConfig?>('cloudStorageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionCloudStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deadLetterPolicy = registerOutput<SubscriptionDeadLetterPolicy?>('deadLetterPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionDeadLetterPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableExactlyOnceDelivery = registerOutput<bool?>('enableExactlyOnceDelivery');
     enableMessageOrdering = registerOutput<bool?>('enableMessageOrdering');
@@ -3697,6 +4854,7 @@ class Subscription extends pulumi.CustomResource {
     bigqueryConfig = registerOutput<SubscriptionBigqueryConfig?>('bigqueryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionBigqueryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudStorageConfig = registerOutput<SubscriptionCloudStorageConfig?>('cloudStorageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionCloudStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deadLetterPolicy = registerOutput<SubscriptionDeadLetterPolicy?>('deadLetterPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionDeadLetterPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableExactlyOnceDelivery = registerOutput<bool?>('enableExactlyOnceDelivery');
     enableMessageOrdering = registerOutput<bool?>('enableMessageOrdering');

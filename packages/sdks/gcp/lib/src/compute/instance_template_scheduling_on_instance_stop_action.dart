@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceTemplateSchedulingOnInstanceStopAction {
-  /// Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+  /// Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
   final pulumi.Input<bool>? discardLocalSsd;
 
   /// Creates a new [InstanceTemplateSchedulingOnInstanceStopAction].
-  /// [discardLocalSsd] Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+  /// [discardLocalSsd] Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
   const InstanceTemplateSchedulingOnInstanceStopAction({
     this.discardLocalSsd,
   });
@@ -24,4 +24,3 @@ class InstanceTemplateSchedulingOnInstanceStopAction {
     );
   }
 }
-

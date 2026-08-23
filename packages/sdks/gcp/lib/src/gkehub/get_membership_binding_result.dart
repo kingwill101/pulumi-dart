@@ -7,6 +7,7 @@ import 'get_membership_binding_state.dart';
 class GetMembershipBindingResult {
   final String createTime;
   final String deleteTime;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -25,6 +26,7 @@ class GetMembershipBindingResult {
   /// Creates a new [GetMembershipBindingResult].
   /// [createTime] Required.
   /// [deleteTime] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [labels] Required.
@@ -41,6 +43,7 @@ class GetMembershipBindingResult {
   const GetMembershipBindingResult({
     required this.createTime,
     required this.deleteTime,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.id,
     required this.labels,
@@ -60,6 +63,7 @@ class GetMembershipBindingResult {
     return <String, dynamic>{
       'createTime': createTime,
       'deleteTime': deleteTime,
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'id': id,
       'labels': labels,
@@ -80,6 +84,7 @@ class GetMembershipBindingResult {
     return GetMembershipBindingResult(
       createTime: map['createTime'] as String,
       deleteTime: map['deleteTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
@@ -96,4 +101,3 @@ class GetMembershipBindingResult {
     );
   }
 }
-

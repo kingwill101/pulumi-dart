@@ -69,6 +69,22 @@ import 'get_repository_group_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gemini_getrepositorygroupiampolicy" "policy" {
+///   project               = example.project
+///   location              = example.location
+///   code_repository_index = example.codeRepositoryIndex
+///   repository_group_id   = example.repositoryGroupId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'get_repository_group_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gemini.GeminiFunctions;
 /// import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -91,10 +107,10 @@ import 'get_repository_group_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .codeRepositoryIndex(example.codeRepositoryIndex())
-///             .repositoryGroupId(example.repositoryGroupId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+///             .repositoryGroupId(example.get("repositoryGroupId"))
 ///             .build());
 ///
 ///     }

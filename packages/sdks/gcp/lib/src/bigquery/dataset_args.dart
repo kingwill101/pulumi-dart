@@ -63,6 +63,13 @@ class DatasetArgs {
   /// dataset when destroying the resource; otherwise,
   /// destroying the resource will fail if tables are present.
   final pulumi.Input<bool>? deleteContentsOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-friendly description of the dataset
   final pulumi.Input<String>? description;
   /// Options defining open source compatible datasets living in the BigQuery catalog. Contains
@@ -82,7 +89,7 @@ class DatasetArgs {
   /// organize and group your datasets.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The geographic location where the dataset should reside.
   /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -118,6 +125,7 @@ class DatasetArgs {
   /// [defaultPartitionExpirationMs] The default partition expiration for all partitioned tables in
   /// [defaultTableExpirationMs] The default lifetime of all tables in the dataset, in milliseconds.
   /// [deleteContentsOnDestroy] If set to `true`, delete all the tables in the
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A user-friendly description of the dataset
   /// [externalCatalogDatasetOptions] Options defining open source compatible datasets living in the BigQuery catalog. Contains
   /// [externalDatasetReference] Information about the external metadata storage where the dataset is defined.
@@ -137,6 +145,7 @@ class DatasetArgs {
     this.defaultPartitionExpirationMs,
     this.defaultTableExpirationMs,
     this.deleteContentsOnDestroy,
+    this.deletionPolicy,
     this.description,
     this.externalCatalogDatasetOptions,
     this.externalDatasetReference,
@@ -159,6 +168,7 @@ class DatasetArgs {
       'defaultPartitionExpirationMs': ?defaultPartitionExpirationMs,
       'defaultTableExpirationMs': ?defaultTableExpirationMs,
       'deleteContentsOnDestroy': ?deleteContentsOnDestroy,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'externalCatalogDatasetOptions': ?pulumi.Input.mapOptionalInputValue<DatasetExternalCatalogDatasetOptions, Map<String, dynamic>>(externalCatalogDatasetOptions, (value) => value.toMap()),
       'externalDatasetReference': ?pulumi.Input.mapOptionalInputValue<DatasetExternalDatasetReference, Map<String, dynamic>>(externalDatasetReference, (value) => value.toMap()),
@@ -182,6 +192,7 @@ class DatasetArgs {
       defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       deleteContentsOnDestroy: (() { final guardedValue = map['deleteContentsOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalCatalogDatasetOptions: (() { final guardedValue = map['externalCatalogDatasetOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetExternalCatalogDatasetOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       externalDatasetReference: (() { final guardedValue = map['externalDatasetReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetExternalDatasetReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -196,4 +207,3 @@ class DatasetArgs {
     );
   }
 }
-

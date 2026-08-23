@@ -22,14 +22,18 @@ class AlertPolicyConditionConditionThreshold {
   /// field.
   /// Structure is documented below.
   final pulumi.Input<List<AlertPolicyConditionConditionThresholdAggregation>>? aggregations;
-  /// The comparison to apply between the time
-  /// series (indicated by filter and aggregation)
-  /// and the threshold (indicated by
-  /// threshold_value). The comparison is applied
-  /// on each time series, with the time series on
-  /// the left-hand side and the threshold on the
-  /// right-hand side. Only COMPARISON_LT and
-  /// COMPARISON_GT are supported currently.
+  /// The comparison to apply between the time series
+  /// (indicated by filter and aggregation) and the threshold
+  /// (indicated by threshold_value). The comparison is
+  /// applied on each time series, with the time series on
+  /// the left-hand side and the threshold on the right-hand
+  /// side.
+  /// The Cloud Monitoring API only supports `COMPARISON_LT`
+  /// and `COMPARISON_GT` for metric-threshold conditions; the
+  /// other values are kept in the schema for backward
+  /// compatibility with imported state but will be rejected
+  /// by the API. See
+  /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
   /// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
   final pulumi.Input<String> comparison;
   /// Specifies the alignment of data points in
@@ -41,7 +45,7 @@ class AlertPolicyConditionConditionThreshold {
   /// resource or when aggregating streams across
   /// all members of a group of resources).When
   /// computing ratios, the aggregations and
-  /// denominator_aggregations fields must use the
+  /// denominatorAggregations fields must use the
   /// same alignment period and produce time
   /// series that have the same periodicity and
   /// labels.This field is similar to the one in
@@ -53,7 +57,7 @@ class AlertPolicyConditionConditionThreshold {
   /// A filter that identifies a time series that
   /// should be used as the denominator of a ratio
   /// that will be compared with the threshold. If
-  /// a denominator_filter is specified, the time
+  /// a denominatorFilter is specified, the time
   /// series specified by the filter field will be
   /// used as the numerator.The filter is similar
   /// to the one that is specified in the
@@ -117,14 +121,14 @@ class AlertPolicyConditionConditionThreshold {
   /// the condition will trigger if the comparison
   /// is true for any of the time series that have
   /// been identified by filter and aggregations,
-  /// or by the ratio, if denominator_filter and
-  /// denominator_aggregations are specified.
+  /// or by the ratio, if denominatorFilter and
+  /// denominatorAggregations are specified.
   /// Structure is documented below.
   final pulumi.Input<AlertPolicyConditionConditionThresholdTrigger>? trigger;
 
   /// Creates a new [AlertPolicyConditionConditionThreshold].
   /// [aggregations] Specifies the alignment of data points in
-  /// [comparison] The comparison to apply between the time
+  /// [comparison] The comparison to apply between the time series
   /// [denominatorAggregations] Specifies the alignment of data points in
   /// [denominatorFilter] A filter that identifies a time series that
   /// [duration] The amount of time that a time series must
@@ -176,4 +180,3 @@ class AlertPolicyConditionConditionThreshold {
     );
   }
 }
-

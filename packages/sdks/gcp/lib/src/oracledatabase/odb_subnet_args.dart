@@ -9,10 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OdbSubnetArgs {
   /// The CIDR range of the subnet.
   final pulumi.Input<String> cidrRange;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   final pulumi.Input<bool>? deletionProtection;
   /// Labels or tags associated with the resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -34,7 +42,8 @@ class OdbSubnetArgs {
 
   /// Creates a new [OdbSubnetArgs].
   /// [cidrRange] The CIDR range of the subnet.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   /// [labels] Labels or tags associated with the resource.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [odbSubnetId] The ID of the OdbSubnet to create. This value is restricted
@@ -43,6 +52,7 @@ class OdbSubnetArgs {
   /// [purpose] Purpose of the subnet.
   const OdbSubnetArgs({
     required this.cidrRange,
+    this.deletionPolicy,
     this.deletionProtection,
     this.labels,
     required this.location,
@@ -55,6 +65,7 @@ class OdbSubnetArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cidrRange': cidrRange,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'labels': ?labels,
       'location': location,
@@ -68,6 +79,7 @@ class OdbSubnetArgs {
   factory OdbSubnetArgs.fromMap(Map<String, dynamic> map) {
     return OdbSubnetArgs(
       cidrRange: pulumi.Input.fromValue(map['cidrRange'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -78,4 +90,3 @@ class OdbSubnetArgs {
     );
   }
 }
-

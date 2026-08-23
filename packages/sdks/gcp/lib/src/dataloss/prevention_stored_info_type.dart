@@ -100,6 +100,25 @@ import 'prevention_stored_info_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionstoredinfotype" "basic" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   regex = {
+///     pattern       = "patient"
+///     group_indexes = [2]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +128,8 @@ import 'prevention_stored_info_type_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionStoredInfoType;
 /// import com.pulumi.gcp.dataloss.PreventionStoredInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeRegexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -246,6 +265,26 @@ import 'prevention_stored_info_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionstoredinfotype" "dictionary" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   dictionary = {
+///     word_list = {
+///       words = ["word", "word2"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -256,8 +295,8 @@ import 'prevention_stored_info_type_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionStoredInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeDictionaryArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeDictionaryWordListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -463,6 +502,39 @@ import 'prevention_stored_info_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionstoredinfotype" "large" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   large_custom_dictionary = {
+///     cloud_storage_file_set = {
+///       url ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///     }
+///     output_path = {
+///       path ="gs://${gcp_storage_bucket.bucket.name}/output/dictionary.txt"
+///     }
+///   }
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name          = "tf-test-bucket"
+///   location      = "US"
+///   force_destroy = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "tf-test-object"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./test-fixtures/words.txt")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -479,8 +551,8 @@ import 'prevention_stored_info_type_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -550,7 +622,7 @@ import 'prevention_stored_info_type_state.dart';
 ///       name: tf-test-object
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/words.txt
+///         fn::fileAsset: ./test-fixtures/words.txt
 /// ```
 ///
 /// ### Dlp Stored Info Type With Id
@@ -641,6 +713,26 @@ import 'prevention_stored_info_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionstoredinfotype" "with_stored_info_type_id" {
+///   parent              = "projects/my-project-name"
+///   description         = "Description"
+///   display_name        = "Displayname"
+///   stored_info_type_id = "id-"
+///   regex = {
+///     pattern       = "patient"
+///     group_indexes = [2]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -650,8 +742,8 @@ import 'prevention_stored_info_type_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionStoredInfoType;
 /// import com.pulumi.gcp.dataloss.PreventionStoredInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeRegexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -699,19 +791,23 @@ import 'prevention_stored_info_type_state.dart';
 /// StoredInfoType can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/storedInfoTypes/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
 /// ```
 class PreventionStoredInfoType extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the info type.
   late final pulumi.Output<String?> description;
   /// Dictionary which defines the rule.
@@ -752,6 +848,7 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dictionary = registerOutput<PreventionStoredInfoTypeDictionary?>('dictionary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionStoredInfoTypeDictionary.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
@@ -785,6 +882,7 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dictionary = registerOutput<PreventionStoredInfoTypeDictionary?>('dictionary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionStoredInfoTypeDictionary.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');

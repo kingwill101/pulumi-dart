@@ -6,9 +6,10 @@ import 'region_health_source_state.dart';
 /// aggregation policy applied to the source resources to determine the
 /// aggregated health status.
 ///
+///
 /// To get more information about RegionHealthSource, see:
 ///
-/// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthSources)
+/// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionHealthSources)
 /// * How-to Guides
 /// * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
 ///
@@ -148,7 +149,7 @@ import 'region_health_source_state.dart';
 /// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                pulumi.String("test-health-source-bs"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -159,14 +160,49 @@ import 'region_health_source_state.dart';
 /// 			Description:             pulumi.String("Example health source basic"),
 /// 			Region:                  pulumi.String("us-central1"),
 /// 			SourceType:              pulumi.String("BACKEND_SERVICE"),
-/// 			Sources:                 defaultRegionBackendService.ID(),
-/// 			HealthAggregationPolicy: hap.ID(),
+/// 			Sources:                 defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthAggregationPolicy: hap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthaggregationpolicy" "hap" {
+///   name        = "test-health-source-hap"
+///   description = "health aggregation policy for health source"
+///   region      = "us-central1"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "test-health-source-hc"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                  = "test-health-source-bs"
+///   region                = "us-central1"
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "INTERNAL"
+/// }
+/// resource "gcp_compute_regionhealthsource" "example_test_health_source" {
+///   name                      = "test-health-source"
+///   description               = "Example health source basic"
+///   region                    = "us-central1"
+///   source_type               = "BACKEND_SERVICE"
+///   sources                   = gcp_compute_regionbackendservice.default.id
+///   health_aggregation_policy = gcp_compute_regionhealthaggregationpolicy.hap.id
 /// }
 /// ```
 /// ```java
@@ -184,8 +220,8 @@ import 'region_health_source_state.dart';
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.RegionHealthSource;
 /// import com.pulumi.gcp.compute.RegionHealthSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,33 +305,29 @@ import 'region_health_source_state.dart';
 /// RegionHealthSource can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/healthSources/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionHealthSource can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default projects/{{project}}/regions/{{region}}/healthSources/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{name}}
 /// ```
 class RegionHealthSource extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   late final pulumi.Output<String?> description;
@@ -353,6 +385,7 @@ class RegionHealthSource extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     healthAggregationPolicy = registerOutput<String?>('healthAggregationPolicy');
@@ -388,6 +421,7 @@ class RegionHealthSource extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     healthAggregationPolicy = registerOutput<String?>('healthAggregationPolicy');

@@ -201,7 +201,7 @@ import 'listing_subscription_state.dart';
 /// 			DisplayName:    pulumi.String("my_listing"),
 /// 			Description:    pulumi.String("Test Description"),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: subscriptionDataset.ID(),
+/// 				Dataset: subscriptionDataset.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -231,6 +231,55 @@ import 'listing_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "subscription" {
+///   location         = "US"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+///   description      = "Test Description"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "subscription" {
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   listing_id       = "my_listing"
+///   display_name     = "my_listing"
+///   description      = "Test Description"
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.subscription.id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "subscription" {
+///   dataset_id    = "my_listing"
+///   friendly_name = "my_listing"
+///   description   = "Test Description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listingsubscription" "subscription" {
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   listing_id       = gcp_bigqueryanalyticshub_listing.subscription.listing_id
+///   destination_dataset = {
+///     description   = "A test subscription"
+///     friendly_name = "👋"
+///     labels = {
+///       "testing" = "123"
+///     }
+///     location = "US"
+///     dataset_reference = {
+///       dataset_id = "destination_dataset"
+///       project_id = gcp_bigquery_dataset.subscription.project
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -248,8 +297,8 @@ import 'listing_subscription_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscriptionArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetDatasetReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -526,6 +575,44 @@ import 'listing_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "subscription" {
+///   location         = "us"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "subscription" {
+///   location         = "us"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   listing_id       = "my_listing"
+///   display_name     = "my_listing"
+///   bigquery_dataset = {
+///     dataset           = "projects/project_id/datasets/my_listing_example2"
+///     replica_locations = ["eu"]
+///   }
+/// }
+/// resource "gcp_bigqueryanalyticshub_listingsubscription" "subscription" {
+///   location         = "us"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   listing_id       = gcp_bigqueryanalyticshub_listing.subscription.listing_id
+///   destination_dataset = {
+///     location = "us"
+///     dataset_reference = {
+///       project_id = gcp_bigqueryanalyticshub_dataexchange.subscription.project
+///       dataset_id = "destination_dataset"
+///     }
+///     replica_locations = ["eu"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -541,8 +628,8 @@ import 'listing_subscription_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscriptionArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetDatasetReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -630,22 +717,15 @@ import 'listing_subscription_state.dart';
 /// ListingSubscription can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
-///
 /// * `{{project}}/{{location}}/{{subscription_id}}`
-///
 /// * `{{location}}/{{subscription_id}}`
+///
 ///
 /// When using the `pulumi import` command, ListingSubscription can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{project}}/{{location}}/{{subscription_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{location}}/{{subscription_id}}
 /// ```
 class ListingSubscription extends pulumi.CustomResource {
@@ -656,6 +736,13 @@ class ListingSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> creationTime;
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   late final pulumi.Output<String> dataExchangeId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The destination dataset for this subscription.
   /// Structure is documented below.
   late final pulumi.Output<ListingSubscriptionDestinationDataset> destinationDataset;
@@ -709,6 +796,7 @@ class ListingSubscription extends pulumi.CustomResource {
     commercialInfos = registerOutput<List<Map<String, dynamic>>>('commercialInfos');
     creationTime = registerOutput<String>('creationTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');
@@ -752,6 +840,7 @@ class ListingSubscription extends pulumi.CustomResource {
     commercialInfos = registerOutput<List<Map<String, dynamic>>>('commercialInfos');
     creationTime = registerOutput<String>('creationTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');

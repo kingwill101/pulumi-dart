@@ -8,6 +8,7 @@ import 'get_external_access_rule_source_ip_range.dart';
 class GetExternalAccessRuleResult {
   final String action;
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final List<GetExternalAccessRuleDestinationIpRange> destinationIpRanges;
   final List<String> destinationPorts;
@@ -26,6 +27,7 @@ class GetExternalAccessRuleResult {
   /// Creates a new [GetExternalAccessRuleResult].
   /// [action] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [destinationIpRanges] Required.
   /// [destinationPorts] Required.
@@ -42,6 +44,7 @@ class GetExternalAccessRuleResult {
   const GetExternalAccessRuleResult({
     required this.action,
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.destinationIpRanges,
     required this.destinationPorts,
@@ -61,6 +64,7 @@ class GetExternalAccessRuleResult {
     return <String, dynamic>{
       'action': action,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'destinationIpRanges': pulumi.Input.encodeList<GetExternalAccessRuleDestinationIpRange, Map<String, dynamic>>(destinationIpRanges, (value) => value.toMap()),
       'destinationPorts': destinationPorts,
@@ -81,6 +85,7 @@ class GetExternalAccessRuleResult {
     return GetExternalAccessRuleResult(
       action: map['action'] as String,
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       destinationIpRanges: pulumi.Input.decodeList<GetExternalAccessRuleDestinationIpRange>(map['destinationIpRanges']!, (value) => GetExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>())),
       destinationPorts: (map['destinationPorts'] as List).cast<String>(),
@@ -97,4 +102,3 @@ class GetExternalAccessRuleResult {
     );
   }
 }
-

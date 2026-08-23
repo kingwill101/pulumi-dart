@@ -4,6 +4,7 @@
 /// Result data returned by getNetworkPeering.
 class GetNetworkPeeringResult {
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final bool exportCustomRoutes;
   final bool exportCustomRoutesWithPublicIp;
@@ -24,6 +25,7 @@ class GetNetworkPeeringResult {
 
   /// Creates a new [GetNetworkPeeringResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [exportCustomRoutes] Required.
   /// [exportCustomRoutesWithPublicIp] Required.
@@ -42,6 +44,7 @@ class GetNetworkPeeringResult {
   /// [vmwareEngineNetworkCanonical] Required.
   const GetNetworkPeeringResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.exportCustomRoutes,
     required this.exportCustomRoutesWithPublicIp,
@@ -63,6 +66,7 @@ class GetNetworkPeeringResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'exportCustomRoutes': exportCustomRoutes,
       'exportCustomRoutesWithPublicIp': exportCustomRoutesWithPublicIp,
@@ -85,6 +89,7 @@ class GetNetworkPeeringResult {
   factory GetNetworkPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       exportCustomRoutes: map['exportCustomRoutes'] as bool,
       exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] as bool,
@@ -104,4 +109,3 @@ class GetNetworkPeeringResult {
     );
   }
 }
-

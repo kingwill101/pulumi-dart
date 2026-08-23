@@ -14,7 +14,7 @@ class GetBillingAccountArgs {
   /// `true` if projects associated with the billing account should be read, `false` if this step
   /// should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
   ///
-  /// &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+  /// &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
   final pulumi.Input<bool>? lookupProjects;
   /// `true` if the billing account is open, `false` if the billing account is closed.
   final pulumi.Input<bool>? open;
@@ -49,4 +49,3 @@ class GetBillingAccountArgs {
     );
   }
 }
-

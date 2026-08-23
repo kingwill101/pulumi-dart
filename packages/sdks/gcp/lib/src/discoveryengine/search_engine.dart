@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'search_engine_args.dart';
 import 'search_engine_common_config.dart';
+import 'search_engine_knowledge_graph_config.dart';
 import 'search_engine_search_engine_config.dart';
 import 'search_engine_state.dart';
 
@@ -139,6 +140,33 @@ import 'search_engine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                    = "global"
+///   data_store_id               = "example-datastore-id"
+///   display_name                = "tf-test-structured-datastore"
+///   industry_vertical           = "GENERIC"
+///   content_config              = "NO_CONTENT"
+///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search = false
+/// }
+/// resource "gcp_discoveryengine_searchengine" "basic" {
+///   engine_id            = "example-engine-id"
+///   collection_id        = "default_collection"
+///   location             = gcp_discoveryengine_datastore.basic.location
+///   display_name         = "Example Display Name"
+///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   search_engine_config = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +178,8 @@ import 'search_engine_state.dart';
 /// import com.pulumi.gcp.discoveryengine.SearchEngine;
 /// import com.pulumi.gcp.discoveryengine.SearchEngineArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.SearchEngineSearchEngineConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,7 +265,16 @@ import 'search_engine_state.dart';
 ///     dataStoreIds: [agentspaceBasic.dataStoreId],
 ///     industryVertical: "GENERIC",
 ///     appType: "APP_TYPE_INTRANET",
-///     searchEngineConfig: {},
+///     searchEngineConfig: {
+///         searchTier: "SEARCH_TIER_STANDARD",
+///         requiredSubscriptionTier: "SUBSCRIPTION_TIER_ENTERPRISE",
+///         searchAddOns: ["SEARCH_ADD_ON_LLM"],
+///     },
+///     features: {
+///         "agent-sharing-without-admin-approval": "FEATURE_STATE_ON",
+///         "disable-agent-sharing": "FEATURE_STATE_OFF",
+///     },
+///     knowledgeGraphConfig: {},
 /// });
 /// ```
 /// ```python
@@ -260,7 +297,16 @@ import 'search_engine_state.dart';
 ///     data_store_ids=[agentspace_basic.data_store_id],
 ///     industry_vertical="GENERIC",
 ///     app_type="APP_TYPE_INTRANET",
-///     search_engine_config={})
+///     search_engine_config={
+///         "search_tier": "SEARCH_TIER_STANDARD",
+///         "required_subscription_tier": "SUBSCRIPTION_TIER_ENTERPRISE",
+///         "search_add_ons": ["SEARCH_ADD_ON_LLM"],
+///     },
+///     features={
+///         "agent-sharing-without-admin-approval": "FEATURE_STATE_ON",
+///         "disable-agent-sharing": "FEATURE_STATE_OFF",
+///     },
+///     knowledge_graph_config={})
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -296,7 +342,21 @@ import 'search_engine_state.dart';
 ///         },
 ///         IndustryVertical = "GENERIC",
 ///         AppType = "APP_TYPE_INTRANET",
-///         SearchEngineConfig = null,
+///         SearchEngineConfig = new Gcp.DiscoveryEngine.Inputs.SearchEngineSearchEngineConfigArgs
+///         {
+///             SearchTier = "SEARCH_TIER_STANDARD",
+///             RequiredSubscriptionTier = "SUBSCRIPTION_TIER_ENTERPRISE",
+///             SearchAddOns = new[]
+///             {
+///                 "SEARCH_ADD_ON_LLM",
+///             },
+///         },
+///         Features =
+///         {
+///             { "agent-sharing-without-admin-approval", "FEATURE_STATE_ON" },
+///             { "disable-agent-sharing", "FEATURE_STATE_OFF" },
+///         },
+///         KnowledgeGraphConfig = null,
 ///     });
 ///
 /// });
@@ -333,15 +393,64 @@ import 'search_engine_state.dart';
 /// 			DataStoreIds: pulumi.StringArray{
 /// 				agentspaceBasic.DataStoreId,
 /// 			},
-/// 			IndustryVertical:   pulumi.String("GENERIC"),
-/// 			AppType:            pulumi.String("APP_TYPE_INTRANET"),
-/// 			SearchEngineConfig: &discoveryengine.SearchEngineSearchEngineConfigArgs{},
+/// 			IndustryVertical: pulumi.String("GENERIC"),
+/// 			AppType:          pulumi.String("APP_TYPE_INTRANET"),
+/// 			SearchEngineConfig: &discoveryengine.SearchEngineSearchEngineConfigArgs{
+/// 				SearchTier:               pulumi.String("SEARCH_TIER_STANDARD"),
+/// 				RequiredSubscriptionTier: pulumi.String("SUBSCRIPTION_TIER_ENTERPRISE"),
+/// 				SearchAddOns: pulumi.StringArray{
+/// 					pulumi.String("SEARCH_ADD_ON_LLM"),
+/// 				},
+/// 			},
+/// 			Features: pulumi.StringMap{
+/// 				"agent-sharing-without-admin-approval": pulumi.String("FEATURE_STATE_ON"),
+/// 				"disable-agent-sharing":                pulumi.String("FEATURE_STATE_OFF"),
+/// 			},
+/// 			KnowledgeGraphConfig: &discoveryengine.SearchEngineKnowledgeGraphConfigArgs{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "agentspace_basic" {
+///   location                    = "global"
+///   data_store_id               = "example-datastore-id"
+///   display_name                = "tf-test-structured-datastore"
+///   industry_vertical           = "GENERIC"
+///   content_config              = "NO_CONTENT"
+///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search = false
+/// }
+/// resource "gcp_discoveryengine_searchengine" "agentspace_basic" {
+///   engine_id         = "example-engine-id"
+///   collection_id     = "default_collection"
+///   location          = gcp_discoveryengine_datastore.agentspace_basic.location
+///   display_name      = "tf-test-agentspace-search-engine"
+///   data_store_ids    = [gcp_discoveryengine_datastore.agentspace_basic.data_store_id]
+///   industry_vertical = "GENERIC"
+///   app_type          = "APP_TYPE_INTRANET"
+///   search_engine_config = {
+///     search_tier                = "SEARCH_TIER_STANDARD"
+///     required_subscription_tier = "SUBSCRIPTION_TIER_ENTERPRISE"
+///     search_add_ons             = ["SEARCH_ADD_ON_LLM"]
+///   }
+///   features = {
+///     "agent-sharing-without-admin-approval" = "FEATURE_STATE_ON"
+///     "disable-agent-sharing"                = "FEATURE_STATE_OFF"
+///   }
+///   knowledge_graph_config = {}
 /// }
 /// ```
 /// ```java
@@ -355,8 +464,9 @@ import 'search_engine_state.dart';
 /// import com.pulumi.gcp.discoveryengine.SearchEngine;
 /// import com.pulumi.gcp.discoveryengine.SearchEngineArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.SearchEngineSearchEngineConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.discoveryengine.inputs.SearchEngineKnowledgeGraphConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,6 +497,15 @@ import 'search_engine_state.dart';
 ///             .industryVertical("GENERIC")
 ///             .appType("APP_TYPE_INTRANET")
 ///             .searchEngineConfig(SearchEngineSearchEngineConfigArgs.builder()
+///                 .searchTier("SEARCH_TIER_STANDARD")
+///                 .requiredSubscriptionTier("SUBSCRIPTION_TIER_ENTERPRISE")
+///                 .searchAddOns("SEARCH_ADD_ON_LLM")
+///                 .build())
+///             .features(Map.ofEntries(
+///                 Map.entry("agent-sharing-without-admin-approval", "FEATURE_STATE_ON"),
+///                 Map.entry("disable-agent-sharing", "FEATURE_STATE_OFF")
+///             ))
+///             .knowledgeGraphConfig(SearchEngineKnowledgeGraphConfigArgs.builder()
 ///                 .build())
 ///             .build());
 ///
@@ -419,7 +538,15 @@ import 'search_engine_state.dart';
 ///         - ${agentspaceBasic.dataStoreId}
 ///       industryVertical: GENERIC
 ///       appType: APP_TYPE_INTRANET
-///       searchEngineConfig: {}
+///       searchEngineConfig:
+///         searchTier: SEARCH_TIER_STANDARD
+///         requiredSubscriptionTier: SUBSCRIPTION_TIER_ENTERPRISE
+///         searchAddOns:
+///           - SEARCH_ADD_ON_LLM
+///       features:
+///         agent-sharing-without-admin-approval: FEATURE_STATE_ON
+///         disable-agent-sharing: FEATURE_STATE_OFF
+///       knowledgeGraphConfig: {}
 /// ```
 ///
 ///
@@ -428,22 +555,15 @@ import 'search_engine_state.dart';
 /// SearchEngine can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-///
 /// * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-///
 /// * `{{location}}/{{collection_id}}/{{engine_id}}`
+///
 ///
 /// When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
 /// ```
 class SearchEngine extends pulumi.CustomResource {
@@ -459,12 +579,21 @@ class SearchEngine extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
   late final pulumi.Output<List<String>> dataStoreIds;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether to disable analytics for searches performed on this engine.
+  late final pulumi.Output<bool?> disableAnalytics;
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   late final pulumi.Output<String> displayName;
   /// Unique ID to use for Search Engine App.
   late final pulumi.Output<String> engineId;
   /// A map of the feature config for the engine to opt in or opt out of features.
-  late final pulumi.Output<Map<String, String>?> features;
+  late final pulumi.Output<Map<String, String>> features;
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -473,8 +602,11 @@ class SearchEngine extends pulumi.CustomResource {
   /// Must be set for requests that need to comply with CMEK Org Policy
   /// protections.
   /// If this field is set and processed successfully, the Engine will be
-  /// protected by the KMS key, as indicated in the cmek_config field.
+  /// protected by the KMS key, as indicated in the cmekConfig field.
   late final pulumi.Output<String?> kmsKeyName;
+  /// Configurations for the Knowledge Graph.
+  /// Structure is documented below.
+  late final pulumi.Output<SearchEngineKnowledgeGraphConfig> knowledgeGraphConfig;
   /// Location.
   late final pulumi.Output<String> location;
   /// The unique full resource name of the search engine. Values are of the format
@@ -510,11 +642,14 @@ class SearchEngine extends pulumi.CustomResource {
     commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disableAnalytics = registerOutput<bool?>('disableAnalytics');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    features = registerOutput<Map<String, String>?>('features');
+    features = registerOutput<Map<String, String>>('features');
     industryVertical = registerOutput<String?>('industryVertical');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
+    knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -550,11 +685,14 @@ class SearchEngine extends pulumi.CustomResource {
     commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disableAnalytics = registerOutput<bool?>('disableAnalytics');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    features = registerOutput<Map<String, String>?>('features');
+    features = registerOutput<Map<String, String>>('features');
     industryVertical = registerOutput<String?>('industryVertical');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
+    knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

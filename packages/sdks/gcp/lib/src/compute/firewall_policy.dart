@@ -77,6 +77,21 @@ import 'firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_firewallpolicy" "default" {
+///   parent      = "organizations/123456789"
+///   short_name  = "my-policy"
+///   description = "Example Resource"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +100,8 @@ import 'firewall_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.FirewallPolicy;
 /// import com.pulumi.gcp.compute.FirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,21 +138,25 @@ import 'firewall_policy_state.dart';
 /// FirewallPolicy can be imported using any of these accepted formats:
 ///
 /// * `locations/global/firewallPolicies/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, FirewallPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default {{name}}
 /// ```
 class FirewallPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -174,6 +193,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     firewallPolicyId = registerOutput<String>('firewallPolicyId');
@@ -209,6 +229,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     firewallPolicyId = registerOutput<String>('firewallPolicyId');

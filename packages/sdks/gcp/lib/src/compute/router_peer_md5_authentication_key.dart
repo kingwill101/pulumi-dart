@@ -35,4 +35,3 @@ class RouterPeerMd5AuthenticationKey {
     );
   }
 }
-

@@ -4,9 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RouterInterface resources.
 class RouterInterfaceState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The name or resource link to the
   /// VLAN interconnect for this interface. Changing this forces a new interface to
-  /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+  /// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
   final pulumi.Input<String>? interconnectAttachment;
   /// IP address and range of the interface. The IP range must be
   /// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
@@ -31,19 +38,20 @@ class RouterInterfaceState {
   /// The name of the router this interface will be attached to.
   /// Changing this forces a new interface to be created.
   ///
-  /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+  /// In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
   ///
   /// - - -
   final pulumi.Input<String>? router;
   /// The URI of the subnetwork resource that this interface
-  /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+  /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
   final pulumi.Input<String>? subnetwork;
   /// The name or resource link to the VPN tunnel this
   /// interface will be linked to. Changing this forces a new interface to be created. Only
-  /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+  /// one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
   final pulumi.Input<String>? vpnTunnel;
 
   /// Creates a new [RouterInterfaceState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [interconnectAttachment] The name or resource link to the
   /// [ipRange] IP address and range of the interface. The IP range must be
   /// [ipVersion] IP version of this interface. Can be either IPV4 or IPV6.
@@ -56,6 +64,7 @@ class RouterInterfaceState {
   /// [subnetwork] The URI of the subnetwork resource that this interface
   /// [vpnTunnel] The name or resource link to the VPN tunnel this
   const RouterInterfaceState({
+    this.deletionPolicy,
     this.interconnectAttachment,
     this.ipRange,
     this.ipVersion,
@@ -71,6 +80,7 @@ class RouterInterfaceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'interconnectAttachment': ?interconnectAttachment,
       'ipRange': ?ipRange,
       'ipVersion': ?ipVersion,
@@ -87,6 +97,7 @@ class RouterInterfaceState {
 
   factory RouterInterfaceState.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interconnectAttachment: (() { final guardedValue = map['interconnectAttachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipRange: (() { final guardedValue = map['ipRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -101,4 +112,3 @@ class RouterInterfaceState {
     );
   }
 }
-

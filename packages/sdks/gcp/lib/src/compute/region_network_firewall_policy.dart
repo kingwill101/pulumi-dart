@@ -66,6 +66,20 @@ import 'region_network_firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "policy" {
+///   name        = "tf-test-policy"
+///   description = "Terraform test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'region_network_firewall_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,6 +180,21 @@ import 'region_network_firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "policy" {
+///   name        = "rnf-policy"
+///   description = "Terraform test"
+///   policy_type = "RDMA_ROCE_POLICY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +203,8 @@ import 'region_network_firewall_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,33 +241,29 @@ import 'region_network_firewall_policy_state.dart';
 /// RegionNetworkFirewallPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{name}}
 /// ```
 class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -248,7 +273,7 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
-  /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+  /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
   late final pulumi.Output<String> policyType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -279,6 +304,7 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
@@ -315,6 +341,7 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');

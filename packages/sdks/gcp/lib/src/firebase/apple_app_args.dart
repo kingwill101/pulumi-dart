@@ -15,6 +15,12 @@ class AppleAppArgs {
   final pulumi.Input<String>? appStoreId;
   /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
   final pulumi.Input<String> bundleId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
   /// The user-assigned display name of the App.
   final pulumi.Input<String> displayName;
@@ -28,7 +34,7 @@ class AppleAppArgs {
   /// [apiKeyId] The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
   /// [appStoreId] The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
   /// [bundleId] The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-  /// [deletionPolicy] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The user-assigned display name of the App.
   /// [project] The ID of the project in which the resource belongs.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
@@ -66,4 +72,3 @@ class AppleAppArgs {
     );
   }
 }
-

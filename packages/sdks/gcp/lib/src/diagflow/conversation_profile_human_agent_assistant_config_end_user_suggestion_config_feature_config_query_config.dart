@@ -28,7 +28,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource>? knowledgeBaseQuerySource;
   /// Maximum number of results to return.
   final pulumi.Input<int>? maxResults;
-  /// he customized sections chosen to return when requesting a summary of a conversation.
+  /// The customized sections chosen to return when requesting a summary of a conversation.
   /// Structure is documented below.
   final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections>? sections;
 
@@ -39,7 +39,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   /// [documentQuerySource] Query from knowledge base document.
   /// [knowledgeBaseQuerySource] Query from knowledgebase.
   /// [maxResults] Maximum number of results to return.
-  /// [sections] he customized sections chosen to return when requesting a summary of a conversation.
+  /// [sections] The customized sections chosen to return when requesting a summary of a conversation.
   const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig({
     this.confidenceThreshold,
     this.contextFilterSettings,
@@ -74,4 +74,3 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
     );
   }
 }
-

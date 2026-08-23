@@ -14,6 +14,13 @@ class DataExchangeSubscriptionArgs {
   final pulumi.Input<String> dataExchangeLocation;
   /// The ID of the Google Cloud project where the Data Exchange is located.
   final pulumi.Input<String> dataExchangeProject;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// BigQuery destination dataset to create for the subscriber.
   /// Structure is documented below.
   final pulumi.Input<DataExchangeSubscriptionDestinationDataset>? destinationDataset;
@@ -24,6 +31,10 @@ class DataExchangeSubscriptionArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// Controls when the subscription is automatically refreshed by the provider.
+  /// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+  /// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+  /// * `NEVER`: The provider will not automatically refresh the subscription.
   final pulumi.Input<String>? refreshPolicy;
   /// Email of the subscriber.
   final pulumi.Input<String>? subscriberContact;
@@ -34,16 +45,18 @@ class DataExchangeSubscriptionArgs {
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   /// [dataExchangeLocation] The name of the location of the Data Exchange.
   /// [dataExchangeProject] The ID of the Google Cloud project where the Data Exchange is located.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destinationDataset] BigQuery destination dataset to create for the subscriber.
   /// [location] The geographic location where the Subscription (and its linked dataset) should reside.
   /// [project] The ID of the project in which the resource belongs.
-  /// [refreshPolicy] Optional.
+  /// [refreshPolicy] Controls when the subscription is automatically refreshed by the provider.
   /// [subscriberContact] Email of the subscriber.
   /// [subscriptionId] Name of the subscription to create.
   const DataExchangeSubscriptionArgs({
     required this.dataExchangeId,
     required this.dataExchangeLocation,
     required this.dataExchangeProject,
+    this.deletionPolicy,
     this.destinationDataset,
     required this.location,
     this.project,
@@ -57,6 +70,7 @@ class DataExchangeSubscriptionArgs {
       'dataExchangeId': dataExchangeId,
       'dataExchangeLocation': dataExchangeLocation,
       'dataExchangeProject': dataExchangeProject,
+      'deletionPolicy': ?deletionPolicy,
       'destinationDataset': ?pulumi.Input.mapOptionalInputValue<DataExchangeSubscriptionDestinationDataset, Map<String, dynamic>>(destinationDataset, (value) => value.toMap()),
       'location': location,
       'project': ?project,
@@ -71,6 +85,7 @@ class DataExchangeSubscriptionArgs {
       dataExchangeId: pulumi.Input.fromValue(map['dataExchangeId'] as String),
       dataExchangeLocation: pulumi.Input.fromValue(map['dataExchangeLocation'] as String),
       dataExchangeProject: pulumi.Input.fromValue(map['dataExchangeProject'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDataset: (() { final guardedValue = map['destinationDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataExchangeSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -80,4 +95,3 @@ class DataExchangeSubscriptionArgs {
     );
   }
 }
-

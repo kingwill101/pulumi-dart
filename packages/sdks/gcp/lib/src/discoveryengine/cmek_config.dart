@@ -85,8 +85,6 @@ import 'cmek_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -121,6 +119,30 @@ import 'cmek_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_discoveryengine_cmekconfig" "default" {
+///   depends_on     = [gcp_kms_cryptokeyiammember.crypto_key]
+///   location       = "us"
+///   cmek_config_id = "cmek-config-id"
+///   kms_key        = "kms-key-name"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   crypto_key_id = "kms-key-name"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-discoveryengine.iam.gserviceaccount.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +156,8 @@ import 'cmek_config_state.dart';
 /// import com.pulumi.gcp.discoveryengine.CmekConfig;
 /// import com.pulumi.gcp.discoveryengine.CmekConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,27 +220,27 @@ import 'cmek_config_state.dart';
 /// CmekConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/cmekConfigs/{{cmek_config_id}}`
-///
 /// * `{{project}}/{{location}}/{{cmek_config_id}}`
-///
 /// * `{{location}}/{{cmek_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, CmekConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default projects/{{project}}/locations/{{location}}/cmekConfigs/{{cmek_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{project}}/{{location}}/{{cmek_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{location}}/{{cmek_config_id}}
 /// ```
 class CmekConfig extends pulumi.CustomResource {
   /// The unique id of the cmek config.
   late final pulumi.Output<String> cmekConfigId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The default CmekConfig for the Customer.
   late final pulumi.Output<bool> isDefault;
   /// KMS key resource name which will be used to encrypt resources
@@ -266,6 +288,7 @@ class CmekConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cmekConfigId = registerOutput<String>('cmekConfigId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     isDefault = registerOutput<bool>('isDefault');
     kmsKey = registerOutput<String>('kmsKey');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
@@ -303,6 +326,7 @@ class CmekConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cmekConfigId = registerOutput<String>('cmekConfigId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     isDefault = registerOutput<bool>('isDefault');
     kmsKey = registerOutput<String>('kmsKey');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');

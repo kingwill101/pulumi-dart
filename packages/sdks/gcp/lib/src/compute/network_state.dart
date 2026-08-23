@@ -20,12 +20,19 @@ class NetworkState {
   /// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
   /// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
   final pulumi.Input<String>? bgpInterRegionCost;
-  /// If set to `true`, the `bgp_always_compare_med` field will be cleared.
-  /// If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
+  /// If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+  /// If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
   final pulumi.Input<bool>? deleteBgpAlwaysCompareMed;
   /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
   /// immediately after network creation. Defaults to `false`.
   final pulumi.Input<bool>? deleteDefaultRoutesOnCreate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. The resource must be
   /// recreated to modify this field.
   final pulumi.Input<String>? description;
@@ -91,8 +98,9 @@ class NetworkState {
   /// [bgpAlwaysCompareMed] Enables/disables the comparison of MED across routes with different Neighbor ASNs.
   /// [bgpBestPathSelectionMode] The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
   /// [bgpInterRegionCost] Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
-  /// [deleteBgpAlwaysCompareMed] If set to `true`, the `bgp_always_compare_med` field will be cleared.
+  /// [deleteBgpAlwaysCompareMed] If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
   /// [deleteDefaultRoutesOnCreate] If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. The resource must be
   /// [enableUlaInternalIpv6] Enable ULA internal ipv6 on this network. Enabling this feature will assign
   /// [gatewayIpv4] The gateway address for default routing out of the network. This value
@@ -114,6 +122,7 @@ class NetworkState {
     this.bgpInterRegionCost,
     this.deleteBgpAlwaysCompareMed,
     this.deleteDefaultRoutesOnCreate,
+    this.deletionPolicy,
     this.description,
     this.enableUlaInternalIpv6,
     this.gatewayIpv4,
@@ -138,6 +147,7 @@ class NetworkState {
       'bgpInterRegionCost': ?bgpInterRegionCost,
       'deleteBgpAlwaysCompareMed': ?deleteBgpAlwaysCompareMed,
       'deleteDefaultRoutesOnCreate': ?deleteDefaultRoutesOnCreate,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'enableUlaInternalIpv6': ?enableUlaInternalIpv6,
       'gatewayIpv4': ?gatewayIpv4,
@@ -163,6 +173,7 @@ class NetworkState {
       bgpInterRegionCost: (() { final guardedValue = map['bgpInterRegionCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteBgpAlwaysCompareMed: (() { final guardedValue = map['deleteBgpAlwaysCompareMed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deleteDefaultRoutesOnCreate: (() { final guardedValue = map['deleteDefaultRoutesOnCreate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableUlaInternalIpv6: (() { final guardedValue = map['enableUlaInternalIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       gatewayIpv4: (() { final guardedValue = map['gatewayIpv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -180,4 +191,3 @@ class NetworkState {
     );
   }
 }
-

@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notebook_execution_custom_environment_spec_machine_spec.dart';
 import 'notebook_execution_custom_environment_spec_network_spec.dart';
 import 'notebook_execution_custom_environment_spec_persistent_disk_spec.dart';
+import 'notebook_execution_custom_environment_spec_shielded_instance_config.dart';
 
 class NotebookExecutionCustomEnvironmentSpec {
   /// 'The machine configuration of the runtime.'
@@ -15,15 +16,20 @@ class NotebookExecutionCustomEnvironmentSpec {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
   final pulumi.Input<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec>? persistentDiskSpec;
+  /// Shielded VM configuration.
+  /// Structure is documented below.
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig>? shieldedInstanceConfig;
 
   /// Creates a new [NotebookExecutionCustomEnvironmentSpec].
   /// [machineSpec] 'The machine configuration of the runtime.'
   /// [networkSpec] The network configuration for the runtime.
   /// [persistentDiskSpec] The configuration for the data disk of the runtime.
+  /// [shieldedInstanceConfig] Shielded VM configuration.
   const NotebookExecutionCustomEnvironmentSpec({
     this.machineSpec,
     this.networkSpec,
     this.persistentDiskSpec,
+    this.shieldedInstanceConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,6 +37,7 @@ class NotebookExecutionCustomEnvironmentSpec {
       'machineSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpecMachineSpec, Map<String, dynamic>>(machineSpec, (value) => value.toMap()),
       'networkSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpecNetworkSpec, Map<String, dynamic>>(networkSpec, (value) => value.toMap()),
       'persistentDiskSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec, Map<String, dynamic>>(persistentDiskSpec, (value) => value.toMap()),
+      'shieldedInstanceConfig': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
     };
   }
 
@@ -39,7 +46,7 @@ class NotebookExecutionCustomEnvironmentSpec {
       machineSpec: (() { final guardedValue = map['machineSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionCustomEnvironmentSpecMachineSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkSpec: (() { final guardedValue = map['networkSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionCustomEnvironmentSpecNetworkSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       persistentDiskSpec: (() { final guardedValue = map['persistentDiskSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      shieldedInstanceConfig: (() { final guardedValue = map['shieldedInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

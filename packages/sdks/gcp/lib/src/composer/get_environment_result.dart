@@ -8,6 +8,7 @@ import 'get_environment_storage_config.dart';
 class GetEnvironmentResult {
   /// Configuration parameters for the environment.
   final List<GetEnvironmentConfig> configs;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -20,6 +21,7 @@ class GetEnvironmentResult {
 
   /// Creates a new [GetEnvironmentResult].
   /// [configs] Configuration parameters for the environment.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [labels] Required.
@@ -30,6 +32,7 @@ class GetEnvironmentResult {
   /// [storageConfigs] Required.
   const GetEnvironmentResult({
     required this.configs,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.id,
     required this.labels,
@@ -43,6 +46,7 @@ class GetEnvironmentResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configs': pulumi.Input.encodeList<GetEnvironmentConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'id': id,
       'labels': labels,
@@ -57,6 +61,7 @@ class GetEnvironmentResult {
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
       configs: pulumi.Input.decodeList<GetEnvironmentConfig>(map['configs']!, (value) => GetEnvironmentConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
@@ -68,4 +73,3 @@ class GetEnvironmentResult {
     );
   }
 }
-

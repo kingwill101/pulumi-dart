@@ -8,14 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitoring_get_istio_canonical_service_get_istio_canonical_service_args_doc}
 class GetIstioCanonicalServiceArgs {
   /// The name of the canonical service underlying this service.
-  /// Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
+  /// Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
   ///
   /// - - -
   ///
   /// Other optional fields include:
   final pulumi.Input<String> canonicalService;
   /// The namespace of the canonical service underlying this service.
-  /// Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
+  /// Corresponds to the destinationCanonicalServiceNamespace metric label in Istio metrics.
   final pulumi.Input<String> canonicalServiceNamespace;
   /// Identifier for the mesh in which this Istio service is defined.
   /// Corresponds to the meshUid metric label in Istio metrics.
@@ -54,4 +54,3 @@ class GetIstioCanonicalServiceArgs {
     );
   }
 }
-

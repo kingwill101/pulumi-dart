@@ -70,6 +70,21 @@ import 'organization_vpc_flow_logs_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkmanagement_organizationvpcflowlogsconfig" "org-test" {
+///   vpc_flow_logs_config_id = "basic-org-test-id"
+///   location                = "global"
+///   organization            = "123456789"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'organization_vpc_flow_logs_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkmanagement.OrganizationVpcFlowLogsConfig;
 /// import com.pulumi.gcp.networkmanagement.OrganizationVpcFlowLogsConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,16 +131,13 @@ import 'organization_vpc_flow_logs_config_state.dart';
 /// OrganizationVpcFlowLogsConfig can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}`
-///
 /// * `{{organization}}/{{location}}/{{vpc_flow_logs_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationVpcFlowLogsConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default {{organization}}/{{location}}/{{vpc_flow_logs_config_id}}
 /// ```
 class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
@@ -142,6 +154,13 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
   /// CROSS_PROJECT_METADATA_DISABLED
   /// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
   late final pulumi.Output<String> crossProjectMetadata;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
   /// of 512 characters.
   late final pulumi.Output<String?> description;
@@ -157,7 +176,7 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
   /// Optional. Resource labels to represent the user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource
   /// within its parent collection as described in https://google.aip.dev/122. See documentation
@@ -203,6 +222,7 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
     aggregationInterval = registerOutput<String>('aggregationInterval');
     createTime = registerOutput<String>('createTime');
     crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filterExpr = registerOutput<String?>('filterExpr');
@@ -245,6 +265,7 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
     aggregationInterval = registerOutput<String>('aggregationInterval');
     createTime = registerOutput<String>('createTime');
     crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filterExpr = registerOutput<String?>('filterExpr');

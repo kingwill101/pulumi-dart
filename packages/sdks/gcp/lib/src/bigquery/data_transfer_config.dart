@@ -146,8 +146,6 @@ import 'data_transfer_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -200,6 +198,44 @@ import 'data_transfer_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_projects_iammember" "permissions" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/iam.serviceAccountTokenCreator"
+///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_bigquery_datatransferconfig" "query_config" {
+///   depends_on             = [gcp_projects_iammember.permissions]
+///   display_name           = "my-query"
+///   location               = "asia-northeast1"
+///   data_source_id         = "scheduled_query"
+///   schedule               = "first sunday of quarter 00:00"
+///   destination_dataset_id = gcp_bigquery_dataset.my_dataset.dataset_id
+///   params = {
+///     "destination_table_name_template" = "my_table"
+///     "write_disposition"               = "WRITE_APPEND"
+///     "query"                           = "SELECT name FROM tabl WHERE x = 'y'"
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "my_dataset" {
+///   depends_on    = [gcp_projects_iammember.permissions]
+///   dataset_id    = "my_dataset"
+///   friendly_name = "foo"
+///   description   = "bar"
+///   location      = "asia-northeast1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -215,8 +251,8 @@ import 'data_transfer_config_state.dart';
 /// import com.pulumi.gcp.bigquery.DataTransferConfig;
 /// import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -465,8 +501,6 @@ import 'data_transfer_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -508,7 +542,7 @@ import 'data_transfer_config_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -525,7 +559,7 @@ import 'data_transfer_config_state.dart';
 /// 				"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
 /// 			},
 /// 			EncryptionConfiguration: &bigquery.DataTransferConfigEncryptionConfigurationArgs{
-/// 				KmsKeyName: cryptoKey.ID(),
+/// 				KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			permissions,
@@ -535,6 +569,55 @@ import 'data_transfer_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_projects_iammember" "permissions" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/iam.serviceAccountTokenCreator"
+///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_bigquery_datatransferconfig" "query_config_cmek" {
+///   depends_on             = [gcp_projects_iammember.permissions]
+///   display_name           = "display-name"
+///   location               = "asia-northeast1"
+///   data_source_id         = "scheduled_query"
+///   schedule               = "first sunday of quarter 00:00"
+///   destination_dataset_id = gcp_bigquery_dataset.my_dataset.dataset_id
+///   params = {
+///     "destination_table_name_template" = "my_table"
+///     "write_disposition"               = "WRITE_APPEND"
+///     "query"                           = "SELECT name FROM tabl WHERE x = 'y'"
+///   }
+///   encryption_configuration = {
+///     kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "my_dataset" {
+///   depends_on    = [gcp_projects_iammember.permissions]
+///   dataset_id    = "example_dataset"
+///   friendly_name = "foo"
+///   description   = "bar"
+///   location      = "asia-northeast1"
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "example-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "example-keyring"
+///   location = "us"
 /// }
 /// ```
 /// ```java
@@ -557,8 +640,8 @@ import 'data_transfer_config_state.dart';
 /// import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEncryptionConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -803,6 +886,37 @@ import 'data_transfer_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_bigquery_dataset" "my_dataset" {
+///   dataset_id  = "my_dataset"
+///   description = "My dataset"
+///   location    = "asia-northeast1"
+/// }
+/// resource "gcp_bigquery_datatransferconfig" "salesforce_config" {
+///   display_name           = "my-salesforce-config"
+///   location               = "asia-northeast1"
+///   data_source_id         = "salesforce"
+///   schedule               = "first sunday of quarter 00:00"
+///   destination_dataset_id = gcp_bigquery_dataset.my_dataset.dataset_id
+///   params = {
+///     "connector.authentication.oauth.clientId"     = "client-id"
+///     "connector.authentication.oauth.clientSecret" = "client-secret"
+///     "connector.authentication.oauth.myDomain"     = "MyDomainName"
+///     "assets"                                      = "[\"asset-a\",\"asset-b\"]"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -815,8 +929,8 @@ import 'data_transfer_config_state.dart';
 /// import com.pulumi.gcp.bigquery.DatasetArgs;
 /// import com.pulumi.gcp.bigquery.DataTransferConfig;
 /// import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -890,22 +1004,15 @@ import 'data_transfer_config_state.dart';
 /// Config can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_bigquery_data_transfer_config.default "{{project}} {{name}}"
 /// $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
 /// ```
 class DataTransferConfig extends pulumi.CustomResource {
@@ -917,6 +1024,13 @@ class DataTransferConfig extends pulumi.CustomResource {
   late final pulumi.Output<int?> dataRefreshWindowDays;
   /// The data source id. Cannot be changed once the transfer config is created.
   late final pulumi.Output<String> dataSourceId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The BigQuery target dataset id.
   late final pulumi.Output<String?> destinationDatasetId;
   /// When set to true, no runs are scheduled for a given transfer.
@@ -992,6 +1106,7 @@ class DataTransferConfig extends pulumi.CustomResource {
         ) {
     dataRefreshWindowDays = registerOutput<int?>('dataRefreshWindowDays');
     dataSourceId = registerOutput<String>('dataSourceId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDatasetId = registerOutput<String?>('destinationDatasetId');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');
@@ -1033,6 +1148,7 @@ class DataTransferConfig extends pulumi.CustomResource {
         ) {
     dataRefreshWindowDays = registerOutput<int?>('dataRefreshWindowDays');
     dataSourceId = registerOutput<String>('dataSourceId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDatasetId = registerOutput<String?>('destinationDatasetId');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');

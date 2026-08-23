@@ -7,6 +7,13 @@ import 'runtime_notebook_runtime_template_ref.dart';
 class RuntimeState {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
   final pulumi.Input<bool>? autoUpgrade;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the Runtime.
   final pulumi.Input<String>? description;
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -36,6 +43,7 @@ class RuntimeState {
 
   /// Creates a new [RuntimeState].
   /// [autoUpgrade] Triggers an upgrade anytime the runtime is started if it is upgradable.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the Runtime.
   /// [desiredState] Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
   /// [displayName] Required. The display name of the Runtime.
@@ -50,6 +58,7 @@ class RuntimeState {
   /// [state] Output only. The state of the runtime.
   const RuntimeState({
     this.autoUpgrade,
+    this.deletionPolicy,
     this.description,
     this.desiredState,
     this.displayName,
@@ -67,6 +76,7 @@ class RuntimeState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoUpgrade': ?autoUpgrade,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'desiredState': ?desiredState,
       'displayName': ?displayName,
@@ -85,6 +95,7 @@ class RuntimeState {
   factory RuntimeState.fromMap(Map<String, dynamic> map) {
     return RuntimeState(
       autoUpgrade: (() { final guardedValue = map['autoUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -100,4 +111,3 @@ class RuntimeState {
     );
   }
 }
-

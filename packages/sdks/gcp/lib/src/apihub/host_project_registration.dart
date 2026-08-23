@@ -189,6 +189,43 @@ import 'host_project_registration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   name            = "apihub-proj"
+///   project_id      = "apihub-proj"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_organizations_project.project]
+///   create_duration = "60s"
+/// }
+/// # Enable API hub API
+/// resource "gcp_projects_service" "apihub_service" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "apihub.googleapis.com"
+/// }
+/// resource "gcp_apihub_hostprojectregistration" "apihub_host_project" {
+///   depends_on                   = [gcp_projects_service.apihub_service]
+///   project                      = gcp_organizations_project.project.project_id
+///   location                     = "asia-south1"
+///   host_project_registration_id = gcp_organizations_project.project.project_id
+///   gcp_project                  ="projects/${gcp_organizations_project.project.project_id}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +241,8 @@ import 'host_project_registration_state.dart';
 /// import com.pulumi.gcp.apihub.HostProjectRegistration;
 /// import com.pulumi.gcp.apihub.HostProjectRegistrationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,22 +335,15 @@ import 'host_project_registration_state.dart';
 /// HostProjectRegistration can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/hostProjectRegistrations/{{host_project_registration_id}}`
-///
 /// * `{{project}}/{{location}}/{{host_project_registration_id}}`
-///
 /// * `{{location}}/{{host_project_registration_id}}`
+///
 ///
 /// When using the `pulumi import` command, HostProjectRegistration can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default projects/{{project}}/locations/{{location}}/hostProjectRegistrations/{{host_project_registration_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{project}}/{{location}}/{{host_project_registration_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{location}}/{{host_project_registration_id}}
 /// ```
 class HostProjectRegistration extends pulumi.CustomResource {

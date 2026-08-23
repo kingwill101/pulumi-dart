@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAttachmentState {
   /// Time the Namespace was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -17,7 +24,7 @@ class EndpointAttachmentState {
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location in which Endpoint Attachment needs to be created.
   final pulumi.Input<String>? location;
@@ -36,6 +43,7 @@ class EndpointAttachmentState {
 
   /// Creates a new [EndpointAttachmentState].
   /// [createTime] Time the Namespace was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [endpointGlobalAccess] Enable global access for endpoint attachment.
@@ -49,6 +57,7 @@ class EndpointAttachmentState {
   /// [updateTime] Time the Namespace was updated in UTC.
   const EndpointAttachmentState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.endpointGlobalAccess,
@@ -65,6 +74,7 @@ class EndpointAttachmentState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'endpointGlobalAccess': ?endpointGlobalAccess,
@@ -82,6 +92,7 @@ class EndpointAttachmentState {
   factory EndpointAttachmentState.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       endpointGlobalAccess: (() { final guardedValue = map['endpointGlobalAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -96,4 +107,3 @@ class EndpointAttachmentState {
     );
   }
 }
-

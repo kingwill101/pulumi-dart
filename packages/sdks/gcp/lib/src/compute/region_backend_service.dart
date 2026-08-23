@@ -130,7 +130,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                         pulumi.String("region-service"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			HealthChecks:                 defaultHealthCheck.ID(),
+/// 			HealthChecks:                 defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 /// 			SessionAffinity:              pulumi.String("CLIENT_IP"),
 /// 		})
@@ -139,6 +139,31 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                            = "region-service"
+///   region                          = "us-central1"
+///   health_checks                   = gcp_compute_healthcheck.default.id
+///   connection_draining_timeout_sec = 10
+///   session_affinity                = "CLIENT_IP"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "rbs-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
 /// }
 /// ```
 /// ```java
@@ -152,8 +177,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,6 +318,27 @@ import 'region_backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                  = "tf-test-region-service-external"
+///   region                = "us-central1"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "EXTERNAL"
+///   iap = {
+///     enabled              = true
+///     oauth2_client_id     = "abc"
+///     oauth2_client_secret = "xyz"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -302,8 +348,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,227 +389,6 @@ import 'region_backend_service_tls_settings.dart';
 ///         enabled: true
 ///         oauth2ClientId: abc
 ///         oauth2ClientSecret: xyz
-/// ```
-///
-/// ### Region Backend Service Cache
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
-///     name: "rbs-health-check",
-///     region: "us-central1",
-///     httpHealthCheck: {
-///         port: 80,
-///     },
-/// });
-/// const _default = new gcp.compute.RegionBackendService("default", {
-///     name: "region-service",
-///     region: "us-central1",
-///     healthChecks: defaultRegionHealthCheck.id,
-///     enableCdn: true,
-///     cdnPolicy: {
-///         cacheMode: "CACHE_ALL_STATIC",
-///         defaultTtl: 3600,
-///         clientTtl: 7200,
-///         maxTtl: 10800,
-///         negativeCaching: true,
-///         signedUrlCacheMaxAgeSec: 7200,
-///     },
-///     loadBalancingScheme: "EXTERNAL",
-///     protocol: "HTTP",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default_region_health_check = gcp.compute.RegionHealthCheck("default",
-///     name="rbs-health-check",
-///     region="us-central1",
-///     http_health_check={
-///         "port": 80,
-///     })
-/// default = gcp.compute.RegionBackendService("default",
-///     name="region-service",
-///     region="us-central1",
-///     health_checks=default_region_health_check.id,
-///     enable_cdn=True,
-///     cdn_policy={
-///         "cache_mode": "CACHE_ALL_STATIC",
-///         "default_ttl": 3600,
-///         "client_ttl": 7200,
-///         "max_ttl": 10800,
-///         "negative_caching": True,
-///         "signed_url_cache_max_age_sec": 7200,
-///     },
-///     load_balancing_scheme="EXTERNAL",
-///     protocol="HTTP")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
-///     {
-///         Name = "rbs-health-check",
-///         Region = "us-central1",
-///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
-///         {
-///             Port = 80,
-///         },
-///     });
-///
-///     var @default = new Gcp.Compute.RegionBackendService("default", new()
-///     {
-///         Name = "region-service",
-///         Region = "us-central1",
-///         HealthChecks = defaultRegionHealthCheck.Id,
-///         EnableCdn = true,
-///         CdnPolicy = new Gcp.Compute.Inputs.RegionBackendServiceCdnPolicyArgs
-///         {
-///             CacheMode = "CACHE_ALL_STATIC",
-///             DefaultTtl = 3600,
-///             ClientTtl = 7200,
-///             MaxTtl = 10800,
-///             NegativeCaching = true,
-///             SignedUrlCacheMaxAgeSec = 7200,
-///         },
-///         LoadBalancingScheme = "EXTERNAL",
-///         Protocol = "HTTP",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
-/// 			Name:   pulumi.String("rbs-health-check"),
-/// 			Region: pulumi.String("us-central1"),
-/// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
-/// 				Port: pulumi.Int(80),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
-/// 			Name:         pulumi.String("region-service"),
-/// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: defaultRegionHealthCheck.ID(),
-/// 			EnableCdn:    pulumi.Bool(true),
-/// 			CdnPolicy: &compute.RegionBackendServiceCdnPolicyArgs{
-/// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
-/// 				DefaultTtl:              pulumi.Int(3600),
-/// 				ClientTtl:               pulumi.Int(7200),
-/// 				MaxTtl:                  pulumi.Int(10800),
-/// 				NegativeCaching:         pulumi.Bool(true),
-/// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
-/// 			},
-/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
-/// 			Protocol:            pulumi.String("HTTP"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.RegionHealthCheck;
-/// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
-/// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
-/// import com.pulumi.gcp.compute.RegionBackendService;
-/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
-/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceCdnPolicyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
-///             .name("rbs-health-check")
-///             .region("us-central1")
-///             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
-///                 .port(80)
-///                 .build())
-///             .build());
-///
-///         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
-///             .name("region-service")
-///             .region("us-central1")
-///             .healthChecks(defaultRegionHealthCheck.id())
-///             .enableCdn(true)
-///             .cdnPolicy(RegionBackendServiceCdnPolicyArgs.builder()
-///                 .cacheMode("CACHE_ALL_STATIC")
-///                 .defaultTtl(3600)
-///                 .clientTtl(7200)
-///                 .maxTtl(10800)
-///                 .negativeCaching(true)
-///                 .signedUrlCacheMaxAgeSec(7200)
-///                 .build())
-///             .loadBalancingScheme("EXTERNAL")
-///             .protocol("HTTP")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   default:
-///     type: gcp:compute:RegionBackendService
-///     properties:
-///       name: region-service
-///       region: us-central1
-///       healthChecks: ${defaultRegionHealthCheck.id}
-///       enableCdn: true
-///       cdnPolicy:
-///         cacheMode: CACHE_ALL_STATIC
-///         defaultTtl: 3600
-///         clientTtl: 7200
-///         maxTtl: 10800
-///         negativeCaching: true
-///         signedUrlCacheMaxAgeSec: 7200
-///       loadBalancingScheme: EXTERNAL
-///       protocol: HTTP
-///   defaultRegionHealthCheck:
-///     type: gcp:compute:RegionHealthCheck
-///     name: default
-///     properties:
-///       name: rbs-health-check
-///       region: us-central1
-///       httpHealthCheck:
-///         port: 80
 /// ```
 ///
 /// ### Region Backend Service Ilb Round Robin
@@ -657,7 +482,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Name:                pulumi.String("region-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
@@ -667,6 +492,30 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   locality_lb_policy    = "ROUND_ROBIN"
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name = "rbs-health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -680,8 +529,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -824,7 +673,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Name:                pulumi.String("region-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocol:            pulumi.String("TCP"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 /// 		})
@@ -833,6 +682,30 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   health_checks         = gcp_compute_regionhealthcheck.health_check.id
+///   protocol              = "TCP"
+///   load_balancing_scheme = "EXTERNAL"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "health_check" {
+///   name   = "rbs-health-check"
+///   region = "us-central1"
+///   tcp_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -846,8 +719,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -993,7 +866,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Name:                pulumi.String("region-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocol:            pulumi.String("TCP"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 /// 			LocalityLbPolicy:    pulumi.String("WEIGHTED_MAGLEV"),
@@ -1003,6 +876,31 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   health_checks         = gcp_compute_regionhealthcheck.health_check.id
+///   protocol              = "TCP"
+///   load_balancing_scheme = "EXTERNAL"
+///   locality_lb_policy    = "WEIGHTED_MAGLEV"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "health_check" {
+///   name   = "rbs-health-check"
+///   region = "us-central1"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -1016,8 +914,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1214,7 +1112,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Name:                pulumi.String("region-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 /// 			SessionAffinity:     pulumi.String("HTTP_COOKIE"),
@@ -1242,6 +1140,46 @@ import 'region_backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   locality_lb_policy    = "RING_HASH"
+///   session_affinity      = "HTTP_COOKIE"
+///   protocol              = "HTTP"
+///   circuit_breakers = {
+///     max_connections = 10
+///   }
+///   consistent_hash = {
+///     http_cookie = {
+///       ttl = {
+///         seconds = 11
+///         nanos   = 1111
+///       }
+///       name = "mycookie"
+///     }
+///   }
+///   outlier_detection = {
+///     consecutive_errors = 2
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name = "rbs-health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1258,8 +1196,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceConsistentHashHttpCookieArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceConsistentHashHttpCookieTtlArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceOutlierDetectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1454,7 +1392,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Name:                pulumi.String("region-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 /// 			SessionAffinity:     pulumi.String("STRONG_COOKIE_AFFINITY"),
@@ -1474,6 +1412,38 @@ import 'region_backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   locality_lb_policy    = "RING_HASH"
+///   session_affinity      = "STRONG_COOKIE_AFFINITY"
+///   protocol              = "HTTP"
+///   strong_session_affinity_cookie = {
+///     ttl = {
+///       seconds = 11
+///       nanos   = 1111
+///     }
+///     name = "mycookie"
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name = "rbs-health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1487,8 +1457,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceStrongSessionAffinityCookieArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceStrongSessionAffinityCookieTtlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1675,7 +1645,7 @@ import 'region_backend_service_tls_settings.dart';
 ///     backends=[{
 ///         "group": rigm.instance_group,
 ///         "balancing_mode": "UTILIZATION",
-///         "capacity_scaler": 1,
+///         "capacity_scaler": float(1),
 ///     }],
 ///     region="us-central1",
 ///     name="region-service",
@@ -1775,7 +1745,7 @@ import 'region_backend_service_tls_settings.dart';
 ///             {
 ///                 Group = rigm.InstanceGroup,
 ///                 BalancingMode = "UTILIZATION",
-///                 CapacityScaler = 1,
+///                 CapacityScaler = 1.0,
 ///             },
 ///         },
 ///         Region = "us-central1",
@@ -1816,7 +1786,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 			Name:        pulumi.String("rbs-net-default"),
 /// 			IpCidrRange: pulumi.String("10.1.2.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1826,8 +1796,8 @@ import 'region_backend_service_tls_settings.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-/// 					Network:    defaultNetwork.ID(),
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Network:    defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Disks: compute.InstanceTemplateDiskArray{
@@ -1850,7 +1820,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 			Name:   pulumi.String("rbs-rigm"),
 /// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
 /// 				&compute.RegionInstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: instanceTemplate.ID(),
+/// 					InstanceTemplate: instanceTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 					Name:             pulumi.String("primary"),
 /// 				},
 /// 			},
@@ -1883,13 +1853,83 @@ import 'region_backend_service_tls_settings.dart';
 /// 			Name:         pulumi.String("region-service"),
 /// 			Protocol:     pulumi.String("H2C"),
 /// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultRegionHealthCheck.ID(),
+/// 			HealthChecks: defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debianImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   backends {
+///     group           = gcp_compute_regioninstancegroupmanager.rigm.instance_group
+///     balancing_mode  = "UTILIZATION"
+///     capacity_scaler = 1
+///   }
+///   region        = "us-central1"
+///   name          = "region-service"
+///   protocol      = "H2C"
+///   timeout_sec   = 10
+///   health_checks = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "rigm" {
+///   region = "us-central1"
+///   name   = "rbs-rigm"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.instance_template.id
+///     name              = "primary"
+///   }
+///   base_instance_name = "internal-glb"
+///   target_size        = 1
+/// }
+/// resource "gcp_compute_instancetemplate" "instance_template" {
+///   name         = "template-region-service"
+///   machine_type = "e2-medium"
+///   network_interfaces {
+///     network    = gcp_compute_network.default.id
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   disks {
+///     source_image = data.gcp_compute_getimage.debianImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   tags = ["allow-ssh", "load-balanced-backend"]
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region = "us-central1"
+///   name   = "rbs-health-check"
+///   http_health_check = {
+///     port_specification = "USE_SERVING_PORT"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "rbs-net"
+///   auto_create_subnetworks = false
+///   routing_mode            = "REGIONAL"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "rbs-net-default"
+///   ip_cidr_range = "10.1.2.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -1917,8 +1957,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2101,7 +2141,7 @@ import 'region_backend_service_tls_settings.dart';
 ///         trackingMode: "PER_SESSION",
 ///         connectionPersistenceOnUnhealthyBackends: "NEVER_PERSIST",
 ///         idleTimeoutSec: 60,
-///         enableStrongAffinity: true,
+///         enableStrongAffinity: false,
 ///     },
 /// });
 /// ```
@@ -2127,7 +2167,7 @@ import 'region_backend_service_tls_settings.dart';
 ///         "tracking_mode": "PER_SESSION",
 ///         "connection_persistence_on_unhealthy_backends": "NEVER_PERSIST",
 ///         "idle_timeout_sec": 60,
-///         "enable_strong_affinity": True,
+///         "enable_strong_affinity": False,
 ///     })
 /// ```
 /// ```csharp
@@ -2162,7 +2202,7 @@ import 'region_backend_service_tls_settings.dart';
 ///             TrackingMode = "PER_SESSION",
 ///             ConnectionPersistenceOnUnhealthyBackends = "NEVER_PERSIST",
 ///             IdleTimeoutSec = 60,
-///             EnableStrongAffinity = true,
+///             EnableStrongAffinity = false,
 ///         },
 ///     });
 ///
@@ -2191,7 +2231,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                         pulumi.String("region-service"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			HealthChecks:                 healthCheck.ID(),
+/// 			HealthChecks:                 healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 /// 			SessionAffinity:              pulumi.String("CLIENT_IP"),
 /// 			Protocol:                     pulumi.String("TCP"),
@@ -2200,7 +2240,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 				TrackingMode:                             pulumi.String("PER_SESSION"),
 /// 				ConnectionPersistenceOnUnhealthyBackends: pulumi.String("NEVER_PERSIST"),
 /// 				IdleTimeoutSec:                           pulumi.Int(60),
-/// 				EnableStrongAffinity:                     pulumi.Bool(true),
+/// 				EnableStrongAffinity:                     pulumi.Bool(false),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -2208,6 +2248,38 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                            = "region-service"
+///   region                          = "us-central1"
+///   health_checks                   = gcp_compute_regionhealthcheck.health_check.id
+///   connection_draining_timeout_sec = 10
+///   session_affinity                = "CLIENT_IP"
+///   protocol                        = "TCP"
+///   load_balancing_scheme           = "EXTERNAL"
+///   connection_tracking_policy = {
+///     tracking_mode                                = "PER_SESSION"
+///     connection_persistence_on_unhealthy_backends = "NEVER_PERSIST"
+///     idle_timeout_sec                             = 60
+///     enable_strong_affinity                       = false
+///   }
+/// }
+/// resource "gcp_compute_regionhealthcheck" "health_check" {
+///   name   = "rbs-health-check"
+///   region = "us-central1"
+///   tcp_health_check = {
+///     port = 22
+///   }
 /// }
 /// ```
 /// ```java
@@ -2222,8 +2294,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceConnectionTrackingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2255,7 +2327,7 @@ import 'region_backend_service_tls_settings.dart';
 ///                 .trackingMode("PER_SESSION")
 ///                 .connectionPersistenceOnUnhealthyBackends("NEVER_PERSIST")
 ///                 .idleTimeoutSec(60)
-///                 .enableStrongAffinity(true)
+///                 .enableStrongAffinity(false)
 ///                 .build())
 ///             .build());
 ///
@@ -2278,7 +2350,7 @@ import 'region_backend_service_tls_settings.dart';
 ///         trackingMode: PER_SESSION
 ///         connectionPersistenceOnUnhealthyBackends: NEVER_PERSIST
 ///         idleTimeoutSec: 60
-///         enableStrongAffinity: true
+///         enableStrongAffinity: false
 ///   healthCheck:
 ///     type: gcp:compute:RegionHealthCheck
 ///     name: health_check
@@ -2384,7 +2456,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                     pulumi.String("region-service"),
 /// 			Region:                   pulumi.String("us-central1"),
-/// 			HealthChecks:             healthCheck.ID(),
+/// 			HealthChecks:             healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme:      pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:                 pulumi.String("HTTP"),
 /// 			IpAddressSelectionPolicy: pulumi.String("IPV6_ONLY"),
@@ -2394,6 +2466,31 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                        = "region-service"
+///   region                      = "us-central1"
+///   health_checks               = gcp_compute_regionhealthcheck.health_check.id
+///   load_balancing_scheme       = "EXTERNAL_MANAGED"
+///   protocol                    = "HTTP"
+///   ip_address_selection_policy = "IPV6_ONLY"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "health_check" {
+///   name   = "rbs-health-check"
+///   region = "us-central1"
+///   tcp_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -2407,8 +2504,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2646,7 +2743,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		// Zonal NEG with GCE_VM_IP_PORT
 /// 		defaultNetworkEndpointGroup, err := compute.NewNetworkEndpointGroup(ctx, "default", &compute.NetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("network-endpoint"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultPort:         pulumi.Int(90),
 /// 			Zone:                pulumi.String("us-central1-a"),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORT"),
@@ -2666,7 +2763,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Name:                pulumi.String("region-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("WEIGHTED_ROUND_ROBIN"),
 /// 			CustomMetrics: compute.RegionBackendServiceCustomMetricArray{
@@ -2677,7 +2774,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 			},
 /// 			Backends: compute.RegionBackendServiceBackendArray{
 /// 				&compute.RegionBackendServiceBackendArgs{
-/// 					Group:         defaultNetworkEndpointGroup.ID(),
+/// 					Group:         defaultNetworkEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					BalancingMode: pulumi.String("CUSTOM_METRICS"),
 /// 					CustomMetrics: compute.RegionBackendServiceBackendCustomMetricArray{
 /// 						&compute.RegionBackendServiceBackendCustomMetricArgs{
@@ -2700,6 +2797,58 @@ import 'region_backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "network"
+/// }
+/// // Zonal NEG with GCE_VM_IP_PORT
+/// resource "gcp_compute_networkendpointgroup" "default" {
+///   name                  = "network-endpoint"
+///   network               = gcp_compute_network.default.id
+///   default_port          = "90"
+///   zone                  = "us-central1-a"
+///   network_endpoint_type = "GCE_VM_IP_PORT"
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   locality_lb_policy    = "WEIGHTED_ROUND_ROBIN"
+///   custom_metrics {
+///     name    = "orca.application_utilization"
+///     dry_run = false
+///   }
+///   # At least one metric should be not dry_run.
+///   backends {
+///     group          = gcp_compute_networkendpointgroup.default.id
+///     balancing_mode = "CUSTOM_METRICS"
+///     custom_metrics {
+///       name            = "orca.cpu_utilization"
+///       max_utilization = 0.9
+///       dry_run         = true
+///     }
+///     custom_metrics {
+///       name    = "orca.named_metrics.foo"
+///       dry_run = false
+///     }
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name = "rbs-health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2717,8 +2866,9 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceCustomMetricArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendCustomMetricArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2909,6 +3059,26 @@ import 'region_backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                  = "region-service"
+///   region                = "us-central1"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   dynamic_forwarding = {
+///     ip_port_selection = {
+///       enabled = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2919,8 +3089,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingIpPortSelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2957,6 +3127,342 @@ import 'region_backend_service_tls_settings.dart';
 ///       dynamicForwarding:
 ///         ipPortSelection:
 ///           enabled: true
+/// ```
+///
+/// ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.RegionBackendService("default", {
+///     name: "region-service",
+///     region: "us-central1",
+///     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+///     protocol: "HTTP2",
+///     dynamicForwarding: {
+///         forwardProxy: {
+///             enabled: true,
+///             proxyMode: "CLOUD_RUN",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.RegionBackendService("default",
+///     name="region-service",
+///     region="us-central1",
+///     load_balancing_scheme="INTERNAL_SELF_MANAGED",
+///     protocol="HTTP2",
+///     dynamic_forwarding={
+///         "forward_proxy": {
+///             "enabled": True,
+///             "proxy_mode": "CLOUD_RUN",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+///     {
+///         Name = "region-service",
+///         Region = "us-central1",
+///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+///         Protocol = "HTTP2",
+///         DynamicForwarding = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingArgs
+///         {
+///             ForwardProxy = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs
+///             {
+///                 Enabled = true,
+///                 ProxyMode = "CLOUD_RUN",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+/// 			Name:                pulumi.String("region-service"),
+/// 			Region:              pulumi.String("us-central1"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTP2"),
+/// 			DynamicForwarding: &compute.RegionBackendServiceDynamicForwardingArgs{
+/// 				ForwardProxy: &compute.RegionBackendServiceDynamicForwardingForwardProxyArgs{
+/// 					Enabled:   pulumi.Bool(true),
+/// 					ProxyMode: pulumi.String("CLOUD_RUN"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                  = "region-service"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   protocol              = "HTTP2"
+///   dynamic_forwarding = {
+///     forward_proxy = {
+///       enabled    = true
+///       proxy_mode = "CLOUD_RUN"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+///             .name("region-service")
+///             .region("us-central1")
+///             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+///             .protocol("HTTP2")
+///             .dynamicForwarding(RegionBackendServiceDynamicForwardingArgs.builder()
+///                 .forwardProxy(RegionBackendServiceDynamicForwardingForwardProxyArgs.builder()
+///                     .enabled(true)
+///                     .proxyMode("CLOUD_RUN")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:RegionBackendService
+///     properties:
+///       name: region-service
+///       region: us-central1
+///       loadBalancingScheme: INTERNAL_SELF_MANAGED
+///       protocol: HTTP2
+///       dynamicForwarding:
+///         forwardProxy:
+///           enabled: true
+///           proxyMode: CLOUD_RUN
+/// ```
+///
+/// ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.RegionBackendService("default", {
+///     name: "region-service",
+///     region: "us-central1",
+///     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+///     protocol: "HTTP2",
+///     dynamicForwarding: {
+///         forwardProxy: {
+///             enabled: true,
+///             proxyMode: "DIRECT_FORWARDING",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.RegionBackendService("default",
+///     name="region-service",
+///     region="us-central1",
+///     load_balancing_scheme="INTERNAL_SELF_MANAGED",
+///     protocol="HTTP2",
+///     dynamic_forwarding={
+///         "forward_proxy": {
+///             "enabled": True,
+///             "proxy_mode": "DIRECT_FORWARDING",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+///     {
+///         Name = "region-service",
+///         Region = "us-central1",
+///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+///         Protocol = "HTTP2",
+///         DynamicForwarding = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingArgs
+///         {
+///             ForwardProxy = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs
+///             {
+///                 Enabled = true,
+///                 ProxyMode = "DIRECT_FORWARDING",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+/// 			Name:                pulumi.String("region-service"),
+/// 			Region:              pulumi.String("us-central1"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTP2"),
+/// 			DynamicForwarding: &compute.RegionBackendServiceDynamicForwardingArgs{
+/// 				ForwardProxy: &compute.RegionBackendServiceDynamicForwardingForwardProxyArgs{
+/// 					Enabled:   pulumi.Bool(true),
+/// 					ProxyMode: pulumi.String("DIRECT_FORWARDING"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                  = "region-service"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   protocol              = "HTTP2"
+///   dynamic_forwarding = {
+///     forward_proxy = {
+///       enabled    = true
+///       proxy_mode = "DIRECT_FORWARDING"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+///             .name("region-service")
+///             .region("us-central1")
+///             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+///             .protocol("HTTP2")
+///             .dynamicForwarding(RegionBackendServiceDynamicForwardingArgs.builder()
+///                 .forwardProxy(RegionBackendServiceDynamicForwardingForwardProxyArgs.builder()
+///                     .enabled(true)
+///                     .proxyMode("DIRECT_FORWARDING")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:RegionBackendService
+///     properties:
+///       name: region-service
+///       region: us-central1
+///       loadBalancingScheme: INTERNAL_SELF_MANAGED
+///       protocol: HTTP2
+///       dynamicForwarding:
+///         forwardProxy:
+///           enabled: true
+///           proxyMode: DIRECT_FORWARDING
 /// ```
 ///
 /// ### Region Backend Service Ha Policy
@@ -3046,7 +3552,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 			Name:                pulumi.String("region-service"),
 /// 			Protocol:            pulumi.String("UDP"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			HaPolicy: &compute.RegionBackendServiceHaPolicyArgs{
 /// 				FastIpMove: pulumi.String("GARP_RA"),
 /// 			},
@@ -3057,6 +3563,30 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "rbs-net"
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   protocol              = "UDP"
+///   load_balancing_scheme = "EXTERNAL"
+///   network               = gcp_compute_network.default.id
+///   ha_policy = {
+///     fast_ip_move = "GARP_RA"
+///   }
+///   connection_draining_timeout_sec = 0
 /// }
 /// ```
 /// ```java
@@ -3070,8 +3600,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3167,7 +3697,7 @@ import 'region_backend_service_tls_settings.dart';
 /// const endpoint = new gcp.compute.NetworkEndpoint("endpoint", {
 ///     networkEndpointGroup: neg.name,
 ///     instance: endpoint_instance.name,
-///     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+///     ipAddress: endpoint_instance.networkInterfaces[0].networkIp,
 /// });
 /// const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
 ///     region: "us-central1",
@@ -3369,7 +3899,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 			Name:        pulumi.String("rbs-subnet"),
 /// 			IpCidrRange: pulumi.String("10.1.2.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3387,7 +3917,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("rbs-instance"),
@@ -3404,8 +3934,8 @@ import 'region_backend_service_tls_settings.dart';
 /// 		neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("rbs-neg"),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP"),
-/// 			Network:             _default.ID(),
-/// 			Subnetwork:          defaultSubnetwork.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Zone:                pulumi.String("us-central1-a"),
 /// 		})
 /// 		if err != nil {
@@ -3414,9 +3944,9 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewNetworkEndpoint(ctx, "endpoint", &compute.NetworkEndpointArgs{
 /// 			NetworkEndpointGroup: neg.Name,
 /// 			Instance:             endpoint_instance.Name,
-/// 			IpAddress: pulumi.String(endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-/// 				return &networkInterfaces[0].NetworkIp, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+/// 				return networkInterfaces[0].NetworkIp, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3426,7 +3956,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 			Name:                pulumi.String("region-service"),
 /// 			Protocol:            pulumi.String("UDP"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Backends: compute.RegionBackendServiceBackendArray{
 /// 				&compute.RegionBackendServiceBackendArgs{
 /// 					Group:         neg.SelfLink,
@@ -3451,6 +3981,78 @@ import 'region_backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-12"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "rbs-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "rbs-subnet"
+///   ip_cidr_range = "10.1.2.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_networkendpoint" "endpoint" {
+///   network_endpoint_group = gcp_compute_networkendpointgroup.neg.name
+///   instance               = gcp_compute_instance.endpoint-instance.name
+///   ip_address             = gcp_compute_instance.endpoint-instance.network_interfaces[0].network_ip
+/// }
+/// resource "gcp_compute_instance" "endpoint-instance" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   name         = "rbs-instance"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+/// }
+/// resource "gcp_compute_networkendpointgroup" "neg" {
+///   name                  = "rbs-neg"
+///   network_endpoint_type = "GCE_VM_IP"
+///   network               = gcp_compute_network.default.id
+///   subnetwork            = gcp_compute_subnetwork.default.id
+///   zone                  = "us-central1-a"
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   protocol              = "UDP"
+///   load_balancing_scheme = "EXTERNAL"
+///   network               = gcp_compute_network.default.id
+///   backends {
+///     group          = gcp_compute_networkendpointgroup.neg.self_link
+///     balancing_mode = "CONNECTION"
+///   }
+///   ha_policy = {
+///     fast_ip_move = "GARP_RA"
+///     leader = {
+///       backend_group = gcp_compute_networkendpointgroup.neg.self_link
+///       network_endpoint = {
+///         instance = gcp_compute_instance.endpoint-instance.name
+///       }
+///     }
+///   }
+///   connection_draining_timeout_sec = 0
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3466,6 +4068,7 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpointGroup;
@@ -3478,8 +4081,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3534,7 +4137,7 @@ import 'region_backend_service_tls_settings.dart';
 ///         var endpoint = new NetworkEndpoint("endpoint", NetworkEndpointArgs.builder()
 ///             .networkEndpointGroup(neg.name())
 ///             .instance(endpoint_instance.name())
-///             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+///             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///             .build());
 ///
 ///         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
@@ -3622,6 +4225,606 @@ import 'region_backend_service_tls_settings.dart';
 ///           networkEndpoint:
 ///             instance: ${["endpoint-instance"].name}
 ///       connectionDrainingTimeoutSec: 0
+/// variables:
+///   myImage:
+///     fn::invoke:
+///       function: gcp:compute:getImage
+///       arguments:
+///         family: debian-12
+///         project: debian-cloud
+/// ```
+///
+/// ### Region Backend Service Ha Policy Internal Lb
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.Network("default", {
+///     name: "rbs-net",
+///     autoCreateSubnetworks: false,
+/// });
+/// const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+///     name: "rbs-subnet",
+///     ipCidrRange: "10.1.2.0/24",
+///     region: "us-central1",
+///     network: _default.id,
+/// });
+/// const myImage = gcp.compute.getImage({
+///     family: "debian-12",
+///     project: "debian-cloud",
+/// });
+/// const endpoint_instance = new gcp.compute.Instance("endpoint-instance", {
+///     networkInterfaces: [{
+///         accessConfigs: [{}],
+///         subnetwork: defaultSubnetwork.id,
+///     }],
+///     name: "rbs-instance",
+///     machineType: "e2-medium",
+///     bootDisk: {
+///         autoDelete: true,
+///         initializeParams: {
+///             image: myImage.then(myImage => myImage.selfLink),
+///         },
+///     },
+/// });
+/// const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+///     name: "rbs-neg",
+///     networkEndpointType: "GCE_VM_IP_DEDICATED_BACKEND",
+///     network: _default.id,
+///     subnetwork: defaultSubnetwork.id,
+///     zone: "us-central1-a",
+/// });
+/// const endpoint = new gcp.compute.NetworkEndpointList("endpoint", {
+///     networkEndpointGroup: neg.name,
+///     networkEndpoints: [{
+///         instance: endpoint_instance.name,
+///     }],
+/// });
+/// const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+///     region: "us-central1",
+///     name: "region-service",
+///     protocol: "UNSPECIFIED",
+///     loadBalancingScheme: "INTERNAL",
+///     network: _default.id,
+///     backends: [{
+///         group: neg.selfLink,
+///         balancingMode: "CONNECTION",
+///     }],
+///     haPolicy: {
+///         fastIpMove: "GARP_RA",
+///         leader: {
+///             backendGroup: neg.selfLink,
+///             networkEndpoint: {
+///                 instance: endpoint_instance.name,
+///             },
+///         },
+///     },
+///     connectionDrainingTimeoutSec: 0,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.Network("default",
+///     name="rbs-net",
+///     auto_create_subnetworks=False)
+/// default_subnetwork = gcp.compute.Subnetwork("default",
+///     name="rbs-subnet",
+///     ip_cidr_range="10.1.2.0/24",
+///     region="us-central1",
+///     network=default.id)
+/// my_image = gcp.compute.get_image(family="debian-12",
+///     project="debian-cloud")
+/// endpoint_instance = gcp.compute.Instance("endpoint-instance",
+///     network_interfaces=[{
+///         "access_configs": [{}],
+///         "subnetwork": default_subnetwork.id,
+///     }],
+///     name="rbs-instance",
+///     machine_type="e2-medium",
+///     boot_disk={
+///         "auto_delete": True,
+///         "initialize_params": {
+///             "image": my_image.self_link,
+///         },
+///     })
+/// neg = gcp.compute.NetworkEndpointGroup("neg",
+///     name="rbs-neg",
+///     network_endpoint_type="GCE_VM_IP_DEDICATED_BACKEND",
+///     network=default.id,
+///     subnetwork=default_subnetwork.id,
+///     zone="us-central1-a")
+/// endpoint = gcp.compute.NetworkEndpointList("endpoint",
+///     network_endpoint_group=neg.name,
+///     network_endpoints=[{
+///         "instance": endpoint_instance.name,
+///     }])
+/// default_region_backend_service = gcp.compute.RegionBackendService("default",
+///     region="us-central1",
+///     name="region-service",
+///     protocol="UNSPECIFIED",
+///     load_balancing_scheme="INTERNAL",
+///     network=default.id,
+///     backends=[{
+///         "group": neg.self_link,
+///         "balancing_mode": "CONNECTION",
+///     }],
+///     ha_policy={
+///         "fast_ip_move": "GARP_RA",
+///         "leader": {
+///             "backend_group": neg.self_link,
+///             "network_endpoint": {
+///                 "instance": endpoint_instance.name,
+///             },
+///         },
+///     },
+///     connection_draining_timeout_sec=0)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.Network("default", new()
+///     {
+///         Name = "rbs-net",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+///     {
+///         Name = "rbs-subnet",
+///         IpCidrRange = "10.1.2.0/24",
+///         Region = "us-central1",
+///         Network = @default.Id,
+///     });
+///
+///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+///     {
+///         Family = "debian-12",
+///         Project = "debian-cloud",
+///     });
+///
+///     var endpoint_instance = new Gcp.Compute.Instance("endpoint-instance", new()
+///     {
+///         NetworkInterfaces = new[]
+///         {
+///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+///             {
+///                 AccessConfigs = new[]
+///                 {
+///                     null,
+///                 },
+///                 Subnetwork = defaultSubnetwork.Id,
+///             },
+///         },
+///         Name = "rbs-instance",
+///         MachineType = "e2-medium",
+///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+///         {
+///             AutoDelete = true,
+///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+///             {
+///                 Image = myImage.Apply(getImageResult => getImageResult.SelfLink),
+///             },
+///         },
+///     });
+///
+///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+///     {
+///         Name = "rbs-neg",
+///         NetworkEndpointType = "GCE_VM_IP_DEDICATED_BACKEND",
+///         Network = @default.Id,
+///         Subnetwork = defaultSubnetwork.Id,
+///         Zone = "us-central1-a",
+///     });
+///
+///     var endpoint = new Gcp.Compute.NetworkEndpointList("endpoint", new()
+///     {
+///         NetworkEndpointGroup = neg.Name,
+///         NetworkEndpoints = new[]
+///         {
+///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
+///             {
+///                 Instance = endpoint_instance.Name,
+///             },
+///         },
+///     });
+///
+///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+///     {
+///         Region = "us-central1",
+///         Name = "region-service",
+///         Protocol = "UNSPECIFIED",
+///         LoadBalancingScheme = "INTERNAL",
+///         Network = @default.Id,
+///         Backends = new[]
+///         {
+///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+///             {
+///                 Group = neg.SelfLink,
+///                 BalancingMode = "CONNECTION",
+///             },
+///         },
+///         HaPolicy = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyArgs
+///         {
+///             FastIpMove = "GARP_RA",
+///             Leader = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyLeaderArgs
+///             {
+///                 BackendGroup = neg.SelfLink,
+///                 NetworkEndpoint = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs
+///                 {
+///                     Instance = endpoint_instance.Name,
+///                 },
+///             },
+///         },
+///         ConnectionDrainingTimeoutSec = 0,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("rbs-net"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("rbs-subnet"),
+/// 			IpCidrRange: pulumi.String("10.1.2.0/24"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+/// 			Family:  pulumi.StringRef("debian-12"),
+/// 			Project: pulumi.StringRef("debian-cloud"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		endpoint_instance, err := compute.NewInstance(ctx, "endpoint-instance", &compute.InstanceArgs{
+/// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+/// 				&compute.InstanceNetworkInterfaceArgs{
+/// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+/// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
+/// 					},
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("rbs-instance"),
+/// 			MachineType: pulumi.String("e2-medium"),
+/// 			BootDisk: &compute.InstanceBootDiskArgs{
+/// 				AutoDelete: pulumi.Bool(true),
+/// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+/// 					Image: pulumi.String(myImage.SelfLink),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+/// 			Name:                pulumi.String("rbs-neg"),
+/// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_DEDICATED_BACKEND"),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Zone:                pulumi.String("us-central1-a"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewNetworkEndpointList(ctx, "endpoint", &compute.NetworkEndpointListArgs{
+/// 			NetworkEndpointGroup: neg.Name,
+/// 			NetworkEndpoints: compute.NetworkEndpointListNetworkEndpointArray{
+/// 				&compute.NetworkEndpointListNetworkEndpointArgs{
+/// 					Instance: endpoint_instance.Name,
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+/// 			Region:              pulumi.String("us-central1"),
+/// 			Name:                pulumi.String("region-service"),
+/// 			Protocol:            pulumi.String("UNSPECIFIED"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Backends: compute.RegionBackendServiceBackendArray{
+/// 				&compute.RegionBackendServiceBackendArgs{
+/// 					Group:         neg.SelfLink,
+/// 					BalancingMode: pulumi.String("CONNECTION"),
+/// 				},
+/// 			},
+/// 			HaPolicy: &compute.RegionBackendServiceHaPolicyArgs{
+/// 				FastIpMove: pulumi.String("GARP_RA"),
+/// 				Leader: &compute.RegionBackendServiceHaPolicyLeaderArgs{
+/// 					BackendGroup: neg.SelfLink,
+/// 					NetworkEndpoint: &compute.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs{
+/// 						Instance: endpoint_instance.Name,
+/// 					},
+/// 				},
+/// 			},
+/// 			ConnectionDrainingTimeoutSec: pulumi.Int(0),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-12"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "rbs-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "rbs-subnet"
+///   ip_cidr_range = "10.1.2.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_instance" "endpoint-instance" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   name         = "rbs-instance"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     auto_delete = true
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+/// }
+/// resource "gcp_compute_networkendpointgroup" "neg" {
+///   name                  = "rbs-neg"
+///   network_endpoint_type = "GCE_VM_IP_DEDICATED_BACKEND"
+///   network               = gcp_compute_network.default.id
+///   subnetwork            = gcp_compute_subnetwork.default.id
+///   zone                  = "us-central1-a"
+/// }
+/// resource "gcp_compute_networkendpointlist" "endpoint" {
+///   network_endpoint_group = gcp_compute_networkendpointgroup.neg.name
+///   network_endpoints {
+///     instance = gcp_compute_instance.endpoint-instance.name
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "us-central1"
+///   name                  = "region-service"
+///   protocol              = "UNSPECIFIED"
+///   load_balancing_scheme = "INTERNAL"
+///   network               = gcp_compute_network.default.id
+///   backends {
+///     group          = gcp_compute_networkendpointgroup.neg.self_link
+///     balancing_mode = "CONNECTION"
+///   }
+///   ha_policy = {
+///     fast_ip_move = "GARP_RA"
+///     leader = {
+///       backend_group = gcp_compute_networkendpointgroup.neg.self_link
+///       network_endpoint = {
+///         instance = gcp_compute_instance.endpoint-instance.name
+///       }
+///     }
+///   }
+///   connection_draining_timeout_sec = 0
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetImageArgs;
+/// import com.pulumi.gcp.compute.Instance;
+/// import com.pulumi.gcp.compute.InstanceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+/// import com.pulumi.gcp.compute.NetworkEndpointGroup;
+/// import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
+/// import com.pulumi.gcp.compute.NetworkEndpointList;
+/// import com.pulumi.gcp.compute.NetworkEndpointListArgs;
+/// import com.pulumi.gcp.compute.inputs.NetworkEndpointListNetworkEndpointArgs;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Network("default", NetworkArgs.builder()
+///             .name("rbs-net")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+///             .name("rbs-subnet")
+///             .ipCidrRange("10.1.2.0/24")
+///             .region("us-central1")
+///             .network(default_.id())
+///             .build());
+///
+///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+///             .family("debian-12")
+///             .project("debian-cloud")
+///             .build());
+///
+///         var endpoint_instance = new Instance("endpoint-instance", InstanceArgs.builder()
+///             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+///                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+///                     .build())
+///                 .subnetwork(defaultSubnetwork.id())
+///                 .build())
+///             .name("rbs-instance")
+///             .machineType("e2-medium")
+///             .bootDisk(InstanceBootDiskArgs.builder()
+///                 .autoDelete(true)
+///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+///                     .image(myImage.selfLink())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
+///             .name("rbs-neg")
+///             .networkEndpointType("GCE_VM_IP_DEDICATED_BACKEND")
+///             .network(default_.id())
+///             .subnetwork(defaultSubnetwork.id())
+///             .zone("us-central1-a")
+///             .build());
+///
+///         var endpoint = new NetworkEndpointList("endpoint", NetworkEndpointListArgs.builder()
+///             .networkEndpointGroup(neg.name())
+///             .networkEndpoints(NetworkEndpointListNetworkEndpointArgs.builder()
+///                 .instance(endpoint_instance.name())
+///                 .build())
+///             .build());
+///
+///         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+///             .region("us-central1")
+///             .name("region-service")
+///             .protocol("UNSPECIFIED")
+///             .loadBalancingScheme("INTERNAL")
+///             .network(default_.id())
+///             .backends(RegionBackendServiceBackendArgs.builder()
+///                 .group(neg.selfLink())
+///                 .balancingMode("CONNECTION")
+///                 .build())
+///             .haPolicy(RegionBackendServiceHaPolicyArgs.builder()
+///                 .fastIpMove("GARP_RA")
+///                 .leader(RegionBackendServiceHaPolicyLeaderArgs.builder()
+///                     .backendGroup(neg.selfLink())
+///                     .networkEndpoint(RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs.builder()
+///                         .instance(endpoint_instance.name())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .connectionDrainingTimeoutSec(0)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:Network
+///     properties:
+///       name: rbs-net
+///       autoCreateSubnetworks: false
+///   defaultSubnetwork:
+///     type: gcp:compute:Subnetwork
+///     name: default
+///     properties:
+///       name: rbs-subnet
+///       ipCidrRange: 10.1.2.0/24
+///       region: us-central1
+///       network: ${default.id}
+///   endpoint-instance:
+///     type: gcp:compute:Instance
+///     properties:
+///       networkInterfaces:
+///         - accessConfigs:
+///             - {}
+///           subnetwork: ${defaultSubnetwork.id}
+///       name: rbs-instance
+///       machineType: e2-medium
+///       bootDisk:
+///         autoDelete: true
+///         initializeParams:
+///           image: ${myImage.selfLink}
+///   neg:
+///     type: gcp:compute:NetworkEndpointGroup
+///     properties:
+///       name: rbs-neg
+///       networkEndpointType: GCE_VM_IP_DEDICATED_BACKEND
+///       network: ${default.id}
+///       subnetwork: ${defaultSubnetwork.id}
+///       zone: us-central1-a
+///   endpoint:
+///     type: gcp:compute:NetworkEndpointList
+///     properties:
+///       networkEndpointGroup: ${neg.name}
+///       networkEndpoints:
+///         - instance: ${["endpoint-instance"].name}
+///   defaultRegionBackendService:
+///     type: gcp:compute:RegionBackendService
+///     name: default
+///     properties:
+///       region: us-central1
+///       name: region-service
+///       protocol: UNSPECIFIED
+///       loadBalancingScheme: INTERNAL
+///       network: ${default.id}
+///       backends:
+///         - group: ${neg.selfLink}
+///           balancingMode: CONNECTION
+///       haPolicy:
+///         fastIpMove: GARP_RA
+///         leader:
+///           backendGroup: ${neg.selfLink}
+///           networkEndpoint:
+///             instance: ${["endpoint-instance"].name}
+///       connectionDrainingTimeoutSec: 0 # This block prevents Terraform from reverting external updates to leadership.
 /// variables:
 ///   myImage:
 ///     fn::invoke:
@@ -3790,7 +4993,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Region:              pulumi.String("europe-north1"),
 /// 			Name:                pulumi.String("region-service"),
-/// 			HealthChecks:        defaultRegionHealthCheck.ID(),
+/// 			HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("HTTPS"),
 /// 			TlsSettings: &compute.RegionBackendServiceTlsSettingsArgs{
@@ -3803,7 +5006,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 						UniformResourceIdentifier: pulumi.String("https://example.com"),
 /// 					},
 /// 				},
-/// 				AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id string) (string, error) {
+/// 				AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -3813,6 +5016,44 @@ import 'region_backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "europe-north1"
+///   name                  = "region-service"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   protocol              = "HTTPS"
+///   tls_settings = {
+///     sni = "example.com"
+///     subject_alt_names = [{
+///       "dnsName" = "example.com"
+///       }, {
+///       "uniformResourceIdentifier" = "https://example.com"
+///     }]
+///     authentication_config ="//networksecurity.googleapis.com/${gcp_networksecurity_backendauthenticationconfig.default.id}"
+///   }
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   name   = "health-check"
+///   region = "europe-north1"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+///   name             = "authentication"
+///   location         = "europe-north1"
+///   well_known_roots = "PUBLIC_ROOTS"
 /// }
 /// ```
 /// ```java
@@ -3829,8 +5070,9 @@ import 'region_backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.RegionBackendService;
 /// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionBackendServiceTlsSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceTlsSettingsSubjectAltNameArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3917,32 +5159,21 @@ import 'region_backend_service_tls_settings.dart';
 /// RegionBackendService can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
 /// ```
 class RegionBackendService extends pulumi.CustomResource {
-  /// Lifetime of cookies in seconds if session_affinity is
+  /// Lifetime of cookies in seconds if sessionAffinity is
   /// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
   /// only until the end of the browser session (or equivalent). The
   /// maximum allowed value for TTL is one day.
@@ -3955,7 +5186,7 @@ class RegionBackendService extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceCdnPolicy> cdnPolicy;
   /// Settings controlling the volume of connections to a backend service. This field
-  /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
+  /// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
   /// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceCircuitBreakers?> circuitBreakers;
@@ -3980,8 +5211,16 @@ class RegionBackendService extends pulumi.CustomResource {
   /// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customMetrics;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+  /// (Optional, Beta)
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
@@ -4024,7 +5263,7 @@ class RegionBackendService extends pulumi.CustomResource {
   /// balancing cannot be used with the other(s). For more information, refer to
   /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
   /// Default value is `INTERNAL`.
-  /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+  /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
   /// The load balancing algorithm used within the scope of the locality.
   /// The possible values are:
@@ -4065,17 +5304,17 @@ class RegionBackendService extends pulumi.CustomResource {
   /// X-Endpoint-Load-Metrics. The reported metrics
   /// to use for computing the weights are specified via the
   /// backends[].customMetrics fields.
-  /// locality_lb_policy is applicable to either:
-  /// * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+  /// localityLbPolicy is applicable to either:
+  /// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
   /// and loadBalancingScheme set to INTERNAL_MANAGED.
-  /// * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+  /// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
   /// Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
   /// Network Load Balancing. The default is MAGLEV.
-  /// If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+  /// If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
   /// or RING_HASH, session affinity settings will not take effect.
   /// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-  /// by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+  /// by a URL map that is bound to target gRPC proxy that has validateForProxyless
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
   late final pulumi.Output<String?> localityLbPolicy;
@@ -4100,7 +5339,7 @@ class RegionBackendService extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?> networkPassThroughLbTrafficPolicy;
   /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-  /// This field is applicable only when the `load_balancing_scheme` is set
+  /// This field is applicable only when the `loadBalancingScheme` is set
   /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceOutlierDetection?> outlierDetection;
@@ -4138,6 +5377,7 @@ class RegionBackendService extends pulumi.CustomResource {
   /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceStrongSessionAffinityCookie?> strongSessionAffinityCookie;
+  /// (Optional, Beta)
   /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceSubsetting?> subsetting;
@@ -4173,6 +5413,7 @@ class RegionBackendService extends pulumi.CustomResource {
     consistentHash = registerOutput<RegionBackendServiceConsistentHash?>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConsistentHash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customMetrics = registerOutput<List<Map<String, dynamic>>?>('customMetrics');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>('dynamicForwarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableCdn = registerOutput<bool?>('enableCdn');
@@ -4236,6 +5477,7 @@ class RegionBackendService extends pulumi.CustomResource {
     consistentHash = registerOutput<RegionBackendServiceConsistentHash?>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConsistentHash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customMetrics = registerOutput<List<Map<String, dynamic>>?>('customMetrics');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>('dynamicForwarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableCdn = registerOutput<bool?>('enableCdn');

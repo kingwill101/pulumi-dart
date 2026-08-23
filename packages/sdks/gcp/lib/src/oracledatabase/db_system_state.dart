@@ -12,6 +12,14 @@ class DbSystemState {
   /// 63 characters in length. The value must start with a letter and end with a
   /// letter or a number.
   final pulumi.Input<String>? dbSystemId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   final pulumi.Input<bool>? deletionProtection;
   /// The display name for the System db. The name does not have to
   /// be unique within your project.
@@ -26,7 +34,7 @@ class DbSystemState {
   final pulumi.Input<String>? gcpOracleZone;
   /// The labels or tags associated with the DbSystem.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -57,7 +65,8 @@ class DbSystemState {
   /// Creates a new [DbSystemState].
   /// [createTime] The date and time that the DbSystem was created.
   /// [dbSystemId] The ID of the DbSystem to create. This value is
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   /// [displayName] The display name for the System db. The name does not have to
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [entitlementId] The ID of the subscription entitlement associated with the DbSystem
@@ -74,6 +83,7 @@ class DbSystemState {
   const DbSystemState({
     this.createTime,
     this.dbSystemId,
+    this.deletionPolicy,
     this.deletionProtection,
     this.displayName,
     this.effectiveLabels,
@@ -94,6 +104,7 @@ class DbSystemState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'dbSystemId': ?dbSystemId,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
@@ -115,6 +126,7 @@ class DbSystemState {
     return DbSystemState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbSystemId: (() { final guardedValue = map['dbSystemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -132,4 +144,3 @@ class DbSystemState {
     );
   }
 }
-

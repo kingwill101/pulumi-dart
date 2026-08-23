@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_attachment_args.dart';
 import 'interconnect_attachment_l2_forwarding.dart';
+import 'interconnect_attachment_params.dart';
 import 'interconnect_attachment_state.dart';
 
 /// Represents an InterconnectAttachment (VLAN attachment) resource. For more
@@ -138,7 +139,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Name:                   pulumi.String("on-prem-attachment"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 foobar.ID(),
+/// 			Router:                 foobar.ID().ToIDOutput().ToStringOutput(),
 /// 			Mtu:                    pulumi.String("1500"),
 /// 			Labels: pulumi.StringMap{
 /// 				"mykey": pulumi.String("myvalue"),
@@ -149,6 +150,37 @@ import 'interconnect_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_interconnectattachment" "on_prem" {
+///   name                     = "on-prem-attachment"
+///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
+///   type                     = "PARTNER"
+///   router                   = gcp_compute_router.foobar.id
+///   mtu                      = 1500
+///   labels = {
+///     "mykey" = "myvalue"
+///   }
+/// }
+/// resource "gcp_compute_router" "foobar" {
+///   name    = "router-1"
+///   network = gcp_compute_network.foobar.name
+///   bgp = {
+///     asn = 16550
+///   }
+/// }
+/// resource "gcp_compute_network" "foobar" {
+///   name                    = "network-1"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -164,8 +196,8 @@ import 'interconnect_attachment_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
 /// import com.pulumi.gcp.compute.InterconnectAttachment;
 /// import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -389,7 +421,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Name:                   pulumi.String("test-interconnect-attachment"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 router.ID(),
+/// 			Router:                 router.ID().ToIDOutput().ToStringOutput(),
 /// 			Encryption:             pulumi.String("IPSEC"),
 /// 			IpsecInternalAddresses: pulumi.StringArray{
 /// 				address.SelfLink,
@@ -400,6 +432,44 @@ import 'interconnect_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_interconnectattachment" "ipsec-encrypted-interconnect-attachment" {
+///   name                     = "test-interconnect-attachment"
+///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
+///   type                     = "PARTNER"
+///   router                   = gcp_compute_router.router.id
+///   encryption               = "IPSEC"
+///   ipsec_internal_addresses = [gcp_compute_address.address.self_link]
+/// }
+/// resource "gcp_compute_address" "address" {
+///   name          = "test-address"
+///   address_type  = "INTERNAL"
+///   purpose       = "IPSEC_INTERCONNECT"
+///   address       = "192.168.1.0"
+///   prefix_length = 29
+///   network       = gcp_compute_network.network.self_link
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name                          = "test-router"
+///   network                       = gcp_compute_network.network.name
+///   encrypted_interconnect_router = true
+///   bgp = {
+///     asn = 16550
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-network"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -417,8 +487,8 @@ import 'interconnect_attachment_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
 /// import com.pulumi.gcp.compute.InterconnectAttachment;
 /// import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -639,7 +709,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Name:                   pulumi.String("test-custom-ranges-interconnect-attachment"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 foobar.ID(),
+/// 			Router:                 foobar.ID().ToIDOutput().ToStringOutput(),
 /// 			Mtu:                    pulumi.String("1500"),
 /// 			StackType:              pulumi.String("IPV4_IPV6"),
 /// 			Labels: pulumi.StringMap{
@@ -657,6 +727,42 @@ import 'interconnect_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_interconnectattachment" "custom-ranges-interconnect-attachment" {
+///   name                     = "test-custom-ranges-interconnect-attachment"
+///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
+///   type                     = "PARTNER"
+///   router                   = gcp_compute_router.foobar.id
+///   mtu                      = 1500
+///   stack_type               = "IPV4_IPV6"
+///   labels = {
+///     "mykey" = "myvalue"
+///   }
+///   candidate_cloud_router_ip_address      = "192.169.0.1/29"
+///   candidate_customer_router_ip_address   = "192.169.0.2/29"
+///   candidate_cloud_router_ipv6_address    = "748d:2f23:6651:9455:828b:ca81:6fe0:fed1/125"
+///   candidate_customer_router_ipv6_address = "748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125"
+/// }
+/// resource "gcp_compute_router" "foobar" {
+///   name    = "test-router"
+///   network = gcp_compute_network.foobar.name
+///   bgp = {
+///     asn = 16550
+///   }
+/// }
+/// resource "gcp_compute_network" "foobar" {
+///   name                    = "test-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -670,8 +776,8 @@ import 'interconnect_attachment_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
 /// import com.pulumi.gcp.compute.InterconnectAttachment;
 /// import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -751,28 +857,17 @@ import 'interconnect_attachment_state.dart';
 /// InterconnectAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
 /// ```
 class InterconnectAttachment extends pulumi.CustomResource {
@@ -822,6 +917,13 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// IPv6 address + prefix length to be configured on the customer
   /// router subinterface for this interconnect attachment.
   late final pulumi.Output<String> customerRouterIpv6Address;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Desired availability domain for the attachment. Only available for type
@@ -883,7 +985,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
   /// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
@@ -899,6 +1001,9 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// identifier of an PARTNER attachment used to initiate provisioning with
   /// a selected partner. Of the form "XXXXX/region/domain"
   late final pulumi.Output<String> pairingKey;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<InterconnectAttachmentParams?> params;
   /// [Output only for type PARTNER. Not present for DEDICATED]. Optional
   /// BGP ASN for the router that should be supplied by a layer 3 Partner if
   /// they configured BGP on behalf of the customer.
@@ -909,10 +1014,6 @@ class InterconnectAttachment extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> privateInterconnectInfos;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  ///
-  ///
-  ///
-  /// &lt;a name="nested_l2_forwarding"&gt;&lt;/a&gt;The `l2_forwarding` block supports:
   late final pulumi.Output<String> project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
@@ -976,6 +1077,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerRouterIpAddress = registerOutput<String>('customerRouterIpAddress');
     customerRouterIpv6Address = registerOutput<String>('customerRouterIpv6Address');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeAvailabilityDomain = registerOutput<String>('edgeAvailabilityDomain');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -989,6 +1091,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
     mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
     pairingKey = registerOutput<String>('pairingKey');
+    params = registerOutput<InterconnectAttachmentParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     partnerAsn = registerOutput<String>('partnerAsn');
     privateInterconnectInfos = registerOutput<List<Map<String, dynamic>>>('privateInterconnectInfos');
     project = registerOutput<String>('project');
@@ -1039,6 +1142,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerRouterIpAddress = registerOutput<String>('customerRouterIpAddress');
     customerRouterIpv6Address = registerOutput<String>('customerRouterIpv6Address');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeAvailabilityDomain = registerOutput<String>('edgeAvailabilityDomain');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1052,6 +1156,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
     mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
     pairingKey = registerOutput<String>('pairingKey');
+    params = registerOutput<InterconnectAttachmentParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     partnerAsn = registerOutput<String>('partnerAsn');
     privateInterconnectInfos = registerOutput<List<Map<String, dynamic>>>('privateInterconnectInfos');
     project = registerOutput<String>('project');

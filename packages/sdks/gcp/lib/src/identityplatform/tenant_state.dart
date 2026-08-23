@@ -10,6 +10,13 @@ class TenantState {
   /// Options related to how clients making requests on behalf of a tenant should be configured.
   /// Structure is documented below.
   final pulumi.Input<TenantClient>? client;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Whether authentication is disabled for the tenant. If true, the users under
   /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
   /// are not able to manage its users.
@@ -27,6 +34,7 @@ class TenantState {
   /// Creates a new [TenantState].
   /// [allowPasswordSignup] Whether to allow email/password user authentication.
   /// [client] Options related to how clients making requests on behalf of a tenant should be configured.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disableAuth] Whether authentication is disabled for the tenant. If true, the users under
   /// [displayName] Human friendly display name of the tenant.
   /// [enableEmailLinkSignin] Whether to enable email link user authentication.
@@ -35,6 +43,7 @@ class TenantState {
   const TenantState({
     this.allowPasswordSignup,
     this.client,
+    this.deletionPolicy,
     this.disableAuth,
     this.displayName,
     this.enableEmailLinkSignin,
@@ -46,6 +55,7 @@ class TenantState {
     return <String, dynamic>{
       'allowPasswordSignup': ?allowPasswordSignup,
       'client': ?pulumi.Input.mapOptionalInputValue<TenantClient, Map<String, dynamic>>(client, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'disableAuth': ?disableAuth,
       'displayName': ?displayName,
       'enableEmailLinkSignin': ?enableEmailLinkSignin,
@@ -58,6 +68,7 @@ class TenantState {
     return TenantState(
       allowPasswordSignup: (() { final guardedValue = map['allowPasswordSignup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       client: (() { final guardedValue = map['client']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableAuth: (() { final guardedValue = map['disableAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableEmailLinkSignin: (() { final guardedValue = map['enableEmailLinkSignin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -66,4 +77,3 @@ class TenantState {
     );
   }
 }
-

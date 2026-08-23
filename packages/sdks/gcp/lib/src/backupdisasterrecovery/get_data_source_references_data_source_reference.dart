@@ -16,7 +16,7 @@ class GetDataSourceReferencesDataSourceReference {
   /// The last time a successful backup was made.
   final pulumi.Input<String> lastSuccessfulBackupTime;
   final pulumi.Input<String> name;
-  /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
+  /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
   final pulumi.Input<String> resourceType;
 
   /// Creates a new [GetDataSourceReferencesDataSourceReference].
@@ -27,7 +27,7 @@ class GetDataSourceReferencesDataSourceReference {
   /// [lastBackupState] The state of the last backup.
   /// [lastSuccessfulBackupTime] The last time a successful backup was made.
   /// [name] Required.
-  /// [resourceType] The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
+  /// [resourceType] The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
   const GetDataSourceReferencesDataSourceReference({
     required this.backupConfigState,
     required this.backupCount,
@@ -65,4 +65,3 @@ class GetDataSourceReferencesDataSourceReference {
     );
   }
 }
-

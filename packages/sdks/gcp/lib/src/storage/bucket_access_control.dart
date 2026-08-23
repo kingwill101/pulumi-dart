@@ -3,7 +3,7 @@ import 'bucket_access_control_args.dart';
 import 'bucket_access_control_state.dart';
 
 /// Bucket ACLs can be managed authoritatively using the
-/// `storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.
+/// `storageBucketAcl` resource. Do not use these two resources in conjunction to manage the same bucket.
 ///
 /// The BucketAccessControls resource manages the Access Control List
 /// (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who
@@ -110,6 +110,25 @@ import 'bucket_access_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketaccesscontrol" "public_rule" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   role   = "READER"
+///   entity = "allUsers"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "static-content-bucket"
+///   location = "US"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +139,8 @@ import 'bucket_access_control_state.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.BucketAccessControl;
 /// import com.pulumi.gcp.storage.BucketAccessControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,6 +189,7 @@ import 'bucket_access_control_state.dart';
 ///
 /// * `{{bucket}}/{{entity}}`
 ///
+///
 /// When using the `pulumi import` command, BucketAccessControl can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -178,6 +198,13 @@ import 'bucket_access_control_state.dart';
 class BucketAccessControl extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The domain associated with the entity.
   late final pulumi.Output<String> domain;
   /// The email address associated with the entity.
@@ -217,6 +244,7 @@ class BucketAccessControl extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');
     email = registerOutput<String>('email');
     entity = registerOutput<String>('entity');
@@ -247,6 +275,7 @@ class BucketAccessControl extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');
     email = registerOutput<String>('email');
     entity = registerOutput<String>('entity');

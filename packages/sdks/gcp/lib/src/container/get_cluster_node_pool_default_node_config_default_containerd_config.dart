@@ -8,14 +8,14 @@ import 'get_cluster_node_pool_default_node_config_default_containerd_config_writ
 class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
   /// Parameters for private container registries configuration.
   final pulumi.Input<List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig>> privateRegistryAccessConfigs;
-  /// Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+  /// Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
   final pulumi.Input<List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost>> registryHosts;
   /// Parameters for writable cgroups configuration.
   final pulumi.Input<List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup>> writableCgroups;
 
   /// Creates a new [GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig].
   /// [privateRegistryAccessConfigs] Parameters for private container registries configuration.
-  /// [registryHosts] Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+  /// [registryHosts] Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
   /// [writableCgroups] Parameters for writable cgroups configuration.
   const GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig({
     required this.privateRegistryAccessConfigs,
@@ -39,4 +39,3 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
     );
   }
 }
-

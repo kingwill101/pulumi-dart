@@ -192,6 +192,45 @@ import 'region_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Cloud Functions Example
+/// resource "gcp_compute_regionnetworkendpointgroup" "function_neg" {
+///   name                  = "function-neg"
+///   network_endpoint_type = "SERVERLESS"
+///   region                = "us-central1"
+///   cloud_function = {
+///     function = gcp_cloudfunctions_function.function_neg.name
+///   }
+/// }
+/// resource "gcp_cloudfunctions_function" "function_neg" {
+///   name                  = "function-neg"
+///   description           = "My function"
+///   runtime               = "nodejs20"
+///   available_memory_mb   = 128
+///   source_archive_bucket = gcp_storage_bucket.bucket.name
+///   source_archive_object = gcp_storage_bucketobject.archive.name
+///   trigger_http          = true
+///   timeout               = 60
+///   entry_point           = "helloGET"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "cloudfunctions-function-example-bucket"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "archive" {
+///   name   = "index.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("path/to/index.zip")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +247,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudFunctionArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,7 +332,7 @@ import 'region_network_endpoint_group_state.dart';
 ///       name: index.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: path/to/index.zip
+///         fn::fileAsset: path/to/index.zip
 /// ```
 ///
 /// ### Region Network Endpoint Group Cloudrun
@@ -454,6 +493,40 @@ import 'region_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Cloud Run Example
+/// resource "gcp_compute_regionnetworkendpointgroup" "cloudrun_neg" {
+///   name                  = "cloudrun-neg"
+///   network_endpoint_type = "SERVERLESS"
+///   region                = "us-central1"
+///   cloud_run = {
+///     service = gcp_cloudrun_service.cloudrun_neg.name
+///   }
+/// }
+/// resource "gcp_cloudrun_service" "cloudrun_neg" {
+///   name     = "cloudrun-neg"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       }]
+///     }
+///   }
+///   traffics {
+///     percent         = 100
+///     latest_revision = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -464,12 +537,13 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudRunArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -560,8 +634,8 @@ import 'region_network_endpoint_group_state.dart';
 ///     service: "appengine-neg",
 ///     runtime: "nodejs",
 ///     flexibleRuntimeSettings: {
-///         operatingSystem: "ubuntu22",
-///         runtimeVersion: "20",
+///         operatingSystem: "ubuntu24",
+///         runtimeVersion: "24",
 ///     },
 ///     entrypoint: {
 ///         shell: "node ./app.js",
@@ -626,8 +700,8 @@ import 'region_network_endpoint_group_state.dart';
 ///     service="appengine-neg",
 ///     runtime="nodejs",
 ///     flexible_runtime_settings={
-///         "operating_system": "ubuntu22",
-///         "runtime_version": "20",
+///         "operating_system": "ubuntu24",
+///         "runtime_version": "24",
 ///     },
 ///     entrypoint={
 ///         "shell": "node ./app.js",
@@ -706,8 +780,8 @@ import 'region_network_endpoint_group_state.dart';
 ///         Runtime = "nodejs",
 ///         FlexibleRuntimeSettings = new Gcp.AppEngine.Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs
 ///         {
-///             OperatingSystem = "ubuntu22",
-///             RuntimeVersion = "20",
+///             OperatingSystem = "ubuntu24",
+///             RuntimeVersion = "24",
 ///         },
 ///         Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
 ///         {
@@ -813,8 +887,8 @@ import 'region_network_endpoint_group_state.dart';
 /// 			Service:   pulumi.String("appengine-neg"),
 /// 			Runtime:   pulumi.String("nodejs"),
 /// 			FlexibleRuntimeSettings: &appengine.FlexibleAppVersionFlexibleRuntimeSettingsArgs{
-/// 				OperatingSystem: pulumi.String("ubuntu22"),
-/// 				RuntimeVersion:  pulumi.String("20"),
+/// 				OperatingSystem: pulumi.String("ubuntu24"),
+/// 				RuntimeVersion:  pulumi.String("24"),
 /// 			},
 /// 			Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
 /// 				Shell: pulumi.String("node ./app.js"),
@@ -877,6 +951,79 @@ import 'region_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // App Engine Example
+/// resource "gcp_compute_regionnetworkendpointgroup" "appengine_neg" {
+///   name                  = "appengine-neg"
+///   network_endpoint_type = "SERVERLESS"
+///   region                = "us-central1"
+///   app_engine = {
+///     service = gcp_appengine_flexibleappversion.appengine_neg.service
+///     version = gcp_appengine_flexibleappversion.appengine_neg.version_id
+///   }
+/// }
+/// resource "gcp_appengine_flexibleappversion" "appengine_neg" {
+///   version_id = "v1"
+///   service    = "appengine-neg"
+///   runtime    = "nodejs"
+///   flexible_runtime_settings = {
+///     operating_system = "ubuntu24"
+///     runtime_version  = "24"
+///   }
+///   entrypoint = {
+///     shell = "node ./app.js"
+///   }
+///   deployment = {
+///     zip = {
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.appengine_neg.name}/${gcp_storage_bucketobject.appengine_neg.name}"
+///     }
+///   }
+///   liveness_check = {
+///     path = "/"
+///   }
+///   readiness_check = {
+///     path = "/"
+///   }
+///   env_variables = {
+///     "port" = "8080"
+///   }
+///   handlers {
+///     url_regex        = ".*\\/my-path\\/*"
+///     security_level   = "SECURE_ALWAYS"
+///     login            = "LOGIN_REQUIRED"
+///     auth_fail_action = "AUTH_FAIL_ACTION_REDIRECT"
+///     static_files = {
+///       path              = "my-other-path"
+///       upload_path_regex = ".*\\/my-path\\/*"
+///     }
+///   }
+///   automatic_scaling = {
+///     cool_down_period = "120s"
+///     cpu_utilization = {
+///       target_utilization = 0.5
+///     }
+///   }
+///   delete_service_on_destroy = true
+/// }
+/// resource "gcp_storage_bucket" "appengine_neg" {
+///   name                        = "appengine-neg"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "appengine_neg" {
+///   name   = "hello-world.zip"
+///   bucket = gcp_storage_bucket.appengine_neg.name
+///   source = fileAsset("./test-fixtures/hello-world.zip")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -903,8 +1050,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupAppEngineArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -933,8 +1080,8 @@ import 'region_network_endpoint_group_state.dart';
 ///             .service("appengine-neg")
 ///             .runtime("nodejs")
 ///             .flexibleRuntimeSettings(FlexibleAppVersionFlexibleRuntimeSettingsArgs.builder()
-///                 .operatingSystem("ubuntu22")
-///                 .runtimeVersion("20")
+///                 .operatingSystem("ubuntu24")
+///                 .runtimeVersion("24")
 ///                 .build())
 ///             .entrypoint(FlexibleAppVersionEntrypointArgs.builder()
 ///                 .shell("node ./app.js")
@@ -1009,8 +1156,8 @@ import 'region_network_endpoint_group_state.dart';
 ///       service: appengine-neg
 ///       runtime: nodejs
 ///       flexibleRuntimeSettings:
-///         operatingSystem: ubuntu22
-///         runtimeVersion: '20'
+///         operatingSystem: ubuntu24
+///         runtimeVersion: '24'
 ///       entrypoint:
 ///         shell: node ./app.js
 ///       deployment:
@@ -1049,7 +1196,7 @@ import 'region_network_endpoint_group_state.dart';
 ///       name: hello-world.zip
 ///       bucket: ${appengineNegBucket.name}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/hello-world.zip
+///         fn::fileAsset: ./test-fixtures/hello-world.zip
 /// ```
 ///
 /// ### Region Network Endpoint Group Appengine Empty
@@ -1122,6 +1269,23 @@ import 'region_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // App Engine Example
+/// resource "gcp_compute_regionnetworkendpointgroup" "appengine_neg" {
+///   name                  = "appengine-neg"
+///   network_endpoint_type = "SERVERLESS"
+///   region                = "us-central1"
+///   app_engine            = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1131,8 +1295,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupAppEngineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1235,6 +1399,22 @@ import 'region_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkendpointgroup" "psc_neg" {
+///   name                  = "psc-neg"
+///   region                = "asia-northeast3"
+///   network_endpoint_type = "PRIVATE_SERVICE_CONNECT"
+///   psc_target_service    = "asia-northeast3-cloudkms.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1243,8 +1423,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1516,7 +1696,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			Name:        pulumi.String("psc-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("europe-west4"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1526,7 +1706,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 			Region:      pulumi.String("europe-west4"),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1545,7 +1725,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("psc-backend"),
 /// 			Region:       pulumi.String("europe-west4"),
-/// 			HealthChecks: defaultHealthCheck.ID(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1554,7 +1734,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			Name:                pulumi.String("psc-forwarding-rule"),
 /// 			Region:              pulumi.String("europe-west4"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      defaultRegionBackendService.ID(),
+/// 			BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			Ports: pulumi.StringArray{
 /// 				pulumi.String("80"),
 /// 				pulumi.String("88"),
@@ -1597,6 +1777,73 @@ import 'region_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "psc-network"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "psc-subnetwork"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "europe-west4"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_subnetwork" "psc_subnetwork" {
+///   name          = "psc-subnetwork-nat"
+///   ip_cidr_range = "10.1.0.0/16"
+///   region        = "europe-west4"
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "psc-healthcheck"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name          = "psc-backend"
+///   region        = "europe-west4"
+///   health_checks = gcp_compute_healthcheck.default.id
+/// }
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                  = "psc-forwarding-rule"
+///   region                = "europe-west4"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.default.id
+///   ports                 = ["80", "88", "443"]
+///   network               = gcp_compute_network.default.name
+///   subnetwork            = gcp_compute_subnetwork.default.name
+/// }
+/// resource "gcp_compute_serviceattachment" "default" {
+///   name                  = "psc-service-attachment"
+///   region                = "europe-west4"
+///   description           = "A service attachment configured with Terraform"
+///   enable_proxy_protocol = false
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_subnetwork.self_link]
+///   target_service        = gcp_compute_forwardingrule.default.self_link
+/// }
+/// resource "gcp_compute_regionnetworkendpointgroup" "psc_neg_service_attachment" {
+///   name                  = "psc-neg"
+///   region                = "europe-west4"
+///   network_endpoint_type = "PRIVATE_SERVICE_CONNECT"
+///   psc_target_service    = gcp_compute_serviceattachment.default.self_link
+///   psc_data = {
+///     producer_port = "88"
+///   }
+///   subnetwork = gcp_compute_subnetwork.default.self_link
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1619,8 +1866,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupPscDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1850,7 +2097,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_ip_port", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("ip-port-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
 /// 		})
 /// 		if err != nil {
@@ -1858,6 +2105,25 @@ import 'region_network_endpoint_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkendpointgroup" "region_network_endpoint_group_internet_ip_port" {
+///   name                  = "ip-port-neg"
+///   region                = "us-central1"
+///   network               = gcp_compute_network.default.id
+///   network_endpoint_type = "INTERNET_IP_PORT"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "network"
 /// }
 /// ```
 /// ```java
@@ -1870,8 +2136,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1982,7 +2248,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_fqdn_port", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("ip-port-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 /// 		})
 /// 		if err != nil {
@@ -1990,6 +2256,25 @@ import 'region_network_endpoint_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkendpointgroup" "region_network_endpoint_group_internet_fqdn_port" {
+///   name                  = "ip-port-neg"
+///   region                = "us-central1"
+///   network               = gcp_compute_network.default.id
+///   network_endpoint_type = "INTERNET_FQDN_PORT"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "network"
 /// }
 /// ```
 /// ```java
@@ -2002,8 +2287,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2137,7 +2422,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			Name:        pulumi.String("subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2145,8 +2430,8 @@ import 'region_network_endpoint_group_state.dart';
 /// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_portmap", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("portmap-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID(),
-/// 			Subnetwork:          defaultSubnetwork.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORTMAP"),
 /// 		})
 /// 		if err != nil {
@@ -2154,6 +2439,32 @@ import 'region_network_endpoint_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkendpointgroup" "region_network_endpoint_group_portmap" {
+///   name                  = "portmap-neg"
+///   region                = "us-central1"
+///   network               = gcp_compute_network.default.id
+///   subnetwork            = gcp_compute_subnetwork.default.id
+///   network_endpoint_type = "GCE_VM_IP_PORTMAP"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "network"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "subnetwork"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -2168,8 +2479,8 @@ import 'region_network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2234,43 +2545,39 @@ import 'region_network_endpoint_group_state.dart';
 /// RegionNetworkEndpointGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
 /// ```
 class RegionNetworkEndpointGroup extends pulumi.CustomResource {
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+  /// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
   late final pulumi.Output<RegionNetworkEndpointGroupAppEngine?> appEngine;
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+  /// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
   late final pulumi.Output<RegionNetworkEndpointGroupCloudFunction?> cloudFunction;
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+  /// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
   late final pulumi.Output<RegionNetworkEndpointGroupCloudRun?> cloudRun;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -2304,6 +2611,7 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+  /// (Optional, Beta)
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
@@ -2329,6 +2637,7 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudRun.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
@@ -2368,6 +2677,7 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudRun.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

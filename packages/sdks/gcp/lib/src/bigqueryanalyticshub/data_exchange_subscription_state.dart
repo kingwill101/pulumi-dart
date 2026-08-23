@@ -17,6 +17,13 @@ class DataExchangeSubscriptionState {
   final pulumi.Input<String>? dataExchangeLocation;
   /// The ID of the Google Cloud project where the Data Exchange is located.
   final pulumi.Input<String>? dataExchangeProject;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// BigQuery destination dataset to create for the subscriber.
   /// Structure is documented below.
   final pulumi.Input<DataExchangeSubscriptionDestinationDataset>? destinationDataset;
@@ -45,6 +52,10 @@ class DataExchangeSubscriptionState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// Controls when the subscription is automatically refreshed by the provider.
+  /// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+  /// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+  /// * `NEVER`: The provider will not automatically refresh the subscription.
   final pulumi.Input<String>? refreshPolicy;
   /// Listing shared asset type.
   final pulumi.Input<String>? resourceType;
@@ -61,6 +72,7 @@ class DataExchangeSubscriptionState {
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   /// [dataExchangeLocation] The name of the location of the Data Exchange.
   /// [dataExchangeProject] The ID of the Google Cloud project where the Data Exchange is located.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destinationDataset] BigQuery destination dataset to create for the subscriber.
   /// [lastModifyTime] Timestamp when the subscription was last modified.
   /// [linkedDatasetMaps] Output only. Map of listing resource names to associated linked resource,
@@ -71,7 +83,7 @@ class DataExchangeSubscriptionState {
   /// [organizationDisplayName] Display name of the project of this subscription.
   /// [organizationId] Organization of the project this subscription belongs to.
   /// [project] The ID of the project in which the resource belongs.
-  /// [refreshPolicy] Optional.
+  /// [refreshPolicy] Controls when the subscription is automatically refreshed by the provider.
   /// [resourceType] Listing shared asset type.
   /// [state] Current state of the subscription.
   /// [subscriberContact] Email of the subscriber.
@@ -82,6 +94,7 @@ class DataExchangeSubscriptionState {
     this.dataExchangeId,
     this.dataExchangeLocation,
     this.dataExchangeProject,
+    this.deletionPolicy,
     this.destinationDataset,
     this.lastModifyTime,
     this.linkedDatasetMaps,
@@ -106,6 +119,7 @@ class DataExchangeSubscriptionState {
       'dataExchangeId': ?dataExchangeId,
       'dataExchangeLocation': ?dataExchangeLocation,
       'dataExchangeProject': ?dataExchangeProject,
+      'deletionPolicy': ?deletionPolicy,
       'destinationDataset': ?pulumi.Input.mapOptionalInputValue<DataExchangeSubscriptionDestinationDataset, Map<String, dynamic>>(destinationDataset, (value) => value.toMap()),
       'lastModifyTime': ?lastModifyTime,
       'linkedDatasetMaps': ?pulumi.Input.mapOptionalInputValue<List<DataExchangeSubscriptionLinkedDatasetMap>, List<Map<String, dynamic>>>(linkedDatasetMaps, (value) => pulumi.Input.encodeList<DataExchangeSubscriptionLinkedDatasetMap, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -131,6 +145,7 @@ class DataExchangeSubscriptionState {
       dataExchangeId: (() { final guardedValue = map['dataExchangeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataExchangeLocation: (() { final guardedValue = map['dataExchangeLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataExchangeProject: (() { final guardedValue = map['dataExchangeProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDataset: (() { final guardedValue = map['destinationDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataExchangeSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lastModifyTime: (() { final guardedValue = map['lastModifyTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linkedDatasetMaps: (() { final guardedValue = map['linkedDatasetMaps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataExchangeSubscriptionLinkedDatasetMap>(guardedValue, (value) => DataExchangeSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -149,4 +164,3 @@ class DataExchangeSubscriptionState {
     );
   }
 }
-

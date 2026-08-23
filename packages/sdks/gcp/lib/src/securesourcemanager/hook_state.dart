@@ -7,6 +7,13 @@ import 'hook_push_option.dart';
 class HookState {
   /// Create timestamp.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Determines if the hook disabled or not.
   /// Set to true to stop sending traffic.
   final pulumi.Input<bool>? disabled;
@@ -40,6 +47,7 @@ class HookState {
 
   /// Creates a new [HookState].
   /// [createTime] Create timestamp.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] Determines if the hook disabled or not.
   /// [events] The events that trigger hook on.
   /// [hookId] The ID for the Hook.
@@ -54,6 +62,7 @@ class HookState {
   /// [updateTime] Update timestamp.
   const HookState({
     this.createTime,
+    this.deletionPolicy,
     this.disabled,
     this.events,
     this.hookId,
@@ -71,6 +80,7 @@ class HookState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'events': ?events,
       'hookId': ?hookId,
@@ -89,6 +99,7 @@ class HookState {
   factory HookState.fromMap(Map<String, dynamic> map) {
     return HookState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hookId: (() { final guardedValue = map['hookId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -104,4 +115,3 @@ class HookState {
     );
   }
 }
-

@@ -182,6 +182,40 @@ import 'logical_view_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "bt-instance"
+///   clusters {
+///     cluster_id   = "cluster-1"
+///     zone         = "us-east1-b"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_bigtable_table" "table" {
+///   name          = "bt-table"
+///   instance_name = gcp_bigtable_instance.instance.name
+///   column_families {
+///     family = "CF"
+///   }
+/// }
+/// resource "gcp_bigtable_logicalview" "logical_view" {
+///   depends_on          = [gcp_bigtable_table.table]
+///   logical_view_id     = "bt-logical-view"
+///   instance            = gcp_bigtable_instance.instance.name
+///   deletion_protection = false
+///   query               = "SELECT _key, CF\nFROM ` + \\\"`bt-table`\\\" + `\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +231,8 @@ import 'logical_view_state.dart';
 /// import com.pulumi.gcp.bigtable.LogicalView;
 /// import com.pulumi.gcp.bigtable.LogicalViewArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,25 +318,25 @@ import 'logical_view_state.dart';
 /// LogicalView can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance}}/logicalViews/{{logical_view_id}}`
-///
 /// * `{{project}}/{{instance}}/{{logical_view_id}}`
-///
 /// * `{{instance}}/{{logical_view_id}}`
+///
 ///
 /// When using the `pulumi import` command, LogicalView can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigtable/logicalView:LogicalView default projects/{{project}}/instances/{{instance}}/logicalViews/{{logical_view_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/logicalView:LogicalView default {{project}}/{{instance}}/{{logical_view_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/logicalView:LogicalView default {{instance}}/{{logical_view_id}}
 /// ```
 class LogicalView extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Set to true to make the logical view protected against deletion.
   late final pulumi.Output<bool?> deletionProtection;
   /// The name of the instance to create the logical view within.
@@ -331,6 +365,7 @@ class LogicalView extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     instance = registerOutput<String?>('instance');
     logicalViewId = registerOutput<String>('logicalViewId');
@@ -362,6 +397,7 @@ class LogicalView extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     instance = registerOutput<String?>('instance');
     logicalViewId = registerOutput<String>('logicalViewId');

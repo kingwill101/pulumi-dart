@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionProfileOracleForwardSshConnectivity {
   /// Required. Hostname for the SSH tunnel.
   final pulumi.Input<String> hostname;
-  /// Input only. SSH password. Only one of `password` and `private_key` can be configured.
+  /// Input only. SSH password. Only one of `password` and `privateKey` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? password;
   /// Port for the SSH tunnel, default value is 22.
   final pulumi.Input<int> port;
-  /// Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+  /// Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? privateKey;
   /// Required. Username for the SSH tunnel.
@@ -18,9 +18,9 @@ class ConnectionProfileOracleForwardSshConnectivity {
 
   /// Creates a new [ConnectionProfileOracleForwardSshConnectivity].
   /// [hostname] Required. Hostname for the SSH tunnel.
-  /// [password] Input only. SSH password. Only one of `password` and `private_key` can be configured.
+  /// [password] Input only. SSH password. Only one of `password` and `privateKey` can be configured.
   /// [port] Port for the SSH tunnel, default value is 22.
-  /// [privateKey] Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+  /// [privateKey] Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
   /// [username] Required. Username for the SSH tunnel.
   const ConnectionProfileOracleForwardSshConnectivity({
     required this.hostname,
@@ -50,4 +50,3 @@ class ConnectionProfileOracleForwardSshConnectivity {
     );
   }
 }
-

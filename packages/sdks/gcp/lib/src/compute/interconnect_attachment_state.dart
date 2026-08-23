@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_attachment_l2_forwarding.dart';
+import 'interconnect_attachment_params.dart';
 import 'interconnect_attachment_private_interconnect_info.dart';
 
 /// Input properties used for looking up and filtering InterconnectAttachment resources.
@@ -52,6 +53,13 @@ class InterconnectAttachmentState {
   /// IPv6 address + prefix length to be configured on the customer
   /// router subinterface for this interconnect attachment.
   final pulumi.Input<String>? customerRouterIpv6Address;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Desired availability domain for the attachment. Only available for type
@@ -113,7 +121,7 @@ class InterconnectAttachmentState {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
   /// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
@@ -129,6 +137,9 @@ class InterconnectAttachmentState {
   /// identifier of an PARTNER attachment used to initiate provisioning with
   /// a selected partner. Of the form "XXXXX/region/domain"
   final pulumi.Input<String>? pairingKey;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<InterconnectAttachmentParams>? params;
   /// [Output only for type PARTNER. Not present for DEDICATED]. Optional
   /// BGP ASN for the router that should be supplied by a layer 3 Partner if
   /// they configured BGP on behalf of the customer.
@@ -139,10 +150,6 @@ class InterconnectAttachmentState {
   final pulumi.Input<List<InterconnectAttachmentPrivateInterconnectInfo>>? privateInterconnectInfos;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  ///
-  ///
-  ///
-  /// &lt;a name="nested_l2_forwarding"&gt;&lt;/a&gt;The `l2_forwarding` block supports:
   final pulumi.Input<String>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
@@ -193,6 +200,7 @@ class InterconnectAttachmentState {
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [customerRouterIpAddress] IPv4 address + prefix length to be configured on the customer
   /// [customerRouterIpv6Address] IPv6 address + prefix length to be configured on the customer
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [edgeAvailabilityDomain] Desired availability domain for the attachment. Only available for type
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -206,6 +214,7 @@ class InterconnectAttachmentState {
   /// [mtu] Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
   /// [name] Name of the resource. Provided by the client when the resource is created. The
   /// [pairingKey] [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [partnerAsn] [Output only for type PARTNER. Not present for DEDICATED]. Optional
   /// [privateInterconnectInfos] Information specific to an InterconnectAttachment. This property
   /// [project] The ID of the project in which the resource belongs.
@@ -232,6 +241,7 @@ class InterconnectAttachmentState {
     this.creationTimestamp,
     this.customerRouterIpAddress,
     this.customerRouterIpv6Address,
+    this.deletionPolicy,
     this.description,
     this.edgeAvailabilityDomain,
     this.effectiveLabels,
@@ -245,6 +255,7 @@ class InterconnectAttachmentState {
     this.mtu,
     this.name,
     this.pairingKey,
+    this.params,
     this.partnerAsn,
     this.privateInterconnectInfos,
     this.project,
@@ -274,6 +285,7 @@ class InterconnectAttachmentState {
       'creationTimestamp': ?creationTimestamp,
       'customerRouterIpAddress': ?customerRouterIpAddress,
       'customerRouterIpv6Address': ?customerRouterIpv6Address,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'edgeAvailabilityDomain': ?edgeAvailabilityDomain,
       'effectiveLabels': ?effectiveLabels,
@@ -287,6 +299,7 @@ class InterconnectAttachmentState {
       'mtu': ?mtu,
       'name': ?name,
       'pairingKey': ?pairingKey,
+      'params': ?pulumi.Input.mapOptionalInputValue<InterconnectAttachmentParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'partnerAsn': ?partnerAsn,
       'privateInterconnectInfos': ?pulumi.Input.mapOptionalInputValue<List<InterconnectAttachmentPrivateInterconnectInfo>, List<Map<String, dynamic>>>(privateInterconnectInfos, (value) => pulumi.Input.encodeList<InterconnectAttachmentPrivateInterconnectInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
@@ -317,6 +330,7 @@ class InterconnectAttachmentState {
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerRouterIpAddress: (() { final guardedValue = map['customerRouterIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerRouterIpv6Address: (() { final guardedValue = map['customerRouterIpv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edgeAvailabilityDomain: (() { final guardedValue = map['edgeAvailabilityDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -330,6 +344,7 @@ class InterconnectAttachmentState {
       mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pairingKey: (() { final guardedValue = map['pairingKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InterconnectAttachmentParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       partnerAsn: (() { final guardedValue = map['partnerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateInterconnectInfos: (() { final guardedValue = map['privateInterconnectInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterconnectAttachmentPrivateInterconnectInfo>(guardedValue, (value) => InterconnectAttachmentPrivateInterconnectInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -345,4 +360,3 @@ class InterconnectAttachmentState {
     );
   }
 }
-

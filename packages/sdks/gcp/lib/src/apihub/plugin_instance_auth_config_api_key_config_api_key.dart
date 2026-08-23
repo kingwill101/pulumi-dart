@@ -6,7 +6,7 @@ class PluginInstanceAuthConfigApiKeyConfigApiKey {
   /// The resource name of the secret version in the format,
   /// format as: `projects/*/secrets/*/versions/*`.
   ///
-  /// &lt;a name="nested_auth_config_oauth2_client_credentials_config"&gt;&lt;/a&gt;The `oauth2_client_credentials_config` block supports:
+  /// &lt;a name="nestedAuthConfigOauth2ClientCredentialsConfig"&gt;&lt;/a&gt;The `oauth2ClientCredentialsConfig` block supports:
   final pulumi.Input<String> secretVersion;
 
   /// Creates a new [PluginInstanceAuthConfigApiKeyConfigApiKey].
@@ -27,4 +27,3 @@ class PluginInstanceAuthConfigApiKeyConfigApiKey {
     );
   }
 }
-

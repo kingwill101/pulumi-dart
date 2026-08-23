@@ -38,7 +38,7 @@ import 'retrohunt_state.dart';
 ///     }), std.split({
 ///         separator: "/",
 ///         text: googleChronicleRule["my-rule"].name,
-///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
 ///     processInterval: {
 ///         startTime: "2025-01-01T00:00:00Z",
 ///         endTime: "2025-01-01T12:00:00Z",
@@ -60,7 +60,7 @@ import 'retrohunt_state.dart';
 ///     instance="00000000-0000-0000-0000-000000000000",
 ///     rule=len(std.split(separator="/",
 ///         text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-///         text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+///         text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
 ///     process_interval={
 ///         "start_time": "2025-01-01T00:00:00Z",
 ///         "end_time": "2025-01-01T12:00:00Z",
@@ -96,12 +96,12 @@ import 'retrohunt_state.dart';
 ///         {
 ///             Separator = "/",
 ///             Text = googleChronicleRule.My_rule.Name,
-///         }).Apply(invoke => invoke.Result).Length).Apply(values =>
+///         }).Apply(invoke => invoke.Result).Length()).Apply(values =>
 ///         {
 ///             var invoke = values.Item1;
 ///             var length = values.Item2;
-///             return invoke.Result[length - 1];
-///         }),
+///             return invoke.Result[(int)(length - 1)];
+///         }).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         ProcessInterval = new Gcp.Chronicle.Inputs.RetrohuntProcessIntervalArgs
 ///         {
 ///             StartTime = "2025-01-01T00:00:00Z",
@@ -161,6 +161,34 @@ import 'retrohunt_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_rule" "my-rule" {
+///   location        = "us"
+///   instance        = "00000000-0000-0000-0000-000000000000"
+///   deletion_policy = "FORCE"
+///   text            = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+/// }
+/// resource "gcp_chronicle_retrohunt" "example" {
+///   location = "us"
+///   instance = "00000000-0000-0000-0000-000000000000"
+///   rule     = element(split("/", googleChronicleRule.my-rule.name), length(split("/", googleChronicleRule.my-rule.name)) - 1)
+///   process_interval = {
+///     start_time = "2025-01-01T00:00:00Z"
+///     end_time   = "2025-01-01T12:00:00Z"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +202,8 @@ import 'retrohunt_state.dart';
 /// import com.pulumi.gcp.chronicle.inputs.RetrohuntProcessIntervalArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.SplitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,13 +227,13 @@ import 'retrohunt_state.dart';
 ///         var example = new Retrohunt("example", RetrohuntArgs.builder()
 ///             .location("us")
 ///             .instance("00000000-0000-0000-0000-000000000000")
-///             .rule(StdFunctions.split(SplitArgs.builder()
+///             .rule(((String) StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result()[_length - 1]))
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result()[_length - 1])))
 ///             .processInterval(RetrohuntProcessIntervalArgs.builder()
 ///                 .startTime("2025-01-01T00:00:00Z")
 ///                 .endTime("2025-01-01T12:00:00Z")
@@ -222,22 +250,15 @@ import 'retrohunt_state.dart';
 /// Retrohunt can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
-///
 /// * `{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
+///
 ///
 /// When using the `pulumi import` command, Retrohunt can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:chronicle/retrohunt:Retrohunt default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{location}}/{{instance}}/{{rule}}/{{retrohunt}}
 /// ```
 class Retrohunt extends pulumi.CustomResource {

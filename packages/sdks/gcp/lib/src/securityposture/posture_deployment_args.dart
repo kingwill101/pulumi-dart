@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_securityposture_posture_deployment_posture_deployment_args_doc}
 class PostureDeploymentArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the posture deployment.
   final pulumi.Input<String>? description;
   /// The location of the resource, eg. global`.
@@ -27,6 +34,7 @@ class PostureDeploymentArgs {
   final pulumi.Input<String> targetResource;
 
   /// Creates a new [PostureDeploymentArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the posture deployment.
   /// [location] The location of the resource, eg. global`.
   /// [parent] The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
@@ -35,6 +43,7 @@ class PostureDeploymentArgs {
   /// [postureRevisionId] Revision_id the posture which needs to be deployed.
   /// [targetResource] The resource on which the posture should be deployed. This can be in one of the following formats:
   const PostureDeploymentArgs({
+    this.deletionPolicy,
     this.description,
     required this.location,
     required this.parent,
@@ -46,6 +55,7 @@ class PostureDeploymentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'location': location,
       'parent': parent,
@@ -58,6 +68,7 @@ class PostureDeploymentArgs {
 
   factory PostureDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PostureDeploymentArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       parent: pulumi.Input.fromValue(map['parent'] as String),
@@ -68,4 +79,3 @@ class PostureDeploymentArgs {
     );
   }
 }
-

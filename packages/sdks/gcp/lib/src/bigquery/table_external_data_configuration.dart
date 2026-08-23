@@ -13,17 +13,17 @@ class TableExternalDataConfiguration {
   /// Let BigQuery try to autodetect the schema
   /// and format of the table.
   final pulumi.Input<bool> autodetect;
-  /// Additional options if `source_format` is set to
+  /// Additional options if `sourceFormat` is set to
   /// "AVRO".  Structure is documented below.
   final pulumi.Input<TableExternalDataConfigurationAvroOptions>? avroOptions;
   /// Additional properties to set if
-  /// `source_format` is set to "BIGTABLE". Structure is documented below.
+  /// `sourceFormat` is set to "BIGTABLE". Structure is documented below.
   final pulumi.Input<TableExternalDataConfigurationBigtableOptions>? bigtableOptions;
   /// The compression type of the data source.
   /// Valid values are "NONE" or "GZIP".
   final pulumi.Input<String>? compression;
   /// The connection specifying the credentials to be used to read
-  /// external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+  /// external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
   /// the form `{{project}}.{{location}}.{{connection_id}}`
   /// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
   ///
@@ -32,7 +32,7 @@ class TableExternalDataConfiguration {
   /// documented above.
   final pulumi.Input<String>? connectionId;
   /// Additional properties to set if
-  /// `source_format` is set to "CSV". Structure is documented below.
+  /// `sourceFormat` is set to "CSV". Structure is documented below.
   final pulumi.Input<TableExternalDataConfigurationCsvOptions>? csvOptions;
   /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
   ///
@@ -53,7 +53,7 @@ class TableExternalDataConfiguration {
   /// Other options include specifying manifest files. Only applicable to object storage systems. Docs
   final pulumi.Input<String>? fileSetSpecType;
   /// Additional options if
-  /// `source_format` is set to "GOOGLE_SHEETS". Structure is
+  /// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
   /// documented below.
   final pulumi.Input<TableExternalDataConfigurationGoogleSheetsOptions>? googleSheetsOptions;
   /// When set, configures hive partitioning
@@ -71,17 +71,17 @@ class TableExternalDataConfiguration {
   /// Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
   final pulumi.Input<String>? jsonExtension;
   /// Additional properties to set if
-  /// `source_format` is set to "JSON". Structure is documented below.
+  /// `sourceFormat` is set to "JSON". Structure is documented below.
   final pulumi.Input<TableExternalDataConfigurationJsonOptions>? jsonOptions;
   /// The maximum number of bad records that
   /// BigQuery can ignore when reading data.
   final pulumi.Input<int>? maxBadRecords;
   /// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
   final pulumi.Input<String>? metadataCacheMode;
-  /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+  /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
   final pulumi.Input<String>? objectMetadata;
   /// Additional properties to set if
-  /// `source_format` is set to "PARQUET". Structure is documented below.
+  /// `sourceFormat` is set to "PARQUET". Structure is documented below.
   final pulumi.Input<TableExternalDataConfigurationParquetOptions>? parquetOptions;
   /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
   final pulumi.Input<String>? referenceFileSchemaUri;
@@ -112,7 +112,7 @@ class TableExternalDataConfiguration {
 
   /// Creates a new [TableExternalDataConfiguration].
   /// [autodetect] Let BigQuery try to autodetect the schema
-  /// [avroOptions] Additional options if `source_format` is set to
+  /// [avroOptions] Additional options if `sourceFormat` is set to
   /// [bigtableOptions] Additional properties to set if
   /// [compression] The compression type of the data source.
   /// [connectionId] The connection specifying the credentials to be used to read
@@ -126,7 +126,7 @@ class TableExternalDataConfiguration {
   /// [jsonOptions] Additional properties to set if
   /// [maxBadRecords] The maximum number of bad records that
   /// [metadataCacheMode] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
-  /// [objectMetadata] Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+  /// [objectMetadata] Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
   /// [parquetOptions] Additional properties to set if
   /// [referenceFileSchemaUri] When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
   /// [schema] A JSON schema for the external table. Schema is required
@@ -208,4 +208,3 @@ class TableExternalDataConfiguration {
     );
   }
 }
-

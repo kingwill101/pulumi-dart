@@ -7,10 +7,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_region_target_tcp_proxy_region_target_tcp_proxy_args_doc}
 class RegionTargetTcpProxyArgs {
-  /// A reference to the BackendService resource.
-  final pulumi.Input<String> backendService;
+  /// A reference to the BackendService resource. This field is optional when
+  /// the loadBalancingScheme (available in beta) is specified.
+  final pulumi.Input<String>? backendService;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+  /// (Optional, Beta)
+  /// Specifies the load balancer type. A target TCP proxy created for one type
+  /// of load balancer cannot be used with another. For more information, refer
+  /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+  /// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+  final pulumi.Input<String>? loadBalancingScheme;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -35,16 +49,20 @@ class RegionTargetTcpProxyArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [RegionTargetTcpProxyArgs].
-  /// [backendService] A reference to the BackendService resource.
+  /// [backendService] A reference to the BackendService resource. This field is optional when
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
+  /// [loadBalancingScheme] (Optional, Beta)
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [project] The ID of the project in which the resource belongs.
   /// [proxyBind] This field only applies when the forwarding rule that references
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to
   /// [region] The Region in which the created target TCP proxy should reside.
   const RegionTargetTcpProxyArgs({
-    required this.backendService,
+    this.backendService,
+    this.deletionPolicy,
     this.description,
+    this.loadBalancingScheme,
     this.name,
     this.project,
     this.proxyBind,
@@ -54,8 +72,10 @@ class RegionTargetTcpProxyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendService': backendService,
+      'backendService': ?backendService,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
+      'loadBalancingScheme': ?loadBalancingScheme,
       'name': ?name,
       'project': ?project,
       'proxyBind': ?proxyBind,
@@ -66,8 +86,10 @@ class RegionTargetTcpProxyArgs {
 
   factory RegionTargetTcpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetTcpProxyArgs(
-      backendService: pulumi.Input.fromValue(map['backendService'] as String),
+      backendService: (() { final guardedValue = map['backendService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancingScheme: (() { final guardedValue = map['loadBalancingScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyBind: (() { final guardedValue = map['proxyBind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -76,4 +98,3 @@ class RegionTargetTcpProxyArgs {
     );
   }
 }
-

@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_guest_os_feature.dart';
 import 'image_image_encryption_key.dart';
+import 'image_params.dart';
 import 'image_raw_disk.dart';
 import 'image_shielded_instance_initial_state.dart';
 import 'image_source_disk_encryption_key.dart';
@@ -16,6 +17,13 @@ class ImageState {
   final pulumi.Input<int>? archiveSizeBytes;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -44,7 +52,7 @@ class ImageState {
   final pulumi.Input<String>? labelFingerprint;
   /// Labels to apply to this Image.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Any applicable license URI.
   final pulumi.Input<List<String>>? licenses;
@@ -56,6 +64,9 @@ class ImageState {
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload.
+  /// Structure is documented below.
+  final pulumi.Input<ImageParams>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -109,6 +120,7 @@ class ImageState {
   /// Creates a new [ImageState].
   /// [archiveSizeBytes] Size of the image tar.gz archive stored in Google Cloud Storage (in
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [diskSizeGb] Size of the image when restored onto a persistent disk (in GB).
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -119,6 +131,7 @@ class ImageState {
   /// [labels] Labels to apply to this Image.
   /// [licenses] Any applicable license URI.
   /// [name] Name of the resource; provided by the client when the resource is
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rawDisk] The parameters of the raw disk image.
@@ -134,6 +147,7 @@ class ImageState {
   const ImageState({
     this.archiveSizeBytes,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.diskSizeGb,
     this.effectiveLabels,
@@ -144,6 +158,7 @@ class ImageState {
     this.labels,
     this.licenses,
     this.name,
+    this.params,
     this.project,
     this.pulumiLabels,
     this.rawDisk,
@@ -162,6 +177,7 @@ class ImageState {
     return <String, dynamic>{
       'archiveSizeBytes': ?archiveSizeBytes,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskSizeGb': ?diskSizeGb,
       'effectiveLabels': ?effectiveLabels,
@@ -172,6 +188,7 @@ class ImageState {
       'labels': ?labels,
       'licenses': ?licenses,
       'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<ImageParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'rawDisk': ?pulumi.Input.mapOptionalInputValue<ImageRawDisk, Map<String, dynamic>>(rawDisk, (value) => value.toMap()),
@@ -191,6 +208,7 @@ class ImageState {
     return ImageState(
       archiveSizeBytes: (() { final guardedValue = map['archiveSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -201,6 +219,7 @@ class ImageState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       licenses: (() { final guardedValue = map['licenses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       rawDisk: (() { final guardedValue = map['rawDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageRawDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -216,4 +235,3 @@ class ImageState {
     );
   }
 }
-

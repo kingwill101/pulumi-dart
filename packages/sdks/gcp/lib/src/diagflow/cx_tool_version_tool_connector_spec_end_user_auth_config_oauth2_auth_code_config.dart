@@ -24,4 +24,3 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
     );
   }
 }
-

@@ -58,6 +58,7 @@ import 'widget_config_ui_settings.dart';
 ///         },
 ///     },
 /// });
+/// export const widgetConfigId = basicWidgetConfig.configId;
 /// ```
 /// ```python
 /// import pulumi
@@ -95,6 +96,7 @@ import 'widget_config_ui_settings.dart';
 ///             "result_count": 5,
 ///         },
 ///     })
+/// pulumi.export("widgetConfigId", basic_widget_config.config_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -154,6 +156,10 @@ import 'widget_config_ui_settings.dart';
 ///         },
 ///     });
 ///
+///     return new Dictionary<string, object?>
+///     {
+///         ["widgetConfigId"] = basicWidgetConfig.ConfigId,
+///     };
 /// });
 /// ```
 /// ```go
@@ -195,7 +201,7 @@ import 'widget_config_ui_settings.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = discoveryengine.NewWidgetConfig(ctx, "basic", &discoveryengine.WidgetConfigArgs{
+/// 		basicWidgetConfig, err := discoveryengine.NewWidgetConfig(ctx, "basic", &discoveryengine.WidgetConfigArgs{
 /// 			Location: basicSearchEngine.Location,
 /// 			EngineId: basicSearchEngine.EngineId,
 /// 			AccessSettings: &discoveryengine.WidgetConfigAccessSettingsArgs{
@@ -214,8 +220,57 @@ import 'widget_config_ui_settings.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		ctx.Export("widgetConfigId", basicWidgetConfig.ConfigId)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                    = "global"
+///   data_store_id               = "data-store-id"
+///   display_name                = "tf-test-datastore"
+///   industry_vertical           = "GENERIC"
+///   content_config              = "NO_CONTENT"
+///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search = false
+/// }
+/// resource "gcp_discoveryengine_searchengine" "basic" {
+///   engine_id            = "engine-id"
+///   collection_id        = "default_collection"
+///   location             = gcp_discoveryengine_datastore.basic.location
+///   display_name         = "tf-test-engine"
+///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   industry_vertical    = "GENERIC"
+///   app_type             = "APP_TYPE_INTRANET"
+///   search_engine_config = {}
+/// }
+/// resource "gcp_discoveryengine_widgetconfig" "basic" {
+///   location  = gcp_discoveryengine_searchengine.basic.location
+///   engine_id = gcp_discoveryengine_searchengine.basic.engine_id
+///   access_settings = {
+///     enable_web_app                   = true
+///     workforce_identity_pool_provider = "locations/global/workforcePools/workforce-pool-id/providers/workforce-pool-provider"
+///   }
+///   ui_settings = {
+///     interaction_type        = "SEARCH_WITH_ANSWER"
+///     enable_autocomplete     = true
+///     enable_quality_feedback = true
+///     generative_answer_config = {
+///       result_count = 5
+///     }
+///   }
+/// }
+/// output "widgetConfigId" {
+///   value = gcp_discoveryengine_widgetconfig.basic.config_id
 /// }
 /// ```
 /// ```java
@@ -234,8 +289,8 @@ import 'widget_config_ui_settings.dart';
 /// import com.pulumi.gcp.discoveryengine.inputs.WidgetConfigAccessSettingsArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.WidgetConfigUiSettingsArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.WidgetConfigUiSettingsGenerativeAnswerConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,6 +341,7 @@ import 'widget_config_ui_settings.dart';
 ///                 .build())
 ///             .build());
 ///
+///         ctx.export("widgetConfigId", basicWidgetConfig.configId());
 ///     }
 /// }
 /// ```
@@ -330,6 +386,8 @@ import 'widget_config_ui_settings.dart';
 ///         enableQualityFeedback: true
 ///         generativeAnswerConfig:
 ///           resultCount: 5
+/// outputs:
+///   widgetConfigId: ${basicWidgetConfig.configId}
 /// ```
 ///
 ///
@@ -338,22 +396,15 @@ import 'widget_config_ui_settings.dart';
 /// WidgetConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/widgetConfigs/{{widget_config_id}}`
-///
 /// * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}`
-///
 /// * `{{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, WidgetConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/widgetConfigs/{{widget_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
 /// ```
 class WidgetConfig extends pulumi.CustomResource {
@@ -362,6 +413,8 @@ class WidgetConfig extends pulumi.CustomResource {
   late final pulumi.Output<WidgetConfigAccessSettings> accessSettings;
   /// The collection ID.
   late final pulumi.Output<String?> collectionId;
+  /// Output only. Unique obfuscated identifier of a WidgetConfig.
+  late final pulumi.Output<String> configId;
   /// The engine ID.
   late final pulumi.Output<String> engineId;
   /// Describes the homepage setting of the widget. It includes all homepage related settings
@@ -384,7 +437,7 @@ class WidgetConfig extends pulumi.CustomResource {
   /// Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// Structure is documented below.
   late final pulumi.Output<WidgetConfigUiSettings> uiSettings;
-  /// The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
+  /// The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
   late final pulumi.Output<String?> widgetConfigId;
 
   /// Creates a new [WidgetConfig].
@@ -403,6 +456,7 @@ class WidgetConfig extends pulumi.CustomResource {
         ) {
     accessSettings = registerOutput<WidgetConfigAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetConfigAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');
+    configId = registerOutput<String>('configId');
     engineId = registerOutput<String>('engineId');
     homepageSetting = registerOutput<WidgetConfigHomepageSetting?>('homepageSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetConfigHomepageSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -438,6 +492,7 @@ class WidgetConfig extends pulumi.CustomResource {
         ) {
     accessSettings = registerOutput<WidgetConfigAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetConfigAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');
+    configId = registerOutput<String>('configId');
     engineId = registerOutput<String>('engineId');
     homepageSetting = registerOutput<WidgetConfigHomepageSetting?>('homepageSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetConfigHomepageSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

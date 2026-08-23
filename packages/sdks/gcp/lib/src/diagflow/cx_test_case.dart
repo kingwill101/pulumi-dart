@@ -541,7 +541,7 @@ import 'cx_test_case_test_config.dart';
 /// 			return err
 /// 		}
 /// 		intent, err := diagflow.NewCxIntent(ctx, "intent", &diagflow.CxIntentArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyIntent"),
 /// 			Priority:    pulumi.Int(1),
 /// 			TrainingPhrases: diagflow.CxIntentTrainingPhraseArray{
@@ -563,7 +563,7 @@ import 'cx_test_case_test_config.dart';
 /// 			DisplayName: pulumi.String("MyPage"),
 /// 			TransitionRoutes: diagflow.CxPageTransitionRouteArray{
 /// 				&diagflow.CxPageTransitionRouteArgs{
-/// 					Intent: intent.ID(),
+/// 					Intent: intent.ID().ToIDOutput().ToStringOutput(),
 /// 					TriggerFulfillment: &diagflow.CxPageTransitionRouteTriggerFulfillmentArgs{
 /// 						Messages: diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArray{
 /// 							&diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs{
@@ -597,14 +597,14 @@ import 'cx_test_case_test_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"some_param": "1",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string]string{
 /// 			"some_param": "1",
 /// 		})
 /// 		if err != nil {
@@ -612,7 +612,7 @@ import 'cx_test_case_test_config.dart';
 /// 		}
 /// 		json1 := string(tmpJSON1)
 /// 		_, err = diagflow.NewCxTestCase(ctx, "basic_test_case", &diagflow.CxTestCaseArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyTestCase"),
 /// 			Tags: pulumi.StringArray{
 /// 				pulumi.String("#tag1"),
@@ -622,7 +622,7 @@ import 'cx_test_case_test_config.dart';
 /// 				TrackingParameters: pulumi.StringArray{
 /// 					pulumi.String("some_param"),
 /// 				},
-/// 				Page: page.ID(),
+/// 				Page: page.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			TestCaseConversationTurns: diagflow.CxTestCaseTestCaseConversationTurnArray{
 /// 				&diagflow.CxTestCaseTestCaseConversationTurnArgs{
@@ -640,10 +640,10 @@ import 'cx_test_case_test_config.dart';
 /// 					VirtualAgentOutput: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{
 /// 						SessionParameters: pulumi.String(json1),
 /// 						TriggeredIntent: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{
-/// 							Name: intent.ID(),
+/// 							Name: intent.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						CurrentPage: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{
-/// 							Name: page.ID(),
+/// 							Name: page.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						TextResponses: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{
 /// 							&diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{
@@ -664,7 +664,7 @@ import 'cx_test_case_test_config.dart';
 /// 					},
 /// 					VirtualAgentOutput: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{
 /// 						CurrentPage: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{
-/// 							Name: page.ID(),
+/// 							Name: page.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						TextResponses: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{
 /// 							&diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{
@@ -703,6 +703,136 @@ import 'cx_test_case_test_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxpage" "page" {
+///   parent       = gcp_diagflow_cxagent.agent.start_flow
+///   display_name = "MyPage"
+///   transition_routes {
+///     intent = gcp_diagflow_cxintent.intent.id
+///     trigger_fulfillment = {
+///       messages = [{
+///         "text" = {
+///           "texts" = ["Training phrase response"]
+///         }
+///       }]
+///     }
+///   }
+///   event_handlers {
+///     event = "some-event"
+///     trigger_fulfillment = {
+///       messages = [{
+///         "text" = {
+///           "texts" = ["Handling some event"]
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_diagflow_cxintent" "intent" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyIntent"
+///   priority     = 1
+///   training_phrases {
+///     parts {
+///       text = "training phrase"
+///     }
+///     repeat_count = 1
+///   }
+/// }
+/// resource "gcp_diagflow_cxtestcase" "basic_test_case" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyTestCase"
+///   tags         = ["#tag1"]
+///   notes        = "demonstrates a simple training phrase response"
+///   test_config = {
+///     tracking_parameters = ["some_param"]
+///     page                = gcp_diagflow_cxpage.page.id
+///   }
+///   test_case_conversation_turns {
+///     user_input = {
+///       input = {
+///         language_code = "en"
+///         text = {
+///           text = "training phrase"
+///         }
+///       }
+///       injected_parameters = jsonencode({
+///         "some_param" = "1"
+///       })
+///       is_webhook_enabled        = true
+///       enable_sentiment_analysis = true
+///     }
+///     virtual_agent_output = {
+///       session_parameters = jsonencode({
+///         "some_param" = "1"
+///       })
+///       triggered_intent = {
+///         name = gcp_diagflow_cxintent.intent.id
+///       }
+///       current_page = {
+///         name = gcp_diagflow_cxpage.page.id
+///       }
+///       text_responses = [{
+///         "texts" = ["Training phrase response"]
+///       }]
+///     }
+///   }
+///   test_case_conversation_turns {
+///     user_input = {
+///       input = {
+///         event = {
+///           event = "some-event"
+///         }
+///       }
+///     }
+///     virtual_agent_output = {
+///       current_page = {
+///         name = gcp_diagflow_cxpage.page.id
+///       }
+///       text_responses = [{
+///         "texts" = ["Handling some event"]
+///       }]
+///     }
+///   }
+///   test_case_conversation_turns {
+///     user_input = {
+///       input = {
+///         dtmf = {
+///           digits       = "12"
+///           finish_digit = "3"
+///         }
+///       }
+///     }
+///     virtual_agent_output = {
+///       text_responses = [{
+///         "texts" = ["I didn't get that. Can you say it again?"]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -715,12 +845,17 @@ import 'cx_test_case_test_config.dart';
 /// import com.pulumi.gcp.diagflow.CxIntent;
 /// import com.pulumi.gcp.diagflow.CxIntentArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhraseArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhrasePartArgs;
 /// import com.pulumi.gcp.diagflow.CxPage;
 /// import com.pulumi.gcp.diagflow.CxPageArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerTriggerFulfillmentArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerTriggerFulfillmentMessageTextArgs;
 /// import com.pulumi.gcp.diagflow.CxTestCase;
 /// import com.pulumi.gcp.diagflow.CxTestCaseArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestConfigArgs;
@@ -731,11 +866,12 @@ import 'cx_test_case_test_config.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -991,6 +1127,7 @@ import 'cx_test_case_test_config.dart';
 ///
 /// * `{{parent}}/testCases/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, TestCase can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -999,6 +1136,13 @@ import 'cx_test_case_test_config.dart';
 class CxTestCase extends pulumi.CustomResource {
   /// When the test was created. A timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   late final pulumi.Output<String> displayName;
   /// The latest test result.
@@ -1037,6 +1181,7 @@ class CxTestCase extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTime = registerOutput<String>('creationTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     lastTestResults = registerOutput<List<Map<String, dynamic>>>('lastTestResults');
     this.name = registerOutput<String>('name');
@@ -1071,6 +1216,7 @@ class CxTestCase extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTime = registerOutput<String>('creationTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     lastTestResults = registerOutput<List<Map<String, dynamic>>>('lastTestResults');
     this.name = registerOutput<String>('name');

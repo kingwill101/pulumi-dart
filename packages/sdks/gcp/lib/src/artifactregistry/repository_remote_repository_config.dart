@@ -28,6 +28,8 @@ class RepositoryRemoteRepositoryConfig {
   /// Specific settings for a Maven remote repository.
   /// Structure is documented below.
   final pulumi.Input<RepositoryRemoteRepositoryConfigMavenRepository>? mavenRepository;
+  /// The repository will act as a non-caching proxy (connector mode).
+  final pulumi.Input<Map<String, dynamic>>? noCache;
   /// Specific settings for an Npm remote repository.
   /// Structure is documented below.
   final pulumi.Input<RepositoryRemoteRepositoryConfigNpmRepository>? npmRepository;
@@ -48,6 +50,7 @@ class RepositoryRemoteRepositoryConfig {
   /// [disableUpstreamValidation] If true, the remote repository upstream and upstream credentials will
   /// [dockerRepository] Specific settings for a Docker remote repository.
   /// [mavenRepository] Specific settings for a Maven remote repository.
+  /// [noCache] The repository will act as a non-caching proxy (connector mode).
   /// [npmRepository] Specific settings for an Npm remote repository.
   /// [pythonRepository] Specific settings for a Python remote repository.
   /// [upstreamCredentials] The credentials used to access the remote repository.
@@ -59,6 +62,7 @@ class RepositoryRemoteRepositoryConfig {
     this.disableUpstreamValidation,
     this.dockerRepository,
     this.mavenRepository,
+    this.noCache,
     this.npmRepository,
     this.pythonRepository,
     this.upstreamCredentials,
@@ -73,6 +77,7 @@ class RepositoryRemoteRepositoryConfig {
       'disableUpstreamValidation': ?disableUpstreamValidation,
       'dockerRepository': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfigDockerRepository, Map<String, dynamic>>(dockerRepository, (value) => value.toMap()),
       'mavenRepository': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfigMavenRepository, Map<String, dynamic>>(mavenRepository, (value) => value.toMap()),
+      'noCache': ?noCache,
       'npmRepository': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfigNpmRepository, Map<String, dynamic>>(npmRepository, (value) => value.toMap()),
       'pythonRepository': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfigPythonRepository, Map<String, dynamic>>(pythonRepository, (value) => value.toMap()),
       'upstreamCredentials': ?pulumi.Input.mapOptionalInputValue<RepositoryRemoteRepositoryConfigUpstreamCredentials, Map<String, dynamic>>(upstreamCredentials, (value) => value.toMap()),
@@ -88,6 +93,7 @@ class RepositoryRemoteRepositoryConfig {
       disableUpstreamValidation: (() { final guardedValue = map['disableUpstreamValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dockerRepository: (() { final guardedValue = map['dockerRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRemoteRepositoryConfigDockerRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mavenRepository: (() { final guardedValue = map['mavenRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRemoteRepositoryConfigMavenRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      noCache: (() { final guardedValue = map['noCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       npmRepository: (() { final guardedValue = map['npmRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRemoteRepositoryConfigNpmRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pythonRepository: (() { final guardedValue = map['pythonRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRemoteRepositoryConfigPythonRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       upstreamCredentials: (() { final guardedValue = map['upstreamCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRemoteRepositoryConfigUpstreamCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -95,4 +101,3 @@ class RepositoryRemoteRepositoryConfig {
     );
   }
 }
-

@@ -19,7 +19,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
   /// The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
   final pulumi.Input<String> network;
-  /// The consumer project_id where the forwarding rule is created from.
+  /// The consumer projectId where the forwarding rule is created from.
   final pulumi.Input<String>? projectId;
   /// The PSC connection id of the forwarding rule connected to the
   /// service attachment.
@@ -38,7 +38,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
   /// [forwardingRule] The URI of the consumer side forwarding rule.
   /// [ipAddress] The IP allocated on the consumer network for the PSC forwarding rule.
   /// [network] The consumer network where the IP address resides, in the form of
-  /// [projectId] The consumer project_id where the forwarding rule is created from.
+  /// [projectId] The consumer projectId where the forwarding rule is created from.
   /// [pscConnectionId] The PSC connection id of the forwarding rule connected to the
   /// [pscConnectionStatus] (Output)
   /// [serviceAttachment] The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -79,4 +79,3 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
     );
   }
 }
-

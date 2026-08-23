@@ -13,7 +13,7 @@ class GetBillingAccountResult {
   /// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
   final String name;
   final bool open;
-  /// The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+  /// The IDs of any projects associated with the billing account. `lookupProjects` must not be false
   /// for this to be populated.
   final List<String> projectIds;
 
@@ -25,7 +25,7 @@ class GetBillingAccountResult {
   /// [lookupProjects] Optional.
   /// [name] The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
   /// [open] Required.
-  /// [projectIds] The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+  /// [projectIds] The IDs of any projects associated with the billing account. `lookupProjects` must not be false
   const GetBillingAccountResult({
     this.billingAccount,
     required this.currencyCode,
@@ -63,4 +63,3 @@ class GetBillingAccountResult {
     );
   }
 }
-

@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_accelerator.dart';
 import 'instance_crypto_key_config.dart';
 import 'instance_event_publish_config.dart';
+import 'instance_maintenance_policy.dart';
 import 'instance_network_config.dart';
 
 /// {@template pulumi_datafusion_instance_instance_args_doc}
@@ -21,6 +22,13 @@ class InstanceArgs {
   final pulumi.Input<InstanceCryptoKeyConfig>? cryptoKeyConfig;
   /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
   final pulumi.Input<String>? dataprocServiceAccount;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of the instance.
   final pulumi.Input<String>? description;
   /// Display name for an instance.
@@ -38,8 +46,11 @@ class InstanceArgs {
   /// such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+  /// Configure the maintenance policy for this instance.
+  /// Structure is documented below.
+  final pulumi.Input<InstanceMaintenancePolicy>? maintenancePolicy;
   /// The ID of the instance or a fully qualified identifier for the instance.
   final pulumi.Input<String>? name;
   /// Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -47,6 +58,8 @@ class InstanceArgs {
   final pulumi.Input<InstanceNetworkConfig>? networkConfig;
   /// Map of additional options used to configure the behavior of Data Fusion instance.
   final pulumi.Input<Map<String, String>>? options;
+  /// Current patch revision of the Data Fusion.
+  final pulumi.Input<String>? patchRevision;
   /// Specifies whether the Data Fusion instance should be private. If set to
   /// true, all Data Fusion nodes will have private IP addresses and will not be
   /// able to access the public internet.
@@ -82,6 +95,7 @@ class InstanceArgs {
   /// [accelerators] List of accelerators enabled for this CDF instance.
   /// [cryptoKeyConfig] The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
   /// [dataprocServiceAccount] User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of the instance.
   /// [displayName] Display name for an instance.
   /// [enableRbac] Option to enable granular role-based access control.
@@ -89,9 +103,11 @@ class InstanceArgs {
   /// [enableStackdriverMonitoring] Option to enable Stackdriver Monitoring.
   /// [eventPublishConfig] Option to enable and pass metadata for event publishing.
   /// [labels] The resource labels for instance to use to annotate any related underlying resources,
+  /// [maintenancePolicy] Configure the maintenance policy for this instance.
   /// [name] The ID of the instance or a fully qualified identifier for the instance.
   /// [networkConfig] Network configuration options. These are required when a private Data Fusion instance is to be created.
   /// [options] Map of additional options used to configure the behavior of Data Fusion instance.
+  /// [patchRevision] Current patch revision of the Data Fusion.
   /// [privateInstance] Specifies whether the Data Fusion instance should be private. If set to
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the Data Fusion instance.
@@ -103,6 +119,7 @@ class InstanceArgs {
     this.accelerators,
     this.cryptoKeyConfig,
     this.dataprocServiceAccount,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.enableRbac,
@@ -110,9 +127,11 @@ class InstanceArgs {
     this.enableStackdriverMonitoring,
     this.eventPublishConfig,
     this.labels,
+    this.maintenancePolicy,
     this.name,
     this.networkConfig,
     this.options,
+    this.patchRevision,
     this.privateInstance,
     this.project,
     this.region,
@@ -127,6 +146,7 @@ class InstanceArgs {
       'accelerators': ?pulumi.Input.mapOptionalInputValue<List<InstanceAccelerator>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<InstanceAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cryptoKeyConfig': ?pulumi.Input.mapOptionalInputValue<InstanceCryptoKeyConfig, Map<String, dynamic>>(cryptoKeyConfig, (value) => value.toMap()),
       'dataprocServiceAccount': ?dataprocServiceAccount,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'enableRbac': ?enableRbac,
@@ -134,9 +154,11 @@ class InstanceArgs {
       'enableStackdriverMonitoring': ?enableStackdriverMonitoring,
       'eventPublishConfig': ?pulumi.Input.mapOptionalInputValue<InstanceEventPublishConfig, Map<String, dynamic>>(eventPublishConfig, (value) => value.toMap()),
       'labels': ?labels,
+      'maintenancePolicy': ?pulumi.Input.mapOptionalInputValue<InstanceMaintenancePolicy, Map<String, dynamic>>(maintenancePolicy, (value) => value.toMap()),
       'name': ?name,
       'networkConfig': ?pulumi.Input.mapOptionalInputValue<InstanceNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'options': ?options,
+      'patchRevision': ?patchRevision,
       'privateInstance': ?privateInstance,
       'project': ?project,
       'region': ?region,
@@ -152,6 +174,7 @@ class InstanceArgs {
       accelerators: (() { final guardedValue = map['accelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceAccelerator>(guardedValue, (value) => InstanceAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cryptoKeyConfig: (() { final guardedValue = map['cryptoKeyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceCryptoKeyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataprocServiceAccount: (() { final guardedValue = map['dataprocServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableRbac: (() { final guardedValue = map['enableRbac']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -159,9 +182,11 @@ class InstanceArgs {
       enableStackdriverMonitoring: (() { final guardedValue = map['enableStackdriverMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       eventPublishConfig: (() { final guardedValue = map['eventPublishConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceEventPublishConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      maintenancePolicy: (() { final guardedValue = map['maintenancePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      patchRevision: (() { final guardedValue = map['patchRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateInstance: (() { final guardedValue = map['privateInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -172,4 +197,3 @@ class InstanceArgs {
     );
   }
 }
-

@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_edgenetwork_interconnect_attachment_interconnect_attachment_args_doc}
 class InterconnectAttachmentArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// The ID of the underlying interconnect that this attachment's traffic will traverse through.
@@ -16,7 +23,7 @@ class InterconnectAttachmentArgs {
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   final pulumi.Input<String> location;
@@ -34,6 +41,7 @@ class InterconnectAttachmentArgs {
   final pulumi.Input<String> zone;
 
   /// Creates a new [InterconnectAttachmentArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [interconnect] The ID of the underlying interconnect that this attachment's traffic will traverse through.
   /// [interconnectAttachmentId] A unique ID that identifies this interconnect attachment.
@@ -45,6 +53,7 @@ class InterconnectAttachmentArgs {
   /// [vlanId] VLAN ID provided by user. Must be site-wise unique.
   /// [zone] The name of the target Distributed Cloud Edge zone.
   const InterconnectAttachmentArgs({
+    this.deletionPolicy,
     this.description,
     required this.interconnect,
     required this.interconnectAttachmentId,
@@ -59,6 +68,7 @@ class InterconnectAttachmentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'interconnect': interconnect,
       'interconnectAttachmentId': interconnectAttachmentId,
@@ -74,6 +84,7 @@ class InterconnectAttachmentArgs {
 
   factory InterconnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interconnect: pulumi.Input.fromValue(map['interconnect'] as String),
       interconnectAttachmentId: pulumi.Input.fromValue(map['interconnectAttachmentId'] as String),
@@ -87,4 +98,3 @@ class InterconnectAttachmentArgs {
     );
   }
 }
-

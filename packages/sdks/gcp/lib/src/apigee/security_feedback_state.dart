@@ -9,6 +9,13 @@ class SecurityFeedbackState {
   final pulumi.Input<String>? comment;
   /// The time when this specific feedback id was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name of the feedback.
   final pulumi.Input<String>? displayName;
   /// One or more attribute/value pairs for constraining the feedback.
@@ -34,6 +41,7 @@ class SecurityFeedbackState {
   /// Creates a new [SecurityFeedbackState].
   /// [comment] Optional text the user can provide for additional, unstructured context.
   /// [createTime] The time when this specific feedback id was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name of the feedback.
   /// [feedbackContexts] One or more attribute/value pairs for constraining the feedback.
   /// [feedbackId] Resource ID of the security feedback.
@@ -45,6 +53,7 @@ class SecurityFeedbackState {
   const SecurityFeedbackState({
     this.comment,
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.feedbackContexts,
     this.feedbackId,
@@ -59,6 +68,7 @@ class SecurityFeedbackState {
     return <String, dynamic>{
       'comment': ?comment,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'feedbackContexts': ?pulumi.Input.mapOptionalInputValue<List<SecurityFeedbackFeedbackContext>, List<Map<String, dynamic>>>(feedbackContexts, (value) => pulumi.Input.encodeList<SecurityFeedbackFeedbackContext, Map<String, dynamic>>(value, (value) => value.toMap())),
       'feedbackId': ?feedbackId,
@@ -74,6 +84,7 @@ class SecurityFeedbackState {
     return SecurityFeedbackState(
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       feedbackContexts: (() { final guardedValue = map['feedbackContexts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(guardedValue, (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))); })(),
       feedbackId: (() { final guardedValue = map['feedbackId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -85,4 +96,3 @@ class SecurityFeedbackState {
     );
   }
 }
-

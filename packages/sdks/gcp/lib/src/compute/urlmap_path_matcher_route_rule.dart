@@ -19,12 +19,14 @@ class URLMapPathMatcherRouteRule {
   /// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
   /// Structure is documented below.
   final pulumi.Input<URLMapPathMatcherRouteRuleHeaderAction>? headerAction;
+  /// (Optional, Beta)
   /// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
   /// httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// See ForwardingRule for more details.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
   final pulumi.Input<List<URLMapPathMatcherRouteRuleHttpFilterConfig>>? httpFilterConfigs;
+  /// (Optional, Beta)
   /// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
   /// httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// See ForwardingRule for more details.
@@ -73,8 +75,8 @@ class URLMapPathMatcherRouteRule {
   /// Creates a new [URLMapPathMatcherRouteRule].
   /// [customErrorResponsePolicy] customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
   /// [headerAction] Specifies changes to request and response headers that need to take effect for
-  /// [httpFilterConfigs] Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
-  /// [httpFilterMetadatas] Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+  /// [httpFilterConfigs] (Optional, Beta)
+  /// [httpFilterMetadatas] (Optional, Beta)
   /// [matchRules] The rules for determining a match.
   /// [priority] For routeRules within a given pathMatcher, priority determines the order
   /// [routeAction] In response to a matching matchRule, the load balancer performs advanced routing
@@ -120,4 +122,3 @@ class URLMapPathMatcherRouteRule {
     );
   }
 }
-

@@ -26,7 +26,7 @@ class ClusterClusterAutoscaling {
   /// Global constraints for machine resources in the
   /// cluster. Configuring the `cpu` and `memory` types is required if node
   /// auto-provisioning is enabled. These limits will apply to node pool autoscaling
-  /// in addition to node auto-provisioning. Structure is documented below.
+  /// in addition to node auto-provisioning. Limits can't be unset entirely, they can only be replaced. Structure is documented below.
   final pulumi.Input<List<ClusterClusterAutoscalingResourceLimit>>? resourceLimits;
 
   /// Creates a new [ClusterClusterAutoscaling].
@@ -67,4 +67,3 @@ class ClusterClusterAutoscaling {
     );
   }
 }
-

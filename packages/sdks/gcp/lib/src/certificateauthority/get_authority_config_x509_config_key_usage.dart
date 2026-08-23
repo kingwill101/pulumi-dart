@@ -39,4 +39,3 @@ class GetAuthorityConfigX509ConfigKeyUsage {
     );
   }
 }
-

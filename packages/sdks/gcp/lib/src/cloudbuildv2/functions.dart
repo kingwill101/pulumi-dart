@@ -65,6 +65,21 @@ import 'get_connection_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudbuildv2_getconnectioniampolicy" "policy" {
+///   project  = my-connection.project
+///   location = my-connection.location
+///   name     = my-connection.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'get_connection_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudbuildv2.Cloudbuildv2Functions;
 /// import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -87,9 +102,9 @@ import 'get_connection_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-///             .project(my_connection.project())
-///             .location(my_connection.location())
-///             .name(my_connection.name())
+///             .project(my_connection.get("project"))
+///             .location(my_connection.get("location"))
+///             .name(my_connection.get("name"))
 ///             .build());
 ///
 ///     }

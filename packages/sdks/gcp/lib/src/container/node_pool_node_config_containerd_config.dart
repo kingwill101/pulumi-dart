@@ -8,14 +8,14 @@ import 'node_pool_node_config_containerd_config_writable_cgroups.dart';
 class NodePoolNodeConfigContainerdConfig {
   /// Parameters for private container registries configuration.
   final pulumi.Input<NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig>? privateRegistryAccessConfig;
-  /// Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+  /// Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
   final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHost>>? registryHosts;
   /// Parameters for writable cgroups configuration.
   final pulumi.Input<NodePoolNodeConfigContainerdConfigWritableCgroups>? writableCgroups;
 
   /// Creates a new [NodePoolNodeConfigContainerdConfig].
   /// [privateRegistryAccessConfig] Parameters for private container registries configuration.
-  /// [registryHosts] Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+  /// [registryHosts] Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
   /// [writableCgroups] Parameters for writable cgroups configuration.
   const NodePoolNodeConfigContainerdConfig({
     this.privateRegistryAccessConfig,
@@ -39,4 +39,3 @@ class NodePoolNodeConfigContainerdConfig {
     );
   }
 }
-

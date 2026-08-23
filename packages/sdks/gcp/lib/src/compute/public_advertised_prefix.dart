@@ -79,6 +79,22 @@ import 'public_advertised_prefix_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_publicadvertisedprefix" "prefixes" {
+///   name                = "my-prefix"
+///   description         = "description"
+///   dns_verification_ip = "127.127.0.0"
+///   ip_cidr_range       = "127.127.0.0/16"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +103,8 @@ import 'public_advertised_prefix_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,6 +207,23 @@ import 'public_advertised_prefix_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_publicadvertisedprefix" "prefixes" {
+///   name                = "my-pap"
+///   description         = "description"
+///   dns_verification_ip = "127.127.0.0"
+///   ip_cidr_range       = "127.127.0.0/16"
+///   pdp_scope           = "REGIONAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +232,8 @@ import 'public_advertised_prefix_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,6 +338,23 @@ import 'public_advertised_prefix_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_publicadvertisedprefix" "prefixes" {
+///   name             = "my-pap"
+///   description      = "description"
+///   ip_cidr_range    = "2001:db8::/32"
+///   pdp_scope        = "REGIONAL"
+///   ipv6_access_type = "INTERNAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -313,8 +363,8 @@ import 'public_advertised_prefix_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -355,25 +405,25 @@ import 'public_advertised_prefix_state.dart';
 /// PublicAdvertisedPrefix can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{name}}
 /// ```
 class PublicAdvertisedPrefix extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// The IPv4 address to be used for reverse DNS verification.
@@ -426,6 +476,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
     ipCidrRange = registerOutput<String>('ipCidrRange');
@@ -460,6 +511,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
     ipCidrRange = registerOutput<String>('ipCidrRange');

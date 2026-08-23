@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareClusterControlPlaneNodeAutoResizeConfig {
   /// Whether to enable control plane node auto resizing.
   ///
-  /// &lt;a name="nested_control_plane_node_vsphere_config"&gt;&lt;/a&gt;The `vsphere_config` block contains:
+  /// &lt;a name="nestedControlPlaneNodeVsphereConfig"&gt;&lt;/a&gt;The `vsphereConfig` block contains:
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [VMwareClusterControlPlaneNodeAutoResizeConfig].
@@ -26,4 +26,3 @@ class VMwareClusterControlPlaneNodeAutoResizeConfig {
     );
   }
 }
-

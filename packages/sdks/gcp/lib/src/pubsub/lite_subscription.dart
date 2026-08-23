@@ -160,6 +160,40 @@ import 'lite_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_litetopic" "example" {
+///   name    = "example-topic"
+///   project = data.gcp_organizations_getproject.project.number
+///   partition_config = {
+///     count = 1
+///     capacity = {
+///       publish_mib_per_sec   = 4
+///       subscribe_mib_per_sec = 8
+///     }
+///   }
+///   retention_config = {
+///     per_partition_bytes = 32212254720
+///   }
+/// }
+/// resource "gcp_pubsub_litesubscription" "example" {
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_litetopic.example.name
+///   delivery_config = {
+///     delivery_requirement = "DELIVER_AFTER_STORED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +210,8 @@ import 'lite_subscription_state.dart';
 /// import com.pulumi.gcp.pubsub.LiteSubscription;
 /// import com.pulumi.gcp.pubsub.LiteSubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.LiteSubscriptionDeliveryConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,31 +287,27 @@ import 'lite_subscription_state.dart';
 /// Subscription can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
 /// ```
 class LiteSubscription extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
   late final pulumi.Output<LiteSubscriptionDeliveryConfig?> deliveryConfig;
@@ -307,6 +337,7 @@ class LiteSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteSubscriptionDeliveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -338,6 +369,7 @@ class LiteSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteSubscriptionDeliveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

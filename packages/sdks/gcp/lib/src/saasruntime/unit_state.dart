@@ -15,7 +15,7 @@ class UnitState {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
@@ -23,6 +23,13 @@ class UnitState {
   final pulumi.Input<List<UnitCondition>>? conditions;
   /// The timestamp when the resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Set of dependencies for this unit. Maximum 10.
   /// Structure is documented below.
   final pulumi.Input<List<UnitDependency>>? dependencies;
@@ -30,6 +37,7 @@ class UnitState {
   /// this list is empty. Maximum 1000.
   /// Structure is documented below.
   final pulumi.Input<List<UnitDependent>>? dependents;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -39,7 +47,7 @@ class UnitState {
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -62,6 +70,11 @@ class UnitState {
   final pulumi.Input<String>? name;
   /// List of concurrent UnitOperations that are operating on this Unit.
   final pulumi.Input<List<String>>? ongoingOperations;
+  /// Set of key/value pairs corresponding to output variables from execution of
+  /// actuation templates. The variables are declared in actuation configs (e.g
+  /// in helm chart or terraform) and the values are fetched and returned by the
+  /// actuation engine upon completion of execution.
+  /// Structure is documented below.
   final pulumi.Input<List<UnitOutputVariable>>? outputVariables;
   /// List of pending (wait to be executed) UnitOperations for this unit.
   final pulumi.Input<List<String>>? pendingOperations;
@@ -116,9 +129,10 @@ class UnitState {
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that
   /// [conditions] A set of conditions which indicate the various conditions this resource can
   /// [createTime] The timestamp when the resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [dependencies] Set of dependencies for this unit. Maximum 10.
   /// [dependents] List of Units that depend on this unit. Unit can only be deprovisioned if
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [inputVariables] Indicates the current input variables deployed by the unit
   /// [labels] The labels on the resource, which can be used for categorization.
@@ -127,7 +141,7 @@ class UnitState {
   /// [managementMode] Indicates whether the Unit life cycle is controlled
   /// [name] Identifier. The resource name (full URI of the resource) following the standard naming
   /// [ongoingOperations] List of concurrent UnitOperations that are operating on this Unit.
-  /// [outputVariables] Optional.
+  /// [outputVariables] Set of key/value pairs corresponding to output variables from execution of
   /// [pendingOperations] List of pending (wait to be executed) UnitOperations for this unit.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
@@ -145,6 +159,7 @@ class UnitState {
     this.annotations,
     this.conditions,
     this.createTime,
+    this.deletionPolicy,
     this.dependencies,
     this.dependents,
     this.effectiveAnnotations,
@@ -177,6 +192,7 @@ class UnitState {
       'annotations': ?annotations,
       'conditions': ?pulumi.Input.mapOptionalInputValue<List<UnitCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<UnitCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'dependencies': ?pulumi.Input.mapOptionalInputValue<List<UnitDependency>, List<Map<String, dynamic>>>(dependencies, (value) => pulumi.Input.encodeList<UnitDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dependents': ?pulumi.Input.mapOptionalInputValue<List<UnitDependent>, List<Map<String, dynamic>>>(dependents, (value) => pulumi.Input.encodeList<UnitDependent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -210,6 +226,7 @@ class UnitState {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dependencies: (() { final guardedValue = map['dependencies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UnitDependency>(guardedValue, (value) => UnitDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dependents: (() { final guardedValue = map['dependents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UnitDependent>(guardedValue, (value) => UnitDependent.fromMap((value as Map).cast<String, dynamic>()))); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -238,4 +255,3 @@ class UnitState {
     );
   }
 }
-

@@ -7,6 +7,13 @@ class NetworkEndpointGroupState {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
   final pulumi.Input<int>? defaultPort;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -32,7 +39,7 @@ class NetworkEndpointGroupState {
   /// CONNECTION balancing modes.
   /// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
   /// Default value is `GCE_VM_IP_PORT`.
-  /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+  /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `GCE_VM_IP_DEDICATED_BACKEND`.
   final pulumi.Input<String>? networkEndpointType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -48,6 +55,7 @@ class NetworkEndpointGroupState {
 
   /// Creates a new [NetworkEndpointGroupState].
   /// [defaultPort] The default port used if the port number is not specified in the
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [generatedId] The uniquely generated identifier for the resource. This identifier is defined by the server.
   /// [name] Name of the resource; provided by the client when the resource is
@@ -60,6 +68,7 @@ class NetworkEndpointGroupState {
   /// [zone] Zone where the network endpoint group is located.
   const NetworkEndpointGroupState({
     this.defaultPort,
+    this.deletionPolicy,
     this.description,
     this.generatedId,
     this.name,
@@ -75,6 +84,7 @@ class NetworkEndpointGroupState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultPort': ?defaultPort,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'generatedId': ?generatedId,
       'name': ?name,
@@ -91,6 +101,7 @@ class NetworkEndpointGroupState {
   factory NetworkEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupState(
       defaultPort: (() { final guardedValue = map['defaultPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -104,4 +115,3 @@ class NetworkEndpointGroupState {
     );
   }
 }
-

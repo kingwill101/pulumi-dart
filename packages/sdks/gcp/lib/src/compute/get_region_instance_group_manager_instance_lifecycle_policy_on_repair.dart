@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
-  /// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+  /// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
   final pulumi.Input<String> allowChangingZone;
 
   /// Creates a new [GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair].
-  /// [allowChangingZone] Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+  /// [allowChangingZone] Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
   const GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair({
     required this.allowChangingZone,
   });
@@ -24,4 +24,3 @@ class GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
     );
   }
 }
-

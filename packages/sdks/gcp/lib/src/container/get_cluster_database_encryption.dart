@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterDatabaseEncryption {
   /// The key to use to encrypt/decrypt secrets.
   final pulumi.Input<String> keyName;
-  /// ENCRYPTED or DECRYPTED.
+  /// ENCRYPTED, ALL_OBJECTS_ENCRYPTION_ENABLED or DECRYPTED.
   final pulumi.Input<String> state;
 
   /// Creates a new [GetClusterDatabaseEncryption].
   /// [keyName] The key to use to encrypt/decrypt secrets.
-  /// [state] ENCRYPTED or DECRYPTED.
+  /// [state] ENCRYPTED, ALL_OBJECTS_ENCRYPTION_ENABLED or DECRYPTED.
   const GetClusterDatabaseEncryption({
     required this.keyName,
     required this.state,
@@ -30,4 +30,3 @@ class GetClusterDatabaseEncryption {
     );
   }
 }
-

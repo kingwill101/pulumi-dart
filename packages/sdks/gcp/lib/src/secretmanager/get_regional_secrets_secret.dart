@@ -13,8 +13,20 @@ class GetRegionalSecretsSecret {
   /// Customer Managed Encryption for the regional secret.
   /// Structure is documented below.
   final pulumi.Input<List<GetRegionalSecretsSecretCustomerManagedEncryption>> customerManagedEncryptions;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+  /// When the field is set to true in Terraform state, a 'terraform apply'
+  /// or 'terraform destroy' that would delete the federation will fail.
   final pulumi.Input<bool> deletionProtection;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveAnnotations;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveLabels;
   /// Timestamp in UTC when the regional secret is scheduled to expire.
   final pulumi.Input<String> expireTime;
@@ -53,9 +65,10 @@ class GetRegionalSecretsSecret {
   /// [annotations] Custom metadata about the regional secret.
   /// [createTime] The time at which the regional secret was created.
   /// [customerManagedEncryptions] Customer Managed Encryption for the regional secret.
-  /// [deletionProtection] Required.
-  /// [effectiveAnnotations] Required.
-  /// [effectiveLabels] Required.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   /// [expireTime] Timestamp in UTC when the regional secret is scheduled to expire.
   /// [labels] The labels assigned to this regional secret.
   /// [location] The location of the regional secret.
@@ -73,6 +86,7 @@ class GetRegionalSecretsSecret {
     required this.annotations,
     required this.createTime,
     required this.customerManagedEncryptions,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.effectiveAnnotations,
     required this.effectiveLabels,
@@ -96,6 +110,7 @@ class GetRegionalSecretsSecret {
       'annotations': annotations,
       'createTime': createTime,
       'customerManagedEncryptions': pulumi.Input.mapInputValue<List<GetRegionalSecretsSecretCustomerManagedEncryption>, List<Map<String, dynamic>>>(customerManagedEncryptions, (value) => pulumi.Input.encodeList<GetRegionalSecretsSecretCustomerManagedEncryption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'effectiveAnnotations': effectiveAnnotations,
       'effectiveLabels': effectiveLabels,
@@ -120,6 +135,7 @@ class GetRegionalSecretsSecret {
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       customerManagedEncryptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionalSecretsSecretCustomerManagedEncryption>(map['customerManagedEncryptions']!, (value) => GetRegionalSecretsSecretCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>()))),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       effectiveAnnotations: pulumi.Input.fromValue((map['effectiveAnnotations'] as Map).cast<String, String>()),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
@@ -139,4 +155,3 @@ class GetRegionalSecretsSecret {
     );
   }
 }
-

@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebase_get_hosting_channel_get_hosting_channel_args_doc}
 class GetHostingChannelArgs {
-  /// The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
+  /// The ID of the channel. Use `channelId = "live"` for the default channel of a site.
   final pulumi.Input<String> channelId;
   /// The ID of the site this channel belongs to.
   final pulumi.Input<String> siteId;
 
   /// Creates a new [GetHostingChannelArgs].
-  /// [channelId] The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
+  /// [channelId] The ID of the channel. Use `channelId = "live"` for the default channel of a site.
   /// [siteId] The ID of the site this channel belongs to.
   const GetHostingChannelArgs({
     required this.channelId,
@@ -34,4 +34,3 @@ class GetHostingChannelArgs {
     );
   }
 }
-

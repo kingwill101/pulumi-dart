@@ -20,6 +20,13 @@ class GuestPoliciesState {
   /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
   final pulumi.Input<String>? description;
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
@@ -54,6 +61,7 @@ class GuestPoliciesState {
   /// Creates a new [GuestPoliciesState].
   /// [assignment] Specifies the VM instances that are assigned to this policy. This allows you to target sets
   /// [createTime] Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the guest policy. Length of the description is limited to 1024 characters.
   /// [etag] The etag for this guest policy. If this is provided on update, it must match the server's etag.
   /// [guestPolicyId] The logical name of the guest policy in the project with the following restrictions:
@@ -66,6 +74,7 @@ class GuestPoliciesState {
   const GuestPoliciesState({
     this.assignment,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.etag,
     this.guestPolicyId,
@@ -81,6 +90,7 @@ class GuestPoliciesState {
     return <String, dynamic>{
       'assignment': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesAssignment, Map<String, dynamic>>(assignment, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'etag': ?etag,
       'guestPolicyId': ?guestPolicyId,
@@ -97,6 +107,7 @@ class GuestPoliciesState {
     return GuestPoliciesState(
       assignment: (() { final guardedValue = map['assignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestPoliciesAssignment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       guestPolicyId: (() { final guardedValue = map['guestPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -109,4 +120,3 @@ class GuestPoliciesState {
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'get_organization_policy_restore_policy.dart';
 class GetOrganizationPolicyResult {
   final List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
   final String constraint;
+  final String deletionPolicy;
   final String etag;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -21,6 +22,7 @@ class GetOrganizationPolicyResult {
   /// Creates a new [GetOrganizationPolicyResult].
   /// [booleanPolicies] Required.
   /// [constraint] Required.
+  /// [deletionPolicy] Required.
   /// [etag] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [listPolicies] Required.
@@ -31,6 +33,7 @@ class GetOrganizationPolicyResult {
   const GetOrganizationPolicyResult({
     required this.booleanPolicies,
     required this.constraint,
+    required this.deletionPolicy,
     required this.etag,
     required this.id,
     required this.listPolicies,
@@ -44,6 +47,7 @@ class GetOrganizationPolicyResult {
     return <String, dynamic>{
       'booleanPolicies': pulumi.Input.encodeList<GetOrganizationPolicyBooleanPolicy, Map<String, dynamic>>(booleanPolicies, (value) => value.toMap()),
       'constraint': constraint,
+      'deletionPolicy': deletionPolicy,
       'etag': etag,
       'id': id,
       'listPolicies': pulumi.Input.encodeList<GetOrganizationPolicyListPolicy, Map<String, dynamic>>(listPolicies, (value) => value.toMap()),
@@ -58,6 +62,7 @@ class GetOrganizationPolicyResult {
     return GetOrganizationPolicyResult(
       booleanPolicies: pulumi.Input.decodeList<GetOrganizationPolicyBooleanPolicy>(map['booleanPolicies']!, (value) => GetOrganizationPolicyBooleanPolicy.fromMap((value as Map).cast<String, dynamic>())),
       constraint: map['constraint'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       listPolicies: pulumi.Input.decodeList<GetOrganizationPolicyListPolicy>(map['listPolicies']!, (value) => GetOrganizationPolicyListPolicy.fromMap((value as Map).cast<String, dynamic>())),
@@ -68,4 +73,3 @@ class GetOrganizationPolicyResult {
     );
   }
 }
-

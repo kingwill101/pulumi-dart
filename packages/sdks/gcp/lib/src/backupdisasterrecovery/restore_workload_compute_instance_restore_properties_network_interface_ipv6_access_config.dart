@@ -9,7 +9,10 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
   final pulumi.Input<String>? externalIpv6;
   /// (Optional)
   final pulumi.Input<int>? externalIpv6PrefixLength;
-  /// Required. The resource name of the backup instance.
+  /// (Optional, Deprecated)
+  /// The resource name of the backup instance.
+  ///
+  /// &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
   final pulumi.Input<String>? name;
   /// Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
   final pulumi.Input<String>? networkTier;
@@ -24,7 +27,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
   /// [externalIp] (Optional)
   /// [externalIpv6] (Optional)
   /// [externalIpv6PrefixLength] (Optional)
-  /// [name] Required. The resource name of the backup instance.
+  /// [name] (Optional, Deprecated)
   /// [networkTier] Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
   /// [publicPtrDomainName] (Optional)
   /// [setPublicPtr] (Optional)
@@ -66,4 +69,3 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
     );
   }
 }
-

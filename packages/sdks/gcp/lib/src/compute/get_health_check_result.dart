@@ -14,6 +14,7 @@ import 'get_health_check_tcp_health_check.dart';
 class GetHealthCheckResult {
   final int checkIntervalSec;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final List<GetHealthCheckGrpcHealthCheck> grpcHealthChecks;
   final List<GetHealthCheckGrpcTlsHealthCheck> grpcTlsHealthChecks;
@@ -37,6 +38,7 @@ class GetHealthCheckResult {
   /// Creates a new [GetHealthCheckResult].
   /// [checkIntervalSec] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [grpcHealthChecks] Required.
   /// [grpcTlsHealthChecks] Required.
@@ -58,6 +60,7 @@ class GetHealthCheckResult {
   const GetHealthCheckResult({
     required this.checkIntervalSec,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.grpcHealthChecks,
     required this.grpcTlsHealthChecks,
@@ -82,6 +85,7 @@ class GetHealthCheckResult {
     return <String, dynamic>{
       'checkIntervalSec': checkIntervalSec,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'grpcHealthChecks': pulumi.Input.encodeList<GetHealthCheckGrpcHealthCheck, Map<String, dynamic>>(grpcHealthChecks, (value) => value.toMap()),
       'grpcTlsHealthChecks': pulumi.Input.encodeList<GetHealthCheckGrpcTlsHealthCheck, Map<String, dynamic>>(grpcTlsHealthChecks, (value) => value.toMap()),
@@ -107,6 +111,7 @@ class GetHealthCheckResult {
     return GetHealthCheckResult(
       checkIntervalSec: map['checkIntervalSec'] as int,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       grpcHealthChecks: pulumi.Input.decodeList<GetHealthCheckGrpcHealthCheck>(map['grpcHealthChecks']!, (value) => GetHealthCheckGrpcHealthCheck.fromMap((value as Map).cast<String, dynamic>())),
       grpcTlsHealthChecks: pulumi.Input.decodeList<GetHealthCheckGrpcTlsHealthCheck>(map['grpcTlsHealthChecks']!, (value) => GetHealthCheckGrpcTlsHealthCheck.fromMap((value as Map).cast<String, dynamic>())),
@@ -128,4 +133,3 @@ class GetHealthCheckResult {
     );
   }
 }
-

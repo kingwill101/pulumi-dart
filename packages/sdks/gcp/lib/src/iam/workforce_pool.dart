@@ -80,6 +80,21 @@ import 'workforce_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workforcepool" "example" {
+///   workforce_pool_id = "example-pool"
+///   parent            = "organizations/123456789"
+///   location          = "global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +103,8 @@ import 'workforce_pool_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.WorkforcePool;
 /// import com.pulumi.gcp.iam.WorkforcePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +244,31 @@ import 'workforce_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workforcepool" "example" {
+///   workforce_pool_id = "example-pool"
+///   parent            = "organizations/123456789"
+///   location          = "global"
+///   display_name      = "Display name"
+///   description       = "A sample workforce pool."
+///   disabled          = false
+///   session_duration  = "7200s"
+///   access_restrictions = {
+///     allowed_services = [{
+///       "domain" = "backstory.chronicle.security"
+///     }]
+///     disable_programmatic_signin = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +278,9 @@ import 'workforce_pool_state.dart';
 /// import com.pulumi.gcp.iam.WorkforcePool;
 /// import com.pulumi.gcp.iam.WorkforcePoolArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkforcePoolAccessRestrictionsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.iam.inputs.WorkforcePoolAccessRestrictionsAllowedServiceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,16 +335,13 @@ import 'workforce_pool_state.dart';
 /// WorkforcePool can be imported using any of these accepted formats:
 ///
 /// * `locations/{{location}}/workforcePools/{{workforce_pool_id}}`
-///
 /// * `{{location}}/{{workforce_pool_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkforcePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePool:WorkforcePool default locations/{{location}}/workforcePools/{{workforce_pool_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workforcePool:WorkforcePool default {{location}}/{{workforce_pool_id}}
 /// ```
 class WorkforcePool extends pulumi.CustomResource {
@@ -311,6 +349,13 @@ class WorkforcePool extends pulumi.CustomResource {
   /// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
   /// Structure is documented below.
   late final pulumi.Output<WorkforcePoolAccessRestrictions?> accessRestrictions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-specified description of the pool. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -362,6 +407,7 @@ class WorkforcePool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
@@ -397,6 +443,7 @@ class WorkforcePool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');

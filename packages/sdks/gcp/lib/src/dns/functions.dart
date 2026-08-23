@@ -9,6 +9,8 @@ import 'get_managed_zones_args.dart';
 import 'get_managed_zones_result.dart';
 import 'get_record_set_args.dart';
 import 'get_record_set_result.dart';
+import 'get_record_sets_args.dart';
+import 'get_record_sets_result.dart';
 
 /// Get the DNSKEY and DS records of DNSSEC-signed managed zones.
 ///
@@ -107,13 +109,38 @@ import 'get_record_set_result.dart';
 /// 			return err
 /// 		}
 /// 		fooDnsKeys := dns.GetKeysOutput(ctx, dns.GetKeysOutputArgs{
-/// 			ManagedZone: foo.ID(),
+/// 			ManagedZone: foo.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		ctx.Export("fooDnsDsRecord", fooDnsKeys.ApplyT(func(fooDnsKeys dns.GetKeysResult) (*string, error) {
-/// 			return &fooDnsKeys.KeySigningKeys[0].DsRecord, nil
+/// 			return fooDnsKeys.KeySigningKeys[0].DsRecord, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dns_getkeys" "fooDnsKeys" {
+///   managed_zone = gcp_dns_managedzone.foo.id
+/// }
+///
+/// resource "gcp_dns_managedzone" "foo" {
+///   name     = "foobar"
+///   dns_name = "foo.bar."
+///   dnssec_config = {
+///     state         = "on"
+///     non_existence = "nsec3"
+///   }
+/// }
+/// output "fooDnsDsRecord" {
+///   value = data.gcp_dns_getkeys.fooDnsKeys.key_signing_keys[0].ds_record
 /// }
 /// ```
 /// ```java
@@ -127,8 +154,8 @@ import 'get_record_set_result.dart';
 /// import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
 /// import com.pulumi.gcp.dns.DnsFunctions;
 /// import com.pulumi.gcp.dns.inputs.GetKeysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,7 +180,7 @@ import 'get_record_set_result.dart';
 ///             .managedZone(foo.id())
 ///             .build());
 ///
-///         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
+///         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys().get(0).dsRecord()));
 ///     }
 /// }
 /// ```
@@ -256,8 +283,6 @@ Future<GetKeysResult> getKeys(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -286,6 +311,27 @@ Future<GetKeysResult> getKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dns_getmanagedzone" "envDnsZone" {
+///   name = "qa-zone"
+/// }
+///
+/// resource "gcp_dns_recordset" "dns" {
+///   name         ="my-address.${data.gcp_dns_getmanagedzone.envDnsZone.dns_name}"
+///   type         = "TXT"
+///   ttl          = 300
+///   managed_zone = data.gcp_dns_getmanagedzone.envDnsZone.name
+///   rrdatas      = ["test"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +342,8 @@ Future<GetKeysResult> getKeys(
 /// import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -416,6 +462,20 @@ Future<GetManagedZoneResult> getManagedZone(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dns_getmanagedzoneiampolicy" "policy" {
+///   project      = default.project
+///   managed_zone = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -424,8 +484,8 @@ Future<GetManagedZoneResult> getManagedZone(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dns.DnsFunctions;
 /// import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,8 +498,8 @@ Future<GetManagedZoneResult> getManagedZone(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .managedZone(default_.name())
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -525,6 +585,19 @@ Future<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dns_getmanagedzones" "zones" {
+///   project = "my-project-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -533,8 +606,8 @@ Future<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dns.DnsFunctions;
 /// import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -592,9 +665,9 @@ Future<GetManagedZonesResult> getManagedZones(
 /// const sample = gcp.dns.getManagedZone({
 ///     name: "sample-zone",
 /// });
-/// const rs = Promise.all([sample, sample]).then(([sample, sample1]) => gcp.dns.getRecordSet({
+/// const rs = sample.then(sample => gcp.dns.getRecordSet({
 ///     managedZone: sample.name,
-///     name: `my-record.${sample1.dnsName}`,
+///     name: `my-record.${sample.dnsName}`,
 ///     type: "A",
 /// }));
 /// ```
@@ -659,6 +732,24 @@ Future<GetManagedZonesResult> getManagedZones(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dns_getmanagedzone" "sample" {
+///   name = "sample-zone"
+/// }
+/// data "gcp_dns_getrecordset" "rs" {
+///   managed_zone = data.gcp_dns_getmanagedzone.sample.name
+///   name         ="my-record.${data.gcp_dns_getmanagedzone.sample.dns_name}"
+///   type         = "A"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -668,8 +759,8 @@ Future<GetManagedZonesResult> getManagedZones(
 /// import com.pulumi.gcp.dns.DnsFunctions;
 /// import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
 /// import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -722,4 +813,164 @@ Future<GetRecordSetResult> getRecordSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRecordSetResult.fromMap(result);
+}
+
+/// Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.
+///
+/// To get more information about Cloud DNS Record Sets, see:
+///
+/// * [API documentation](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets/list)
+/// * [How-to Guides](https://cloud.google.com/dns/docs/records)
+///
+/// &gt; **Note:** Filtering by `type` when `name` is not set is performed client-side.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const envDnsZone = gcp.dns.getManagedZone({
+///     name: "my-zone-name",
+/// });
+/// const example = envDnsZone.then(envDnsZone => gcp.dns.getRecordSets({
+///     managedZone: envDnsZone.name,
+///     type: "A",
+/// }));
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// env_dns_zone = gcp.dns.get_managed_zone(name="my-zone-name")
+/// example = gcp.dns.get_record_sets(managed_zone=env_dns_zone.name,
+///     type="A")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var envDnsZone = Gcp.Dns.GetManagedZone.Invoke(new()
+///     {
+///         Name = "my-zone-name",
+///     });
+///
+///     var example = Gcp.Dns.GetRecordSets.Invoke(new()
+///     {
+///         ManagedZone = envDnsZone.Apply(getManagedZoneResult => getManagedZoneResult.Name),
+///         Type = "A",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		envDnsZone, err := dns.LookupManagedZone(ctx, &dns.LookupManagedZoneArgs{
+/// 			Name: "my-zone-name",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = dns.GetRecordSets(ctx, &dns.GetRecordSetsArgs{
+/// 			ManagedZone: envDnsZone.Name,
+/// 			Type:        pulumi.StringRef("A"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dns_getmanagedzone" "envDnsZone" {
+///   name = "my-zone-name"
+/// }
+/// data "gcp_dns_getrecordsets" "example" {
+///   managed_zone = data.gcp_dns_getmanagedzone.envDnsZone.name
+///   type         = "A"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dns.DnsFunctions;
+/// import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+/// import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+///             .name("my-zone-name")
+///             .build());
+///
+///         final var example = DnsFunctions.getRecordSets(GetRecordSetsArgs.builder()
+///             .managedZone(envDnsZone.name())
+///             .type("A")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   envDnsZone:
+///     fn::invoke:
+///       function: gcp:dns:getManagedZone
+///       arguments:
+///         name: my-zone-name
+///   example:
+///     fn::invoke:
+///       function: gcp:dns:getRecordSets
+///       arguments:
+///         managedZone: ${envDnsZone.name}
+///         type: A
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_dns_get_record_sets_get_record_sets_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRecordSetsResult> getRecordSets(
+  GetRecordSetsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:dns/getRecordSets:getRecordSets',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRecordSetsResult.fromMap(result);
 }

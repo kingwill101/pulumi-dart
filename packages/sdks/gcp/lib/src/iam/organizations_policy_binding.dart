@@ -4,6 +4,15 @@ import 'organizations_policy_binding_condition.dart';
 import 'organizations_policy_binding_state.dart';
 import 'organizations_policy_binding_target.dart';
 
+/// A policy binding to an organization. This is a Terraform resource, and maps to a policy binding resource in GCP.
+///
+///
+/// To get more information about OrganizationsPolicyBinding, see:
+///
+/// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.policyBindings)
+/// * How-to Guides
+/// * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+///
 /// ## Example Usage
 ///
 /// ### Iam Organizations Policy Binding
@@ -164,6 +173,41 @@ import 'organizations_policy_binding_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_principalaccessboundarypolicy" "pab_policy" {
+///   organization                        = "123456789"
+///   location                            = "global"
+///   display_name                        = "binding for all principals in the Organization"
+///   principal_access_boundary_policy_id = "my-pab-policy"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_iam_principalaccessboundarypolicy.pab_policy]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_iam_organizationspolicybinding" "binding-for-all-org-principals" {
+///   depends_on        = [time_sleep.wait_60_seconds]
+///   organization      = "123456789"
+///   location          = "global"
+///   display_name      = "binding for all principals in the Organization"
+///   policy_kind       = "PRINCIPAL_ACCESS_BOUNDARY"
+///   policy_binding_id = "binding-for-all-org-principals"
+///   policy            ="organizations/123456789/locations/global/principalAccessBoundaryPolicies/${gcp_iam_principalaccessboundarypolicy.pab_policy.principal_access_boundary_policy_id}"
+///   target = {
+///     principal_set = "//cloudresourcemanager.googleapis.com/organizations/123456789"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +222,8 @@ import 'organizations_policy_binding_target.dart';
 /// import com.pulumi.gcp.iam.OrganizationsPolicyBindingArgs;
 /// import com.pulumi.gcp.iam.inputs.OrganizationsPolicyBindingTargetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,23 +305,20 @@ import 'organizations_policy_binding_target.dart';
 /// OrganizationsPolicyBinding can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
-///
 /// * `{{organization}}/{{location}}/{{policy_binding_id}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationsPolicyBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding default organizations/{{organization}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding default {{organization}}/{{location}}/{{policy_binding_id}}
 /// ```
 class OrganizationsPolicyBinding extends pulumi.CustomResource {
   /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -306,8 +347,16 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
   late final pulumi.Output<OrganizationsPolicyBindingCondition?> condition;
   /// Output only. The time when the policy binding was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
   late final pulumi.Output<String> etag;
@@ -352,6 +401,7 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     condition = registerOutput<OrganizationsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
@@ -393,6 +443,7 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     condition = registerOutput<OrganizationsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');

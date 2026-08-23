@@ -10,7 +10,7 @@ class NetworkFirewallPolicyPacketMirroringRuleMatch {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+  /// &lt;a name="nestedMatchLayer4Configs"&gt;&lt;/a&gt;The `layer4Configs` block supports:
   final pulumi.Input<List<NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config>> layer4Configs;
   /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
   final pulumi.Input<List<String>>? srcIpRanges;
@@ -41,4 +41,3 @@ class NetworkFirewallPolicyPacketMirroringRuleMatch {
     );
   }
 }
-

@@ -31,7 +31,7 @@ import 'interconnect_state.dart';
 ///     customerName: "example_customer",
 ///     interconnectType: "DEDICATED",
 ///     linkType: "LINK_TYPE_ETHERNET_10G_LR",
-///     location: project.then(project => `https://www.googleapis.com/compute/v1/${project.id}/global/interconnectLocations/iad-zone1-1`),
+///     location: project.then(project => `https://www.googleapis.com/compute/v1/projects/${project.projectId}/global/interconnectLocations/iad-zone1-1`),
 ///     requestedLinkCount: 1,
 /// });
 /// ```
@@ -45,7 +45,7 @@ import 'interconnect_state.dart';
 ///     customer_name="example_customer",
 ///     interconnect_type="DEDICATED",
 ///     link_type="LINK_TYPE_ETHERNET_10G_LR",
-///     location=f"https://www.googleapis.com/compute/v1/{project.id}/global/interconnectLocations/iad-zone1-1",
+///     location=f"https://www.googleapis.com/compute/v1/projects/{project.project_id}/global/interconnectLocations/iad-zone1-1",
 ///     requested_link_count=1)
 /// ```
 /// ```csharp
@@ -64,7 +64,7 @@ import 'interconnect_state.dart';
 ///         CustomerName = "example_customer",
 ///         InterconnectType = "DEDICATED",
 ///         LinkType = "LINK_TYPE_ETHERNET_10G_LR",
-///         Location = $"https://www.googleapis.com/compute/v1/{project.Apply(getProjectResult => getProjectResult.Id)}/global/interconnectLocations/iad-zone1-1",
+///         Location = $"https://www.googleapis.com/compute/v1/projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/global/interconnectLocations/iad-zone1-1",
 ///         RequestedLinkCount = 1,
 ///     });
 ///
@@ -74,8 +74,6 @@ import 'interconnect_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -92,7 +90,7 @@ import 'interconnect_state.dart';
 /// 			CustomerName:       pulumi.String("example_customer"),
 /// 			InterconnectType:   pulumi.String("DEDICATED"),
 /// 			LinkType:           pulumi.String("LINK_TYPE_ETHERNET_10G_LR"),
-/// 			Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/%v/global/interconnectLocations/iad-zone1-1", project.Id),
+/// 			Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/projects/%v/global/interconnectLocations/iad-zone1-1", project.ProjectId),
 /// 			RequestedLinkCount: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
@@ -100,6 +98,27 @@ import 'interconnect_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_interconnect" "example-interconnect" {
+///   name                 = "example-interconnect"
+///   customer_name        = "example_customer"
+///   interconnect_type    = "DEDICATED"
+///   link_type            = "LINK_TYPE_ETHERNET_10G_LR"
+///   location             ="https://www.googleapis.com/compute/v1/projects/${data.gcp_organizations_getproject.project.project_id}/global/interconnectLocations/iad-zone1-1"
+///   requested_link_count = 1
 /// }
 /// ```
 /// ```java
@@ -112,8 +131,8 @@ import 'interconnect_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.compute.Interconnect;
 /// import com.pulumi.gcp.compute.InterconnectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,7 +152,7 @@ import 'interconnect_state.dart';
 ///             .customerName("example_customer")
 ///             .interconnectType("DEDICATED")
 ///             .linkType("LINK_TYPE_ETHERNET_10G_LR")
-///             .location(String.format("https://www.googleapis.com/compute/v1/%s/global/interconnectLocations/iad-zone1-1", project.id()))
+///             .location(String.format("https://www.googleapis.com/compute/v1/projects/%s/global/interconnectLocations/iad-zone1-1", project.projectId()))
 ///             .requestedLinkCount(1)
 ///             .build());
 ///
@@ -149,7 +168,7 @@ import 'interconnect_state.dart';
 ///       customerName: example_customer
 ///       interconnectType: DEDICATED
 ///       linkType: LINK_TYPE_ETHERNET_10G_LR
-///       location: https://www.googleapis.com/compute/v1/${project.id}/global/interconnectLocations/iad-zone1-1
+///       location: https://www.googleapis.com/compute/v1/projects/${project.projectId}/global/interconnectLocations/iad-zone1-1
 ///       requestedLinkCount: 1
 /// variables:
 ///   project:
@@ -164,31 +183,26 @@ import 'interconnect_state.dart';
 /// Interconnect can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/interconnects/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Interconnect can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/interconnect:Interconnect default projects/{{project}}/global/interconnects/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/interconnect:Interconnect default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/interconnect:Interconnect default {{name}}
 /// ```
 class Interconnect extends pulumi.CustomResource {
+  /// (Optional, Beta)
   /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
   late final pulumi.Output<bool?> aaiEnabled;
   /// Administrative status of the interconnect. When this is set to true, the Interconnect is
   /// functional and can carry traffic. When set to false, no packets can be carried over the
   /// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
   late final pulumi.Output<bool?> adminEnabled;
+  /// (Optional, Beta)
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud
   /// Interconnect connection between Google and your on-premises router.
   /// Structure is documented below.
@@ -209,10 +223,20 @@ class Interconnect extends pulumi.CustomResource {
   /// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
   /// for cross-cloud interconnect.
   late final pulumi.Output<String?> customerName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+  /// Specifies the location inside Google's Networks.
+  late final pulumi.Output<String> effectiveLocation;
   /// A list of outages expected for this Interconnect.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> expectedOutages;
@@ -243,7 +267,7 @@ class Interconnect extends pulumi.CustomResource {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Type of link requested. Note that this field indicates the speed of each of the links in the
   /// bundle, not the speed of the entire bundle. Can take one of the following values:
@@ -252,7 +276,7 @@ class Interconnect extends pulumi.CustomResource {
   /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
   /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
   late final pulumi.Output<String> linkType;
-  /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+  /// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
   /// Specifies the location inside Google's Networks.
   late final pulumi.Output<String> location;
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -345,8 +369,10 @@ class Interconnect extends pulumi.CustomResource {
     circuitInfos = registerOutput<List<Map<String, dynamic>>>('circuitInfos');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerName = registerOutput<String?>('customerName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLocation = registerOutput<String>('effectiveLocation');
     expectedOutages = registerOutput<List<Map<String, dynamic>>>('expectedOutages');
     googleIpAddress = registerOutput<String>('googleIpAddress');
     googleReferenceId = registerOutput<String>('googleReferenceId');
@@ -405,8 +431,10 @@ class Interconnect extends pulumi.CustomResource {
     circuitInfos = registerOutput<List<Map<String, dynamic>>>('circuitInfos');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerName = registerOutput<String?>('customerName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLocation = registerOutput<String>('effectiveLocation');
     expectedOutages = registerOutput<List<Map<String, dynamic>>>('expectedOutages');
     googleIpAddress = registerOutput<String>('googleIpAddress');
     googleReferenceId = registerOutput<String>('googleReferenceId');

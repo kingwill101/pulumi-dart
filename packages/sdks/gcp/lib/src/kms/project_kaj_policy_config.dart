@@ -3,6 +3,22 @@ import 'project_kaj_policy_config_args.dart';
 import 'project_kaj_policy_config_default_key_access_justification_policy.dart';
 import 'project_kaj_policy_config_state.dart';
 
+/// `ProjectKajPolicyConfig` is a project-level singleton resource
+/// used to configure the default KAJ policy of newly created key.
+///
+/// &gt; **Note:**  ProjectKajPolicyConfig cannot be deleted from Google Cloud Platform.
+/// Destroying a Terraform-managed  ProjectKajPolicyConfig will remove it from state but
+/// *will not delete the resource from Google Cloud Platform.*
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+/// To get more information about ProjectKajPolicyConfig, see:
+///
+/// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+/// * How-to Guides
+/// * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+///
 /// ## Example Usage
 ///
 /// ### Kms Project Kaj Policy Config Basic
@@ -201,6 +217,45 @@ import 'project_kaj_policy_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// # Create a project
+/// resource "gcp_organizations_project" "kms_project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// # Enable the Cloud KMS API.
+/// resource "gcp_projects_service" "kms_api_service" {
+///   depends_on                 = [gcp_organizations_project.kms_project]
+///   service                    = "cloudkms.googleapis.com"
+///   project                    = gcp_organizations_project.kms_project.project_id
+///   disable_dependent_services = true
+/// }
+/// resource "time_sleep" "wait_enable_service_api" {
+///   depends_on      = [gcp_projects_service.kms_api_service]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_kms_projectkajpolicyconfig" "example" {
+///   depends_on = [time_sleep.wait_enable_service_api]
+///   project    = gcp_organizations_project.kms_project.project_id
+///   default_key_access_justification_policy = {
+///     allowed_access_reasons = ["CUSTOMER_INITIATED_ACCESS", "GOOGLE_INITIATED_SYSTEM_OPERATION"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +272,8 @@ import 'project_kaj_policy_config_state.dart';
 /// import com.pulumi.gcp.kms.ProjectKajPolicyConfigArgs;
 /// import com.pulumi.gcp.kms.inputs.ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,16 +373,13 @@ import 'project_kaj_policy_config_state.dart';
 /// ProjectKajPolicyConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/kajPolicyConfig`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectKajPolicyConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default projects/{{project}}/kajPolicyConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default {{project}}
 /// ```
 class ProjectKajPolicyConfig extends pulumi.CustomResource {

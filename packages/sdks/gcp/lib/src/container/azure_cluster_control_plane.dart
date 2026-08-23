@@ -15,7 +15,7 @@ class AzureClusterControlPlane {
   final pulumi.Input<AzureClusterControlPlaneMainVolume>? mainVolume;
   /// Proxy configuration for outbound HTTP(S) traffic.
   final pulumi.Input<AzureClusterControlPlaneProxyConfig>? proxyConfig;
-  /// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+  /// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
   final pulumi.Input<List<AzureClusterControlPlaneReplicaPlacement>>? replicaPlacements;
   /// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
   final pulumi.Input<AzureClusterControlPlaneRootVolume>? rootVolume;
@@ -34,7 +34,7 @@ class AzureClusterControlPlane {
   /// [databaseEncryption] Optional. Configuration related to application-layer secrets encryption.
   /// [mainVolume] Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
   /// [proxyConfig] Proxy configuration for outbound HTTP(S) traffic.
-  /// [replicaPlacements] Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+  /// [replicaPlacements] Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
   /// [rootVolume] Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
   /// [sshConfig] SSH configuration for how to access the underlying control plane machines.
   /// [subnetId] The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
@@ -84,4 +84,3 @@ class AzureClusterControlPlane {
     );
   }
 }
-

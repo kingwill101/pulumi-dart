@@ -42,6 +42,7 @@ class AutoscalerAutoscalingPolicy {
   final pulumi.Input<int> minReplicas;
   /// Defines operating mode for this policy.
   final pulumi.Input<String>? mode;
+  /// (Optional, Beta)
   /// Defines scale down controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
@@ -53,6 +54,12 @@ class AutoscalerAutoscalingPolicy {
   /// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
   /// Structure is documented below.
   final pulumi.Input<List<AutoscalerAutoscalingPolicyScalingSchedule>>? scalingSchedules;
+  /// The number of seconds that the autoscaler waits for load stabilization
+  /// before making scale-in decisions.
+  /// This might appear as a delay in scaling in but it is an important mechanism
+  /// for your application to not have fluctuating size due to short term load
+  /// fluctuations.
+  final pulumi.Input<int>? stabilizationPeriod;
 
   /// Creates a new [AutoscalerAutoscalingPolicy].
   /// [cooldownPeriod] The number of seconds that the autoscaler should wait before it
@@ -62,9 +69,10 @@ class AutoscalerAutoscalingPolicy {
   /// [metrics] Configuration parameters of autoscaling based on a custom metric.
   /// [minReplicas] The minimum number of replicas that the autoscaler can scale down
   /// [mode] Defines operating mode for this policy.
-  /// [scaleDownControl] Defines scale down controls to reduce the risk of response latency
+  /// [scaleDownControl] (Optional, Beta)
   /// [scaleInControl] Defines scale in controls to reduce the risk of response latency
   /// [scalingSchedules] Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+  /// [stabilizationPeriod] The number of seconds that the autoscaler waits for load stabilization
   const AutoscalerAutoscalingPolicy({
     this.cooldownPeriod,
     this.cpuUtilization,
@@ -76,6 +84,7 @@ class AutoscalerAutoscalingPolicy {
     this.scaleDownControl,
     this.scaleInControl,
     this.scalingSchedules,
+    this.stabilizationPeriod,
   });
 
   Map<String, dynamic> toMap() {
@@ -90,6 +99,7 @@ class AutoscalerAutoscalingPolicy {
       'scaleDownControl': ?pulumi.Input.mapOptionalInputValue<AutoscalerAutoscalingPolicyScaleDownControl, Map<String, dynamic>>(scaleDownControl, (value) => value.toMap()),
       'scaleInControl': ?pulumi.Input.mapOptionalInputValue<AutoscalerAutoscalingPolicyScaleInControl, Map<String, dynamic>>(scaleInControl, (value) => value.toMap()),
       'scalingSchedules': ?pulumi.Input.mapOptionalInputValue<List<AutoscalerAutoscalingPolicyScalingSchedule>, List<Map<String, dynamic>>>(scalingSchedules, (value) => pulumi.Input.encodeList<AutoscalerAutoscalingPolicyScalingSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stabilizationPeriod': ?stabilizationPeriod,
     };
   }
 
@@ -105,7 +115,7 @@ class AutoscalerAutoscalingPolicy {
       scaleDownControl: (() { final guardedValue = map['scaleDownControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyScaleDownControl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scaleInControl: (() { final guardedValue = map['scaleInControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyScaleInControl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scalingSchedules: (() { final guardedValue = map['scalingSchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutoscalerAutoscalingPolicyScalingSchedule>(guardedValue, (value) => AutoscalerAutoscalingPolicyScalingSchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stabilizationPeriod: (() { final guardedValue = map['stabilizationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
-

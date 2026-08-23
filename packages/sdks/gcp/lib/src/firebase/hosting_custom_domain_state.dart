@@ -26,6 +26,13 @@ class HostingCustomDomainState {
   /// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
   /// days, after which time Hosting removes them completely.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A string that represents the current state of the `CustomDomain` and
   /// allows you to confirm its initial state in requests that would modify it.
   final pulumi.Input<String>? etag;
@@ -99,11 +106,11 @@ class HostingCustomDomainState {
   /// if true, indicates that Hosting's systems are attempting to
   /// make the `CustomDomain`'s state match your preferred state. This is most
   /// frequently `true` when initially provisioning a `CustomDomain` or when creating
-  /// a new SSL certificate to match an updated `cert_preference`
+  /// a new SSL certificate to match an updated `certPreference`
   final pulumi.Input<bool>? reconciling;
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
-  /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
+  /// with an HTTP 301 code, and route traffic to the specified `redirectTarget`
   /// instead.
   final pulumi.Input<String>? redirectTarget;
   /// A set of updates you should make to the domain name's DNS records to
@@ -114,6 +121,9 @@ class HostingCustomDomainState {
   final pulumi.Input<String>? siteId;
   /// The last time the `CustomDomain` was updated.
   final pulumi.Input<String>? updateTime;
+  /// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+  /// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+  /// the `CustomDomain` will be returned and stored in the Terraform state.
   final pulumi.Input<bool>? waitDnsVerification;
 
   /// Creates a new [HostingCustomDomainState].
@@ -122,6 +132,7 @@ class HostingCustomDomainState {
   /// [createTime] The `CustomDomain`'s create time.
   /// [customDomain] The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
   /// [deleteTime] The time the `CustomDomain` was deleted; null for `CustomDomains` that
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [etag] A string that represents the current state of the `CustomDomain` and
   /// [expireTime] The minimum time before a soft-deleted `CustomDomain` is completely removed
   /// [hostState] The host state of your domain name. Host state is determined by checking each
@@ -134,13 +145,14 @@ class HostingCustomDomainState {
   /// [requiredDnsUpdates] A set of updates you should make to the domain name's DNS records to
   /// [siteId] The ID of the site in which to create this custom domain association.
   /// [updateTime] The last time the `CustomDomain` was updated.
-  /// [waitDnsVerification] Optional.
+  /// [waitDnsVerification] If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
   const HostingCustomDomainState({
     this.certPreference,
     this.certs,
     this.createTime,
     this.customDomain,
     this.deleteTime,
+    this.deletionPolicy,
     this.etag,
     this.expireTime,
     this.hostState,
@@ -163,6 +175,7 @@ class HostingCustomDomainState {
       'createTime': ?createTime,
       'customDomain': ?customDomain,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'etag': ?etag,
       'expireTime': ?expireTime,
       'hostState': ?hostState,
@@ -186,6 +199,7 @@ class HostingCustomDomainState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customDomain: (() { final guardedValue = map['customDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostState: (() { final guardedValue = map['hostState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -202,4 +216,3 @@ class HostingCustomDomainState {
     );
   }
 }
-

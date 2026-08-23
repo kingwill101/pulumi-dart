@@ -22,9 +22,9 @@ import 'scope_rbac_role_binding_role.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_77124"});
+/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_63399"});
 /// const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
-///     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_15335",
+///     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_97523",
 ///     scopeId: scope.scopeId,
 ///     user: "test-email@gmail.com",
 ///     role: {
@@ -39,9 +39,9 @@ import 'scope_rbac_role_binding_role.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_77124")
+/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_63399")
 /// scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-///     scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_15335",
+///     scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_97523",
 ///     scope_id=scope.scope_id,
 ///     user="test-email@gmail.com",
 ///     role={
@@ -61,12 +61,12 @@ import 'scope_rbac_role_binding_role.dart';
 /// {
 ///     var scope = new Gcp.GkeHub.Scope("scope", new()
 ///     {
-///         ScopeId = "tf-test-scope_77124",
+///         ScopeId = "tf-test-scope_63399",
 ///     });
 ///
 ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
 ///     {
-///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_15335",
+///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_97523",
 ///         ScopeId = scope.ScopeId,
 ///         User = "test-email@gmail.com",
 ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs
@@ -92,13 +92,13 @@ import 'scope_rbac_role_binding_role.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-/// 			ScopeId: pulumi.String("tf-test-scope_77124"),
+/// 			ScopeId: pulumi.String("tf-test-scope_63399"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
-/// 			ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_15335"),
+/// 			ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_97523"),
 /// 			ScopeId:                scope.ScopeId,
 /// 			User:                   pulumi.String("test-email@gmail.com"),
 /// 			Role: &gkehub.ScopeRbacRoleBindingRoleArgs{
@@ -115,6 +115,30 @@ import 'scope_rbac_role_binding_role.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_scope" "scope" {
+///   scope_id = "tf-test-scope_63399"
+/// }
+/// resource "gcp_gkehub_scoperbacrolebinding" "scope_rbac_role_binding" {
+///   scope_rbac_role_binding_id = "tf-test-scope-rbac-role-binding_97523"
+///   scope_id                   = gcp_gkehub_scope.scope.scope_id
+///   user                       = "test-email@gmail.com"
+///   role = {
+///     predefined_role = "ADMIN"
+///   }
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +150,8 @@ import 'scope_rbac_role_binding_role.dart';
 /// import com.pulumi.gcp.gkehub.ScopeRbacRoleBinding;
 /// import com.pulumi.gcp.gkehub.ScopeRbacRoleBindingArgs;
 /// import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -140,11 +164,11 @@ import 'scope_rbac_role_binding_role.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var scope = new Scope("scope", ScopeArgs.builder()
-///             .scopeId("tf-test-scope_77124")
+///             .scopeId("tf-test-scope_63399")
 ///             .build());
 ///
 ///         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
-///             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_15335")
+///             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_97523")
 ///             .scopeId(scope.scopeId())
 ///             .user("test-email@gmail.com")
 ///             .role(ScopeRbacRoleBindingRoleArgs.builder()
@@ -161,12 +185,12 @@ import 'scope_rbac_role_binding_role.dart';
 ///   scope:
 ///     type: gcp:gkehub:Scope
 ///     properties:
-///       scopeId: tf-test-scope_77124
+///       scopeId: tf-test-scope_63399
 ///   scopeRbacRoleBinding:
 ///     type: gcp:gkehub:ScopeRbacRoleBinding
 ///     name: scope_rbac_role_binding
 ///     properties:
-///       scopeRbacRoleBindingId: tf-test-scope-rbac-role-binding_15335
+///       scopeRbacRoleBindingId: tf-test-scope-rbac-role-binding_97523
 ///       scopeId: ${scope.scopeId}
 ///       user: test-email@gmail.com
 ///       role:
@@ -183,7 +207,7 @@ import 'scope_rbac_role_binding_role.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_20665"});
+/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_31660"});
 /// const rbacrolebindingactuation = new gcp.gkehub.Feature("rbacrolebindingactuation", {
 ///     name: "rbacrolebindingactuation",
 ///     location: "global",
@@ -194,7 +218,7 @@ import 'scope_rbac_role_binding_role.dart';
 ///     },
 /// });
 /// const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
-///     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_85160",
+///     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_97962",
 ///     scopeId: scope.scopeId,
 ///     user: "test-email@gmail.com",
 ///     role: {
@@ -211,7 +235,7 @@ import 'scope_rbac_role_binding_role.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_20665")
+/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_31660")
 /// rbacrolebindingactuation = gcp.gkehub.Feature("rbacrolebindingactuation",
 ///     name="rbacrolebindingactuation",
 ///     location="global",
@@ -221,7 +245,7 @@ import 'scope_rbac_role_binding_role.dart';
 ///         },
 ///     })
 /// scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-///     scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_85160",
+///     scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_97962",
 ///     scope_id=scope.scope_id,
 ///     user="test-email@gmail.com",
 ///     role={
@@ -242,7 +266,7 @@ import 'scope_rbac_role_binding_role.dart';
 /// {
 ///     var scope = new Gcp.GkeHub.Scope("scope", new()
 ///     {
-///         ScopeId = "tf-test-scope_20665",
+///         ScopeId = "tf-test-scope_31660",
 ///     });
 ///
 ///     var rbacrolebindingactuation = new Gcp.GkeHub.Feature("rbacrolebindingactuation", new()
@@ -263,7 +287,7 @@ import 'scope_rbac_role_binding_role.dart';
 ///
 ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
 ///     {
-///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_85160",
+///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_97962",
 ///         ScopeId = scope.ScopeId,
 ///         User = "test-email@gmail.com",
 ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs
@@ -295,7 +319,7 @@ import 'scope_rbac_role_binding_role.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-/// 			ScopeId: pulumi.String("tf-test-scope_20665"),
+/// 			ScopeId: pulumi.String("tf-test-scope_31660"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -315,7 +339,7 @@ import 'scope_rbac_role_binding_role.dart';
 /// 			return err
 /// 		}
 /// 		_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
-/// 			ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_85160"),
+/// 			ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_97962"),
 /// 			ScopeId:                scope.ScopeId,
 /// 			User:                   pulumi.String("test-email@gmail.com"),
 /// 			Role: &gkehub.ScopeRbacRoleBindingRoleArgs{
@@ -334,6 +358,40 @@ import 'scope_rbac_role_binding_role.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_scope" "scope" {
+///   scope_id = "tf-test-scope_31660"
+/// }
+/// resource "gcp_gkehub_feature" "rbacrolebindingactuation" {
+///   name     = "rbacrolebindingactuation"
+///   location = "global"
+///   spec = {
+///     rbacrolebindingactuation = {
+///       allowed_custom_roles = ["my-custom-role"]
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_scoperbacrolebinding" "scope_rbac_role_binding" {
+///   depends_on                 = [gcp_gkehub_feature.rbacrolebindingactuation]
+///   scope_rbac_role_binding_id = "tf-test-scope-rbac-role-binding_97962"
+///   scope_id                   = gcp_gkehub_scope.scope.scope_id
+///   user                       = "test-email@gmail.com"
+///   role = {
+///     custom_role = "my-custom-role"
+///   }
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -350,8 +408,8 @@ import 'scope_rbac_role_binding_role.dart';
 /// import com.pulumi.gcp.gkehub.ScopeRbacRoleBindingArgs;
 /// import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +422,7 @@ import 'scope_rbac_role_binding_role.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var scope = new Scope("scope", ScopeArgs.builder()
-///             .scopeId("tf-test-scope_20665")
+///             .scopeId("tf-test-scope_31660")
 ///             .build());
 ///
 ///         var rbacrolebindingactuation = new Feature("rbacrolebindingactuation", FeatureArgs.builder()
@@ -378,7 +436,7 @@ import 'scope_rbac_role_binding_role.dart';
 ///             .build());
 ///
 ///         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
-///             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_85160")
+///             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_97962")
 ///             .scopeId(scope.scopeId())
 ///             .user("test-email@gmail.com")
 ///             .role(ScopeRbacRoleBindingRoleArgs.builder()
@@ -397,7 +455,7 @@ import 'scope_rbac_role_binding_role.dart';
 ///   scope:
 ///     type: gcp:gkehub:Scope
 ///     properties:
-///       scopeId: tf-test-scope_20665
+///       scopeId: tf-test-scope_31660
 ///   rbacrolebindingactuation:
 ///     type: gcp:gkehub:Feature
 ///     properties:
@@ -411,7 +469,7 @@ import 'scope_rbac_role_binding_role.dart';
 ///     type: gcp:gkehub:ScopeRbacRoleBinding
 ///     name: scope_rbac_role_binding
 ///     properties:
-///       scopeRbacRoleBindingId: tf-test-scope-rbac-role-binding_85160
+///       scopeRbacRoleBindingId: tf-test-scope-rbac-role-binding_97962
 ///       scopeId: ${scope.scopeId}
 ///       user: test-email@gmail.com
 ///       role:
@@ -429,22 +487,15 @@ import 'scope_rbac_role_binding_role.dart';
 /// ScopeRBACRoleBinding can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
-///
 /// * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
-///
 /// * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
+///
 ///
 /// When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
 /// ```
 class ScopeRbacRoleBinding extends pulumi.CustomResource {
@@ -452,6 +503,13 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Time the RBAC Role Binding was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Principal that is be authorized in the cluster (at least of one the oneof
@@ -461,7 +519,7 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
   /// Labels for this ScopeRBACRoleBinding.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name for the RBAC Role Binding
   late final pulumi.Output<String> name;
@@ -507,6 +565,7 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     group = registerOutput<String?>('group');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -547,6 +606,7 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     group = registerOutput<String?>('group');
     labels = registerOutput<Map<String, String>?>('labels');

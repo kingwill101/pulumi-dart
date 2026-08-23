@@ -12,12 +12,21 @@ import 'instance_performance_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_filestore_instance_instance_args_doc}
 class InstanceArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Indicates whether the instance is protected against deletion.
   final pulumi.Input<bool>? deletionProtectionEnabled;
   /// The reason for enabling deletion protection.
   final pulumi.Input<String>? deletionProtectionReason;
   /// A description of the instance.
   final pulumi.Input<String>? description;
+  /// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+  final pulumi.Input<String>? desiredReplicaState;
   /// Directory Services configuration.
   /// Should only be set if protocol is "NFS_V4_1".
   /// Structure is documented below.
@@ -27,7 +36,7 @@ class InstanceArgs {
   /// Structure is documented below.
   final pulumi.Input<InstanceFileShares> fileShares;
   /// Replication configuration, once set, this cannot be updated.
-  /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+  /// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
   /// Structure is documented below.
   final pulumi.Input<InstanceInitialReplication>? initialReplication;
   /// KMS key name used for data encryption.
@@ -35,7 +44,7 @@ class InstanceArgs {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   final pulumi.Input<String>? location;
@@ -79,9 +88,11 @@ class InstanceArgs {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [InstanceArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deletionProtectionEnabled] Indicates whether the instance is protected against deletion.
   /// [deletionProtectionReason] The reason for enabling deletion protection.
   /// [description] A description of the instance.
+  /// [desiredReplicaState] The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
   /// [directoryServices] Directory Services configuration.
   /// [fileShares] File system shares on the instance. For this version, only a
   /// [initialReplication] Replication configuration, once set, this cannot be updated.
@@ -97,9 +108,11 @@ class InstanceArgs {
   /// [tier] The service tier of the instance.
   /// [zone] (Optional, Deprecated)
   const InstanceArgs({
+    this.deletionPolicy,
     this.deletionProtectionEnabled,
     this.deletionProtectionReason,
     this.description,
+    this.desiredReplicaState,
     this.directoryServices,
     required this.fileShares,
     this.initialReplication,
@@ -118,9 +131,11 @@ class InstanceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtectionEnabled': ?deletionProtectionEnabled,
       'deletionProtectionReason': ?deletionProtectionReason,
       'description': ?description,
+      'desiredReplicaState': ?desiredReplicaState,
       'directoryServices': ?pulumi.Input.mapOptionalInputValue<InstanceDirectoryServices, Map<String, dynamic>>(directoryServices, (value) => value.toMap()),
       'fileShares': pulumi.Input.mapInputValue<InstanceFileShares, Map<String, dynamic>>(fileShares, (value) => value.toMap()),
       'initialReplication': ?pulumi.Input.mapOptionalInputValue<InstanceInitialReplication, Map<String, dynamic>>(initialReplication, (value) => value.toMap()),
@@ -140,9 +155,11 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtectionEnabled: (() { final guardedValue = map['deletionProtectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionProtectionReason: (() { final guardedValue = map['deletionProtectionReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      desiredReplicaState: (() { final guardedValue = map['desiredReplicaState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       directoryServices: (() { final guardedValue = map['directoryServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fileShares: pulumi.Input.fromValue(InstanceFileShares.fromMap((map['fileShares']! as Map).cast<String, dynamic>())),
       initialReplication: (() { final guardedValue = map['initialReplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceInitialReplication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -160,4 +177,3 @@ class InstanceArgs {
     );
   }
 }
-

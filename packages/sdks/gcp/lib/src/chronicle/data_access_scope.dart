@@ -114,6 +114,28 @@ import 'data_access_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccessscope" "example" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_scope_id = "scope-id"
+///   description          = "scope-description"
+///   allowed_data_access_labels {
+///     log_type = "GCP_CLOUDAUDIT"
+///   }
+///   allowed_data_access_labels {
+///     log_type = "GITHUB"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +145,8 @@ import 'data_access_scope_state.dart';
 /// import com.pulumi.gcp.chronicle.DataAccessScope;
 /// import com.pulumi.gcp.chronicle.DataAccessScopeArgs;
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeAllowedDataAccessLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,6 +301,31 @@ import 'data_access_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccesslabel" "custom_data_access_label" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_label_id = "label-id"
+///   udm_query            = "principal.hostname=\"google.com\""
+/// }
+/// resource "gcp_chronicle_dataaccessscope" "example" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_scope_id = "scope-id"
+///   description          = "scope-description"
+///   allowed_data_access_labels {
+///     data_access_label = googleChronicleDataAccessLabel.customDataAccessLabel.dataAccessLabelId
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -290,8 +337,8 @@ import 'data_access_scope_state.dart';
 /// import com.pulumi.gcp.chronicle.DataAccessScope;
 /// import com.pulumi.gcp.chronicle.DataAccessScopeArgs;
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeAllowedDataAccessLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -316,7 +363,7 @@ import 'data_access_scope_state.dart';
 ///             .dataAccessScopeId("scope-id")
 ///             .description("scope-description")
 ///             .allowedDataAccessLabels(DataAccessScopeAllowedDataAccessLabelArgs.builder()
-///                 .dataAccessLabel(googleChronicleDataAccessLabel.customDataAccessLabel().dataAccessLabelId())
+///                 .dataAccessLabel(googleChronicleDataAccessLabel.get("customDataAccessLabel").get("dataAccessLabelId"))
 ///                 .build())
 ///             .build());
 ///
@@ -428,6 +475,25 @@ import 'data_access_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccessscope" "example" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_scope_id = "scope-id"
+///   description          = "scope-description"
+///   allowed_data_access_labels {
+///     asset_namespace = "my-namespace"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -437,8 +503,8 @@ import 'data_access_scope_state.dart';
 /// import com.pulumi.gcp.chronicle.DataAccessScope;
 /// import com.pulumi.gcp.chronicle.DataAccessScopeArgs;
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeAllowedDataAccessLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -573,6 +639,28 @@ import 'data_access_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccessscope" "example" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_scope_id = "scope-id"
+///   description          = "scope-description"
+///   allowed_data_access_labels {
+///     ingestion_label = {
+///       ingestion_label_key   = "ingestion_key"
+///       ingestion_label_value = "ingestion_value"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -583,8 +671,8 @@ import 'data_access_scope_state.dart';
 /// import com.pulumi.gcp.chronicle.DataAccessScopeArgs;
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeAllowedDataAccessLabelArgs;
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -799,6 +887,44 @@ import 'data_access_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccesslabel" "custom_data_access_label" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_label_id = "label-id"
+///   udm_query            = "principal.hostname=\"google.com\""
+/// }
+/// resource "gcp_chronicle_dataaccessscope" "example" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_scope_id = "scope-id"
+///   description          = "scope-description"
+///   allow_all            = true
+///   denied_data_access_labels {
+///     log_type = "GCP_CLOUDAUDIT"
+///   }
+///   denied_data_access_labels {
+///     data_access_label = googleChronicleDataAccessLabel.customDataAccessLabel.dataAccessLabelId
+///   }
+///   denied_data_access_labels {
+///     ingestion_label = {
+///       ingestion_label_key   = "ingestion_key"
+///       ingestion_label_value = "ingestion_value"
+///     }
+///   }
+///   denied_data_access_labels {
+///     asset_namespace = "my-namespace"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -811,8 +937,8 @@ import 'data_access_scope_state.dart';
 /// import com.pulumi.gcp.chronicle.DataAccessScopeArgs;
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeDeniedDataAccessLabelArgs;
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -842,7 +968,7 @@ import 'data_access_scope_state.dart';
 ///                     .logType("GCP_CLOUDAUDIT")
 ///                     .build(),
 ///                 DataAccessScopeDeniedDataAccessLabelArgs.builder()
-///                     .dataAccessLabel(googleChronicleDataAccessLabel.customDataAccessLabel().dataAccessLabelId())
+///                     .dataAccessLabel(googleChronicleDataAccessLabel.get("customDataAccessLabel").get("dataAccessLabelId"))
 ///                     .build(),
 ///                 DataAccessScopeDeniedDataAccessLabelArgs.builder()
 ///                     .ingestionLabel(DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs.builder()
@@ -891,38 +1017,31 @@ import 'data_access_scope_state.dart';
 /// DataAccessScope can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}`
-///
 /// * `{{location}}/{{instance}}/{{data_access_scope_id}}`
+///
 ///
 /// When using the `pulumi import` command, DataAccessScope can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{location}}/{{instance}}/{{data_access_scope_id}}
 /// ```
 class DataAccessScope extends pulumi.CustomResource {
-  /// Optional. Whether or not the scope allows all labels, allow_all and
-  /// allowed_data_access_labels are mutually exclusive and one of them must be
-  /// present. denied_data_access_labels can still be used along with allow_all.
+  /// Optional. Whether or not the scope allows all labels, allowAll and
+  /// allowedDataAccessLabels are mutually exclusive and one of them must be
+  /// present. deniedDataAccessLabels can still be used along with allow_all.
   /// When combined with denied_data_access_labels, access will be granted to all
   /// data that doesn't have labels mentioned in denied_data_access_labels. E.g.:
-  /// A customer with scope with denied labels A and B and allow_all will be able
+  /// A customer with scope with denied labels A and B and allowAll will be able
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
   late final pulumi.Output<bool?> allowAll;
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
   /// The logical operator for evaluation of the allowed labels is OR.
-  /// Either allow_all or allowed_data_access_labels needs to be provided.
+  /// Either allowAll or allowedDataAccessLabels needs to be provided.
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
@@ -935,6 +1054,13 @@ class DataAccessScope extends pulumi.CustomResource {
   /// of the scope resource.
   /// Needs to be compliant with https://google.aip.dev/122
   late final pulumi.Output<String> dataAccessScopeId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The denied labels for the scope.
   /// The logical operator for evaluation of the denied labels is AND.
   /// E.g.: A customer with scope with denied labels A and B won't be able
@@ -981,6 +1107,7 @@ class DataAccessScope extends pulumi.CustomResource {
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessScopeId = registerOutput<String>('dataAccessScopeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deniedDataAccessLabels = registerOutput<List<Map<String, dynamic>>?>('deniedDataAccessLabels');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -1020,6 +1147,7 @@ class DataAccessScope extends pulumi.CustomResource {
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessScopeId = registerOutput<String>('dataAccessScopeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deniedDataAccessLabels = registerOutput<List<Map<String, dynamic>>?>('deniedDataAccessLabels');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

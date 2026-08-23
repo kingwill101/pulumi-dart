@@ -8,6 +8,7 @@ import 'mirroring_endpoint_state.dart';
 /// global "mirroring broker" service.
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Security Mirroring Endpoint Basic
@@ -135,7 +136,7 @@ import 'mirroring_endpoint_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "deployment_group", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    network.ID(),
+/// 			Network:                    network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -145,7 +146,7 @@ import 'mirroring_endpoint_state.dart';
 /// 			Location:                 pulumi.String("global"),
 /// 			Type:                     pulumi.String("BROKER"),
 /// 			MirroringDeploymentGroups: pulumi.StringArray{
-/// 				deploymentGroup.ID(),
+/// 				deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -154,7 +155,7 @@ import 'mirroring_endpoint_state.dart';
 /// 		_, err = networksecurity.NewMirroringEndpoint(ctx, "default", &networksecurity.MirroringEndpointArgs{
 /// 			MirroringEndpointId:    pulumi.String("example-endpoint"),
 /// 			Location:               pulumi.String("us-west2-a"),
-/// 			MirroringEndpointGroup: endpointGroup.ID(),
+/// 			MirroringEndpointGroup: endpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:            pulumi.String("some description"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -165,6 +166,40 @@ import 'mirroring_endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "example-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networksecurity_mirroringdeploymentgroup" "deployment_group" {
+///   mirroring_deployment_group_id = "example-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_networksecurity_mirroringendpointgroup" "endpoint_group" {
+///   mirroring_endpoint_group_id = "example-eg"
+///   location                    = "global"
+///   type                        = "BROKER"
+///   mirroring_deployment_groups = [gcp_networksecurity_mirroringdeploymentgroup.deployment_group.id]
+/// }
+/// resource "gcp_networksecurity_mirroringendpoint" "default" {
+///   mirroring_endpoint_id    = "example-endpoint"
+///   location                 = "us-west2-a"
+///   mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.endpoint_group.id
+///   description              = "some description"
+///   labels = {
+///     "foo" = "bar"
+///   }
 /// }
 /// ```
 /// ```java
@@ -181,8 +216,8 @@ import 'mirroring_endpoint_state.dart';
 /// import com.pulumi.gcp.networksecurity.MirroringEndpointGroupArgs;
 /// import com.pulumi.gcp.networksecurity.MirroringEndpoint;
 /// import com.pulumi.gcp.networksecurity.MirroringEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,28 +298,28 @@ import 'mirroring_endpoint_state.dart';
 /// MirroringEndpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}`
-///
 /// * `{{project}}/{{location}}/{{mirroring_endpoint_id}}`
-///
 /// * `{{location}}/{{mirroring_endpoint_id}}`
+///
 ///
 /// When using the `pulumi import` command, MirroringEndpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{project}}/{{location}}/{{mirroring_endpoint_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{location}}/{{mirroring_endpoint_id}}
 /// ```
 class MirroringEndpoint extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description of the endpoint.
   /// Used as additional context for the endpoint.
   late final pulumi.Output<String?> description;
@@ -292,7 +327,7 @@ class MirroringEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The cloud location of the endpoint, e.g. `us-central1-a` or `asia-south1-b`.
   late final pulumi.Output<String> location;
@@ -347,6 +382,7 @@ class MirroringEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -385,6 +421,7 @@ class MirroringEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

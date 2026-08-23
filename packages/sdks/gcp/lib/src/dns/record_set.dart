@@ -3,6 +3,11 @@ import 'record_set_args.dart';
 import 'record_set_routing_policy.dart';
 import 'record_set_state.dart';
 
+/// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/docs/records/) and
+/// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+///
+/// &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including the default records) for the given type will be overwritten when you create this resource in Terraform. In addition, the Google Cloud DNS API requires NS and SOA records to be present at all times, so Terraform will not actually remove NS or SOA records on the root of the zone during destroy but will report that it did.
+///
 /// ## Example Usage
 ///
 /// ### Binding a DNS name to the ephemeral IP of a new instance:
@@ -167,9 +172,9 @@ import 'record_set_state.dart';
 /// 			Ttl:         pulumi.Int(300),
 /// 			ManagedZone: prod.Name,
 /// 			Rrdatas: pulumi.StringArray{
-/// 				pulumi.String(frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-/// 					return &networkInterfaces[0].AccessConfigs[0].NatIp, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+/// 					return networkInterfaces[0].AccessConfigs[0].NatIp, nil
+/// 				}).(pulumi.StringPtrOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -177,6 +182,42 @@ import 'record_set_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "frontend" {
+///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   rrdatas      = [gcp_compute_instance.frontend.network_interfaces[0].access_configs[0].nat_ip]
+/// }
+/// resource "gcp_compute_instance" "frontend" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = "default"
+///   }
+///   name         = "frontend"
+///   machine_type = "g1-small"
+///   zone         = "us-central1-b"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
 /// }
 /// ```
 /// ```java
@@ -188,14 +229,15 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.dns.ManagedZone;
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,7 +275,7 @@ import 'record_set_state.dart';
 ///             .type("A")
 ///             .ttl(300)
 ///             .managedZone(prod.name())
-///             .rrdatas(frontendInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].accessConfigs()[0].natIp()))
+///             .rrdatas(frontendInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).accessConfigs().get(0).natIp()))
 ///             .build());
 ///
 ///     }
@@ -370,6 +412,27 @@ import 'record_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "a" {
+///   name         ="backend.${gcp_dns_managedzone.prod.dns_name}"
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   type         = "A"
+///   ttl          = 300
+///   rrdatas      = ["8.8.8.8"]
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +443,8 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -542,6 +605,27 @@ import 'record_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "mx" {
+///   name         = gcp_dns_managedzone.prod.dns_name
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   type         = "MX"
+///   ttl          = 3600
+///   rrdatas      = ["1 aspmx.l.google.com.", "5 alt1.aspmx.l.google.com.", "5 alt2.aspmx.l.google.com.", "10 alt3.aspmx.l.google.com.", "10 alt4.aspmx.l.google.com."]
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,8 +636,8 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -709,6 +793,27 @@ import 'record_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "spf" {
+///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   type         = "TXT"
+///   ttl          = 300
+///   rrdatas      = ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""]
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -719,8 +824,8 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -867,6 +972,27 @@ import 'record_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "cname" {
+///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   type         = "CNAME"
+///   ttl          = 300
+///   rrdatas      = ["frontend.mydomain.com."]
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -877,8 +1003,8 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1018,8 +1144,6 @@ import 'record_set_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1055,6 +1179,31 @@ import 'record_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "geo" {
+///   name         ="backend.${prod.dnsName}"
+///   managed_zone = prod.name
+///   type         = "A"
+///   ttl          = 300
+///   routing_policy = {
+///     geos = [{
+///       "location" = "asia-east1"
+///       "rrdatas"  = ["10.128.1.1"]
+///       }, {
+///       "location" = "us-central1"
+///       "rrdatas"  = ["10.130.1.1"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1064,8 +1213,9 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
 /// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyGeoArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1078,8 +1228,8 @@ import 'record_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var geo = new RecordSet("geo", RecordSetArgs.builder()
-///             .name(String.format("backend.%s", prod.dnsName()))
-///             .managedZone(prod.name())
+///             .name(String.format("backend.%s", prod.get("dnsName")))
+///             .managedZone(prod.get("name"))
 ///             .type("A")
 ///             .ttl(300)
 ///             .routingPolicy(RecordSetRoutingPolicyArgs.builder()
@@ -1356,7 +1506,7 @@ import 'record_set_state.dart';
 /// 			Name:                pulumi.String("prod-ilb"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      prodRegionBackendService.ID(),
+/// 			BackendService:      prodRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             prodNetwork.Name,
 /// 			AllowGlobalAccess:   pulumi.Bool(true),
@@ -1381,7 +1531,7 @@ import 'record_set_state.dart';
 /// 								IpAddress:        prodForwardingRule.IpAddress,
 /// 								Port:             pulumi.String("80"),
 /// 								IpProtocol:       pulumi.String("tcp"),
-/// 								NetworkUrl:       prodNetwork.ID(),
+/// 								NetworkUrl:       prodNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 								Project:          prodForwardingRule.Project,
 /// 								Region:           prodForwardingRule.Region,
 /// 							},
@@ -1411,6 +1561,66 @@ import 'record_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "a" {
+///   name         ="backend.${gcp_dns_managedzone.prod.dns_name}"
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   type         = "A"
+///   ttl          = 300
+///   routing_policy = {
+///     primary_backup = {
+///       trickle_ratio = 0.1
+///       primary = {
+///         internal_load_balancers = [{
+///           "loadBalancerType" = "regionalL4ilb"
+///           "ipAddress"        = gcp_compute_forwardingrule.prod.ip_address
+///           "port"             = "80"
+///           "ipProtocol"       = "tcp"
+///           "networkUrl"       = gcp_compute_network.prod.id
+///           "project"          = gcp_compute_forwardingrule.prod.project
+///           "region"           = gcp_compute_forwardingrule.prod.region
+///         }]
+///       }
+///       backup_geos = [{
+///         "location" = "asia-east1"
+///         "rrdatas"  = ["10.128.1.1"]
+///         }, {
+///         "location" = "us-west1"
+///         "rrdatas"  = ["10.130.1.1"]
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name       = "prod-zone"
+///   dns_name   = "prod.mydomain.com."
+///   visibility = "private"
+/// }
+/// resource "gcp_compute_forwardingrule" "prod" {
+///   name                  = "prod-ilb"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.prod.id
+///   all_ports             = true
+///   network               = gcp_compute_network.prod.name
+///   allow_global_access   = true
+/// }
+/// resource "gcp_compute_regionbackendservice" "prod" {
+///   name   = "prod-backend"
+///   region = "us-central1"
+/// }
+/// resource "gcp_compute_network" "prod" {
+///   name = "prod-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1430,8 +1640,10 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
 /// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
 /// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs;
+/// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1753,7 +1965,7 @@ import 'record_set_state.dart';
 /// 			Type:        pulumi.String("A"),
 /// 			Ttl:         pulumi.Int(300),
 /// 			RoutingPolicy: &dns.RecordSetRoutingPolicyArgs{
-/// 				HealthCheck: http_health_check.ID(),
+/// 				HealthCheck: http_health_check.ID().ToIDOutput().ToStringOutput(),
 /// 				PrimaryBackup: &dns.RecordSetRoutingPolicyPrimaryBackupArgs{
 /// 					TrickleRatio: pulumi.Float64(0.1),
 /// 					Primary: &dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{
@@ -1781,6 +1993,52 @@ import 'record_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_recordset" "a" {
+///   name         ="backend.${gcp_dns_managedzone.prod.dns_name}"
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   type         = "A"
+///   ttl          = 300
+///   routing_policy = {
+///     health_check = gcp_compute_healthcheck.http-health-check.id
+///     primary_backup = {
+///       trickle_ratio = 0.1
+///       primary = {
+///         external_endpoints = ["10.128.1.1"]
+///       }
+///       backup_geos = [{
+///         "location" = "us-west1"
+///         "healthCheckedTargets" = {
+///           "externalEndpoints" = ["10.130.1.1"]
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "http-health-check" {
+///   name                = "http-health-check"
+///   description         = "Health check via http"
+///   timeout_sec         = 5
+///   check_interval_sec  = 30
+///   healthy_threshold   = 4
+///   unhealthy_threshold = 5
+///   http_health_check = {
+///     port_specification = "USE_SERVING_PORT"
+///   }
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1797,8 +2055,10 @@ import 'record_set_state.dart';
 /// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
 /// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
 /// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs;
+/// import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1897,27 +2157,27 @@ import 'record_set_state.dart';
 /// DNS record sets can be imported using either of these accepted formats:
 ///
 /// * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}/{{type}}`
-///
 /// * `{{zone}}/{{name}}/{{type}}`
+///
 ///
 /// When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{zone}}/{{name}}/{{type}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
 /// ```
 ///
 /// Note: The record name must include the trailing dot at the end.
 class RecordSet extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the zone in which this record set will
   /// reside.
   late final pulumi.Output<String> managedZone;
@@ -1930,6 +2190,8 @@ class RecordSet extends pulumi.CustomResource {
   /// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
   /// Structure is documented below.
   late final pulumi.Output<RecordSetRoutingPolicy?> routingPolicy;
+  /// The string data for the records in this record set
+  /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
   late final pulumi.Output<List<String>?> rrdatas;
   /// The time-to-live of this record set (seconds).
   late final pulumi.Output<int?> ttl;
@@ -1952,6 +2214,7 @@ class RecordSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1984,6 +2247,7 @@ class RecordSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

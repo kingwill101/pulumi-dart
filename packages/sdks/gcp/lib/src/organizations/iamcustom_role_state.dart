@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IAMCustomRoleState {
   /// (Optional) The current deleted state of the role.
   final pulumi.Input<bool>? deleted;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description for the role.
   final pulumi.Input<String>? description;
   /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
@@ -25,6 +32,7 @@ class IAMCustomRoleState {
 
   /// Creates a new [IAMCustomRoleState].
   /// [deleted] (Optional) The current deleted state of the role.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] A human-readable description for the role.
   /// [name] The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
   /// [orgId] The numeric ID of the organization in which you want to create a custom role.
@@ -34,6 +42,7 @@ class IAMCustomRoleState {
   /// [title] A human-readable title for the role.
   const IAMCustomRoleState({
     this.deleted,
+    this.deletionPolicy,
     this.description,
     this.name,
     this.orgId,
@@ -46,6 +55,7 @@ class IAMCustomRoleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deleted': ?deleted,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'orgId': ?orgId,
@@ -59,6 +69,7 @@ class IAMCustomRoleState {
   factory IAMCustomRoleState.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleState(
       deleted: (() { final guardedValue = map['deleted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -69,4 +80,3 @@ class IAMCustomRoleState {
     );
   }
 }
-

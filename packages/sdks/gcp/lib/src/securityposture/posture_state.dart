@@ -7,6 +7,13 @@ import 'posture_policy_set.dart';
 class PostureState {
   /// Time the Posture was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the posture.
   final pulumi.Input<String>? description;
   /// For Resource freshness validation (https://google.aip.dev/154)
@@ -35,6 +42,7 @@ class PostureState {
 
   /// Creates a new [PostureState].
   /// [createTime] Time the Posture was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the posture.
   /// [etag] For Resource freshness validation (https://google.aip.dev/154)
   /// [location] Location of the resource, eg: global.
@@ -48,6 +56,7 @@ class PostureState {
   /// [updateTime] Time the Posture was updated in UTC.
   const PostureState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.etag,
     this.location,
@@ -64,6 +73,7 @@ class PostureState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'etag': ?etag,
       'location': ?location,
@@ -81,6 +91,7 @@ class PostureState {
   factory PostureState.fromMap(Map<String, dynamic> map) {
     return PostureState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -95,4 +106,3 @@ class PostureState {
     );
   }
 }
-

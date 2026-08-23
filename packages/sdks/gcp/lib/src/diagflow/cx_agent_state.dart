@@ -27,7 +27,28 @@ class CxAgentState {
   /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// for a list of the currently supported language codes. This field cannot be updated after creation.
   final pulumi.Input<String>? defaultLanguageCode;
+  /// If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+  /// Otherwise, the chat engine will persist.
+  ///
+  /// This virtual field addresses a critical dependency chain: `agent` &gt; `engine` &gt; `data store`. The chat engine is automatically
+  /// provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+  /// resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+  /// deleteChatEngineOnDestroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+  /// using it. This setting ensures that the entire dependency chain can be properly torn down.
+  /// See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+  ///
+  /// Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+  /// or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+  /// or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+  /// The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
   final pulumi.Input<bool>? deleteChatEngineOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
   final pulumi.Input<String>? description;
   /// The human-readable name of the agent, unique within the location.
@@ -39,7 +60,7 @@ class CxAgentState {
   /// (Optional, Deprecated)
   /// Determines whether this agent should log conversation queries.
   ///
-  /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+  /// &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
   final pulumi.Input<bool>? enableStackdriverLogging;
   /// Gen App Builder-related agent-level settings.
   /// Structure is documented below.
@@ -90,7 +111,8 @@ class CxAgentState {
   /// [avatarUri] The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
   /// [clientCertificateSettings] Settings for custom client certificates.
   /// [defaultLanguageCode] The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-  /// [deleteChatEngineOnDestroy] Optional.
+  /// [deleteChatEngineOnDestroy] If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
   /// [displayName] The human-readable name of the agent, unique within the location.
   /// [enableMultiLanguageTraining] Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
@@ -119,6 +141,7 @@ class CxAgentState {
     this.clientCertificateSettings,
     this.defaultLanguageCode,
     this.deleteChatEngineOnDestroy,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.enableMultiLanguageTraining,
@@ -150,6 +173,7 @@ class CxAgentState {
       'clientCertificateSettings': ?pulumi.Input.mapOptionalInputValue<CxAgentClientCertificateSettings, Map<String, dynamic>>(clientCertificateSettings, (value) => value.toMap()),
       'defaultLanguageCode': ?defaultLanguageCode,
       'deleteChatEngineOnDestroy': ?deleteChatEngineOnDestroy,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'enableMultiLanguageTraining': ?enableMultiLanguageTraining,
@@ -182,6 +206,7 @@ class CxAgentState {
       clientCertificateSettings: (() { final guardedValue = map['clientCertificateSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxAgentClientCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultLanguageCode: (() { final guardedValue = map['defaultLanguageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteChatEngineOnDestroy: (() { final guardedValue = map['deleteChatEngineOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableMultiLanguageTraining: (() { final guardedValue = map['enableMultiLanguageTraining']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -206,4 +231,3 @@ class CxAgentState {
     );
   }
 }
-

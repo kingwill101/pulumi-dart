@@ -11,6 +11,13 @@ import 'task_trigger_spec.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataplex_task_task_args_doc}
 class TaskArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description of the task.
   final pulumi.Input<String>? description;
   /// User friendly display name.
@@ -21,7 +28,7 @@ class TaskArgs {
   /// User-defined labels for the task.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The lake in which the task will be created in.
   final pulumi.Input<String>? lake;
@@ -43,6 +50,7 @@ class TaskArgs {
   final pulumi.Input<TaskTriggerSpec> triggerSpec;
 
   /// Creates a new [TaskArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description of the task.
   /// [displayName] User friendly display name.
   /// [executionSpec] Configuration for the cluster
@@ -55,6 +63,7 @@ class TaskArgs {
   /// [taskId] The task Id of the task.
   /// [triggerSpec] Configuration for the cluster
   const TaskArgs({
+    this.deletionPolicy,
     this.description,
     this.displayName,
     required this.executionSpec,
@@ -70,6 +79,7 @@ class TaskArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'executionSpec': pulumi.Input.mapInputValue<TaskExecutionSpec, Map<String, dynamic>>(executionSpec, (value) => value.toMap()),
@@ -86,6 +96,7 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionSpec: pulumi.Input.fromValue(TaskExecutionSpec.fromMap((map['executionSpec']! as Map).cast<String, dynamic>())),
@@ -100,4 +111,3 @@ class TaskArgs {
     );
   }
 }
-

@@ -19,6 +19,13 @@ class EntitlementArgs {
   /// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
   /// Structure is documented below.
   final pulumi.Input<EntitlementApprovalWorkflow>? approvalWorkflow;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Who can create Grants using Entitlement. This list should contain at most one entry
   /// Structure is documented below.
   final pulumi.Input<List<EntitlementEligibleUser>> eligibleUsers;
@@ -44,6 +51,7 @@ class EntitlementArgs {
   /// Creates a new [EntitlementArgs].
   /// [additionalNotificationTargets] AdditionalNotificationTargets includes email addresses to be notified.
   /// [approvalWorkflow] The approvals needed before access will be granted to a requester.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [eligibleUsers] Who can create Grants using Entitlement. This list should contain at most one entry
   /// [entitlementId] The ID to use for this Entitlement. This will become the last part of the resource name.
   /// [location] The region of the Entitlement resource.
@@ -54,6 +62,7 @@ class EntitlementArgs {
   const EntitlementArgs({
     this.additionalNotificationTargets,
     this.approvalWorkflow,
+    this.deletionPolicy,
     required this.eligibleUsers,
     required this.entitlementId,
     required this.location,
@@ -67,6 +76,7 @@ class EntitlementArgs {
     return <String, dynamic>{
       'additionalNotificationTargets': ?pulumi.Input.mapOptionalInputValue<EntitlementAdditionalNotificationTargets, Map<String, dynamic>>(additionalNotificationTargets, (value) => value.toMap()),
       'approvalWorkflow': ?pulumi.Input.mapOptionalInputValue<EntitlementApprovalWorkflow, Map<String, dynamic>>(approvalWorkflow, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'eligibleUsers': pulumi.Input.mapInputValue<List<EntitlementEligibleUser>, List<Map<String, dynamic>>>(eligibleUsers, (value) => pulumi.Input.encodeList<EntitlementEligibleUser, Map<String, dynamic>>(value, (value) => value.toMap())),
       'entitlementId': entitlementId,
       'location': location,
@@ -81,6 +91,7 @@ class EntitlementArgs {
     return EntitlementArgs(
       additionalNotificationTargets: (() { final guardedValue = map['additionalNotificationTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       approvalWorkflow: (() { final guardedValue = map['approvalWorkflow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eligibleUsers: pulumi.Input.fromValue(pulumi.Input.decodeList<EntitlementEligibleUser>(map['eligibleUsers']!, (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>()))),
       entitlementId: pulumi.Input.fromValue(map['entitlementId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -91,4 +102,3 @@ class EntitlementArgs {
     );
   }
 }
-

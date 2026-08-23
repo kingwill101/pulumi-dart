@@ -11,6 +11,13 @@ import 'environment_storage_config.dart';
 class EnvironmentArgs {
   /// Configuration parameters for this environment.
   final pulumi.Input<EnvironmentConfig>? config;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -27,6 +34,7 @@ class EnvironmentArgs {
 
   /// Creates a new [EnvironmentArgs].
   /// [config] Configuration parameters for this environment.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [labels] User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
   /// [name] Name of the environment.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -34,6 +42,7 @@ class EnvironmentArgs {
   /// [storageConfig] Configuration options for storage used by Composer environment.
   const EnvironmentArgs({
     this.config,
+    this.deletionPolicy,
     this.labels,
     this.name,
     this.project,
@@ -44,6 +53,7 @@ class EnvironmentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'config': ?pulumi.Input.mapOptionalInputValue<EnvironmentConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'labels': ?labels,
       'name': ?name,
       'project': ?project,
@@ -55,6 +65,7 @@ class EnvironmentArgs {
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -63,4 +74,3 @@ class EnvironmentArgs {
     );
   }
 }
-

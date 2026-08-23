@@ -20,6 +20,13 @@ class InsightsDatasetConfigState {
   final pulumi.Input<String>? datasetConfigId;
   /// State of the DatasetConfig.
   final pulumi.Input<String>? datasetConfigState;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
   final pulumi.Input<String>? description;
   /// Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -39,6 +46,11 @@ class InsightsDatasetConfigState {
   final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageLocations>? includeCloudStorageLocations;
   /// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
   final pulumi.Input<bool>? includeNewlyCreatedBuckets;
+  /// A boolean terraform only flag to link/unlink dataset.
+  ///
+  /// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+  /// &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+  /// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
   final pulumi.Input<bool>? linkDataset;
   /// Details of the linked DatasetConfig.
   /// Structure is documented below.
@@ -73,6 +85,7 @@ class InsightsDatasetConfigState {
   /// [createTime] The UTC time at which the DatasetConfig was created. This is auto-populated.
   /// [datasetConfigId] The user-defined ID of the DatasetConfig
   /// [datasetConfigState] State of the DatasetConfig.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
   /// [excludeCloudStorageBuckets] Defined the options for excluding cloud storage buckets for the DatasetConfig.
   /// [excludeCloudStorageLocations] Defines the options for excluding cloud storage locations for the DatasetConfig.
@@ -80,7 +93,7 @@ class InsightsDatasetConfigState {
   /// [includeCloudStorageBuckets] Defines the options for including cloud storage buckets for the DatasetConfig.
   /// [includeCloudStorageLocations] Defines the options for including cloud storage locations for the DatasetConfig.
   /// [includeNewlyCreatedBuckets] If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
-  /// [linkDataset] Optional.
+  /// [linkDataset] A boolean terraform only flag to link/unlink dataset.
   /// [links] Details of the linked DatasetConfig.
   /// [location] The location of the DatasetConfig.
   /// [name] The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
@@ -97,6 +110,7 @@ class InsightsDatasetConfigState {
     this.createTime,
     this.datasetConfigId,
     this.datasetConfigState,
+    this.deletionPolicy,
     this.description,
     this.excludeCloudStorageBuckets,
     this.excludeCloudStorageLocations,
@@ -124,6 +138,7 @@ class InsightsDatasetConfigState {
       'createTime': ?createTime,
       'datasetConfigId': ?datasetConfigId,
       'datasetConfigState': ?datasetConfigState,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'excludeCloudStorageBuckets': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigExcludeCloudStorageBuckets, Map<String, dynamic>>(excludeCloudStorageBuckets, (value) => value.toMap()),
       'excludeCloudStorageLocations': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigExcludeCloudStorageLocations, Map<String, dynamic>>(excludeCloudStorageLocations, (value) => value.toMap()),
@@ -152,6 +167,7 @@ class InsightsDatasetConfigState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetConfigId: (() { final guardedValue = map['datasetConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetConfigState: (() { final guardedValue = map['datasetConfigState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       excludeCloudStorageBuckets: (() { final guardedValue = map['excludeCloudStorageBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       excludeCloudStorageLocations: (() { final guardedValue = map['excludeCloudStorageLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsDatasetConfigExcludeCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -174,4 +190,3 @@ class InsightsDatasetConfigState {
     );
   }
 }
-

@@ -19,6 +19,13 @@ class ServiceAttachmentArgs {
   /// An array of projects that are not allowed to connect to this service
   /// attachment.
   final pulumi.Input<List<String>>? consumerRejectLists;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// If specified, the domain name will be used during the integration between
@@ -46,7 +53,7 @@ class ServiceAttachmentArgs {
   /// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
   /// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
   /// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-  /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
+  /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
   final pulumi.Input<int>? propagatedConnectionLimit;
   /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
   /// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -55,14 +62,17 @@ class ServiceAttachmentArgs {
   /// URL of the region where the resource resides.
   final pulumi.Input<String>? region;
   /// Controls the behavior of propagated_connection_limit.
-  /// When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
-  /// When true, the provider will set propagated_connection_limit to zero.
+  /// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+  /// When true, the provider will set propagatedConnectionLimit to zero.
   /// Defaults to false.
   final pulumi.Input<bool>? sendPropagatedConnectionLimitIfZero;
-  /// If true, show NAT IPs of all connected endpoints.
+  /// NOTE: This field is temporarily non-functional due to an underlying API issue.
+  /// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+  /// [If true, show NAT IPs of all connected endpoints.]
   final pulumi.Input<bool>? showNatIps;
   /// The URL of a service serving the endpoint identified by this service attachment.
   final pulumi.Input<String> targetService;
+  /// (Optional, Beta)
   /// Tunneling configuration for this service attachment.
   /// Structure is documented below.
   final pulumi.Input<ServiceAttachmentTunnelingConfig>? tunnelingConfig;
@@ -71,6 +81,7 @@ class ServiceAttachmentArgs {
   /// [connectionPreference] The connection preference to use for this service attachment. Valid
   /// [consumerAcceptLists] An array of projects that are allowed to connect to this service
   /// [consumerRejectLists] An array of projects that are not allowed to connect to this service
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [domainNames] If specified, the domain name will be used during the integration between
   /// [enableProxyProtocol] If true, enable the proxy protocol which is for supplying client TCP/IP
@@ -81,13 +92,14 @@ class ServiceAttachmentArgs {
   /// [reconcileConnections] This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
   /// [region] URL of the region where the resource resides.
   /// [sendPropagatedConnectionLimitIfZero] Controls the behavior of propagated_connection_limit.
-  /// [showNatIps] If true, show NAT IPs of all connected endpoints.
+  /// [showNatIps] NOTE: This field is temporarily non-functional due to an underlying API issue.
   /// [targetService] The URL of a service serving the endpoint identified by this service attachment.
-  /// [tunnelingConfig] Tunneling configuration for this service attachment.
+  /// [tunnelingConfig] (Optional, Beta)
   const ServiceAttachmentArgs({
     required this.connectionPreference,
     this.consumerAcceptLists,
     this.consumerRejectLists,
+    this.deletionPolicy,
     this.description,
     this.domainNames,
     required this.enableProxyProtocol,
@@ -108,6 +120,7 @@ class ServiceAttachmentArgs {
       'connectionPreference': connectionPreference,
       'consumerAcceptLists': ?pulumi.Input.mapOptionalInputValue<List<ServiceAttachmentConsumerAcceptList>, List<Map<String, dynamic>>>(consumerAcceptLists, (value) => pulumi.Input.encodeList<ServiceAttachmentConsumerAcceptList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'consumerRejectLists': ?consumerRejectLists,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'domainNames': ?domainNames,
       'enableProxyProtocol': enableProxyProtocol,
@@ -129,6 +142,7 @@ class ServiceAttachmentArgs {
       connectionPreference: pulumi.Input.fromValue(map['connectionPreference'] as String),
       consumerAcceptLists: (() { final guardedValue = map['consumerAcceptLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceAttachmentConsumerAcceptList>(guardedValue, (value) => ServiceAttachmentConsumerAcceptList.fromMap((value as Map).cast<String, dynamic>()))); })(),
       consumerRejectLists: (() { final guardedValue = map['consumerRejectLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainNames: (() { final guardedValue = map['domainNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       enableProxyProtocol: pulumi.Input.fromValue(map['enableProxyProtocol'] as bool),
@@ -145,4 +159,3 @@ class ServiceAttachmentArgs {
     );
   }
 }
-

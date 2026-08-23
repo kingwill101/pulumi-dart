@@ -6,6 +6,7 @@ import 'get_repository_pubsub_config.dart';
 /// Result data returned by getRepository.
 class GetRepositoryResult {
   final bool createIgnoreAlreadyExists;
+  final String deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -16,6 +17,7 @@ class GetRepositoryResult {
 
   /// Creates a new [GetRepositoryResult].
   /// [createIgnoreAlreadyExists] Required.
+  /// [deletionPolicy] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [project] Optional.
@@ -24,6 +26,7 @@ class GetRepositoryResult {
   /// [url] Required.
   const GetRepositoryResult({
     required this.createIgnoreAlreadyExists,
+    required this.deletionPolicy,
     required this.id,
     required this.name,
     this.project,
@@ -35,6 +38,7 @@ class GetRepositoryResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createIgnoreAlreadyExists': createIgnoreAlreadyExists,
+      'deletionPolicy': deletionPolicy,
       'id': id,
       'name': name,
       'project': ?project,
@@ -47,6 +51,7 @@ class GetRepositoryResult {
   factory GetRepositoryResult.fromMap(Map<String, dynamic> map) {
     return GetRepositoryResult(
       createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] as bool,
+      deletionPolicy: map['deletionPolicy'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -56,4 +61,3 @@ class GetRepositoryResult {
     );
   }
 }
-

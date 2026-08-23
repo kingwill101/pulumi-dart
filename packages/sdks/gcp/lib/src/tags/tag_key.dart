@@ -75,6 +75,21 @@ import 'tag_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_tags_tagkey" "key" {
+///   parent      = "organizations/123456789"
+///   short_name  = "keyname"
+///   description = "For keyname resources."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +98,8 @@ import 'tag_key_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tags.TagKey;
 /// import com.pulumi.gcp.tags.TagKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,16 +136,13 @@ import 'tag_key_state.dart';
 /// TagKey can be imported using any of these accepted formats:
 ///
 /// * `tagKeys/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:tags/tagKey:TagKey default {{name}}
 /// ```
 class TagKey extends pulumi.CustomResource {
@@ -139,6 +151,13 @@ class TagKey extends pulumi.CustomResource {
   /// Output only. Creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-assigned description of the TagKey. Must not exceed 256 characters.
   late final pulumi.Output<String?> description;
   /// The generated numeric id for the TagKey.
@@ -177,6 +196,7 @@ class TagKey extends pulumi.CustomResource {
         ) {
     allowedValuesRegex = registerOutput<String?>('allowedValuesRegex');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     namespacedName = registerOutput<String>('namespacedName');
@@ -212,6 +232,7 @@ class TagKey extends pulumi.CustomResource {
         ) {
     allowedValuesRegex = registerOutput<String?>('allowedValuesRegex');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     namespacedName = registerOutput<String>('namespacedName');

@@ -6,6 +6,9 @@ import 'release_state.dart';
 
 /// A version to be propagated and deployed to Units. It points to a specific version of a Blueprint that can be applied to Units, for example, via a Rollout.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 ///
 /// ## Example Usage
 ///
@@ -171,7 +174,7 @@ import 'release_state.dart';
 /// 		exampleUnitkind, err := saasruntime.NewUnitKind(ctx, "example_unitkind", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("global"),
 /// 			UnitKindId: pulumi.String("example-unitkind"),
-/// 			Saas:       exampleSaas.ID(),
+/// 			Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -179,7 +182,7 @@ import 'release_state.dart';
 /// 		_, err = saasruntime.NewRelease(ctx, "example_previous", &saasruntime.ReleaseArgs{
 /// 			Location:  pulumi.String("global"),
 /// 			ReleaseId: pulumi.String("previous-release"),
-/// 			UnitKind:  exampleUnitkind.ID(),
+/// 			UnitKind:  exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
 /// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
 /// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
 /// 			},
@@ -190,7 +193,7 @@ import 'release_state.dart';
 /// 		_, err = saasruntime.NewRelease(ctx, "example", &saasruntime.ReleaseArgs{
 /// 			Location:  pulumi.String("global"),
 /// 			ReleaseId: pulumi.String("example-release"),
-/// 			UnitKind:  exampleUnitkind.ID(),
+/// 			UnitKind:  exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
 /// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
 /// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e"),
 /// 			},
@@ -209,6 +212,49 @@ import 'release_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_saasruntime_saas" "example_saas" {
+///   saas_id  = "example-saas"
+///   location = "global"
+///   locations {
+///     name = "us-central1"
+///   }
+/// }
+/// resource "gcp_saasruntime_unitkind" "example_unitkind" {
+///   location     = "global"
+///   unit_kind_id = "example-unitkind"
+///   saas         = gcp_saasruntime_saas.example_saas.id
+/// }
+/// resource "gcp_saasruntime_release" "example_previous" {
+///   location   = "global"
+///   release_id = "previous-release"
+///   unit_kind  = gcp_saasruntime_unitkind.example_unitkind.id
+///   blueprint = {
+///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
+///   }
+/// }
+/// resource "gcp_saasruntime_release" "example" {
+///   location   = "global"
+///   release_id = "example-release"
+///   unit_kind  = gcp_saasruntime_unitkind.example_unitkind.id
+///   blueprint = {
+///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e"
+///   }
+///   input_variable_defaults {
+///     variable = "name"
+///     value    = "test"
+///     type     = "STRING"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +270,8 @@ import 'release_state.dart';
 /// import com.pulumi.gcp.saasruntime.ReleaseArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.ReleaseBlueprintArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.ReleaseInputVariableDefaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,22 +369,15 @@ import 'release_state.dart';
 /// Release can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/releases/{{release_id}}`
-///
 /// * `{{project}}/{{location}}/{{release_id}}`
-///
 /// * `{{location}}/{{release_id}}`
+///
 ///
 /// When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:saasruntime/release:Release default projects/{{project}}/locations/{{location}}/releases/{{release_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/release:Release default {{project}}/{{location}}/{{release_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/release:Release default {{location}}/{{release_id}}
 /// ```
 class Release extends pulumi.CustomResource {
@@ -347,11 +386,25 @@ class Release extends pulumi.CustomResource {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
+  /// Blueprints are OCI Images that contain all of the artifacts needed to
+  /// provision a unit. Metadata such as, type of the engine used to actuate the
+  /// blueprint (e.g. terraform, helm etc) and version will come from the image
+  /// manifest. If the hostname is omitted, it will be assumed to be the regional
+  /// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+  /// Structure is documented below.
   late final pulumi.Output<ReleaseBlueprint?> blueprint;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -369,7 +422,7 @@ class Release extends pulumi.CustomResource {
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -423,6 +476,7 @@ class Release extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     blueprint = registerOutput<ReleaseBlueprint?>('blueprint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseBlueprint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -467,6 +521,7 @@ class Release extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     blueprint = registerOutput<ReleaseBlueprint?>('blueprint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseBlueprint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');

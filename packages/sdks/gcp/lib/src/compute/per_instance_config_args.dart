@@ -8,6 +8,13 @@ import 'per_instance_config_preserved_state.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_per_instance_config_per_instance_config_args_doc}
 class PerInstanceConfigArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The instance group manager this instance config is part of.
   final pulumi.Input<String> instanceGroupManager;
   /// The minimal action to perform on the instance during an update.
@@ -43,6 +50,7 @@ class PerInstanceConfigArgs {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [PerInstanceConfigArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [instanceGroupManager] The instance group manager this instance config is part of.
   /// [minimalAction] The minimal action to perform on the instance during an update.
   /// [mostDisruptiveAllowedAction] The most disruptive action to perform on the instance during an update.
@@ -53,6 +61,7 @@ class PerInstanceConfigArgs {
   /// [removeInstanceStateOnDestroy] When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// [zone] Zone where the containing instance group manager is located
   const PerInstanceConfigArgs({
+    this.deletionPolicy,
     required this.instanceGroupManager,
     this.minimalAction,
     this.mostDisruptiveAllowedAction,
@@ -66,6 +75,7 @@ class PerInstanceConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'instanceGroupManager': instanceGroupManager,
       'minimalAction': ?minimalAction,
       'mostDisruptiveAllowedAction': ?mostDisruptiveAllowedAction,
@@ -80,6 +90,7 @@ class PerInstanceConfigArgs {
 
   factory PerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return PerInstanceConfigArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceGroupManager: pulumi.Input.fromValue(map['instanceGroupManager'] as String),
       minimalAction: (() { final guardedValue = map['minimalAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mostDisruptiveAllowedAction: (() { final guardedValue = map['mostDisruptiveAllowedAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -92,4 +103,3 @@ class PerInstanceConfigArgs {
     );
   }
 }
-

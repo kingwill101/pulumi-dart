@@ -16,21 +16,25 @@ import 'env_keystore_state.dart';
 /// EnvKeystore can be imported using any of these accepted formats:
 ///
 /// * `{{env_id}}/keystores/{{name}}`
-///
 /// * `{{env_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EnvKeystore can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/keystores/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/{{name}}
 /// ```
 class EnvKeystore extends pulumi.CustomResource {
   /// Aliases in this keystore.
   late final pulumi.Output<List<String>> aliases;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   late final pulumi.Output<String> envId;
@@ -52,6 +56,7 @@ class EnvKeystore extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     aliases = registerOutput<List<String>>('aliases');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');
   }
@@ -80,6 +85,7 @@ class EnvKeystore extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     aliases = registerOutput<List<String>>('aliases');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');
   }

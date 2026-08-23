@@ -69,6 +69,21 @@ import 'get_target_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_clouddeploy_getcustomtargettypeiampolicy" "policy" {
+///   project  = custom-target-type.project
+///   location = custom-target-type.location
+///   name     = custom-target-type.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'get_target_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.clouddeploy.ClouddeployFunctions;
 /// import com.pulumi.gcp.clouddeploy.inputs.GetCustomTargetTypeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -91,9 +106,9 @@ import 'get_target_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ClouddeployFunctions.getCustomTargetTypeIamPolicy(GetCustomTargetTypeIamPolicyArgs.builder()
-///             .project(custom_target_type.project())
-///             .location(custom_target_type.location())
-///             .name(custom_target_type.name())
+///             .project(custom_target_type.get("project"))
+///             .location(custom_target_type.get("location"))
+///             .name(custom_target_type.get("name"))
 ///             .build());
 ///
 ///     }
@@ -187,6 +202,21 @@ Future<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_clouddeploy_getdeliverypipelineiampolicy" "policy" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +225,8 @@ Future<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.clouddeploy.ClouddeployFunctions;
 /// import com.pulumi.gcp.clouddeploy.inputs.GetDeliveryPipelineIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,9 +239,9 @@ Future<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -305,6 +335,21 @@ Future<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_clouddeploy_gettargetiampolicy" "policy" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -313,8 +358,8 @@ Future<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.clouddeploy.ClouddeployFunctions;
 /// import com.pulumi.gcp.clouddeploy.inputs.GetTargetIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -327,9 +372,9 @@ Future<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }

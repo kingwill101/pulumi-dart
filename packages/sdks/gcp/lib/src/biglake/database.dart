@@ -170,7 +170,7 @@ import 'database_state.dart';
 /// 		}
 /// 		_, err = biglake.NewDatabase(ctx, "database", &biglake.DatabaseArgs{
 /// 			Name:    pulumi.String("my_database"),
-/// 			Catalog: catalog.ID(),
+/// 			Catalog: catalog.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:    pulumi.String("HIVE"),
 /// 			HiveOptions: &biglake.DatabaseHiveOptionsArgs{
 /// 				LocationUri: pulumi.All(bucket.Name, metadataFolder.Name).ApplyT(func(_args []interface{}) (string, error) {
@@ -190,6 +190,42 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_biglake_catalog" "catalog" {
+///   name     = "my_catalog"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "metadata_folder" {
+///   name    = "metadata/"
+///   content = " "
+///   bucket  = gcp_storage_bucket.bucket.name
+/// }
+/// resource "gcp_biglake_database" "database" {
+///   name    = "my_database"
+///   catalog = gcp_biglake_catalog.catalog.id
+///   type    = "HIVE"
+///   hive_options = {
+///     location_uri ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.metadata_folder.name}"
+///     parameters = {
+///       "owner" = "John Doe"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +241,8 @@ import 'database_state.dart';
 /// import com.pulumi.gcp.biglake.Database;
 /// import com.pulumi.gcp.biglake.DatabaseArgs;
 /// import com.pulumi.gcp.biglake.inputs.DatabaseHiveOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,6 +329,7 @@ import 'database_state.dart';
 ///
 /// * `{{catalog}}/databases/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -311,6 +348,13 @@ class Database extends pulumi.CustomResource {
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Output only. The time when this database is considered expired. Only set
   /// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples:
@@ -346,6 +390,7 @@ class Database extends pulumi.CustomResource {
     catalog = registerOutput<String>('catalog');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     hiveOptions = registerOutput<DatabaseHiveOptions>('hiveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseHiveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -379,6 +424,7 @@ class Database extends pulumi.CustomResource {
     catalog = registerOutput<String>('catalog');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     hiveOptions = registerOutput<DatabaseHiveOptions>('hiveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseHiveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

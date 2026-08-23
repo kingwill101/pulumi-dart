@@ -84,7 +84,7 @@ import 'regional_parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-basic", &parametermanager.RegionalParameterVersionArgs{
-/// 			Parameter:          regional_parameter_basic.ID(),
+/// 			Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("regional_parameter_version"),
 /// 			ParameterData:      pulumi.String("regional-parameter-version-data"),
 /// 		})
@@ -93,6 +93,25 @@ import 'regional_parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_regionalparameter" "regional-parameter-basic" {
+///   parameter_id = "regional_parameter"
+///   location     = "us-central1"
+/// }
+/// resource "gcp_parametermanager_regionalparameterversion" "regional-parameter-version-basic" {
+///   parameter            = gcp_parametermanager_regionalparameter.regional-parameter-basic.id
+///   parameter_version_id = "regional_parameter_version"
+///   parameter_data       = "regional-parameter-version-data"
 /// }
 /// ```
 /// ```java
@@ -105,8 +124,8 @@ import 'regional_parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersion;
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,7 +254,7 @@ import 'regional_parameter_version_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"key1": "val1",
 /// 			"key2": "val2",
 /// 		})
@@ -244,7 +263,7 @@ import 'regional_parameter_version_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-json-format", &parametermanager.RegionalParameterVersionArgs{
-/// 			Parameter:          regional_parameter_basic.ID(),
+/// 			Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("regional_parameter_version"),
 /// 			ParameterData:      pulumi.String(json0),
 /// 		})
@@ -253,6 +272,29 @@ import 'regional_parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_regionalparameter" "regional-parameter-basic" {
+///   parameter_id = "regional_parameter"
+///   format       = "JSON"
+///   location     = "us-central1"
+/// }
+/// resource "gcp_parametermanager_regionalparameterversion" "regional-parameter-version-with-json-format" {
+///   parameter            = gcp_parametermanager_regionalparameter.regional-parameter-basic.id
+///   parameter_version_id = "regional_parameter_version"
+///   parameter_data = jsonencode({
+///     "key1" = "val1"
+///     "key2" = "val2"
+///   })
 /// }
 /// ```
 /// ```java
@@ -266,8 +308,8 @@ import 'regional_parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersion;
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,7 +443,7 @@ import 'regional_parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-kms-key", &parametermanager.RegionalParameterVersionArgs{
-/// 			Parameter:          regional_parameter_basic.ID(),
+/// 			Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("regional_parameter_version"),
 /// 			ParameterData:      pulumi.String("regional-parameter-version-data"),
 /// 		})
@@ -410,6 +452,29 @@ import 'regional_parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_parametermanager_regionalparameter" "regional-parameter-basic" {
+///   parameter_id = "regional_parameter"
+///   location     = "us-central1"
+///   kms_key      = "kms-key"
+/// }
+/// resource "gcp_parametermanager_regionalparameterversion" "regional-parameter-version-with-kms-key" {
+///   parameter            = gcp_parametermanager_regionalparameter.regional-parameter-basic.id
+///   parameter_version_id = "regional_parameter_version"
+///   parameter_data       = "regional-parameter-version-data"
 /// }
 /// ```
 /// ```java
@@ -424,8 +489,8 @@ import 'regional_parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersion;
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -566,7 +631,7 @@ import 'regional_parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-json-format-with-file", &parametermanager.RegionalParameterVersionArgs{
-/// 			Parameter:          regional_parameter_basic.ID(),
+/// 			Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("regional_parameter_version"),
 /// 			ParameterData:      pulumi.String(invokeFile.Result),
 /// 		})
@@ -575,6 +640,29 @@ import 'regional_parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_regionalparameter" "regional-parameter-basic" {
+///   parameter_id = "regional_parameter"
+///   format       = "JSON"
+///   location     = "us-central1"
+/// }
+/// resource "gcp_parametermanager_regionalparameterversion" "regional-parameter-version-with-json-format-with-file" {
+///   parameter            = gcp_parametermanager_regionalparameter.regional-parameter-basic.id
+///   parameter_version_id = "regional_parameter_version"
+///   parameter_data       = file("regional-parameter-json-data.json")
 /// }
 /// ```
 /// ```java
@@ -589,8 +677,8 @@ import 'regional_parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -730,7 +818,7 @@ import 'regional_parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-yaml-format-with-file", &parametermanager.RegionalParameterVersionArgs{
-/// 			Parameter:          regional_parameter_basic.ID(),
+/// 			Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("regional_parameter_version"),
 /// 			ParameterData:      pulumi.String(invokeFile.Result),
 /// 		})
@@ -739,6 +827,29 @@ import 'regional_parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_regionalparameter" "regional-parameter-basic" {
+///   parameter_id = "regional_parameter"
+///   format       = "YAML"
+///   location     = "us-central1"
+/// }
+/// resource "gcp_parametermanager_regionalparameterversion" "regional-parameter-version-with-yaml-format-with-file" {
+///   parameter            = gcp_parametermanager_regionalparameter.regional-parameter-basic.id
+///   parameter_version_id = "regional_parameter_version"
+///   parameter_data       = file("regional-parameter-yaml-data.yaml")
 /// }
 /// ```
 /// ```java
@@ -753,8 +864,8 @@ import 'regional_parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -811,6 +922,7 @@ import 'regional_parameter_version_state.dart';
 ///
 /// * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
 ///
+///
 /// When using the `pulumi import` command, RegionalParameterVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -819,6 +931,13 @@ import 'regional_parameter_version_state.dart';
 class RegionalParameterVersion extends pulumi.CustomResource {
   /// The time at which the Regional Parameter Version was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
   late final pulumi.Output<bool?> disabled;
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
@@ -854,6 +973,7 @@ class RegionalParameterVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     location = registerOutput<String>('location');
@@ -888,6 +1008,7 @@ class RegionalParameterVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     location = registerOutput<String>('location');

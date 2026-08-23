@@ -295,6 +295,64 @@ import 'edge_cache_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "dest" {
+///   name          = "my-bucket"
+///   location      = "US"
+///   force_destroy = true
+/// }
+/// resource "gcp_networkservices_edgecacheorigin" "instance" {
+///   name           = "my-origin"
+///   origin_address = gcp_storage_bucket.dest.url
+///   description    = "The default bucket for media edge test"
+///   max_attempts   = 2
+///   timeout = {
+///     connect_timeout = "10s"
+///   }
+/// }
+/// resource "gcp_networkservices_edgecacheservice" "instance" {
+///   name        = "my-service"
+///   description = "some description"
+///   routing = {
+///     host_rules = [{
+///       "description" = "host rule description"
+///       "hosts"       = ["sslcert.tf-test.club"]
+///       "pathMatcher" = "routes"
+///     }]
+///     path_matchers = [{
+///       "name" = "routes"
+///       "routeRules" = [{
+///         "description" = "a route rule to match against"
+///         "priority"    = 1
+///         "matchRules" = [{
+///           "prefixMatch" = "/"
+///         }]
+///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
+///         "routeAction" = {
+///           "cdnPolicy" = {
+///             "cacheMode"  = "CACHE_ALL_STATIC"
+///             "defaultTtl" = "3600s"
+///           }
+///         }
+///         "headerAction" = {
+///           "responseHeaderToAdds" = [{
+///             "headerName"  = "x-cache-status"
+///             "headerValue" = "{cdn_cache_status}"
+///           }]
+///         }
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +367,16 @@ import 'edge_cache_service_state.dart';
 /// import com.pulumi.gcp.networkservices.EdgeCacheService;
 /// import com.pulumi.gcp.networkservices.EdgeCacheServiceArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingHostRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1382,6 +1448,184 @@ import 'edge_cache_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "dest" {
+///   name          = "my-bucket"
+///   location      = "US"
+///   force_destroy = true
+/// }
+/// resource "gcp_networkservices_edgecacheorigin" "google" {
+///   name           = "origin-google"
+///   origin_address = "google.com"
+///   description    = "The default bucket for media edge test"
+///   max_attempts   = 2
+///   timeout = {
+///     connect_timeout = "10s"
+///   }
+/// }
+/// resource "gcp_networkservices_edgecacheorigin" "instance" {
+///   name           = "my-origin"
+///   origin_address = gcp_storage_bucket.dest.url
+///   description    = "The default bucket for media edge test"
+///   max_attempts   = 2
+///   timeout = {
+///     connect_timeout = "10s"
+///   }
+/// }
+/// resource "gcp_networkservices_edgecacheservice" "instance" {
+///   name          = "my-service"
+///   description   = "some description"
+///   disable_quic  = true
+///   disable_http2 = true
+///   labels = {
+///     "a" = "b"
+///   }
+///   routing = {
+///     host_rules = [{
+///       "description" = "host rule description"
+///       "hosts"       = ["sslcert.tf-test.club"]
+///       "pathMatcher" = "routes"
+///       }, {
+///       "description" = "host rule2"
+///       "hosts"       = ["sslcert.tf-test2.club"]
+///       "pathMatcher" = "routes"
+///       }, {
+///       "description" = "host rule3"
+///       "hosts"       = ["sslcert.tf-test3.club"]
+///       "pathMatcher" = "routesAdvanced"
+///     }]
+///     path_matchers = [{
+///       "name" = "routes"
+///       "routeRules" = [{
+///         "description" = "a route rule to match against"
+///         "priority"    = 1
+///         "matchRules" = [{
+///           "prefixMatch" = "/"
+///         }]
+///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
+///         "routeAction" = {
+///           "cdnPolicy" = {
+///             "cacheMode"  = "CACHE_ALL_STATIC"
+///             "defaultTtl" = "3600s"
+///           }
+///         }
+///         "headerAction" = {
+///           "responseHeaderToAdds" = [{
+///             "headerName"  = "x-cache-status"
+///             "headerValue" = "{cdn_cache_status}"
+///           }]
+///         }
+///       }]
+///       }, {
+///       "name"        = "routesAdvanced"
+///       "description" = "an advanced ruleset"
+///       "routeRules" = [{
+///         "description" = "an advanced route rule to match against"
+///         "priority"    = 1
+///         "matchRules" = [{
+///           "prefixMatch" = "/potato/"
+///           "queryParameterMatches" = [{
+///             "name"         = "debug"
+///             "presentMatch" = true
+///             }, {
+///             "name"       = "state"
+///             "exactMatch" = "debug"
+///           }]
+///           }, {
+///           "fullPathMatch" = "/apple"
+///         }]
+///         "headerAction" = {
+///           "requestHeaderToAdds" = [{
+///             "headerName"  = "debug"
+///             "headerValue" = "true"
+///             "replace"     = true
+///             }, {
+///             "headerName"  = "potato"
+///             "headerValue" = "plant"
+///           }]
+///           "responseHeaderToAdds" = [{
+///             "headerName"  = "potato"
+///             "headerValue" = "plant"
+///             "replace"     = true
+///           }]
+///           "requestHeaderToRemoves" = [{
+///             "headerName" = "prod"
+///           }]
+///           "responseHeaderToRemoves" = [{
+///             "headerName" = "prod"
+///           }]
+///         }
+///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
+///         "routeAction" = {
+///           "cdnPolicy" = {
+///             "cacheMode"  = "CACHE_ALL_STATIC"
+///             "defaultTtl" = "3800s"
+///             "clientTtl"  = "3600s"
+///             "maxTtl"     = "9000s"
+///             "cacheKeyPolicy" = {
+///               "includeProtocol"         = true
+///               "excludeHost"             = true
+///               "includedQueryParameters" = ["apple", "dev", "santa", "claus"]
+///               "includedHeaderNames"     = ["banana"]
+///               "includedCookieNames"     = ["orange"]
+///             }
+///             "negativeCaching"   = true
+///             "signedRequestMode" = "DISABLED"
+///             "negativeCachingPolicy" = {
+///               "500" = "3000s"
+///             }
+///           }
+///           "urlRewrite" = {
+///             "pathPrefixRewrite" = "/dev"
+///             "hostRewrite"       = "dev.club"
+///           }
+///           "corsPolicy" = {
+///             "maxAge"           = "2500s"
+///             "allowCredentials" = true
+///             "allowOrigins"     = ["*"]
+///             "allowMethods"     = ["GET"]
+///             "allowHeaders"     = ["dev"]
+///             "exposeHeaders"    = ["prod"]
+///           }
+///         }
+///         }, {
+///         "description" = "a second route rule to match against"
+///         "priority"    = 2
+///         "matchRules" = [{
+///           "fullPathMatch" = "/yay"
+///         }]
+///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
+///         "routeAction" = {
+///           "cdnPolicy" = {
+///             "cacheMode"  = "CACHE_ALL_STATIC"
+///             "defaultTtl" = "3600s"
+///             "cacheKeyPolicy" = {
+///               "excludedQueryParameters" = ["dev"]
+///             }
+///           }
+///           "corsPolicy" = {
+///             "maxAge"       = "3000s"
+///             "allowHeaders" = ["dev"]
+///             "disabled"     = true
+///           }
+///         }
+///       }]
+///     }]
+///   }
+///   log_config = {
+///     enable      = true
+///     sample_rate = 0.01
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1396,9 +1640,24 @@ import 'edge_cache_service_state.dart';
 /// import com.pulumi.gcp.networkservices.EdgeCacheService;
 /// import com.pulumi.gcp.networkservices.EdgeCacheServiceArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingHostRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2209,7 +2468,7 @@ import 'edge_cache_service_state.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID(),
+/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -2226,7 +2485,7 @@ import 'edge_cache_service_state.dart';
 /// 			},
 /// 			ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
 /// 				&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
-/// 					SecretVersion: secret_version_basic.ID(),
+/// 					SecretVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -2270,14 +2529,14 @@ import 'edge_cache_service_state.dart';
 /// 								RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 /// 									CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 /// 										SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-/// 										SignedRequestKeyset: keyset.ID(),
+/// 										SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
 /// 										SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 /// 											TokenQueryParameter: pulumi.String("edge-cache-token"),
 /// 										},
 /// 										SignedRequestMaximumExpirationTtl: pulumi.String("600s"),
 /// 										AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
 /// 											Actions: pulumi.String("GENERATE_COOKIE"),
-/// 											Keyset:  keyset.ID(),
+/// 											Keyset:  keyset.ID().ToIDOutput().ToStringOutput(),
 /// 											CopiedParameters: pulumi.StringArray{
 /// 												pulumi.String("PathGlobs"),
 /// 												pulumi.String("SessionID"),
@@ -2298,7 +2557,7 @@ import 'edge_cache_service_state.dart';
 /// 								RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 /// 									CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 /// 										SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-/// 										SignedRequestKeyset: keyset.ID(),
+/// 										SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
 /// 										SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 /// 											TokenQueryParameter: pulumi.String("hdnts"),
 /// 											AllowedSignatureAlgorithms: pulumi.StringArray{
@@ -2309,7 +2568,7 @@ import 'edge_cache_service_state.dart';
 /// 										},
 /// 										AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
 /// 											Actions:             pulumi.String("GENERATE_TOKEN_HLS_COOKIELESS"),
-/// 											Keyset:              keyset.ID(),
+/// 											Keyset:              keyset.ID().ToIDOutput().ToStringOutput(),
 /// 											TokenTtl:            pulumi.String("1200s"),
 /// 											TokenQueryParameter: pulumi.String("hdntl"),
 /// 											CopiedParameters: pulumi.StringArray{
@@ -2331,7 +2590,7 @@ import 'edge_cache_service_state.dart';
 /// 								RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 /// 									CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 /// 										SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-/// 										SignedRequestKeyset: keyset.ID(),
+/// 										SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
 /// 										SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 /// 											TokenQueryParameter: pulumi.String("hdntl"),
 /// 										},
@@ -2352,6 +2611,123 @@ import 'edge_cache_service_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-name"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+///   secret      = gcp_secretmanager_secret.secret-basic.id
+///   secret_data = "secret-data"
+/// }
+/// resource "gcp_networkservices_edgecachekeyset" "keyset" {
+///   name        = "keyset-name"
+///   description = "The default keyset"
+///   public_keys {
+///     id      = "my-public-key"
+///     managed = true
+///   }
+///   validation_shared_keys {
+///     secret_version = gcp_secretmanager_secretversion.secret-version-basic.id
+///   }
+/// }
+/// resource "gcp_networkservices_edgecacheorigin" "instance" {
+///   name           = "my-origin"
+///   origin_address = "gs://media-edge-default"
+///   description    = "The default bucket for media edge test"
+/// }
+/// resource "gcp_networkservices_edgecacheservice" "instance" {
+///   name        = "my-service"
+///   description = "some description"
+///   routing = {
+///     host_rules = [{
+///       "description" = "host rule description"
+///       "hosts"       = ["sslcert.tf-test.club"]
+///       "pathMatcher" = "routes"
+///     }]
+///     path_matchers = [{
+///       "name" = "routes"
+///       "routeRules" = [{
+///         "description" = "a route rule to match against master playlist"
+///         "priority"    = 1
+///         "matchRules" = [{
+///           "pathTemplateMatch" = "/master.m3u8"
+///         }]
+///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
+///         "routeAction" = {
+///           "cdnPolicy" = {
+///             "signedRequestMode"   = "REQUIRE_TOKENS"
+///             "signedRequestKeyset" = gcp_networkservices_edgecachekeyset.keyset.id
+///             "signedTokenOptions" = {
+///               "tokenQueryParameter" = "edge-cache-token"
+///             }
+///             "signedRequestMaximumExpirationTtl" = "600s"
+///             "addSignatures" = {
+///               "actions"          = "GENERATE_COOKIE"
+///               "keyset"           = gcp_networkservices_edgecachekeyset.keyset.id
+///               "copiedParameters" = ["PathGlobs", "SessionID"]
+///             }
+///           }
+///         }
+///         }, {
+///         "description" = "a route rule to match against all playlists"
+///         "priority"    = 2
+///         "matchRules" = [{
+///           "pathTemplateMatch" = "/*.m3u8"
+///         }]
+///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
+///         "routeAction" = {
+///           "cdnPolicy" = {
+///             "signedRequestMode"   = "REQUIRE_TOKENS"
+///             "signedRequestKeyset" = gcp_networkservices_edgecachekeyset.keyset.id
+///             "signedTokenOptions" = {
+///               "tokenQueryParameter"        = "hdnts"
+///               "allowedSignatureAlgorithms" = ["ED25519", "HMAC_SHA_256", "HMAC_SHA1"]
+///             }
+///             "addSignatures" = {
+///               "actions"             = "GENERATE_TOKEN_HLS_COOKIELESS"
+///               "keyset"              = gcp_networkservices_edgecachekeyset.keyset.id
+///               "tokenTtl"            = "1200s"
+///               "tokenQueryParameter" = "hdntl"
+///               "copiedParameters"    = ["URLPrefix"]
+///             }
+///           }
+///         }
+///         }, {
+///         "description" = "a route rule to match against"
+///         "priority"    = 3
+///         "matchRules" = [{
+///           "pathTemplateMatch" = "/**.m3u8"
+///         }]
+///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
+///         "routeAction" = {
+///           "cdnPolicy" = {
+///             "signedRequestMode"   = "REQUIRE_TOKENS"
+///             "signedRequestKeyset" = gcp_networkservices_edgecachekeyset.keyset.id
+///             "signedTokenOptions" = {
+///               "tokenQueryParameter" = "hdntl"
+///             }
+///             "addSignatures" = {
+///               "actions"             = "PROPAGATE_TOKEN_HLS_COOKIELESS"
+///               "tokenQueryParameter" = "hdntl"
+///             }
+///           }
+///         }
+///       }]
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -2375,8 +2751,16 @@ import 'edge_cache_service_state.dart';
 /// import com.pulumi.gcp.networkservices.EdgeCacheService;
 /// import com.pulumi.gcp.networkservices.EdgeCacheServiceArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingHostRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs;
+/// import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2618,25 +3002,25 @@ import 'edge_cache_service_state.dart';
 /// EdgeCacheService can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{name}}
 /// ```
 class EdgeCacheService extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// Disables HTTP/2.
@@ -2658,7 +3042,7 @@ class EdgeCacheService extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> ipv6Addresses;
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
   /// Structure is documented below.
@@ -2698,6 +3082,7 @@ class EdgeCacheService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disableHttp2 = registerOutput<bool?>('disableHttp2');
     disableQuic = registerOutput<bool>('disableQuic');
@@ -2739,6 +3124,7 @@ class EdgeCacheService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disableHttp2 = registerOutput<bool?>('disableHttp2');
     disableQuic = registerOutput<bool>('disableQuic');

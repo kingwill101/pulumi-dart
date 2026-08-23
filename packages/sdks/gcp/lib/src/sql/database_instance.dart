@@ -96,6 +96,24 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             = "main-instance"
+///   database_version = "POSTGRES_15"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +123,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstance;
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -152,13 +170,13 @@ import 'database_instance_state.dart';
 /// import * as random from "@pulumi/random";
 ///
 /// const apps: gcp.compute.Instance[] = [];
-/// for (const range = {value: 0}; range.value < 8; range.value++) {
-///     apps.push(new gcp.compute.Instance(`apps-${range.value}`, {
+/// for (let range = 0; range < 8; range++) {
+///     apps.push(new gcp.compute.Instance(`apps-${range}`, {
 ///         networkInterfaces: [{
 ///             accessConfigs: [{}],
 ///             network: "default",
 ///         }],
-///         name: `apps-${range.value + 1}`,
+///         name: `apps-${range + 1}`,
 ///         machineType: "f1-micro",
 ///         bootDisk: {
 ///             initializeParams: {
@@ -178,7 +196,7 @@ import 'database_instance_state.dart';
 ///     settings: {
 ///         tier: "db-f1-micro",
 ///         ipConfiguration: {
-///             authorizedNetworks: Object.entries(apps).map(([k, v]) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
+///             authorizedNetworks: Object.entries(apps).sort().map(([k, v]) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
 ///                 name: entry.value.name,
 ///                 value: entry.value.networkInterface[0].accessConfig[0].natIp,
 ///             }))),
@@ -227,7 +245,7 @@ import 'database_instance_state.dart';
 ///             },
 ///         }));
 ///     }
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -269,10 +287,61 @@ import 'database_instance_state.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instance" "apps" {
+///   count = 8
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = "default"
+///   }
+///   name         ="apps-${count.index+1}"
+///   machine_type = "f1-micro"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "ubuntu-os-cloud/ubuntu-1804-lts"
+///     }
+///   }
+/// }
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "postgres" {
+///   name             ="postgres-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       authorized_networks = [for entry in entries(gcp_compute_instance.apps) : {
+///         "name"  = entry.value.name
+///         "value" = entry.value.networkInterface[0].accessConfig[0].natIp
+///       } ]
+///       authorized_networks = [for entry2 in entries(local.onprem) : {
+///         "name"  ="onprem-${entry2.key}"
+///         "value" = entry2.value
+///       } ]
+///     }
+///   }
+/// }
+/// locals {
+///   onprem = ["192.168.1.2", "192.168.2.3"]
+/// }
+/// ```
 ///
 ///
 /// ### Private IP Instance
-/// &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
+/// &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
 ///
 ///
 /// ```typescript
@@ -326,7 +395,7 @@ import 'database_instance_state.dart';
 ///     network=private_network.id,
 ///     service="servicenetworking.googleapis.com",
 ///     reserved_peering_ranges=[private_ip_address.name])
-/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
 /// instance = gcp.sql.DatabaseInstance("instance",
 ///     name=f"private-instance-{db_name_suffix['hex']}",
 ///     region="us-central1",
@@ -374,7 +443,7 @@ import 'database_instance_state.dart';
 ///         },
 ///     });
 ///
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -408,8 +477,6 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
@@ -430,13 +497,13 @@ import 'database_instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      privateNetwork.ID(),
+/// 			Network:      privateNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateVpcConnection, err := servicenetworking.NewConnection(ctx, "private_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: privateNetwork.ID(),
+/// 			Network: privateNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAddress.Name,
@@ -473,6 +540,51 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "private_network" {
+///   name = "private-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_address" {
+///   name          = "private-ip-address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.private_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "private_vpc_connection" {
+///   network                 = gcp_compute_network.private_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_address.name]
+/// }
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   depends_on       = [gcp_servicenetworking_connection.private_vpc_connection]
+///   name             ="private-instance-${random_id.db_name_suffix.hex}"
+///   region           = "us-central1"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       ipv4_enabled                                  = false
+///       private_network                               = gcp_compute_network.private_network.self_link
+///       enable_private_path_for_google_cloud_services = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -492,8 +604,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,7 +640,7 @@ import 'database_instance_state.dart';
 ///             .build());
 ///
 ///         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
-///             .name(String.format("private-instance-%s", dbNameSuffix.hex()))
+///             .name(String.format("private-instance-%s", dbNameSuffix.get("hex")))
 ///             .region("us-central1")
 ///             .databaseVersion("MYSQL_5_7")
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -593,7 +705,7 @@ import 'database_instance_state.dart';
 /// ```
 ///
 ///
-/// ### ENTERPRISE_PLUS Instance with data_cache_config
+/// ### ENTERPRISE_PLUS Instance with dataCacheConfig
 ///
 ///
 /// ```typescript
@@ -680,6 +792,27 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             = "enterprise-plus-main-instance"
+///   database_version = "MYSQL_8_0_31"
+///   settings = {
+///     tier    = "db-perf-optimized-N-2"
+///     edition = "ENTERPRISE_PLUS"
+///     data_cache_config = {
+///       data_cache_enabled = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -690,8 +823,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDataCacheConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -850,6 +983,32 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "mcp-enabled-main-instance"
+///   region           = "us-central1"
+///   database_version = "POSTGRES_16"
+///   settings = {
+///     tier    = "db-perf-optimized-N-2"
+///     edition = "ENTERPRISE_PLUS"
+///     connection_pool_configs = [{
+///       "connectionPoolingEnabled" = true
+///       "flags" = [{
+///         "name"  = "max_client_connections"
+///         "value" = "1980"
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -859,8 +1018,10 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstance;
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsConnectionPoolConfigArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsConnectionPoolConfigFlagArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1042,6 +1203,35 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             = "psc-enabled-main-instance"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       psc_configs = [{
+///         "pscEnabled"              = true
+///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
+///       }]
+///       ipv4_enabled = false
+///     }
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     availability_type = "REGIONAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1052,9 +1242,10 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1264,6 +1455,39 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             = "psc-enabled-main-instance"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       psc_configs = [{
+///         "pscEnabled"              = true
+///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
+///         "pscAutoConnections" = [{
+///           "consumerNetwork"          = "network-name"
+///           "consumerServiceProjectId" = "project-id"
+///         }]
+///       }]
+///       ipv4_enabled = false
+///     }
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     availability_type = "REGIONAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1274,9 +1498,11 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1475,6 +1701,36 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             = "psc-enabled-main-instance"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       psc_configs = [{
+///         "pscEnabled"              = true
+///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
+///         "networkAttachmentUri"    = "network-attachment-uri"
+///       }]
+///       ipv4_enabled = false
+///     }
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     availability_type = "REGIONAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1485,9 +1741,10 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1546,8 +1803,8 @@ import 'database_instance_state.dart';
 /// ```
 ///
 ///
-/// ### Cloud SQL Instance created with backupdr_backup
-/// &gt; **NOTE:** For restoring from a backupdr_backup, note that the backup must be in active state. List down the backups using `gcp.backupdisasterrecovery.getBackup`. Replace `backupdr_backup_full_path` with the backup name.
+/// ### Cloud SQL Instance created with backupdrBackup
+/// &gt; **NOTE:** For restoring from a backupdr_backup, note that the backup must be in active state. List down the backups using `gcp.backupdisasterrecovery.getBackup`. Replace `backupdrBackupFullPath` with the backup name.
 ///
 ///
 /// ```typescript
@@ -1638,6 +1895,28 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "main-instance"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///   }
+///   backupdr_backup = "backupdr_backup_full_path"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1648,8 +1927,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1693,8 +1972,8 @@ import 'database_instance_state.dart';
 /// ```
 ///
 ///
-/// ### Cloud SQL Instance created using point_in_time_restore
-/// &gt; **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+/// ### Cloud SQL Instance created using pointInTimeRestore
+/// &gt; **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`. The `targetInstance` is required field and must match the name of the resource.
 ///
 ///
 /// ```typescript
@@ -1713,7 +1992,7 @@ import 'database_instance_state.dart';
 ///     },
 ///     pointInTimeRestoreContext: {
 ///         datasource: "backupdr_datasource",
-///         targetInstance: "target_instance_name",
+///         targetInstance: "main-instance",
 ///         pointInTime: "time_stamp",
 ///     },
 /// });
@@ -1734,7 +2013,7 @@ import 'database_instance_state.dart';
 ///     },
 ///     point_in_time_restore_context={
 ///         "datasource": "backupdr_datasource",
-///         "target_instance": "target_instance_name",
+///         "target_instance": "main-instance",
 ///         "point_in_time": "time_stamp",
 ///     })
 /// ```
@@ -1762,7 +2041,7 @@ import 'database_instance_state.dart';
 ///         PointInTimeRestoreContext = new Gcp.Sql.Inputs.DatabaseInstancePointInTimeRestoreContextArgs
 ///         {
 ///             Datasource = "backupdr_datasource",
-///             TargetInstance = "target_instance_name",
+///             TargetInstance = "main-instance",
 ///             PointInTime = "time_stamp",
 ///         },
 ///     });
@@ -1791,7 +2070,7 @@ import 'database_instance_state.dart';
 /// 			},
 /// 			PointInTimeRestoreContext: &sql.DatabaseInstancePointInTimeRestoreContextArgs{
 /// 				Datasource:     pulumi.String("backupdr_datasource"),
-/// 				TargetInstance: pulumi.String("target_instance_name"),
+/// 				TargetInstance: pulumi.String("main-instance"),
 /// 				PointInTime:    pulumi.String("time_stamp"),
 /// 			},
 /// 		})
@@ -1800,6 +2079,32 @@ import 'database_instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "main-instance"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///   }
+///   point_in_time_restore_context = {
+///     datasource      = "backupdr_datasource"
+///     target_instance = "main-instance"
+///     point_in_time   = "time_stamp"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1813,8 +2118,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstancePointInTimeRestoreContextArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1838,7 +2143,7 @@ import 'database_instance_state.dart';
 ///                 .build())
 ///             .pointInTimeRestoreContext(DatabaseInstancePointInTimeRestoreContextArgs.builder()
 ///                 .datasource("backupdr_datasource")
-///                 .targetInstance("target_instance_name")
+///                 .targetInstance("main-instance")
 ///                 .pointInTime("time_stamp")
 ///                 .build())
 ///             .build());
@@ -1860,8 +2165,213 @@ import 'database_instance_state.dart';
 ///           binaryLogEnabled: true
 ///       pointInTimeRestoreContext:
 ///         datasource: backupdr_datasource
-///         targetInstance: target_instance_name
+///         targetInstance: main-instance
 ///         pointInTime: time_stamp
+/// ```
+///
+///
+/// ### Cloud SQL Instance created using pointInTimeRestore using multiregion datasource
+/// &gt; **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region. The `targetInstance` is required field and must match the name of the resource.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const instance = new gcp.sql.DatabaseInstance("instance", {
+///     name: "main-instance",
+///     databaseVersion: "MYSQL_8_0",
+///     settings: {
+///         tier: "db-f1-micro",
+///         backupConfiguration: {
+///             enabled: true,
+///             binaryLogEnabled: true,
+///         },
+///     },
+///     pointInTimeRestoreContext: {
+///         datasource: "backupdr_datasource",
+///         targetInstance: "main-instance",
+///         pointInTime: "time_stamp",
+///         region: "region",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// instance = gcp.sql.DatabaseInstance("instance",
+///     name="main-instance",
+///     database_version="MYSQL_8_0",
+///     settings={
+///         "tier": "db-f1-micro",
+///         "backup_configuration": {
+///             "enabled": True,
+///             "binary_log_enabled": True,
+///         },
+///     },
+///     point_in_time_restore_context={
+///         "datasource": "backupdr_datasource",
+///         "target_instance": "main-instance",
+///         "point_in_time": "time_stamp",
+///         "region": "region",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+///     {
+///         Name = "main-instance",
+///         DatabaseVersion = "MYSQL_8_0",
+///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+///         {
+///             Tier = "db-f1-micro",
+///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+///             {
+///                 Enabled = true,
+///                 BinaryLogEnabled = true,
+///             },
+///         },
+///         PointInTimeRestoreContext = new Gcp.Sql.Inputs.DatabaseInstancePointInTimeRestoreContextArgs
+///         {
+///             Datasource = "backupdr_datasource",
+///             TargetInstance = "main-instance",
+///             PointInTime = "time_stamp",
+///             Region = "region",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+/// 			Name:            pulumi.String("main-instance"),
+/// 			DatabaseVersion: pulumi.String("MYSQL_8_0"),
+/// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+/// 				Tier: pulumi.String("db-f1-micro"),
+/// 				BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+/// 					Enabled:          pulumi.Bool(true),
+/// 					BinaryLogEnabled: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 			PointInTimeRestoreContext: &sql.DatabaseInstancePointInTimeRestoreContextArgs{
+/// 				Datasource:     pulumi.String("backupdr_datasource"),
+/// 				TargetInstance: pulumi.String("main-instance"),
+/// 				PointInTime:    pulumi.String("time_stamp"),
+/// 				Region:         pulumi.String("region"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "main-instance"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///   }
+///   point_in_time_restore_context = {
+///     datasource      = "backupdr_datasource"
+///     target_instance = "main-instance"
+///     point_in_time   = "time_stamp"
+///     region          = "region"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.sql.DatabaseInstance;
+/// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstancePointInTimeRestoreContextArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+///             .name("main-instance")
+///             .databaseVersion("MYSQL_8_0")
+///             .settings(DatabaseInstanceSettingsArgs.builder()
+///                 .tier("db-f1-micro")
+///                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+///                     .enabled(true)
+///                     .binaryLogEnabled(true)
+///                     .build())
+///                 .build())
+///             .pointInTimeRestoreContext(DatabaseInstancePointInTimeRestoreContextArgs.builder()
+///                 .datasource("backupdr_datasource")
+///                 .targetInstance("main-instance")
+///                 .pointInTime("time_stamp")
+///                 .region("region")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   instance:
+///     type: gcp:sql:DatabaseInstance
+///     properties:
+///       name: main-instance
+///       databaseVersion: MYSQL_8_0
+///       settings:
+///         tier: db-f1-micro
+///         backupConfiguration:
+///           enabled: true
+///           binaryLogEnabled: true
+///       pointInTimeRestoreContext:
+///         datasource: backupdr_datasource
+///         targetInstance: main-instance
+///         pointInTime: time_stamp
+///         region: region
 /// ```
 ///
 ///
@@ -1877,64 +2387,59 @@ import 'database_instance_state.dart';
 ///
 /// MySQL/PostgreSQL: Create a cross-region, Enterprise Plus edition primary and replica pair, then set the value of primary's `replication_cluster.failover_dr_replica_name` as the replica.
 ///
-/// SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+/// SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadableReplica` is set to true in `replicaConfiguration`)
 ///
 /// #### Invoking switchover in the replica resource:
-/// 1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
-/// 2. Remove `master_instance_name`
-/// 3. (SQL Server) Remove `replica_configuration`
-/// 4. Add current primary's name to the replica's `replica_names` list
+/// 1. Change instanceType from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+/// 2. Remove `masterInstanceName`
+/// 3. (SQL Server) Remove `replicaConfiguration`
+/// 4. Add current primary's name to the replica's `replicaNames` list
 /// 5. (MySQL/PostgreSQL) Add current primary's name to the replica's `replication_cluster.failover_dr_replica_name`.
-/// 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
+/// 6. (MySQL/PostgreSQL) Adjust `backupConfiguration`. See Switchover Guide for details.
 ///
 /// #### Updating the primary resource:
-/// 1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
-/// 2. Set `master_instance_name` to the original replica (which will be primary after switchover)
-/// 3. (SQL Server) Set `replica_configuration` and set `cascadable_replica` to `true`
-/// 4. Remove original replica from `replica_names`
-/// * **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+/// 1. Change `instanceType` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+/// 2. Set `masterInstanceName` to the original replica (which will be primary after switchover)
+/// 3. (SQL Server) Set `replicaConfiguration` and set `cascadableReplica` to `true`
+/// 4. Remove original replica from `replicaNames`
+/// * **NOTE**: Do **not** delete the replicaNames field, even if it has no replicas remaining. Set replicaNames = [ ] to indicate it having no replicas.
 /// 5. (MySQL/PostgreSQL) Set `replication_cluster.failover_dr_replica_name` as the empty string.
-/// 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
+/// 6. (MySQL/PostgreSQL) Adjust `backupConfiguration`. See Switchover Guide for details.
 /// #### Plan and verify that:
 /// - `pulumi preview` outputs **"0 to add, 0 to destroy"**
 /// - `pulumi preview` does not say **"must be replaced"** for any resource
 /// - Every resource **"will be updated in-place"**
 /// - Only the 2 instances involved in switchover have planned changes
-/// - (Recommended) Use `deletion_protection` on instances as a safety measure
+/// - (Recommended) Use `deletionProtection` on instances as a safety measure
 ///
 /// ## Import
 ///
 /// Database instances can be imported using one of any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
 /// ```
 ///
+/// &gt; **NOTE:** Some fields (such as `replicaConfiguration`) won't show a diff if they are unset in
 /// config and set on the server.
-///
 /// When importing, double-check that your config has all the fields set that you expect- just seeing
-///
 /// no diff isn't sufficient to know that your config could reproduce the imported resource.
 class DatabaseInstance extends pulumi.CustomResource {
   /// The list of all maintenance versions applicable on the instance.
   late final pulumi.Output<List<String>> availableMaintenanceVersions;
-  /// The name of the BackupDR backup to restore from.
+  /// The backupdrBackup needed to restore the database to a backup run. This field will
+  /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+  /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+  /// block during resource creation/update will trigger the restore action after the resource is created/updated.
   late final pulumi.Output<String?> backupdrBackup;
   /// The context needed to create this instance as a clone of another instance. When this field is set during
   /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
@@ -1946,13 +2451,20 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// The MySQL, PostgreSQL or
   /// SQL Server version to use. Supported values include `MYSQL_5_6`,
   /// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-  /// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `POSTGRES_16`, `POSTGRES_17`,
-  /// `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
-  /// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
-  /// `SQLSERVER_2019_WEB`.
+  /// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `POSTGRES_16`, `POSTGRES_17`, `POSTGRES_18`,
+  /// `SQLSERVER_2022_STANDARD`, `SQLSERVER_2022_ENTERPRISE`, `SQLSERVER_2022_EXPRESS`,
+  /// `SQLSERVER_2022_WEB`, `SQLSERVER_2025_STANDARD`, `SQLSERVER_2025_ENTERPRISE`,
+  /// `SQLSERVER_2025_EXPRESS`, `SQLSERVER_2025_WEB`.
   /// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
   /// includes an up-to-date reference of supported versions.
   late final pulumi.Output<String> databaseVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
   ///
@@ -1971,18 +2483,25 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
   /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
   late final pulumi.Output<String> encryptionKeyName;
+  /// Whether to enforce the new SQL network architecture.
+  /// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+  /// This follows the gcloud pattern where the flag is an irreversible opt-in.
+  /// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+  late final pulumi.Output<bool> enforceNewSqlNetworkArchitecture;
   /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
   late final pulumi.Output<String?> finalBackupDescription;
   /// The first IPv4 address of any type assigned.
   late final pulumi.Output<String> firstIpAddress;
+  /// When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+  late final pulumi.Output<bool?> includeReplicasForMajorVersionUpgrade;
   /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
   late final pulumi.Output<String> instanceType;
   late final pulumi.Output<List<Map<String, dynamic>>> ipAddresses;
-  /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+  /// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
   late final pulumi.Output<String> maintenanceVersion;
   /// The name of the existing instance that will
   /// act as the master in the replication setup. Note, this requires the master to
-  /// have `binary_log_enabled` set, as well as existing backups.
+  /// have `binaryLogEnabled` set, as well as existing backups.
   late final pulumi.Output<String> masterInstanceName;
   /// The name of the instance. If the name is left
   /// blank, the provider will randomly generate one when the instance is first
@@ -1991,7 +2510,10 @@ class DatabaseInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
   late final pulumi.Output<int> nodeCount;
-  /// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+  /// The pointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+  /// cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+  /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+  /// block during resource creation/update will trigger the restore action after the resource is created/updated.
   late final pulumi.Output<DatabaseInstancePointInTimeRestoreContext?> pointInTimeRestoreContext;
   /// The first private (`PRIVATE`) IPv4 address assigned.
   late final pulumi.Output<String> privateIpAddress;
@@ -2012,7 +2534,7 @@ class DatabaseInstance extends pulumi.CustomResource {
   late final pulumi.Output<DatabaseInstanceReplicaConfiguration> replicaConfiguration;
   /// List of replica names. Can be updated.
   late final pulumi.Output<List<String>> replicaNames;
-  /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
+  /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
   late final pulumi.Output<DatabaseInstanceReplicationCluster> replicationCluster;
   /// The context needed to restore the database to a backup run. This field will
   /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -2024,9 +2546,9 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
   ///
-  /// &gt; **Note:** One of `root_password` or `root_password_wo` can only be set.
+  /// &gt; **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
   late final pulumi.Output<String?> rootPasswordWo;
-  /// Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<String?> rootPasswordWoVersion;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
@@ -2037,6 +2559,8 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// The settings to use for the database. The
   /// configuration is detailed below. Required if `clone` is not set.
   late final pulumi.Output<DatabaseInstanceSettings> settings;
+  /// When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+  late final pulumi.Output<bool?> switchTransactionLogsToCloudStorageEnabled;
 
   /// Creates a new [DatabaseInstance].
   /// [name] The Pulumi resource name.
@@ -2057,12 +2581,15 @@ class DatabaseInstance extends pulumi.CustomResource {
     clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
     databaseVersion = registerOutput<String>('databaseVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<Map<String, dynamic>>>('dnsNames');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
+    enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
     firstIpAddress = registerOutput<String>('firstIpAddress');
+    includeReplicasForMajorVersionUpgrade = registerOutput<bool?>('includeReplicasForMajorVersionUpgrade');
     instanceType = registerOutput<String>('instanceType');
     ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
@@ -2086,6 +2613,7 @@ class DatabaseInstance extends pulumi.CustomResource {
     serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
     serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
     settings = registerOutput<DatabaseInstanceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    switchTransactionLogsToCloudStorageEnabled = registerOutput<bool?>('switchTransactionLogsToCloudStorageEnabled');
   }
 
   /// Gets an existing [DatabaseInstance] resource's state with the given [name] and [id].
@@ -2116,12 +2644,15 @@ class DatabaseInstance extends pulumi.CustomResource {
     clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
     databaseVersion = registerOutput<String>('databaseVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<Map<String, dynamic>>>('dnsNames');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
+    enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
     firstIpAddress = registerOutput<String>('firstIpAddress');
+    includeReplicasForMajorVersionUpgrade = registerOutput<bool?>('includeReplicasForMajorVersionUpgrade');
     instanceType = registerOutput<String>('instanceType');
     ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
@@ -2145,5 +2676,6 @@ class DatabaseInstance extends pulumi.CustomResource {
     serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
     serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
     settings = registerOutput<DatabaseInstanceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    switchTransactionLogsToCloudStorageEnabled = registerOutput<bool?>('switchTransactionLogsToCloudStorageEnabled');
   }
 }

@@ -184,11 +184,11 @@ import 'multicast_domain_group_networkservices_state.dart';
 /// 		_, err = networkservices.NewMulticastDomain(ctx, "multicast_domain_a", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-mdg-domain-a"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID(),
+/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
-/// 			MulticastDomainGroup: mdgTest.ID(),
+/// 			MulticastDomainGroup: mdgTest.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			network,
 /// 		}))
@@ -198,11 +198,11 @@ import 'multicast_domain_group_networkservices_state.dart';
 /// 		_, err = networkservices.NewMulticastDomain(ctx, "multicast_domain_b", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-mdg-domain-b"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID(),
+/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
-/// 			MulticastDomainGroup: mdgTest.ID(),
+/// 			MulticastDomainGroup: mdgTest.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			network,
 /// 		}))
@@ -211,6 +211,48 @@ import 'multicast_domain_group_networkservices_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_multicastdomaingroup" "mdg_test" {
+///   multicast_domain_group_id = "test-mdg-resource"
+///   location                  = "global"
+///   description               = "my description"
+///   labels = {
+///     "fake_label" = "label123"
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-mdg-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkservices_multicastdomain" "multicast_domain_a" {
+///   depends_on          = [gcp_compute_network.network]
+///   multicast_domain_id = "test-mdg-domain-a"
+///   location            = "global"
+///   admin_network       = gcp_compute_network.network.id
+///   connection_config = {
+///     connection_type = "SAME_VPC"
+///   }
+///   multicast_domain_group = gcp_networkservices_multicastdomaingroup.mdg_test.id
+/// }
+/// resource "gcp_networkservices_multicastdomain" "multicast_domain_b" {
+///   depends_on          = [gcp_compute_network.network]
+///   multicast_domain_id = "test-mdg-domain-b"
+///   location            = "global"
+///   admin_network       = gcp_compute_network.network.id
+///   connection_config = {
+///     connection_type = "SAME_VPC"
+///   }
+///   multicast_domain_group = gcp_networkservices_multicastdomaingroup.mdg_test.id
 /// }
 /// ```
 /// ```java
@@ -227,8 +269,8 @@ import 'multicast_domain_group_networkservices_state.dart';
 /// import com.pulumi.gcp.networkservices.MulticastDomainArgs;
 /// import com.pulumi.gcp.networkservices.inputs.MulticastDomainConnectionConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,34 +371,34 @@ import 'multicast_domain_group_networkservices_state.dart';
 /// MulticastDomainGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}`
-///
 /// * `{{project}}/{{location}}/{{multicast_domain_group_id}}`
-///
 /// * `{{location}}/{{multicast_domain_group_id}}`
+///
 ///
 /// When using the `pulumi import` command, MulticastDomainGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{project}}/{{location}}/{{multicast_domain_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{location}}/{{multicast_domain_group_id}}
 /// ```
 class MulticastDomainGroup extends pulumi.CustomResource {
   /// The timestamp when the multicast domain group was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional text description of the multicast domain group.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -413,6 +455,7 @@ class MulticastDomainGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -451,6 +494,7 @@ class MulticastDomainGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

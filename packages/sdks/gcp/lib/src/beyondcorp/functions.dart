@@ -66,6 +66,19 @@ import 'get_security_gateway_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_beyondcorp_getappconnection" "my-beyondcorp-app-connection" {
+///   name = "my-beyondcorp-app-connection"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +87,8 @@ import 'get_security_gateway_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
 /// import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +184,19 @@ Future<GetAppConnectionResult> getAppConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_beyondcorp_getappconnector" "my-beyondcorp-app-connector" {
+///   name = "my-beyondcorp-app-connector"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +205,8 @@ Future<GetAppConnectionResult> getAppConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
 /// import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,6 +302,19 @@ Future<GetAppConnectorResult> getAppConnector(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_beyondcorp_getappgateway" "my-beyondcorp-app-gateway" {
+///   name = "my-beyondcorp-app-gateway"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +323,8 @@ Future<GetAppConnectorResult> getAppConnector(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
 /// import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -381,6 +420,19 @@ Future<GetAppGatewayResult> getAppGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_beyondcorp_getsecuritygateway" "my-beyondcorp-security-gateway" {
+///   security_gateway_id = "my-beyondcorp-security-gateway"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -389,8 +441,8 @@ Future<GetAppGatewayResult> getAppGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
 /// import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -495,6 +547,21 @@ Future<GetSecurityGatewayResult> getSecurityGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_beyondcorp_getsecuritygatewayapplicationiampolicy" "policy" {
+///   project             = example.project
+///   security_gateway_id = example.securityGatewayId
+///   application_id      = example.applicationId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -503,8 +570,8 @@ Future<GetSecurityGatewayResult> getSecurityGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
 /// import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayApplicationIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -517,9 +584,9 @@ Future<GetSecurityGatewayResult> getSecurityGateway(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BeyondcorpFunctions.getSecurityGatewayApplicationIamPolicy(GetSecurityGatewayApplicationIamPolicyArgs.builder()
-///             .project(example.project())
-///             .securityGatewayId(example.securityGatewayId())
-///             .applicationId(example.applicationId())
+///             .project(example.get("project"))
+///             .securityGatewayId(example.get("securityGatewayId"))
+///             .applicationId(example.get("applicationId"))
 ///             .build());
 ///
 ///     }
@@ -613,6 +680,21 @@ Future<GetSecurityGatewayApplicationIamPolicyResult> getSecurityGatewayApplicati
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_beyondcorp_getsecuritygatewayiampolicy" "policy" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +703,8 @@ Future<GetSecurityGatewayApplicationIamPolicyResult> getSecurityGatewayApplicati
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
 /// import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -635,9 +717,9 @@ Future<GetSecurityGatewayApplicationIamPolicyResult> getSecurityGatewayApplicati
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BeyondcorpFunctions.getSecurityGatewayIamPolicy(GetSecurityGatewayIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .build());
 ///
 ///     }

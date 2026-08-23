@@ -81,7 +81,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-/// 			Dataset: dataset.ID(),
+/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:    pulumi.String("my-consent-store"),
 /// 		})
 /// 		if err != nil {
@@ -89,6 +89,24 @@ import 'consent_store_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   location = "us-central1"
+///   name     = "my-dataset"
+/// }
+/// resource "gcp_healthcare_consentstore" "my-consent" {
+///   dataset = gcp_healthcare_dataset.dataset.id
+///   name    = "my-consent-store"
 /// }
 /// ```
 /// ```java
@@ -101,8 +119,8 @@ import 'consent_store_state.dart';
 /// import com.pulumi.gcp.healthcare.DatasetArgs;
 /// import com.pulumi.gcp.healthcare.ConsentStore;
 /// import com.pulumi.gcp.healthcare.ConsentStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,7 +243,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-/// 			Dataset:                     dataset.ID(),
+/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                        pulumi.String("my-consent-store"),
 /// 			EnableConsentCreateOnUpdate: pulumi.Bool(true),
 /// 			DefaultConsentTtl:           pulumi.String("90000s"),
@@ -240,6 +258,29 @@ import 'consent_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   location = "us-central1"
+///   name     = "my-dataset"
+/// }
+/// resource "gcp_healthcare_consentstore" "my-consent" {
+///   dataset                         = gcp_healthcare_dataset.dataset.id
+///   name                            = "my-consent-store"
+///   enable_consent_create_on_update = true
+///   default_consent_ttl             = "90000s"
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -250,8 +291,8 @@ import 'consent_store_state.dart';
 /// import com.pulumi.gcp.healthcare.DatasetArgs;
 /// import com.pulumi.gcp.healthcare.ConsentStore;
 /// import com.pulumi.gcp.healthcare.ConsentStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,7 +441,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		my_consent, err := healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-/// 			Dataset: dataset.ID(),
+/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:    pulumi.String("my-consent-store"),
 /// 		})
 /// 		if err != nil {
@@ -414,7 +455,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = healthcare.NewConsentStoreIamMember(ctx, "test-iam", &healthcare.ConsentStoreIamMemberArgs{
-/// 			Dataset:        dataset.ID(),
+/// 			Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			ConsentStoreId: my_consent.Name,
 /// 			Role:           pulumi.String("roles/editor"),
 /// 			Member: test_account.Email.ApplyT(func(email string) (string, error) {
@@ -426,6 +467,34 @@ import 'consent_store_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   location = "us-central1"
+///   name     = "my-dataset"
+/// }
+/// resource "gcp_healthcare_consentstore" "my-consent" {
+///   dataset = gcp_healthcare_dataset.dataset.id
+///   name    = "my-consent-store"
+/// }
+/// resource "gcp_serviceaccount_account" "test-account" {
+///   account_id   = "my-account"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_healthcare_consentstoreiammember" "test-iam" {
+///   dataset          = gcp_healthcare_dataset.dataset.id
+///   consent_store_id = gcp_healthcare_consentstore.my-consent.name
+///   role             = "roles/editor"
+///   member           ="serviceAccount:${gcp_serviceaccount_account.test-account.email}"
 /// }
 /// ```
 /// ```java
@@ -442,8 +511,8 @@ import 'consent_store_state.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamMember;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -513,6 +582,7 @@ import 'consent_store_state.dart';
 ///
 /// * `{{dataset}}/consentStores/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -525,6 +595,13 @@ class ConsentStore extends pulumi.CustomResource {
   /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   late final pulumi.Output<String?> defaultConsentTtl;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
@@ -539,7 +616,7 @@ class ConsentStore extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of this ConsentStore, for example:
   /// "consent1"
@@ -564,6 +641,7 @@ class ConsentStore extends pulumi.CustomResource {
         ) {
     dataset = registerOutput<String>('dataset');
     defaultConsentTtl = registerOutput<String?>('defaultConsentTtl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableConsentCreateOnUpdate = registerOutput<bool?>('enableConsentCreateOnUpdate');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -596,6 +674,7 @@ class ConsentStore extends pulumi.CustomResource {
         ) {
     dataset = registerOutput<String>('dataset');
     defaultConsentTtl = registerOutput<String?>('defaultConsentTtl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableConsentCreateOnUpdate = registerOutput<bool?>('enableConsentCreateOnUpdate');
     labels = registerOutput<Map<String, String>?>('labels');

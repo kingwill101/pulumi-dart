@@ -172,6 +172,41 @@ import 'user_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_discoveryengine_licenseconfig" "basic" {
+///   location          = "us"
+///   license_config_id = "license-config-id"
+///   license_count     = 50
+///   subscription_tier = "SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT"
+///   start_date = {
+///     year  = 2099
+///     month = 1
+///     day   = 1
+///   }
+///   end_date = {
+///     year  = 2100
+///     month = 1
+///     day   = 1
+///   }
+///   subscription_term = "SUBSCRIPTION_TERM_ONE_YEAR"
+/// }
+/// resource "gcp_discoveryengine_userstore" "basic" {
+///   location                     = gcp_discoveryengine_licenseconfig.basic.location
+///   default_license_config       ="projects/${data.gcp_organizations_getproject.project.number}/locations/${gcp_discoveryengine_licenseconfig.basic.location}/licenseConfigs/${gcp_discoveryengine_licenseconfig.basic.license_config_id}"
+///   enable_license_auto_register = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +221,8 @@ import 'user_store_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.discoveryengine.UserStore;
 /// import com.pulumi.gcp.discoveryengine.UserStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,22 +306,15 @@ import 'user_store_state.dart';
 /// UserStore can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}`
-///
 /// * `{{project}}/{{location}}/{{user_store_id}}`
-///
 /// * `{{location}}/{{user_store_id}}`
+///
 ///
 /// When using the `pulumi import` command, UserStore can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/userStore:UserStore default projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/userStore:UserStore default {{project}}/{{location}}/{{user_store_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/userStore:UserStore default {{location}}/{{user_store_id}}
 /// ```
 class UserStore extends pulumi.CustomResource {
@@ -316,7 +344,7 @@ class UserStore extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// The ID of the user store. Currently only accepts "default_user_store".
+  /// The ID of the user store. Currently only accepts "defaultUserStore".
   late final pulumi.Output<String?> userStoreId;
 
   /// Creates a new [UserStore].

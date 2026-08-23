@@ -17,6 +17,13 @@ class RegionSecurityPolicyArgs {
   /// Configuration for Google Cloud Armor DDOS Proctection Config.
   /// Structure is documented below.
   final pulumi.Input<RegionSecurityPolicyDdosProtectionConfig>? ddosProtectionConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
@@ -47,6 +54,7 @@ class RegionSecurityPolicyArgs {
   /// Creates a new [RegionSecurityPolicyArgs].
   /// [advancedOptionsConfig] Advanced Options Config of this security policy.
   /// [ddosProtectionConfig] Configuration for Google Cloud Armor DDOS Proctection Config.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
   /// [project] The ID of the project in which the resource belongs.
@@ -57,6 +65,7 @@ class RegionSecurityPolicyArgs {
   const RegionSecurityPolicyArgs({
     this.advancedOptionsConfig,
     this.ddosProtectionConfig,
+    this.deletionPolicy,
     this.description,
     this.name,
     this.project,
@@ -70,6 +79,7 @@ class RegionSecurityPolicyArgs {
     return <String, dynamic>{
       'advancedOptionsConfig': ?pulumi.Input.mapOptionalInputValue<RegionSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(advancedOptionsConfig, (value) => value.toMap()),
       'ddosProtectionConfig': ?pulumi.Input.mapOptionalInputValue<RegionSecurityPolicyDdosProtectionConfig, Map<String, dynamic>>(ddosProtectionConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'project': ?project,
@@ -84,6 +94,7 @@ class RegionSecurityPolicyArgs {
     return RegionSecurityPolicyArgs(
       advancedOptionsConfig: (() { final guardedValue = map['advancedOptionsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ddosProtectionConfig: (() { final guardedValue = map['ddosProtectionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyDdosProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -94,4 +105,3 @@ class RegionSecurityPolicyArgs {
     );
   }
 }
-

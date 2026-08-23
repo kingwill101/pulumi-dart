@@ -9,6 +9,7 @@ import 'get_service_traffic.dart';
 /// Result data returned by getService.
 class GetServiceResult {
   final bool autogenerateRevisionName;
+  final String deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -21,6 +22,7 @@ class GetServiceResult {
 
   /// Creates a new [GetServiceResult].
   /// [autogenerateRevisionName] Required.
+  /// [deletionPolicy] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [metadatas] Required.
@@ -31,6 +33,7 @@ class GetServiceResult {
   /// [traffics] Required.
   const GetServiceResult({
     required this.autogenerateRevisionName,
+    required this.deletionPolicy,
     required this.id,
     required this.location,
     required this.metadatas,
@@ -44,6 +47,7 @@ class GetServiceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autogenerateRevisionName': autogenerateRevisionName,
+      'deletionPolicy': deletionPolicy,
       'id': id,
       'location': location,
       'metadatas': pulumi.Input.encodeList<GetServiceMetadata, Map<String, dynamic>>(metadatas, (value) => value.toMap()),
@@ -58,6 +62,7 @@ class GetServiceResult {
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
       autogenerateRevisionName: map['autogenerateRevisionName'] as bool,
+      deletionPolicy: map['deletionPolicy'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       metadatas: pulumi.Input.decodeList<GetServiceMetadata>(map['metadatas']!, (value) => GetServiceMetadata.fromMap((value as Map).cast<String, dynamic>())),
@@ -69,4 +74,3 @@ class GetServiceResult {
     );
   }
 }
-

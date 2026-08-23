@@ -3,12 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_automated_backup_policy.dart';
 import 'cluster_continuous_backup_config.dart';
+import 'cluster_dataplex_config.dart';
 import 'cluster_encryption_config.dart';
 import 'cluster_initial_user.dart';
 import 'cluster_maintenance_update_policy.dart';
 import 'cluster_network_config.dart';
 import 'cluster_psc_config.dart';
 import 'cluster_restore_backup_source.dart';
+import 'cluster_restore_backupdr_backup_source.dart';
+import 'cluster_restore_backupdr_pitr_source.dart';
 import 'cluster_restore_continuous_backup_source.dart';
 import 'cluster_secondary_config.dart';
 
@@ -21,7 +24,7 @@ class ClusterArgs {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
   /// Structure is documented below.
@@ -39,11 +42,25 @@ class ClusterArgs {
   /// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
   /// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
   final pulumi.Input<String>? databaseVersion;
+  /// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+  /// Structure is documented below.
+  final pulumi.Input<ClusterDataplexConfig>? dataplexConfig;
   /// Policy to determine if the cluster should be deleted forcefully.
   /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-  /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
-  /// Possible values: DEFAULT, FORCE
+  /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
   final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the cluster.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the cluster will fail.
+  /// When the field is set to false, deleting the cluster is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// User-settable and human-readable display name for the Cluster.
   final pulumi.Input<String>? displayName;
@@ -57,7 +74,7 @@ class ClusterArgs {
   final pulumi.Input<ClusterInitialUser>? initialUser;
   /// User-defined labels for the alloydb cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the alloydb cluster should reside.
   final pulumi.Input<String> location;
@@ -73,10 +90,16 @@ class ClusterArgs {
   /// Configuration for Private Service Connect (PSC) for the cluster.
   /// Structure is documented below.
   final pulumi.Input<ClusterPscConfig>? pscConfig;
-  /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+  /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// Structure is documented below.
   final pulumi.Input<ClusterRestoreBackupSource>? restoreBackupSource;
-  /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+  /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+  /// Structure is documented below.
+  final pulumi.Input<ClusterRestoreBackupdrBackupSource>? restoreBackupdrBackupSource;
+  /// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+  /// Structure is documented below.
+  final pulumi.Input<ClusterRestoreBackupdrPitrSource>? restoreBackupdrPitrSource;
+  /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// Structure is documented below.
   final pulumi.Input<ClusterRestoreContinuousBackupSource>? restoreContinuousBackupSource;
   /// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
@@ -97,8 +120,9 @@ class ClusterArgs {
   /// [clusterType] The type of cluster. If not set, defaults to PRIMARY.
   /// [continuousBackupConfig] The continuous backup config for this cluster.
   /// [databaseVersion] The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+  /// [dataplexConfig] Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
   /// [deletionPolicy] Policy to determine if the cluster should be deleted forcefully.
-  /// [deletionProtection] Optional.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the cluster.
   /// [displayName] User-settable and human-readable display name for the Cluster.
   /// [encryptionConfig] EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
   /// [etag] For Resource freshness validation (https://google.aip.dev/154)
@@ -109,8 +133,10 @@ class ClusterArgs {
   /// [networkConfig] Metadata related to network configuration.
   /// [project] The ID of the project in which the resource belongs.
   /// [pscConfig] Configuration for Private Service Connect (PSC) for the cluster.
-  /// [restoreBackupSource] The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
-  /// [restoreContinuousBackupSource] The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+  /// [restoreBackupSource] The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+  /// [restoreBackupdrBackupSource] The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+  /// [restoreBackupdrPitrSource] The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+  /// [restoreContinuousBackupSource] The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// [secondaryConfig] Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
   /// [skipAwaitMajorVersionUpgrade] Set to true to skip awaiting on the major version upgrade of the cluster.
   /// [subscriptionType] The subscrition type of cluster.
@@ -121,6 +147,7 @@ class ClusterArgs {
     this.clusterType,
     this.continuousBackupConfig,
     this.databaseVersion,
+    this.dataplexConfig,
     this.deletionPolicy,
     this.deletionProtection,
     this.displayName,
@@ -134,6 +161,8 @@ class ClusterArgs {
     this.project,
     this.pscConfig,
     this.restoreBackupSource,
+    this.restoreBackupdrBackupSource,
+    this.restoreBackupdrPitrSource,
     this.restoreContinuousBackupSource,
     this.secondaryConfig,
     this.skipAwaitMajorVersionUpgrade,
@@ -148,6 +177,7 @@ class ClusterArgs {
       'clusterType': ?clusterType,
       'continuousBackupConfig': ?pulumi.Input.mapOptionalInputValue<ClusterContinuousBackupConfig, Map<String, dynamic>>(continuousBackupConfig, (value) => value.toMap()),
       'databaseVersion': ?databaseVersion,
+      'dataplexConfig': ?pulumi.Input.mapOptionalInputValue<ClusterDataplexConfig, Map<String, dynamic>>(dataplexConfig, (value) => value.toMap()),
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
@@ -161,6 +191,8 @@ class ClusterArgs {
       'project': ?project,
       'pscConfig': ?pulumi.Input.mapOptionalInputValue<ClusterPscConfig, Map<String, dynamic>>(pscConfig, (value) => value.toMap()),
       'restoreBackupSource': ?pulumi.Input.mapOptionalInputValue<ClusterRestoreBackupSource, Map<String, dynamic>>(restoreBackupSource, (value) => value.toMap()),
+      'restoreBackupdrBackupSource': ?pulumi.Input.mapOptionalInputValue<ClusterRestoreBackupdrBackupSource, Map<String, dynamic>>(restoreBackupdrBackupSource, (value) => value.toMap()),
+      'restoreBackupdrPitrSource': ?pulumi.Input.mapOptionalInputValue<ClusterRestoreBackupdrPitrSource, Map<String, dynamic>>(restoreBackupdrPitrSource, (value) => value.toMap()),
       'restoreContinuousBackupSource': ?pulumi.Input.mapOptionalInputValue<ClusterRestoreContinuousBackupSource, Map<String, dynamic>>(restoreContinuousBackupSource, (value) => value.toMap()),
       'secondaryConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSecondaryConfig, Map<String, dynamic>>(secondaryConfig, (value) => value.toMap()),
       'skipAwaitMajorVersionUpgrade': ?skipAwaitMajorVersionUpgrade,
@@ -176,6 +208,7 @@ class ClusterArgs {
       clusterType: (() { final guardedValue = map['clusterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       continuousBackupConfig: (() { final guardedValue = map['continuousBackupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterContinuousBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       databaseVersion: (() { final guardedValue = map['databaseVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataplexConfig: (() { final guardedValue = map['dataplexConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDataplexConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -189,6 +222,8 @@ class ClusterArgs {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pscConfig: (() { final guardedValue = map['pscConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       restoreBackupSource: (() { final guardedValue = map['restoreBackupSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRestoreBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      restoreBackupdrBackupSource: (() { final guardedValue = map['restoreBackupdrBackupSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRestoreBackupdrBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      restoreBackupdrPitrSource: (() { final guardedValue = map['restoreBackupdrPitrSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRestoreBackupdrPitrSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       restoreContinuousBackupSource: (() { final guardedValue = map['restoreContinuousBackupSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRestoreContinuousBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secondaryConfig: (() { final guardedValue = map['secondaryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSecondaryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       skipAwaitMajorVersionUpgrade: (() { final guardedValue = map['skipAwaitMajorVersionUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -196,4 +231,3 @@ class ClusterArgs {
     );
   }
 }
-

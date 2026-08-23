@@ -28,6 +28,13 @@ class AgentState {
   /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
   /// for a list of the currently supported language codes. This field cannot be updated after creation.
   final pulumi.Input<String>? defaultLanguageCode;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
   final pulumi.Input<String>? description;
   /// The name of this agent.
@@ -63,6 +70,7 @@ class AgentState {
   /// [avatarUriBackend] The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
   /// [classificationThreshold] To filter out false positive results and still get variety in matched natural language inputs for your agent,
   /// [defaultLanguageCode] The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
   /// [displayName] The name of this agent.
   /// [enableLogging] Determines whether this agent should log conversation queries.
@@ -77,6 +85,7 @@ class AgentState {
     this.avatarUriBackend,
     this.classificationThreshold,
     this.defaultLanguageCode,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.enableLogging,
@@ -94,6 +103,7 @@ class AgentState {
       'avatarUriBackend': ?avatarUriBackend,
       'classificationThreshold': ?classificationThreshold,
       'defaultLanguageCode': ?defaultLanguageCode,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'enableLogging': ?enableLogging,
@@ -112,6 +122,7 @@ class AgentState {
       avatarUriBackend: (() { final guardedValue = map['avatarUriBackend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       classificationThreshold: (() { final guardedValue = map['classificationThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       defaultLanguageCode: (() { final guardedValue = map['defaultLanguageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableLogging: (() { final guardedValue = map['enableLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -123,4 +134,3 @@ class AgentState {
     );
   }
 }
-

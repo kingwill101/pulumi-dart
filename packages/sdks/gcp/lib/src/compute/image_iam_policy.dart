@@ -5,8 +5,8 @@ import 'image_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.
-/// * `gcp.compute.ImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the image are preserved.
-/// * `gcp.compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the image are preserved.
+/// * `gcp.compute.ImageIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the image are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the image are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -14,7 +14,7 @@ import 'image_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.compute.ImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.ImageIamBinding` and `gcp.compute.ImageIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.compute.ImageIamBinding` resources **can be** used in conjunction with `gcp.compute.ImageIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.compute.ImageIamBinding` resources **can be** used in conjunction with `gcp.compute.ImageIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -119,6 +119,28 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.imageUser"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiampolicy" "policy" {
+///   project     = example.project
+///   image       = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,10 +149,11 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.ImageIamPolicy;
 /// import com.pulumi.gcp.compute.ImageIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,8 +173,8 @@ import 'image_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -299,6 +322,33 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.imageUser"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiampolicy" "policy" {
+///   project     = example.project
+///   image       = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,10 +357,12 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.compute.ImageIamPolicy;
 /// import com.pulumi.gcp.compute.ImageIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,8 +387,8 @@ import 'image_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -436,6 +488,22 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiambinding" "binding" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +512,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ImageIamBinding;
 /// import com.pulumi.gcp.compute.ImageIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -458,8 +526,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -571,6 +639,27 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiambinding" "binding" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -580,8 +669,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.gcp.compute.ImageIamBinding;
 /// import com.pulumi.gcp.compute.ImageIamBindingArgs;
 /// import com.pulumi.gcp.compute.inputs.ImageIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -594,8 +683,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .members("user:jane@example.com")
 ///             .condition(ImageIamBindingConditionArgs.builder()
@@ -689,6 +778,22 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiammember" "member" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -697,8 +802,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ImageIamMember;
 /// import com.pulumi.gcp.compute.ImageIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -711,8 +816,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -818,6 +923,27 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiammember" "member" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   member  = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -827,8 +953,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.gcp.compute.ImageIamMember;
 /// import com.pulumi.gcp.compute.ImageIamMemberArgs;
 /// import com.pulumi.gcp.compute.inputs.ImageIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -841,8 +967,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .member("user:jane@example.com")
 ///             .condition(ImageIamMemberConditionArgs.builder()
@@ -880,8 +1006,8 @@ import 'image_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.
-/// * `gcp.compute.ImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the image are preserved.
-/// * `gcp.compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the image are preserved.
+/// * `gcp.compute.ImageIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the image are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the image are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -889,7 +1015,7 @@ import 'image_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.compute.ImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.ImageIamBinding` and `gcp.compute.ImageIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.compute.ImageIamBinding` resources **can be** used in conjunction with `gcp.compute.ImageIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.compute.ImageIamBinding` resources **can be** used in conjunction with `gcp.compute.ImageIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -994,6 +1120,28 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.imageUser"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiampolicy" "policy" {
+///   project     = example.project
+///   image       = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1002,10 +1150,11 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.ImageIamPolicy;
 /// import com.pulumi.gcp.compute.ImageIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1025,8 +1174,8 @@ import 'image_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1174,6 +1323,33 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.imageUser"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiampolicy" "policy" {
+///   project     = example.project
+///   image       = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1182,10 +1358,12 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.compute.ImageIamPolicy;
 /// import com.pulumi.gcp.compute.ImageIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1210,8 +1388,8 @@ import 'image_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1311,6 +1489,22 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiambinding" "binding" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1319,8 +1513,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ImageIamBinding;
 /// import com.pulumi.gcp.compute.ImageIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1333,8 +1527,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1446,6 +1640,27 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiambinding" "binding" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1455,8 +1670,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.gcp.compute.ImageIamBinding;
 /// import com.pulumi.gcp.compute.ImageIamBindingArgs;
 /// import com.pulumi.gcp.compute.inputs.ImageIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1469,8 +1684,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .members("user:jane@example.com")
 ///             .condition(ImageIamBindingConditionArgs.builder()
@@ -1564,6 +1779,22 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiammember" "member" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1572,8 +1803,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ImageIamMember;
 /// import com.pulumi.gcp.compute.ImageIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1586,8 +1817,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1693,6 +1924,27 @@ import 'image_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_imageiammember" "member" {
+///   project = example.project
+///   image   = example.name
+///   role    = "roles/compute.imageUser"
+///   member  = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1702,8 +1954,8 @@ import 'image_iam_policy_state.dart';
 /// import com.pulumi.gcp.compute.ImageIamMember;
 /// import com.pulumi.gcp.compute.ImageIamMemberArgs;
 /// import com.pulumi.gcp.compute.inputs.ImageIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1716,8 +1968,8 @@ import 'image_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .role("roles/compute.imageUser")
 ///             .member("user:jane@example.com")
 ///             .condition(ImageIamMemberConditionArgs.builder()
@@ -1751,9 +2003,7 @@ import 'image_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/global/images/{{name}}
-///
 /// * {{project}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1761,25 +2011,21 @@ import 'image_iam_policy_state.dart';
 /// Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser user:jane@example.com"
+/// $ terraform import google_compute_image_iam_member.editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser"
+/// $ terraform import google_compute_image_iam_binding.editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor projects/{{project}}/global/images/{{image}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ImageIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

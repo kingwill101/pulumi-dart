@@ -125,15 +125,15 @@ import 'network_endpoint_group_state.dart';
 /// 			Name:        pulumi.String("neg-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
 /// 			Name:        pulumi.String("my-lb-neg"),
-/// 			Network:     _default.ID(),
-/// 			Subnetwork:  defaultSubnetwork.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultPort: pulumi.Int(90),
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 		})
@@ -142,6 +142,33 @@ import 'network_endpoint_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_networkendpointgroup" "neg" {
+///   name         = "my-lb-neg"
+///   network      = gcp_compute_network.default.id
+///   subnetwork   = gcp_compute_subnetwork.default.id
+///   default_port = "90"
+///   zone         = "us-central1-a"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "neg-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "neg-subnetwork"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -156,8 +183,8 @@ import 'network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -304,7 +331,7 @@ import 'network_endpoint_group_state.dart';
 /// 		}
 /// 		neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("my-lb-neg"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultPort:         pulumi.Int(90),
 /// 			Zone:                pulumi.String("us-central1-a"),
 /// 			NetworkEndpointType: pulumi.String("NON_GCP_PRIVATE_IP_PORT"),
@@ -324,6 +351,31 @@ import 'network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_networkendpointgroup" "neg" {
+///   name                  = "my-lb-neg"
+///   network               = gcp_compute_network.default.id
+///   default_port          = "90"
+///   zone                  = "us-central1-a"
+///   network_endpoint_type = "NON_GCP_PRIVATE_IP_PORT"
+/// }
+/// resource "gcp_compute_networkendpoint" "default-endpoint" {
+///   network_endpoint_group = gcp_compute_networkendpointgroup.neg.name
+///   port                   = gcp_compute_networkendpointgroup.neg.default_port
+///   ip_address             = "127.0.0.1"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "neg-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -336,8 +388,8 @@ import 'network_endpoint_group_state.dart';
 /// import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpoint;
 /// import com.pulumi.gcp.compute.NetworkEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -398,34 +450,30 @@ import 'network_endpoint_group_state.dart';
 /// NetworkEndpointGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
 /// ```
 class NetworkEndpointGroup extends pulumi.CustomResource {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
   late final pulumi.Output<int?> defaultPort;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -451,7 +499,7 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
   /// CONNECTION balancing modes.
   /// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
   /// Default value is `GCE_VM_IP_PORT`.
-  /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+  /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `GCE_VM_IP_DEDICATED_BACKEND`.
   late final pulumi.Output<String?> networkEndpointType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -480,6 +528,7 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     generatedId = registerOutput<int>('generatedId');
     this.name = registerOutput<String>('name');
@@ -516,6 +565,7 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     generatedId = registerOutput<int>('generatedId');
     this.name = registerOutput<String>('name');

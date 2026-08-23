@@ -2,8 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_workloads_secret_args.dart';
 import 'user_workloads_secret_state.dart';
 
-/// User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
-/// Intended for Composer 3 Environments.
+/// User workloads Secret used by Airflow tasks that run with Kubernetes Executor
+/// or KubernetesPodOperator. Intended for Managed Airflow (Gen 3) Environments.
 ///
 /// ## Example Usage
 ///
@@ -159,6 +159,39 @@ import 'user_workloads_secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_composer_environment" "example" {
+///   name    = "example-environment"
+///   project = "example-project"
+///   region  = "us-central1"
+///   config = {
+///     software_config = {
+///       image_version = "example-image-version"
+///     }
+///   }
+/// }
+/// resource "gcp_composer_userworkloadssecret" "example" {
+///   name        = "example-secret"
+///   project     = "example-project"
+///   region      = "us-central1"
+///   environment = gcp_composer_environment.example.name
+///   data = {
+///     "email"    = base64encode("example-email")
+///     "password" = base64encode("example-password")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +206,8 @@ import 'user_workloads_secret_state.dart';
 /// import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,27 +288,34 @@ import 'user_workloads_secret_state.dart';
 /// Secret can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{environment}}/{{name}}`
-///
 /// * `{{environment}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{project}}/{{region}}/{{environment}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
 /// ```
 class UserWorkloadsSecret extends pulumi.CustomResource {
-  /// A map of the secret data.
+  /// The "data" field of Kubernetes Secret, organized in key-value pairs,
+  /// which can contain sensitive values such as a password, a token, or a key.
+  /// Content of this field will not be displayed in CLI output,
+  /// but it will be stored in terraform state file. To protect sensitive data,
+  /// follow the best practices outlined in the HashiCorp documentation:
+  /// https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+  /// The values for all keys have to be base64-encoded strings.
+  /// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
   late final pulumi.Output<Map<String, String>?> data;
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Environment where the Kubernetes Secret will be stored and used.
   late final pulumi.Output<String> environment;
   /// Name of the Kubernetes Secret.
@@ -301,6 +341,7 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     data = registerOutput<Map<String, String>?>('data');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -331,6 +372,7 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     data = registerOutput<Map<String, String>?>('data');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

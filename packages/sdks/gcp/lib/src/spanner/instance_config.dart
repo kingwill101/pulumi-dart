@@ -19,22 +19,15 @@ import 'instance_config_state.dart';
 /// InstanceConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instanceConfigs/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InstanceConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default projects/{{project}}/instanceConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default {{name}}
 /// ```
 class InstanceConfig extends pulumi.CustomResource {
@@ -44,6 +37,13 @@ class InstanceConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> baseConfig;
   /// Output only. Whether this instance config is a Google or User Managed Configuration.
   late final pulumi.Output<String> configType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of this instance configuration as it appears in UIs.
   late final pulumi.Output<String> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -52,7 +52,7 @@ class InstanceConfig extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A unique identifier for the instance configuration. Values are of the
   /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
@@ -83,6 +83,7 @@ class InstanceConfig extends pulumi.CustomResource {
         ) {
     baseConfig = registerOutput<String>('baseConfig');
     configType = registerOutput<String>('configType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -117,6 +118,7 @@ class InstanceConfig extends pulumi.CustomResource {
         ) {
     baseConfig = registerOutput<String>('baseConfig');
     configType = registerOutput<String>('configType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

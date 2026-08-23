@@ -5,6 +5,9 @@ import 'sac_realm_symantec_options.dart';
 
 /// Secure Access Connect Realm resource
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about SacRealm, see:
 ///
 /// * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacRealms)
@@ -84,6 +87,23 @@ import 'sac_realm_symantec_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_sacrealm" "default" {
+///   name = "sac-realm-name"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   security_service = "PALO_ALTO_PRISMA_ACCESS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +112,8 @@ import 'sac_realm_symantec_options.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networksecurity.SacRealm;
 /// import com.pulumi.gcp.networksecurity.SacRealmArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,6 +229,26 @@ import 'sac_realm_symantec_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_sacrealm" "default" {
+///   name = "sac-realm-name"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   security_service = "SYMANTEC_CLOUD_SWG"
+///   symantec_options = {
+///     secret_path = "secret-path"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +258,8 @@ import 'sac_realm_symantec_options.dart';
 /// import com.pulumi.gcp.networksecurity.SacRealm;
 /// import com.pulumi.gcp.networksecurity.SacRealmArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.SacRealmSymantecOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,33 +302,33 @@ import 'sac_realm_symantec_options.dart';
 /// SacRealm can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/sacRealms/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, SacRealm can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/sacRealm:SacRealm default projects/{{project}}/locations/global/sacRealms/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{name}}
 /// ```
 class SacRealm extends pulumi.CustomResource {
   /// Timestamp when the realm was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Identifier. Resource name.
   late final pulumi.Output<String> name;
@@ -327,6 +367,7 @@ class SacRealm extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -363,6 +404,7 @@ class SacRealm extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

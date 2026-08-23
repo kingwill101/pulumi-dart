@@ -6,9 +6,10 @@ import 'workstation_cluster_state.dart';
 
 /// A grouping of workstation configurations and the associated workstations in that region.
 ///
+///
 /// To get more information about WorkstationCluster, see:
 ///
-/// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
+/// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters/create)
 /// * How-to Guides
 /// * [Workstations](https://cloud.google.com/workstations/docs/)
 ///
@@ -143,8 +144,8 @@ import 'workstation_cluster_state.dart';
 /// 		}
 /// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 /// 			WorkstationClusterId: pulumi.String("workstation-cluster"),
-/// 			Network:              defaultNetwork.ID(),
-/// 			Subnetwork:           defaultSubnetwork.ID(),
+/// 			Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             pulumi.String("us-central1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label": pulumi.String("key"),
@@ -164,6 +165,41 @@ import 'workstation_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_workstations_workstationcluster" "default" {
+///   workstation_cluster_id = "workstation-cluster"
+///   network                = gcp_compute_network.default.id
+///   subnetwork             = gcp_compute_subnetwork.default.id
+///   location               = "us-central1"
+///   labels = {
+///     "label" = "key"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "workstation-cluster"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "workstation-cluster"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +214,8 @@ import 'workstation_cluster_state.dart';
 /// import com.pulumi.gcp.workstations.WorkstationClusterArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -391,8 +427,8 @@ import 'workstation_cluster_state.dart';
 /// 		}
 /// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 /// 			WorkstationClusterId: pulumi.String("workstation-cluster-private"),
-/// 			Network:              defaultNetwork.ID(),
-/// 			Subnetwork:           defaultSubnetwork.ID(),
+/// 			Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             pulumi.String("us-central1"),
 /// 			PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
 /// 				EnablePrivateEndpoint: pulumi.Bool(true),
@@ -415,6 +451,44 @@ import 'workstation_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_workstations_workstationcluster" "default" {
+///   workstation_cluster_id = "workstation-cluster-private"
+///   network                = gcp_compute_network.default.id
+///   subnetwork             = gcp_compute_subnetwork.default.id
+///   location               = "us-central1"
+///   private_cluster_config = {
+///     enable_private_endpoint = true
+///   }
+///   labels = {
+///     "label" = "key"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "workstation-cluster-private"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "workstation-cluster-private"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -430,8 +504,8 @@ import 'workstation_cluster_state.dart';
 /// import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -658,8 +732,8 @@ import 'workstation_cluster_state.dart';
 /// 		}
 /// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 /// 			WorkstationClusterId: pulumi.String("workstation-cluster-custom-domain"),
-/// 			Network:              defaultNetwork.ID(),
-/// 			Subnetwork:           defaultSubnetwork.ID(),
+/// 			Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             pulumi.String("us-central1"),
 /// 			PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
 /// 				EnablePrivateEndpoint: pulumi.Bool(true),
@@ -685,6 +759,47 @@ import 'workstation_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_workstations_workstationcluster" "default" {
+///   workstation_cluster_id = "workstation-cluster-custom-domain"
+///   network                = gcp_compute_network.default.id
+///   subnetwork             = gcp_compute_subnetwork.default.id
+///   location               = "us-central1"
+///   private_cluster_config = {
+///     enable_private_endpoint = true
+///   }
+///   domain_config = {
+///     domain = "workstations.example.com"
+///   }
+///   labels = {
+///     "label" = "key"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "workstation-cluster-custom-domain"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "workstation-cluster-custom-domain"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -701,8 +816,8 @@ import 'workstation_cluster_state.dart';
 /// import com.pulumi.gcp.workstations.inputs.WorkstationClusterDomainConfigArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -963,8 +1078,8 @@ import 'workstation_cluster_state.dart';
 /// }
 /// _, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 /// WorkstationClusterId: pulumi.String("workstation-cluster-tags"),
-/// Network: defaultNetwork.ID(),
-/// Subnetwork: defaultSubnetwork.ID(),
+/// Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// Location: pulumi.String("us-central1"),
 /// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
 /// tagKeyShortName := _args[0].(string)
@@ -979,6 +1094,46 @@ import 'workstation_cluster_state.dart';
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_tags_tagkey" "tag_key" {
+///   parent     ="projects/${data.gcp_organizations_getproject.project.number}"
+///   short_name = "keyname"
+/// }
+/// resource "gcp_tags_tagvalue" "tag_value" {
+///   parent     ="tagKeys/${gcp_tags_tagkey.tag_key.name}"
+///   short_name = "valuename"
+/// }
+/// resource "gcp_workstations_workstationcluster" "default" {
+///   workstation_cluster_id = "workstation-cluster-tags"
+///   network                = gcp_compute_network.default.id
+///   subnetwork             = gcp_compute_subnetwork.default.id
+///   location               = "us-central1"
+///   tags = {
+///     "${data.gcp_organizations_getproject.project.project_id}/${gcp_tags_tagkey.tag_key.short_name}" = gcp_tags_tagvalue.tag_value.short_name
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "workstation-cluster-tags"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "workstation-cluster-tags"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.name
 /// }
 /// ```
 /// ```java
@@ -999,8 +1154,8 @@ import 'workstation_cluster_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.workstations.WorkstationCluster;
 /// import com.pulumi.gcp.workstations.WorkstationClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1096,34 +1251,276 @@ import 'workstation_cluster_state.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Workstation Cluster Custom Urls
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const defaultNetwork = new gcp.compute.Network("default", {
+///     name: "workstations-network",
+///     autoCreateSubnetworks: false,
+/// });
+/// const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+///     name: "workstations-network",
+///     ipCidrRange: "10.0.0.0/24",
+///     region: "us-central1",
+///     network: defaultNetwork.name,
+/// });
+/// const _default = new gcp.workstations.WorkstationCluster("default", {
+///     workstationClusterId: "custom-urls-cluster",
+///     network: defaultNetwork.id,
+///     subnetwork: defaultSubnetwork.id,
+///     location: "us-central1",
+///     workstationAuthorizationUrl: "https://console.cloud.google.com/workstations/auth",
+///     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
+/// });
+/// const project = gcp.organizations.getProject({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default_network = gcp.compute.Network("default",
+///     name="workstations-network",
+///     auto_create_subnetworks=False)
+/// default_subnetwork = gcp.compute.Subnetwork("default",
+///     name="workstations-network",
+///     ip_cidr_range="10.0.0.0/24",
+///     region="us-central1",
+///     network=default_network.name)
+/// default = gcp.workstations.WorkstationCluster("default",
+///     workstation_cluster_id="custom-urls-cluster",
+///     network=default_network.id,
+///     subnetwork=default_subnetwork.id,
+///     location="us-central1",
+///     workstation_authorization_url="https://console.cloud.google.com/workstations/auth",
+///     workstation_launch_url="https://console.cloud.google.com/workstations/launch")
+/// project = gcp.organizations.get_project()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+///     {
+///         Name = "workstations-network",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+///     {
+///         Name = "workstations-network",
+///         IpCidrRange = "10.0.0.0/24",
+///         Region = "us-central1",
+///         Network = defaultNetwork.Name,
+///     });
+///
+///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
+///     {
+///         WorkstationClusterId = "custom-urls-cluster",
+///         Network = defaultNetwork.Id,
+///         Subnetwork = defaultSubnetwork.Id,
+///         Location = "us-central1",
+///         WorkstationAuthorizationUrl = "https://console.cloud.google.com/workstations/auth",
+///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
+///     });
+///
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("workstations-network"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("workstations-network"),
+/// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     defaultNetwork.Name,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+/// 			WorkstationClusterId:        pulumi.String("custom-urls-cluster"),
+/// 			Network:                     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:                  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:                    pulumi.String("us-central1"),
+/// 			WorkstationAuthorizationUrl: pulumi.String("https://console.cloud.google.com/workstations/auth"),
+/// 			WorkstationLaunchUrl:        pulumi.String("https://console.cloud.google.com/workstations/launch"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_workstations_workstationcluster" "default" {
+///   workstation_cluster_id        = "custom-urls-cluster"
+///   network                       = gcp_compute_network.default.id
+///   subnetwork                    = gcp_compute_subnetwork.default.id
+///   location                      = "us-central1"
+///   workstation_authorization_url = "https://console.cloud.google.com/workstations/auth"
+///   workstation_launch_url        = "https://console.cloud.google.com/workstations/launch"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "workstations-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "workstations-network"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.workstations.WorkstationCluster;
+/// import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+///             .name("workstations-network")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+///             .name("workstations-network")
+///             .ipCidrRange("10.0.0.0/24")
+///             .region("us-central1")
+///             .network(defaultNetwork.name())
+///             .build());
+///
+///         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
+///             .workstationClusterId("custom-urls-cluster")
+///             .network(defaultNetwork.id())
+///             .subnetwork(defaultSubnetwork.id())
+///             .location("us-central1")
+///             .workstationAuthorizationUrl("https://console.cloud.google.com/workstations/auth")
+///             .workstationLaunchUrl("https://console.cloud.google.com/workstations/launch")
+///             .build());
+///
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:workstations:WorkstationCluster
+///     properties:
+///       workstationClusterId: custom-urls-cluster
+///       network: ${defaultNetwork.id}
+///       subnetwork: ${defaultSubnetwork.id}
+///       location: us-central1
+///       workstationAuthorizationUrl: https://console.cloud.google.com/workstations/auth
+///       workstationLaunchUrl: https://console.cloud.google.com/workstations/launch
+///   defaultNetwork:
+///     type: gcp:compute:Network
+///     name: default
+///     properties:
+///       name: workstations-network
+///       autoCreateSubnetworks: false
+///   defaultSubnetwork:
+///     type: gcp:compute:Subnetwork
+///     name: default
+///     properties:
+///       name: workstations-network
+///       ipCidrRange: 10.0.0.0/24
+///       region: us-central1
+///       network: ${defaultNetwork.name}
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
 ///
 /// ## Import
 ///
 /// WorkstationCluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
-///
 /// * `{{project}}/{{location}}/{{workstation_cluster_id}}`
-///
 /// * `{{location}}/{{workstation_cluster_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
 /// ```
 class WorkstationCluster extends pulumi.CustomResource {
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Status conditions describing the current resource state.
   /// Structure is documented below.
@@ -1136,11 +1533,19 @@ class WorkstationCluster extends pulumi.CustomResource {
   /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
   /// Details can be found in the conditions field.
   late final pulumi.Output<bool> degraded;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human-readable name for this resource.
   late final pulumi.Output<String?> displayName;
   /// Configuration options for a custom domain.
   /// Structure is documented below.
   late final pulumi.Output<WorkstationClusterDomainConfig?> domainConfig;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -1149,7 +1554,7 @@ class WorkstationCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the workstation cluster should reside.
   late final pulumi.Output<String?> location;
@@ -1177,8 +1582,14 @@ class WorkstationCluster extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// The system-generated UID of the resource.
   late final pulumi.Output<String> uid;
+  /// Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+  /// Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+  late final pulumi.Output<String> workstationAuthorizationUrl;
   /// ID to use for the workstation cluster.
   late final pulumi.Output<String> workstationClusterId;
+  /// Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+  /// Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+  late final pulumi.Output<String?> workstationLaunchUrl;
 
   /// Creates a new [WorkstationCluster].
   /// [name] The Pulumi resource name.
@@ -1199,6 +1610,7 @@ class WorkstationCluster extends pulumi.CustomResource {
     controlPlaneIp = registerOutput<String>('controlPlaneIp');
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     domainConfig = registerOutput<WorkstationClusterDomainConfig?>('domainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterDomainConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1214,7 +1626,9 @@ class WorkstationCluster extends pulumi.CustomResource {
     subnetwork = registerOutput<String>('subnetwork');
     tags = registerOutput<Map<String, String>?>('tags');
     uid = registerOutput<String>('uid');
+    workstationAuthorizationUrl = registerOutput<String>('workstationAuthorizationUrl');
     workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationLaunchUrl = registerOutput<String?>('workstationLaunchUrl');
   }
 
   /// Gets an existing [WorkstationCluster] resource's state with the given [name] and [id].
@@ -1245,6 +1659,7 @@ class WorkstationCluster extends pulumi.CustomResource {
     controlPlaneIp = registerOutput<String>('controlPlaneIp');
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     domainConfig = registerOutput<WorkstationClusterDomainConfig?>('domainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterDomainConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1260,6 +1675,8 @@ class WorkstationCluster extends pulumi.CustomResource {
     subnetwork = registerOutput<String>('subnetwork');
     tags = registerOutput<Map<String, String>?>('tags');
     uid = registerOutput<String>('uid');
+    workstationAuthorizationUrl = registerOutput<String>('workstationAuthorizationUrl');
     workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationLaunchUrl = registerOutput<String?>('workstationLaunchUrl');
   }
 }

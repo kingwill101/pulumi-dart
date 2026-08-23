@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_storage_get_control_folder_intelligence_config_get_control_folder_intelligence_config_args_doc}
 class GetControlFolderIntelligenceConfigArgs {
-  /// The number of GCP folder.
+  /// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetControlFolderIntelligenceConfigArgs].
-  /// [name] The number of GCP folder.
+  /// [name] Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
   const GetControlFolderIntelligenceConfigArgs({
     required this.name,
   });
@@ -28,4 +28,3 @@ class GetControlFolderIntelligenceConfigArgs {
     );
   }
 }
-

@@ -5,10 +5,9 @@ import 'runtime_software_config.dart';
 import 'runtime_state.dart';
 import 'runtime_virtual_machine.dart';
 
-/// &gt; **Warning:** `google_notebook_runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+/// &gt; **Warning:** `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
 ///
 /// A Cloud AI Platform Notebook runtime.
-///
 ///
 /// &gt; **Note:** Due to limitations of the Notebooks Runtime API, many fields
 /// in this resource do not properly detect drift. These fields will also not
@@ -146,6 +145,35 @@ import 'runtime_virtual_machine.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtime" "runtime" {
+///   name     = "notebooks-runtime"
+///   location = "us-central1"
+///   access_config = {
+///     access_type   = "SINGLE_USER"
+///     runtime_owner = "admin@hashicorptest.com"
+///   }
+///   virtual_machine = {
+///     virtual_machine_config = {
+///       machine_type = "n1-standard-4"
+///       data_disk = {
+///         initialize_params = {
+///           disk_size_gb = "100"
+///           disk_type    = "PD_STANDARD"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +187,8 @@ import 'runtime_virtual_machine.dart';
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,6 +395,42 @@ import 'runtime_virtual_machine.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtime" "runtime_gpu" {
+///   name     = "notebooks-runtime-gpu"
+///   location = "us-central1"
+///   access_config = {
+///     access_type   = "SINGLE_USER"
+///     runtime_owner = "admin@hashicorptest.com"
+///   }
+///   software_config = {
+///     install_gpu_driver = true
+///   }
+///   virtual_machine = {
+///     virtual_machine_config = {
+///       machine_type = "n1-standard-4"
+///       data_disk = {
+///         initialize_params = {
+///           disk_size_gb = "100"
+///           disk_type    = "PD_STANDARD"
+///         }
+///       }
+///       accelerator_config = {
+///         core_count = "1"
+///         type       = "NVIDIA_TESLA_V100"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -382,8 +446,8 @@ import 'runtime_virtual_machine.dart';
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -616,6 +680,42 @@ import 'runtime_virtual_machine.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtime" "runtime_container" {
+///   name     = "notebooks-runtime-container"
+///   location = "us-central1"
+///   access_config = {
+///     access_type   = "SINGLE_USER"
+///     runtime_owner = "admin@hashicorptest.com"
+///   }
+///   virtual_machine = {
+///     virtual_machine_config = {
+///       machine_type = "n1-standard-4"
+///       data_disk = {
+///         initialize_params = {
+///           disk_size_gb = "100"
+///           disk_type    = "PD_STANDARD"
+///         }
+///       }
+///       container_images = [{
+///         "repository" = "gcr.io/deeplearning-platform-release/base-cpu"
+///         "tag"        = "latest"
+///         }, {
+///         "repository" = "gcr.io/deeplearning-platform-release/beam-notebooks"
+///         "tag"        = "latest"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -629,8 +729,9 @@ import 'runtime_virtual_machine.dart';
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -866,6 +967,44 @@ import 'runtime_virtual_machine.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtime" "runtime_container" {
+///   name     = "notebooks-runtime-kernel"
+///   location = "us-central1"
+///   access_config = {
+///     access_type   = "SINGLE_USER"
+///     runtime_owner = "admin@hashicorptest.com"
+///   }
+///   software_config = {
+///     kernels = [{
+///       "repository" = "gcr.io/deeplearning-platform-release/base-cpu"
+///       "tag"        = "latest"
+///     }]
+///   }
+///   virtual_machine = {
+///     virtual_machine_config = {
+///       machine_type = "n1-standard-4"
+///       data_disk = {
+///         initialize_params = {
+///           disk_size_gb = "100"
+///           disk_type    = "PD_STANDARD"
+///         }
+///       }
+///     }
+///   }
+///   labels = {
+///     "k" = "val"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -876,12 +1015,13 @@ import 'runtime_virtual_machine.dart';
 /// import com.pulumi.gcp.notebooks.RuntimeArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeAccessConfigArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigArgs;
+/// import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigKernelArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1098,6 +1238,41 @@ import 'runtime_virtual_machine.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtime" "runtime_container" {
+///   name     = "notebooks-runtime-script"
+///   location = "us-central1"
+///   access_config = {
+///     access_type   = "SINGLE_USER"
+///     runtime_owner = "admin@hashicorptest.com"
+///   }
+///   software_config = {
+///     post_startup_script_behavior = "RUN_EVERY_START"
+///   }
+///   virtual_machine = {
+///     virtual_machine_config = {
+///       machine_type = "n1-standard-4"
+///       data_disk = {
+///         initialize_params = {
+///           disk_size_gb = "100"
+///           disk_type    = "PD_STANDARD"
+///         }
+///       }
+///     }
+///   }
+///   labels = {
+///     "k" = "val"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1112,8 +1287,8 @@ import 'runtime_virtual_machine.dart';
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
 /// import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1182,28 +1357,28 @@ import 'runtime_virtual_machine.dart';
 /// Runtime can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/runtimes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:notebooks/runtime:Runtime default projects/{{project}}/locations/{{location}}/runtimes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:notebooks/runtime:Runtime default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:notebooks/runtime:Runtime default {{location}}/{{name}}
 /// ```
 class Runtime extends pulumi.CustomResource {
   /// The config settings for accessing runtime.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeAccessConfig?> accessConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The health state of this runtime. For a list of possible output
@@ -1211,14 +1386,13 @@ class Runtime extends pulumi.CustomResource {
   /// reference/rest/v1/projects.locations.runtimes#healthstate`.
   late final pulumi.Output<String> healthState;
   /// The labels to associate with this runtime. Label **keys** must
-  /// contain 1 to 63 characters, and must conform to [RFC 1035]
-  /// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+  /// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
   /// empty, but, if present, must contain 1 to 63 characters, and must
   /// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
   /// more than 32 labels can be associated with a cluster.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A reference to the zone where the machine resides.
   late final pulumi.Output<String> location;
@@ -1258,6 +1432,7 @@ class Runtime extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     healthState = registerOutput<String>('healthState');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1295,6 +1470,7 @@ class Runtime extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     healthState = registerOutput<String>('healthState');
     labels = registerOutput<Map<String, String>?>('labels');

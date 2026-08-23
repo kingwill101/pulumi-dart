@@ -5,8 +5,8 @@ import 'iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for BigQuery Table. Each of these resources serves a different use case:
 ///
 /// * `gcp.bigquery.IamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.
-/// * `gcp.bigquery.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
-/// * `gcp.bigquery.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved.
+/// * `gcp.bigquery.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.bigquery.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,6 @@ import 'iam_policy_state.dart';
 /// &gt; **Note:** `gcp.bigquery.IamPolicy` **cannot** be used in conjunction with `gcp.bigquery.IamBinding` and `gcp.bigquery.IamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.bigquery.IamBinding` resources **can be** used in conjunction with `gcp.bigquery.IamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.bigquery.IamPolicy
@@ -122,6 +121,29 @@ import 'iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/bigquery.dataOwner"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_bigquery_iampolicy" "policy" {
+///   project     = test.project
+///   dataset_id  = test.datasetId
+///   table_id    = test.tableId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,10 +152,11 @@ import 'iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.bigquery.IamPolicy;
 /// import com.pulumi.gcp.bigquery.IamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,9 +176,9 @@ import 'iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
-///             .project(test.project())
-///             .datasetId(test.datasetId())
-///             .tableId(test.tableId())
+///             .project(test.get("project"))
+///             .datasetId(test.get("datasetId"))
+///             .tableId(test.get("tableId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -257,6 +280,23 @@ import 'iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_iambinding" "binding" {
+///   project    = test.project
+///   dataset_id = test.datasetId
+///   table_id   = test.tableId
+///   role       = "roles/bigquery.dataOwner"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +305,8 @@ import 'iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.IamBinding;
 /// import com.pulumi.gcp.bigquery.IamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,9 +319,9 @@ import 'iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new IamBinding("binding", IamBindingArgs.builder()
-///             .project(test.project())
-///             .datasetId(test.datasetId())
-///             .tableId(test.tableId())
+///             .project(test.get("project"))
+///             .datasetId(test.get("datasetId"))
+///             .tableId(test.get("tableId"))
 ///             .role("roles/bigquery.dataOwner")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -372,6 +412,23 @@ import 'iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_iammember" "member" {
+///   project    = test.project
+///   dataset_id = test.datasetId
+///   table_id   = test.tableId
+///   role       = "roles/bigquery.dataOwner"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +437,8 @@ import 'iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.IamMember;
 /// import com.pulumi.gcp.bigquery.IamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,9 +451,9 @@ import 'iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new IamMember("member", IamMemberArgs.builder()
-///             .project(test.project())
-///             .datasetId(test.datasetId())
-///             .tableId(test.tableId())
+///             .project(test.get("project"))
+///             .datasetId(test.get("datasetId"))
+///             .tableId(test.get("tableId"))
 ///             .role("roles/bigquery.dataOwner")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -427,8 +484,8 @@ import 'iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for BigQuery Table. Each of these resources serves a different use case:
 ///
 /// * `gcp.bigquery.IamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.
-/// * `gcp.bigquery.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
-/// * `gcp.bigquery.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved.
+/// * `gcp.bigquery.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.bigquery.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -437,7 +494,6 @@ import 'iam_policy_state.dart';
 /// &gt; **Note:** `gcp.bigquery.IamPolicy` **cannot** be used in conjunction with `gcp.bigquery.IamBinding` and `gcp.bigquery.IamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.bigquery.IamBinding` resources **can be** used in conjunction with `gcp.bigquery.IamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.bigquery.IamPolicy
@@ -544,6 +600,29 @@ import 'iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/bigquery.dataOwner"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_bigquery_iampolicy" "policy" {
+///   project     = test.project
+///   dataset_id  = test.datasetId
+///   table_id    = test.tableId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,10 +631,11 @@ import 'iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.bigquery.IamPolicy;
 /// import com.pulumi.gcp.bigquery.IamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,9 +655,9 @@ import 'iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
-///             .project(test.project())
-///             .datasetId(test.datasetId())
-///             .tableId(test.tableId())
+///             .project(test.get("project"))
+///             .datasetId(test.get("datasetId"))
+///             .tableId(test.get("tableId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -679,6 +759,23 @@ import 'iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_iambinding" "binding" {
+///   project    = test.project
+///   dataset_id = test.datasetId
+///   table_id   = test.tableId
+///   role       = "roles/bigquery.dataOwner"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -687,8 +784,8 @@ import 'iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.IamBinding;
 /// import com.pulumi.gcp.bigquery.IamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -701,9 +798,9 @@ import 'iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new IamBinding("binding", IamBindingArgs.builder()
-///             .project(test.project())
-///             .datasetId(test.datasetId())
-///             .tableId(test.tableId())
+///             .project(test.get("project"))
+///             .datasetId(test.get("datasetId"))
+///             .tableId(test.get("tableId"))
 ///             .role("roles/bigquery.dataOwner")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -794,6 +891,23 @@ import 'iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_iammember" "member" {
+///   project    = test.project
+///   dataset_id = test.datasetId
+///   table_id   = test.tableId
+///   role       = "roles/bigquery.dataOwner"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -802,8 +916,8 @@ import 'iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.IamMember;
 /// import com.pulumi.gcp.bigquery.IamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -816,9 +930,9 @@ import 'iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new IamMember("member", IamMemberArgs.builder()
-///             .project(test.project())
-///             .datasetId(test.datasetId())
-///             .tableId(test.tableId())
+///             .project(test.get("project"))
+///             .datasetId(test.get("datasetId"))
+///             .tableId(test.get("tableId"))
 ///             .role("roles/bigquery.dataOwner")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -844,11 +958,8 @@ import 'iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
-///
 /// * {{project}}/{{dataset_id}}/{{table_id}}
-///
 /// * {{dataset_id}}/{{table_id}}
-///
 /// * {{table_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -856,25 +967,21 @@ import 'iam_policy_state.dart';
 /// BigQuery table IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:bigquery/iamPolicy:IamPolicy editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner user:jane@example.com"
+/// $ terraform import google_bigquery_table_iam_member.editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:bigquery/iamPolicy:IamPolicy editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner"
+/// $ terraform import google_bigquery_table_iam_binding.editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:bigquery/iamPolicy:IamPolicy editor projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class IamPolicy extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to

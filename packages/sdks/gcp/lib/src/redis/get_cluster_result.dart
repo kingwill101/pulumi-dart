@@ -24,6 +24,7 @@ class GetClusterResult {
   final String backupCollection;
   final String createTime;
   final List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
+  final String deletionPolicy;
   final bool deletionProtectionEnabled;
   final List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
   final Map<String, String> effectiveLabels;
@@ -50,6 +51,8 @@ class GetClusterResult {
   final Map<String, String> redisConfigs;
   final String? region;
   final int replicaCount;
+  final String serverCaMode;
+  final String serverCaPool;
   final int shardCount;
   final int sizeGb;
   final String state;
@@ -65,6 +68,7 @@ class GetClusterResult {
   /// [backupCollection] Required.
   /// [createTime] Required.
   /// [crossClusterReplicationConfigs] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtectionEnabled] Required.
   /// [discoveryEndpoints] Required.
   /// [effectiveLabels] Required.
@@ -90,6 +94,8 @@ class GetClusterResult {
   /// [redisConfigs] Required.
   /// [region] Optional.
   /// [replicaCount] Required.
+  /// [serverCaMode] Required.
+  /// [serverCaPool] Required.
   /// [shardCount] Required.
   /// [sizeGb] Required.
   /// [state] Required.
@@ -104,6 +110,7 @@ class GetClusterResult {
     required this.backupCollection,
     required this.createTime,
     required this.crossClusterReplicationConfigs,
+    required this.deletionPolicy,
     required this.deletionProtectionEnabled,
     required this.discoveryEndpoints,
     required this.effectiveLabels,
@@ -129,6 +136,8 @@ class GetClusterResult {
     required this.redisConfigs,
     this.region,
     required this.replicaCount,
+    required this.serverCaMode,
+    required this.serverCaPool,
     required this.shardCount,
     required this.sizeGb,
     required this.state,
@@ -146,6 +155,7 @@ class GetClusterResult {
       'backupCollection': backupCollection,
       'createTime': createTime,
       'crossClusterReplicationConfigs': pulumi.Input.encodeList<GetClusterCrossClusterReplicationConfig, Map<String, dynamic>>(crossClusterReplicationConfigs, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'deletionProtectionEnabled': deletionProtectionEnabled,
       'discoveryEndpoints': pulumi.Input.encodeList<GetClusterDiscoveryEndpoint, Map<String, dynamic>>(discoveryEndpoints, (value) => value.toMap()),
       'effectiveLabels': effectiveLabels,
@@ -171,6 +181,8 @@ class GetClusterResult {
       'redisConfigs': redisConfigs,
       'region': ?region,
       'replicaCount': replicaCount,
+      'serverCaMode': serverCaMode,
+      'serverCaPool': serverCaPool,
       'shardCount': shardCount,
       'sizeGb': sizeGb,
       'state': state,
@@ -189,6 +201,7 @@ class GetClusterResult {
       backupCollection: map['backupCollection'] as String,
       createTime: map['createTime'] as String,
       crossClusterReplicationConfigs: pulumi.Input.decodeList<GetClusterCrossClusterReplicationConfig>(map['crossClusterReplicationConfigs']!, (value) => GetClusterCrossClusterReplicationConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
       discoveryEndpoints: pulumi.Input.decodeList<GetClusterDiscoveryEndpoint>(map['discoveryEndpoints']!, (value) => GetClusterDiscoveryEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -214,6 +227,8 @@ class GetClusterResult {
       redisConfigs: (map['redisConfigs'] as Map).cast<String, String>(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       replicaCount: map['replicaCount'] as int,
+      serverCaMode: map['serverCaMode'] as String,
+      serverCaPool: map['serverCaPool'] as String,
       shardCount: map['shardCount'] as int,
       sizeGb: map['sizeGb'] as int,
       state: map['state'] as String,
@@ -224,4 +239,3 @@ class GetClusterResult {
     );
   }
 }
-

@@ -9,14 +9,12 @@ import 'instance_workforce_identity_federation_config.dart';
 class InstanceState {
   /// Time the Instance was created in UTC.
   final pulumi.Input<String>? createTime;
-  /// The deletion policy for the instance. Setting `ABANDON` allows the resource
-  /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-  /// and all its contents. Setting `PREVENT` prevents the resource from accidental
-  /// deletion by erroring out during plan.
-  /// Default is `PREVENT`.  Possible values are:
-  /// * DELETE
-  /// * PREVENT
-  /// * ABANDON
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -30,7 +28,7 @@ class InstanceState {
   /// Labels as key value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the Instance.
   final pulumi.Input<String>? location;
@@ -58,7 +56,7 @@ class InstanceState {
 
   /// Creates a new [InstanceState].
   /// [createTime] Time the Instance was created in UTC.
-  /// [deletionPolicy] The deletion policy for the instance. Setting `ABANDON` allows the resource
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [hostConfigs] A list of hostnames for this instance.
   /// [instanceId] The name for the Instance.
@@ -134,4 +132,3 @@ class InstanceState {
     );
   }
 }
-

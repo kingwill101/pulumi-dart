@@ -14,6 +14,19 @@ class InstanceState {
   final pulumi.Input<String>? authorizedNetwork;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the instance.
+  /// When a `terraform destroy` or `pulumi up` would delete the instance,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the instance will fail.
+  /// When the field is set to false, deleting the instance is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// Endpoint for Discovery API
   final pulumi.Input<String>? discoveryEndpoint;
@@ -24,7 +37,7 @@ class InstanceState {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Maintenance policy for an instance.
   /// Structure is documented below.
@@ -72,7 +85,8 @@ class InstanceState {
   /// Creates a new [InstanceState].
   /// [authorizedNetwork] The full name of the GCE network to connect the instance to.  If not provided,
   /// [createTime] Creation timestamp in RFC3339 text format.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the instance.
   /// [discoveryEndpoint] Endpoint for Discovery API
   /// [displayName] A user-visible name for the instance.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -94,6 +108,7 @@ class InstanceState {
   const InstanceState({
     this.authorizedNetwork,
     this.createTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.discoveryEndpoint,
     this.displayName,
@@ -119,6 +134,7 @@ class InstanceState {
     return <String, dynamic>{
       'authorizedNetwork': ?authorizedNetwork,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'discoveryEndpoint': ?discoveryEndpoint,
       'displayName': ?displayName,
@@ -145,6 +161,7 @@ class InstanceState {
     return InstanceState(
       authorizedNetwork: (() { final guardedValue = map['authorizedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       discoveryEndpoint: (() { final guardedValue = map['discoveryEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -167,4 +184,3 @@ class InstanceState {
     );
   }
 }
-

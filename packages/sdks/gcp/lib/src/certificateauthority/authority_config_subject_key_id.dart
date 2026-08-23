@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorityConfigSubjectKeyId {
   /// The value of the KeyId in lowercase hexadecimal.
   ///
-  /// &lt;a name="nested_config_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
+  /// &lt;a name="nestedConfigX509Config"&gt;&lt;/a&gt;The `x509Config` block supports:
   final pulumi.Input<String>? keyId;
 
   /// Creates a new [AuthorityConfigSubjectKeyId].
@@ -26,4 +26,3 @@ class AuthorityConfigSubjectKeyId {
     );
   }
 }
-

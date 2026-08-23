@@ -46,7 +46,7 @@ import 'backend_bucket_signed_url_key_state.dart';
 /// import pulumi_gcp as gcp
 /// import pulumi_random as random
 ///
-/// url_signature = random.index.Id("url_signature", byte_length=16)
+/// url_signature = random.Id("url_signature", byte_length=16)
 /// bucket = gcp.storage.Bucket("bucket",
 ///     name="test-storage-bucket",
 ///     location="EU")
@@ -69,7 +69,7 @@ import 'backend_bucket_signed_url_key_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var urlSignature = new Random.Index.Id("url_signature", new()
+///     var urlSignature = new Random.Id("url_signature", new()
 ///     {
 ///         ByteLength = 16,
 ///     });
@@ -143,6 +143,37 @@ import 'backend_bucket_signed_url_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "url_signature" {
+///   byte_length = 16
+/// }
+/// resource "gcp_compute_backendbucketsignedurlkey" "backend_key" {
+///   name           = "test-key"
+///   key_value      = random_id.url_signature.b64Url
+///   backend_bucket = gcp_compute_backendbucket.test_backend.name
+/// }
+/// resource "gcp_compute_backendbucket" "test_backend" {
+///   name        = "test-signed-backend-bucket"
+///   description = "Contains beautiful images"
+///   bucket_name = gcp_storage_bucket.bucket.name
+///   enable_cdn  = true
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "test-storage-bucket"
+///   location = "EU"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +188,8 @@ import 'backend_bucket_signed_url_key_state.dart';
 /// import com.pulumi.gcp.compute.BackendBucketArgs;
 /// import com.pulumi.gcp.compute.BackendBucketSignedUrlKey;
 /// import com.pulumi.gcp.compute.BackendBucketSignedUrlKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,7 +219,7 @@ import 'backend_bucket_signed_url_key_state.dart';
 ///
 ///         var backendKey = new BackendBucketSignedUrlKey("backendKey", BackendBucketSignedUrlKeyArgs.builder()
 ///             .name("test-key")
-///             .keyValue(urlSignature.b64Url())
+///             .keyValue(urlSignature.get("b64Url"))
 ///             .backendBucket(testBackend.name())
 ///             .build());
 ///
@@ -231,6 +262,13 @@ import 'backend_bucket_signed_url_key_state.dart';
 class BackendBucketSignedUrlKey extends pulumi.CustomResource {
   /// The backend bucket this signed URL key belongs.
   late final pulumi.Output<String> backendBucket;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// 128-bit key value used for signing the URL. The key value must be a
   /// valid RFC 4648 Section 5 base64url encoded string.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -256,6 +294,7 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backendBucket = registerOutput<String>('backendBucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     keyValue = registerOutput<String>('keyValue');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -285,6 +324,7 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backendBucket = registerOutput<String>('backendBucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     keyValue = registerOutput<String>('keyValue');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

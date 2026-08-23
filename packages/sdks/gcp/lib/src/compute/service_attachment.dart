@@ -267,7 +267,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("producer-service"),
 /// 			Region:       pulumi.String("us-west2"),
-/// 			HealthChecks: producerServiceHealthCheck.ID(),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -282,7 +282,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-producer-subnetwork"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -292,7 +292,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 			Name:                pulumi.String("producer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      producerServiceBackend.ID(),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             pscIlbNetwork.Name,
 /// 			Subnetwork:          pscIlbProducerSubnetwork.Name,
@@ -303,7 +303,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-nat"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 		})
@@ -320,9 +320,9 @@ import 'service_attachment_tunneling_config.dart';
 /// 			EnableProxyProtocol:  pulumi.Bool(true),
 /// 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 /// 			NatSubnets: pulumi.StringArray{
-/// 				pscIlbNat.ID(),
+/// 				pscIlbNat.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			TargetService: pscIlbTargetService.ID(),
+/// 			TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -339,16 +339,89 @@ import 'service_attachment_tunneling_config.dart';
 /// 		_, err = compute.NewForwardingRule(ctx, "psc_ilb_consumer", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("psc-ilb-consumer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
-/// 			Target:              pscIlbServiceAttachment.ID(),
+/// 			Target:              pscIlbServiceAttachment.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             pulumi.String("default"),
-/// 			IpAddress:           pscIlbConsumerAddress.ID(),
+/// 			IpAddress:           pscIlbConsumerAddress.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_serviceattachment" "psc_ilb_service_attachment" {
+///   name                  = "my-psc-ilb"
+///   region                = "us-west2"
+///   description           = "A service attachment configured with Terraform"
+///   domain_names          = ["gcp.tfacc.hashicorptest.com."]
+///   enable_proxy_protocol = true
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_ilb_nat.id]
+///   target_service        = gcp_compute_forwardingrule.psc_ilb_target_service.id
+/// }
+/// resource "gcp_compute_address" "psc_ilb_consumer_address" {
+///   name         = "psc-ilb-consumer-address"
+///   region       = "us-west2"
+///   subnetwork   = "default"
+///   address_type = "INTERNAL"
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_consumer" {
+///   name                  = "psc-ilb-consumer-forwarding-rule"
+///   region                = "us-west2"
+///   target                = gcp_compute_serviceattachment.psc_ilb_service_attachment.id
+///   load_balancing_scheme = ""
+///   network               = "default"
+///   ip_address            = gcp_compute_address.psc_ilb_consumer_address.id
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-west2"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.psc_ilb_network.name
+///   subnetwork            = gcp_compute_subnetwork.psc_ilb_producer_subnetwork.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service"
+///   region        = "us-west2"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "psc_ilb_network" {
+///   name                    = "psc-ilb-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+///   name          = "psc-ilb-producer-subnetwork"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_nat" {
+///   name          = "psc-ilb-nat"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   ip_cidr_range = "10.1.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -372,8 +445,8 @@ import 'service_attachment_tunneling_config.dart';
 /// import com.pulumi.gcp.compute.ServiceAttachmentArgs;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -828,7 +901,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("producer-service"),
 /// 			Region:       pulumi.String("us-west2"),
-/// 			HealthChecks: producerServiceHealthCheck.ID(),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -843,7 +916,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-producer-subnetwork"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -853,7 +926,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 			Name:                pulumi.String("producer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      producerServiceBackend.ID(),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             pscIlbNetwork.Name,
 /// 			Subnetwork:          pscIlbProducerSubnetwork.Name,
@@ -864,7 +937,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-nat"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 		})
@@ -881,9 +954,9 @@ import 'service_attachment_tunneling_config.dart';
 /// 			EnableProxyProtocol:  pulumi.Bool(true),
 /// 			ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 /// 			NatSubnets: pulumi.StringArray{
-/// 				pscIlbNat.ID(),
+/// 				pscIlbNat.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			TargetService: pscIlbTargetService.ID(),
+/// 			TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
 /// 			ConsumerRejectLists: pulumi.StringArray{
 /// 				pulumi.String("673497134629"),
 /// 				pulumi.String("482878270665"),
@@ -910,16 +983,94 @@ import 'service_attachment_tunneling_config.dart';
 /// 		_, err = compute.NewForwardingRule(ctx, "psc_ilb_consumer", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("psc-ilb-consumer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
-/// 			Target:              pscIlbServiceAttachment.ID(),
+/// 			Target:              pscIlbServiceAttachment.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             pulumi.String("default"),
-/// 			IpAddress:           pscIlbConsumerAddress.ID(),
+/// 			IpAddress:           pscIlbConsumerAddress.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_serviceattachment" "psc_ilb_service_attachment" {
+///   name                  = "my-psc-ilb"
+///   region                = "us-west2"
+///   description           = "A service attachment configured with Terraform"
+///   domain_names          = ["gcp.tfacc.hashicorptest.com."]
+///   enable_proxy_protocol = true
+///   connection_preference = "ACCEPT_MANUAL"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_ilb_nat.id]
+///   target_service        = gcp_compute_forwardingrule.psc_ilb_target_service.id
+///   consumer_reject_lists = ["673497134629", "482878270665"]
+///   consumer_accept_lists {
+///     project_id_or_num = "658859330310"
+///     connection_limit  = 4
+///   }
+/// }
+/// resource "gcp_compute_address" "psc_ilb_consumer_address" {
+///   name         = "psc-ilb-consumer-address"
+///   region       = "us-west2"
+///   subnetwork   = "default"
+///   address_type = "INTERNAL"
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_consumer" {
+///   name                  = "psc-ilb-consumer-forwarding-rule"
+///   region                = "us-west2"
+///   target                = gcp_compute_serviceattachment.psc_ilb_service_attachment.id
+///   load_balancing_scheme = ""
+///   network               = "default"
+///   ip_address            = gcp_compute_address.psc_ilb_consumer_address.id
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-west2"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.psc_ilb_network.name
+///   subnetwork            = gcp_compute_subnetwork.psc_ilb_producer_subnetwork.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service"
+///   region        = "us-west2"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "psc_ilb_network" {
+///   name                    = "psc-ilb-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+///   name          = "psc-ilb-producer-subnetwork"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_nat" {
+///   name          = "psc-ilb-nat"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   ip_cidr_range = "10.1.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -944,8 +1095,8 @@ import 'service_attachment_tunneling_config.dart';
 /// import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1436,7 +1587,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("producer-service"),
 /// 			Region:       pulumi.String("us-west2"),
-/// 			HealthChecks: producerServiceHealthCheck.ID(),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1451,7 +1602,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-producer-subnetwork"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -1461,7 +1612,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 			Name:                pulumi.String("producer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      producerServiceBackend.ID(),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             pscIlbNetwork.Name,
 /// 			Subnetwork:          pscIlbProducerSubnetwork.Name,
@@ -1472,7 +1623,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-nat"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 		})
@@ -1486,9 +1637,9 @@ import 'service_attachment_tunneling_config.dart';
 /// 			EnableProxyProtocol:  pulumi.Bool(false),
 /// 			ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 /// 			NatSubnets: pulumi.StringArray{
-/// 				pscIlbNat.ID(),
+/// 				pscIlbNat.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			TargetService: pscIlbTargetService.ID(),
+/// 			TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
 /// 			ConsumerAcceptLists: compute.ServiceAttachmentConsumerAcceptListArray{
 /// 				&compute.ServiceAttachmentConsumerAcceptListArgs{
 /// 					NetworkUrl:      pscIlbConsumerNetwork.SelfLink,
@@ -1503,7 +1654,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 			Name:        pulumi.String("psc-ilb-consumer-network"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbConsumerNetwork.ID(),
+/// 			Network:     pscIlbConsumerNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1511,7 +1662,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbConsumerAddress, err := compute.NewAddress(ctx, "psc_ilb_consumer_address", &compute.AddressArgs{
 /// 			Name:        pulumi.String("psc-ilb-consumer-address"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Subnetwork:  pscIlbConsumerSubnetwork.ID(),
+/// 			Subnetwork:  pscIlbConsumerSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -1520,17 +1671,104 @@ import 'service_attachment_tunneling_config.dart';
 /// 		_, err = compute.NewForwardingRule(ctx, "psc_ilb_consumer", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("psc-ilb-consumer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
-/// 			Target:              pscIlbServiceAttachment.ID(),
+/// 			Target:              pscIlbServiceAttachment.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			Network:             pscIlbConsumerNetwork.ID(),
-/// 			Subnetwork:          pscIlbConsumerSubnetwork.ID(),
-/// 			IpAddress:           pscIlbConsumerAddress.ID(),
+/// 			Network:             pscIlbConsumerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          pscIlbConsumerSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			IpAddress:           pscIlbConsumerAddress.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_serviceattachment" "psc_ilb_service_attachment" {
+///   name                  = "my-psc-ilb"
+///   region                = "us-west2"
+///   description           = "A service attachment configured with Terraform"
+///   enable_proxy_protocol = false
+///   connection_preference = "ACCEPT_MANUAL"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_ilb_nat.id]
+///   target_service        = gcp_compute_forwardingrule.psc_ilb_target_service.id
+///   consumer_accept_lists {
+///     network_url      = gcp_compute_network.psc_ilb_consumer_network.self_link
+///     connection_limit = 1
+///   }
+/// }
+/// resource "gcp_compute_network" "psc_ilb_consumer_network" {
+///   name                    = "psc-ilb-consumer-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_consumer_subnetwork" {
+///   name          = "psc-ilb-consumer-network"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_consumer_network.id
+/// }
+/// resource "gcp_compute_address" "psc_ilb_consumer_address" {
+///   name         = "psc-ilb-consumer-address"
+///   region       = "us-west2"
+///   subnetwork   = gcp_compute_subnetwork.psc_ilb_consumer_subnetwork.id
+///   address_type = "INTERNAL"
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_consumer" {
+///   name                  = "psc-ilb-consumer-forwarding-rule"
+///   region                = "us-west2"
+///   target                = gcp_compute_serviceattachment.psc_ilb_service_attachment.id
+///   load_balancing_scheme = ""
+///   network               = gcp_compute_network.psc_ilb_consumer_network.id
+///   subnetwork            = gcp_compute_subnetwork.psc_ilb_consumer_subnetwork.id
+///   ip_address            = gcp_compute_address.psc_ilb_consumer_address.id
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-west2"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.psc_ilb_network.name
+///   subnetwork            = gcp_compute_subnetwork.psc_ilb_producer_subnetwork.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service"
+///   region        = "us-west2"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "psc_ilb_network" {
+///   name                    = "psc-ilb-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+///   name          = "psc-ilb-producer-subnetwork"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_nat" {
+///   name          = "psc-ilb-nat"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   ip_cidr_range = "10.1.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -1555,8 +1793,8 @@ import 'service_attachment_tunneling_config.dart';
 /// import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2002,7 +2240,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("producer-service"),
 /// 			Region:       pulumi.String("us-west2"),
-/// 			HealthChecks: producerServiceHealthCheck.ID(),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2017,7 +2255,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-producer-subnetwork"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -2027,7 +2265,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 			Name:                pulumi.String("producer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      producerServiceBackend.ID(),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             pscIlbNetwork.Name,
 /// 			Subnetwork:          pscIlbProducerSubnetwork.Name,
@@ -2038,7 +2276,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-nat"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 		})
@@ -2055,9 +2293,9 @@ import 'service_attachment_tunneling_config.dart';
 /// 			EnableProxyProtocol:  pulumi.Bool(true),
 /// 			ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 /// 			NatSubnets: pulumi.StringArray{
-/// 				pscIlbNat.ID(),
+/// 				pscIlbNat.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			TargetService: pscIlbTargetService.ID(),
+/// 			TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
 /// 			ConsumerRejectLists: pulumi.StringArray{
 /// 				pulumi.String("673497134629"),
 /// 				pulumi.String("482878270665"),
@@ -2075,6 +2313,71 @@ import 'service_attachment_tunneling_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_serviceattachment" "psc_ilb_service_attachment" {
+///   name                  = "my-psc-ilb"
+///   region                = "us-west2"
+///   description           = "A service attachment configured with Terraform"
+///   domain_names          = ["gcp.tfacc.hashicorptest.com."]
+///   enable_proxy_protocol = true
+///   connection_preference = "ACCEPT_MANUAL"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_ilb_nat.id]
+///   target_service        = gcp_compute_forwardingrule.psc_ilb_target_service.id
+///   consumer_reject_lists = ["673497134629", "482878270665"]
+///   consumer_accept_lists {
+///     project_id_or_num = "658859330310"
+///     connection_limit  = 4
+///   }
+///   reconcile_connections = false
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-west2"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.psc_ilb_network.name
+///   subnetwork            = gcp_compute_subnetwork.psc_ilb_producer_subnetwork.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service"
+///   region        = "us-west2"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "psc_ilb_network" {
+///   name                    = "psc-ilb-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+///   name          = "psc-ilb-producer-subnetwork"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_nat" {
+///   name          = "psc-ilb-nat"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   ip_cidr_range = "10.1.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -2097,8 +2400,8 @@ import 'service_attachment_tunneling_config.dart';
 /// import com.pulumi.gcp.compute.ServiceAttachment;
 /// import com.pulumi.gcp.compute.ServiceAttachmentArgs;
 /// import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2468,7 +2771,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("producer-service"),
 /// 			Region:       pulumi.String("us-west2"),
-/// 			HealthChecks: producerServiceHealthCheck.ID(),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2483,7 +2786,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-producer-subnetwork"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -2493,7 +2796,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 			Name:                pulumi.String("producer-forwarding-rule"),
 /// 			Region:              pulumi.String("us-west2"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      producerServiceBackend.ID(),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             pscIlbNetwork.Name,
 /// 			Subnetwork:          pscIlbProducerSubnetwork.Name,
@@ -2504,7 +2807,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("psc-ilb-nat"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     pscIlbNetwork.ID(),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 		})
@@ -2518,9 +2821,9 @@ import 'service_attachment_tunneling_config.dart';
 /// 			EnableProxyProtocol:  pulumi.Bool(false),
 /// 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 /// 			NatSubnets: pulumi.StringArray{
-/// 				pscIlbNat.ID(),
+/// 				pscIlbNat.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			TargetService: pscIlbTargetService.ID(),
+/// 			TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
 /// 			TunnelingConfig: &compute.ServiceAttachmentTunnelingConfigArgs{
 /// 				RoutingMode:          pulumi.String("REGIONAL"),
 /// 				EncapsulationProfile: pulumi.String("IPV4"),
@@ -2531,6 +2834,68 @@ import 'service_attachment_tunneling_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_serviceattachment" "psc_ilb_service_attachment" {
+///   name                  = "my-psc-ilb"
+///   region                = "us-west2"
+///   description           = "A service attachment configured with tunneling"
+///   enable_proxy_protocol = false
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_ilb_nat.id]
+///   target_service        = gcp_compute_forwardingrule.psc_ilb_target_service.id
+///   tunneling_config = {
+///     routing_mode          = "REGIONAL"
+///     encapsulation_profile = "IPV4"
+///   }
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-west2"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.psc_ilb_network.name
+///   subnetwork            = gcp_compute_subnetwork.psc_ilb_producer_subnetwork.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service"
+///   region        = "us-west2"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "psc_ilb_network" {
+///   name                    = "psc-ilb-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+///   name          = "psc-ilb-producer-subnetwork"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_nat" {
+///   name          = "psc-ilb-nat"
+///   region        = "us-west2"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   ip_cidr_range = "10.1.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -2553,8 +2918,8 @@ import 'service_attachment_tunneling_config.dart';
 /// import com.pulumi.gcp.compute.ServiceAttachment;
 /// import com.pulumi.gcp.compute.ServiceAttachmentArgs;
 /// import com.pulumi.gcp.compute.inputs.ServiceAttachmentTunnelingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2963,7 +3328,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		backendService, err := compute.NewBackendService(ctx, "backend_service", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("sa"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2971,7 +3336,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		urlMap, err := compute.NewURLMap(ctx, "url_map", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("sa"),
 /// 			Description:    pulumi.String("Url map."),
-/// 			DefaultService: backendService.ID(),
+/// 			DefaultService: backendService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2979,7 +3344,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		httpProxy, err := compute.NewTargetHttpProxy(ctx, "http_proxy", &compute.TargetHttpProxyArgs{
 /// 			Name:        pulumi.String("sa"),
 /// 			Description: pulumi.String("a description"),
-/// 			UrlMap:      urlMap.ID(),
+/// 			UrlMap:      urlMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2994,7 +3359,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		subnetworkProxy, err := compute.NewSubnetwork(ctx, "subnetwork_proxy", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("sa-proxy"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("GLOBAL_MANAGED_PROXY"),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
@@ -3005,7 +3370,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("sa"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -3013,9 +3378,9 @@ import 'service_attachment_tunneling_config.dart';
 /// 		}
 /// 		forwardingRule, err := compute.NewGlobalForwardingRule(ctx, "forwarding_rule", &compute.GlobalForwardingRuleArgs{
 /// 			Name:                pulumi.String("sa"),
-/// 			Target:              httpProxy.ID(),
-/// 			Network:             network.ID(),
-/// 			Subnetwork:          subnetwork.ID(),
+/// 			Target:              httpProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             network.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          subnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			PortRange:           pulumi.String("80"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -3027,7 +3392,7 @@ import 'service_attachment_tunneling_config.dart';
 /// 		subnetworkPsc, err := compute.NewSubnetwork(ctx, "subnetwork_psc", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("sa-psc"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 		})
@@ -3041,15 +3406,91 @@ import 'service_attachment_tunneling_config.dart';
 /// 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 /// 			EnableProxyProtocol:  pulumi.Bool(false),
 /// 			NatSubnets: pulumi.StringArray{
-/// 				subnetworkPsc.ID(),
+/// 				subnetworkPsc.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			TargetService: forwardingRule.ID(),
+/// 			TargetService: forwardingRule.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_serviceattachment" "psc_ilb_service_attachment" {
+///   name                  = "sa"
+///   region                = "us-central1"
+///   description           = "A service attachment configured with Terraform"
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   enable_proxy_protocol = false
+///   nat_subnets           = [gcp_compute_subnetwork.subnetwork_psc.id]
+///   target_service        = gcp_compute_globalforwardingrule.forwarding_rule.id
+/// }
+/// resource "gcp_compute_globalforwardingrule" "forwarding_rule" {
+///   depends_on            = [gcp_compute_subnetwork.subnetwork_proxy]
+///   name                  = "sa"
+///   target                = gcp_compute_targethttpproxy.http_proxy.id
+///   network               = gcp_compute_network.network.id
+///   subnetwork            = gcp_compute_subnetwork.subnetwork.id
+///   port_range            = "80"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+/// }
+/// resource "gcp_compute_targethttpproxy" "http_proxy" {
+///   name        = "sa"
+///   description = "a description"
+///   url_map     = gcp_compute_urlmap.url_map.id
+/// }
+/// resource "gcp_compute_urlmap" "url_map" {
+///   name            = "sa"
+///   description     = "Url map."
+///   default_service = gcp_compute_backendservice.backend_service.id
+/// }
+/// resource "gcp_compute_backendservice" "backend_service" {
+///   name                  = "sa"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name               = "sa"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork_psc" {
+///   name          = "sa-psc"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   ip_cidr_range = "10.1.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork_proxy" {
+///   name          = "sa-proxy"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+///   purpose       = "GLOBAL_MANAGED_PROXY"
+///   role          = "ACTIVE"
+///   ip_cidr_range = "10.2.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "sa"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "sa"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -3076,8 +3517,8 @@ import 'service_attachment_tunneling_config.dart';
 /// import com.pulumi.gcp.compute.ServiceAttachment;
 /// import com.pulumi.gcp.compute.ServiceAttachmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3265,28 +3706,17 @@ import 'service_attachment_tunneling_config.dart';
 /// ServiceAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ServiceAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
 /// ```
 class ServiceAttachment extends pulumi.CustomResource {
@@ -3304,6 +3734,13 @@ class ServiceAttachment extends pulumi.CustomResource {
   /// An array of projects that are not allowed to connect to this service
   /// attachment.
   late final pulumi.Output<List<String>?> consumerRejectLists;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// If specified, the domain name will be used during the integration between
@@ -3334,7 +3771,7 @@ class ServiceAttachment extends pulumi.CustomResource {
   /// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
   /// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
   /// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-  /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
+  /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
   late final pulumi.Output<int> propagatedConnectionLimit;
   /// An 128-bit global unique ID of the PSC service attachment.
   /// Structure is documented below.
@@ -3348,14 +3785,17 @@ class ServiceAttachment extends pulumi.CustomResource {
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   /// Controls the behavior of propagated_connection_limit.
-  /// When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
-  /// When true, the provider will set propagated_connection_limit to zero.
+  /// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+  /// When true, the provider will set propagatedConnectionLimit to zero.
   /// Defaults to false.
   late final pulumi.Output<bool?> sendPropagatedConnectionLimitIfZero;
-  /// If true, show NAT IPs of all connected endpoints.
+  /// NOTE: This field is temporarily non-functional due to an underlying API issue.
+  /// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+  /// [If true, show NAT IPs of all connected endpoints.]
   late final pulumi.Output<bool?> showNatIps;
   /// The URL of a service serving the endpoint identified by this service attachment.
   late final pulumi.Output<String> targetService;
+  /// (Optional, Beta)
   /// Tunneling configuration for this service attachment.
   /// Structure is documented below.
   late final pulumi.Output<ServiceAttachmentTunnelingConfig?> tunnelingConfig;
@@ -3378,6 +3818,7 @@ class ServiceAttachment extends pulumi.CustomResource {
     connectionPreference = registerOutput<String>('connectionPreference');
     consumerAcceptLists = registerOutput<List<Map<String, dynamic>>?>('consumerAcceptLists');
     consumerRejectLists = registerOutput<List<String>?>('consumerRejectLists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     domainNames = registerOutput<List<String>?>('domainNames');
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
@@ -3423,6 +3864,7 @@ class ServiceAttachment extends pulumi.CustomResource {
     connectionPreference = registerOutput<String>('connectionPreference');
     consumerAcceptLists = registerOutput<List<Map<String, dynamic>>?>('consumerAcceptLists');
     consumerRejectLists = registerOutput<List<String>?>('consumerRejectLists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     domainNames = registerOutput<List<String>?>('domainNames');
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');

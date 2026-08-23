@@ -79,6 +79,22 @@ import 'channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_eventarc_channel" "primary" {
+///   location             = "us-central1"
+///   name                 = "some-channel"
+///   crypto_key_name      = "some-key"
+///   third_party_provider = "projects/my-project-name/locations/us-central1/providers/datadog"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +103,8 @@ import 'channel_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.eventarc.Channel;
 /// import com.pulumi.gcp.eventarc.ChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -127,22 +143,15 @@ import 'channel_state.dart';
 /// Channel can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/channels/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:eventarc/channel:Channel default projects/{{project}}/locations/{{location}}/channels/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/channel:Channel default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/channel:Channel default {{location}}/{{name}}
 /// ```
 class Channel extends pulumi.CustomResource {
@@ -152,11 +161,18 @@ class Channel extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   late final pulumi.Output<String?> cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// User-defined labels for the channel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -196,6 +212,7 @@ class Channel extends pulumi.CustomResource {
     activationToken = registerOutput<String>('activationToken');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -235,6 +252,7 @@ class Channel extends pulumi.CustomResource {
     activationToken = registerOutput<String>('activationToken');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

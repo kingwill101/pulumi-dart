@@ -14,14 +14,14 @@ class GetMeshIstioServiceArgs {
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
   /// The name of the Istio service underlying this service.
-  /// Corresponds to the destination_service_name metric label in Istio metrics.
+  /// Corresponds to the destinationServiceName metric label in Istio metrics.
   ///
   /// - - -
   ///
   /// Other optional fields include:
   final pulumi.Input<String> serviceName;
   /// The namespace of the Istio service underlying this service.
-  /// Corresponds to the destination_service_namespace metric label in Istio metrics.
+  /// Corresponds to the destinationServiceNamespace metric label in Istio metrics.
   final pulumi.Input<String> serviceNamespace;
 
   /// Creates a new [GetMeshIstioServiceArgs].
@@ -54,4 +54,3 @@ class GetMeshIstioServiceArgs {
     );
   }
 }
-

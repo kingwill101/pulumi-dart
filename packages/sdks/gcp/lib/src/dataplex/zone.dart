@@ -160,6 +160,42 @@ import 'zone_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_zone" "primary" {
+///   discovery_spec = {
+///     enabled = false
+///   }
+///   lake     = gcp_dataplex_lake.basic.name
+///   location = "us-west1"
+///   name     = "zone"
+///   resource_spec = {
+///     location_type = "MULTI_REGION"
+///   }
+///   type         = "RAW"
+///   description  = "Zone for DCL"
+///   display_name = "Zone for DCL"
+///   project      = "my-project-name"
+///   labels       = {}
+/// }
+/// resource "gcp_dataplex_lake" "basic" {
+///   location     = "us-west1"
+///   name         = "lake"
+///   description  = "Lake for DCL"
+///   display_name = "Lake for DCL"
+///   project      = "my-project-name"
+///   labels = {
+///     "my-lake" = "exists"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +208,8 @@ import 'zone_state.dart';
 /// import com.pulumi.gcp.dataplex.ZoneArgs;
 /// import com.pulumi.gcp.dataplex.inputs.ZoneDiscoverySpecArgs;
 /// import com.pulumi.gcp.dataplex.inputs.ZoneResourceSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -248,24 +284,16 @@ import 'zone_state.dart';
 /// ## Import
 ///
 /// Zone can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{lake}}/{{name}}`
-///
 /// * `{{location}}/{{lake}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Zone can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/zone:Zone default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/zone:Zone default {{project}}/{{location}}/{{lake}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/zone:Zone default {{location}}/{{lake}}/{{name}}
 /// ```
 class Zone extends pulumi.CustomResource {
@@ -273,6 +301,13 @@ class Zone extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> assetStatuses;
   /// Output only. The time when the zone was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. Description of the zone.
   late final pulumi.Output<String?> description;
   /// Required. Specification of the discovery feature applied to data in this zone.
@@ -284,7 +319,7 @@ class Zone extends pulumi.CustomResource {
   /// Optional. User defined labels for the zone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The lake for the resource
   late final pulumi.Output<String> lake;
@@ -323,6 +358,7 @@ class Zone extends pulumi.CustomResource {
         ) {
     assetStatuses = registerOutput<List<Map<String, dynamic>>>('assetStatuses');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoverySpec = registerOutput<ZoneDiscoverySpec>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
@@ -365,6 +401,7 @@ class Zone extends pulumi.CustomResource {
         ) {
     assetStatuses = registerOutput<List<Map<String, dynamic>>>('assetStatuses');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoverySpec = registerOutput<ZoneDiscoverySpec>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');

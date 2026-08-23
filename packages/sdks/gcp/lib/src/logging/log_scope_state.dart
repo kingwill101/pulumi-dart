@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogScopeState {
   /// Output only. The creation timestamp of the log scopes.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Describes this log scopes.
   final pulumi.Input<String>? description;
   /// The location of the resource. The only supported location is global so far.
@@ -21,6 +28,7 @@ class LogScopeState {
 
   /// Creates a new [LogScopeState].
   /// [createTime] Output only. The creation timestamp of the log scopes.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Describes this log scopes.
   /// [location] The location of the resource. The only supported location is global so far.
   /// [name] The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
@@ -29,6 +37,7 @@ class LogScopeState {
   /// [updateTime] Output only. The last update timestamp of the log scopes.
   const LogScopeState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.location,
     this.name,
@@ -40,6 +49,7 @@ class LogScopeState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'location': ?location,
       'name': ?name,
@@ -52,6 +62,7 @@ class LogScopeState {
   factory LogScopeState.fromMap(Map<String, dynamic> map) {
     return LogScopeState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -61,4 +72,3 @@ class LogScopeState {
     );
   }
 }
-

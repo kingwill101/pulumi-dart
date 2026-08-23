@@ -13,6 +13,13 @@ class CxFlowState {
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
   final pulumi.Input<CxFlowAdvancedSettings>? advancedSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
   final pulumi.Input<String>? description;
   /// The human-readable name of the flow.
@@ -26,7 +33,7 @@ class CxFlowState {
   /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
   /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
   ///
-  /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+  /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
   final pulumi.Input<bool>? isDefaultStartFlow;
   /// Knowledge connector configuration.
   /// Structure is documented below.
@@ -64,6 +71,7 @@ class CxFlowState {
 
   /// Creates a new [CxFlowState].
   /// [advancedSettings] Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
   /// [displayName] The human-readable name of the flow.
   /// [eventHandlers] A flow's event handlers serve two purposes:
@@ -77,6 +85,7 @@ class CxFlowState {
   /// [transitionRoutes] A flow's transition routes serve two purposes:
   const CxFlowState({
     this.advancedSettings,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.eventHandlers,
@@ -93,6 +102,7 @@ class CxFlowState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advancedSettings': ?pulumi.Input.mapOptionalInputValue<CxFlowAdvancedSettings, Map<String, dynamic>>(advancedSettings, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'eventHandlers': ?pulumi.Input.mapOptionalInputValue<List<CxFlowEventHandler>, List<Map<String, dynamic>>>(eventHandlers, (value) => pulumi.Input.encodeList<CxFlowEventHandler, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -110,6 +120,7 @@ class CxFlowState {
   factory CxFlowState.fromMap(Map<String, dynamic> map) {
     return CxFlowState(
       advancedSettings: (() { final guardedValue = map['advancedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxFlowAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventHandlers: (() { final guardedValue = map['eventHandlers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxFlowEventHandler>(guardedValue, (value) => CxFlowEventHandler.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -124,4 +135,3 @@ class CxFlowState {
     );
   }
 }
-

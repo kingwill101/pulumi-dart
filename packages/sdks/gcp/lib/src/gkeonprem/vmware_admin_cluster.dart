@@ -258,6 +258,60 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwareadmincluster" "admin-cluster-basic" {
+///   name                         = "basic"
+///   location                     = "us-west1"
+///   description                  = "test admin cluster"
+///   bootstrap_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   on_prem_version              = "1.31.0-gke.35"
+///   image_type                   = "ubuntu_containerd"
+///   vcenter = {
+///     resource_pool = "test resource pool"
+///     datastore     = "test data store"
+///     datacenter    = "test data center"
+///     cluster       = "test cluster"
+///     folder        = "test folder"
+///     ca_cert_data  = "test ca cert data"
+///     address       = "10.0.0.1"
+///     data_disk     = "test data disk"
+///   }
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     dhcp_ip_config = {
+///       enabled = true
+///     }
+///   }
+///   control_plane_node = {
+///     cpus   = 4
+///     memory = 8192
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       addons_vip        = "10.251.135.19"
+///     }
+///     f5_config = {
+///       address   = "10.251.135.22"
+///       partition = "test-parition"
+///       snat_pool = "test-snat-pool"
+///     }
+///   }
+///   private_registry_config = {
+///     address = "test-address"
+///     ca_cert = "test-ca-cert"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -274,8 +328,8 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerVipConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerF5ConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -867,6 +921,111 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwareadmincluster" "admin-cluster-full" {
+///   name                         = "full"
+///   location                     = "us-west1"
+///   description                  = "test admin cluster"
+///   bootstrap_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   on_prem_version              = "1.31.0-gke.35"
+///   image_type                   = "ubuntu_containerd"
+///   annotations                  = {}
+///   vcenter = {
+///     resource_pool       = "test resource pool"
+///     datastore           = "test data store"
+///     datacenter          = "test data center"
+///     cluster             = "test cluster"
+///     folder              = "test folder"
+///     ca_cert_data        = "test ca cert data"
+///     address             = "10.0.0.1"
+///     data_disk           = "test data disk"
+///     storage_policy_name = "storage_policy_name"
+///   }
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     ha_control_plane_config = {
+///       control_plane_ip_block = {
+///         gateway = "10.0.0.3"
+///         ips = [{
+///           "hostname" = "hostname"
+///           "ip"       = "10.0.0.4"
+///         }]
+///         netmask = "10.0.0.3/32"
+///       }
+///     }
+///     host_config = {
+///       dns_servers        = ["10.254.41.1"]
+///       ntp_servers        = ["216.239.35.8"]
+///       dns_search_domains = ["test-domain"]
+///     }
+///     static_ip_config = {
+///       ip_blocks = [{
+///         "gateway" = "10.0.0.1"
+///         "ips" = [{
+///           "hostname" = "hostname"
+///           "ip"       = "10.0.0.2"
+///         }]
+///         "netmask" = "10.0.0.3/32"
+///       }]
+///     }
+///     vcenter_network = "test-vcenter-network"
+///   }
+///   control_plane_node = {
+///     cpus     = 4
+///     memory   = 8192
+///     replicas = 3
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       addons_vip        = "10.251.135.19"
+///     }
+///     manual_lb_config = {
+///       addons_node_port              = 30005
+///       control_plane_node_port       = 30006
+///       ingress_http_node_port        = 30007
+///       ingress_https_node_port       = 30008
+///       konnectivity_server_node_port = 30009
+///     }
+///   }
+///   addon_node = {
+///     auto_resize_config = {
+///       enabled = true
+///     }
+///   }
+///   anti_affinity_groups = {
+///     aag_config_disabled = true
+///   }
+///   authorization = {
+///     viewer_users = [{
+///       "username" = "user1@gmail.com"
+///     }]
+///   }
+///   auto_repair_config = {
+///     enabled = true
+///   }
+///   platform_config = {
+///     required_platform_version = "1.31.0"
+///   }
+///   private_registry_config = {
+///     address = "test-address"
+///     ca_cert = "test-ca-cert"
+///   }
+///   proxy = {
+///     url      = "http://my-proxy.example.local:80"
+///     no_proxy = "10.151.222.0/24,my-host.example.local,10.151.2.1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -879,8 +1038,11 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigHostConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigStaticIpConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterControlPlaneNodeArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerVipConfigArgs;
@@ -889,12 +1051,13 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAddonNodeAutoResizeConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAntiAffinityGroupsArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAuthorizationArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAuthorizationViewerUserArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAutoRepairConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPlatformConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1338,6 +1501,63 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwareadmincluster" "admin-cluster-metallb" {
+///   name                         = "metallb"
+///   location                     = "us-west1"
+///   description                  = "test admin cluster"
+///   bootstrap_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   on_prem_version              = "1.33.0-gke.35"
+///   image_type                   = "ubuntu_containerd"
+///   enable_advanced_cluster      = true
+///   vcenter = {
+///     resource_pool = "test resource pool"
+///     datastore     = "test data store"
+///     datacenter    = "test data center"
+///     cluster       = "test cluster"
+///     folder        = "test folder"
+///     ca_cert_data  = "test ca cert data"
+///     address       = "10.0.0.1"
+///     data_disk     = "test data disk"
+///   }
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     dhcp_ip_config = {
+///       enabled = true
+///     }
+///   }
+///   control_plane_node = {
+///     cpus   = 4
+///     memory = 8192
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       addons_vip        = "10.251.135.19"
+///     }
+///     metal_lb_config = {
+///       enabled = true
+///     }
+///   }
+///   private_registry_config = {
+///     address = "test-address"
+///     ca_cert = "test-ca-cert"
+///   }
+///   proxy = {
+///     url      = "http://my-proxy.example.local:80"
+///     no_proxy = "10.151.222.0/24,my-host.example.local,10.151.2.1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1355,8 +1575,8 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerMetalLbConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1470,22 +1690,15 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// VmwareAdminCluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VmwareAdminCluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
 /// ```
 class VmwareAdminCluster extends pulumi.CustomResource {
@@ -1502,7 +1715,7 @@ class VmwareAdminCluster extends pulumi.CustomResource {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>> annotations;
   /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
   /// least three physical hosts in the datacenter.
@@ -1523,6 +1736,7 @@ class VmwareAdminCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// A human readable description of this VMware admin cluster.
   late final pulumi.Output<String> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// If set, the advanced cluster feature is enabled.
   late final pulumi.Output<bool> enableAdvancedCluster;

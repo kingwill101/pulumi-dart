@@ -2,6 +2,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_desired_user_created_endpoints_args.dart';
 import 'instance_desired_user_created_endpoints_state.dart';
 
+/// Manages user created connections for Memorystore instance
+///
+///
+/// To get more information about InstanceDesiredUserCreatedEndpoints, see:
+///
+/// * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+///
+/// &gt; **Note:** Please ensure your connections meet the requirements outlined at
+/// https://cloud.google.com/memorystore/docs/valkey/about-multiple-vpc-networking#application_connection_requirements.
+/// If you remove a connections item from the resource, the corresponding forwarding rule will no longer be functioning.
+/// If the corresponding forwarding rule is represented in your terraform configuration it is recommended to delete that
+/// `gcp.compute.ForwardingRule` resource at the same time.
+///
 /// ## Example Usage
 ///
 /// ### Memorystore Instance Desired User Created Endpoints
@@ -42,7 +55,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     ipAddress: ip1Network1.id,
 ///     loadBalancingScheme: "",
 ///     network: network1.id,
-///     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+///     target: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
 /// });
 /// const ip2Network1 = new gcp.compute.Address("ip2_network1", {
 ///     name: "ip2-net1",
@@ -57,7 +70,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     ipAddress: ip2Network1.id,
 ///     loadBalancingScheme: "",
 ///     network: network1.id,
-///     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+///     target: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
 /// });
 /// const network2 = new gcp.compute.Network("network2", {
 ///     name: "network2",
@@ -82,7 +95,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     ipAddress: ip1Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
-///     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+///     target: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
 /// });
 /// const ip2Network2 = new gcp.compute.Address("ip2_network2", {
 ///     name: "ip2-net2",
@@ -97,7 +110,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     ipAddress: ip2Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
-///     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+///     target: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
 /// });
 /// const instance_user_conn = new gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-conn", {
 ///     name: "instance-user-conn",
@@ -111,7 +124,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                         ipAddress: ip1Network1.address,
 ///                         forwardingRule: forwardingRule1Network1.id,
 ///                         network: network1.id,
-///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
 ///                     },
 ///                 },
 ///                 {
@@ -120,7 +133,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                         ipAddress: ip2Network1.address,
 ///                         forwardingRule: forwardingRule2Network1.id,
 ///                         network: network1.id,
-///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
 ///                     },
 ///                 },
 ///             ],
@@ -133,7 +146,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                         ipAddress: ip1Network2.address,
 ///                         forwardingRule: forwardingRule1Network2.id,
 ///                         network: network2.id,
-///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
 ///                     },
 ///                 },
 ///                 {
@@ -142,7 +155,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                         ipAddress: ip2Network2.address,
 ///                         forwardingRule: forwardingRule2Network2.id,
 ///                         network: network2.id,
-///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+///                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
 ///                     },
 ///                 },
 ///             ],
@@ -493,7 +506,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 			Name:        pulumi.String("subnet-net1"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network1.ID(),
+/// 			Network:     network1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -501,7 +514,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		ip1Network1, err := compute.NewAddress(ctx, "ip1_network1", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip1-net1"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  subnetNetwork1.ID(),
+/// 			Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
 /// 		})
@@ -521,12 +534,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		forwardingRule1Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network1", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd1-net1"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			IpAddress:           ip1Network1.ID(),
+/// 			IpAddress:           ip1Network1.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			Network:             network1.ID(),
-/// 			Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 				return &pscAttachmentDetails[0].ServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Network:             network1.ID().ToIDOutput().ToStringOutput(),
+/// 			Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+/// 				return pscAttachmentDetails[0].ServiceAttachment, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -534,7 +547,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		ip2Network1, err := compute.NewAddress(ctx, "ip2_network1", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip2-net1"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  subnetNetwork1.ID(),
+/// 			Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
 /// 		})
@@ -544,12 +557,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		forwardingRule2Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network1", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd2-net1"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			IpAddress:           ip2Network1.ID(),
+/// 			IpAddress:           ip2Network1.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			Network:             network1.ID(),
-/// 			Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 				return &pscAttachmentDetails[1].ServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Network:             network1.ID().ToIDOutput().ToStringOutput(),
+/// 			Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+/// 				return pscAttachmentDetails[1].ServiceAttachment, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -565,7 +578,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 			Name:        pulumi.String("subnet-net2"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network2.ID(),
+/// 			Network:     network2.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -573,7 +586,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip1-net2"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  subnetNetwork2.ID(),
+/// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
 /// 		})
@@ -583,12 +596,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd1-net2"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			IpAddress:           ip1Network2.ID(),
+/// 			IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			Network:             network2.ID(),
-/// 			Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 				return &pscAttachmentDetails[0].ServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
+/// 			Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+/// 				return pscAttachmentDetails[0].ServiceAttachment, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -596,7 +609,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip2-net2"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  subnetNetwork2.ID(),
+/// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
 /// 		})
@@ -606,12 +619,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd2-net2"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			IpAddress:           ip2Network2.ID(),
+/// 			IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			Network:             network2.ID(),
-/// 			Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 				return &pscAttachmentDetails[1].ServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
+/// 			Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+/// 				return pscAttachmentDetails[1].ServiceAttachment, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -626,10 +639,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 							PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 /// 								PscConnectionId: forwardingRule1Network1.PscConnectionId,
 /// 								IpAddress:       ip1Network1.Address,
-/// 								ForwardingRule:  forwardingRule1Network1.ID(),
-/// 								Network:         network1.ID(),
+/// 								ForwardingRule:  forwardingRule1Network1.ID().ToIDOutput().ToStringOutput(),
+/// 								Network:         network1.ID().ToIDOutput().ToStringOutput(),
 /// 								ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 									return &pscAttachmentDetails[0].ServiceAttachment, nil
+/// 									return pscAttachmentDetails[0].ServiceAttachment, nil
 /// 								}).(pulumi.StringPtrOutput),
 /// 							},
 /// 						},
@@ -637,10 +650,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 							PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 /// 								PscConnectionId: forwardingRule2Network1.PscConnectionId,
 /// 								IpAddress:       ip2Network1.Address,
-/// 								ForwardingRule:  forwardingRule2Network1.ID(),
-/// 								Network:         network1.ID(),
+/// 								ForwardingRule:  forwardingRule2Network1.ID().ToIDOutput().ToStringOutput(),
+/// 								Network:         network1.ID().ToIDOutput().ToStringOutput(),
 /// 								ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 									return &pscAttachmentDetails[1].ServiceAttachment, nil
+/// 									return pscAttachmentDetails[1].ServiceAttachment, nil
 /// 								}).(pulumi.StringPtrOutput),
 /// 							},
 /// 						},
@@ -652,10 +665,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 							PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 /// 								PscConnectionId: forwardingRule1Network2.PscConnectionId,
 /// 								IpAddress:       ip1Network2.Address,
-/// 								ForwardingRule:  forwardingRule1Network2.ID(),
-/// 								Network:         network2.ID(),
+/// 								ForwardingRule:  forwardingRule1Network2.ID().ToIDOutput().ToStringOutput(),
+/// 								Network:         network2.ID().ToIDOutput().ToStringOutput(),
 /// 								ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 									return &pscAttachmentDetails[0].ServiceAttachment, nil
+/// 									return pscAttachmentDetails[0].ServiceAttachment, nil
 /// 								}).(pulumi.StringPtrOutput),
 /// 							},
 /// 						},
@@ -663,10 +676,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 							PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 /// 								PscConnectionId: forwardingRule2Network2.PscConnectionId,
 /// 								IpAddress:       ip2Network2.Address,
-/// 								ForwardingRule:  forwardingRule2Network2.ID(),
-/// 								Network:         network2.ID(),
+/// 								ForwardingRule:  forwardingRule2Network2.ID().ToIDOutput().ToStringOutput(),
+/// 								Network:         network2.ID().ToIDOutput().ToStringOutput(),
 /// 								ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 									return &pscAttachmentDetails[1].ServiceAttachment, nil
+/// 									return pscAttachmentDetails[1].ServiceAttachment, nil
 /// 								}).(pulumi.StringPtrOutput),
 /// 							},
 /// 						},
@@ -683,6 +696,150 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_memorystore_instancedesiredusercreatedendpoints" "instance-user-conn" {
+///   name   = "instance-user-conn"
+///   region = "us-central1"
+///   desired_user_created_endpoints {
+///     connections {
+///       psc_connection = {
+///         psc_connection_id  = gcp_compute_forwardingrule.forwarding_rule1_network1.psc_connection_id
+///         ip_address         = gcp_compute_address.ip1_network1.address
+///         forwarding_rule    = gcp_compute_forwardingrule.forwarding_rule1_network1.id
+///         network            = gcp_compute_network.network1.id
+///         service_attachment = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[0].service_attachment
+///       }
+///     }
+///     connections {
+///       psc_connection = {
+///         psc_connection_id  = gcp_compute_forwardingrule.forwarding_rule2_network1.psc_connection_id
+///         ip_address         = gcp_compute_address.ip2_network1.address
+///         forwarding_rule    = gcp_compute_forwardingrule.forwarding_rule2_network1.id
+///         network            = gcp_compute_network.network1.id
+///         service_attachment = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[1].service_attachment
+///       }
+///     }
+///   }
+///   desired_user_created_endpoints {
+///     connections {
+///       psc_connection = {
+///         psc_connection_id  = gcp_compute_forwardingrule.forwarding_rule1_network2.psc_connection_id
+///         ip_address         = gcp_compute_address.ip1_network2.address
+///         forwarding_rule    = gcp_compute_forwardingrule.forwarding_rule1_network2.id
+///         network            = gcp_compute_network.network2.id
+///         service_attachment = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[0].service_attachment
+///       }
+///     }
+///     connections {
+///       psc_connection = {
+///         psc_connection_id  = gcp_compute_forwardingrule.forwarding_rule2_network2.psc_connection_id
+///         ip_address         = gcp_compute_address.ip2_network2.address
+///         forwarding_rule    = gcp_compute_forwardingrule.forwarding_rule2_network2.id
+///         network            = gcp_compute_network.network2.id
+///         service_attachment = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[1].service_attachment
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_compute_forwardingrule" "forwarding_rule1_network1" {
+///   name                  = "fwd1-net1"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.ip1_network1.id
+///   load_balancing_scheme = ""
+///   network               = gcp_compute_network.network1.id
+///   target                = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[0].service_attachment
+/// }
+/// resource "gcp_compute_forwardingrule" "forwarding_rule2_network1" {
+///   name                  = "fwd2-net1"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.ip2_network1.id
+///   load_balancing_scheme = ""
+///   network               = gcp_compute_network.network1.id
+///   target                = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[1].service_attachment
+/// }
+/// resource "gcp_compute_address" "ip1_network1" {
+///   name         = "ip1-net1"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.subnet_network1.id
+///   address_type = "INTERNAL"
+///   purpose      = "GCE_ENDPOINT"
+/// }
+/// resource "gcp_compute_address" "ip2_network1" {
+///   name         = "ip2-net1"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.subnet_network1.id
+///   address_type = "INTERNAL"
+///   purpose      = "GCE_ENDPOINT"
+/// }
+/// resource "gcp_compute_subnetwork" "subnet_network1" {
+///   name          = "subnet-net1"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network1.id
+/// }
+/// resource "gcp_compute_network" "network1" {
+///   name                    = "net1"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_forwardingrule" "forwarding_rule1_network2" {
+///   name                  = "fwd1-net2"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.ip1_network2.id
+///   load_balancing_scheme = ""
+///   network               = gcp_compute_network.network2.id
+///   target                = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[0].service_attachment
+/// }
+/// resource "gcp_compute_forwardingrule" "forwarding_rule2_network2" {
+///   name                  = "fwd2-net2"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.ip2_network2.id
+///   load_balancing_scheme = ""
+///   network               = gcp_compute_network.network2.id
+///   target                = gcp_memorystore_instance.instance-user-conn.psc_attachment_details[1].service_attachment
+/// }
+/// resource "gcp_compute_address" "ip1_network2" {
+///   name         = "ip1-net2"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
+///   address_type = "INTERNAL"
+///   purpose      = "GCE_ENDPOINT"
+/// }
+/// resource "gcp_compute_address" "ip2_network2" {
+///   name         = "ip2-net2"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
+///   address_type = "INTERNAL"
+///   purpose      = "GCE_ENDPOINT"
+/// }
+/// //Valkey instance without endpoints
+/// resource "gcp_memorystore_instance" "instance-user-conn" {
+///   instance_id                 = "instance-user-conn"
+///   shard_count                 = 1
+///   location                    = "us-central1"
+///   deletion_protection_enabled = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet_network2" {
+///   name          = "subnet-net2"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network2.id
+/// }
+/// resource "gcp_compute_network" "network2" {
+///   name                    = "network2"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -704,10 +861,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpoints;
 /// import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpointsArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -753,7 +912,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///             .ipAddress(ip1Network1.id())
 ///             .loadBalancingScheme("")
 ///             .network(network1.id())
-///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
+///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(0).serviceAttachment()))
 ///             .build());
 ///
 ///         var ip2Network1 = new Address("ip2Network1", AddressArgs.builder()
@@ -770,7 +929,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///             .ipAddress(ip2Network1.id())
 ///             .loadBalancingScheme("")
 ///             .network(network1.id())
-///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
+///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(1).serviceAttachment()))
 ///             .build());
 ///
 ///         var network2 = new Network("network2", NetworkArgs.builder()
@@ -799,7 +958,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///             .ipAddress(ip1Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
-///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
+///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(0).serviceAttachment()))
 ///             .build());
 ///
 ///         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
@@ -816,7 +975,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///             .ipAddress(ip2Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
-///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
+///             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(1).serviceAttachment()))
 ///             .build());
 ///
 ///         var instance_user_conn = new InstanceDesiredUserCreatedEndpoints("instance-user-conn", InstanceDesiredUserCreatedEndpointsArgs.builder()
@@ -831,7 +990,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                                 .ipAddress(ip1Network1.address())
 ///                                 .forwardingRule(forwardingRule1Network1.id())
 ///                                 .network(network1.id())
-///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
+///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(0).serviceAttachment()))
 ///                                 .build())
 ///                             .build(),
 ///                         InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs.builder()
@@ -840,7 +999,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                                 .ipAddress(ip2Network1.address())
 ///                                 .forwardingRule(forwardingRule2Network1.id())
 ///                                 .network(network1.id())
-///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
+///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(1).serviceAttachment()))
 ///                                 .build())
 ///                             .build())
 ///                     .build(),
@@ -852,7 +1011,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                                 .ipAddress(ip1Network2.address())
 ///                                 .forwardingRule(forwardingRule1Network2.id())
 ///                                 .network(network2.id())
-///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
+///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(0).serviceAttachment()))
 ///                                 .build())
 ///                             .build(),
 ///                         InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs.builder()
@@ -861,7 +1020,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                                 .ipAddress(ip2Network2.address())
 ///                                 .forwardingRule(forwardingRule2Network2.id())
 ///                                 .network(network2.id())
-///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
+///                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(1).serviceAttachment()))
 ///                                 .build())
 ///                             .build())
 ///                     .build())
@@ -1090,7 +1249,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     ipAddress: ip1Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
-///     target: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+///     target: instance_user_auto_connInstance.pscAttachmentDetails[0].serviceAttachment,
 /// });
 /// const ip2Network2 = new gcp.compute.Address("ip2_network2", {
 ///     name: "ip2-net2",
@@ -1105,7 +1264,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     ipAddress: ip2Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
-///     target: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+///     target: instance_user_auto_connInstance.pscAttachmentDetails[1].serviceAttachment,
 /// });
 /// const instance_user_auto_conn = new gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", {
 ///     name: "instance-user-auto-conn",
@@ -1118,7 +1277,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                     ipAddress: ip1Network2.address,
 ///                     forwardingRule: forwardingRule1Network2.id,
 ///                     network: network2.id,
-///                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+///                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails[0].serviceAttachment,
 ///                 },
 ///             },
 ///             {
@@ -1127,7 +1286,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                     ipAddress: ip2Network2.address,
 ///                     forwardingRule: forwardingRule2Network2.id,
 ///                     network: network2.id,
-///                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+///                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails[1].serviceAttachment,
 ///                 },
 ///             },
 ///         ],
@@ -1405,7 +1564,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 			Name:        pulumi.String("subnet-net2"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network2.ID(),
+/// 			Network:     network2.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1413,7 +1572,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip1-net2"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  subnetNetwork2.ID(),
+/// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
 /// 		})
@@ -1431,7 +1590,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 			Name:        pulumi.String("subnet-net1"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network1.ID(),
+/// 			Network:     network1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1441,10 +1600,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      network1.ID(),
+/// 			Network:      network1.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					subnetNetwork1.ID(),
+/// 					subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1461,7 +1620,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   network1.ID(),
+/// 					Network:   network1.ID().ToIDOutput().ToStringOutput(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -1476,12 +1635,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd1-net2"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			IpAddress:           ip1Network2.ID(),
+/// 			IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			Network:             network2.ID(),
-/// 			Target: pulumi.String(instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 				return &pscAttachmentDetails[0].ServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
+/// 			Target: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+/// 				return pscAttachmentDetails[0].ServiceAttachment, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1489,7 +1648,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip2-net2"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Subnetwork:  subnetNetwork2.ID(),
+/// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
 /// 		})
@@ -1499,12 +1658,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd2-net2"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			IpAddress:           ip2Network2.ID(),
+/// 			IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
-/// 			Network:             network2.ID(),
-/// 			Target: pulumi.String(instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 				return &pscAttachmentDetails[1].ServiceAttachment, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
+/// 			Target: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+/// 				return pscAttachmentDetails[1].ServiceAttachment, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1519,10 +1678,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 							PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 /// 								PscConnectionId: forwardingRule1Network2.PscConnectionId,
 /// 								IpAddress:       ip1Network2.Address,
-/// 								ForwardingRule:  forwardingRule1Network2.ID(),
-/// 								Network:         network2.ID(),
+/// 								ForwardingRule:  forwardingRule1Network2.ID().ToIDOutput().ToStringOutput(),
+/// 								Network:         network2.ID().ToIDOutput().ToStringOutput(),
 /// 								ServiceAttachment: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 									return &pscAttachmentDetails[0].ServiceAttachment, nil
+/// 									return pscAttachmentDetails[0].ServiceAttachment, nil
 /// 								}).(pulumi.StringPtrOutput),
 /// 							},
 /// 						},
@@ -1530,10 +1689,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 							PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 /// 								PscConnectionId: forwardingRule2Network2.PscConnectionId,
 /// 								IpAddress:       ip2Network2.Address,
-/// 								ForwardingRule:  forwardingRule2Network2.ID(),
-/// 								Network:         network2.ID(),
+/// 								ForwardingRule:  forwardingRule2Network2.ID().ToIDOutput().ToStringOutput(),
+/// 								Network:         network2.ID().ToIDOutput().ToStringOutput(),
 /// 								ServiceAttachment: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-/// 									return &pscAttachmentDetails[1].ServiceAttachment, nil
+/// 									return pscAttachmentDetails[1].ServiceAttachment, nil
 /// 								}).(pulumi.StringPtrOutput),
 /// 							},
 /// 						},
@@ -1546,6 +1705,115 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_memorystore_instancedesiredusercreatedendpoints" "instance-user-auto-conn" {
+///   name   = "instance-user-auto-conn"
+///   region = "us-central1"
+///   desired_user_created_endpoints {
+///     connections {
+///       psc_connection = {
+///         psc_connection_id  = gcp_compute_forwardingrule.forwarding_rule1_network2.psc_connection_id
+///         ip_address         = gcp_compute_address.ip1_network2.address
+///         forwarding_rule    = gcp_compute_forwardingrule.forwarding_rule1_network2.id
+///         network            = gcp_compute_network.network2.id
+///         service_attachment = gcp_memorystore_instance.instance-user-auto-conn.psc_attachment_details[0].service_attachment
+///       }
+///     }
+///     connections {
+///       psc_connection = {
+///         psc_connection_id  = gcp_compute_forwardingrule.forwarding_rule2_network2.psc_connection_id
+///         ip_address         = gcp_compute_address.ip2_network2.address
+///         forwarding_rule    = gcp_compute_forwardingrule.forwarding_rule2_network2.id
+///         network            = gcp_compute_network.network2.id
+///         service_attachment = gcp_memorystore_instance.instance-user-auto-conn.psc_attachment_details[1].service_attachment
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_compute_forwardingrule" "forwarding_rule1_network2" {
+///   name                  = "fwd1-net2"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.ip1_network2.id
+///   load_balancing_scheme = ""
+///   network               = gcp_compute_network.network2.id
+///   target                = gcp_memorystore_instance.instance-user-auto-conn.psc_attachment_details[0].service_attachment
+/// }
+/// resource "gcp_compute_forwardingrule" "forwarding_rule2_network2" {
+///   name                  = "fwd2-net2"
+///   region                = "us-central1"
+///   ip_address            = gcp_compute_address.ip2_network2.id
+///   load_balancing_scheme = ""
+///   network               = gcp_compute_network.network2.id
+///   target                = gcp_memorystore_instance.instance-user-auto-conn.psc_attachment_details[1].service_attachment
+/// }
+/// resource "gcp_compute_address" "ip1_network2" {
+///   name         = "ip1-net2"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
+///   address_type = "INTERNAL"
+///   purpose      = "GCE_ENDPOINT"
+/// }
+/// resource "gcp_compute_address" "ip2_network2" {
+///   name         = "ip2-net2"
+///   region       = "us-central1"
+///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
+///   address_type = "INTERNAL"
+///   purpose      = "GCE_ENDPOINT"
+/// }
+/// resource "gcp_compute_subnetwork" "subnet_network2" {
+///   name          = "subnet-net2"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network2.id
+/// }
+/// resource "gcp_compute_network" "network2" {
+///   name                    = "network2"
+///   auto_create_subnetworks = false
+/// }
+/// //valkey instance with endpoints
+/// resource "gcp_memorystore_instance" "instance-user-auto-conn" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   instance_id = "instance-user-auto-conn"
+///   shard_count = 1
+///   desired_auto_created_endpoints {
+///     network    = gcp_compute_network.network1.id
+///     project_id = data.gcp_organizations_getproject.project.project_id
+///   }
+///   location                    = "us-central1"
+///   deletion_protection_enabled = false
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "scpolicy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.network1.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.subnet_network1.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "subnet_network1" {
+///   name          = "subnet-net1"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network1.id
+/// }
+/// resource "gcp_compute_network" "network1" {
+///   name                    = "net1"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -1573,9 +1841,11 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpoints;
 /// import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpointsArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1653,7 +1923,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///             .ipAddress(ip1Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
-///             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
+///             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(0).serviceAttachment()))
 ///             .build());
 ///
 ///         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
@@ -1670,7 +1940,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///             .ipAddress(ip2Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
-///             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
+///             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(1).serviceAttachment()))
 ///             .build());
 ///
 ///         var instance_user_auto_conn = new InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", InstanceDesiredUserCreatedEndpointsArgs.builder()
@@ -1684,7 +1954,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                             .ipAddress(ip1Network2.address())
 ///                             .forwardingRule(forwardingRule1Network2.id())
 ///                             .network(network2.id())
-///                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
+///                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(0).serviceAttachment()))
 ///                             .build())
 ///                         .build(),
 ///                     InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs.builder()
@@ -1693,7 +1963,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                             .ipAddress(ip2Network2.address())
 ///                             .forwardingRule(forwardingRule2Network2.id())
 ///                             .network(network2.id())
-///                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
+///                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails.get(1).serviceAttachment()))
 ///                             .build())
 ///                         .build())
 ///                 .build())
@@ -1826,31 +2096,27 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// InstanceDesiredUserCreatedEndpoints can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InstanceDesiredUserCreatedEndpoints can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default projects/{{project}}/locations/{{region}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{name}}
 /// ```
 class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A list of desired user endpoints
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> desiredUserCreatedEndpoints;
@@ -1876,6 +2142,7 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredUserCreatedEndpoints');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1905,6 +2172,7 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredUserCreatedEndpoints');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -12,6 +12,13 @@ class ExternalAccessRuleArgs {
   /// The action that the external access rule performs.
   /// Possible values are: `ALLOW`, `DENY`.
   final pulumi.Input<String> action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for the external access rule.
   final pulumi.Input<String>? description;
   /// If destination ranges are specified, the external access rule applies only to
@@ -39,6 +46,7 @@ class ExternalAccessRuleArgs {
 
   /// Creates a new [ExternalAccessRuleArgs].
   /// [action] The action that the external access rule performs.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for the external access rule.
   /// [destinationIpRanges] If destination ranges are specified, the external access rule applies only to
   /// [destinationPorts] A list of destination ports to which the external access rule applies.
@@ -50,6 +58,7 @@ class ExternalAccessRuleArgs {
   /// [sourcePorts] A list of source ports to which the external access rule applies.
   const ExternalAccessRuleArgs({
     required this.action,
+    this.deletionPolicy,
     this.description,
     required this.destinationIpRanges,
     required this.destinationPorts,
@@ -64,6 +73,7 @@ class ExternalAccessRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destinationIpRanges': pulumi.Input.mapInputValue<List<ExternalAccessRuleDestinationIpRange>, List<Map<String, dynamic>>>(destinationIpRanges, (value) => pulumi.Input.encodeList<ExternalAccessRuleDestinationIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'destinationPorts': destinationPorts,
@@ -79,6 +89,7 @@ class ExternalAccessRuleArgs {
   factory ExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleArgs(
       action: pulumi.Input.fromValue(map['action'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges']!, (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))),
       destinationPorts: pulumi.Input.fromValue((map['destinationPorts'] as List).cast<String>()),
@@ -91,4 +102,3 @@ class ExternalAccessRuleArgs {
     );
   }
 }
-

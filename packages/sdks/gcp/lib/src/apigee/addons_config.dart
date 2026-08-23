@@ -103,6 +103,27 @@ import 'addons_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigee_addonsconfig" "test_organization" {
+///   org = "test_organization"
+///   addons_config = {
+///     api_security_config = {
+///       enabled = true
+///     }
+///     monetization_config = {
+///       enabled = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +135,8 @@ import 'addons_config_state.dart';
 /// import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigArgs;
 /// import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigApiSecurityConfigArgs;
 /// import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigMonetizationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,14 +430,14 @@ import 'addons_config_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+/// 		apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 /// 			Project: pulumi.String(current.Project),
 /// 			Service: pulumi.String("apigee.googleapis.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+/// 		compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 /// 			Project: pulumi.String(current.Project),
 /// 			Service: pulumi.String("compute.googleapis.com"),
 /// 		})
@@ -434,7 +455,7 @@ import 'addons_config_state.dart';
 /// 			Name:    pulumi.String("apigee-network"),
 /// 			Project: pulumi.String(current.Project),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			compute,
+/// 			compute2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -444,14 +465,14 @@ import 'addons_config_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Project:      pulumi.String(current.Project),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -463,11 +484,11 @@ import 'addons_config_state.dart';
 /// 		org, err := apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			BillingType:       pulumi.String("EVALUATION"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
-/// 			apigee,
+/// 			apigee2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -499,6 +520,76 @@ import 'addons_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_projects_service" "apigee" {
+///   project = data.gcp_organizations_getclientconfig.current.project
+///   service = "apigee.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "compute" {
+///   project = data.gcp_organizations_getclientconfig.current.project
+///   service = "compute.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "servicenetworking" {
+///   project = data.gcp_organizations_getclientconfig.current.project
+///   service = "servicenetworking.googleapis.com"
+/// }
+/// resource "gcp_compute_network" "apigee_network" {
+///   depends_on = [gcp_projects_service.compute]
+///   name       = "apigee-network"
+///   project    = data.gcp_organizations_getclientconfig.current.project
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+///   project       = data.gcp_organizations_getclientconfig.current.project
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_projects_service.apigee]
+///   analytics_region   = "us-central1"
+///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   authorized_network = gcp_compute_network.apigee_network.id
+///   billing_type       = "EVALUATION"
+/// }
+/// resource "gcp_apigee_addonsconfig" "test_organization" {
+///   org = gcp_apigee_organization.org.name
+///   addons_config = {
+///     integration_config = {
+///       enabled = true
+///     }
+///     api_security_config = {
+///       enabled = true
+///     }
+///     connectors_platform_config = {
+///       enabled = true
+///     }
+///     monetization_config = {
+///       enabled = true
+///     }
+///     advanced_api_ops_config = {
+///       enabled = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -525,8 +616,8 @@ import 'addons_config_state.dart';
 /// import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigMonetizationConfigArgs;
 /// import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,22 +787,26 @@ import 'addons_config_state.dart';
 /// AddonsConfig can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default organizations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default {{name}}
 /// ```
 class AddonsConfig extends pulumi.CustomResource {
   /// Addon configurations of the Apigee organization.
   /// Structure is documented below.
   late final pulumi.Output<AddonsConfigAddonsConfig?> addonsConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name of the Apigee organization.
   late final pulumi.Output<String> org;
 
@@ -730,6 +825,7 @@ class AddonsConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     org = registerOutput<String>('org');
   }
 
@@ -757,6 +853,7 @@ class AddonsConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     org = registerOutput<String>('org');
   }
 }

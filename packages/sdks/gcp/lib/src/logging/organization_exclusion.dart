@@ -75,6 +75,22 @@ import 'organization_exclusion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_organizationexclusion" "my-exclusion" {
+///   name        = "my-instance-debug-exclusion"
+///   org_id      = "123456789"
+///   description = "Exclude GCE instance debug logs"
+///   filter      = "resource.type = gce_instance AND severity <= DEBUG"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +99,8 @@ import 'organization_exclusion_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.OrganizationExclusion;
 /// import com.pulumi.gcp.logging.OrganizationExclusionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,6 +139,7 @@ import 'organization_exclusion_state.dart';
 /// Organization-level logging exclusions can be imported using their URI, e.g.
 ///
 /// * `organizations/{{organization}}/exclusions/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, organization-level logging exclusions can be imported using one of the formats above. For example:
 ///

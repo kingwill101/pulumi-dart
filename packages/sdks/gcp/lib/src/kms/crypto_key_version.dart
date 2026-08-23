@@ -5,7 +5,6 @@ import 'crypto_key_version_state.dart';
 
 /// A `CryptoKeyVersion` represents an individual cryptographic key, and the associated key material.
 ///
-///
 /// Destroying a cryptoKeyVersion will not delete the resource from the project.
 ///
 ///
@@ -96,20 +95,42 @@ import 'crypto_key_version_state.dart';
 /// 		}
 /// 		cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
 /// 			Name:           pulumi.String("crypto-key-example"),
-/// 			KeyRing:        keyring.ID(),
+/// 			KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			RotationPeriod: pulumi.String("7776000s"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = kms.NewCryptoKeyVersion(ctx, "example-key", &kms.CryptoKeyVersionArgs{
-/// 			CryptoKey: cryptokey.ID(),
+/// 			CryptoKey: cryptokey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "keyring-example"
+///   location = "global"
+/// }
+/// resource "gcp_kms_cryptokey" "cryptokey" {
+///   name            = "crypto-key-example"
+///   key_ring        = gcp_kms_keyring.keyring.id
+///   rotation_period = "7776000s"
+/// }
+/// resource "gcp_kms_cryptokeyversion" "example-key" {
+///   crypto_key = gcp_kms_cryptokey.cryptokey.id
 /// }
 /// ```
 /// ```java
@@ -124,8 +145,8 @@ import 'crypto_key_version_state.dart';
 /// import com.pulumi.gcp.kms.CryptoKeyArgs;
 /// import com.pulumi.gcp.kms.CryptoKeyVersion;
 /// import com.pulumi.gcp.kms.CryptoKeyVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,6 +202,7 @@ import 'crypto_key_version_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, CryptoKeyVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -196,6 +218,13 @@ class CryptoKeyVersion extends pulumi.CustomResource {
   /// The name of the cryptoKey associated with the CryptoKeyVersions.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
   late final pulumi.Output<String> cryptoKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// Structure is documented below.
   late final pulumi.Output<CryptoKeyVersionExternalProtectionLevelOptions?> externalProtectionLevelOptions;
@@ -227,6 +256,7 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     algorithm = registerOutput<String>('algorithm');
     attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
     cryptoKey = registerOutput<String>('cryptoKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     externalProtectionLevelOptions = registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>('externalProtectionLevelOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionExternalProtectionLevelOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generateTime = registerOutput<String>('generateTime');
     this.name = registerOutput<String>('name');
@@ -260,6 +290,7 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     algorithm = registerOutput<String>('algorithm');
     attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
     cryptoKey = registerOutput<String>('cryptoKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     externalProtectionLevelOptions = registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>('externalProtectionLevelOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionExternalProtectionLevelOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generateTime = registerOutput<String>('generateTime');
     this.name = registerOutput<String>('name');

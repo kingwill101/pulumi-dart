@@ -17,6 +17,7 @@ class ReservationSpecificReservationInstanceProperties {
   final pulumi.Input<String>? locationHint;
   /// The name of the machine type to reserve.
   final pulumi.Input<String> machineType;
+  /// (Optional, Beta)
   /// Specifies the frequency of planned maintenance events.
   /// Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
   final pulumi.Input<String>? maintenanceInterval;
@@ -31,7 +32,7 @@ class ReservationSpecificReservationInstanceProperties {
   /// [localSsds] The amount of local ssd to reserve with each instance. This
   /// [locationHint] (Output)
   /// [machineType] The name of the machine type to reserve.
-  /// [maintenanceInterval] Specifies the frequency of planned maintenance events.
+  /// [maintenanceInterval] (Optional, Beta)
   /// [minCpuPlatform] The minimum CPU platform for the reservation. For example,
   const ReservationSpecificReservationInstanceProperties({
     this.guestAccelerators,
@@ -64,4 +65,3 @@ class ReservationSpecificReservationInstanceProperties {
     );
   }
 }
-

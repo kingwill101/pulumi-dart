@@ -11,6 +11,15 @@ class RepositoryReleaseConfigState {
   final pulumi.Input<RepositoryReleaseConfigCodeCompilationConfig>? codeCompilationConfig;
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
   final pulumi.Input<String>? cronSchedule;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Disables automatic creation of compilation results.
+  final pulumi.Input<bool>? disabled;
   /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
   final pulumi.Input<String>? gitCommitish;
   /// The release's name.
@@ -31,6 +40,8 @@ class RepositoryReleaseConfigState {
   /// Creates a new [RepositoryReleaseConfigState].
   /// [codeCompilationConfig] Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
   /// [cronSchedule] Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [disabled] Disables automatic creation of compilation results.
   /// [gitCommitish] Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
   /// [name] The release's name.
   /// [project] The ID of the project in which the resource belongs.
@@ -41,6 +52,8 @@ class RepositoryReleaseConfigState {
   const RepositoryReleaseConfigState({
     this.codeCompilationConfig,
     this.cronSchedule,
+    this.deletionPolicy,
+    this.disabled,
     this.gitCommitish,
     this.name,
     this.project,
@@ -54,6 +67,8 @@ class RepositoryReleaseConfigState {
     return <String, dynamic>{
       'codeCompilationConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryReleaseConfigCodeCompilationConfig, Map<String, dynamic>>(codeCompilationConfig, (value) => value.toMap()),
       'cronSchedule': ?cronSchedule,
+      'deletionPolicy': ?deletionPolicy,
+      'disabled': ?disabled,
       'gitCommitish': ?gitCommitish,
       'name': ?name,
       'project': ?project,
@@ -68,6 +83,8 @@ class RepositoryReleaseConfigState {
     return RepositoryReleaseConfigState(
       codeCompilationConfig: (() { final guardedValue = map['codeCompilationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryReleaseConfigCodeCompilationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cronSchedule: (() { final guardedValue = map['cronSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       gitCommitish: (() { final guardedValue = map['gitCommitish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -78,4 +95,3 @@ class RepositoryReleaseConfigState {
     );
   }
 }
-

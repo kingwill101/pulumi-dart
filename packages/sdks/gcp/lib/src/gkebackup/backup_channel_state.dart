@@ -4,13 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering BackupChannel resources.
 class BackupChannelState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User specified descriptive string for this BackupChannel.
   final pulumi.Input<String>? description;
   /// The project where Backups are allowed to be stored.
   /// The format is `projects/{project}`.
   /// {project} can be project number or project id.
   final pulumi.Input<String>? destinationProject;
-  /// The project_id where Backups are allowed to be stored.
+  /// The projectId where Backups are allowed to be stored.
   /// Example Project ID: "my-project-id".
   final pulumi.Input<String>? destinationProjectId;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -27,7 +34,7 @@ class BackupChannelState {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The region of the Backup Channel.
   final pulumi.Input<String>? location;
@@ -43,9 +50,10 @@ class BackupChannelState {
   final pulumi.Input<String>? uid;
 
   /// Creates a new [BackupChannelState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User specified descriptive string for this BackupChannel.
   /// [destinationProject] The project where Backups are allowed to be stored.
-  /// [destinationProjectId] The project_id where Backups are allowed to be stored.
+  /// [destinationProjectId] The projectId where Backups are allowed to be stored.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] etag is used for optimistic concurrency control as a way to help prevent simultaneous
   /// [labels] Description: A set of custom labels supplied by the user.
@@ -55,6 +63,7 @@ class BackupChannelState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] Server generated, unique identifier of UUID format.
   const BackupChannelState({
+    this.deletionPolicy,
     this.description,
     this.destinationProject,
     this.destinationProjectId,
@@ -70,6 +79,7 @@ class BackupChannelState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destinationProject': ?destinationProject,
       'destinationProjectId': ?destinationProjectId,
@@ -86,6 +96,7 @@ class BackupChannelState {
 
   factory BackupChannelState.fromMap(Map<String, dynamic> map) {
     return BackupChannelState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationProject: (() { final guardedValue = map['destinationProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationProjectId: (() { final guardedValue = map['destinationProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -100,4 +111,3 @@ class BackupChannelState {
     );
   }
 }
-

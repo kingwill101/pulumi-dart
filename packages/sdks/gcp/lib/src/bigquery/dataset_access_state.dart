@@ -8,7 +8,7 @@ import 'dataset_access_view.dart';
 
 /// Input properties used for looking up and filtering DatasetAccess resources.
 class DatasetAccessState {
-  /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
+  /// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
   final pulumi.Input<bool>? apiUpdatedMember;
   /// Grants all resources of particular types in a particular dataset read access to the current dataset.
   /// Structure is documented below.
@@ -21,6 +21,13 @@ class DatasetAccessState {
   /// must contain only letters (a-z, A-Z), numbers (0-9), or
   /// underscores (_). The maximum length is 1,024 characters.
   final pulumi.Input<String>? datasetId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A domain to grant access to. Any users signed in with the
   /// domain specified will be granted the specified access
   final pulumi.Input<String>? domain;
@@ -64,10 +71,11 @@ class DatasetAccessState {
   final pulumi.Input<DatasetAccessView>? view;
 
   /// Creates a new [DatasetAccessState].
-  /// [apiUpdatedMember] If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
+  /// [apiUpdatedMember] If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
   /// [authorizedDataset] Grants all resources of particular types in a particular dataset read access to the current dataset.
   /// [condition] Condition for the binding. If CEL expression in this field is true, this
   /// [datasetId] A unique ID for this dataset, without the project name. The ID
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [domain] A domain to grant access to. Any users signed in with the
   /// [groupByEmail] An email address of a Google Group to grant access to.
   /// [iamMember] Some other type of member that appears in the IAM Policy but isn't a user,
@@ -82,6 +90,7 @@ class DatasetAccessState {
     this.authorizedDataset,
     this.condition,
     this.datasetId,
+    this.deletionPolicy,
     this.domain,
     this.groupByEmail,
     this.iamMember,
@@ -99,6 +108,7 @@ class DatasetAccessState {
       'authorizedDataset': ?pulumi.Input.mapOptionalInputValue<DatasetAccessAuthorizedDataset, Map<String, dynamic>>(authorizedDataset, (value) => value.toMap()),
       'condition': ?pulumi.Input.mapOptionalInputValue<DatasetAccessCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'datasetId': ?datasetId,
+      'deletionPolicy': ?deletionPolicy,
       'domain': ?domain,
       'groupByEmail': ?groupByEmail,
       'iamMember': ?iamMember,
@@ -117,6 +127,7 @@ class DatasetAccessState {
       authorizedDataset: (() { final guardedValue = map['authorizedDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetAccessCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupByEmail: (() { final guardedValue = map['groupByEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iamMember: (() { final guardedValue = map['iamMember']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -129,4 +140,3 @@ class DatasetAccessState {
     );
   }
 }
-

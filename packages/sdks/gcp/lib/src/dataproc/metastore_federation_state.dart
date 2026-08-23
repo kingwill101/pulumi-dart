@@ -10,6 +10,16 @@ class MetastoreFederationState {
   final pulumi.Input<List<MetastoreFederationBackendMetastore>>? backendMetastores;
   /// Output only. The time when the metastore federation was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+  /// When the field is set to true in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the federation will fail.
   final pulumi.Input<bool>? deletionProtection;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -21,7 +31,7 @@ class MetastoreFederationState {
   final pulumi.Input<String>? federationId;
   /// User-defined labels for the metastore federation.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the metastore federation should reside.
   final pulumi.Input<String>? location;
@@ -51,7 +61,8 @@ class MetastoreFederationState {
   /// Creates a new [MetastoreFederationState].
   /// [backendMetastores] A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
   /// [createTime] Output only. The time when the metastore federation was created.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the federation. Defaults to false.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [endpointUri] The URI of the endpoint used to access the metastore federation.
   /// [federationId] The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -69,6 +80,7 @@ class MetastoreFederationState {
   const MetastoreFederationState({
     this.backendMetastores,
     this.createTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.effectiveLabels,
     this.endpointUri,
@@ -90,6 +102,7 @@ class MetastoreFederationState {
     return <String, dynamic>{
       'backendMetastores': ?pulumi.Input.mapOptionalInputValue<List<MetastoreFederationBackendMetastore>, List<Map<String, dynamic>>>(backendMetastores, (value) => pulumi.Input.encodeList<MetastoreFederationBackendMetastore, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'effectiveLabels': ?effectiveLabels,
       'endpointUri': ?endpointUri,
@@ -112,6 +125,7 @@ class MetastoreFederationState {
     return MetastoreFederationState(
       backendMetastores: (() { final guardedValue = map['backendMetastores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetastoreFederationBackendMetastore>(guardedValue, (value) => MetastoreFederationBackendMetastore.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       endpointUri: (() { final guardedValue = map['endpointUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -130,4 +144,3 @@ class MetastoreFederationState {
     );
   }
 }
-

@@ -148,6 +148,36 @@ import 'server_tls_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_servertlspolicy" "default" {
+///   name = "my-server-tls-policy"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   allow_open  = "false"
+///   server_certificate = {
+///     certificate_provider_instance = {
+///       plugin_instance = "google_cloud_private_spiffe"
+///     }
+///   }
+///   mtls_policy = {
+///     client_validation_cas = [{
+///       "grpcEndpoint" = {
+///         "targetUri" = "unix:mypath"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +189,10 @@ import 'server_tls_policy_state.dart';
 /// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyClientValidationCaArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,6 +337,28 @@ import 'server_tls_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_servertlspolicy" "default" {
+///   name = "my-server-tls-policy"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   location    = "global"
+///   allow_open  = "false"
+///   mtls_policy = {
+///     client_validation_mode = "ALLOW_INVALID_OR_MISSING_CLIENT_CERT"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -314,8 +368,8 @@ import 'server_tls_policy_state.dart';
 /// import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
 /// import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -457,6 +511,30 @@ import 'server_tls_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_servertlspolicy" "default" {
+///   name = "my-server-tls-policy"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   location    = "global"
+///   allow_open  = "false"
+///   server_certificate = {
+///     grpc_endpoint = {
+///       target_uri = "unix:mypath"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -467,8 +545,8 @@ import 'server_tls_policy_state.dart';
 /// import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateGrpcEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -740,6 +818,51 @@ import 'server_tls_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_networksecurity_servertlspolicy" "default" {
+///   name        = "my-server-tls-policy"
+///   description = "my description"
+///   location    = "global"
+///   allow_open  = "false"
+///   mtls_policy = {
+///     client_validation_mode         = "REJECT_INVALID"
+///     client_validation_trust_config ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/trustConfigs/${gcp_certificatemanager_trustconfig.default.name}"
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_certificatemanager_trustconfig" "default" {
+///   name        = "my-trust-config"
+///   description = "sample trust config description"
+///   location    = "global"
+///   trust_stores {
+///     trust_anchors {
+///       pem_certificate = file("test-fixtures/ca_cert.pem")
+///     }
+///     intermediate_cas {
+///       pem_certificate = file("test-fixtures/ca_cert.pem")
+///     }
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -751,13 +874,15 @@ import 'server_tls_policy_state.dart';
 /// import com.pulumi.gcp.certificatemanager.TrustConfig;
 /// import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreTrustAnchorArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreIntermediateCaArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
 /// import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -857,22 +982,15 @@ import 'server_tls_policy_state.dart';
 /// ServerTlsPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{location}}/{{name}}
 /// ```
 class ServerTlsPolicy extends pulumi.CustomResource {
@@ -882,13 +1000,20 @@ class ServerTlsPolicy extends pulumi.CustomResource {
   late final pulumi.Output<bool?> allowOpen;
   /// Time the ServerTlsPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Set of label tags associated with the ServerTlsPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the server tls policy.
   /// The default value is `global`.
@@ -927,6 +1052,7 @@ class ServerTlsPolicy extends pulumi.CustomResource {
         ) {
     allowOpen = registerOutput<bool?>('allowOpen');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -964,6 +1090,7 @@ class ServerTlsPolicy extends pulumi.CustomResource {
         ) {
     allowOpen = registerOutput<bool?>('allowOpen');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

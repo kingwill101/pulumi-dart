@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_disk_args.dart';
 import 'region_disk_async_primary_disk.dart';
 import 'region_disk_disk_encryption_key.dart';
+import 'region_disk_source_image_encryption_key.dart';
 import 'region_disk_source_snapshot_encryption_key.dart';
 import 'region_disk_state.dart';
 
@@ -28,8 +29,7 @@ import 'region_disk_state.dart';
 /// * How-to Guides
 /// * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 ///
-/// &gt; **Warning:** All arguments including the following potentially sensitive
-/// values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
+///
 ///
 /// ## Example Usage
 ///
@@ -160,7 +160,7 @@ import 'region_disk_state.dart';
 /// 		}
 /// 		_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
 /// 			Name:                   pulumi.String("my-region-disk"),
-/// 			Snapshot:               snapdisk.ID(),
+/// 			Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:                   pulumi.String("pd-ssd"),
 /// 			Region:                 pulumi.String("us-central1"),
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -176,6 +176,36 @@ import 'region_disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regiondisk" "regiondisk" {
+///   name                      = "my-region-disk"
+///   snapshot                  = gcp_compute_snapshot.snapdisk.id
+///   type                      = "pd-ssd"
+///   region                    = "us-central1"
+///   physical_block_size_bytes = 4096
+///   replica_zones             = ["us-central1-a", "us-central1-f"]
+/// }
+/// resource "gcp_compute_disk" "disk" {
+///   name  = "my-disk"
+///   image = "debian-cloud/debian-11"
+///   size  = 50
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// resource "gcp_compute_snapshot" "snapdisk" {
+///   name        = "my-snapshot"
+///   source_disk = gcp_compute_disk.disk.name
+///   zone        = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -188,8 +218,8 @@ import 'region_disk_state.dart';
 /// import com.pulumi.gcp.compute.SnapshotArgs;
 /// import com.pulumi.gcp.compute.RegionDisk;
 /// import com.pulumi.gcp.compute.RegionDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,7 +415,7 @@ import 'region_disk_state.dart';
 /// 			Region:                 pulumi.String("us-east1"),
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
 /// 			AsyncPrimaryDisk: &compute.RegionDiskAsyncPrimaryDiskArgs{
-/// 				Disk: primary.ID(),
+/// 				Disk: primary.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ReplicaZones: pulumi.StringArray{
 /// 				pulumi.String("us-east1-b"),
@@ -399,6 +429,33 @@ import 'region_disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regiondisk" "primary" {
+///   name                      = "primary-region-disk"
+///   type                      = "pd-ssd"
+///   region                    = "us-central1"
+///   physical_block_size_bytes = 4096
+///   replica_zones             = ["us-central1-a", "us-central1-f"]
+/// }
+/// resource "gcp_compute_regiondisk" "secondary" {
+///   name                      = "secondary-region-disk"
+///   type                      = "pd-ssd"
+///   region                    = "us-east1"
+///   physical_block_size_bytes = 4096
+///   async_primary_disk = {
+///     disk = gcp_compute_regiondisk.primary.id
+///   }
+///   replica_zones = ["us-east1-b", "us-east1-c"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -408,8 +465,8 @@ import 'region_disk_state.dart';
 /// import com.pulumi.gcp.compute.RegionDisk;
 /// import com.pulumi.gcp.compute.RegionDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,6 +670,33 @@ import 'region_disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regiondisk" "regiondisk" {
+///   name                      = "my-region-features-disk"
+///   type                      = "pd-ssd"
+///   region                    = "us-central1"
+///   physical_block_size_bytes = 4096
+///   guest_os_features {
+///     type = "SECURE_BOOT"
+///   }
+///   guest_os_features {
+///     type = "MULTI_IP_SUBNET"
+///   }
+///   guest_os_features {
+///     type = "WINDOWS"
+///   }
+///   licenses      = ["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"]
+///   replica_zones = ["us-central1-a", "us-central1-f"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -622,8 +706,8 @@ import 'region_disk_state.dart';
 /// import com.pulumi.gcp.compute.RegionDisk;
 /// import com.pulumi.gcp.compute.RegionDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionDiskGuestOsFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -762,6 +846,23 @@ import 'region_disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regiondisk" "primary" {
+///   name          = "my-region-hyperdisk"
+///   type          = "hyperdisk-balanced-high-availability"
+///   region        = "us-central1"
+///   replica_zones = ["us-central1-a", "us-central1-f"]
+///   access_mode   = "READ_WRITE_MANY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -770,8 +871,8 @@ import 'region_disk_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RegionDisk;
 /// import com.pulumi.gcp.compute.RegionDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -816,28 +917,17 @@ import 'region_disk_state.dart';
 /// RegionDisk can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/disks/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionDisk can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
 /// ```
 class RegionDisk extends pulumi.CustomResource {
@@ -859,6 +949,13 @@ class RegionDisk extends pulumi.CustomResource {
   late final pulumi.Output<String?> createSnapshotBeforeDestroyPrefix;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -877,10 +974,24 @@ class RegionDisk extends pulumi.CustomResource {
   late final pulumi.Output<String> diskId;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// (Optional, Beta)
+  /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+  late final pulumi.Output<bool?> eraseWindowsVssSignature;
   /// A list of features to enable on the guest operating system.
   /// Applicable only for bootable disks.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> guestOsFeatures;
+  /// The image from which to initialize this disk. This can be
+  /// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+  /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+  /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+  /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+  /// images names must include the family name. If they don't, use the
+  /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+  /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+  /// These images can be referred by family name here.
+  late final pulumi.Output<String?> image;
+  /// (Optional, Beta, Deprecated)
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
   /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -891,7 +1002,7 @@ class RegionDisk extends pulumi.CustomResource {
   /// Labels to apply to this disk.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Last attach timestamp in RFC3339 text format.
   late final pulumi.Output<String> lastAttachTimestamp;
@@ -960,6 +1071,16 @@ class RegionDisk extends pulumi.CustomResource {
   /// be used to determine whether the image was taken from the current
   /// or a previous instance of a given disk name.
   late final pulumi.Output<String> sourceDiskId;
+  /// The customer-supplied encryption key of the source image. Required if
+  /// the source image is protected by a customer-supplied encryption key.
+  /// Structure is documented below.
+  late final pulumi.Output<RegionDiskSourceImageEncryptionKey?> sourceImageEncryptionKey;
+  /// The ID value of the image used to create this disk. This value
+  /// identifies the exact image that was used to create this persistent
+  /// disk. For example, if you created the persistent disk from an image
+  /// that was later deleted and recreated under the same name, the source
+  /// image ID would identify the exact version of the image that was used.
+  late final pulumi.Output<String> sourceImageId;
   /// The customer-supplied encryption key of the source snapshot. Required
   /// if the source snapshot is protected by a customer-supplied encryption
   /// key.
@@ -998,11 +1119,14 @@ class RegionDisk extends pulumi.CustomResource {
     createSnapshotBeforeDestroy = registerOutput<bool?>('createSnapshotBeforeDestroy');
     createSnapshotBeforeDestroyPrefix = registerOutput<String?>('createSnapshotBeforeDestroyPrefix');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<RegionDiskDiskEncryptionKey?>('diskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionDiskDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    eraseWindowsVssSignature = registerOutput<bool?>('eraseWindowsVssSignature');
     guestOsFeatures = registerOutput<List<Map<String, dynamic>>>('guestOsFeatures');
+    image = registerOutput<String?>('image');
     interface = registerOutput<String?>('interface');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1022,6 +1146,8 @@ class RegionDisk extends pulumi.CustomResource {
     snapshot = registerOutput<String?>('snapshot');
     sourceDisk = registerOutput<String?>('sourceDisk');
     sourceDiskId = registerOutput<String>('sourceDiskId');
+    sourceImageEncryptionKey = registerOutput<RegionDiskSourceImageEncryptionKey?>('sourceImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionDiskSourceImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceImageId = registerOutput<String>('sourceImageId');
     sourceSnapshotEncryptionKey = registerOutput<RegionDiskSourceSnapshotEncryptionKey?>('sourceSnapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionDiskSourceSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     type = registerOutput<String?>('type');
@@ -1056,11 +1182,14 @@ class RegionDisk extends pulumi.CustomResource {
     createSnapshotBeforeDestroy = registerOutput<bool?>('createSnapshotBeforeDestroy');
     createSnapshotBeforeDestroyPrefix = registerOutput<String?>('createSnapshotBeforeDestroyPrefix');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<RegionDiskDiskEncryptionKey?>('diskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionDiskDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    eraseWindowsVssSignature = registerOutput<bool?>('eraseWindowsVssSignature');
     guestOsFeatures = registerOutput<List<Map<String, dynamic>>>('guestOsFeatures');
+    image = registerOutput<String?>('image');
     interface = registerOutput<String?>('interface');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1080,6 +1209,8 @@ class RegionDisk extends pulumi.CustomResource {
     snapshot = registerOutput<String?>('snapshot');
     sourceDisk = registerOutput<String?>('sourceDisk');
     sourceDiskId = registerOutput<String>('sourceDiskId');
+    sourceImageEncryptionKey = registerOutput<RegionDiskSourceImageEncryptionKey?>('sourceImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionDiskSourceImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceImageId = registerOutput<String>('sourceImageId');
     sourceSnapshotEncryptionKey = registerOutput<RegionDiskSourceSnapshotEncryptionKey?>('sourceSnapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionDiskSourceSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     type = registerOutput<String?>('type');

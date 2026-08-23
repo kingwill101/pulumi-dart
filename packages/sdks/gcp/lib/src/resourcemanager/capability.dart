@@ -139,6 +139,34 @@ import 'capability_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "folder" {
+///   display_name        = "folder-cap"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "time_sleep" "wait_60s" {
+///   depends_on      = [gcp_organizations_folder.folder]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_resourcemanager_capability" "capability" {
+///   depends_on      = [time_sleep.wait_60s]
+///   value           = true
+///   parent          = gcp_organizations_folder.folder.name
+///   capability_name = "app-management"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +180,8 @@ import 'capability_state.dart';
 /// import com.pulumi.gcp.resourcemanager.Capability;
 /// import com.pulumi.gcp.resourcemanager.CapabilityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,16 +249,13 @@ import 'capability_state.dart';
 /// Capability can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/capabilities/{{capability_name}}`
-///
 /// * `{{parent}}/{{capability_name}}`
+///
 ///
 /// When using the `pulumi import` command, Capability can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/capabilities/{{capability_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/{{capability_name}}
 /// ```
 class Capability extends pulumi.CustomResource {

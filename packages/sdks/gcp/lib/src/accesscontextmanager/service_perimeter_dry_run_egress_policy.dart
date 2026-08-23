@@ -13,11 +13,8 @@ import 'service_perimeter_dry_run_egress_policy_state.dart';
 /// perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket
 /// or query against a BigQuery dataset).
 ///
-/// &gt; **Note:** By default, updates to this resource will remove the EgressPolicy from the
-/// from the perimeter and add it back in a non-atomic manner. To ensure that the new EgressPolicy
-/// is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
 /// &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
-/// the service perimeter resource must have a `lifecycle` block with `ignore_changes = [spec[0].egress_policies]` so
+/// the service perimeter resource must have a `lifecycle` block with `ignoreChanges = [spec[0].egress_policies]` so
 /// they don't fight over which egress rules should be in the policy.
 ///
 ///
@@ -29,6 +26,13 @@ import 'service_perimeter_dry_run_egress_policy_state.dart';
 class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
   /// Structure is documented below.
   late final pulumi.Output<ServicePerimeterDryRunEgressPolicyEgressFrom?> egressFrom;
@@ -58,6 +62,7 @@ class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     egressFrom = registerOutput<ServicePerimeterDryRunEgressPolicyEgressFrom?>('egressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     egressTo = registerOutput<ServicePerimeterDryRunEgressPolicyEgressTo?>('egressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -89,6 +94,7 @@ class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     egressFrom = registerOutput<ServicePerimeterDryRunEgressPolicyEgressFrom?>('egressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     egressTo = registerOutput<ServicePerimeterDryRunEgressPolicyEgressTo?>('egressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

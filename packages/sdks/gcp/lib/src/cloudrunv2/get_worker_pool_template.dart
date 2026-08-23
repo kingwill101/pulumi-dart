@@ -14,6 +14,10 @@ class GetWorkerPoolTemplate {
   ///
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   final pulumi.Input<Map<String, String>> annotations;
+  /// Arbitrary identifier for the API client.
+  final pulumi.Input<String> client;
+  /// Arbitrary version identifier for the API client.
+  final pulumi.Input<String> clientVersion;
   /// Holds the containers that define the unit of execution for this WorkerPool.
   final pulumi.Input<List<GetWorkerPoolTemplateContainer>> containers;
   /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -45,6 +49,8 @@ class GetWorkerPoolTemplate {
 
   /// Creates a new [GetWorkerPoolTemplate].
   /// [annotations] Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+  /// [client] Arbitrary identifier for the API client.
+  /// [clientVersion] Arbitrary version identifier for the API client.
   /// [containers] Holds the containers that define the unit of execution for this WorkerPool.
   /// [encryptionKey] A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
   /// [encryptionKeyRevocationAction] The action to take if the encryption key is revoked. Possible values: ["PREVENT_NEW", "SHUTDOWN"]
@@ -58,6 +64,8 @@ class GetWorkerPoolTemplate {
   /// [vpcAccesses] VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
   const GetWorkerPoolTemplate({
     required this.annotations,
+    required this.client,
+    required this.clientVersion,
     required this.containers,
     required this.encryptionKey,
     required this.encryptionKeyRevocationAction,
@@ -74,6 +82,8 @@ class GetWorkerPoolTemplate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': annotations,
+      'client': client,
+      'clientVersion': clientVersion,
       'containers': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'encryptionKey': encryptionKey,
       'encryptionKeyRevocationAction': encryptionKeyRevocationAction,
@@ -91,6 +101,8 @@ class GetWorkerPoolTemplate {
   factory GetWorkerPoolTemplate.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplate(
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
+      client: pulumi.Input.fromValue(map['client'] as String),
+      clientVersion: pulumi.Input.fromValue(map['clientVersion'] as String),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerPoolTemplateContainer>(map['containers']!, (value) => GetWorkerPoolTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))),
       encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
       encryptionKeyRevocationAction: pulumi.Input.fromValue(map['encryptionKeyRevocationAction'] as String),
@@ -105,4 +117,3 @@ class GetWorkerPoolTemplate {
     );
   }
 }
-

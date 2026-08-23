@@ -17,7 +17,7 @@ class WorkstationConfigState {
   final pulumi.Input<List<WorkstationConfigAllowedPort>>? allowedPorts;
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Status conditions describing the current resource state.
   /// Structure is documented below.
@@ -29,10 +29,18 @@ class WorkstationConfigState {
   final pulumi.Input<String>? createTime;
   /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
   final pulumi.Input<bool>? degraded;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
   final pulumi.Input<bool>? disableTcpConnections;
   /// Human-readable name for this resource.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -53,12 +61,18 @@ class WorkstationConfigState {
   /// Runtime host for a workstation.
   /// Structure is documented below.
   final pulumi.Input<WorkstationConfigHost>? host;
+  /// (Optional, Beta)
+  /// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+  /// Defaults to STOP.
+  /// Default value is `STOP`.
+  /// Possible values are: `STOP`, `SUSPEND`.
+  final pulumi.Input<String>? idleAction;
   /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   final pulumi.Input<String>? idleTimeout;
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the workstation cluster config should reside.
   final pulumi.Input<String>? location;
@@ -81,7 +95,7 @@ class WorkstationConfigState {
   /// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
   /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
   final pulumi.Input<List<String>>? replicaZones;
-  /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+  /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   final pulumi.Input<String>? runningTimeout;
   /// The system-generated UID of the resource.
@@ -98,15 +112,17 @@ class WorkstationConfigState {
   /// [container] Container that will be run for each workstation using this configuration when that workstation is started.
   /// [createTime] Time when this resource was created.
   /// [degraded] Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disableTcpConnections] Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
   /// [displayName] Human-readable name for this resource.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableAuditAgent] Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
   /// [encryptionKey] Encrypts resources of this workstation configuration using a customer-managed encryption key.
   /// [ephemeralDirectories] Ephemeral directories which won't persist across workstation sessions.
   /// [etag] Checksum computed by the server.
   /// [host] Runtime host for a workstation.
+  /// [idleAction] (Optional, Beta)
   /// [idleTimeout] How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
   /// [labels] Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// [location] The location where the workstation cluster config should reside.
@@ -117,7 +133,7 @@ class WorkstationConfigState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [readinessChecks] Readiness checks to be performed on a workstation.
   /// [replicaZones] Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
-  /// [runningTimeout] How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+  /// [runningTimeout] How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
   /// [uid] The system-generated UID of the resource.
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] The ID to be assigned to the workstation cluster config.
@@ -128,6 +144,7 @@ class WorkstationConfigState {
     this.container,
     this.createTime,
     this.degraded,
+    this.deletionPolicy,
     this.disableTcpConnections,
     this.displayName,
     this.effectiveAnnotations,
@@ -137,6 +154,7 @@ class WorkstationConfigState {
     this.ephemeralDirectories,
     this.etag,
     this.host,
+    this.idleAction,
     this.idleTimeout,
     this.labels,
     this.location,
@@ -161,6 +179,7 @@ class WorkstationConfigState {
       'container': ?pulumi.Input.mapOptionalInputValue<WorkstationConfigContainer, Map<String, dynamic>>(container, (value) => value.toMap()),
       'createTime': ?createTime,
       'degraded': ?degraded,
+      'deletionPolicy': ?deletionPolicy,
       'disableTcpConnections': ?disableTcpConnections,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -170,6 +189,7 @@ class WorkstationConfigState {
       'ephemeralDirectories': ?pulumi.Input.mapOptionalInputValue<List<WorkstationConfigEphemeralDirectory>, List<Map<String, dynamic>>>(ephemeralDirectories, (value) => pulumi.Input.encodeList<WorkstationConfigEphemeralDirectory, Map<String, dynamic>>(value, (value) => value.toMap())),
       'etag': ?etag,
       'host': ?pulumi.Input.mapOptionalInputValue<WorkstationConfigHost, Map<String, dynamic>>(host, (value) => value.toMap()),
+      'idleAction': ?idleAction,
       'idleTimeout': ?idleTimeout,
       'labels': ?labels,
       'location': ?location,
@@ -195,6 +215,7 @@ class WorkstationConfigState {
       container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigContainer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       degraded: (() { final guardedValue = map['degraded']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableTcpConnections: (() { final guardedValue = map['disableTcpConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -204,6 +225,7 @@ class WorkstationConfigState {
       ephemeralDirectories: (() { final guardedValue = map['ephemeralDirectories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkstationConfigEphemeralDirectory>(guardedValue, (value) => WorkstationConfigEphemeralDirectory.fromMap((value as Map).cast<String, dynamic>()))); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigHost.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      idleAction: (() { final guardedValue = map['idleAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       idleTimeout: (() { final guardedValue = map['idleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -221,4 +243,3 @@ class WorkstationConfigState {
     );
   }
 }
-

@@ -13,7 +13,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   final pulumi.Input<String>? attributeValue;
   /// (Output)
   /// The value between -1 to 1 by which to boost the score if the
-  /// attribute_value evaluates to the value specified above.
+  /// attributeValue evaluates to the value specified above.
   final pulumi.Input<double>? boostAmount;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint].
@@ -38,4 +38,3 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
     );
   }
 }
-

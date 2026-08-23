@@ -11,6 +11,7 @@ class GetAutonomousDatabaseResult {
   final String cidr;
   final String createTime;
   final String database;
+  final String deletionPolicy;
   final bool deletionProtection;
   final List<String> disasterRecoverySupportedLocations;
   final String displayName;
@@ -36,6 +37,7 @@ class GetAutonomousDatabaseResult {
   /// [cidr] Required.
   /// [createTime] Required.
   /// [database] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [disasterRecoverySupportedLocations] Required.
   /// [displayName] Required.
@@ -59,6 +61,7 @@ class GetAutonomousDatabaseResult {
     required this.cidr,
     required this.createTime,
     required this.database,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.disasterRecoverySupportedLocations,
     required this.displayName,
@@ -85,6 +88,7 @@ class GetAutonomousDatabaseResult {
       'cidr': cidr,
       'createTime': createTime,
       'database': database,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'disasterRecoverySupportedLocations': disasterRecoverySupportedLocations,
       'displayName': displayName,
@@ -112,6 +116,7 @@ class GetAutonomousDatabaseResult {
       cidr: map['cidr'] as String,
       createTime: map['createTime'] as String,
       database: map['database'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       disasterRecoverySupportedLocations: (map['disasterRecoverySupportedLocations'] as List).cast<String>(),
       displayName: map['displayName'] as String,
@@ -132,4 +137,3 @@ class GetAutonomousDatabaseResult {
     );
   }
 }
-

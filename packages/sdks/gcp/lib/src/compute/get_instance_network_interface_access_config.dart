@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceNetworkInterfaceAccessConfig {
-  /// If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn't provide one).
+  /// If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
   final pulumi.Input<String> natIp;
   /// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
   final pulumi.Input<String> networkTier;
@@ -13,7 +13,7 @@ class GetInstanceNetworkInterfaceAccessConfig {
   final pulumi.Input<String> securityPolicy;
 
   /// Creates a new [GetInstanceNetworkInterfaceAccessConfig].
-  /// [natIp] If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn't provide one).
+  /// [natIp] If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
   /// [networkTier] The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
   /// [publicPtrDomainName] The DNS domain name for the public PTR record.
   /// [securityPolicy] A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
@@ -42,4 +42,3 @@ class GetInstanceNetworkInterfaceAccessConfig {
     );
   }
 }
-

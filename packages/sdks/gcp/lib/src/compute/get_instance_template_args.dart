@@ -9,25 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTemplateArgs {
   /// A filter to retrieve the instance templates.
   /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-  /// If multiple instance templates match, either adjust the filter or specify `most_recent`.
-  /// One of `name`, `filter` or `self_link_unique` must be provided.
+  /// If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+  /// One of `name`, `filter` or `selfLinkUnique` must be provided.
   final pulumi.Input<String>? filter;
-  /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
+  /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
   final pulumi.Input<bool>? mostRecent;
-  /// The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+  /// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
   final pulumi.Input<String>? name;
   /// The ID of the project in which the resource belongs.
   /// If `project` is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+  /// The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
   final pulumi.Input<String>? selfLinkUnique;
 
   /// Creates a new [GetInstanceTemplateArgs].
   /// [filter] A filter to retrieve the instance templates.
-  /// [mostRecent] If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
-  /// [name] The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+  /// [mostRecent] If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
+  /// [name] The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
   /// [project] The ID of the project in which the resource belongs.
-  /// [selfLinkUnique] The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+  /// [selfLinkUnique] The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
   const GetInstanceTemplateArgs({
     this.filter,
     this.mostRecent,
@@ -56,4 +56,3 @@ class GetInstanceTemplateArgs {
     );
   }
 }
-

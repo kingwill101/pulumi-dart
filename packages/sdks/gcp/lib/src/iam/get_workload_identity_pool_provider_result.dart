@@ -11,6 +11,7 @@ class GetWorkloadIdentityPoolProviderResult {
   final String attributeCondition;
   final Map<String, String> attributeMapping;
   final List<GetWorkloadIdentityPoolProviderAw> aws;
+  final String deletionPolicy;
   final String description;
   final bool disabled;
   final String displayName;
@@ -29,6 +30,7 @@ class GetWorkloadIdentityPoolProviderResult {
   /// [attributeCondition] Required.
   /// [attributeMapping] Required.
   /// [aws] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [disabled] Required.
   /// [displayName] Required.
@@ -45,6 +47,7 @@ class GetWorkloadIdentityPoolProviderResult {
     required this.attributeCondition,
     required this.attributeMapping,
     required this.aws,
+    required this.deletionPolicy,
     required this.description,
     required this.disabled,
     required this.displayName,
@@ -64,6 +67,7 @@ class GetWorkloadIdentityPoolProviderResult {
       'attributeCondition': attributeCondition,
       'attributeMapping': attributeMapping,
       'aws': pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderAw, Map<String, dynamic>>(aws, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'disabled': disabled,
       'displayName': displayName,
@@ -84,6 +88,7 @@ class GetWorkloadIdentityPoolProviderResult {
       attributeCondition: map['attributeCondition'] as String,
       attributeMapping: (map['attributeMapping'] as Map).cast<String, String>(),
       aws: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderAw>(map['aws']!, (value) => GetWorkloadIdentityPoolProviderAw.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       disabled: map['disabled'] as bool,
       displayName: map['displayName'] as String,
@@ -99,4 +104,3 @@ class GetWorkloadIdentityPoolProviderResult {
     );
   }
 }
-

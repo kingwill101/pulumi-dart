@@ -31,7 +31,7 @@ class AwsNodePoolConfig {
   final pulumi.Input<AwsNodePoolConfigRootVolume>? rootVolume;
   /// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
   final pulumi.Input<List<String>>? securityGroupIds;
-  /// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+  /// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
   final pulumi.Input<AwsNodePoolConfigSpotConfig>? spotConfig;
   /// Optional. The SSH configuration.
   final pulumi.Input<AwsNodePoolConfigSshConfig>? sshConfig;
@@ -51,7 +51,7 @@ class AwsNodePoolConfig {
   /// [proxyConfig] Proxy configuration for outbound HTTP(S) traffic.
   /// [rootVolume] Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
   /// [securityGroupIds] Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
-  /// [spotConfig] Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+  /// [spotConfig] Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
   /// [sshConfig] Optional. The SSH configuration.
   /// [tags] Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
   /// [taints] Optional. The initial taints assigned to nodes of this node pool.
@@ -110,4 +110,3 @@ class AwsNodePoolConfig {
     );
   }
 }
-

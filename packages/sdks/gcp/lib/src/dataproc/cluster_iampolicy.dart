@@ -116,6 +116,29 @@ import 'cluster_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataproc_clusteriampolicy" "editor" {
+///   project     = "your-project"
+///   region      = "your-region"
+///   cluster     = "your-dataproc-cluster"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,10 +147,11 @@ import 'cluster_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataproc.ClusterIAMPolicy;
 /// import com.pulumi.gcp.dataproc.ClusterIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,6 +267,21 @@ import 'cluster_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_clusteriambinding" "editor" {
+///   cluster = "your-dataproc-cluster"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -251,8 +290,8 @@ import 'cluster_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.ClusterIAMBinding;
 /// import com.pulumi.gcp.dataproc.ClusterIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,6 +385,21 @@ import 'cluster_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_clusteriammember" "editor" {
+///   cluster = "your-dataproc-cluster"
+///   role    = "roles/editor"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -354,8 +408,8 @@ import 'cluster_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.ClusterIAMMember;
 /// import com.pulumi.gcp.dataproc.ClusterIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,6 +545,29 @@ import 'cluster_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataproc_clusteriampolicy" "editor" {
+///   project     = "your-project"
+///   region      = "your-region"
+///   cluster     = "your-dataproc-cluster"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -499,10 +576,11 @@ import 'cluster_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataproc.ClusterIAMPolicy;
 /// import com.pulumi.gcp.dataproc.ClusterIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -618,6 +696,21 @@ import 'cluster_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_clusteriambinding" "editor" {
+///   cluster = "your-dataproc-cluster"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -626,8 +719,8 @@ import 'cluster_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.ClusterIAMBinding;
 /// import com.pulumi.gcp.dataproc.ClusterIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -721,6 +814,21 @@ import 'cluster_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_clusteriammember" "editor" {
+///   cluster = "your-dataproc-cluster"
+///   role    = "roles/editor"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -729,8 +837,8 @@ import 'cluster_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.ClusterIAMMember;
 /// import com.pulumi.gcp.dataproc.ClusterIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -764,29 +872,8 @@ import 'cluster_iampolicy_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
-///
-/// * `projects/{project}/regions/{region}/clusters/{cluster}`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = projects/{project}/regions/{region}/clusters/{cluster}
-///
-/// to = google_dataproc_cluster_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
-/// ```
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ClusterIAMPolicy extends pulumi.CustomResource {
   /// The name or relative resource id of the cluster to manage IAM policies for.
   ///

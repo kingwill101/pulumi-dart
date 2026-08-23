@@ -7,10 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_get_instance_guest_attributes_get_instance_guest_attributes_args_doc}
 class GetInstanceGuestAttributesArgs {
-  /// The name or self_link of the instance.
+  /// The name or selfLink of the instance.
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs.
-  /// If `self_link` is provided, this value is ignored.  If neither `self_link`
+  /// If `selfLink` is provided, this value is ignored.  If neither `selfLink`
   /// nor `project` are provided, the provider project is used.
   final pulumi.Input<String>? project;
   /// Path to query for the guest attributes. Consists of
@@ -20,18 +20,18 @@ class GetInstanceGuestAttributesArgs {
   /// Key of a variable to get the value of. Consists of
   /// `namespace` name and `key` name for the variable separated by a `/`.
   final pulumi.Input<String>? variableKey;
-  /// The zone of the instance. If `self_link` is provided, this
-  /// value is ignored.  If neither `self_link` nor `zone` are provided, the
+  /// The zone of the instance. If `selfLink` is provided, this
+  /// value is ignored.  If neither `selfLink` nor `zone` are provided, the
   /// provider zone is used.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [GetInstanceGuestAttributesArgs].
-  /// [name] The name or self_link of the instance.
+  /// [name] The name or selfLink of the instance.
   /// [project] The ID of the project in which the resource belongs.
   /// [queryPath] Path to query for the guest attributes. Consists of
   /// [region] Optional.
   /// [variableKey] Key of a variable to get the value of. Consists of
-  /// [zone] The zone of the instance. If `self_link` is provided, this
+  /// [zone] The zone of the instance. If `selfLink` is provided, this
   const GetInstanceGuestAttributesArgs({
     required this.name,
     this.project,
@@ -63,4 +63,3 @@ class GetInstanceGuestAttributesArgs {
     );
   }
 }
-

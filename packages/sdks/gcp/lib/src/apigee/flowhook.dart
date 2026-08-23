@@ -16,21 +16,25 @@ import 'flowhook_state.dart';
 /// Flowhook can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}`
-///
 /// * `{{org_id}}/{{environment}}/{{flow_hook_point}}`
+///
 ///
 /// When using the `pulumi import` command, Flowhook can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/flowhook:Flowhook default organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/flowhook:Flowhook default {{org_id}}/{{environment}}/{{flow_hook_point}}
 /// ```
 class Flowhook extends pulumi.CustomResource {
   /// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
   late final pulumi.Output<bool?> continueOnError;
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the flow hook.
   late final pulumi.Output<String?> description;
   /// The resource ID of the environment.
@@ -57,6 +61,7 @@ class Flowhook extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     continueOnError = registerOutput<bool?>('continueOnError');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     environment = registerOutput<String>('environment');
     flowHookPoint = registerOutput<String>('flowHookPoint');
@@ -88,6 +93,7 @@ class Flowhook extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     continueOnError = registerOutput<bool?>('continueOnError');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     environment = registerOutput<String>('environment');
     flowHookPoint = registerOutput<String>('flowHookPoint');

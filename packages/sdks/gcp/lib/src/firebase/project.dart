@@ -7,6 +7,9 @@ import 'project_state.dart';
 /// identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
 /// Once Firebase has been added to a Google Project it cannot be removed.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Project, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
@@ -14,7 +17,7 @@ import 'project_state.dart';
 /// * Official Documentation
 ///
 /// &gt; **Note:** This resource should usually be used with a provider configuration
-/// with `user_project_override = true` unless you wish for your quota
+/// with `userProjectOverride = true` unless you wish for your quota
 /// project to be different from the Firebase project.
 ///
 /// ## Example Usage
@@ -112,14 +115,36 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "default" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+///   labels = {
+///     "firebase" = "enabled"
+///   }
+/// }
+/// resource "gcp_firebase_project" "default" {
+///   project = gcp_organizations_project.default.project_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,16 +195,13 @@ import 'project_state.dart';
 /// Project can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, Project can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/project:Project default projects/{{project}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/project:Project default {{project}}
 /// ```
 class Project extends pulumi.CustomResource {

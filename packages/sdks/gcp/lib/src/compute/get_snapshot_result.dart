@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_snapshot_param.dart';
 import 'get_snapshot_snapshot_encryption_key.dart';
 import 'get_snapshot_source_disk_encryption_key.dart';
 
@@ -8,6 +9,7 @@ import 'get_snapshot_source_disk_encryption_key.dart';
 class GetSnapshotResult {
   final String chainName;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final int diskSizeGb;
   final Map<String, String> effectiveLabels;
@@ -20,6 +22,7 @@ class GetSnapshotResult {
   final List<String> licenses;
   final bool? mostRecent;
   final String? name;
+  final List<GetSnapshotParam> params;
   final String? project;
   final Map<String, String> pulumiLabels;
   final String selfLink;
@@ -36,6 +39,7 @@ class GetSnapshotResult {
   /// Creates a new [GetSnapshotResult].
   /// [chainName] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [diskSizeGb] Required.
   /// [effectiveLabels] Required.
@@ -47,6 +51,7 @@ class GetSnapshotResult {
   /// [licenses] Required.
   /// [mostRecent] Optional.
   /// [name] Optional.
+  /// [params] Required.
   /// [project] Optional.
   /// [pulumiLabels] Required.
   /// [selfLink] Required.
@@ -62,6 +67,7 @@ class GetSnapshotResult {
   const GetSnapshotResult({
     required this.chainName,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.diskSizeGb,
     required this.effectiveLabels,
@@ -73,6 +79,7 @@ class GetSnapshotResult {
     required this.licenses,
     this.mostRecent,
     this.name,
+    required this.params,
     this.project,
     required this.pulumiLabels,
     required this.selfLink,
@@ -91,6 +98,7 @@ class GetSnapshotResult {
     return <String, dynamic>{
       'chainName': chainName,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'diskSizeGb': diskSizeGb,
       'effectiveLabels': effectiveLabels,
@@ -102,6 +110,7 @@ class GetSnapshotResult {
       'licenses': licenses,
       'mostRecent': ?mostRecent,
       'name': ?name,
+      'params': pulumi.Input.encodeList<GetSnapshotParam, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': pulumiLabels,
       'selfLink': selfLink,
@@ -121,6 +130,7 @@ class GetSnapshotResult {
     return GetSnapshotResult(
       chainName: map['chainName'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       diskSizeGb: map['diskSizeGb'] as int,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -132,6 +142,7 @@ class GetSnapshotResult {
       licenses: (map['licenses'] as List).cast<String>(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      params: pulumi.Input.decodeList<GetSnapshotParam>(map['params']!, (value) => GetSnapshotParam.fromMap((value as Map).cast<String, dynamic>())),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       selfLink: map['selfLink'] as String,
@@ -147,4 +158,3 @@ class GetSnapshotResult {
     );
   }
 }
-

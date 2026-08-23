@@ -9,7 +9,7 @@ class ConnectionProfileSalesforceProfileUserCredentials {
   final pulumi.Input<String>? secretManagerStoredPassword;
   /// A reference to a Secret Manager resource name storing the user's security token.
   ///
-  /// &lt;a name="nested_salesforce_profile_oauth2_client_credentials"&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+  /// &lt;a name="nestedSalesforceProfileOauth2ClientCredentials"&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
   final pulumi.Input<String>? secretManagerStoredSecurityToken;
   /// Security token of the user.
   final pulumi.Input<String>? securityToken;
@@ -50,4 +50,3 @@ class ConnectionProfileSalesforceProfileUserCredentials {
     );
   }
 }
-

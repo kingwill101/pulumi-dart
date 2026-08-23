@@ -82,8 +82,8 @@ import 'document_ai_processor_default_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processor", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
-/// 			Processor: processor.ID(),
-/// 			Version: processor.ID().ApplyT(func(id string) (string, error) {
+/// 			Processor: processor.ID().ToIDOutput().ToStringOutput(),
+/// 			Version: processor.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("%v/processorVersions/stable", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -92,6 +92,25 @@ import 'document_ai_processor_default_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_essentialcontacts_documentaiprocessor" "processor" {
+///   location     = "us"
+///   display_name = "test-processor"
+///   type         = "OCR_PROCESSOR"
+/// }
+/// resource "gcp_essentialcontacts_documentaiprocessordefaultversion" "processor" {
+///   processor = gcp_essentialcontacts_documentaiprocessor.processor.id
+///   version   ="${gcp_essentialcontacts_documentaiprocessor.processor.id}/processorVersions/stable"
 /// }
 /// ```
 /// ```java
@@ -104,8 +123,8 @@ import 'document_ai_processor_default_version_state.dart';
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiProcessorArgs;
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiProcessorDefaultVersion;
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiProcessorDefaultVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,6 +172,7 @@ import 'document_ai_processor_default_version_state.dart';
 /// ProcessorDefaultVersion can be imported using any of these accepted formats:
 ///
 /// * `{{processor}}`
+///
 ///
 /// When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
 ///

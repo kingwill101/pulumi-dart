@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SharedflowMetaData {
-  /// Time at which the API proxy was created, in milliseconds since epoch.
+  /// Time at which the shared flow was created, in milliseconds since epoch.
   final pulumi.Input<String>? createdAt;
-  /// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+  /// Time at which the shared flow was most recently modified, in milliseconds since epoch.
   final pulumi.Input<String>? lastModifiedAt;
   /// The type of entity described
   final pulumi.Input<String>? subType;
 
   /// Creates a new [SharedflowMetaData].
-  /// [createdAt] Time at which the API proxy was created, in milliseconds since epoch.
-  /// [lastModifiedAt] Time at which the API proxy was most recently modified, in milliseconds since epoch.
+  /// [createdAt] Time at which the shared flow was created, in milliseconds since epoch.
+  /// [lastModifiedAt] Time at which the shared flow was most recently modified, in milliseconds since epoch.
   /// [subType] The type of entity described
   const SharedflowMetaData({
     this.createdAt,
@@ -36,4 +36,3 @@ class SharedflowMetaData {
     );
   }
 }
-

@@ -110,6 +110,28 @@ import 'ca_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   name     = "my-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   publishing_options = {
+///     publish_ca_cert = true
+///     publish_crl     = true
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +141,8 @@ import 'ca_pool_state.dart';
 /// import com.pulumi.gcp.certificateauthority.CaPool;
 /// import com.pulumi.gcp.certificateauthority.CaPoolArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -821,6 +843,116 @@ import 'ca_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_serviceidentity" "privateca_sa" {
+///   service = "privateca.googleapis.com"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "privateca_sa_keyuser_encrypterdecrypter" {
+///   crypto_key_id = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        = gcp_projects_serviceidentity.privateca_sa.member
+/// }
+/// resource "gcp_certificateauthority_capool" "default" {
+///   depends_on = [gcp_kms_cryptokeyiammember.privateca_sa_keyuser_encrypterdecrypter]
+///   name       = "my-pool"
+///   location   = "us-central1"
+///   tier       = "ENTERPRISE"
+///   publishing_options = {
+///     publish_ca_cert = false
+///     publish_crl     = true
+///     encoding_format = "PEM"
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   encryption_spec = {
+///     cloud_kms_key = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"
+///   }
+///   issuance_policy = {
+///     allowed_key_types = [{
+///       "ellipticCurve" = {
+///         "signatureAlgorithm" = "ECDSA_P256"
+///       }
+///       }, {
+///       "rsa" = {
+///         "minModulusSize" = 5
+///         "maxModulusSize" = 10
+///       }
+///     }]
+///     backdate_duration = "3600s"
+///     maximum_lifetime  = "50000s"
+///     allowed_issuance_modes = {
+///       allow_csr_based_issuance    = true
+///       allow_config_based_issuance = true
+///     }
+///     identity_constraints = {
+///       allow_subject_passthrough           = true
+///       allow_subject_alt_names_passthrough = true
+///       cel_expression = {
+///         expression = "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )"
+///         title      = "My title"
+///       }
+///     }
+///     baseline_values = {
+///       aia_ocsp_servers = ["example.com"]
+///       additional_extensions = [{
+///         "critical" = true
+///         "value"    = "asdf"
+///         "objectId" = {
+///           "objectIdPaths" = [1, 7]
+///         }
+///       }]
+///       policy_ids = [{
+///         "objectIdPaths" = [1, 5]
+///         }, {
+///         "objectIdPaths" = [1, 5, 7]
+///       }]
+///       ca_options = {
+///         is_ca                  = true
+///         max_issuer_path_length = 10
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           digital_signature  = true
+///           content_commitment = true
+///           key_encipherment   = false
+///           data_encipherment  = true
+///           key_agreement      = true
+///           cert_sign          = false
+///           crl_sign           = true
+///           decipher_only      = true
+///         }
+///         extended_key_usage = {
+///           server_auth      = true
+///           client_auth      = false
+///           email_protection = true
+///           code_signing     = true
+///           time_stamping    = true
+///         }
+///       }
+///       name_constraints = {
+///         critical                  = true
+///         permitted_dns_names       = ["*.example1.com", "*.example2.com"]
+///         excluded_dns_names        = ["*.deny.example1.com", "*.deny.example2.com"]
+///         permitted_ip_ranges       = ["10.0.0.0/8", "11.0.0.0/8"]
+///         excluded_ip_ranges        = ["10.1.1.0/24", "11.1.1.0/24"]
+///         permitted_email_addresses = [".example1.com", ".example2.com"]
+///         excluded_email_addresses  = [".deny.example1.com", ".deny.example2.com"]
+///         permitted_uris            = [".example1.com", ".example2.com"]
+///         excluded_uris             = [".deny.example1.com", ".deny.example2.com"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -836,18 +968,24 @@ import 'ca_pool_state.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolEncryptionSpecArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedKeyTypeArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedKeyTypeRsaArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedIssuanceModesArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1111,25 +1249,25 @@ import 'ca_pool_state.dart';
 /// CaPool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/caPools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CaPool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificateauthority/caPool:CaPool default projects/{{project}}/locations/{{location}}/caPools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/caPool:CaPool default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
 /// ```
 class CaPool extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
@@ -1145,7 +1283,7 @@ class CaPool extends pulumi.CustomResource {
   /// "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location of the CaPool. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
@@ -1179,6 +1317,7 @@ class CaPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIssuancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1214,6 +1353,7 @@ class CaPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIssuancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -72,6 +72,20 @@ import 'get_worker_pool_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrunv2_getjob" "myJob" {
+///   name     = "my-job"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +94,8 @@ import 'get_worker_pool_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
 /// import com.pulumi.gcp.cloudrunv2.inputs.GetJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,6 +202,21 @@ Future<GetJobResult> getJob(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrunv2_getjobiampolicy" "policy" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +225,8 @@ Future<GetJobResult> getJob(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
 /// import com.pulumi.gcp.cloudrunv2.inputs.GetJobIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,9 +239,9 @@ Future<GetJobResult> getJob(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = Cloudrunv2Functions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -303,6 +332,20 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrunv2_getservice" "myService" {
+///   name     = "my-service"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +354,8 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
 /// import com.pulumi.gcp.cloudrunv2.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -419,6 +462,21 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrunv2_getserviceiampolicy" "policy" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -427,8 +485,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
 /// import com.pulumi.gcp.cloudrunv2.inputs.GetServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,9 +499,9 @@ Future<GetServiceResult> getService(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = Cloudrunv2Functions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -534,6 +592,20 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrunv2_getworkerpool" "myWorkerPool" {
+///   name     = "my-worker-pool"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -542,8 +614,8 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
 /// import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -650,6 +722,21 @@ Future<GetWorkerPoolResult> getWorkerPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudrunv2_getworkerpooliampolicy" "policy" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -658,8 +745,8 @@ Future<GetWorkerPoolResult> getWorkerPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
 /// import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -672,9 +759,9 @@ Future<GetWorkerPoolResult> getWorkerPool(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = Cloudrunv2Functions.getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }

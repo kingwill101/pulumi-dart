@@ -109,6 +109,28 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "foo" {
+///   name   = "gce-policy"
+///   region = "us-central1"
+///   snapshot_schedule_policy = {
+///     schedule = {
+///       daily_schedule = {
+///         days_in_cycle = 1
+///         start_time    = "04:00"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +142,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,6 +325,39 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "bar" {
+///   name   = "gce-policy"
+///   region = "us-central1"
+///   snapshot_schedule_policy = {
+///     schedule = {
+///       hourly_schedule = {
+///         hours_in_cycle = 20
+///         start_time     = "23:00"
+///       }
+///     }
+///     retention_policy = {
+///       max_retention_days    = 10
+///       on_source_disk_delete = "KEEP_AUTO_SNAPSHOTS"
+///     }
+///     snapshot_properties = {
+///       labels = {
+///         "my_label" = "value"
+///       }
+///       storage_locations = "us"
+///       guest_flush       = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -316,8 +371,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -451,6 +506,24 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "baz" {
+///   name   = "gce-policy"
+///   region = "us-central1"
+///   group_placement_policy = {
+///     vm_count    = 2
+///     collocation = "COLLOCATED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -460,8 +533,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,6 +649,25 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "baz" {
+///   name   = "gce-policy"
+///   region = "us-central1"
+///   group_placement_policy = {
+///     vm_count     = 2
+///     collocation  = "COLLOCATED"
+///     max_distance = 2
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -585,8 +677,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -725,6 +817,30 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "hourly" {
+///   name        = "gce-policy"
+///   region      = "us-central1"
+///   description = "Start and stop instances"
+///   instance_schedule_policy = {
+///     vm_start_schedule = {
+///       schedule = "0 * * * *"
+///     }
+///     vm_stop_schedule = {
+///       schedule = "15 * * * *"
+///     }
+///     time_zone = "US/Central"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -736,8 +852,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -931,6 +1047,41 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "hourly" {
+///   name        = "gce-policy"
+///   region      = "us-central1"
+///   description = "chain name snapshot"
+///   snapshot_schedule_policy = {
+///     schedule = {
+///       hourly_schedule = {
+///         hours_in_cycle = 20
+///         start_time     = "23:00"
+///       }
+///     }
+///     retention_policy = {
+///       max_retention_days    = 14
+///       on_source_disk_delete = "KEEP_AUTO_SNAPSHOTS"
+///     }
+///     snapshot_properties = {
+///       labels = {
+///         "my_label" = "value"
+///       }
+///       storage_locations = "us"
+///       guest_flush       = true
+///       chain_name        = "test-schedule-chain-name"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -944,8 +1095,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1079,6 +1230,23 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "cgroup" {
+///   name   = "gce-policy"
+///   region = "europe-west1"
+///   disk_consistency_group_policy = {
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1088,8 +1256,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1194,6 +1362,23 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "bar" {
+///   name   = "gce-policy"
+///   region = "europe-west1"
+///   workload_policy = {
+///     type = "HIGH_AVAILABILITY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1203,8 +1388,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1313,6 +1498,24 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "bar" {
+///   name   = "gce-policy"
+///   region = "europe-west1"
+///   workload_policy = {
+///     type                 = "HIGH_THROUGHPUT"
+///     accelerator_topology = "2x2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1322,8 +1525,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1357,6 +1560,152 @@ import 'resource_policy_workload_policy.dart';
 ///       workloadPolicy:
 ///         type: HIGH_THROUGHPUT
 ///         acceleratorTopology: 2x2
+/// ```
+///
+/// ### Resource Policy Workload Policy Accelerator Topology Mode
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const bar = new gcp.compute.ResourcePolicy("bar", {
+///     name: "gce-policy",
+///     region: "europe-west1",
+///     workloadPolicy: {
+///         type: "HIGH_THROUGHPUT",
+///         acceleratorTopology: "2x2",
+///         acceleratorTopologyMode: "AUTO_CONNECT",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// bar = gcp.compute.ResourcePolicy("bar",
+///     name="gce-policy",
+///     region="europe-west1",
+///     workload_policy={
+///         "type": "HIGH_THROUGHPUT",
+///         "accelerator_topology": "2x2",
+///         "accelerator_topology_mode": "AUTO_CONNECT",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var bar = new Gcp.Compute.ResourcePolicy("bar", new()
+///     {
+///         Name = "gce-policy",
+///         Region = "europe-west1",
+///         WorkloadPolicy = new Gcp.Compute.Inputs.ResourcePolicyWorkloadPolicyArgs
+///         {
+///             Type = "HIGH_THROUGHPUT",
+///             AcceleratorTopology = "2x2",
+///             AcceleratorTopologyMode = "AUTO_CONNECT",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+/// 			Name:   pulumi.String("gce-policy"),
+/// 			Region: pulumi.String("europe-west1"),
+/// 			WorkloadPolicy: &compute.ResourcePolicyWorkloadPolicyArgs{
+/// 				Type:                    pulumi.String("HIGH_THROUGHPUT"),
+/// 				AcceleratorTopology:     pulumi.String("2x2"),
+/// 				AcceleratorTopologyMode: pulumi.String("AUTO_CONNECT"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "bar" {
+///   name   = "gce-policy"
+///   region = "europe-west1"
+///   workload_policy = {
+///     type                      = "HIGH_THROUGHPUT"
+///     accelerator_topology      = "2x2"
+///     accelerator_topology_mode = "AUTO_CONNECT"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ResourcePolicy;
+/// import com.pulumi.gcp.compute.ResourcePolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()
+///             .name("gce-policy")
+///             .region("europe-west1")
+///             .workloadPolicy(ResourcePolicyWorkloadPolicyArgs.builder()
+///                 .type("HIGH_THROUGHPUT")
+///                 .acceleratorTopology("2x2")
+///                 .acceleratorTopologyMode("AUTO_CONNECT")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   bar:
+///     type: gcp:compute:ResourcePolicy
+///     properties:
+///       name: gce-policy
+///       region: europe-west1
+///       workloadPolicy:
+///         type: HIGH_THROUGHPUT
+///         acceleratorTopology: 2x2
+///         acceleratorTopologyMode: AUTO_CONNECT
 /// ```
 ///
 /// ### Resource Policy Workload Policy Max Topology Distance
@@ -1434,6 +1783,24 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "bar" {
+///   name   = "gce-policy"
+///   region = "europe-west1"
+///   workload_policy = {
+///     type                  = "HIGH_THROUGHPUT"
+///     max_topology_distance = "BLOCK"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1443,8 +1810,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1555,6 +1922,24 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "baz" {
+///   name   = "gce-policy"
+///   region = "europe-west9"
+///   group_placement_policy = {
+///     collocation  = "COLLOCATED"
+///     gpu_topology = "1x72"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1564,8 +1949,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1680,6 +2065,25 @@ import 'resource_policy_workload_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "baz" {
+///   name   = "gce-policy"
+///   region = "us-central1"
+///   group_placement_policy = {
+///     vm_count     = 2
+///     collocation  = "COLLOCATED"
+///     tpu_topology = "4x4"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1689,8 +2093,8 @@ import 'resource_policy_workload_policy.dart';
 /// import com.pulumi.gcp.compute.ResourcePolicy;
 /// import com.pulumi.gcp.compute.ResourcePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1734,31 +2138,27 @@ import 'resource_policy_workload_policy.dart';
 /// ResourcePolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ResourcePolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
 /// ```
 class ResourcePolicy extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// Replication consistency group for asynchronous disk replication.
@@ -1806,6 +2206,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskConsistencyGroupPolicy = registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>('diskConsistencyGroupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyDiskConsistencyGroupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicy?>('groupPlacementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyGroupPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1841,6 +2242,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskConsistencyGroupPolicy = registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>('diskConsistencyGroupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyDiskConsistencyGroupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicy?>('groupPlacementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyGroupPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

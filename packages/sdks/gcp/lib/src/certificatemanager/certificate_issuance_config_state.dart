@@ -12,6 +12,13 @@ class CertificateIssuanceConfigState {
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// One or more paragraphs of text description of a CertificateIssuanceConfig.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -23,7 +30,7 @@ class CertificateIssuanceConfigState {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
   /// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -52,6 +59,7 @@ class CertificateIssuanceConfigState {
   /// Creates a new [CertificateIssuanceConfigState].
   /// [certificateAuthorityConfig] The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
   /// [createTime] The creation timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] One or more paragraphs of text description of a CertificateIssuanceConfig.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [keyAlgorithm] Key algorithm to use when generating the private key.
@@ -66,6 +74,7 @@ class CertificateIssuanceConfigState {
   const CertificateIssuanceConfigState({
     this.certificateAuthorityConfig,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.keyAlgorithm,
@@ -83,6 +92,7 @@ class CertificateIssuanceConfigState {
     return <String, dynamic>{
       'certificateAuthorityConfig': ?pulumi.Input.mapOptionalInputValue<CertificateIssuanceConfigCertificateAuthorityConfig, Map<String, dynamic>>(certificateAuthorityConfig, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'keyAlgorithm': ?keyAlgorithm,
@@ -101,6 +111,7 @@ class CertificateIssuanceConfigState {
     return CertificateIssuanceConfigState(
       certificateAuthorityConfig: (() { final guardedValue = map['certificateAuthorityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       keyAlgorithm: (() { final guardedValue = map['keyAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -115,4 +126,3 @@ class CertificateIssuanceConfigState {
     );
   }
 }
-

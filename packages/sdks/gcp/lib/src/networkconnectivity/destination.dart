@@ -142,6 +142,35 @@ import 'destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_multiclouddatatransferconfig" "config" {
+///   name        = "basic-config"
+///   location    = "europe-west4"
+///   description = "A basic multicloud data transfer config for the destination example"
+/// }
+/// resource "gcp_networkconnectivity_destination" "example" {
+///   name                            = "basic-destination"
+///   location                        = "europe-west4"
+///   multicloud_data_transfer_config = gcp_networkconnectivity_multiclouddatatransferconfig.config.name
+///   description                     = "A basic destination"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   ip_prefix = "10.0.0.0/8"
+///   endpoints {
+///     asn = "14618"
+///     csp = "AWS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +182,8 @@ import 'destination_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Destination;
 /// import com.pulumi.gcp.networkconnectivity.DestinationArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.DestinationEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,27 +246,27 @@ import 'destination_state.dart';
 /// Destination can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
-///
 /// * `{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Destination can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/destination:Destination default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/destination:Destination default {{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
 /// ```
 class Destination extends pulumi.CustomResource {
   /// Time when the `Destination` resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -254,7 +283,7 @@ class Destination extends pulumi.CustomResource {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the destination.
   late final pulumi.Output<String> location;
@@ -296,6 +325,7 @@ class Destination extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
@@ -336,6 +366,7 @@ class Destination extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');

@@ -13,10 +13,10 @@ class MulticastDomainActivationTrafficSpec {
   /// Average packet size (Default to 512 bytes).
   final pulumi.Input<int>? avgPacketSize;
   /// Maximum ingress Packet-Per-Second for a single multicast group in this
-  /// zone. Default to aggregated_ingress_pps / 2.
+  /// zone. Default to aggregatedIngressPps / 2.
   final pulumi.Input<String>? maxPerGroupIngressPps;
   /// Maximum number of subscribers for a single multicast group in this zone.
-  /// Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
+  /// Default to max(50, aggregatedEgressPps / aggregated_ingress_pps).
   final pulumi.Input<String>? maxPerGroupSubscribers;
 
   /// Creates a new [MulticastDomainActivationTrafficSpec].
@@ -53,4 +53,3 @@ class MulticastDomainActivationTrafficSpec {
     );
   }
 }
-

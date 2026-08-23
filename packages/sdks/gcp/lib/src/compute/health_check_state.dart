@@ -17,6 +17,13 @@ class HealthCheckState {
   final pulumi.Input<int>? checkIntervalSec;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -86,6 +93,7 @@ class HealthCheckState {
   /// Creates a new [HealthCheckState].
   /// [checkIntervalSec] How often (in seconds) to send a health check. The default value is 5
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [grpcHealthCheck] A nested object resource.
   /// [grpcTlsHealthCheck] A nested object resource.
@@ -106,6 +114,7 @@ class HealthCheckState {
   const HealthCheckState({
     this.checkIntervalSec,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.grpcHealthCheck,
     this.grpcTlsHealthCheck,
@@ -129,6 +138,7 @@ class HealthCheckState {
     return <String, dynamic>{
       'checkIntervalSec': ?checkIntervalSec,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'grpcHealthCheck': ?pulumi.Input.mapOptionalInputValue<HealthCheckGrpcHealthCheck, Map<String, dynamic>>(grpcHealthCheck, (value) => value.toMap()),
       'grpcTlsHealthCheck': ?pulumi.Input.mapOptionalInputValue<HealthCheckGrpcTlsHealthCheck, Map<String, dynamic>>(grpcTlsHealthCheck, (value) => value.toMap()),
@@ -153,6 +163,7 @@ class HealthCheckState {
     return HealthCheckState(
       checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       grpcHealthCheck: (() { final guardedValue = map['grpcHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckGrpcHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       grpcTlsHealthCheck: (() { final guardedValue = map['grpcTlsHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckGrpcTlsHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -173,4 +184,3 @@ class HealthCheckState {
     );
   }
 }
-

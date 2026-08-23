@@ -32,6 +32,9 @@ import 'reservation_state.dart';
 ///     autoscale: {
 ///         maxSlots: 100,
 ///     },
+///     labels: {
+///         environment: "production",
+///     },
 /// });
 /// ```
 /// ```python
@@ -47,6 +50,9 @@ import 'reservation_state.dart';
 ///     concurrency=0,
 ///     autoscale={
 ///         "max_slots": 100,
+///     },
+///     labels={
+///         "environment": "production",
 ///     })
 /// ```
 /// ```csharp
@@ -68,6 +74,10 @@ import 'reservation_state.dart';
 ///         Autoscale = new Gcp.BigQuery.Inputs.ReservationAutoscaleArgs
 ///         {
 ///             MaxSlots = 100,
+///         },
+///         Labels =
+///         {
+///             { "environment", "production" },
 ///         },
 ///     });
 ///
@@ -93,12 +103,39 @@ import 'reservation_state.dart';
 /// 			Autoscale: &bigquery.ReservationAutoscaleArgs{
 /// 				MaxSlots: pulumi.Int(100),
 /// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"environment": pulumi.String("production"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_reservation" "reservation" {
+///   name              = "my-reservation"
+///   location          = "us-west2"
+///   slot_capacity     = 0
+///   edition           = "STANDARD"
+///   ignore_idle_slots = true
+///   concurrency       = 0
+///   autoscale = {
+///     max_slots = 100
+///   }
+///   labels = {
+///     "environment" = "production"
+///   }
 /// }
 /// ```
 /// ```java
@@ -110,8 +147,8 @@ import 'reservation_state.dart';
 /// import com.pulumi.gcp.bigquery.Reservation;
 /// import com.pulumi.gcp.bigquery.ReservationArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ReservationAutoscaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,6 +170,7 @@ import 'reservation_state.dart';
 ///             .autoscale(ReservationAutoscaleArgs.builder()
 ///                 .maxSlots(100)
 ///                 .build())
+///             .labels(Map.of("environment", "production"))
 ///             .build());
 ///
 ///     }
@@ -151,6 +189,8 @@ import 'reservation_state.dart';
 ///       concurrency: 0
 ///       autoscale:
 ///         maxSlots: 100
+///       labels:
+///         environment: production
 /// ```
 ///
 ///
@@ -159,22 +199,15 @@ import 'reservation_state.dart';
 /// Reservation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/reservations/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/reservation:Reservation default projects/{{project}}/locations/{{location}}/reservations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/reservation:Reservation default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/reservation:Reservation default {{location}}/{{name}}
 /// ```
 class Reservation extends pulumi.CustomResource {
@@ -183,15 +216,31 @@ class Reservation extends pulumi.CustomResource {
   late final pulumi.Output<ReservationAutoscale?> autoscale;
   /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
   late final pulumi.Output<int?> concurrency;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   late final pulumi.Output<String> edition;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// If false, any query using this reservation will use idle slots from other reservations within
   /// the same admin project. If true, a query using this reservation will execute with the slot
   /// capacity specified above at most.
   late final pulumi.Output<bool?> ignoreIdleSlots;
+  /// The labels associated with this reservation. You can use these to
+  /// organize and group your reservations.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
   late final pulumi.Output<String?> location;
+  /// (Optional, Beta)
   /// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
   /// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
   /// more than the specified number of slots, even if there is demand and supply (from idle
@@ -237,6 +286,9 @@ class Reservation extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The Disaster Recovery(DR) replication status of the reservation. This is only available for
   /// the primary replicas of DR/failover reservations and provides information about the both the
   /// staleness of the secondary and the last error encountered while trying to replicate changes
@@ -245,6 +297,9 @@ class Reservation extends pulumi.CustomResource {
   /// operations on the reservation have succeeded.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> replicationStatuses;
+  /// The reservation group that this reservation belongs to.
+  late final pulumi.Output<String?> reservationGroup;
+  /// (Optional, Beta)
   /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
   /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Enum values:
@@ -304,15 +359,20 @@ class Reservation extends pulumi.CustomResource {
         ) {
     autoscale = registerOutput<ReservationAutoscale?>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     concurrency = registerOutput<int?>('concurrency');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     edition = registerOutput<String>('edition');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');
+    labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
     maxSlots = registerOutput<int?>('maxSlots');
     this.name = registerOutput<String>('name');
     originalPrimaryLocation = registerOutput<String>('originalPrimaryLocation');
     primaryLocation = registerOutput<String>('primaryLocation');
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     replicationStatuses = registerOutput<List<Map<String, dynamic>>>('replicationStatuses');
+    reservationGroup = registerOutput<String?>('reservationGroup');
     scalingMode = registerOutput<String?>('scalingMode');
     secondaryLocation = registerOutput<String?>('secondaryLocation');
     slotCapacity = registerOutput<int>('slotCapacity');
@@ -343,15 +403,20 @@ class Reservation extends pulumi.CustomResource {
         ) {
     autoscale = registerOutput<ReservationAutoscale?>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     concurrency = registerOutput<int?>('concurrency');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     edition = registerOutput<String>('edition');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');
+    labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
     maxSlots = registerOutput<int?>('maxSlots');
     this.name = registerOutput<String>('name');
     originalPrimaryLocation = registerOutput<String>('originalPrimaryLocation');
     primaryLocation = registerOutput<String>('primaryLocation');
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     replicationStatuses = registerOutput<List<Map<String, dynamic>>>('replicationStatuses');
+    reservationGroup = registerOutput<String?>('reservationGroup');
     scalingMode = registerOutput<String?>('scalingMode');
     secondaryLocation = registerOutput<String?>('secondaryLocation');
     slotCapacity = registerOutput<int>('slotCapacity');

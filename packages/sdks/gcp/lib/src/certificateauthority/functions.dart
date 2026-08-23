@@ -75,6 +75,25 @@ import 'get_certificate_template_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificateauthority_getauthority" "default" {
+///   location                 = "us-west1"
+///   pool                     = "pool-name"
+///   certificate_authority_id = "ca-id"
+/// }
+///
+/// output "csr" {
+///   value = data.gcp_certificateauthority_getauthority.default.pem_csr
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +102,8 @@ import 'get_certificate_template_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
 /// import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,6 +207,19 @@ Future<GetAuthorityResult> getAuthority(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificateauthority_getcapooliampolicy" "policy" {
+///   ca_pool = default.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +228,8 @@ Future<GetAuthorityResult> getAuthority(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
 /// import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,7 +242,7 @@ Future<GetAuthorityResult> getAuthority(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .build());
 ///
 ///     }
@@ -294,6 +326,19 @@ Future<GetCaPoolIamPolicyResult> getCaPoolIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificateauthority_getcertificatetemplateiampolicy" "policy" {
+///   certificate_template = default.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -302,8 +347,8 @@ Future<GetCaPoolIamPolicyResult> getCaPoolIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
 /// import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -316,7 +361,7 @@ Future<GetCaPoolIamPolicyResult> getCaPoolIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-///             .certificateTemplate(default_.id())
+///             .certificateTemplate(default_.get("id"))
 ///             .build());
 ///
 ///     }

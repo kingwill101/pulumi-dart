@@ -60,6 +60,19 @@ import 'get_dns_authorization_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificatemanager_getcertificatemap" "default" {
+///   name = "cert-map"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_dns_authorization_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
 /// import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,6 +162,22 @@ Future<GetCertificateMapResult> getCertificateMap(
 ///     };
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificatemanager_getcertificates" "default" {
+/// }
+///
+/// output "certificatesNames" {
+///   value = [for cert in data.gcp_certificatemanager_getcertificates.default.certificates : cert.name]
+/// }
+/// ```
 ///
 ///
 /// ### With A Filter
@@ -191,6 +220,23 @@ Future<GetCertificateMapResult> getCertificateMap(
 ///         }).ToList()),
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificatemanager_getcertificates" "default" {
+///   filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*"
+/// }
+///
+/// output "certificatesNames" {
+///   value = [for cert in data.gcp_certificatemanager_getcertificates.default.certificates : cert.name]
+/// }
 /// ```
 ///
 ///
@@ -237,6 +283,24 @@ Future<GetCertificateMapResult> getCertificateMap(
 ///         }).ToList()),
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificatemanager_getcertificates" "default" {
+///   region = "REGION"
+///   filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*"
+/// }
+///
+/// output "certificatesNames" {
+///   value = [for cert in data.gcp_certificatemanager_getcertificates.default.certificates : cert.name]
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_certificatemanager_get_certificates_get_certificates_args_doc}
 /// [options] Invoke options controlling this call.
@@ -311,6 +375,20 @@ Future<GetCertificatesResult> getCertificates(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_certificatemanager_getdnsauthorization" "default" {
+///   name     = "my-dns-auth"
+///   location = "global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +397,8 @@ Future<GetCertificatesResult> getCertificates(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
 /// import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

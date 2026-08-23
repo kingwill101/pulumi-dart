@@ -10,6 +10,13 @@ class BackupPolicyState {
   final pulumi.Input<String>? createTime;
   /// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
   final pulumi.Input<int>? dailyBackupLimit;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -20,7 +27,7 @@ class BackupPolicyState {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the region for the policy to apply to.
   final pulumi.Input<String>? location;
@@ -43,6 +50,7 @@ class BackupPolicyState {
   /// [assignedVolumeCount] The total number of volumes assigned by this backup policy.
   /// [createTime] Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   /// [dailyBackupLimit] Number of daily backups to keep. Note that the minimum daily backup limit is 2.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enabled] If enabled, make backups automatically according to the schedules.
@@ -58,6 +66,7 @@ class BackupPolicyState {
     this.assignedVolumeCount,
     this.createTime,
     this.dailyBackupLimit,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.enabled,
@@ -76,6 +85,7 @@ class BackupPolicyState {
       'assignedVolumeCount': ?assignedVolumeCount,
       'createTime': ?createTime,
       'dailyBackupLimit': ?dailyBackupLimit,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'enabled': ?enabled,
@@ -95,6 +105,7 @@ class BackupPolicyState {
       assignedVolumeCount: (() { final guardedValue = map['assignedVolumeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dailyBackupLimit: (() { final guardedValue = map['dailyBackupLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -109,4 +120,3 @@ class BackupPolicyState {
     );
   }
 }
-

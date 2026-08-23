@@ -11,6 +11,13 @@ class RuntimeState {
   /// The config settings for accessing runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeAccessConfig>? accessConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// The health state of this runtime. For a list of possible output
@@ -18,14 +25,13 @@ class RuntimeState {
   /// reference/rest/v1/projects.locations.runtimes#healthstate`.
   final pulumi.Input<String>? healthState;
   /// The labels to associate with this runtime. Label **keys** must
-  /// contain 1 to 63 characters, and must conform to [RFC 1035]
-  /// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+  /// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
   /// empty, but, if present, must contain 1 to 63 characters, and must
   /// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
   /// more than 32 labels can be associated with a cluster.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// A reference to the zone where the machine resides.
   final pulumi.Input<String>? location;
@@ -52,6 +58,7 @@ class RuntimeState {
 
   /// Creates a new [RuntimeState].
   /// [accessConfig] The config settings for accessing runtime.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [healthState] The health state of this runtime. For a list of possible output
   /// [labels] The labels to associate with this runtime. Label **keys** must
@@ -65,6 +72,7 @@ class RuntimeState {
   /// [virtualMachine] Use a Compute Engine VM image to start the managed notebook instance.
   const RuntimeState({
     this.accessConfig,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.healthState,
     this.labels,
@@ -81,6 +89,7 @@ class RuntimeState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeAccessConfig, Map<String, dynamic>>(accessConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'healthState': ?healthState,
       'labels': ?labels,
@@ -98,6 +107,7 @@ class RuntimeState {
   factory RuntimeState.fromMap(Map<String, dynamic> map) {
     return RuntimeState(
       accessConfig: (() { final guardedValue = map['accessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       healthState: (() { final guardedValue = map['healthState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -112,4 +122,3 @@ class RuntimeState {
     );
   }
 }
-

@@ -116,6 +116,28 @@ import 'edge_cache_keyset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_edgecachekeyset" "default" {
+///   name        = "my-keyset"
+///   description = "The default keyset"
+///   public_keys {
+///     id    = "my-public-key"
+///     value = "FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY"
+///   }
+///   public_keys {
+///     id    = "my-public-key-2"
+///     value = "hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +147,8 @@ import 'edge_cache_keyset_state.dart';
 /// import com.pulumi.gcp.networkservices.EdgeCacheKeyset;
 /// import com.pulumi.gcp.networkservices.EdgeCacheKeysetArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetPublicKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,7 +311,7 @@ import 'edge_cache_keyset_state.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID(),
+/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -306,7 +328,7 @@ import 'edge_cache_keyset_state.dart';
 /// 			},
 /// 			ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
 /// 				&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
-/// 					SecretVersion: secret_version_basic.ID(),
+/// 					SecretVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -315,6 +337,37 @@ import 'edge_cache_keyset_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-name"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+///   secret      = gcp_secretmanager_secret.secret-basic.id
+///   secret_data = "secret-data"
+/// }
+/// resource "gcp_networkservices_edgecachekeyset" "default" {
+///   name        = "my-keyset"
+///   description = "The default keyset"
+///   public_keys {
+///     id      = "my-public-key"
+///     managed = true
+///   }
+///   validation_shared_keys {
+///     secret_version = gcp_secretmanager_secretversion.secret-version-basic.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -333,8 +386,8 @@ import 'edge_cache_keyset_state.dart';
 /// import com.pulumi.gcp.networkservices.EdgeCacheKeysetArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetPublicKeyArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetValidationSharedKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -405,32 +458,32 @@ import 'edge_cache_keyset_state.dart';
 /// EdgeCacheKeyset can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
 /// ```
 class EdgeCacheKeyset extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -440,9 +493,9 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// An ordered list of Ed25519 public keys to use for validating signed requests.
-  /// You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+  /// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
   /// You may specify no more than one Google-managed public key.
-  /// If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
+  /// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
   /// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
   /// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
   /// Structure is documented below.
@@ -451,9 +504,9 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// An ordered list of shared keys to use for validating signed requests.
-  /// Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
-  /// You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
-  /// You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+  /// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+  /// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+  /// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> validationSharedKeys;
 
@@ -471,6 +524,7 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -504,6 +558,7 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

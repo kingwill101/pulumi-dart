@@ -259,7 +259,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -270,7 +270,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -279,7 +279,7 @@ import 'region_url_map_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -291,26 +291,26 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/home"),
 /// 							},
-/// 							Service: home.ID(),
+/// 							Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/login"),
 /// 							},
-/// 							Service: login.ID(),
+/// 							Service: login.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
 /// 			},
 /// 			Tests: compute.RegionUrlMapTestArray{
 /// 				&compute.RegionUrlMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -321,6 +321,69 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   region          = "us-central1"
+///   name            = "regionurlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     path_rules {
+///       paths   = ["/home"]
+///       service = gcp_compute_regionbackendservice.home.id
+///     }
+///     path_rules {
+///       paths   = ["/login"]
+///       service = gcp_compute_regionbackendservice.login.id
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_regionbackendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "login" {
+///   region                = "us-central1"
+///   name                  = "login"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   region                = "us-central1"
+///   name                  = "home"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region             = "us-central1"
+///   name               = "health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -338,9 +401,10 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.RegionUrlMapArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1070,7 +1134,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1081,7 +1145,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1103,11 +1167,11 @@ import 'region_url_map_state.dart';
 /// 					},
 /// 				},
 /// 				RequestMirrorPolicy: &compute.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs{
-/// 					BackendService: home.ID(),
+/// 					BackendService: home.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				WeightedBackendServices: compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceArray{
 /// 					&compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs{
-/// 						BackendService: login.ID(),
+/// 						BackendService: login.ID().ToIDOutput().ToStringOutput(),
 /// 						Weight:         pulumi.Int(200),
 /// 						HeaderAction: &compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 /// 							RequestHeadersToAdds: compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
@@ -1133,7 +1197,7 @@ import 'region_url_map_state.dart';
 /// 						},
 /// 					},
 /// 					&compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs{
-/// 						BackendService: home.ID(),
+/// 						BackendService: home.ID().ToIDOutput().ToStringOutput(),
 /// 						Weight:         pulumi.Int(100),
 /// 						HeaderAction: &compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 /// 							RequestHeadersToAdds: compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
@@ -1220,26 +1284,26 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/home"),
 /// 							},
-/// 							Service: home.ID(),
+/// 							Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/login"),
 /// 							},
-/// 							Service: login.ID(),
+/// 							Service: login.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
 /// 			},
 /// 			Tests: compute.RegionUrlMapTestArray{
 /// 				&compute.RegionUrlMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -1250,6 +1314,154 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   region      = "us-central1"
+///   name        = "regionurlmap"
+///   description = "a description"
+///   default_route_action = {
+///     retry_policy = {
+///       retry_conditions = ["5xx", "gateway-error"]
+///       num_retries      = 3
+///       per_try_timeout = {
+///         seconds = 0
+///         nanos   = 500
+///       }
+///     }
+///     request_mirror_policy = {
+///       backend_service = gcp_compute_regionbackendservice.home.id
+///     }
+///     weighted_backend_services = [{
+///       "backendService" = gcp_compute_regionbackendservice.login.id
+///       "weight"         = 200
+///       "headerAction" = {
+///         "requestHeadersToAdds" = [{
+///           "headerName"  = "foo-request-1"
+///           "headerValue" = "bar"
+///           "replace"     = true
+///         }]
+///         "requestHeadersToRemoves" = ["fizz"]
+///         "responseHeadersToAdds" = [{
+///           "headerName"  = "foo-response-1"
+///           "headerValue" = "bar"
+///           "replace"     = true
+///         }]
+///         "responseHeadersToRemoves" = ["buzz"]
+///       }
+///       }, {
+///       "backendService" = gcp_compute_regionbackendservice.home.id
+///       "weight"         = 100
+///       "headerAction" = {
+///         "requestHeadersToAdds" = [{
+///           "headerName"  = "foo-request-1"
+///           "headerValue" = "bar"
+///           "replace"     = true
+///           }, {
+///           "headerName"  = "foo-request-2"
+///           "headerValue" = "bar"
+///           "replace"     = true
+///         }]
+///         "requestHeadersToRemoves" = ["fizz"]
+///         "responseHeadersToAdds" = [{
+///           "headerName"  = "foo-response-2"
+///           "headerValue" = "bar"
+///           "replace"     = true
+///           }, {
+///           "headerName"  = "foo-response-1"
+///           "headerValue" = "bar"
+///           "replace"     = true
+///         }]
+///         "responseHeadersToRemoves" = ["buzz"]
+///       }
+///     }]
+///     url_rewrite = {
+///       host_rewrite        = "dev.example.com"
+///       path_prefix_rewrite = "/v1/api/"
+///     }
+///     cors_policy = {
+///       disabled          = false
+///       allow_credentials = true
+///       allow_headers     = ["foobar"]
+///       allow_methods     = ["GET", "POST"]
+///       allow_origins     = ["example.com"]
+///       expose_headers    = ["foobar"]
+///       max_age           = 60
+///     }
+///     fault_injection_policy = {
+///       delay = {
+///         fixed_delay = {
+///           seconds = 0
+///           nanos   = 500
+///         }
+///         percentage = 0.5
+///       }
+///       abort = {
+///         http_status = 500
+///         percentage  = 0.5
+///       }
+///     }
+///     timeout = {
+///       seconds = 0
+///       nanos   = 500
+///     }
+///   }
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     path_rules {
+///       paths   = ["/home"]
+///       service = gcp_compute_regionbackendservice.home.id
+///     }
+///     path_rules {
+///       paths   = ["/login"]
+///       service = gcp_compute_regionbackendservice.login.id
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_regionbackendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "login" {
+///   region                = "us-central1"
+///   name                  = "login"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   region                = "us-central1"
+///   name                  = "home"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region             = "us-central1"
+///   name               = "health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1269,6 +1481,10 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionUrlRewriteArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionCorsPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs;
@@ -1278,9 +1494,10 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionTimeoutArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1987,7 +2204,7 @@ import 'region_url_map_state.dart';
 /// 			Name:                pulumi.String("home"),
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -1996,7 +2213,7 @@ import 'region_url_map_state.dart';
 /// 		_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -2008,7 +2225,7 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
@@ -2046,7 +2263,7 @@ import 'region_url_map_state.dart';
 /// 									},
 /// 								},
 /// 								RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{
-/// 									BackendService: home.ID(),
+/// 									BackendService: home.ID().ToIDOutput().ToStringOutput(),
 /// 								},
 /// 								RetryPolicy: &compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs{
 /// 									NumRetries: pulumi.Int(4),
@@ -2068,7 +2285,7 @@ import 'region_url_map_state.dart';
 /// 								},
 /// 								WeightedBackendServices: compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{
 /// 									&compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{
-/// 										BackendService: home.ID(),
+/// 										BackendService: home.ID().ToIDOutput().ToStringOutput(),
 /// 										Weight:         pulumi.Int(400),
 /// 										HeaderAction: &compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{
 /// 											RequestHeadersToRemoves: pulumi.StringArray{
@@ -2101,7 +2318,7 @@ import 'region_url_map_state.dart';
 /// 			},
 /// 			Tests: compute.RegionUrlMapTestArray{
 /// 				&compute.RegionUrlMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -2112,6 +2329,110 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   name            = "regionurlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     path_rules {
+///       paths = ["/home"]
+///       route_action = {
+///         cors_policy = {
+///           allow_credentials = true
+///           allow_headers     = ["Allowed content"]
+///           allow_methods     = ["GET"]
+///           allow_origins     = ["Allowed origin"]
+///           expose_headers    = ["Exposed header"]
+///           max_age           = 30
+///           disabled          = false
+///         }
+///         fault_injection_policy = {
+///           abort = {
+///             http_status = 234
+///             percentage  = 5.6
+///           }
+///           delay = {
+///             fixed_delay = {
+///               seconds = 0
+///               nanos   = 50000
+///             }
+///             percentage = 7.8
+///           }
+///         }
+///         request_mirror_policy = {
+///           backend_service = gcp_compute_regionbackendservice.home.id
+///         }
+///         retry_policy = {
+///           num_retries = 4
+///           per_try_timeout = {
+///             seconds = 30
+///           }
+///           retry_conditions = ["5xx", "deadline-exceeded"]
+///         }
+///         timeout = {
+///           seconds = 20
+///           nanos   = 750000000
+///         }
+///         url_rewrite = {
+///           host_rewrite        = "dev.example.com"
+///           path_prefix_rewrite = "/v1/api/"
+///         }
+///         weighted_backend_services = [{
+///           "backendService" = gcp_compute_regionbackendservice.home.id
+///           "weight"         = 400
+///           "headerAction" = {
+///             "requestHeadersToRemoves" = ["RemoveMe"]
+///             "requestHeadersToAdds" = [{
+///               "headerName"  = "AddMe"
+///               "headerValue" = "MyValue"
+///               "replace"     = true
+///             }]
+///             "responseHeadersToRemoves" = ["RemoveMe"]
+///             "responseHeadersToAdds" = [{
+///               "headerName"  = "AddMe"
+///               "headerValue" = "MyValue"
+///               "replace"     = false
+///             }]
+///           }
+///         }]
+///       }
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_regionbackendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   name                  = "home"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -2129,9 +2450,25 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.RegionUrlMapArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2619,7 +2956,7 @@ import 'region_url_map_state.dart';
 /// 			Name:                pulumi.String("home"),
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -2628,7 +2965,7 @@ import 'region_url_map_state.dart';
 /// 		_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -2640,7 +2977,7 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
@@ -2667,7 +3004,7 @@ import 'region_url_map_state.dart';
 /// 								},
 /// 								WeightedBackendServices: compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{
 /// 									&compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{
-/// 										BackendService: home.ID(),
+/// 										BackendService: home.ID().ToIDOutput().ToStringOutput(),
 /// 										Weight:         pulumi.Int(400),
 /// 										HeaderAction: &compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{
 /// 											ResponseHeadersToAdds: compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{
@@ -2687,7 +3024,7 @@ import 'region_url_map_state.dart';
 /// 			},
 /// 			Tests: compute.RegionUrlMapTestArray{
 /// 				&compute.RegionUrlMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -2698,6 +3035,78 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   name            = "regionurlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     path_rules {
+///       paths = ["/home"]
+///       route_action = {
+///         retry_policy = {
+///           num_retries = 4
+///           per_try_timeout = {
+///             seconds = 30
+///           }
+///           retry_conditions = ["5xx", "deadline-exceeded"]
+///         }
+///         timeout = {
+///           seconds = 20
+///           nanos   = 750000000
+///         }
+///         url_rewrite = {
+///           host_rewrite        = "dev.example.com"
+///           path_prefix_rewrite = "/v1/api/"
+///         }
+///         weighted_backend_services = [{
+///           "backendService" = gcp_compute_regionbackendservice.home.id
+///           "weight"         = 400
+///           "headerAction" = {
+///             "responseHeadersToAdds" = [{
+///               "headerName"  = "AddMe"
+///               "headerValue" = "MyValue"
+///               "replace"     = false
+///             }]
+///           }
+///         }]
+///       }
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_regionbackendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   name                  = "home"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -2715,9 +3124,18 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.RegionUrlMapArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3190,7 +3608,7 @@ import 'region_url_map_state.dart';
 /// 			Name:                pulumi.String("home"),
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -3199,7 +3617,7 @@ import 'region_url_map_state.dart';
 /// 		_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -3211,7 +3629,7 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					RouteRules: compute.RegionUrlMapPathMatcherRouteRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherRouteRuleArgs{
 /// 							Priority: pulumi.Int(1),
@@ -3280,7 +3698,7 @@ import 'region_url_map_state.dart';
 /// 			},
 /// 			Tests: compute.RegionUrlMapTestArray{
 /// 				&compute.RegionUrlMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -3291,6 +3709,91 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   name            = "regionurlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     route_rules {
+///       priority = 1
+///       header_action = {
+///         request_headers_to_removes = ["RemoveMe2"]
+///         request_headers_to_adds = [{
+///           "headerName"  = "AddSomethingElse"
+///           "headerValue" = "MyOtherValue"
+///           "replace"     = true
+///         }]
+///         response_headers_to_removes = ["RemoveMe3"]
+///         response_headers_to_adds = [{
+///           "headerName"  = "AddMe"
+///           "headerValue" = "MyValue"
+///           "replace"     = false
+///         }]
+///       }
+///       match_rules {
+///         full_path_match = "a full path"
+///         header_matches {
+///           header_name  = "someheader"
+///           exact_match  = "match this exactly"
+///           invert_match = true
+///         }
+///         ignore_case = true
+///         metadata_filters {
+///           filter_match_criteria = "MATCH_ANY"
+///           filter_labels {
+///             name  = "PLANET"
+///             value = "MARS"
+///           }
+///         }
+///         query_parameter_matches {
+///           name          = "a query parameter"
+///           present_match = true
+///         }
+///       }
+///       url_redirect = {
+///         host_redirect          = "A host"
+///         https_redirect         = false
+///         path_redirect          = "some/path"
+///         redirect_response_code = "TEMPORARY_REDIRECT"
+///         strip_query            = true
+///       }
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_regionbackendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   name                  = "home"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -3308,9 +3811,19 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.RegionUrlMapArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3710,7 +4223,7 @@ import 'region_url_map_state.dart';
 /// 			Name:                pulumi.String("home"),
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -3719,7 +4232,7 @@ import 'region_url_map_state.dart';
 /// 		_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -3731,11 +4244,11 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					RouteRules: compute.RegionUrlMapPathMatcherRouteRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherRouteRuleArgs{
 /// 							Priority: pulumi.Int(1),
-/// 							Service:  home.ID(),
+/// 							Service:  home.ID().ToIDOutput().ToStringOutput(),
 /// 							HeaderAction: &compute.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs{
 /// 								RequestHeadersToRemoves: pulumi.StringArray{
 /// 									pulumi.String("RemoveMe2"),
@@ -3765,7 +4278,7 @@ import 'region_url_map_state.dart';
 /// 			},
 /// 			Tests: compute.RegionUrlMapTestArray{
 /// 				&compute.RegionUrlMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -3776,6 +4289,66 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   name            = "regionurlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     route_rules {
+///       priority = 1
+///       service  = gcp_compute_regionbackendservice.home.id
+///       header_action = {
+///         request_headers_to_removes = ["RemoveMe2"]
+///       }
+///       match_rules {
+///         full_path_match = "a full path"
+///         header_matches {
+///           header_name  = "someheader"
+///           exact_match  = "match this exactly"
+///           invert_match = true
+///         }
+///         query_parameter_matches {
+///           name          = "a query parameter"
+///           present_match = true
+///         }
+///       }
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_regionbackendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   name                  = "home"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -3793,9 +4366,14 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.RegionUrlMapArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4213,7 +4791,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4225,7 +4803,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4237,7 +4815,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4246,7 +4824,7 @@ import 'region_url_map_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("urlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home_backend.ID(),
+/// 			DefaultService: home_backend.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -4258,7 +4836,7 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("mysite"),
-/// 					DefaultService: home_backend.ID(),
+/// 					DefaultService: home_backend.ID().ToIDOutput().ToStringOutput(),
 /// 					RouteRules: compute.RegionUrlMapPathMatcherRouteRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherRouteRuleArgs{
 /// 							MatchRules: compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArray{
@@ -4266,7 +4844,7 @@ import 'region_url_map_state.dart';
 /// 									PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}"),
 /// 								},
 /// 							},
-/// 							Service:  cart_backend.ID(),
+/// 							Service:  cart_backend.ID().ToIDOutput().ToStringOutput(),
 /// 							Priority: pulumi.Int(1),
 /// 							RouteAction: &compute.RegionUrlMapPathMatcherRouteRuleRouteActionArgs{
 /// 								UrlRewrite: &compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{
@@ -4280,7 +4858,7 @@ import 'region_url_map_state.dart';
 /// 									PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/*/accountinfo/*"),
 /// 								},
 /// 							},
-/// 							Service:  user_backend.ID(),
+/// 							Service:  user_backend.ID().ToIDOutput().ToStringOutput(),
 /// 							Priority: pulumi.Int(2),
 /// 						},
 /// 					},
@@ -4292,6 +4870,86 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "urlmap" {
+///   region          = "us-central1"
+///   name            = "urlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_regionbackendservice.home-backend.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "mysite"
+///   }
+///   path_matchers {
+///     name            = "mysite"
+///     default_service = gcp_compute_regionbackendservice.home-backend.id
+///     route_rules {
+///       match_rules {
+///         path_template_match = "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}"
+///       }
+///       service  = gcp_compute_regionbackendservice.cart-backend.id
+///       priority = 1
+///       route_action = {
+///         url_rewrite = {
+///           path_template_rewrite = "/{username}-{cartid}/"
+///         }
+///       }
+///     }
+///     route_rules {
+///       match_rules {
+///         path_template_match = "/xyzwebservices/v2/xyz/users/*/accountinfo/*"
+///       }
+///       service  = gcp_compute_regionbackendservice.user-backend.id
+///       priority = 2
+///     }
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home-backend" {
+///   region                = "us-central1"
+///   name                  = "home-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "cart-backend" {
+///   region                = "us-central1"
+///   name                  = "cart-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "user-backend" {
+///   region                = "us-central1"
+///   name                  = "user-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region             = "us-central1"
+///   name               = "health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -4309,8 +4967,12 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.RegionUrlMapArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleRouteActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5111,7 +5773,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5122,7 +5784,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5131,7 +5793,7 @@ import 'region_url_map_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -5176,7 +5838,7 @@ import 'region_url_map_state.dart';
 /// 							},
 /// 						},
 /// 						RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{
-/// 							BackendService: home.ID(),
+/// 							BackendService: home.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						RetryPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs{
 /// 							NumRetries: pulumi.Int(3),
@@ -5199,7 +5861,7 @@ import 'region_url_map_state.dart';
 /// 						},
 /// 						WeightedBackendServices: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArray{
 /// 							&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs{
-/// 								BackendService: home.ID(),
+/// 								BackendService: home.ID().ToIDOutput().ToStringOutput(),
 /// 								HeaderAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 /// 									RequestHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
 /// 										&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
@@ -5235,7 +5897,7 @@ import 'region_url_map_state.dart';
 /// 								Weight: pulumi.Int(100),
 /// 							},
 /// 							&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs{
-/// 								BackendService: login.ID(),
+/// 								BackendService: login.ID().ToIDOutput().ToStringOutput(),
 /// 								HeaderAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 /// 									RequestHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
 /// 										&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
@@ -5277,20 +5939,20 @@ import 'region_url_map_state.dart';
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/home"),
 /// 							},
-/// 							Service: home.ID(),
+/// 							Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/login"),
 /// 							},
-/// 							Service: login.ID(),
+/// 							Service: login.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
 /// 			},
 /// 			Tests: compute.RegionUrlMapTestArray{
 /// 				&compute.RegionUrlMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -5301,6 +5963,162 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   region          = "us-central1"
+///   name            = "regionurlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name = "allpaths"
+///     default_route_action = {
+///       cors_policy = {
+///         disabled          = false
+///         allow_credentials = true
+///         allow_headers     = ["foobar"]
+///         allow_methods     = ["GET", "POST"]
+///         allow_origins     = ["example.com"]
+///         expose_headers    = ["foobar"]
+///         max_age           = 60
+///       }
+///       fault_injection_policy = {
+///         abort = {
+///           http_status = 500
+///           percentage  = 0.5
+///         }
+///         delay = {
+///           fixed_delay = {
+///             nanos   = 500
+///             seconds = 0
+///           }
+///           percentage = 0.5
+///         }
+///       }
+///       request_mirror_policy = {
+///         backend_service = gcp_compute_regionbackendservice.home.id
+///       }
+///       retry_policy = {
+///         num_retries = 3
+///         per_try_timeout = {
+///           nanos   = 500
+///           seconds = 0
+///         }
+///         retry_conditions = ["5xx", "gateway-error"]
+///       }
+///       timeout = {
+///         nanos   = 500
+///         seconds = 0
+///       }
+///       url_rewrite = {
+///         host_rewrite        = "dev.example.com"
+///         path_prefix_rewrite = "/v1/api/"
+///       }
+///       weighted_backend_services = [{
+///         "backendService" = gcp_compute_regionbackendservice.home.id
+///         "headerAction" = {
+///           "requestHeadersToAdds" = [{
+///             "headerName"  = "foo-request-1"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///             }, {
+///             "headerName"  = "foo-request-2"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///           }]
+///           "requestHeadersToRemoves" = ["fizz"]
+///           "responseHeadersToAdds" = [{
+///             "headerName"  = "foo-response-1"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///             }, {
+///             "headerName"  = "foo-response-2"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///           }]
+///           "responseHeadersToRemoves" = ["buzz"]
+///         }
+///         "weight" = 100
+///         }, {
+///         "backendService" = gcp_compute_regionbackendservice.login.id
+///         "headerAction" = {
+///           "requestHeadersToAdds" = [{
+///             "headerName"  = "foo-request-1"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///             }, {
+///             "headerName"  = "foo-request-2"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///           }]
+///           "requestHeadersToRemoves" = ["fizz"]
+///           "responseHeadersToAdds" = [{
+///             "headerName"  = "foo-response-1"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///             }, {
+///             "headerName"  = "foo-response-2"
+///             "headerValue" = "bar"
+///             "replace"     = true
+///           }]
+///           "responseHeadersToRemoves" = ["buzz"]
+///         }
+///         "weight" = 200
+///       }]
+///     }
+///     path_rules {
+///       paths   = ["/home"]
+///       service = gcp_compute_regionbackendservice.home.id
+///     }
+///     path_rules {
+///       paths   = ["/login"]
+///       service = gcp_compute_regionbackendservice.login.id
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_regionbackendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "login" {
+///   region                = "us-central1"
+///   name                  = "login"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   region                = "us-central1"
+///   name                  = "home"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region             = "us-central1"
+///   name               = "health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -5329,9 +6147,14 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5737,7 +6560,7 @@ import 'region_url_map_state.dart';
 ///     default_route_action={
 ///         "request_mirror_policy": {
 ///             "backend_service": mirror.id,
-///             "mirror_percent": 50,
+///             "mirror_percent": float(50),
 ///         },
 ///     },
 ///     host_rules=[{
@@ -5800,7 +6623,7 @@ import 'region_url_map_state.dart';
 ///             RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs
 ///             {
 ///                 BackendService = mirror.Id,
-///                 MirrorPercent = 50,
+///                 MirrorPercent = 50.0,
 ///             },
 ///         },
 ///         HostRules = new[]
@@ -5853,7 +6676,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5865,7 +6688,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5874,10 +6697,10 @@ import 'region_url_map_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("Test for default route action mirror percent"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultRouteAction: &compute.RegionUrlMapDefaultRouteActionArgs{
 /// 				RequestMirrorPolicy: &compute.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs{
-/// 					BackendService: mirror.ID(),
+/// 					BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 /// 					MirrorPercent:  pulumi.Float64(50),
 /// 				},
 /// 			},
@@ -5892,7 +6715,7 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -5901,6 +6724,61 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   region          = "us-central1"
+///   name            = "regionurlmap"
+///   description     = "Test for default route action mirror percent"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   default_route_action = {
+///     request_mirror_policy = {
+///       backend_service = gcp_compute_regionbackendservice.mirror.id
+///       mirror_percent  = 50
+///     }
+///   }
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   region                = "us-central1"
+///   name                  = "home"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "mirror" {
+///   region                = "us-central1"
+///   name                  = "mirror"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region = "us-central1"
+///   name   = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -5920,8 +6798,8 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6122,7 +7000,7 @@ import 'region_url_map_state.dart';
 ///     default_route_action={
 ///         "request_mirror_policy": {
 ///             "backend_service": mirror.id,
-///             "mirror_percent": 50,
+///             "mirror_percent": float(50),
 ///         },
 ///     },
 ///     host_rules=[{
@@ -6185,7 +7063,7 @@ import 'region_url_map_state.dart';
 ///             RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs
 ///             {
 ///                 BackendService = mirror.Id,
-///                 MirrorPercent = 50,
+///                 MirrorPercent = 50.0,
 ///             },
 ///         },
 ///         HostRules = new[]
@@ -6238,7 +7116,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -6250,7 +7128,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -6259,10 +7137,10 @@ import 'region_url_map_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("Test for default route action mirror percent"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultRouteAction: &compute.RegionUrlMapDefaultRouteActionArgs{
 /// 				RequestMirrorPolicy: &compute.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs{
-/// 					BackendService: mirror.ID(),
+/// 					BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 /// 					MirrorPercent:  pulumi.Float64(50),
 /// 				},
 /// 			},
@@ -6277,7 +7155,7 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -6286,6 +7164,61 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   region          = "us-central1"
+///   name            = "regionurlmap"
+///   description     = "Test for default route action mirror percent"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   default_route_action = {
+///     request_mirror_policy = {
+///       backend_service = gcp_compute_regionbackendservice.mirror.id
+///       mirror_percent  = 50
+///     }
+///   }
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   region                = "us-central1"
+///   name                  = "home"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "mirror" {
+///   region                = "us-central1"
+///   name                  = "mirror"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region = "us-central1"
+///   name   = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -6305,8 +7238,8 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6514,7 +7447,7 @@ import 'region_url_map_state.dart';
 ///         "default_route_action": {
 ///             "request_mirror_policy": {
 ///                 "backend_service": mirror.id,
-///                 "mirror_percent": 75,
+///                 "mirror_percent": float(75),
 ///             },
 ///         },
 ///     }])
@@ -6587,7 +7520,7 @@ import 'region_url_map_state.dart';
 ///                     RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs
 ///                     {
 ///                         BackendService = mirror.Id,
-///                         MirrorPercent = 75,
+///                         MirrorPercent = 75.0,
 ///                     },
 ///                 },
 ///             },
@@ -6623,7 +7556,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -6635,7 +7568,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -6644,7 +7577,7 @@ import 'region_url_map_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("Test for path matcher default route action mirror percent"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -6656,10 +7589,10 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					DefaultRouteAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionArgs{
 /// 						RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{
-/// 							BackendService: mirror.ID(),
+/// 							BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 /// 							MirrorPercent:  pulumi.Float64(75),
 /// 						},
 /// 					},
@@ -6671,6 +7604,61 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   region          = "us-central1"
+///   name            = "regionurlmap"
+///   description     = "Test for path matcher default route action mirror percent"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     default_route_action = {
+///       request_mirror_policy = {
+///         backend_service = gcp_compute_regionbackendservice.mirror.id
+///         mirror_percent  = 75
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   region                = "us-central1"
+///   name                  = "home"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "mirror" {
+///   region                = "us-central1"
+///   name                  = "mirror"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region = "us-central1"
+///   name   = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -6690,8 +7678,8 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6906,7 +7894,7 @@ import 'region_url_map_state.dart';
 ///             "route_action": {
 ///                 "request_mirror_policy": {
 ///                     "backend_service": mirror.id,
-///                     "mirror_percent": 25,
+///                     "mirror_percent": float(25),
 ///                 },
 ///             },
 ///         }],
@@ -6989,7 +7977,7 @@ import 'region_url_map_state.dart';
 ///                             RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs
 ///                             {
 ///                                 BackendService = mirror.Id,
-///                                 MirrorPercent = 25,
+///                                 MirrorPercent = 25.0,
 ///                             },
 ///                         },
 ///                     },
@@ -7027,7 +8015,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -7039,7 +8027,7 @@ import 'region_url_map_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID(),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -7048,7 +8036,7 @@ import 'region_url_map_state.dart';
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Name:           pulumi.String("regionurlmap"),
 /// 			Description:    pulumi.String("Test for path rule route action mirror percent"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.RegionUrlMapHostRuleArray{
 /// 				&compute.RegionUrlMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -7060,16 +8048,16 @@ import 'region_url_map_state.dart';
 /// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
 /// 				&compute.RegionUrlMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 /// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/home"),
 /// 							},
-/// 							Service: home.ID(),
+/// 							Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 							RouteAction: &compute.RegionUrlMapPathMatcherPathRuleRouteActionArgs{
 /// 								RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{
-/// 									BackendService: mirror.ID(),
+/// 									BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 /// 									MirrorPercent:  pulumi.Float64(25),
 /// 								},
 /// 							},
@@ -7083,6 +8071,65 @@ import 'region_url_map_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionurlmap" "regionurlmap" {
+///   region          = "us-central1"
+///   name            = "regionurlmap"
+///   description     = "Test for path rule route action mirror percent"
+///   default_service = gcp_compute_regionbackendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_regionbackendservice.home.id
+///     path_rules {
+///       paths   = ["/home"]
+///       service = gcp_compute_regionbackendservice.home.id
+///       route_action = {
+///         request_mirror_policy = {
+///           backend_service = gcp_compute_regionbackendservice.mirror.id
+///           mirror_percent  = 25
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "home" {
+///   region                = "us-central1"
+///   name                  = "home"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionbackendservice" "mirror" {
+///   region                = "us-central1"
+///   name                  = "mirror"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   region = "us-central1"
+///   name   = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -7100,8 +8147,11 @@ import 'region_url_map_state.dart';
 /// import com.pulumi.gcp.compute.RegionUrlMapArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7228,28 +8278,17 @@ import 'region_url_map_state.dart';
 /// RegionUrlMap can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
 /// ```
 class RegionUrlMap extends pulumi.CustomResource {
@@ -7274,6 +8313,13 @@ class RegionUrlMap extends pulumi.CustomResource {
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
   late final pulumi.Output<RegionUrlMapDefaultUrlRedirect?> defaultUrlRedirect;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -7333,6 +8379,7 @@ class RegionUrlMap extends pulumi.CustomResource {
     defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>('defaultRouteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapDefaultRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultService = registerOutput<String?>('defaultService');
     defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>('defaultUrlRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapDefaultUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -7373,6 +8420,7 @@ class RegionUrlMap extends pulumi.CustomResource {
     defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>('defaultRouteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapDefaultRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultService = registerOutput<String?>('defaultService');
     defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>('defaultUrlRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapDefaultUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

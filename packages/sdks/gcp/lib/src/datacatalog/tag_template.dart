@@ -238,6 +238,52 @@ import 'tag_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_tagtemplate" "basic_tag_template" {
+///   tag_template_id = "my_template"
+///   region          = "us-central1"
+///   display_name    = "Demo Tag Template"
+///   fields {
+///     field_id     = "source"
+///     display_name = "Source of data asset"
+///     type = {
+///       primitive_type = "STRING"
+///     }
+///     is_required = true
+///   }
+///   fields {
+///     field_id     = "num_rows"
+///     display_name = "Number of rows in the data asset"
+///     type = {
+///       primitive_type = "DOUBLE"
+///     }
+///   }
+///   fields {
+///     field_id     = "pii_type"
+///     display_name = "PII type"
+///     type = {
+///       enum_type = {
+///         allowed_values = [{
+///           "displayName" = "EMAIL"
+///           }, {
+///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           }, {
+///           "displayName" = "NONE"
+///         }]
+///       }
+///     }
+///   }
+///   force_delete = "false"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -249,8 +295,9 @@ import 'tag_template_state.dart';
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
 /// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,15 +390,23 @@ import 'tag_template_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
 /// ```
 class TagTemplate extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name for this template.
   late final pulumi.Output<String?> displayName;
-  /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+  /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> fields;
   /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
@@ -380,6 +435,7 @@ class TagTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     forceDelete = registerOutput<bool?>('forceDelete');
@@ -412,6 +468,7 @@ class TagTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     forceDelete = registerOutput<bool?>('forceDelete');

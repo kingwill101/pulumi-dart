@@ -179,7 +179,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 /// 				ExcludeExportRanges: pulumi.StringArray{
 /// 					pulumi.String("198.51.100.0/24"),
@@ -199,6 +199,41 @@ import 'spoke_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "hub1"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "spoke1"
+///   location    = "global"
+///   description = "A sample spoke with a linked router appliance instance"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_vpc_network = {
+///     exclude_export_ranges = ["198.51.100.0/24", "10.10.0.0/16"]
+///     include_export_ranges = ["198.51.100.0/23", "10.0.0.0/8"]
+///     uri                   = gcp_compute_network.network.self_link
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +247,8 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -463,7 +498,7 @@ import 'spoke_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultGroup, err := networkconnectivity.NewGroup(ctx, "default_group", &networkconnectivity.GroupArgs{
-/// 			Hub:         basicHub.ID(),
+/// 			Hub:         basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:        pulumi.String("default"),
 /// 			Description: pulumi.String("A sample hub group"),
 /// 		})
@@ -477,7 +512,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 /// 				ExcludeExportRanges: pulumi.StringArray{
 /// 					pulumi.String("198.51.100.0/24"),
@@ -489,13 +524,54 @@ import 'spoke_state.dart';
 /// 				},
 /// 				Uri: network.SelfLink,
 /// 			},
-/// 			Group: defaultGroup.ID(),
+/// 			Group: defaultGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "net-spoke"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "hub1-spoke"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_group" "default_group" {
+///   hub         = gcp_networkconnectivity_hub.basic_hub.id
+///   name        = "default"
+///   description = "A sample hub group"
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "group-spoke1"
+///   location    = "global"
+///   description = "A sample spoke with a linked VPC"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_vpc_network = {
+///     exclude_export_ranges = ["198.51.100.0/24", "10.10.0.0/16"]
+///     include_export_ranges = ["198.51.100.0/23", "10.0.0.0/8"]
+///     uri                   = gcp_compute_network.network.self_link
+///   }
+///   group = gcp_networkconnectivity_group.default_group.id
 /// }
 /// ```
 /// ```java
@@ -513,8 +589,8 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -615,17 +691,17 @@ import 'spoke_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const network = new gcp.compute.Network("network", {
-///     name: "tf-test-network_16178",
+///     name: "tf-test-network_58845",
 ///     autoCreateSubnetworks: false,
 /// });
 /// const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
-///     name: "tf-test-subnet_26317",
+///     name: "tf-test-subnet_9305",
 ///     ipCidrRange: "10.0.0.0/28",
 ///     region: "us-central1",
 ///     network: network.selfLink,
 /// });
 /// const instance = new gcp.compute.Instance("instance", {
-///     name: "tf-test-instance_4866",
+///     name: "tf-test-instance_48542",
 ///     machineType: "e2-medium",
 ///     canIpForward: true,
 ///     zone: "us-central1-a",
@@ -643,14 +719,14 @@ import 'spoke_state.dart';
 ///     }],
 /// });
 /// const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
-///     name: "tf-test-hub_12618",
+///     name: "tf-test-hub_29506",
 ///     description: "A sample hub",
 ///     labels: {
 ///         "label-two": "value-one",
 ///     },
 /// });
 /// const primary = new gcp.networkconnectivity.Spoke("primary", {
-///     name: "tf-test-name_32270",
+///     name: "tf-test-name_86474",
 ///     location: "us-central1",
 ///     description: "A sample spoke with a linked routher appliance instance",
 ///     labels: {
@@ -672,15 +748,15 @@ import 'spoke_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// network = gcp.compute.Network("network",
-///     name="tf-test-network_16178",
+///     name="tf-test-network_58845",
 ///     auto_create_subnetworks=False)
 /// subnetwork = gcp.compute.Subnetwork("subnetwork",
-///     name="tf-test-subnet_26317",
+///     name="tf-test-subnet_9305",
 ///     ip_cidr_range="10.0.0.0/28",
 ///     region="us-central1",
 ///     network=network.self_link)
 /// instance = gcp.compute.Instance("instance",
-///     name="tf-test-instance_4866",
+///     name="tf-test-instance_48542",
 ///     machine_type="e2-medium",
 ///     can_ip_forward=True,
 ///     zone="us-central1-a",
@@ -697,13 +773,13 @@ import 'spoke_state.dart';
 ///         }],
 ///     }])
 /// basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-///     name="tf-test-hub_12618",
+///     name="tf-test-hub_29506",
 ///     description="A sample hub",
 ///     labels={
 ///         "label-two": "value-one",
 ///     })
 /// primary = gcp.networkconnectivity.Spoke("primary",
-///     name="tf-test-name_32270",
+///     name="tf-test-name_86474",
 ///     location="us-central1",
 ///     description="A sample spoke with a linked routher appliance instance",
 ///     labels={
@@ -729,13 +805,13 @@ import 'spoke_state.dart';
 /// {
 ///     var network = new Gcp.Compute.Network("network", new()
 ///     {
-///         Name = "tf-test-network_16178",
+///         Name = "tf-test-network_58845",
 ///         AutoCreateSubnetworks = false,
 ///     });
 ///
 ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
 ///     {
-///         Name = "tf-test-subnet_26317",
+///         Name = "tf-test-subnet_9305",
 ///         IpCidrRange = "10.0.0.0/28",
 ///         Region = "us-central1",
 ///         Network = network.SelfLink,
@@ -743,7 +819,7 @@ import 'spoke_state.dart';
 ///
 ///     var instance = new Gcp.Compute.Instance("instance", new()
 ///     {
-///         Name = "tf-test-instance_4866",
+///         Name = "tf-test-instance_48542",
 ///         MachineType = "e2-medium",
 ///         CanIpForward = true,
 ///         Zone = "us-central1-a",
@@ -773,7 +849,7 @@ import 'spoke_state.dart';
 ///
 ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
 ///     {
-///         Name = "tf-test-hub_12618",
+///         Name = "tf-test-hub_29506",
 ///         Description = "A sample hub",
 ///         Labels =
 ///         {
@@ -783,7 +859,7 @@ import 'spoke_state.dart';
 ///
 ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
 ///     {
-///         Name = "tf-test-name_32270",
+///         Name = "tf-test-name_86474",
 ///         Location = "us-central1",
 ///         Description = "A sample spoke with a linked routher appliance instance",
 ///         Labels =
@@ -823,14 +899,14 @@ import 'spoke_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("tf-test-network_16178"),
+/// 			Name:                  pulumi.String("tf-test-network_58845"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-subnet_26317"),
+/// 			Name:        pulumi.String("tf-test-subnet_9305"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Network:     network.SelfLink,
@@ -839,7 +915,7 @@ import 'spoke_state.dart';
 /// 			return err
 /// 		}
 /// 		instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-/// 			Name:         pulumi.String("tf-test-instance_4866"),
+/// 			Name:         pulumi.String("tf-test-instance_48542"),
 /// 			MachineType:  pulumi.String("e2-medium"),
 /// 			CanIpForward: pulumi.Bool(true),
 /// 			Zone:         pulumi.String("us-central1-a"),
@@ -864,7 +940,7 @@ import 'spoke_state.dart';
 /// 			return err
 /// 		}
 /// 		basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
-/// 			Name:        pulumi.String("tf-test-hub_12618"),
+/// 			Name:        pulumi.String("tf-test-hub_29506"),
 /// 			Description: pulumi.String("A sample hub"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label-two": pulumi.String("value-one"),
@@ -874,13 +950,13 @@ import 'spoke_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-/// 			Name:        pulumi.String("tf-test-name_32270"),
+/// 			Name:        pulumi.String("tf-test-name_86474"),
 /// 			Location:    pulumi.String("us-central1"),
 /// 			Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
 /// 				Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
 /// 					&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
@@ -901,6 +977,68 @@ import 'spoke_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "tf-test-network_58845"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "tf-test-subnet_9305"
+///   ip_cidr_range = "10.0.0.0/28"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.self_link
+/// }
+/// resource "gcp_compute_instance" "instance" {
+///   name           = "tf-test-instance_48542"
+///   machine_type   = "e2-medium"
+///   can_ip_forward = true
+///   zone           = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "projects/debian-cloud/global/images/debian-10-buster-v20210817"
+///     }
+///   }
+///   network_interfaces {
+///     subnetwork = gcp_compute_subnetwork.subnetwork.name
+///     network_ip = "10.0.0.2"
+///     access_configs {
+///       network_tier = "PREMIUM"
+///     }
+///   }
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "tf-test-hub_29506"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "tf-test-name_86474"
+///   location    = "us-central1"
+///   description = "A sample spoke with a linked routher appliance instance"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_router_appliance_instances = {
+///     instances = [{
+///       "virtualMachine" = gcp_compute_instance.instance.self_link
+///       "ipAddress"      = "10.0.0.2"
+///     }]
+///     site_to_site_data_transfer = true
+///     include_import_ranges      = ["ALL_IPV4_RANGES"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -916,13 +1054,15 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.networkconnectivity.Hub;
 /// import com.pulumi.gcp.networkconnectivity.HubArgs;
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -935,19 +1075,19 @@ import 'spoke_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var network = new Network("network", NetworkArgs.builder()
-///             .name("tf-test-network_16178")
+///             .name("tf-test-network_58845")
 ///             .autoCreateSubnetworks(false)
 ///             .build());
 ///
 ///         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-subnet_26317")
+///             .name("tf-test-subnet_9305")
 ///             .ipCidrRange("10.0.0.0/28")
 ///             .region("us-central1")
 ///             .network(network.selfLink())
 ///             .build());
 ///
 ///         var instance = new Instance("instance", InstanceArgs.builder()
-///             .name("tf-test-instance_4866")
+///             .name("tf-test-instance_48542")
 ///             .machineType("e2-medium")
 ///             .canIpForward(true)
 ///             .zone("us-central1-a")
@@ -966,13 +1106,13 @@ import 'spoke_state.dart';
 ///             .build());
 ///
 ///         var basicHub = new Hub("basicHub", HubArgs.builder()
-///             .name("tf-test-hub_12618")
+///             .name("tf-test-hub_29506")
 ///             .description("A sample hub")
 ///             .labels(Map.of("label-two", "value-one"))
 ///             .build());
 ///
 ///         var primary = new Spoke("primary", SpokeArgs.builder()
-///             .name("tf-test-name_32270")
+///             .name("tf-test-name_86474")
 ///             .location("us-central1")
 ///             .description("A sample spoke with a linked routher appliance instance")
 ///             .labels(Map.of("label-one", "value-one"))
@@ -995,19 +1135,19 @@ import 'spoke_state.dart';
 ///   network:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: tf-test-network_16178
+///       name: tf-test-network_58845
 ///       autoCreateSubnetworks: false
 ///   subnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     properties:
-///       name: tf-test-subnet_26317
+///       name: tf-test-subnet_9305
 ///       ipCidrRange: 10.0.0.0/28
 ///       region: us-central1
 ///       network: ${network.selfLink}
 ///   instance:
 ///     type: gcp:compute:Instance
 ///     properties:
-///       name: tf-test-instance_4866
+///       name: tf-test-instance_48542
 ///       machineType: e2-medium
 ///       canIpForward: true
 ///       zone: us-central1-a
@@ -1023,14 +1163,14 @@ import 'spoke_state.dart';
 ///     type: gcp:networkconnectivity:Hub
 ///     name: basic_hub
 ///     properties:
-///       name: tf-test-hub_12618
+///       name: tf-test-hub_29506
 ///       description: A sample hub
 ///       labels:
 ///         label-two: value-one
 ///   primary:
 ///     type: gcp:networkconnectivity:Spoke
 ///     properties:
-///       name: tf-test-name_32270
+///       name: tf-test-name_86474
 ///       location: us-central1
 ///       description: A sample spoke with a linked routher appliance instance
 ///       labels:
@@ -1500,7 +1640,7 @@ import 'spoke_state.dart';
 /// 		}
 /// 		gateway, err := compute.NewHaVpnGateway(ctx, "gateway", &compute.HaVpnGatewayArgs{
 /// 			Name:    pulumi.String("vpn-gateway"),
-/// 			Network: network.ID(),
+/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1533,11 +1673,11 @@ import 'spoke_state.dart';
 /// 		tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
 /// 			Name:                         pulumi.String("tunnel1"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			VpnGateway:                   gateway.ID(),
-/// 			PeerExternalGateway:          externalVpnGw.ID(),
+/// 			VpnGateway:                   gateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerExternalGateway:          externalVpnGw.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerExternalGatewayInterface: pulumi.Int(0),
 /// 			SharedSecret:                 pulumi.String("a secret message"),
-/// 			Router:                       router.ID(),
+/// 			Router:                       router.ID().ToIDOutput().ToStringOutput(),
 /// 			VpnGatewayInterface:          pulumi.Int(0),
 /// 		})
 /// 		if err != nil {
@@ -1546,11 +1686,11 @@ import 'spoke_state.dart';
 /// 		tunnel2, err := compute.NewVPNTunnel(ctx, "tunnel2", &compute.VPNTunnelArgs{
 /// 			Name:                         pulumi.String("tunnel2"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			VpnGateway:                   gateway.ID(),
-/// 			PeerExternalGateway:          externalVpnGw.ID(),
+/// 			VpnGateway:                   gateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerExternalGateway:          externalVpnGw.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerExternalGatewayInterface: pulumi.Int(0),
 /// 			SharedSecret:                 pulumi.String("a secret message"),
-/// 			Router: router.ID().ApplyT(func(id string) (string, error) {
+/// 			Router: router.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf(" %v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			VpnGatewayInterface: pulumi.Int(1),
@@ -1609,7 +1749,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpnTunnels: &networkconnectivity.SpokeLinkedVpnTunnelsArgs{
 /// 				Uris: pulumi.StringArray{
 /// 					tunnel1.SelfLink,
@@ -1630,7 +1770,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpnTunnels: &networkconnectivity.SpokeLinkedVpnTunnelsArgs{
 /// 				Uris: pulumi.StringArray{
 /// 					tunnel2.SelfLink,
@@ -1646,6 +1786,134 @@ import 'spoke_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "basic-hub1"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "basic-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "basic-subnetwork"
+///   ip_cidr_range = "10.0.0.0/28"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.self_link
+/// }
+/// resource "gcp_compute_havpngateway" "gateway" {
+///   name    = "vpn-gateway"
+///   network = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_externalvpngateway" "external_vpn_gw" {
+///   name            = "external-vpn-gateway"
+///   redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
+///   description     = "An externally managed VPN gateway"
+///   interfaces {
+///     id         = 0
+///     ip_address = "8.8.8.8"
+///   }
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "external-vpn-gateway"
+///   region  = "us-central1"
+///   network = gcp_compute_network.network.name
+///   bgp = {
+///     asn = 64514
+///   }
+/// }
+/// resource "gcp_compute_vpntunnel" "tunnel1" {
+///   name                            = "tunnel1"
+///   region                          = "us-central1"
+///   vpn_gateway                     = gcp_compute_havpngateway.gateway.id
+///   peer_external_gateway           = gcp_compute_externalvpngateway.external_vpn_gw.id
+///   peer_external_gateway_interface = 0
+///   shared_secret                   = "a secret message"
+///   router                          = gcp_compute_router.router.id
+///   vpn_gateway_interface           = 0
+/// }
+/// resource "gcp_compute_vpntunnel" "tunnel2" {
+///   name                            = "tunnel2"
+///   region                          = "us-central1"
+///   vpn_gateway                     = gcp_compute_havpngateway.gateway.id
+///   peer_external_gateway           = gcp_compute_externalvpngateway.external_vpn_gw.id
+///   peer_external_gateway_interface = 0
+///   shared_secret                   = "a secret message"
+///   router                          =" ${gcp_compute_router.router.id}"
+///   vpn_gateway_interface           = 1
+/// }
+/// resource "gcp_compute_routerinterface" "router_interface1" {
+///   name       = "router-interface1"
+///   router     = gcp_compute_router.router.name
+///   region     = "us-central1"
+///   ip_range   = "169.254.0.1/30"
+///   vpn_tunnel = gcp_compute_vpntunnel.tunnel1.name
+/// }
+/// resource "gcp_compute_routerpeer" "router_peer1" {
+///   name                      = "router-peer1"
+///   router                    = gcp_compute_router.router.name
+///   region                    = "us-central1"
+///   peer_ip_address           = "169.254.0.2"
+///   peer_asn                  = 64515
+///   advertised_route_priority = 100
+///   interface                 = gcp_compute_routerinterface.router_interface1.name
+/// }
+/// resource "gcp_compute_routerinterface" "router_interface2" {
+///   name       = "router-interface2"
+///   router     = gcp_compute_router.router.name
+///   region     = "us-central1"
+///   ip_range   = "169.254.1.1/30"
+///   vpn_tunnel = gcp_compute_vpntunnel.tunnel2.name
+/// }
+/// resource "gcp_compute_routerpeer" "router_peer2" {
+///   name                      = "router-peer2"
+///   router                    = gcp_compute_router.router.name
+///   region                    = "us-central1"
+///   peer_ip_address           = "169.254.1.2"
+///   peer_asn                  = 64515
+///   advertised_route_priority = 100
+///   interface                 = gcp_compute_routerinterface.router_interface2.name
+/// }
+/// resource "gcp_networkconnectivity_spoke" "tunnel1" {
+///   name        = "vpn-tunnel-1-spoke"
+///   location    = "us-central1"
+///   description = "A sample spoke with a linked VPN Tunnel"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_vpn_tunnels = {
+///     uris                       = [gcp_compute_vpntunnel.tunnel1.self_link]
+///     site_to_site_data_transfer = true
+///     include_import_ranges      = ["ALL_IPV4_RANGES"]
+///   }
+/// }
+/// resource "gcp_networkconnectivity_spoke" "tunnel2" {
+///   name        = "vpn-tunnel-2-spoke"
+///   location    = "us-central1"
+///   description = "A sample spoke with a linked VPN Tunnel"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_vpn_tunnels = {
+///     uris                       = [gcp_compute_vpntunnel.tunnel2.self_link]
+///     site_to_site_data_transfer = true
+///     include_import_ranges      = ["ALL_IPV4_RANGES"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -1677,8 +1945,8 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpnTunnelsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2165,7 +2433,7 @@ import 'spoke_state.dart';
 /// 			Name:                   pulumi.String("partner-interconnect1"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 router.ID(),
+/// 			Router:                 router.ID().ToIDOutput().ToStringOutput(),
 /// 			Mtu:                    pulumi.String("1500"),
 /// 			Region:                 pulumi.String("us-central1"),
 /// 		})
@@ -2179,7 +2447,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedInterconnectAttachments: &networkconnectivity.SpokeLinkedInterconnectAttachmentsArgs{
 /// 				Uris: pulumi.StringArray{
 /// 					interconnect_attachment.SelfLink,
@@ -2195,6 +2463,57 @@ import 'spoke_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "basic-hub1"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "basic-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "external-vpn-gateway"
+///   region  = "us-central1"
+///   network = gcp_compute_network.network.name
+///   bgp = {
+///     asn = 16550
+///   }
+/// }
+/// resource "gcp_compute_interconnectattachment" "interconnect-attachment" {
+///   name                     = "partner-interconnect1"
+///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
+///   type                     = "PARTNER"
+///   router                   = gcp_compute_router.router.id
+///   mtu                      = 1500
+///   region                   = "us-central1"
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "interconnect-attachment-spoke"
+///   location    = "us-central1"
+///   description = "A sample spoke with a linked Interconnect Attachment"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_interconnect_attachments = {
+///     uris                       = [gcp_compute_interconnectattachment.interconnect-attachment.self_link]
+///     site_to_site_data_transfer = true
+///     include_import_ranges      = ["ALL_IPV4_RANGES"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -2215,8 +2534,8 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedInterconnectAttachmentsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2521,13 +2840,13 @@ import 'spoke_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      network.ID(),
+/// 			Network:      network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		peering, err := servicenetworking.NewConnection(ctx, "peering", &servicenetworking.ConnectionArgs{
-/// 			Network: network.ID(),
+/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				address.Name,
@@ -2545,7 +2864,7 @@ import 'spoke_state.dart';
 /// 		linkedVpcSpoke, err := networkconnectivity.NewSpoke(ctx, "linked_vpc_spoke", &networkconnectivity.SpokeArgs{
 /// 			Name:     pulumi.String("vpc-spoke"),
 /// 			Location: pulumi.String("global"),
-/// 			Hub:      basicHub.ID(),
+/// 			Hub:      basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 /// 				Uri: network.SelfLink,
 /// 			},
@@ -2560,7 +2879,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedProducerVpcNetwork: &networkconnectivity.SpokeLinkedProducerVpcNetworkArgs{
 /// 				Network: network.Name,
 /// 				Peering: peering.Peering,
@@ -2577,6 +2896,58 @@ import 'spoke_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "net-spoke"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_globaladdress" "address" {
+///   name          = "test-address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "peering" {
+///   network                 = gcp_compute_network.network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.address.name]
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name = "hub-basic"
+/// }
+/// resource "gcp_networkconnectivity_spoke" "linked_vpc_spoke" {
+///   name     = "vpc-spoke"
+///   location = "global"
+///   hub      = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_vpc_network = {
+///     uri = gcp_compute_network.network.self_link
+///   }
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   depends_on  = [gcp_networkconnectivity_spoke.linked_vpc_spoke]
+///   name        = "producer-spoke"
+///   location    = "global"
+///   description = "A sample spoke with a linked router appliance instance"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_producer_vpc_network = {
+///     network               = gcp_compute_network.network.name
+///     peering               = gcp_servicenetworking_connection.peering.peering
+///     exclude_export_ranges = ["198.51.100.0/24", "10.10.0.0/16"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -2598,8 +2969,8 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedProducerVpcNetworkArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2740,8 +3111,8 @@ import 'spoke_state.dart';
 ///     hub: starHub.id,
 ///     autoAccept: {
 ///         autoAcceptProjects: [
-///             "foo_44703",
-///             "bar_9329",
+///             "foo_95761",
+///             "bar_62744",
 ///         ],
 ///     },
 /// });
@@ -2774,8 +3145,8 @@ import 'spoke_state.dart';
 ///     hub=star_hub.id,
 ///     auto_accept={
 ///         "auto_accept_projects": [
-///             "foo_44703",
-///             "bar_9329",
+///             "foo_95761",
+///             "bar_62744",
 ///         ],
 ///     })
 /// primary = gcp.networkconnectivity.Spoke("primary",
@@ -2819,8 +3190,8 @@ import 'spoke_state.dart';
 ///         {
 ///             AutoAcceptProjects = new[]
 ///             {
-///                 "foo_44703",
-///                 "bar_9329",
+///                 "foo_95761",
+///                 "bar_62744",
 ///             },
 ///         },
 ///     });
@@ -2871,11 +3242,11 @@ import 'spoke_state.dart';
 /// 		}
 /// 		centerGroup, err := networkconnectivity.NewGroup(ctx, "center_group", &networkconnectivity.GroupArgs{
 /// 			Name: pulumi.String("center"),
-/// 			Hub:  starHub.ID(),
+/// 			Hub:  starHub.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoAccept: &networkconnectivity.GroupAutoAcceptArgs{
 /// 				AutoAcceptProjects: pulumi.StringArray{
-/// 					pulumi.String("foo_44703"),
-/// 					pulumi.String("bar_9329"),
+/// 					pulumi.String("foo_95761"),
+/// 					pulumi.String("bar_62744"),
 /// 				},
 /// 			},
 /// 		})
@@ -2889,8 +3260,8 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub:   starHub.ID(),
-/// 			Group: centerGroup.ID(),
+/// 			Hub:   starHub.ID().ToIDOutput().ToStringOutput(),
+/// 			Group: centerGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 /// 				Uri: network.SelfLink,
 /// 			},
@@ -2900,6 +3271,44 @@ import 'spoke_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "tf-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkconnectivity_hub" "star_hub" {
+///   name            = "hub-basic"
+///   preset_topology = "STAR"
+/// }
+/// resource "gcp_networkconnectivity_group" "center_group" {
+///   name = "center"
+///   hub  = gcp_networkconnectivity_hub.star_hub.id
+///   auto_accept = {
+///     auto_accept_projects = ["foo_95761", "bar_62744"]
+///   }
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "vpc-spoke"
+///   location    = "global"
+///   description = "A sample spoke"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub   = gcp_networkconnectivity_hub.star_hub.id
+///   group = gcp_networkconnectivity_group.center_group.id
+///   linked_vpc_network = {
+///     uri = gcp_compute_network.network.self_link
+///   }
 /// }
 /// ```
 /// ```java
@@ -2918,8 +3327,8 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2946,8 +3355,8 @@ import 'spoke_state.dart';
 ///             .hub(starHub.id())
 ///             .autoAccept(GroupAutoAcceptArgs.builder()
 ///                 .autoAcceptProjects(
-///                     "foo_44703",
-///                     "bar_9329")
+///                     "foo_95761",
+///                     "bar_62744")
 ///                 .build())
 ///             .build());
 ///
@@ -2987,8 +3396,8 @@ import 'spoke_state.dart';
 ///       hub: ${starHub.id}
 ///       autoAccept:
 ///         autoAcceptProjects:
-///           - foo_44703
-///           - bar_9329
+///           - foo_95761
+///           - bar_62744
 ///   primary:
 ///     type: gcp:networkconnectivity:Spoke
 ///     properties:
@@ -3150,7 +3559,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 /// 				IncludeExportRanges: pulumi.StringArray{
 /// 					pulumi.String("ALL_IPV6_RANGES"),
@@ -3166,6 +3575,40 @@ import 'spoke_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "hub1"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "spoke1-ipv6"
+///   location    = "global"
+///   description = "A sample spoke with a linked VPC that include export ranges of all IPv6"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   linked_vpc_network = {
+///     include_export_ranges = ["ALL_IPV6_RANGES", "ALL_PRIVATE_IPV4_RANGES"]
+///     uri                   = gcp_compute_network.network.self_link
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3179,8 +3622,8 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3264,7 +3707,7 @@ import 'spoke_state.dart';
 ///     autoCreateSubnetworks: false,
 /// });
 /// const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
-///     name: "tf-test-subnet_37135",
+///     name: "tf-test-subnet_91207",
 ///     ipCidrRange: "10.0.0.0/28",
 ///     region: "us-central1",
 ///     network: network.selfLink,
@@ -3302,7 +3745,7 @@ import 'spoke_state.dart';
 ///     name="net-spoke",
 ///     auto_create_subnetworks=False)
 /// subnetwork = gcp.compute.Subnetwork("subnetwork",
-///     name="tf-test-subnet_37135",
+///     name="tf-test-subnet_91207",
 ///     ip_cidr_range="10.0.0.0/28",
 ///     region="us-central1",
 ///     network=network.self_link)
@@ -3345,7 +3788,7 @@ import 'spoke_state.dart';
 ///
 ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
 ///     {
-///         Name = "tf-test-subnet_37135",
+///         Name = "tf-test-subnet_91207",
 ///         IpCidrRange = "10.0.0.0/28",
 ///         Region = "us-central1",
 ///         Network = network.SelfLink,
@@ -3407,7 +3850,7 @@ import 'spoke_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-subnet_37135"),
+/// 			Name:        pulumi.String("tf-test-subnet_91207"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Network:     network.SelfLink,
@@ -3433,7 +3876,7 @@ import 'spoke_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Gateway: &networkconnectivity.SpokeGatewayArgs{
 /// 				IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
 /// 					&networkconnectivity.SpokeGatewayIpRangeReservationArgs{
@@ -3451,6 +3894,50 @@ import 'spoke_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "net-spoke"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "tf-test-subnet_91207"
+///   ip_cidr_range = "10.0.0.0/28"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.self_link
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "hub"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+///   preset_topology = "HYBRID_INSPECTION"
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "gateway"
+///   location    = "us-central1"
+///   description = "A sample spoke of type Gateway"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   gateway = {
+///     ip_range_reservations = [{
+///       "ipRange" = "10.0.0.0/23"
+///     }]
+///     capacity = "CAPACITY_1_GBPS"
+///   }
+///   group = "gateways"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3466,8 +3953,9 @@ import 'spoke_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayIpRangeReservationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3485,7 +3973,7 @@ import 'spoke_state.dart';
 ///             .build());
 ///
 ///         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-subnet_37135")
+///             .name("tf-test-subnet_91207")
 ///             .ipCidrRange("10.0.0.0/28")
 ///             .region("us-central1")
 ///             .network(network.selfLink())
@@ -3526,7 +4014,7 @@ import 'spoke_state.dart';
 ///   subnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     properties:
-///       name: tf-test-subnet_37135
+///       name: tf-test-subnet_91207
 ///       ipCidrRange: 10.0.0.0/28
 ///       region: us-central1
 ///       network: ${network.selfLink}
@@ -3561,27 +4049,27 @@ import 'spoke_state.dart';
 /// Spoke can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/spokes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Spoke can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/spoke:Spoke default projects/{{project}}/locations/{{location}}/spokes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
 /// ```
 class Spoke extends pulumi.CustomResource {
   /// Output only. The time the spoke was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of the spoke.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -3595,7 +4083,7 @@ class Spoke extends pulumi.CustomResource {
   late final pulumi.Output<String> hub;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
   /// Structure is documented below.
@@ -3647,6 +4135,7 @@ class Spoke extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateway = registerOutput<SpokeGateway?>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3692,6 +4181,7 @@ class Spoke extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateway = registerOutput<SpokeGateway?>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -10,7 +10,7 @@ class ServiceTemplateContainerStartupProbeGrpc {
   /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
   /// If this is not specified, the default behavior is defined by gRPC.
   ///
-  /// &lt;a name="nested_template_containers_build_info"&gt;&lt;/a&gt;The `build_info` block contains:
+  /// &lt;a name="nestedTemplateContainersBuildInfo"&gt;&lt;/a&gt;The `buildInfo` block contains:
   final pulumi.Input<String>? service;
 
   /// Creates a new [ServiceTemplateContainerStartupProbeGrpc].
@@ -35,4 +35,3 @@ class ServiceTemplateContainerStartupProbeGrpc {
     );
   }
 }
-

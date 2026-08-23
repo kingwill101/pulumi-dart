@@ -14,6 +14,13 @@ class ServiceState {
   /// (For legacy support, if `template.metadata.name` is unset in state while
   /// this field is set to false, the revision name will still autogenerate.)
   final pulumi.Input<bool>? autogenerateRevisionName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The location of the cloud run instance. eg us-central1
   final pulumi.Input<String>? location;
   /// Metadata associated with this Service, including name, namespace, labels,
@@ -49,6 +56,7 @@ class ServiceState {
 
   /// Creates a new [ServiceState].
   /// [autogenerateRevisionName] If set to `true`, the revision name (template.metadata.name) will be omitted and
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [location] The location of the cloud run instance. eg us-central1
   /// [metadata] Metadata associated with this Service, including name, namespace, labels,
   /// [name] Name must be unique within a Google Cloud project and region.
@@ -58,6 +66,7 @@ class ServiceState {
   /// [traffics] Traffic specifies how to distribute traffic over a collection of Knative Revisions
   const ServiceState({
     this.autogenerateRevisionName,
+    this.deletionPolicy,
     this.location,
     this.metadata,
     this.name,
@@ -70,6 +79,7 @@ class ServiceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autogenerateRevisionName': ?autogenerateRevisionName,
+      'deletionPolicy': ?deletionPolicy,
       'location': ?location,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ServiceMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'name': ?name,
@@ -83,6 +93,7 @@ class ServiceState {
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
       autogenerateRevisionName: (() { final guardedValue = map['autogenerateRevisionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -93,4 +104,3 @@ class ServiceState {
     );
   }
 }
-

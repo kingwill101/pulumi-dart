@@ -8,9 +8,9 @@ class InstanceFromTemplateBootDisk {
   final pulumi.Input<bool>? autoDelete;
   /// Name with which attached disk will be accessible under /dev/disk/by-id/
   final pulumi.Input<String>? deviceName;
-  /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+  /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
   final pulumi.Input<String>? diskEncryptionKeyRaw;
-  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
   final pulumi.Input<String>? diskEncryptionKeyRsa;
   /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
   final pulumi.Input<String>? diskEncryptionKeySha256;
@@ -22,29 +22,29 @@ class InstanceFromTemplateBootDisk {
   final pulumi.Input<List<String>>? guestOsFeatures;
   /// Parameters with which a disk was created alongside the instance.
   final pulumi.Input<InstanceFromTemplateBootDiskInitializeParams>? initializeParams;
-  /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+  /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don't specify this field without advice from Google.)
   final pulumi.Input<String>? interface;
-  /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+  /// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
   final pulumi.Input<String>? kmsKeySelfLink;
   /// Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
   final pulumi.Input<String>? mode;
-  /// The name or self_link of the disk attached to this instance.
+  /// The name or selfLink of the disk attached to this instance.
   final pulumi.Input<String>? source;
 
   /// Creates a new [InstanceFromTemplateBootDisk].
   /// [autoDelete] Whether the disk will be auto-deleted when the instance is deleted.
   /// [deviceName] Name with which attached disk will be accessible under /dev/disk/by-id/
-  /// [diskEncryptionKeyRaw] A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
-  /// [diskEncryptionKeyRsa] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+  /// [diskEncryptionKeyRaw] A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+  /// [diskEncryptionKeyRsa] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
   /// [diskEncryptionKeySha256] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
   /// [diskEncryptionServiceAccount] The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
   /// [forceAttach] Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
   /// [guestOsFeatures] A list of features to enable on the guest operating system. Applicable only for bootable images.
   /// [initializeParams] Parameters with which a disk was created alongside the instance.
-  /// [interface] The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
-  /// [kmsKeySelfLink] The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+  /// [interface] The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don't specify this field without advice from Google.)
+  /// [kmsKeySelfLink] The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
   /// [mode] Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
-  /// [source] The name or self_link of the disk attached to this instance.
+  /// [source] The name or selfLink of the disk attached to this instance.
   const InstanceFromTemplateBootDisk({
     this.autoDelete,
     this.deviceName,
@@ -97,4 +97,3 @@ class InstanceFromTemplateBootDisk {
     );
   }
 }
-

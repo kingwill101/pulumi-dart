@@ -10,6 +10,13 @@ class PreventionDeidentifyTemplateState {
   /// Configuration of the deidentify template
   /// Structure is documented below.
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfig>? deidentifyConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the template.
   final pulumi.Input<String>? description;
   /// User set display name of the template.
@@ -32,6 +39,7 @@ class PreventionDeidentifyTemplateState {
   /// Creates a new [PreventionDeidentifyTemplateState].
   /// [createTime] The creation timestamp of an deidentifyTemplate. Set by the server.
   /// [deidentifyConfig] Configuration of the deidentify template
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the template.
   /// [displayName] User set display name of the template.
   /// [name] The resource name of the template. Set by the server.
@@ -41,6 +49,7 @@ class PreventionDeidentifyTemplateState {
   const PreventionDeidentifyTemplateState({
     this.createTime,
     this.deidentifyConfig,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.name,
@@ -53,6 +62,7 @@ class PreventionDeidentifyTemplateState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'deidentifyConfig': ?pulumi.Input.mapOptionalInputValue<PreventionDeidentifyTemplateDeidentifyConfig, Map<String, dynamic>>(deidentifyConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'name': ?name,
@@ -66,6 +76,7 @@ class PreventionDeidentifyTemplateState {
     return PreventionDeidentifyTemplateState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deidentifyConfig: (() { final guardedValue = map['deidentifyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -75,4 +86,3 @@ class PreventionDeidentifyTemplateState {
     );
   }
 }
-

@@ -18,6 +18,13 @@ class RuntimeTemplateArgs {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateDataPersistentDiskSpec>? dataPersistentDiskSpec;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the Runtime Template.
   final pulumi.Input<String>? description;
   /// Required. The display name of the Runtime Template.
@@ -33,7 +40,7 @@ class RuntimeTemplateArgs {
   final pulumi.Input<RuntimeTemplateIdleShutdownConfig>? idleShutdownConfig;
   /// Labels to identify and group the runtime template.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
@@ -59,6 +66,7 @@ class RuntimeTemplateArgs {
 
   /// Creates a new [RuntimeTemplateArgs].
   /// [dataPersistentDiskSpec] The configuration for the data disk of the runtime.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the Runtime Template.
   /// [displayName] Required. The display name of the Runtime Template.
   /// [encryptionSpec] Customer-managed encryption key spec for the notebook runtime.
@@ -75,6 +83,7 @@ class RuntimeTemplateArgs {
   /// [softwareConfig] The notebook software configuration of the notebook runtime.
   const RuntimeTemplateArgs({
     this.dataPersistentDiskSpec,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.encryptionSpec,
@@ -94,6 +103,7 @@ class RuntimeTemplateArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataPersistentDiskSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateDataPersistentDiskSpec, Map<String, dynamic>>(dataPersistentDiskSpec, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
@@ -114,6 +124,7 @@ class RuntimeTemplateArgs {
   factory RuntimeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateArgs(
       dataPersistentDiskSpec: (() { final guardedValue = map['dataPersistentDiskSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -131,4 +142,3 @@ class RuntimeTemplateArgs {
     );
   }
 }
-

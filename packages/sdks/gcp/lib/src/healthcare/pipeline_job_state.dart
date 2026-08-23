@@ -12,6 +12,13 @@ class PipelineJobState {
   final pulumi.Input<PipelineJobBackfillPipelineJob>? backfillPipelineJob;
   /// Healthcare Dataset under which the Pipeline Job is to run
   final pulumi.Input<String>? dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If true, disables writing lineage for the pipeline.
   final pulumi.Input<bool>? disableLineage;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -28,7 +35,7 @@ class PipelineJobState {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location where the Pipeline Job is to run
   final pulumi.Input<String>? location;
@@ -49,6 +56,7 @@ class PipelineJobState {
   /// Creates a new [PipelineJobState].
   /// [backfillPipelineJob] Specifies the backfill configuration.
   /// [dataset] Healthcare Dataset under which the Pipeline Job is to run
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disableLineage] If true, disables writing lineage for the pipeline.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [labels] User-supplied key-value pairs used to organize Pipeline Jobs.
@@ -61,6 +69,7 @@ class PipelineJobState {
   const PipelineJobState({
     this.backfillPipelineJob,
     this.dataset,
+    this.deletionPolicy,
     this.disableLineage,
     this.effectiveLabels,
     this.labels,
@@ -76,6 +85,7 @@ class PipelineJobState {
     return <String, dynamic>{
       'backfillPipelineJob': ?pulumi.Input.mapOptionalInputValue<PipelineJobBackfillPipelineJob, Map<String, dynamic>>(backfillPipelineJob, (value) => value.toMap()),
       'dataset': ?dataset,
+      'deletionPolicy': ?deletionPolicy,
       'disableLineage': ?disableLineage,
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
@@ -92,6 +102,7 @@ class PipelineJobState {
     return PipelineJobState(
       backfillPipelineJob: (() { final guardedValue = map['backfillPipelineJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineJobBackfillPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableLineage: (() { final guardedValue = map['disableLineage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -104,4 +115,3 @@ class PipelineJobState {
     );
   }
 }
-

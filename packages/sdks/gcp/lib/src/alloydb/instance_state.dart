@@ -24,7 +24,7 @@ class InstanceState {
   final pulumi.Input<String>? activationPolicy;
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
   /// Note that primary and read instances can have different availability types.
@@ -47,8 +47,16 @@ class InstanceState {
   final pulumi.Input<String>? createTime;
   /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
   final pulumi.Input<Map<String, String>>? databaseFlags;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-settable and human-readable display name for the Instance.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -56,12 +64,20 @@ class InstanceState {
   final pulumi.Input<String>? gceZone;
   /// The ID of the alloydb instance.
   final pulumi.Input<String>? instanceId;
+  /// The type of the instance.
+  /// If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
+  /// If the instance type is SECONDARY, point to the clusterType of the associated secondary cluster instead of mentioning SECONDARY.
+  /// Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+  /// If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+  /// Use deletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+  /// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+  /// Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
   final pulumi.Input<String>? instanceType;
   /// The IP address for the Instance. This is the connection endpoint for an end-user application.
   final pulumi.Input<String>? ipAddress;
   /// User-defined labels for the alloydb instance.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Configurations for the machines that host the underlying database engine.
   /// Structure is documented below.
@@ -71,6 +87,7 @@ class InstanceState {
   /// Instance level network configuration.
   /// Structure is documented below.
   final pulumi.Input<InstanceNetworkConfig>? networkConfig;
+  /// (Optional, Beta)
   /// Configuration for enhanced query insights.
   /// Structure is documented below.
   final pulumi.Input<InstanceObservabilityConfig>? observabilityConfig;
@@ -112,18 +129,19 @@ class InstanceState {
   /// [connectionPoolConfig] Configuration for Managed Connection Pool.
   /// [createTime] Time the Instance was created in UTC.
   /// [databaseFlags] Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] User-settable and human-readable display name for the Instance.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gceZone] The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
   /// [instanceId] The ID of the alloydb instance.
-  /// [instanceType] Optional.
+  /// [instanceType] The type of the instance.
   /// [ipAddress] The IP address for the Instance. This is the connection endpoint for an end-user application.
   /// [labels] User-defined labels for the alloydb instance.
   /// [machineConfig] Configurations for the machines that host the underlying database engine.
   /// [name] The name of the instance resource.
   /// [networkConfig] Instance level network configuration.
-  /// [observabilityConfig] Configuration for enhanced query insights.
+  /// [observabilityConfig] (Optional, Beta)
   /// [outboundPublicIpAddresses] The outbound public IP addresses for the instance. This is available ONLY when
   /// [pscInstanceConfig] Configuration for Private Service Connect (PSC) for the instance.
   /// [publicIpAddress] The public IP addresses for the Instance. This is available ONLY when
@@ -143,6 +161,7 @@ class InstanceState {
     this.connectionPoolConfig,
     this.createTime,
     this.databaseFlags,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveAnnotations,
     this.effectiveLabels,
@@ -177,6 +196,7 @@ class InstanceState {
       'connectionPoolConfig': ?pulumi.Input.mapOptionalInputValue<InstanceConnectionPoolConfig, Map<String, dynamic>>(connectionPoolConfig, (value) => value.toMap()),
       'createTime': ?createTime,
       'databaseFlags': ?databaseFlags,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
@@ -212,6 +232,7 @@ class InstanceState {
       connectionPoolConfig: (() { final guardedValue = map['connectionPoolConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseFlags: (() { final guardedValue = map['databaseFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -237,4 +258,3 @@ class InstanceState {
     );
   }
 }
-

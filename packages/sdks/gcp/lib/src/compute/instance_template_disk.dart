@@ -6,7 +6,7 @@ import 'instance_template_disk_source_image_encryption_key.dart';
 import 'instance_template_disk_source_snapshot_encryption_key.dart';
 
 class InstanceTemplateDisk {
-  /// The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+  /// The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
   final pulumi.Input<String>? architecture;
   /// Whether or not the disk should be auto-deleted.
   /// This defaults to true.
@@ -61,15 +61,15 @@ class InstanceTemplateDisk {
   final pulumi.Input<String>? resourcePolicies;
   /// The name (**not self_link**)
   /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-  /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+  /// &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
   final pulumi.Input<String>? source;
   /// The image from which to
-  /// initialize this disk. This can be one of: the image's `self_link`,
+  /// initialize this disk. This can be one of: the image's `selfLink`,
   /// `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`.
-  /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+  /// &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
   final pulumi.Input<String>? sourceImage;
   /// The customer-supplied encryption
   /// key of the source image. Required if the source image is protected by a
@@ -81,18 +81,23 @@ class InstanceTemplateDisk {
   /// documented below.
   final pulumi.Input<InstanceTemplateDiskSourceImageEncryptionKey>? sourceImageEncryptionKey;
   /// The source snapshot to create this disk.
-  /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+  /// &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
   final pulumi.Input<String>? sourceSnapshot;
   /// The customer-supplied encryption
   /// key of the source snapshot. Structure
   /// documented below.
   final pulumi.Input<InstanceTemplateDiskSourceSnapshotEncryptionKey>? sourceSnapshotEncryptionKey;
+  /// The URL of the storage pool in which the new disk is created.
+  /// For example:
+  /// * `https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+  /// * `/projects/{project}/zones/{zone}/storagePools/{storagePool}`
+  final pulumi.Input<String>? storagePool;
   /// The type of GCE disk, can be either `"SCRATCH"` or
   /// `"PERSISTENT"`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [InstanceTemplateDisk].
-  /// [architecture] The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+  /// [architecture] The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
   /// [autoDelete] Whether or not the disk should be auto-deleted.
   /// [boot] Indicates that this is a boot disk.
   /// [deviceName] A unique device name that is reflected into the
@@ -113,6 +118,7 @@ class InstanceTemplateDisk {
   /// [sourceImageEncryptionKey] The customer-supplied encryption
   /// [sourceSnapshot] The source snapshot to create this disk.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption
+  /// [storagePool] The URL of the storage pool in which the new disk is created.
   /// [type] The type of GCE disk, can be either `"SCRATCH"` or
   const InstanceTemplateDisk({
     this.architecture,
@@ -136,6 +142,7 @@ class InstanceTemplateDisk {
     this.sourceImageEncryptionKey,
     this.sourceSnapshot,
     this.sourceSnapshotEncryptionKey,
+    this.storagePool,
     this.type,
   });
 
@@ -162,6 +169,7 @@ class InstanceTemplateDisk {
       'sourceImageEncryptionKey': ?pulumi.Input.mapOptionalInputValue<InstanceTemplateDiskSourceImageEncryptionKey, Map<String, dynamic>>(sourceImageEncryptionKey, (value) => value.toMap()),
       'sourceSnapshot': ?sourceSnapshot,
       'sourceSnapshotEncryptionKey': ?pulumi.Input.mapOptionalInputValue<InstanceTemplateDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(sourceSnapshotEncryptionKey, (value) => value.toMap()),
+      'storagePool': ?storagePool,
       'type': ?type,
     };
   }
@@ -189,8 +197,8 @@ class InstanceTemplateDisk {
       sourceImageEncryptionKey: (() { final guardedValue = map['sourceImageEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceTemplateDiskSourceImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceSnapshot: (() { final guardedValue = map['sourceSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceSnapshotEncryptionKey: (() { final guardedValue = map['sourceSnapshotEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceTemplateDiskSourceSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storagePool: (() { final guardedValue = map['storagePool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

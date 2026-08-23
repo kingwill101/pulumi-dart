@@ -3,32 +3,29 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey {
-  /// The self_link of the encryption key that is
-  /// stored in Google Cloud KMS to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+  /// The selfLink of the encryption key that is
+  /// stored in Google Cloud KMS to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   /// may be set.
   final pulumi.Input<String>? kmsKeySelfLink;
   /// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
   final pulumi.Input<String>? kmsKeyServiceAccount;
-  /// A 256-bit [customer-supplied encryption key]
-  /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+  /// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
   /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-  /// to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+  /// to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   /// may be set.
   final pulumi.Input<String>? rawKey;
-  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-  /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   /// may be set.
   final pulumi.Input<String>? rsaEncryptedKey;
   /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-  /// encoded SHA-256 hash of the [customer-supplied encryption key]
-  /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+  /// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
   final pulumi.Input<String>? sha256;
 
   /// Creates a new [InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey].
-  /// [kmsKeySelfLink] The self_link of the encryption key that is
+  /// [kmsKeySelfLink] The selfLink of the encryption key that is
   /// [kmsKeyServiceAccount] The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-  /// [rawKey] A 256-bit [customer-supplied encryption key]
-  /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+  /// [rawKey] A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+  /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   /// [sha256] The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
   const InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey({
     this.kmsKeySelfLink,
@@ -58,4 +55,3 @@ class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey {
     );
   }
 }
-

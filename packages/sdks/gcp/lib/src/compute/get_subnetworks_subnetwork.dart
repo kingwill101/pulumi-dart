@@ -13,7 +13,7 @@ class GetSubnetworksSubnetwork {
   final pulumi.Input<String> network;
   /// The name of the parent network computed from `network` attribute.
   final pulumi.Input<String> networkName;
-  /// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+  /// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
   final pulumi.Input<String> networkSelfLink;
   /// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
   final pulumi.Input<bool> privateIpGoogleAccess;
@@ -26,7 +26,7 @@ class GetSubnetworksSubnetwork {
   /// [name] The name of the subnetwork.
   /// [network] The self link of the parent network.
   /// [networkName] The name of the parent network computed from `network` attribute.
-  /// [networkSelfLink] (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+  /// [networkSelfLink] (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
   /// [privateIpGoogleAccess] Whether the VMs in the subnet can access Google services without assigned external IP addresses.
   /// [selfLink] The self link of the subnetwork.
   const GetSubnetworksSubnetwork({
@@ -66,4 +66,3 @@ class GetSubnetworksSubnetwork {
     );
   }
 }
-

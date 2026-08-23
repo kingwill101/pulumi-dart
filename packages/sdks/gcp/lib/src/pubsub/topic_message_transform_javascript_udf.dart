@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicMessageTransformJavascriptUdf {
-  /// JavaScript code that contains a function `function_name` with the
+  /// JavaScript code that contains a function `functionName` with the
   /// following signature:
   /// ```
   /// /**
@@ -36,7 +36,7 @@ class TopicMessageTransformJavascriptUdf {
   final pulumi.Input<String> functionName;
 
   /// Creates a new [TopicMessageTransformJavascriptUdf].
-  /// [code] JavaScript code that contains a function `function_name` with the
+  /// [code] JavaScript code that contains a function `functionName` with the
   /// [functionName] Name of the JavaScript function that should be applied to Pub/Sub messages.
   const TopicMessageTransformJavascriptUdf({
     required this.code,
@@ -57,4 +57,3 @@ class TopicMessageTransformJavascriptUdf {
     );
   }
 }
-

@@ -11,11 +11,11 @@ class ConnectionGitlabConfig {
   final pulumi.Input<ConnectionGitlabConfigAuthorizerCredential> authorizerCredential;
   /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
   final pulumi.Input<String>? hostUri;
-  /// Required. A GitLab personal access token with the minimum `read_api` scope access.
+  /// Required. A GitLab personal access token with the minimum `readApi` scope access.
   /// Structure is documented below.
   final pulumi.Input<ConnectionGitlabConfigReadAuthorizerCredential> readAuthorizerCredential;
   /// (Output)
-  /// Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+  /// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
   final pulumi.Input<String>? serverVersion;
   /// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
   /// Structure is documented below.
@@ -28,7 +28,7 @@ class ConnectionGitlabConfig {
   /// Creates a new [ConnectionGitlabConfig].
   /// [authorizerCredential] Required. A GitLab personal access token with the `api` scope access.
   /// [hostUri] The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
-  /// [readAuthorizerCredential] Required. A GitLab personal access token with the minimum `read_api` scope access.
+  /// [readAuthorizerCredential] Required. A GitLab personal access token with the minimum `readApi` scope access.
   /// [serverVersion] (Output)
   /// [serviceDirectoryConfig] Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
   /// [sslCa] SSL certificate to use for requests to GitLab Enterprise.
@@ -67,4 +67,3 @@ class ConnectionGitlabConfig {
     );
   }
 }
-

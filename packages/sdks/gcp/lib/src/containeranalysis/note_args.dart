@@ -20,6 +20,13 @@ class NoteArgs {
   /// project.
   /// Structure is documented below.
   final pulumi.Input<NoteAttestationAuthority> attestationAuthority;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Time of expiration for this note. Leave empty if note does not expire.
   final pulumi.Input<String>? expirationTime;
   /// A detailed description of the note
@@ -39,6 +46,7 @@ class NoteArgs {
 
   /// Creates a new [NoteArgs].
   /// [attestationAuthority] Note kind that represents a logical attestation "role" or "authority".
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [expirationTime] Time of expiration for this note. Leave empty if note does not expire.
   /// [longDescription] A detailed description of the note
   /// [name] The name of the note.
@@ -48,6 +56,7 @@ class NoteArgs {
   /// [shortDescription] A one sentence description of the note.
   const NoteArgs({
     required this.attestationAuthority,
+    this.deletionPolicy,
     this.expirationTime,
     this.longDescription,
     this.name,
@@ -60,6 +69,7 @@ class NoteArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attestationAuthority': pulumi.Input.mapInputValue<NoteAttestationAuthority, Map<String, dynamic>>(attestationAuthority, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'expirationTime': ?expirationTime,
       'longDescription': ?longDescription,
       'name': ?name,
@@ -73,6 +83,7 @@ class NoteArgs {
   factory NoteArgs.fromMap(Map<String, dynamic> map) {
     return NoteArgs(
       attestationAuthority: pulumi.Input.fromValue(NoteAttestationAuthority.fromMap((map['attestationAuthority']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       longDescription: (() { final guardedValue = map['longDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -83,4 +94,3 @@ class NoteArgs {
     );
   }
 }
-

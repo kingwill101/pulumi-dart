@@ -12,7 +12,7 @@ class VPNTunnelCipherSuite {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_cipher_suite_phase1"&gt;&lt;/a&gt;The `phase1` block supports:
+  /// &lt;a name="nestedCipherSuitePhase1"&gt;&lt;/a&gt;The `phase1` block supports:
   final pulumi.Input<VPNTunnelCipherSuitePhase2>? phase2;
 
   /// Creates a new [VPNTunnelCipherSuite].
@@ -37,4 +37,3 @@ class VPNTunnelCipherSuite {
     );
   }
 }
-

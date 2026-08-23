@@ -104,6 +104,27 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_routine" "sproc" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "PROCEDURE"
+///   language        = "SQL"
+///   security_mode   = "INVOKER"
+///   definition_body = "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +135,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.DatasetArgs;
 /// import com.pulumi.gcp.bigquery.Routine;
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,6 +311,35 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_routine" "sproc" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "SCALAR_FUNCTION"
+///   language        = "JAVASCRIPT"
+///   definition_body = "CREATE FUNCTION multiplyInputs return x*y;"
+///   arguments {
+///     name      = "x"
+///     data_type = "{\"typeKind\" :  \"FLOAT64\"}"
+///   }
+///   arguments {
+///     name      = "y"
+///     data_type = "{\"typeKind\" :  \"FLOAT64\"}"
+///   }
+///   return_type = "{\"typeKind\" :  \"FLOAT64\"}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +351,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.Routine;
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,18 +541,18 @@ import 'routine_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"typeKind": "INT64",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 /// 			"columns": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"name": "value",
-/// 					"type": map[string]interface{}{
+/// 					"type": map[string]string{
 /// 						"typeKind": "INT64",
 /// 					},
 /// 				},
@@ -534,6 +584,41 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_routine" "sproc" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "TABLE_VALUED_FUNCTION"
+///   language        = "SQL"
+///   definition_body = "SELECT 1 + value AS value\n"
+///   arguments {
+///     name          = "value"
+///     argument_kind = "FIXED_TYPE"
+///     data_type = jsonencode({
+///       "typeKind" = "INT64"
+///     })
+///   }
+///   return_table_type = jsonencode({
+///     "columns" = [{
+///       "name" = "value"
+///       "type" = {
+///         "typeKind" = "INT64"
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -546,8 +631,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -620,6 +705,279 @@ import 'routine_state.dart';
 ///             - name: value
 ///               type:
 ///                 typeKind: INT64
+/// ```
+///
+/// ### Bigquery Routine Table Type
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
+/// const sproc = new gcp.bigquery.Routine("sproc", {
+///     datasetId: test.datasetId,
+///     routineId: "routine_id",
+///     routineType: "TABLE_VALUED_FUNCTION",
+///     language: "SQL",
+///     description: "Gets every row from a table.",
+///     definitionBody: "SELECT * FROM t1",
+///     arguments: [{
+///         name: "t1",
+///         argumentKind: "FIXED_TABLE",
+///         tableType: {
+///             columns: [{
+///                 name: "year",
+///                 type: JSON.stringify({
+///                     typeKind: "INT64",
+///                 }),
+///             }],
+///         },
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_gcp as gcp
+///
+/// test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+/// sproc = gcp.bigquery.Routine("sproc",
+///     dataset_id=test.dataset_id,
+///     routine_id="routine_id",
+///     routine_type="TABLE_VALUED_FUNCTION",
+///     language="SQL",
+///     description="Gets every row from a table.",
+///     definition_body="SELECT * FROM t1",
+///     arguments=[{
+///         "name": "t1",
+///         "argument_kind": "FIXED_TABLE",
+///         "table_type": {
+///             "columns": [{
+///                 "name": "year",
+///                 "type": json.dumps({
+///                     "typeKind": "INT64",
+///                 }),
+///             }],
+///         },
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var test = new Gcp.BigQuery.Dataset("test", new()
+///     {
+///         DatasetId = "dataset_id",
+///     });
+///
+///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
+///     {
+///         DatasetId = test.DatasetId,
+///         RoutineId = "routine_id",
+///         RoutineType = "TABLE_VALUED_FUNCTION",
+///         Language = "SQL",
+///         Description = "Gets every row from a table.",
+///         DefinitionBody = "SELECT * FROM t1",
+///         Arguments = new[]
+///         {
+///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+///             {
+///                 Name = "t1",
+///                 ArgumentKind = "FIXED_TABLE",
+///                 TableType = new Gcp.BigQuery.Inputs.RoutineArgumentTableTypeArgs
+///                 {
+///                     Columns = new[]
+///                     {
+///                         new Gcp.BigQuery.Inputs.RoutineArgumentTableTypeColumnArgs
+///                         {
+///                             Name = "year",
+///                             Type = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                             {
+///                                 ["typeKind"] = "INT64",
+///                             }),
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+/// 			DatasetId: pulumi.String("dataset_id"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
+/// 			"typeKind": "INT64",
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
+/// 			DatasetId:      test.DatasetId,
+/// 			RoutineId:      pulumi.String("routine_id"),
+/// 			RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+/// 			Language:       pulumi.String("SQL"),
+/// 			Description:    pulumi.String("Gets every row from a table."),
+/// 			DefinitionBody: pulumi.String("SELECT * FROM t1"),
+/// 			Arguments: bigquery.RoutineArgumentArray{
+/// 				&bigquery.RoutineArgumentArgs{
+/// 					Name:         pulumi.String("t1"),
+/// 					ArgumentKind: pulumi.String("FIXED_TABLE"),
+/// 					TableType: &bigquery.RoutineArgumentTableTypeArgs{
+/// 						Columns: bigquery.RoutineArgumentTableTypeColumnArray{
+/// 							&bigquery.RoutineArgumentTableTypeColumnArgs{
+/// 								Name: pulumi.String("year"),
+/// 								Type: pulumi.String(json0),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_routine" "sproc" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "TABLE_VALUED_FUNCTION"
+///   language        = "SQL"
+///   description     = "Gets every row from a table."
+///   definition_body = "SELECT * FROM t1"
+///   arguments {
+///     name          = "t1"
+///     argument_kind = "FIXED_TABLE"
+///     table_type = {
+///       columns = [{
+///         "name" = "year"
+///         "type" = jsonencode({
+///           "typeKind" = "INT64"
+///         })
+///       }]
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.bigquery.Dataset;
+/// import com.pulumi.gcp.bigquery.DatasetArgs;
+/// import com.pulumi.gcp.bigquery.Routine;
+/// import com.pulumi.gcp.bigquery.RoutineArgs;
+/// import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+/// import com.pulumi.gcp.bigquery.inputs.RoutineArgumentTableTypeArgs;
+/// import com.pulumi.gcp.bigquery.inputs.RoutineArgumentTableTypeColumnArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var test = new Dataset("test", DatasetArgs.builder()
+///             .datasetId("dataset_id")
+///             .build());
+///
+///         var sproc = new Routine("sproc", RoutineArgs.builder()
+///             .datasetId(test.datasetId())
+///             .routineId("routine_id")
+///             .routineType("TABLE_VALUED_FUNCTION")
+///             .language("SQL")
+///             .description("Gets every row from a table.")
+///             .definitionBody("SELECT * FROM t1")
+///             .arguments(RoutineArgumentArgs.builder()
+///                 .name("t1")
+///                 .argumentKind("FIXED_TABLE")
+///                 .tableType(RoutineArgumentTableTypeArgs.builder()
+///                     .columns(RoutineArgumentTableTypeColumnArgs.builder()
+///                         .name("year")
+///                         .type(serializeJson(
+///                             jsonObject(
+///                                 jsonProperty("typeKind", "INT64")
+///                             )))
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   test:
+///     type: gcp:bigquery:Dataset
+///     properties:
+///       datasetId: dataset_id
+///   sproc:
+///     type: gcp:bigquery:Routine
+///     properties:
+///       datasetId: ${test.datasetId}
+///       routineId: routine_id
+///       routineType: TABLE_VALUED_FUNCTION
+///       language: SQL
+///       description: Gets every row from a table.
+///       definitionBody: SELECT * FROM t1
+///       arguments:
+///         - name: t1
+///           argumentKind: FIXED_TABLE
+///           tableType:
+///             columns:
+///               - name: year
+///                 type:
+///                   fn::toJSON:
+///                     typeKind: INT64
 /// ```
 ///
 /// ### Bigquery Routine Pyspark
@@ -822,6 +1180,35 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_connection" "test" {
+///   connection_id = "connection_id"
+///   location      = "US"
+///   spark         = {}
+/// }
+/// resource "gcp_bigquery_routine" "pyspark" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "PROCEDURE"
+///   language        = "PYTHON"
+///   definition_body = "from pyspark.sql import SparkSession\n\nspark = SparkSession.builder.appName(\\\"spark-bigquery-demo\\\").getOrCreate()\n    \n# Load data from BigQuery.\nwords = spark.read.format(\\\"bigquery\\\") \\\\\n  .option(\\\"table\\\", \\\"bigquery-public-data:samples.shakespeare\\\") \\\\\n  .load()\nwords.createOrReplaceTempView(\\\"words\\\")\n    \n# Perform word count.\nword_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed(\\\"sum(word_count)\\\", \\\"sum_word_count\\\")\nword_count.show()\nword_count.printSchema()\n    \n# Saving the data to BigQuery\nword_count.write.format(\\\"bigquery\\\") \\\\\n  .option(\\\"writeMethod\\\", \\\"direct\\\") \\\\\n  .save(\\\"wordcount_dataset.wordcount_output\\\")\n"
+///   spark_options = {
+///     connection      = gcp_bigquery_connection.test.name
+///     runtime_version = "2.1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -836,8 +1223,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.Routine;
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1076,6 +1463,39 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_connection" "test" {
+///   connection_id = "connection_id"
+///   location      = "US"
+///   spark         = {}
+/// }
+/// resource "gcp_bigquery_routine" "pyspark_mainfile" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "PROCEDURE"
+///   language        = "PYTHON"
+///   definition_body = ""
+///   spark_options = {
+///     connection      = gcp_bigquery_connection.test.name
+///     runtime_version = "2.1"
+///     main_file_uri   = "gs://test-bucket/main.py"
+///     py_file_uris    = ["gs://test-bucket/lib.py"]
+///     file_uris       = ["gs://test-bucket/distribute_in_executor.json"]
+///     archive_uris    = ["gs://test-bucket/distribute_in_executor.tar.gz"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1090,8 +1510,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.Routine;
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1325,6 +1745,42 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_connection" "test" {
+///   connection_id = "connection_id"
+///   location      = "US"
+///   spark         = {}
+/// }
+/// resource "gcp_bigquery_routine" "spark_jar" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "PROCEDURE"
+///   language        = "SCALA"
+///   definition_body = ""
+///   spark_options = {
+///     connection      = gcp_bigquery_connection.test.name
+///     runtime_version = "2.1"
+///     container_image = "gcr.io/my-project-id/my-spark-image:latest"
+///     main_class      = "com.google.test.jar.MainClass"
+///     jar_uris        = ["gs://test-bucket/uberjar_spark_spark3.jar"]
+///     properties = {
+///       "spark.dataproc.scaling.version"             = "2"
+///       "spark.reducer.fetchMigratedShuffle.enabled" = "true"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1339,8 +1795,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.Routine;
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1427,7 +1883,7 @@ import 'routine_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_81126"});
+/// const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_60302"});
 /// const customMaskingRoutine = new gcp.bigquery.Routine("custom_masking_routine", {
 ///     datasetId: test.datasetId,
 ///     routineId: "custom_masking_routine",
@@ -1446,7 +1902,7 @@ import 'routine_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_81126")
+/// test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_60302")
 /// custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
 ///     dataset_id=test.dataset_id,
 ///     routine_id="custom_masking_routine",
@@ -1470,7 +1926,7 @@ import 'routine_state.dart';
 /// {
 ///     var test = new Gcp.BigQuery.Dataset("test", new()
 ///     {
-///         DatasetId = "tf_test_dataset_id_81126",
+///         DatasetId = "tf_test_dataset_id_60302",
 ///     });
 ///
 ///     var customMaskingRoutine = new Gcp.BigQuery.Routine("custom_masking_routine", new()
@@ -1505,7 +1961,7 @@ import 'routine_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-/// 			DatasetId: pulumi.String("tf_test_dataset_id_81126"),
+/// 			DatasetId: pulumi.String("tf_test_dataset_id_60302"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1532,6 +1988,32 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "tf_test_dataset_id_60302"
+/// }
+/// resource "gcp_bigquery_routine" "custom_masking_routine" {
+///   dataset_id           = gcp_bigquery_dataset.test.dataset_id
+///   routine_id           = "custom_masking_routine"
+///   routine_type         = "SCALAR_FUNCTION"
+///   language             = "SQL"
+///   data_governance_type = "DATA_MASKING"
+///   definition_body      = "SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')"
+///   arguments {
+///     name      = "ssn"
+///     data_type = "{\"typeKind\" :  \"STRING\"}"
+///   }
+///   return_type = "{\"typeKind\" :  \"STRING\"}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1543,8 +2025,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.Routine;
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1557,7 +2039,7 @@ import 'routine_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Dataset("test", DatasetArgs.builder()
-///             .datasetId("tf_test_dataset_id_81126")
+///             .datasetId("tf_test_dataset_id_60302")
 ///             .build());
 ///
 ///         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()
@@ -1582,7 +2064,7 @@ import 'routine_state.dart';
 ///   test:
 ///     type: gcp:bigquery:Dataset
 ///     properties:
-///       datasetId: tf_test_dataset_id_81126
+///       datasetId: tf_test_dataset_id_60302
 ///   customMaskingRoutine:
 ///     type: gcp:bigquery:Routine
 ///     name: custom_masking_routine
@@ -1740,6 +2222,39 @@ import 'routine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_connection" "test" {
+///   connection_id  = "connection_id"
+///   location       = "US"
+///   cloud_resource = {}
+/// }
+/// resource "gcp_bigquery_routine" "remote_function" {
+///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
+///   routine_id      = "routine_id"
+///   routine_type    = "SCALAR_FUNCTION"
+///   definition_body = ""
+///   return_type     = "{\"typeKind\" :  \"STRING\"}"
+///   remote_function_options = {
+///     endpoint          = "https://us-east1-my_gcf_project.cloudfunctions.net/remote_add"
+///     connection        = gcp_bigquery_connection.test.name
+///     max_batching_rows = "10"
+///     user_defined_context = {
+///       "z" = "1.5"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1754,8 +2269,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.Routine;
 /// import com.pulumi.gcp.bigquery.RoutineArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineRemoteFunctionOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1860,6 +2375,7 @@ import 'routine_state.dart';
 ///         containerMemory: "512Mi",
 ///         containerCpu: 0.5,
 ///         runtimeVersion: "python-3.11",
+///         containerRequestConcurrency: "1",
 ///     },
 /// });
 /// ```
@@ -1894,6 +2410,7 @@ import 'routine_state.dart';
 ///         "container_memory": "512Mi",
 ///         "container_cpu": 0.5,
 ///         "runtime_version": "python-3.11",
+///         "container_request_concurrency": "1",
 ///     })
 /// ```
 /// ```csharp
@@ -1941,6 +2458,7 @@ import 'routine_state.dart';
 ///             ContainerMemory = "512Mi",
 ///             ContainerCpu = 0.5,
 ///             RuntimeVersion = "python-3.11",
+///             ContainerRequestConcurrency = "1",
 ///         },
 ///     });
 ///
@@ -1983,9 +2501,10 @@ import 'routine_state.dart';
 /// 				EntryPoint: pulumi.String("multiply"),
 /// 			},
 /// 			ExternalRuntimeOptions: &bigquery.RoutineExternalRuntimeOptionsArgs{
-/// 				ContainerMemory: pulumi.String("512Mi"),
-/// 				ContainerCpu:    pulumi.Float64(0.5),
-/// 				RuntimeVersion:  pulumi.String("python-3.11"),
+/// 				ContainerMemory:             pulumi.String("512Mi"),
+/// 				ContainerCpu:                pulumi.Float64(0.5),
+/// 				RuntimeVersion:              pulumi.String("python-3.11"),
+/// 				ContainerRequestConcurrency: pulumi.String("1"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1993,6 +2512,44 @@ import 'routine_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+/// }
+/// resource "gcp_bigquery_routine" "python_function" {
+///   dataset_id   = gcp_bigquery_dataset.test.dataset_id
+///   routine_id   = "routine_id"
+///   routine_type = "SCALAR_FUNCTION"
+///   language     = "PYTHON"
+///   arguments {
+///     name      = "x"
+///     data_type = "{\"typeKind\" :  \"FLOAT64\"}"
+///   }
+///   arguments {
+///     name      = "y"
+///     data_type = "{\"typeKind\" :  \"FLOAT64\"}"
+///   }
+///   definition_body = "def multiply(x, y):\n  return x * y\n"
+///   return_type     = "{\"typeKind\" :  \"FLOAT64\"}"
+///   python_options = {
+///     entry_point = "multiply"
+///   }
+///   external_runtime_options = {
+///     container_memory              = "512Mi"
+///     container_cpu                 = 0.5
+///     runtime_version               = "python-3.11"
+///     container_request_concurrency = "1"
+///   }
 /// }
 /// ```
 /// ```java
@@ -2008,8 +2565,8 @@ import 'routine_state.dart';
 /// import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutinePythonOptionsArgs;
 /// import com.pulumi.gcp.bigquery.inputs.RoutineExternalRuntimeOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2051,6 +2608,7 @@ import 'routine_state.dart';
 ///                 .containerMemory("512Mi")
 ///                 .containerCpu(0.5)
 ///                 .runtimeVersion("python-3.11")
+///                 .containerRequestConcurrency("1")
 ///                 .build())
 ///             .build());
 ///
@@ -2086,6 +2644,7 @@ import 'routine_state.dart';
 ///         containerMemory: 512Mi
 ///         containerCpu: 0.5
 ///         runtimeVersion: python-3.11
+///         containerRequestConcurrency: '1'
 /// ```
 ///
 ///
@@ -2094,22 +2653,15 @@ import 'routine_state.dart';
 /// Routine can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
-///
 /// * `{{project}}/{{dataset_id}}/{{routine_id}}`
-///
 /// * `{{dataset_id}}/{{routine_id}}`
+///
 ///
 /// When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/routine:Routine default {{project}}/{{dataset_id}}/{{routine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
 /// ```
 class Routine extends pulumi.CustomResource {
@@ -2127,11 +2679,19 @@ class Routine extends pulumi.CustomResource {
   /// The body of the routine. For functions, this is the expression in the AS clause.
   /// If language=SQL, it is the substring inside (but excluding) the parentheses.
   late final pulumi.Output<String> definitionBody;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the routine if defined.
   late final pulumi.Output<String?> description;
   /// The determinism level of the JavaScript UDF if defined.
   /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
   late final pulumi.Output<String?> determinismLevel;
+  /// (Optional, Beta)
   /// Options for the runtime of the external system.
   /// This field is only applicable for Python UDFs.
   /// Structure is documented below.
@@ -2148,6 +2708,7 @@ class Routine extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// (Optional, Beta)
   /// Options for a user-defined Python function.
   /// Structure is documented below.
   late final pulumi.Output<RoutinePythonOptions?> pythonOptions;
@@ -2200,6 +2761,7 @@ class Routine extends pulumi.CustomResource {
     dataGovernanceType = registerOutput<String?>('dataGovernanceType');
     datasetId = registerOutput<String>('datasetId');
     definitionBody = registerOutput<String>('definitionBody');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     determinismLevel = registerOutput<String?>('determinismLevel');
     externalRuntimeOptions = registerOutput<RoutineExternalRuntimeOptions?>('externalRuntimeOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2245,6 +2807,7 @@ class Routine extends pulumi.CustomResource {
     dataGovernanceType = registerOutput<String?>('dataGovernanceType');
     datasetId = registerOutput<String>('datasetId');
     definitionBody = registerOutput<String>('definitionBody');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     determinismLevel = registerOutput<String?>('determinismLevel');
     externalRuntimeOptions = registerOutput<RoutineExternalRuntimeOptions?>('externalRuntimeOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

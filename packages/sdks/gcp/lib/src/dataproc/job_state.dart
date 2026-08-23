@@ -15,6 +15,13 @@ import 'job_status.dart';
 
 /// Input properties used for looking up and filtering Job resources.
 class JobState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
   final pulumi.Input<String>? driverControlsFilesUri;
   /// A URI pointing to the location of the stdout of the job's driver program.
@@ -63,8 +70,11 @@ class JobState {
   final pulumi.Input<JobSparksqlConfig>? sparksqlConfig;
   /// The status of the job.
   final pulumi.Input<List<JobStatus>>? statuses;
+  /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+  final pulumi.Input<bool>? waitForCompletion;
 
   /// Creates a new [JobState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [driverControlsFilesUri] If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
   /// [driverOutputResourceUri] A URI pointing to the location of the stdout of the job's driver program.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -84,7 +94,9 @@ class JobState {
   /// [sparkConfig] The config of the Spark job.
   /// [sparksqlConfig] The config of SparkSql job
   /// [statuses] The status of the job.
+  /// [waitForCompletion] If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
   const JobState({
+    this.deletionPolicy,
     this.driverControlsFilesUri,
     this.driverOutputResourceUri,
     this.effectiveLabels,
@@ -104,10 +116,12 @@ class JobState {
     this.sparkConfig,
     this.sparksqlConfig,
     this.statuses,
+    this.waitForCompletion,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'driverControlsFilesUri': ?driverControlsFilesUri,
       'driverOutputResourceUri': ?driverOutputResourceUri,
       'effectiveLabels': ?effectiveLabels,
@@ -127,11 +141,13 @@ class JobState {
       'sparkConfig': ?pulumi.Input.mapOptionalInputValue<JobSparkConfig, Map<String, dynamic>>(sparkConfig, (value) => value.toMap()),
       'sparksqlConfig': ?pulumi.Input.mapOptionalInputValue<JobSparksqlConfig, Map<String, dynamic>>(sparksqlConfig, (value) => value.toMap()),
       'statuses': ?pulumi.Input.mapOptionalInputValue<List<JobStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<JobStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'waitForCompletion': ?waitForCompletion,
     };
   }
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       driverControlsFilesUri: (() { final guardedValue = map['driverControlsFilesUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       driverOutputResourceUri: (() { final guardedValue = map['driverOutputResourceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -151,7 +167,7 @@ class JobState {
       sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sparksqlConfig: (() { final guardedValue = map['sparksqlConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobSparksqlConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobStatus>(guardedValue, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      waitForCompletion: (() { final guardedValue = map['waitForCompletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

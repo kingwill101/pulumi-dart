@@ -15,6 +15,13 @@ class WireGroupState {
   final pulumi.Input<String>? creationTimestamp;
   /// Required cross site network to which wire group belongs.
   final pulumi.Input<String>? crossSiteNetwork;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Endpoints grouped by location, each mapping to interconnect configurations.
@@ -32,6 +39,7 @@ class WireGroupState {
   /// Topology details for the wire group configuration.
   /// Structure is documented below.
   final pulumi.Input<List<WireGroupTopology>>? topologies;
+  /// (Optional, Beta)
   /// Properties specific to the wire group.
   /// Structure is documented below.
   final pulumi.Input<WireGroupWireGroupProperties>? wireGroupProperties;
@@ -46,18 +54,20 @@ class WireGroupState {
   /// [adminEnabled] Indicates whether the wire group is administratively enabled.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [crossSiteNetwork] Required cross site network to which wire group belongs.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [endpoints] Endpoints grouped by location, each mapping to interconnect configurations.
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be
   /// [project] The ID of the project in which the resource belongs.
   /// [topologies] Topology details for the wire group configuration.
-  /// [wireGroupProperties] Properties specific to the wire group.
+  /// [wireGroupProperties] (Optional, Beta)
   /// [wireProperties] Default properties for wires within the group.
   /// [wires] The single/redundant wire(s) managed by the wire group.
   const WireGroupState({
     this.adminEnabled,
     this.creationTimestamp,
     this.crossSiteNetwork,
+    this.deletionPolicy,
     this.description,
     this.endpoints,
     this.name,
@@ -73,6 +83,7 @@ class WireGroupState {
       'adminEnabled': ?adminEnabled,
       'creationTimestamp': ?creationTimestamp,
       'crossSiteNetwork': ?crossSiteNetwork,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'endpoints': ?pulumi.Input.mapOptionalInputValue<List<WireGroupEndpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<WireGroupEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
@@ -89,6 +100,7 @@ class WireGroupState {
       adminEnabled: (() { final guardedValue = map['adminEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       crossSiteNetwork: (() { final guardedValue = map['crossSiteNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WireGroupEndpoint>(guardedValue, (value) => WireGroupEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -100,4 +112,3 @@ class WireGroupState {
     );
   }
 }
-

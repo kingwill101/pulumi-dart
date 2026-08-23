@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpntunnel_args.dart';
 import 'vpntunnel_cipher_suite.dart';
+import 'vpntunnel_params.dart';
 import 'vpntunnel_state.dart';
 
 /// VPN tunnel resource.
@@ -15,7 +16,7 @@ import 'vpntunnel_state.dart';
 ///
 ///
 ///
-/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sharedSecretWo`.
 /// Read more about Write-only Arguments.
 ///
 /// ## Example Usage
@@ -222,7 +223,7 @@ import 'vpntunnel_state.dart';
 /// 		}
 /// 		targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 /// 			Name:    pulumi.String("vpn-1"),
-/// 			Network: network1.ID(),
+/// 			Network: network1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -237,7 +238,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:       pulumi.String("fr-esp"),
 /// 			IpProtocol: pulumi.String("ESP"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -247,7 +248,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -257,7 +258,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("4500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -266,7 +267,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:             pulumi.String("tunnel-1"),
 /// 			PeerIp:           pulumi.String("15.0.0.120"),
 /// 			SharedSecret:     pulumi.String("a secret message"),
-/// 			TargetVpnGateway: targetGateway.ID(),
+/// 			TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -283,13 +284,70 @@ import 'vpntunnel_state.dart';
 /// 			Network:          network1.Name,
 /// 			DestRange:        pulumi.String("15.0.0.0/24"),
 /// 			Priority:         pulumi.Int(1000),
-/// 			NextHopVpnTunnel: tunnel1.ID(),
+/// 			NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_vpntunnel" "tunnel1" {
+///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+///   name               = "tunnel-1"
+///   peer_ip            = "15.0.0.120"
+///   shared_secret      = "a secret message"
+///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway.id
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_compute_vpngateway" "target_gateway" {
+///   name    = "vpn-1"
+///   network = gcp_compute_network.network1.id
+/// }
+/// resource "gcp_compute_network" "network1" {
+///   name = "network-1"
+/// }
+/// resource "gcp_compute_address" "vpn_static_ip" {
+///   name = "vpn-static-ip"
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_esp" {
+///   name        = "fr-esp"
+///   ip_protocol = "ESP"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+///   name        = "fr-udp500"
+///   ip_protocol = "UDP"
+///   port_range  = "500"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+///   name        = "fr-udp4500"
+///   ip_protocol = "UDP"
+///   port_range  = "4500"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_route" "route1" {
+///   name                = "route1"
+///   network             = gcp_compute_network.network1.name
+///   dest_range          = "15.0.0.0/24"
+///   priority            = 1000
+///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel1.id
 /// }
 /// ```
 /// ```java
@@ -311,8 +369,8 @@ import 'vpntunnel_state.dart';
 /// import com.pulumi.gcp.compute.Route;
 /// import com.pulumi.gcp.compute.RouteArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -716,7 +774,7 @@ import 'vpntunnel_state.dart';
 /// 		}
 /// 		targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 /// 			Name:    pulumi.String("vpn-1"),
-/// 			Network: network1.ID(),
+/// 			Network: network1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -731,7 +789,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:       pulumi.String("fr-esp"),
 /// 			IpProtocol: pulumi.String("ESP"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -741,7 +799,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -751,7 +809,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("4500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -760,7 +818,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:             pulumi.String("tunnel-cipher"),
 /// 			PeerIp:           pulumi.String("15.0.0.120"),
 /// 			SharedSecret:     pulumi.String("a secret message"),
-/// 			TargetVpnGateway: targetGateway.ID(),
+/// 			TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			CipherSuite: &compute.VPNTunnelCipherSuiteArgs{
 /// 				Phase1: &compute.VPNTunnelCipherSuitePhase1Args{
 /// 					Encryptions: pulumi.StringArray{
@@ -804,13 +862,83 @@ import 'vpntunnel_state.dart';
 /// 			Network:          network1.Name,
 /// 			DestRange:        pulumi.String("15.0.0.0/24"),
 /// 			Priority:         pulumi.Int(1000),
-/// 			NextHopVpnTunnel: tunnel1.ID(),
+/// 			NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_vpntunnel" "tunnel1" {
+///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+///   name               = "tunnel-cipher"
+///   peer_ip            = "15.0.0.120"
+///   shared_secret      = "a secret message"
+///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway.id
+///   cipher_suite = {
+///     phase1 = {
+///       encryptions = ["AES-CBC-256"]
+///       integrities = ["HMAC-SHA2-256-128"]
+///       prves       = ["PRF-HMAC-SHA2-256"]
+///       dhs         = ["Group-14"]
+///     }
+///     phase2 = {
+///       encryptions = ["AES-CBC-128"]
+///       integrities = ["HMAC-SHA2-256-128"]
+///       pfs         = ["Group-14"]
+///     }
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_compute_vpngateway" "target_gateway" {
+///   name    = "vpn-1"
+///   network = gcp_compute_network.network1.id
+/// }
+/// resource "gcp_compute_network" "network1" {
+///   name = "network-1"
+/// }
+/// resource "gcp_compute_address" "vpn_static_ip" {
+///   name = "vpn-static-ip"
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_esp" {
+///   name        = "fr-esp"
+///   ip_protocol = "ESP"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+///   name        = "fr-udp500"
+///   ip_protocol = "UDP"
+///   port_range  = "500"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+///   name        = "fr-udp4500"
+///   ip_protocol = "UDP"
+///   port_range  = "4500"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_route" "route1" {
+///   name                = "route1"
+///   network             = gcp_compute_network.network1.name
+///   dest_range          = "15.0.0.0/24"
+///   priority            = 1000
+///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel1.id
 /// }
 /// ```
 /// ```java
@@ -835,8 +963,8 @@ import 'vpntunnel_state.dart';
 /// import com.pulumi.gcp.compute.Route;
 /// import com.pulumi.gcp.compute.RouteArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1011,28 +1139,17 @@ import 'vpntunnel_state.dart';
 /// VpnTunnel can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
 /// ```
 class VPNTunnel extends pulumi.CustomResource {
@@ -1041,6 +1158,13 @@ class VPNTunnel extends pulumi.CustomResource {
   late final pulumi.Output<VPNTunnelCipherSuite?> cipherSuite;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Detailed status message for the VPN tunnel.
@@ -1056,7 +1180,7 @@ class VPNTunnel extends pulumi.CustomResource {
   late final pulumi.Output<String> labelFingerprint;
   /// Labels to apply to this VpnTunnel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Local traffic selector to use when establishing the VPN tunnel with
   /// peer VPN gateway. The value should be a CIDR formatted string,
@@ -1071,12 +1195,15 @@ class VPNTunnel extends pulumi.CustomResource {
   /// be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<VPNTunnelParams?> params;
   /// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
   late final pulumi.Output<String?> peerExternalGateway;
   /// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
   late final pulumi.Output<int?> peerExternalGatewayInterface;
   /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-  /// If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+  /// If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
   /// ID in the peer GCP VPN gateway.
   /// This field must reference a `gcp.compute.HaVpnGateway` resource.
   late final pulumi.Output<String?> peerGcpGateway;
@@ -1088,7 +1215,7 @@ class VPNTunnel extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-  /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+  /// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
   late final pulumi.Output<String> region;
   /// Remote traffic selector to use when establishing the VPN tunnel with
   /// peer VPN gateway. The value should be a CIDR formatted string,
@@ -1111,9 +1238,9 @@ class VPNTunnel extends pulumi.CustomResource {
   /// gateway and the peer VPN gateway.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// &gt; **Note:** One of `shared_secret` or `shared_secret_wo` can only be set.
+  /// &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
   late final pulumi.Output<String?> sharedSecretWo;
-  /// Triggers update of `shared_secret_wo` write-only. Increment this value when an update to `shared_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<String?> sharedSecretWoVersion;
   /// URL of the Target VPN gateway with which this VPN tunnel is
   /// associated.
@@ -1143,6 +1270,7 @@ class VPNTunnel extends pulumi.CustomResource {
         ) {
     cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     detailedStatus = registerOutput<String>('detailedStatus');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1151,6 +1279,7 @@ class VPNTunnel extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors');
     this.name = registerOutput<String>('name');
+    params = registerOutput<VPNTunnelParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerExternalGateway = registerOutput<String?>('peerExternalGateway');
     peerExternalGatewayInterface = registerOutput<int?>('peerExternalGatewayInterface');
     peerGcpGateway = registerOutput<String?>('peerGcpGateway');
@@ -1196,6 +1325,7 @@ class VPNTunnel extends pulumi.CustomResource {
         ) {
     cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     detailedStatus = registerOutput<String>('detailedStatus');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1204,6 +1334,7 @@ class VPNTunnel extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors');
     this.name = registerOutput<String>('name');
+    params = registerOutput<VPNTunnelParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerExternalGateway = registerOutput<String?>('peerExternalGateway');
     peerExternalGatewayInterface = registerOutput<int?>('peerExternalGatewayInterface');
     peerGcpGateway = registerOutput<String?>('peerGcpGateway');

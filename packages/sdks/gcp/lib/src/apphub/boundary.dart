@@ -71,6 +71,20 @@ import 'boundary_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apphub_boundary" "example" {
+///   location = "global"
+///   crm_node = "projects/1111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +93,8 @@ import 'boundary_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apphub.Boundary;
 /// import com.pulumi.gcp.apphub.BoundaryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,22 +129,15 @@ import 'boundary_state.dart';
 /// Boundary can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/boundary`
-///
 /// * `{{project}}/{{location}}`
-///
 /// * `{{location}}`
+///
 ///
 /// When using the `pulumi import` command, Boundary can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apphub/boundary:Boundary default projects/{{project}}/locations/{{location}}/boundary
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/boundary:Boundary default {{project}}/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/boundary:Boundary default {{location}}
 /// ```
 class Boundary extends pulumi.CustomResource {

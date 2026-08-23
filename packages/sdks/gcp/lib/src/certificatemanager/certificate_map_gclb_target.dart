@@ -8,11 +8,11 @@ class CertificateMapGclbTarget {
   /// Structure is documented below.
   final pulumi.Input<List<CertificateMapGclbTargetIpConfig>>? ipConfigs;
   /// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
-  /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+  /// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
   /// `targetSslProxy` may be set.
   final pulumi.Input<String>? targetHttpsProxy;
   /// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
-  /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+  /// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
   /// `targetSslProxy` may be set.
   final pulumi.Input<String>? targetSslProxy;
 
@@ -42,4 +42,3 @@ class CertificateMapGclbTarget {
     );
   }
 }
-

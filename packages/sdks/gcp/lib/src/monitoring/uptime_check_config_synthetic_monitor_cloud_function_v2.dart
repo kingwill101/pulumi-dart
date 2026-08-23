@@ -24,4 +24,3 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
     );
   }
 }
-

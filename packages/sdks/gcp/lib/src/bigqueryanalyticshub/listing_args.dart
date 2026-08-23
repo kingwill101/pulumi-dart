@@ -26,6 +26,13 @@ class ListingArgs {
   final pulumi.Input<ListingDataProvider>? dataProvider;
   /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
   final pulumi.Input<bool>? deleteCommercial;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
   final pulumi.Input<String>? description;
   /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
@@ -67,6 +74,7 @@ class ListingArgs {
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   /// [dataProvider] Details of the data provider who owns the source data.
   /// [deleteCommercial] If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
   /// [discoveryType] Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
   /// [displayName] Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
@@ -88,6 +96,7 @@ class ListingArgs {
     required this.dataExchangeId,
     this.dataProvider,
     this.deleteCommercial,
+    this.deletionPolicy,
     this.description,
     this.discoveryType,
     required this.displayName,
@@ -112,6 +121,7 @@ class ListingArgs {
       'dataExchangeId': dataExchangeId,
       'dataProvider': ?pulumi.Input.mapOptionalInputValue<ListingDataProvider, Map<String, dynamic>>(dataProvider, (value) => value.toMap()),
       'deleteCommercial': ?deleteCommercial,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'discoveryType': ?discoveryType,
       'displayName': displayName,
@@ -137,6 +147,7 @@ class ListingArgs {
       dataExchangeId: pulumi.Input.fromValue(map['dataExchangeId'] as String),
       dataProvider: (() { final guardedValue = map['dataProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListingDataProvider.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deleteCommercial: (() { final guardedValue = map['deleteCommercial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       discoveryType: (() { final guardedValue = map['discoveryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
@@ -154,4 +165,3 @@ class ListingArgs {
     );
   }
 }
-

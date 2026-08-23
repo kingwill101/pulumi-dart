@@ -7,12 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_filestore_backup_backup_args_doc}
 class BackupArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
   final pulumi.Input<String>? description;
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   final pulumi.Input<String> location;
@@ -38,6 +45,7 @@ class BackupArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [BackupArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
   /// [labels] Resource labels to represent user-provided metadata.
   /// [location] The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -47,6 +55,7 @@ class BackupArgs {
   /// [sourceInstance] The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
   /// [tags] A map of resource manager tags.
   const BackupArgs({
+    this.deletionPolicy,
     this.description,
     this.labels,
     required this.location,
@@ -59,6 +68,7 @@ class BackupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'location': location,
@@ -72,6 +82,7 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -83,4 +94,3 @@ class BackupArgs {
     );
   }
 }
-

@@ -5,8 +5,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-/// * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-/// * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+/// * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the subnetwork are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the subnetwork are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -14,7 +14,7 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 /// &gt; **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -123,6 +123,29 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.networkUser"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiampolicy" "policy" {
+///   project     = network-with-private-secondary-ip-ranges.project
+///   region      = network-with-private-secondary-ip-ranges.region
+///   subnetwork  = network-with-private-secondary-ip-ranges.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,10 +154,11 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicy;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,9 +178,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -309,6 +333,34 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.networkUser"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiampolicy" "policy" {
+///   project     = network-with-private-secondary-ip-ranges.project
+///   region      = network-with-private-secondary-ip-ranges.region
+///   subnetwork  = network-with-private-secondary-ip-ranges.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,10 +369,12 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicy;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,9 +399,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -452,6 +506,23 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiambinding" "binding" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -460,8 +531,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SubnetworkIAMBinding;
 /// import com.pulumi.gcp.compute.SubnetworkIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -474,9 +545,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -593,6 +664,28 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiambinding" "binding" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   members    = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -602,8 +695,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkIAMBinding;
 /// import com.pulumi.gcp.compute.SubnetworkIAMBindingArgs;
 /// import com.pulumi.gcp.compute.inputs.SubnetworkIAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -616,9 +709,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .members("user:jane@example.com")
 ///             .condition(SubnetworkIAMBindingConditionArgs.builder()
@@ -717,6 +810,23 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiammember" "member" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -725,8 +835,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SubnetworkIAMMember;
 /// import com.pulumi.gcp.compute.SubnetworkIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -739,9 +849,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -852,6 +962,28 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiammember" "member" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   member     = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -861,8 +993,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkIAMMember;
 /// import com.pulumi.gcp.compute.SubnetworkIAMMemberArgs;
 /// import com.pulumi.gcp.compute.inputs.SubnetworkIAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -875,9 +1007,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .member("user:jane@example.com")
 ///             .condition(SubnetworkIAMMemberConditionArgs.builder()
@@ -916,8 +1048,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-/// * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-/// * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+/// * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the subnetwork are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the subnetwork are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -925,7 +1057,7 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 /// &gt; **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -1034,6 +1166,29 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.networkUser"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiampolicy" "policy" {
+///   project     = network-with-private-secondary-ip-ranges.project
+///   region      = network-with-private-secondary-ip-ranges.region
+///   subnetwork  = network-with-private-secondary-ip-ranges.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1042,10 +1197,11 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicy;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1065,9 +1221,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1220,6 +1376,34 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.networkUser"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiampolicy" "policy" {
+///   project     = network-with-private-secondary-ip-ranges.project
+///   region      = network-with-private-secondary-ip-ranges.region
+///   subnetwork  = network-with-private-secondary-ip-ranges.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1228,10 +1412,12 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicy;
 /// import com.pulumi.gcp.compute.SubnetworkIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1256,9 +1442,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1363,6 +1549,23 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiambinding" "binding" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1371,8 +1574,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SubnetworkIAMBinding;
 /// import com.pulumi.gcp.compute.SubnetworkIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1385,9 +1588,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1504,6 +1707,28 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiambinding" "binding" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   members    = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1513,8 +1738,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkIAMBinding;
 /// import com.pulumi.gcp.compute.SubnetworkIAMBindingArgs;
 /// import com.pulumi.gcp.compute.inputs.SubnetworkIAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1527,9 +1752,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .members("user:jane@example.com")
 ///             .condition(SubnetworkIAMBindingConditionArgs.builder()
@@ -1628,6 +1853,23 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiammember" "member" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1636,8 +1878,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.SubnetworkIAMMember;
 /// import com.pulumi.gcp.compute.SubnetworkIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1650,9 +1892,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1763,6 +2005,28 @@ import 'subnetwork_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_subnetworkiammember" "member" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+///   role       = "roles/compute.networkUser"
+///   member     = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1772,8 +2036,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkIAMMember;
 /// import com.pulumi.gcp.compute.SubnetworkIAMMemberArgs;
 /// import com.pulumi.gcp.compute.inputs.SubnetworkIAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1786,9 +2050,9 @@ import 'subnetwork_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .role("roles/compute.networkUser")
 ///             .member("user:jane@example.com")
 ///             .condition(SubnetworkIAMMemberConditionArgs.builder()
@@ -1823,11 +2087,8 @@ import 'subnetwork_iampolicy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
-///
 /// * {{project}}/{{region}}/{{name}}
-///
 /// * {{region}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1835,25 +2096,21 @@ import 'subnetwork_iampolicy_state.dart';
 /// Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
+/// $ terraform import google_compute_subnetwork_iam_member.editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
+/// $ terraform import google_compute_subnetwork_iam_binding.editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class SubnetworkIAMPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

@@ -105,6 +105,28 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "my-cloud-exadata" {
+///   cloud_exadata_infrastructure_id = "my-instance"
+///   display_name                    = "my-instance displayname"
+///   location                        = "us-east4"
+///   project                         = "my-project"
+///   properties = {
+///     shape         = "Exadata.X9M"
+///     compute_count = "2"
+///     storage_count = "3"
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +136,8 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructure;
 /// import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +392,47 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "my-cloud-exadata" {
+///   cloud_exadata_infrastructure_id = "my-instance"
+///   display_name                    = "my-instance displayname"
+///   location                        = "us-east4"
+///   project                         = "my-project"
+///   gcp_oracle_zone                 = "us-east4-b-r1"
+///   properties = {
+///     shape         = "Exadata.X9M"
+///     compute_count = "2"
+///     storage_count = "3"
+///     customer_contacts = [{
+///       "email" = "xyz@example.com"
+///     }]
+///     maintenance_window = {
+///       custom_action_timeout_mins       = "20"
+///       days_of_weeks                    = ["SUNDAY"]
+///       hours_of_days                    = [4]
+///       is_custom_action_timeout_enabled = "0"
+///       lead_time_week                   = "1"
+///       months                           = ["JANUARY", "APRIL", "MAY", "OCTOBER"]
+///       patching_mode                    = "ROLLING"
+///       preference                       = "CUSTOM_PREFERENCE"
+///       weeks_of_months                  = [4]
+///     }
+///     total_storage_size_gb = "196608"
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -379,9 +442,10 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructure;
 /// import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
+/// import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesCustomerContactArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesMaintenanceWindowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,22 +539,15 @@ import 'cloud_exadata_infrastructure_state.dart';
 /// CloudExadataInfrastructure can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}`
-///
 /// * `{{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}`
-///
 /// * `{{location}}/{{cloud_exadata_infrastructure_id}}`
+///
 ///
 /// When using the `pulumi import` command, CloudExadataInfrastructure can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
 /// ```
 class CloudExadataInfrastructure extends pulumi.CustomResource {
@@ -501,6 +558,14 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
   late final pulumi.Output<String> cloudExadataInfrastructureId;
   /// The date and time that the Exadata Infrastructure was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   late final pulumi.Output<bool?> deletionProtection;
   /// User friendly name for this resource.
   late final pulumi.Output<String?> displayName;
@@ -513,7 +578,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
   late final pulumi.Output<String> gcpOracleZone;
   /// Labels or tags associated with the resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
   late final pulumi.Output<String> location;
@@ -546,6 +611,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
         ) {
     cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -584,6 +650,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
         ) {
     cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

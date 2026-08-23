@@ -64,6 +64,19 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sourcerepo_repository" "my-repo" {
+///   name = "my/repository"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'repository_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sourcerepo.Repository;
 /// import com.pulumi.gcp.sourcerepo.RepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,7 +215,7 @@ import 'repository_state.dart';
 /// 			Name: pulumi.String("my-repository"),
 /// 			PubsubConfigs: sourcerepo.RepositoryPubsubConfigArray{
 /// 				&sourcerepo.RepositoryPubsubConfigArgs{
-/// 					Topic:               topic.ID(),
+/// 					Topic:               topic.ID().ToIDOutput().ToStringOutput(),
 /// 					MessageFormat:       pulumi.String("JSON"),
 /// 					ServiceAccountEmail: testAccount.Email,
 /// 				},
@@ -213,6 +226,31 @@ import 'repository_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "test_account" {
+///   account_id   = "my-account"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "my-topic"
+/// }
+/// resource "gcp_sourcerepo_repository" "my-repo" {
+///   name = "my-repository"
+///   pubsub_configs {
+///     topic                 = gcp_pubsub_topic.topic.id
+///     message_format        = "JSON"
+///     service_account_email = gcp_serviceaccount_account.test_account.email
+///   }
 /// }
 /// ```
 /// ```java
@@ -228,8 +266,8 @@ import 'repository_state.dart';
 /// import com.pulumi.gcp.sourcerepo.Repository;
 /// import com.pulumi.gcp.sourcerepo.RepositoryArgs;
 /// import com.pulumi.gcp.sourcerepo.inputs.RepositoryPubsubConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,21 +328,25 @@ import 'repository_state.dart';
 /// Repository can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/repos/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
 /// ```
 class Repository extends pulumi.CustomResource {
   /// If set to true, skip repository creation if a repository with the same name already exists.
   late final pulumi.Output<bool?> createIgnoreAlreadyExists;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Resource name of the repository, of the form `{{repo}}`.
   /// The repo name may contain slashes. eg, `name/with/slash`
   late final pulumi.Output<String> name;
@@ -335,6 +377,7 @@ class Repository extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pubsubConfigs = registerOutput<List<Map<String, dynamic>>?>('pubsubConfigs');
@@ -366,6 +409,7 @@ class Repository extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pubsubConfigs = registerOutput<List<Map<String, dynamic>>?>('pubsubConfigs');

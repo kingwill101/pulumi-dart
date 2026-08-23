@@ -24,7 +24,7 @@ class JobArgs {
   /// The labels associated with this job. You can use these to organize and group your jobs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Configures a load job.
   /// Structure is documented below.
@@ -37,6 +37,7 @@ class JobArgs {
   /// Configures a query job.
   /// Structure is documented below.
   final pulumi.Input<JobQuery>? query;
+  /// (Optional, Beta)
   /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
   /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
   final pulumi.Input<String>? reservation;
@@ -51,7 +52,7 @@ class JobArgs {
   /// [location] The geographic location of the job. The default value is US.
   /// [project] The ID of the project in which the resource belongs.
   /// [query] Configures a query job.
-  /// [reservation] The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+  /// [reservation] (Optional, Beta)
   const JobArgs({
     this.copy,
     this.extract,
@@ -95,4 +96,3 @@ class JobArgs {
     );
   }
 }
-

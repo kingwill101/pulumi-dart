@@ -23,7 +23,7 @@ class AttachedClusterArgs {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
@@ -31,7 +31,14 @@ class AttachedClusterArgs {
   /// Binary Authorization configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterBinaryAuthorization>? binaryAuthorization;
-  /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+  /// Policy to determine what flags to send on delete.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  ///
+  /// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
   final pulumi.Input<String>? deletionPolicy;
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
@@ -59,9 +66,9 @@ class AttachedClusterArgs {
   /// validate KSA tokens in order to allow system workloads (such as GKE Connect
   /// and telemetry agents) to authenticate back to GCP.
   /// Both clusters with public and private issuer URLs are supported.
-  /// Clusters with public issuers only need to specify the `issuer_url` field
+  /// Clusters with public issuers only need to specify the `issuerUrl` field
   /// while clusters with private issuers need to provide both
-  /// `issuer_url` and `jwks`.
+  /// `issuerUrl` and `jwks`.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterOidcConfig> oidcConfig;
   /// The platform version for the cluster (e.g. `1.23.0-gke.1`).
@@ -76,14 +83,14 @@ class AttachedClusterArgs {
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+  /// &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
   final pulumi.Input<AttachedClusterSecurityPostureConfig>? securityPostureConfig;
 
   /// Creates a new [AttachedClusterArgs].
   /// [annotations] Optional. Annotations on the cluster. This field has the same
   /// [authorization] Configuration related to the cluster RBAC settings.
   /// [binaryAuthorization] Binary Authorization configuration.
-  /// [deletionPolicy] Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+  /// [deletionPolicy] Policy to determine what flags to send on delete.
   /// [description] A human readable description of this attached cluster. Cannot be longer
   /// [distribution] The Kubernetes distribution of the underlying attached cluster. Supported values:
   /// [fleet] Fleet configuration.
@@ -157,4 +164,3 @@ class AttachedClusterArgs {
     );
   }
 }
-

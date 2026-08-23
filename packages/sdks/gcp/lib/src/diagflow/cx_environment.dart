@@ -181,12 +181,12 @@ import 'cx_environment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxEnvironment(ctx, "development", &diagflow.CxEnvironmentArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Development"),
 /// 			Description: pulumi.String("Development Environment"),
 /// 			VersionConfigs: diagflow.CxEnvironmentVersionConfigArray{
 /// 				&diagflow.CxEnvironmentVersionConfigArgs{
-/// 					Version: version1.ID(),
+/// 					Version: version1.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -195,6 +195,43 @@ import 'cx_environment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxversion" "version_1" {
+///   parent       = gcp_diagflow_cxagent.agent.start_flow
+///   display_name = "1.0.0"
+///   description  = "version 1.0.0"
+/// }
+/// resource "gcp_diagflow_cxenvironment" "development" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Development"
+///   description  = "Development Environment"
+///   version_configs {
+///     version = gcp_diagflow_cxversion.version_1.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -211,8 +248,8 @@ import 'cx_environment_state.dart';
 /// import com.pulumi.gcp.diagflow.CxEnvironment;
 /// import com.pulumi.gcp.diagflow.CxEnvironmentArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxEnvironmentVersionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -302,19 +339,23 @@ import 'cx_environment_state.dart';
 /// Environment can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/environments/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment default {{parent}}/environments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment default {{parent}}/{{name}}
 /// ```
 class CxEnvironment extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
   late final pulumi.Output<String?> description;
   /// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
@@ -344,6 +385,7 @@ class CxEnvironment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
@@ -375,6 +417,7 @@ class CxEnvironment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

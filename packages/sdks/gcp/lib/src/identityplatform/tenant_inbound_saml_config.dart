@@ -160,6 +160,39 @@ import 'tenant_inbound_saml_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_identityplatform_tenant" "tenant" {
+///   display_name = "tenant"
+/// }
+/// resource "gcp_identityplatform_tenantinboundsamlconfig" "tenant_saml_config" {
+///   name         = "saml.tf-config"
+///   display_name = "Display Name"
+///   tenant       = gcp_identityplatform_tenant.tenant.name
+///   idp_config = {
+///     idp_entity_id = "tf-idp"
+///     sign_request  = true
+///     sso_url       = "https://example.com"
+///     idp_certificates = [{
+///       "x509Certificate" = file("test-fixtures/rsa_cert.pem")
+///     }]
+///   }
+///   sp_config = {
+///     sp_entity_id = "tf-sp"
+///     callback_uri = "https://example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,11 +204,12 @@ import 'tenant_inbound_saml_config_state.dart';
 /// import com.pulumi.gcp.identityplatform.TenantInboundSamlConfig;
 /// import com.pulumi.gcp.identityplatform.TenantInboundSamlConfigArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigIdpConfigArgs;
+/// import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigSpConfigArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,25 +283,25 @@ import 'tenant_inbound_saml_config_state.dart';
 /// TenantInboundSamlConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}`
-///
 /// * `{{project}}/{{tenant}}/{{name}}`
-///
 /// * `{{tenant}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TenantInboundSamlConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{project}}/{{tenant}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
 /// ```
 class TenantInboundSamlConfig extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human friendly display name.
   late final pulumi.Output<String> displayName;
   /// If this config allows users to sign in with the provider.
@@ -303,6 +337,7 @@ class TenantInboundSamlConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantInboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -335,6 +370,7 @@ class TenantInboundSamlConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantInboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

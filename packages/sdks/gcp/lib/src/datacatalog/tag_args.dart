@@ -13,6 +13,13 @@ class TagArgs {
   /// For attaching a tag to a nested column, use `.` to separate the column names. Example:
   /// `outer_column.inner_column`
   final pulumi.Input<String>? column;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// This maps the ID of a tag field to the value of and additional information about that field.
   /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
   /// Structure is documented below.
@@ -27,11 +34,13 @@ class TagArgs {
 
   /// Creates a new [TagArgs].
   /// [column] Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [fields] This maps the ID of a tag field to the value of and additional information about that field.
   /// [parent] The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
   /// [template] The resource name of the tag template that this tag uses. Example:
   const TagArgs({
     this.column,
+    this.deletionPolicy,
     required this.fields,
     this.parent,
     required this.template,
@@ -40,6 +49,7 @@ class TagArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'column': ?column,
+      'deletionPolicy': ?deletionPolicy,
       'fields': pulumi.Input.mapInputValue<List<TagField>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<TagField, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parent': ?parent,
       'template': template,
@@ -49,10 +59,10 @@ class TagArgs {
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
       column: (() { final guardedValue = map['column']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<TagField>(map['fields']!, (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       template: pulumi.Input.fromValue(map['template'] as String),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'response_policy_rule_state.dart';
 /// A Response Policy Rule is a selector that applies its behavior to queries that match the selector.
 /// Selectors are DNS names, which may be wildcards or exact matches.
 /// Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
-/// as identified by the dns_name field with the longest matching suffix.
+/// as identified by the dnsName field with the longest matching suffix.
 ///
 ///
 ///
@@ -176,10 +176,10 @@ import 'response_policy_rule_state.dart';
 /// 			ResponsePolicyName: pulumi.String("example-response-policy"),
 /// 			Networks: dns.ResponsePolicyNetworkArray{
 /// 				&dns.ResponsePolicyNetworkArgs{
-/// 					NetworkUrl: network_1.ID(),
+/// 					NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				&dns.ResponsePolicyNetworkArgs{
-/// 					NetworkUrl: network_2.ID(),
+/// 					NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -210,6 +210,46 @@ import 'response_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network-1" {
+///   name                    = "network-1"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_network" "network-2" {
+///   name                    = "network-2"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_dns_responsepolicy" "response-policy" {
+///   response_policy_name = "example-response-policy"
+///   networks {
+///     network_url = gcp_compute_network.network-1.id
+///   }
+///   networks {
+///     network_url = gcp_compute_network.network-2.id
+///   }
+/// }
+/// resource "gcp_dns_responsepolicyrule" "example-response-policy-rule" {
+///   response_policy = gcp_dns_responsepolicy.response-policy.response_policy_name
+///   rule_name       = "example-rule"
+///   dns_name        = "dns.example.com."
+///   local_data = {
+///     local_datas = [{
+///       "name"    = "dns.example.com."
+///       "type"    = "A"
+///       "ttl"     = 300
+///       "rrdatas" = ["192.0.2.91"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +264,9 @@ import 'response_policy_rule_state.dart';
 /// import com.pulumi.gcp.dns.ResponsePolicyRule;
 /// import com.pulumi.gcp.dns.ResponsePolicyRuleArgs;
 /// import com.pulumi.gcp.dns.inputs.ResponsePolicyRuleLocalDataArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dns.inputs.ResponsePolicyRuleLocalDataLocalDataArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,27 +356,28 @@ import 'response_policy_rule_state.dart';
 /// ResponsePolicyRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}`
-///
 /// * `{{project}}/{{response_policy}}/{{rule_name}}`
-///
 /// * `{{response_policy}}/{{rule_name}}`
+///
 ///
 /// When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{project}}/{{response_policy}}/{{rule_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{response_policy}}/{{rule_name}}
 /// ```
 class ResponsePolicyRule extends pulumi.CustomResource {
+  /// (Optional, Beta)
   /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
   late final pulumi.Output<String?> behavior;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
   late final pulumi.Output<String> dnsName;
   /// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
@@ -365,6 +407,7 @@ class ResponsePolicyRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     behavior = registerOutput<String?>('behavior');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsName = registerOutput<String>('dnsName');
     localData = registerOutput<ResponsePolicyRuleLocalData?>('localData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponsePolicyRuleLocalData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
@@ -396,6 +439,7 @@ class ResponsePolicyRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     behavior = registerOutput<String?>('behavior');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsName = registerOutput<String>('dnsName');
     localData = registerOutput<ResponsePolicyRuleLocalData?>('localData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponsePolicyRuleLocalData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

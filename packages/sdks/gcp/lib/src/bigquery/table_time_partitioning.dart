@@ -12,7 +12,7 @@ class TableTimePartitioning {
   final pulumi.Input<String>? field;
   /// If set to true, queries over this table
   /// require a partition filter that can be used for partition elimination to be
-  /// specified. `require_partition_filter` is deprecated and will be removed in
+  /// specified. `requirePartitionFilter` is deprecated and will be removed in
   /// a future major release. Use the top level field with the same name instead.
   final pulumi.Input<bool>? requirePartitionFilter;
   /// The supported types are DAY, HOUR, MONTH, and YEAR,
@@ -49,4 +49,3 @@ class TableTimePartitioning {
     );
   }
 }
-

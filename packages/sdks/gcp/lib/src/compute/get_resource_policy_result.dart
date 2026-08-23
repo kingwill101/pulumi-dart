@@ -9,6 +9,7 @@ import 'get_resource_policy_workload_policy.dart';
 
 /// Result data returned by getResourcePolicy.
 class GetResourcePolicyResult {
+  final String deletionPolicy;
   /// Description of this Resource Policy.
   final String description;
   final List<GetResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicies;
@@ -25,6 +26,7 @@ class GetResourcePolicyResult {
   final List<GetResourcePolicyWorkloadPolicy> workloadPolicies;
 
   /// Creates a new [GetResourcePolicyResult].
+  /// [deletionPolicy] Required.
   /// [description] Description of this Resource Policy.
   /// [diskConsistencyGroupPolicies] Required.
   /// [groupPlacementPolicies] Required.
@@ -37,6 +39,7 @@ class GetResourcePolicyResult {
   /// [snapshotSchedulePolicies] Required.
   /// [workloadPolicies] Required.
   const GetResourcePolicyResult({
+    required this.deletionPolicy,
     required this.description,
     required this.diskConsistencyGroupPolicies,
     required this.groupPlacementPolicies,
@@ -52,6 +55,7 @@ class GetResourcePolicyResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'diskConsistencyGroupPolicies': pulumi.Input.encodeList<GetResourcePolicyDiskConsistencyGroupPolicy, Map<String, dynamic>>(diskConsistencyGroupPolicies, (value) => value.toMap()),
       'groupPlacementPolicies': pulumi.Input.encodeList<GetResourcePolicyGroupPlacementPolicy, Map<String, dynamic>>(groupPlacementPolicies, (value) => value.toMap()),
@@ -68,6 +72,7 @@ class GetResourcePolicyResult {
 
   factory GetResourcePolicyResult.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicyResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       diskConsistencyGroupPolicies: pulumi.Input.decodeList<GetResourcePolicyDiskConsistencyGroupPolicy>(map['diskConsistencyGroupPolicies']!, (value) => GetResourcePolicyDiskConsistencyGroupPolicy.fromMap((value as Map).cast<String, dynamic>())),
       groupPlacementPolicies: pulumi.Input.decodeList<GetResourcePolicyGroupPlacementPolicy>(map['groupPlacementPolicies']!, (value) => GetResourcePolicyGroupPlacementPolicy.fromMap((value as Map).cast<String, dynamic>())),
@@ -82,4 +87,3 @@ class GetResourcePolicyResult {
     );
   }
 }
-

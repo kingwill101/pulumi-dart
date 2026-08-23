@@ -96,4 +96,3 @@ class CertificateCertificateDescriptionX509DescriptionNameConstraint {
     );
   }
 }
-

@@ -31,7 +31,7 @@ class WebRegionBackendServiceIamMemberState {
   /// region is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? region;
   /// The role that should be applied. Only one
-  /// `gcp.iap.WebRegionBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `gcp.iap.WebRegionBackendServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String>? role;
   /// Used to find the parent resource to bind the IAM policy to
@@ -79,4 +79,3 @@ class WebRegionBackendServiceIamMemberState {
     );
   }
 }
-

@@ -7,8 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_dataflow_job_job_args_doc}
 class JobArgs {
-  /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+  /// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
   final pulumi.Input<List<String>>? additionalExperiments;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
   final pulumi.Input<bool>? enableStreamingEngine;
   /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -17,7 +24,7 @@ class JobArgs {
   final pulumi.Input<String>? kmsKeyName;
   /// User labels to be specified for the job. Keys and values should follow the restrictions
   /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The machine type to use for the job.
   final pulumi.Input<String>? machineType;
@@ -55,7 +62,8 @@ class JobArgs {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [JobArgs].
-  /// [additionalExperiments] List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+  /// [additionalExperiments] List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [enableStreamingEngine] Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
   /// [ipConfiguration] The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
   /// [kmsKeyName] The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
@@ -77,6 +85,7 @@ class JobArgs {
   /// [zone] The zone in which the created job should run. If it is not provided, the provider zone is used.
   const JobArgs({
     this.additionalExperiments,
+    this.deletionPolicy,
     this.enableStreamingEngine,
     this.ipConfiguration,
     this.kmsKeyName,
@@ -101,6 +110,7 @@ class JobArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalExperiments': ?additionalExperiments,
+      'deletionPolicy': ?deletionPolicy,
       'enableStreamingEngine': ?enableStreamingEngine,
       'ipConfiguration': ?ipConfiguration,
       'kmsKeyName': ?kmsKeyName,
@@ -126,6 +136,7 @@ class JobArgs {
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
       additionalExperiments: (() { final guardedValue = map['additionalExperiments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableStreamingEngine: (() { final guardedValue = map['enableStreamingEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipConfiguration: (() { final guardedValue = map['ipConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -148,4 +159,3 @@ class JobArgs {
     );
   }
 }
-

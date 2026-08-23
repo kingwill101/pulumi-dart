@@ -7,7 +7,7 @@ import 'get_supported_database_flags_supported_database_flag_string_restrictions
 class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
   /// Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
   final pulumi.Input<bool> acceptsMultipleValues;
-  /// The name of the database flag, e.g. "max_allowed_packets". The is a possibly key for the Instance.database_flags map field.
+  /// The name of the database flag, e.g. "maxAllowedPackets". The is a possibly key for the Instance.database_flags map field.
   final pulumi.Input<String> flagName;
   /// Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
   final pulumi.Input<GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions> integerRestrictions;
@@ -24,7 +24,7 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
 
   /// Creates a new [GetSupportedDatabaseFlagsSupportedDatabaseFlag].
   /// [acceptsMultipleValues] Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
-  /// [flagName] The name of the database flag, e.g. "max_allowed_packets". The is a possibly key for the Instance.database_flags map field.
+  /// [flagName] The name of the database flag, e.g. "maxAllowedPackets". The is a possibly key for the Instance.database_flags map field.
   /// [integerRestrictions] Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
   /// [name] The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
   /// [requiresDbRestart] Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
@@ -68,4 +68,3 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
     );
   }
 }
-

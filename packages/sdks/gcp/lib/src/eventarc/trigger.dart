@@ -275,7 +275,7 @@ import 'trigger_transport.dart';
 /// 			},
 /// 			Transport: &eventarc.TriggerTransportArgs{
 /// 				Pubsub: &eventarc.TriggerTransportPubsubArgs{
-/// 					Topic: foo.ID(),
+/// 					Topic: foo.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			RetryPolicy: &eventarc.TriggerRetryPolicyArgs{
@@ -287,6 +287,64 @@ import 'trigger_transport.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_eventarc_trigger" "primary" {
+///   name     = "some-trigger"
+///   location = "us-central1"
+///   matching_criterias {
+///     attribute = "type"
+///     value     = "google.cloud.pubsub.topic.v1.messagePublished"
+///   }
+///   destination = {
+///     cloud_run_service = {
+///       service = gcp_cloudrun_service.default.name
+///       region  = "us-central1"
+///     }
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   transport = {
+///     pubsub = {
+///       topic = gcp_pubsub_topic.foo.id
+///     }
+///   }
+///   retry_policy = {
+///     max_attempts = 1
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "foo" {
+///   name = "some-topic"
+/// }
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "some-service"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "gcr.io/cloudrun/hello"
+///         "ports" = [{
+///           "containerPort" = 8080
+///         }]
+///       }]
+///       container_concurrency = 50
+///       timeout_seconds       = 100
+///     }
+///   }
+///   traffics {
+///     percent         = 100
+///     latest_revision = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -301,6 +359,8 @@ import 'trigger_transport.dart';
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerPortArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
 /// import com.pulumi.gcp.eventarc.Trigger;
 /// import com.pulumi.gcp.eventarc.TriggerArgs;
@@ -310,8 +370,8 @@ import 'trigger_transport.dart';
 /// import com.pulumi.gcp.eventarc.inputs.TriggerTransportArgs;
 /// import com.pulumi.gcp.eventarc.inputs.TriggerTransportPubsubArgs;
 /// import com.pulumi.gcp.eventarc.inputs.TriggerRetryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,22 +484,15 @@ import 'trigger_transport.dart';
 /// Trigger can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/trigger:Trigger default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/trigger:Trigger default {{location}}/{{name}}
 /// ```
 class Trigger extends pulumi.CustomResource {
@@ -449,6 +502,13 @@ class Trigger extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> conditions;
   /// Output only. The creation time.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Required. Destination specifies where the events should be sent to.
   /// Structure is documented below.
   late final pulumi.Output<TriggerDestination> destination;
@@ -460,7 +520,7 @@ class Trigger extends pulumi.CustomResource {
   late final pulumi.Output<String> eventDataContentType;
   /// Optional. User labels attached to the triggers that can be used to group resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -506,6 +566,7 @@ class Trigger extends pulumi.CustomResource {
     channel = registerOutput<String?>('channel');
     conditions = registerOutput<Map<String, String>>('conditions');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<TriggerDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -549,6 +610,7 @@ class Trigger extends pulumi.CustomResource {
     channel = registerOutput<String?>('channel');
     conditions = registerOutput<Map<String, String>>('conditions');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<TriggerDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');

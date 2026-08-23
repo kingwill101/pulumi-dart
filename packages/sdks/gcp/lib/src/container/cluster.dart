@@ -3,6 +3,7 @@ import 'cluster_addons_config.dart';
 import 'cluster_anonymous_authentication_config.dart';
 import 'cluster_args.dart';
 import 'cluster_authenticator_groups_config.dart';
+import 'cluster_autopilot_cluster_policy_config.dart';
 import 'cluster_binary_authorization.dart';
 import 'cluster_cluster_autoscaling.dart';
 import 'cluster_cluster_telemetry.dart';
@@ -21,6 +22,7 @@ import 'cluster_identity_service_config.dart';
 import 'cluster_ip_allocation_policy.dart';
 import 'cluster_logging_config.dart';
 import 'cluster_maintenance_policy.dart';
+import 'cluster_managed_machine_learning_diagnostics_config.dart';
 import 'cluster_managed_opentelemetry_config.dart';
 import 'cluster_master_auth.dart';
 import 'cluster_master_authorized_networks_config.dart';
@@ -29,6 +31,7 @@ import 'cluster_monitoring_config.dart';
 import 'cluster_network_performance_config.dart';
 import 'cluster_network_policy.dart';
 import 'cluster_node_config.dart';
+import 'cluster_node_creation_config.dart';
 import 'cluster_node_pool_auto_config.dart';
 import 'cluster_node_pool_defaults.dart';
 import 'cluster_notification_config.dart';
@@ -39,6 +42,7 @@ import 'cluster_protect_config.dart';
 import 'cluster_rbac_binding_config.dart';
 import 'cluster_release_channel.dart';
 import 'cluster_resource_usage_export_config.dart';
+import 'cluster_rollback_safe_upgrade.dart';
 import 'cluster_secret_manager_config.dart';
 import 'cluster_secret_sync_config.dart';
 import 'cluster_security_posture_config.dart';
@@ -58,11 +62,12 @@ import 'cluster_workload_identity_config.dart';
 /// * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
 /// * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
 ///
-/// &gt; On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
+///
+/// &gt; On version 5.0.0+ of the provider, you must explicitly set `deletionProtection = false`
 /// and run `pulumi up` to write the field to state in order to destroy a cluster.
 ///
 /// &gt; All arguments and attributes (including certificate outputs) will be stored in the raw state as
-/// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+/// plaintext. Read more about sensitive data in state.
 ///
 /// ## Example Usage
 ///
@@ -210,6 +215,38 @@ import 'cluster_workload_identity_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "default" {
+///   account_id   = "service-account-id"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_container_cluster" "primary" {
+///   name                     = "my-gke-cluster"
+///   location                 = "us-central1"
+///   remove_default_node_pool = true
+///   initial_node_count       = 1
+/// }
+/// resource "gcp_container_nodepool" "primary_preemptible_nodes" {
+///   name       = "my-node-pool"
+///   location   = "us-central1"
+///   cluster    = gcp_container_cluster.primary.name
+///   node_count = 1
+///   node_config = {
+///     preemptible     = true
+///     machine_type    = "e2-medium"
+///     service_account = gcp_serviceaccount_account.default.email
+///     oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +260,8 @@ import 'cluster_workload_identity_config.dart';
 /// import com.pulumi.gcp.container.NodePool;
 /// import com.pulumi.gcp.container.NodePoolArgs;
 /// import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -433,6 +470,33 @@ import 'cluster_workload_identity_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "default" {
+///   account_id   = "service-account-id"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "marcellus-wallace"
+///   location           = "us-central1-a"
+///   initial_node_count = 3
+///   node_config = {
+///     service_account = gcp_serviceaccount_account.default.email
+///     oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
+///     labels = {
+///       "foo" = "bar"
+///     }
+///     tags = ["foo", "bar"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +508,8 @@ import 'cluster_workload_identity_config.dart';
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -503,6 +567,309 @@ import 'cluster_workload_identity_config.dart';
 ///           - bar
 /// ```
 ///
+///
+/// ### Rollback-Safe (Two-Step) Upgrades
+///
+/// To perform a rollback-safe (two-step) control plane upgrade, you first specify a soak duration in the `rollbackSafeUpgrade` block when changing the `minMasterVersion`. This upgrades the master but keeps the control plane emulating the older version.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.container.Cluster("primary", {
+///     name: "my-gke-cluster",
+///     location: "us-central1",
+///     initialNodeCount: 1,
+///     minMasterVersion: "1.32.4-gke.200",
+///     rollbackSafeUpgrade: {
+///         controlPlaneSoakDuration: "604800s",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.container.Cluster("primary",
+///     name="my-gke-cluster",
+///     location="us-central1",
+///     initial_node_count=1,
+///     min_master_version="1.32.4-gke.200",
+///     rollback_safe_upgrade={
+///         "control_plane_soak_duration": "604800s",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.Container.Cluster("primary", new()
+///     {
+///         Name = "my-gke-cluster",
+///         Location = "us-central1",
+///         InitialNodeCount = 1,
+///         MinMasterVersion = "1.32.4-gke.200",
+///         RollbackSafeUpgrade = new Gcp.Container.Inputs.ClusterRollbackSafeUpgradeArgs
+///         {
+///             ControlPlaneSoakDuration = "604800s",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+/// 			Name:             pulumi.String("my-gke-cluster"),
+/// 			Location:         pulumi.String("us-central1"),
+/// 			InitialNodeCount: pulumi.Int(1),
+/// 			MinMasterVersion: pulumi.String("1.32.4-gke.200"),
+/// 			RollbackSafeUpgrade: &container.ClusterRollbackSafeUpgradeArgs{
+/// 				ControlPlaneSoakDuration: pulumi.String("604800s"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "my-gke-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   min_master_version = "1.32.4-gke.200"
+///   rollback_safe_upgrade = {
+///     control_plane_soak_duration = "604800s"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.container.Cluster;
+/// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterRollbackSafeUpgradeArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new Cluster("primary", ClusterArgs.builder()
+///             .name("my-gke-cluster")
+///             .location("us-central1")
+///             .initialNodeCount(1)
+///             .minMasterVersion("1.32.4-gke.200")
+///             .rollbackSafeUpgrade(ClusterRollbackSafeUpgradeArgs.builder()
+///                 .controlPlaneSoakDuration("604800s")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:container:Cluster
+///     properties:
+///       name: my-gke-cluster
+///       location: us-central1
+///       initialNodeCount: 1
+///       minMasterVersion: 1.32.4-gke.200
+///       rollbackSafeUpgrade:
+///         controlPlaneSoakDuration: 604800s
+/// ```
+///
+///
+/// After the soak period concludes, you can declaratively complete the upgrade by specifying the target `desiredEmulatedVersion`.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.container.Cluster("primary", {
+///     name: "my-gke-cluster",
+///     location: "us-central1",
+///     initialNodeCount: 1,
+///     minMasterVersion: "1.32.4-gke.200",
+///     rollbackSafeUpgrade: {
+///         controlPlaneSoakDuration: "604800s",
+///     },
+///     desiredEmulatedVersion: "1.32",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.container.Cluster("primary",
+///     name="my-gke-cluster",
+///     location="us-central1",
+///     initial_node_count=1,
+///     min_master_version="1.32.4-gke.200",
+///     rollback_safe_upgrade={
+///         "control_plane_soak_duration": "604800s",
+///     },
+///     desired_emulated_version="1.32")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.Container.Cluster("primary", new()
+///     {
+///         Name = "my-gke-cluster",
+///         Location = "us-central1",
+///         InitialNodeCount = 1,
+///         MinMasterVersion = "1.32.4-gke.200",
+///         RollbackSafeUpgrade = new Gcp.Container.Inputs.ClusterRollbackSafeUpgradeArgs
+///         {
+///             ControlPlaneSoakDuration = "604800s",
+///         },
+///         DesiredEmulatedVersion = "1.32",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+/// 			Name:             pulumi.String("my-gke-cluster"),
+/// 			Location:         pulumi.String("us-central1"),
+/// 			InitialNodeCount: pulumi.Int(1),
+/// 			MinMasterVersion: pulumi.String("1.32.4-gke.200"),
+/// 			RollbackSafeUpgrade: &container.ClusterRollbackSafeUpgradeArgs{
+/// 				ControlPlaneSoakDuration: pulumi.String("604800s"),
+/// 			},
+/// 			DesiredEmulatedVersion: pulumi.String("1.32"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "my-gke-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   min_master_version = "1.32.4-gke.200"
+///   rollback_safe_upgrade = {
+///     control_plane_soak_duration = "604800s"
+///   }
+///   desired_emulated_version = "1.32"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.container.Cluster;
+/// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterRollbackSafeUpgradeArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new Cluster("primary", ClusterArgs.builder()
+///             .name("my-gke-cluster")
+///             .location("us-central1")
+///             .initialNodeCount(1)
+///             .minMasterVersion("1.32.4-gke.200")
+///             .rollbackSafeUpgrade(ClusterRollbackSafeUpgradeArgs.builder()
+///                 .controlPlaneSoakDuration("604800s")
+///                 .build())
+///             .desiredEmulatedVersion("1.32")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:container:Cluster
+///     properties:
+///       name: my-gke-cluster
+///       location: us-central1
+///       initialNodeCount: 1
+///       minMasterVersion: 1.32.4-gke.200
+///       rollbackSafeUpgrade:
+///         controlPlaneSoakDuration: 604800s
+///       desiredEmulatedVersion: '1.32'
+/// ```
+///
+///
+/// &gt; **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
 ///
 /// ### Autopilot
 ///
@@ -586,6 +953,25 @@ import 'cluster_workload_identity_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "default" {
+///   account_id   = "service-account-id"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_container_cluster" "primary" {
+///   name             = "marcellus-wallace"
+///   location         = "us-central1-a"
+///   enable_autopilot = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -596,8 +982,8 @@ import 'cluster_workload_identity_config.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -637,12 +1023,40 @@ import 'cluster_workload_identity_config.dart';
 ///       location: us-central1-a
 ///       enableAutopilot: true
 /// ```
+///
+///
+/// ## Import
+///
+/// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
+/// provider value will be used. Examples:
+///
+/// * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
+/// * `{{project_id}}/{{location}}/{{cluster_id}}`
+/// * `{{location}}/{{cluster_id}}`
+///
+///
+/// When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
+///
+/// $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+///
+/// $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
+/// ```
+///
+/// &gt; **Note:** This resource has several fields that control Terraform-specific behavior and aren't present in the API. If they are set in config and you import a cluster, Terraform may need to perform an update immediately after import. Most of these updates should be no-ops but some may modify your cluster if the imported state differs.
+///
+/// For example, the following fields will show diffs if set in config:
+///
+/// - `minMasterVersion`
+/// - `removeDefaultNodePool`
 class Cluster extends pulumi.CustomResource {
   /// The configuration for addons supported by GKE.
   /// Structure is documented below.
   late final pulumi.Output<ClusterAddonsConfig> addonsConfig;
   /// Enable NET_ADMIN for the cluster. Defaults to
-  /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+  /// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
   /// set to `true`).
   late final pulumi.Output<bool?> allowNetAdmin;
   /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
@@ -651,6 +1065,15 @@ class Cluster extends pulumi.CustomResource {
   /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
   /// Structure is documented below.
   late final pulumi.Output<ClusterAuthenticatorGroupsConfig> authenticatorGroupsConfig;
+  /// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+  late final pulumi.Output<ClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfig;
+  /// The customer
+  /// allowlist Cloud Storage paths for the cluster. These paths are used with the
+  /// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+  /// Autopilot clusters. See the Cluster API's
+  /// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+  /// documentation for more details.
+  late final pulumi.Output<List<String>> autopilotPrivilegedAdmissions;
   /// Configuration options for the Binary
   /// Authorization feature. Structure is documented below.
   late final pulumi.Output<ClusterBinaryAuthorization?> binaryAuthorization;
@@ -663,9 +1086,9 @@ class Cluster extends pulumi.CustomResource {
   /// The IP address range of the Kubernetes pods
   /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
   /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-  /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
+  /// default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
   late final pulumi.Output<String> clusterIpv4Cidr;
-  /// Configuration for
+  /// ) Configuration for
   /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
   /// Structure is documented below.
   late final pulumi.Output<ClusterClusterTelemetry> clusterTelemetry;
@@ -682,6 +1105,8 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterDatabaseEncryption> databaseEncryption;
   /// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
   late final pulumi.Output<String> datapathProvider;
+  /// The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+  late final pulumi.Output<String?> dataplaneOptimizationMode;
   /// The default maximum number of pods
   /// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
   /// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -689,15 +1114,32 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<int> defaultMaxPodsPerNode;
   /// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
   late final pulumi.Output<ClusterDefaultSnatStatus> defaultSnatStatus;
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// &lt;a name="nestedDefaultSnatStatus"&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from
+  /// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+  /// `pulumi up` will only succeed if this field is `false` in the Terraform
+  /// state.
   late final pulumi.Output<bool?> deletionProtection;
   /// Description of the cluster.
   late final pulumi.Output<String?> description;
+  /// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+  late final pulumi.Output<String?> desiredEmulatedVersion;
   /// Disable L4 load balancer VPC firewalls to enable firewall policies.
   late final pulumi.Output<bool?> disableL4LbFirewallReconciliation;
   /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
   late final pulumi.Output<ClusterDnsConfig?> dnsConfig;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// The current emulated Kubernetes version running on the GKE cluster control plane.
+  late final pulumi.Output<String> emulatedVersion;
   /// Enable Autopilot for this cluster. Defaults to `false`.
   /// Note that when this option is enabled, certain features of Standard GKE are not available.
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -743,14 +1185,16 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfig;
   /// . Structure is documented below.
   late final pulumi.Output<ClusterIdentityServiceConfig> identityServiceConfig;
+  /// Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+  late final pulumi.Output<bool?> ignoreNodeCountChanges;
   /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
   late final pulumi.Output<String?> inTransitEncryptionConfig;
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-  /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+  /// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
   /// `gcp.container.NodePool` objects with no default node pool, you'll need to
   /// set this to a value of at least `1`, alongside setting
-  /// `remove_default_node_pool` to `true`.
+  /// `removeDefaultNodePool` to `true`.
   late final pulumi.Output<int?> initialNodeCount;
   /// Configuration of cluster IP allocation for
   /// VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
@@ -775,7 +1219,9 @@ class Cluster extends pulumi.CustomResource {
   /// The maintenance policy to use for the cluster. Structure is
   /// documented below.
   late final pulumi.Output<ClusterMaintenancePolicy?> maintenancePolicy;
-  /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+  /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+  late final pulumi.Output<ClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfig;
+  /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
   late final pulumi.Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig;
   /// The authentication information for accessing the
   /// Kubernetes master. Some values in this block are only returned by the API if
@@ -786,17 +1232,19 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterMasterAuth> masterAuth;
   /// The desired
   /// configuration options for master authorized networks. Omit the
-  /// nested `cidr_blocks` attribute to disallow external access (except
+  /// nested `cidrBlocks` attribute to disallow external access (except
   /// the cluster node IPs, which GKE automatically whitelists).
   /// Structure is documented below.
   late final pulumi.Output<ClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfig;
-  /// The current version of the master in the cluster. This may be different than the min_master_version set in the config if the master has been updated by GKE.
+  /// The current version of the master in the cluster. This may
+  /// be different than the `minMasterVersion` set in the config if the master
+  /// has been updated by GKE.
   late final pulumi.Output<String> masterVersion;
   /// Structure is documented below.
   late final pulumi.Output<ClusterMeshCertificates> meshCertificates;
   /// The minimum version of the master. GKE
   /// will auto-update the master to new versions, so this does not guarantee the
-  /// current master version--use the read-only `master_version` field to obtain that.
+  /// current master version--use the read-only `masterVersion` field to obtain that.
   /// If unset, the cluster's version will be set by GKE to the version of the most recent
   /// official release (which is not necessarily the latest version).  Most users will find
   /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
@@ -824,7 +1272,7 @@ class Cluster extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> name;
-  /// The name or self_link of the Google Compute Engine
+  /// The name or selfLink of the Google Compute Engine
   /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
   /// shared network.
   late final pulumi.Output<String?> network;
@@ -839,10 +1287,12 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> networkingMode;
   /// Parameters used in creating the default node pool.
   /// Generally, this field should not be used at the same time as a
-  /// `gcp.container.NodePool` or a `node_pool` block; this configuration
+  /// `gcp.container.NodePool` or a `nodePool` block; this configuration
   /// manages the default node pool, which isn't recommended to be used.
   /// Structure is documented below.
   late final pulumi.Output<ClusterNodeConfig> nodeConfig;
+  /// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+  late final pulumi.Output<ClusterNodeCreationConfig> nodeCreationConfig;
   /// The list of zones in which the cluster's nodes
   /// are located. Nodes must be in the region of their regional cluster or in the
   /// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -861,20 +1311,19 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterNodePoolAutoConfig> nodePoolAutoConfig;
   /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
   late final pulumi.Output<ClusterNodePoolDefaults> nodePoolDefaults;
-  /// List of node pools associated with this cluster.
-  /// See gcp.container.NodePool for schema.
+  /// List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
   /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
   /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
   /// to say "these are the _only_ node pools associated with this cluster", use the
   /// gcp.container.NodePool resource instead of this property.
   late final pulumi.Output<List<Map<String, dynamic>>> nodePools;
   /// The Kubernetes version on the nodes. Must either be unset
-  /// or set to the same value as `min_master_version` on create. Defaults to the default
+  /// or set to the same value as `minMasterVersion` on create. Defaults to the default
   /// version set by GKE which is not necessarily the latest version. This only affects
   /// nodes in the default node pool. While a fuzzy version can be specified, it's
   /// recommended that you specify explicit versions as the provider will see spurious diffs
   /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-  /// `version_prefix` field to approximate fuzzy versions.
+  /// `versionPrefix` field to approximate fuzzy versions.
   /// To update nodes in other node pools, use the `version` attribute on the node pool.
   late final pulumi.Output<String> nodeVersion;
   /// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -883,7 +1332,7 @@ class Cluster extends pulumi.CustomResource {
   /// Configuration for the
   /// Structure is documented below.
   late final pulumi.Output<ClusterPodAutoscaling> podAutoscaling;
-  /// Configuration for the
+  /// ) Configuration for the
   /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
   /// Structure is documented below.
   late final pulumi.Output<ClusterPodSecurityPolicyConfig?> podSecurityPolicyConfig;
@@ -895,20 +1344,19 @@ class Cluster extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// )
   /// Enable/Disable Protect API features for the cluster. Structure is documented below.
   late final pulumi.Output<ClusterProtectConfig> protectConfig;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-  ///
-  /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
   late final pulumi.Output<ClusterRbacBindingConfig> rbacBindingConfig;
   /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
   /// feature, which provide more control over automatic upgrades of your GKE clusters.
   /// When updating this field, GKE imposes specific version requirements. See
   /// [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
   /// for more details; the `gcp.container.getEngineVersions` datasource can provide
-  /// the default version for a channel. Note that removing the `release_channel`
+  /// the default version for a channel. Note that removing the `releaseChannel`
   /// field from your config will cause the provider to stop managing your cluster's
   /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
   /// channel. Structure is documented below.
@@ -916,7 +1364,7 @@ class Cluster extends pulumi.CustomResource {
   /// If `true`, deletes the default node
   /// pool upon cluster creation. If you're using `gcp.container.NodePool`
   /// resources with no default node pool, this should be set to `true`, alongside
-  /// setting `initial_node_count` to at least `1`.
+  /// setting `initialNodeCount` to at least `1`.
   late final pulumi.Output<bool?> removeDefaultNodePool;
   /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
   ///
@@ -927,6 +1375,8 @@ class Cluster extends pulumi.CustomResource {
   /// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
   /// Structure is documented below.
   late final pulumi.Output<ClusterResourceUsageExportConfig?> resourceUsageExportConfig;
+  /// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+  late final pulumi.Output<ClusterRollbackSafeUpgrade?> rollbackSafeUpgrade;
   /// Configuration for the
   /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
   /// Structure is documented below.
@@ -937,24 +1387,32 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterSecretSyncConfig?> secretSyncConfig;
   /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
   late final pulumi.Output<ClusterSecurityPostureConfig> securityPostureConfig;
-  /// Server-defined URL for the resource.
+  /// The server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Structure is documented below.
   late final pulumi.Output<ClusterServiceExternalIpsConfig> serviceExternalIpsConfig;
-  /// The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+  /// The IP address range of the Kubernetes services in this
+  /// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+  /// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+  /// `/16` from the container CIDR.
   late final pulumi.Output<String> servicesIpv4Cidr;
-  /// The name or self_link of the Google Compute Engine
+  /// Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
+  late final pulumi.Output<bool?> skipNodePoolRefresh;
+  /// The name or selfLink of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   late final pulumi.Output<String> subnetwork;
   /// TPU configuration for the cluster.
   late final pulumi.Output<ClusterTpuConfig> tpuConfig;
-  /// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+  /// The IP address range of the Cloud TPUs in this cluster, in
+  /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+  /// notation (e.g. `1.2.3.4/29`).
   late final pulumi.Output<String> tpuIpv4CidrBlock;
   /// The custom keys configuration of the cluster Structure is documented below.
   late final pulumi.Output<ClusterUserManagedKeysConfig?> userManagedKeysConfig;
   /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// Structure is documented below.
   late final pulumi.Output<ClusterVerticalPodAutoscaling> verticalPodAutoscaling;
+  /// )
   /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
   late final pulumi.Output<ClusterWorkloadAltsConfig> workloadAltsConfig;
   /// Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -980,6 +1438,8 @@ class Cluster extends pulumi.CustomResource {
     allowNetAdmin = registerOutput<bool?>('allowNetAdmin');
     anonymousAuthenticationConfig = registerOutput<ClusterAnonymousAuthenticationConfig>('anonymousAuthenticationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAnonymousAuthenticationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authenticatorGroupsConfig = registerOutput<ClusterAuthenticatorGroupsConfig>('authenticatorGroupsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthenticatorGroupsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autopilotClusterPolicyConfig = registerOutput<ClusterAutopilotClusterPolicyConfig>('autopilotClusterPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutopilotClusterPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autopilotPrivilegedAdmissions = registerOutput<List<String>>('autopilotPrivilegedAdmissions');
     binaryAuthorization = registerOutput<ClusterBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterAutoscaling = registerOutput<ClusterClusterAutoscaling>('clusterAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
@@ -989,13 +1449,17 @@ class Cluster extends pulumi.CustomResource {
     costManagementConfig = registerOutput<ClusterCostManagementConfig>('costManagementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCostManagementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseEncryption = registerOutput<ClusterDatabaseEncryption>('databaseEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDatabaseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datapathProvider = registerOutput<String>('datapathProvider');
+    dataplaneOptimizationMode = registerOutput<String?>('dataplaneOptimizationMode');
     defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
     defaultSnatStatus = registerOutput<ClusterDefaultSnatStatus>('defaultSnatStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDefaultSnatStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
+    desiredEmulatedVersion = registerOutput<String?>('desiredEmulatedVersion');
     disableL4LbFirewallReconciliation = registerOutput<bool?>('disableL4LbFirewallReconciliation');
     dnsConfig = registerOutput<ClusterDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    emulatedVersion = registerOutput<String>('emulatedVersion');
     enableAutopilot = registerOutput<bool?>('enableAutopilot');
     enableCiliumClusterwideNetworkPolicy = registerOutput<bool?>('enableCiliumClusterwideNetworkPolicy');
     enableFqdnNetworkPolicy = registerOutput<bool?>('enableFqdnNetworkPolicy');
@@ -1013,6 +1477,7 @@ class Cluster extends pulumi.CustomResource {
     gatewayApiConfig = registerOutput<ClusterGatewayApiConfig>('gatewayApiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGatewayApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gkeAutoUpgradeConfig = registerOutput<ClusterGkeAutoUpgradeConfig>('gkeAutoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGkeAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identityServiceConfig = registerOutput<ClusterIdentityServiceConfig>('identityServiceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentityServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
     inTransitEncryptionConfig = registerOutput<String?>('inTransitEncryptionConfig');
     initialNodeCount = registerOutput<int?>('initialNodeCount');
     ipAllocationPolicy = registerOutput<ClusterIpAllocationPolicy>('ipAllocationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIpAllocationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1021,6 +1486,7 @@ class Cluster extends pulumi.CustomResource {
     loggingConfig = registerOutput<ClusterLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loggingService = registerOutput<String>('loggingService');
     maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedMachineLearningDiagnosticsConfig = registerOutput<ClusterManagedMachineLearningDiagnosticsConfig>('managedMachineLearningDiagnosticsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedMachineLearningDiagnosticsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managedOpentelemetryConfig = registerOutput<ClusterManagedOpentelemetryConfig>('managedOpentelemetryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedOpentelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     masterAuth = registerOutput<ClusterMasterAuth>('masterAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     masterAuthorizedNetworksConfig = registerOutput<ClusterMasterAuthorizedNetworksConfig>('masterAuthorizedNetworksConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterAuthorizedNetworksConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1035,6 +1501,7 @@ class Cluster extends pulumi.CustomResource {
     networkPolicy = registerOutput<ClusterNetworkPolicy?>('networkPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkingMode = registerOutput<String>('networkingMode');
     nodeConfig = registerOutput<ClusterNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeCreationConfig = registerOutput<ClusterNodeCreationConfig>('nodeCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeLocations = registerOutput<List<String>>('nodeLocations');
     nodePoolAutoConfig = registerOutput<ClusterNodePoolAutoConfig>('nodePoolAutoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolAutoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodePoolDefaults = registerOutput<ClusterNodePoolDefaults>('nodePoolDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1054,12 +1521,14 @@ class Cluster extends pulumi.CustomResource {
     removeDefaultNodePool = registerOutput<bool?>('removeDefaultNodePool');
     resourceLabels = registerOutput<Map<String, String>?>('resourceLabels');
     resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretSyncConfig = registerOutput<ClusterSecretSyncConfig?>('secretSyncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPostureConfig = registerOutput<ClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     serviceExternalIpsConfig = registerOutput<ClusterServiceExternalIpsConfig>('serviceExternalIpsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServiceExternalIpsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicesIpv4Cidr = registerOutput<String>('servicesIpv4Cidr');
+    skipNodePoolRefresh = registerOutput<bool?>('skipNodePoolRefresh');
     subnetwork = registerOutput<String>('subnetwork');
     tpuConfig = registerOutput<ClusterTpuConfig>('tpuConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTpuConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tpuIpv4CidrBlock = registerOutput<String>('tpuIpv4CidrBlock');
@@ -1096,6 +1565,8 @@ class Cluster extends pulumi.CustomResource {
     allowNetAdmin = registerOutput<bool?>('allowNetAdmin');
     anonymousAuthenticationConfig = registerOutput<ClusterAnonymousAuthenticationConfig>('anonymousAuthenticationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAnonymousAuthenticationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authenticatorGroupsConfig = registerOutput<ClusterAuthenticatorGroupsConfig>('authenticatorGroupsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthenticatorGroupsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autopilotClusterPolicyConfig = registerOutput<ClusterAutopilotClusterPolicyConfig>('autopilotClusterPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutopilotClusterPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autopilotPrivilegedAdmissions = registerOutput<List<String>>('autopilotPrivilegedAdmissions');
     binaryAuthorization = registerOutput<ClusterBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterAutoscaling = registerOutput<ClusterClusterAutoscaling>('clusterAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
@@ -1105,13 +1576,17 @@ class Cluster extends pulumi.CustomResource {
     costManagementConfig = registerOutput<ClusterCostManagementConfig>('costManagementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCostManagementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseEncryption = registerOutput<ClusterDatabaseEncryption>('databaseEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDatabaseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datapathProvider = registerOutput<String>('datapathProvider');
+    dataplaneOptimizationMode = registerOutput<String?>('dataplaneOptimizationMode');
     defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
     defaultSnatStatus = registerOutput<ClusterDefaultSnatStatus>('defaultSnatStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDefaultSnatStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
+    desiredEmulatedVersion = registerOutput<String?>('desiredEmulatedVersion');
     disableL4LbFirewallReconciliation = registerOutput<bool?>('disableL4LbFirewallReconciliation');
     dnsConfig = registerOutput<ClusterDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    emulatedVersion = registerOutput<String>('emulatedVersion');
     enableAutopilot = registerOutput<bool?>('enableAutopilot');
     enableCiliumClusterwideNetworkPolicy = registerOutput<bool?>('enableCiliumClusterwideNetworkPolicy');
     enableFqdnNetworkPolicy = registerOutput<bool?>('enableFqdnNetworkPolicy');
@@ -1129,6 +1604,7 @@ class Cluster extends pulumi.CustomResource {
     gatewayApiConfig = registerOutput<ClusterGatewayApiConfig>('gatewayApiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGatewayApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gkeAutoUpgradeConfig = registerOutput<ClusterGkeAutoUpgradeConfig>('gkeAutoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGkeAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identityServiceConfig = registerOutput<ClusterIdentityServiceConfig>('identityServiceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentityServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
     inTransitEncryptionConfig = registerOutput<String?>('inTransitEncryptionConfig');
     initialNodeCount = registerOutput<int?>('initialNodeCount');
     ipAllocationPolicy = registerOutput<ClusterIpAllocationPolicy>('ipAllocationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIpAllocationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1137,6 +1613,7 @@ class Cluster extends pulumi.CustomResource {
     loggingConfig = registerOutput<ClusterLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loggingService = registerOutput<String>('loggingService');
     maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedMachineLearningDiagnosticsConfig = registerOutput<ClusterManagedMachineLearningDiagnosticsConfig>('managedMachineLearningDiagnosticsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedMachineLearningDiagnosticsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managedOpentelemetryConfig = registerOutput<ClusterManagedOpentelemetryConfig>('managedOpentelemetryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedOpentelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     masterAuth = registerOutput<ClusterMasterAuth>('masterAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     masterAuthorizedNetworksConfig = registerOutput<ClusterMasterAuthorizedNetworksConfig>('masterAuthorizedNetworksConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterAuthorizedNetworksConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1151,6 +1628,7 @@ class Cluster extends pulumi.CustomResource {
     networkPolicy = registerOutput<ClusterNetworkPolicy?>('networkPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkingMode = registerOutput<String>('networkingMode');
     nodeConfig = registerOutput<ClusterNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeCreationConfig = registerOutput<ClusterNodeCreationConfig>('nodeCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeLocations = registerOutput<List<String>>('nodeLocations');
     nodePoolAutoConfig = registerOutput<ClusterNodePoolAutoConfig>('nodePoolAutoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolAutoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodePoolDefaults = registerOutput<ClusterNodePoolDefaults>('nodePoolDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1170,12 +1648,14 @@ class Cluster extends pulumi.CustomResource {
     removeDefaultNodePool = registerOutput<bool?>('removeDefaultNodePool');
     resourceLabels = registerOutput<Map<String, String>?>('resourceLabels');
     resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretSyncConfig = registerOutput<ClusterSecretSyncConfig?>('secretSyncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPostureConfig = registerOutput<ClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     serviceExternalIpsConfig = registerOutput<ClusterServiceExternalIpsConfig>('serviceExternalIpsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServiceExternalIpsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicesIpv4Cidr = registerOutput<String>('servicesIpv4Cidr');
+    skipNodePoolRefresh = registerOutput<bool?>('skipNodePoolRefresh');
     subnetwork = registerOutput<String>('subnetwork');
     tpuConfig = registerOutput<ClusterTpuConfig>('tpuConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTpuConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tpuIpv4CidrBlock = registerOutput<String>('tpuIpv4CidrBlock');

@@ -127,6 +127,33 @@ import 'service_project_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apphub_serviceprojectattachment" "example" {
+///   depends_on                    = [time_sleep.wait_120s]
+///   service_project_attachment_id = gcp_organizations_project.service_project.project_id
+/// }
+/// resource "gcp_organizations_project" "service_project" {
+///   project_id      = "project-1"
+///   name            = "Service Project"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_120s" {
+///   depends_on      = [gcp_organizations_project.service_project]
+///   create_duration = "120s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +167,8 @@ import 'service_project_attachment_state.dart';
 /// import com.pulumi.gcp.apphub.ServiceProjectAttachment;
 /// import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,6 +355,34 @@ import 'service_project_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apphub_serviceprojectattachment" "example2" {
+///   depends_on                    = [time_sleep.wait_120s]
+///   service_project_attachment_id = gcp_organizations_project.service_project_full.project_id
+///   service_project               = gcp_organizations_project.service_project_full.project_id
+/// }
+/// resource "gcp_organizations_project" "service_project_full" {
+///   project_id      = "project-1"
+///   name            = "Service Project Full"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_120s" {
+///   depends_on      = [gcp_organizations_project.service_project_full]
+///   create_duration = "120s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -341,8 +396,8 @@ import 'service_project_attachment_state.dart';
 /// import com.pulumi.gcp.apphub.ServiceProjectAttachment;
 /// import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -411,27 +466,27 @@ import 'service_project_attachment_state.dart';
 /// ServiceProjectAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/serviceProjectAttachments/{{service_project_attachment_id}}`
-///
 /// * `{{project}}/{{service_project_attachment_id}}`
-///
 /// * `{{service_project_attachment_id}}`
+///
 ///
 /// When using the `pulumi import` command, ServiceProjectAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default projects/{{project}}/locations/global/serviceProjectAttachments/{{service_project_attachment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{project}}/{{service_project_attachment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{service_project_attachment_id}}
 /// ```
 class ServiceProjectAttachment extends pulumi.CustomResource {
   /// Output only. Create time.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -441,7 +496,7 @@ class ServiceProjectAttachment extends pulumi.CustomResource {
   /// or \"projects/123\". As input, project name with either project id or number
   /// are accepted. As output, this field will contain project number."
   late final pulumi.Output<String?> serviceProject;
-  /// Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
+  /// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
   late final pulumi.Output<String> serviceProjectAttachmentId;
   /// ServiceProjectAttachment state.
   late final pulumi.Output<String> state;
@@ -463,6 +518,7 @@ class ServiceProjectAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceProject = registerOutput<String?>('serviceProject');
@@ -495,6 +551,7 @@ class ServiceProjectAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceProject = registerOutput<String?>('serviceProject');

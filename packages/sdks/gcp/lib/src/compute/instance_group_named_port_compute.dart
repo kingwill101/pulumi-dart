@@ -191,9 +191,9 @@ import 'instance_group_named_port_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewInstanceGroupNamedPort(ctx, "my_port", &compute.InstanceGroupNamedPortArgs{
-/// 			Group: pulumi.String(myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
+/// 			Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
 /// 				return &nodePools[0].InstanceGroupUrls[0], nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 			Zone: pulumi.String("us-central1-a"),
 /// 			Name: pulumi.String("http"),
 /// 			Port: pulumi.Int(8080),
@@ -202,9 +202,9 @@ import 'instance_group_named_port_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewInstanceGroupNamedPort(ctx, "my_ports", &compute.InstanceGroupNamedPortArgs{
-/// 			Group: pulumi.String(myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
+/// 			Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
 /// 				return &nodePools[0].InstanceGroupUrls[0], nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 			Zone: pulumi.String("us-central1-a"),
 /// 			Name: pulumi.String("https"),
 /// 			Port: pulumi.Int(4443),
@@ -214,6 +214,50 @@ import 'instance_group_named_port_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancegroupnamedport" "my_port" {
+///   group = gcp_container_cluster.my_cluster.node_pools[0].instance_group_urls[0]
+///   zone  = "us-central1-a"
+///   name  = "http"
+///   port  = 8080
+/// }
+/// resource "gcp_compute_instancegroupnamedport" "my_ports" {
+///   group = gcp_container_cluster.my_cluster.node_pools[0].instance_group_urls[0]
+///   zone  = "us-central1-a"
+///   name  = "https"
+///   port  = 4443
+/// }
+/// resource "gcp_compute_network" "container_network" {
+///   name                    = "container-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "container_subnetwork" {
+///   name          = "container-subnetwork"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.container_network.name
+///   ip_cidr_range = "10.0.36.0/24"
+/// }
+/// resource "gcp_container_cluster" "my_cluster" {
+///   name               = "my-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+///   network            = gcp_compute_network.container_network.name
+///   subnetwork         = gcp_compute_subnetwork.container_subnetwork.name
+///   ip_allocation_policy = {
+///     cluster_ipv4_cidr_block  = "/19"
+///     services_ipv4_cidr_block = "/22"
+///   }
+///   deletion_protection = true
 /// }
 /// ```
 /// ```java
@@ -231,8 +275,8 @@ import 'instance_group_named_port_state.dart';
 /// import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
 /// import com.pulumi.gcp.compute.InstanceGroupNamedPort;
 /// import com.pulumi.gcp.compute.InstanceGroupNamedPortArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,14 +314,14 @@ import 'instance_group_named_port_state.dart';
 ///             .build());
 ///
 ///         var myPort = new InstanceGroupNamedPort("myPort", InstanceGroupNamedPortArgs.builder()
-///             .group(myCluster.nodePools().applyValue(_nodePools -> _nodePools[0].instanceGroupUrls()[0]))
+///             .group(myCluster.nodePools().applyValue(_nodePools -> _nodePools.get(0).instanceGroupUrls().get(0)))
 ///             .zone("us-central1-a")
 ///             .name("http")
 ///             .port(8080)
 ///             .build());
 ///
 ///         var myPorts = new InstanceGroupNamedPort("myPorts", InstanceGroupNamedPortArgs.builder()
-///             .group(myCluster.nodePools().applyValue(_nodePools -> _nodePools[0].instanceGroupUrls()[0]))
+///             .group(myCluster.nodePools().applyValue(_nodePools -> _nodePools.get(0).instanceGroupUrls().get(0)))
 ///             .zone("us-central1-a")
 ///             .name("https")
 ///             .port(4443)
@@ -339,31 +383,27 @@ import 'instance_group_named_port_state.dart';
 /// InstanceGroupNamedPort can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
-///
 /// * `{{zone}}/{{group}}/{{port}}/{{name}}`
-///
 /// * `{{group}}/{{port}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{project}}/{{zone}}/{{group}}/{{port}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{zone}}/{{group}}/{{port}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
 /// ```
 class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the instance group.
   late final pulumi.Output<String> group;
   /// The name for this named port. The name must be 1-63 characters
@@ -391,6 +431,7 @@ class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');
@@ -421,6 +462,7 @@ class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');

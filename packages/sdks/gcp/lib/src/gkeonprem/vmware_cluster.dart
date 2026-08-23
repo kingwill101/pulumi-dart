@@ -260,6 +260,55 @@ import 'vmware_cluster_vcenter.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwarecluster" "cluster-basic" {
+///   name                     = "cluster-basic"
+///   location                 = "us-west1"
+///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   description              = "test cluster"
+///   on_prem_version          = "1.13.1-gke.35"
+///   annotations              = {}
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     dhcp_ip_config = {
+///       enabled = true
+///     }
+///   }
+///   control_plane_node = {
+///     cpus     = 4
+///     memory   = 8192
+///     replicas = 1
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       ingress_vip       = "10.251.135.19"
+///     }
+///     metal_lb_config = {
+///       address_pools = [{
+///         "pool"          = "ingress-ip"
+///         "manualAssign"  = "true"
+///         "addresses"     = ["10.251.135.19"]
+///         "avoidBuggyIps" = true
+///         }, {
+///         "pool"          = "lb-test-ip"
+///         "manualAssign"  = "true"
+///         "addresses"     = ["10.251.135.19"]
+///         "avoidBuggyIps" = true
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -274,8 +323,9 @@ import 'vmware_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -719,6 +769,83 @@ import 'vmware_cluster_vcenter.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwarecluster" "cluster-f5lb" {
+///   name                     = "cluster-f5lb"
+///   location                 = "us-west1"
+///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   description              = "test cluster"
+///   on_prem_version          = "1.13.1-gke.35"
+///   annotations              = {}
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     dhcp_ip_config = {
+///       enabled = true
+///     }
+///     control_plane_v2_config = {
+///       control_plane_ip_block = {
+///         ips = [{
+///           "hostname" = "test-hostname"
+///           "ip"       = "10.0.0.1"
+///         }]
+///         netmask = "10.0.0.1/32"
+///         gateway = "test-gateway"
+///       }
+///     }
+///     vcenter_network = "test-vcenter-network"
+///   }
+///   control_plane_node = {
+///     cpus     = 4
+///     memory   = 8192
+///     replicas = 1
+///     auto_resize_config = {
+///       enabled = true
+///     }
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       ingress_vip       = "10.251.135.19"
+///     }
+///     f5_config = {
+///       address   = "10.0.0.1"
+///       partition = "test-partition"
+///       snat_pool = "test-snap-pool"
+///     }
+///   }
+///   dataplane_v2 = {
+///     dataplane_v2_enabled         = true
+///     windows_dataplane_v2_enabled = true
+///     advanced_networking          = true
+///   }
+///   vm_tracking_enabled     = true
+///   enable_control_plane_v2 = true
+///   disable_bundled_ingress = true
+///   authorization = {
+///     admin_users = [{
+///       "username" = "testuser@gmail.com"
+///     }]
+///   }
+///   anti_affinity_groups = {
+///     aag_config_disabled = true
+///   }
+///   auto_repair_config = {
+///     enabled = true
+///   }
+///   storage = {
+///     vsphere_csi_disabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -731,6 +858,7 @@ import 'vmware_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
@@ -738,11 +866,12 @@ import 'vmware_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerF5ConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -894,6 +1023,11 @@ import 'vmware_cluster_vcenter.dart';
 ///
 /// const cluster_manuallb = new gcp.gkeonprem.VMwareCluster("cluster-manuallb", {
 ///     name: "cluster-manuallb",
+///     skipValidations: [
+///         "WORKSTATION",
+///         "CONFIG",
+///         "DOCKER",
+///     ],
 ///     location: "us-west1",
 ///     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
 ///     description: "test cluster",
@@ -991,6 +1125,11 @@ import 'vmware_cluster_vcenter.dart';
 ///
 /// cluster_manuallb = gcp.gkeonprem.VMwareCluster("cluster-manuallb",
 ///     name="cluster-manuallb",
+///     skip_validations=[
+///         "WORKSTATION",
+///         "CONFIG",
+///         "DOCKER",
+///     ],
 ///     location="us-west1",
 ///     admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
 ///     description="test cluster",
@@ -1092,6 +1231,12 @@ import 'vmware_cluster_vcenter.dart';
 ///     var cluster_manuallb = new Gcp.GkeOnPrem.VMwareCluster("cluster-manuallb", new()
 ///     {
 ///         Name = "cluster-manuallb",
+///         SkipValidations = new[]
+///         {
+///             "WORKSTATION",
+///             "CONFIG",
+///             "DOCKER",
+///         },
 ///         Location = "us-west1",
 ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
 ///         Description = "test cluster",
@@ -1238,7 +1383,12 @@ import 'vmware_cluster_vcenter.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gkeonprem.NewVMwareCluster(ctx, "cluster-manuallb", &gkeonprem.VMwareClusterArgs{
-/// 			Name:                   pulumi.String("cluster-manuallb"),
+/// 			Name: pulumi.String("cluster-manuallb"),
+/// 			SkipValidations: pulumi.StringArray{
+/// 				pulumi.String("WORKSTATION"),
+/// 				pulumi.String("CONFIG"),
+/// 				pulumi.String("DOCKER"),
+/// 			},
 /// 			Location:               pulumi.String("us-west1"),
 /// 			AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 /// 			Description:            pulumi.String("test cluster"),
@@ -1350,6 +1500,104 @@ import 'vmware_cluster_vcenter.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwarecluster" "cluster-manuallb" {
+///   name                     = "cluster-manuallb"
+///   skip_validations         = ["WORKSTATION", "CONFIG", "DOCKER"]
+///   location                 = "us-west1"
+///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   description              = "test cluster"
+///   on_prem_version          = "1.13.1-gke.35"
+///   annotations              = {}
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     host_config = {
+///       dns_servers        = ["10.254.41.1"]
+///       ntp_servers        = ["216.239.35.8"]
+///       dns_search_domains = ["test-domain"]
+///     }
+///     static_ip_config = {
+///       ip_blocks = [{
+///         "netmask" = "255.255.252.0"
+///         "gateway" = "10.251.31.254"
+///         "ips" = [{
+///           "ip"       = "10.251.30.153"
+///           "hostname" = "test-hostname1"
+///           }, {
+///           "ip"       = "10.251.31.206"
+///           "hostname" = "test-hostname2"
+///           }, {
+///           "ip"       = "10.251.31.193"
+///           "hostname" = "test-hostname3"
+///           }, {
+///           "ip"       = "10.251.30.230"
+///           "hostname" = "test-hostname4"
+///         }]
+///       }]
+///     }
+///   }
+///   control_plane_node = {
+///     cpus     = 4
+///     memory   = 8192
+///     replicas = 1
+///     auto_resize_config = {
+///       enabled = true
+///     }
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       ingress_vip       = "10.251.135.19"
+///     }
+///     manual_lb_config = {
+///       ingress_http_node_port        = 30005
+///       ingress_https_node_port       = 30006
+///       control_plane_node_port       = 30007
+///       konnectivity_server_node_port = 30008
+///     }
+///   }
+///   vcenter = {
+///     resource_pool       = "test-resource-pool"
+///     datastore           = "test-datastore"
+///     datacenter          = "test-datacenter"
+///     cluster             = "test-cluster"
+///     folder              = "test-folder"
+///     ca_cert_data        = "test-ca-cert-data"
+///     storage_policy_name = "test-storage-policy-name"
+///   }
+///   dataplane_v2 = {
+///     dataplane_v2_enabled         = true
+///     windows_dataplane_v2_enabled = true
+///     advanced_networking          = true
+///   }
+///   vm_tracking_enabled     = true
+///   enable_control_plane_v2 = true
+///   enable_advanced_cluster = true
+///   upgrade_policy = {
+///     control_plane_only = true
+///   }
+///   authorization = {
+///     admin_users = [{
+///       "username" = "testuser@gmail.com"
+///     }]
+///   }
+///   anti_affinity_groups = {
+///     aag_config_disabled = true
+///   }
+///   auto_repair_config = {
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1361,6 +1609,8 @@ import 'vmware_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigHostConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
@@ -1370,10 +1620,11 @@ import 'vmware_cluster_vcenter.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterUpgradePolicyArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1387,6 +1638,10 @@ import 'vmware_cluster_vcenter.dart';
 ///     public static void stack(Context ctx) {
 ///         var cluster_manuallb = new VMwareCluster("cluster-manuallb", VMwareClusterArgs.builder()
 ///             .name("cluster-manuallb")
+///             .skipValidations(
+///                 "WORKSTATION",
+///                 "CONFIG",
+///                 "DOCKER")
 ///             .location("us-west1")
 ///             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
 ///             .description("test cluster")
@@ -1487,6 +1742,10 @@ import 'vmware_cluster_vcenter.dart';
 ///     type: gcp:gkeonprem:VMwareCluster
 ///     properties:
 ///       name: cluster-manuallb
+///       skipValidations:
+///         - WORKSTATION
+///         - CONFIG
+///         - DOCKER
 ///       location: us-west1
 ///       adminClusterMembership: projects/870316890899/locations/global/memberships/gkeonprem-terraform-test
 ///       description: test cluster
@@ -1564,22 +1823,15 @@ import 'vmware_cluster_vcenter.dart';
 /// VmwareCluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
 /// ```
 class VMwareCluster extends pulumi.CustomResource {
@@ -1598,7 +1850,7 @@ class VMwareCluster extends pulumi.CustomResource {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
   /// least three physical hosts in the datacenter.
@@ -1620,10 +1872,18 @@ class VMwareCluster extends pulumi.CustomResource {
   late final pulumi.Output<VMwareClusterDataplaneV2> dataplaneV2;
   /// The time at which VMware User Cluster was deleted.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human readable description of this VMware User Cluster.
   late final pulumi.Output<String?> description;
   /// Disable bundled ingress.
   late final pulumi.Output<bool?> disableBundledIngress;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// Enable advanced cluster. Default to false.
   late final pulumi.Output<bool?> enableAdvancedCluster;
@@ -1668,6 +1928,9 @@ class VMwareCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// If set, there are currently changes in flight to the VMware User Cluster.
   late final pulumi.Output<bool> reconciling;
+  /// A list of validations to skip during preflight checks.
+  /// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+  late final pulumi.Output<List<String>?> skipValidations;
   /// (Output)
   /// The lifecycle state of the condition.
   late final pulumi.Output<String> state;
@@ -1718,6 +1981,7 @@ class VMwareCluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dataplaneV2 = registerOutput<VMwareClusterDataplaneV2>('dataplaneV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareClusterDataplaneV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disableBundledIngress = registerOutput<bool?>('disableBundledIngress');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1734,6 +1998,7 @@ class VMwareCluster extends pulumi.CustomResource {
     onPremVersion = registerOutput<String>('onPremVersion');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
+    skipValidations = registerOutput<List<String>?>('skipValidations');
     state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     storage = registerOutput<VMwareClusterStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1777,6 +2042,7 @@ class VMwareCluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dataplaneV2 = registerOutput<VMwareClusterDataplaneV2>('dataplaneV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareClusterDataplaneV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disableBundledIngress = registerOutput<bool?>('disableBundledIngress');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1793,6 +2059,7 @@ class VMwareCluster extends pulumi.CustomResource {
     onPremVersion = registerOutput<String>('onPremVersion');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
+    skipValidations = registerOutput<List<String>?>('skipValidations');
     this.state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     storage = registerOutput<VMwareClusterStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });

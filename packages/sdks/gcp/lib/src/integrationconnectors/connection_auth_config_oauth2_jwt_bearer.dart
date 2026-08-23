@@ -34,4 +34,3 @@ class ConnectionAuthConfigOauth2JwtBearer {
     );
   }
 }
-

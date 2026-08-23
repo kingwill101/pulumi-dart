@@ -13,6 +13,7 @@ import 'instance_from_machine_image_scheduling.dart';
 import 'instance_from_machine_image_service_account.dart';
 import 'instance_from_machine_image_shielded_instance_config.dart';
 import 'instance_from_machine_image_source_machine_image_encryption_key.dart';
+import 'instance_from_machine_image_workload_identity_config.dart';
 
 /// {@template pulumi_compute_instance_from_machine_image_instance_from_machine_image_args_doc}
 /// The set of arguments for InstanceFromMachineImage.
@@ -21,11 +22,19 @@ import 'instance_from_machine_image_source_machine_image_encryption_key.dart';
 class InstanceFromMachineImageArgs {
   /// Controls for advanced machine-related behavior features.
   final pulumi.Input<InstanceFromMachineImageAdvancedMachineFeatures>? advancedMachineFeatures;
+  /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
   final pulumi.Input<bool>? allowStoppingForUpdate;
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
   final pulumi.Input<bool>? canIpForward;
-  /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+  /// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
   final pulumi.Input<InstanceFromMachineImageConfidentialInstanceConfig>? confidentialInstanceConfig;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Whether deletion protection is enabled on this instance.
   final pulumi.Input<bool>? deletionProtection;
   /// A brief description of the resource.
@@ -34,6 +43,8 @@ class InstanceFromMachineImageArgs {
   final pulumi.Input<String>? desiredStatus;
   /// Whether the instance has virtual displays enabled.
   final pulumi.Input<bool>? enableDisplay;
+  /// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+  final pulumi.Input<bool>? eraseWindowsVssSignature;
   /// List of the type and count of accelerator cards attached to the instance.
   final pulumi.Input<List<InstanceFromMachineImageGuestAccelerator>>? guestAccelerators;
   /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -66,11 +77,11 @@ class InstanceFromMachineImageArgs {
   final pulumi.Input<InstanceFromMachineImageParams>? params;
   /// Partner Metadata Map made available within the instance.
   final pulumi.Input<Map<String, String>>? partnerMetadata;
-  /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
   final pulumi.Input<String>? project;
   /// Specifies the reservations that this instance can consume from.
   final pulumi.Input<InstanceFromMachineImageReservationAffinity>? reservationAffinity;
-  /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   final pulumi.Input<String>? resourcePolicies;
   /// The scheduling strategy being used by the instance.
   final pulumi.Input<InstanceFromMachineImageScheduling>? scheduling;
@@ -87,6 +98,8 @@ class InstanceFromMachineImageArgs {
   final pulumi.Input<InstanceFromMachineImageSourceMachineImageEncryptionKey>? sourceMachineImageEncryptionKey;
   /// The list of tags attached to the instance.
   final pulumi.Input<List<String>>? tags;
+  /// Workload identity config.
+  final pulumi.Input<InstanceFromMachineImageWorkloadIdentityConfig>? workloadIdentityConfig;
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
@@ -94,18 +107,20 @@ class InstanceFromMachineImageArgs {
   /// as a way to override the properties in the machine image. All exported attributes
   /// from `gcp.compute.Instance` are likewise exported here.
   ///
-  /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
+  /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [InstanceFromMachineImageArgs].
   /// [advancedMachineFeatures] Controls for advanced machine-related behavior features.
-  /// [allowStoppingForUpdate] Optional.
+  /// [allowStoppingForUpdate] If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
   /// [canIpForward] Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-  /// [confidentialInstanceConfig] The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+  /// [confidentialInstanceConfig] The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [deletionProtection] Whether deletion protection is enabled on this instance.
   /// [description] A brief description of the resource.
   /// [desiredStatus] Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
   /// [enableDisplay] Whether the instance has virtual displays enabled.
+  /// [eraseWindowsVssSignature] Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance.
   /// [hostname] A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
   /// [instanceEncryptionKey] Encryption key used to provide data encryption on the given instance.
@@ -120,25 +135,28 @@ class InstanceFromMachineImageArgs {
   /// [networkPerformanceConfig] Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
   /// [params] Stores additional params passed with the request, but not persisted as part of resource payload.
   /// [partnerMetadata] Partner Metadata Map made available within the instance.
-  /// [project] The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+  /// [project] The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
   /// [reservationAffinity] Specifies the reservations that this instance can consume from.
-  /// [resourcePolicies] A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// [resourcePolicies] A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   /// [scheduling] The scheduling strategy being used by the instance.
   /// [serviceAccount] The service account to attach to the instance.
   /// [shieldedInstanceConfig] The shielded vm config being used by the instance.
   /// [sourceMachineImage] Name or self link of a machine
   /// [sourceMachineImageEncryptionKey] Encryption key for the source machine image.
   /// [tags] The list of tags attached to the instance.
+  /// [workloadIdentityConfig] Workload identity config.
   /// [zone] The zone that the machine should be created in. If not
   const InstanceFromMachineImageArgs({
     this.advancedMachineFeatures,
     this.allowStoppingForUpdate,
     this.canIpForward,
     this.confidentialInstanceConfig,
+    this.deletionPolicy,
     this.deletionProtection,
     this.description,
     this.desiredStatus,
     this.enableDisplay,
+    this.eraseWindowsVssSignature,
     this.guestAccelerators,
     this.hostname,
     this.instanceEncryptionKey,
@@ -162,6 +180,7 @@ class InstanceFromMachineImageArgs {
     required this.sourceMachineImage,
     this.sourceMachineImageEncryptionKey,
     this.tags,
+    this.workloadIdentityConfig,
     this.zone,
   });
 
@@ -171,10 +190,12 @@ class InstanceFromMachineImageArgs {
       'allowStoppingForUpdate': ?allowStoppingForUpdate,
       'canIpForward': ?canIpForward,
       'confidentialInstanceConfig': ?pulumi.Input.mapOptionalInputValue<InstanceFromMachineImageConfidentialInstanceConfig, Map<String, dynamic>>(confidentialInstanceConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'description': ?description,
       'desiredStatus': ?desiredStatus,
       'enableDisplay': ?enableDisplay,
+      'eraseWindowsVssSignature': ?eraseWindowsVssSignature,
       'guestAccelerators': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromMachineImageGuestAccelerator>, List<Map<String, dynamic>>>(guestAccelerators, (value) => pulumi.Input.encodeList<InstanceFromMachineImageGuestAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostname': ?hostname,
       'instanceEncryptionKey': ?pulumi.Input.mapOptionalInputValue<InstanceFromMachineImageInstanceEncryptionKey, Map<String, dynamic>>(instanceEncryptionKey, (value) => value.toMap()),
@@ -198,6 +219,7 @@ class InstanceFromMachineImageArgs {
       'sourceMachineImage': sourceMachineImage,
       'sourceMachineImageEncryptionKey': ?pulumi.Input.mapOptionalInputValue<InstanceFromMachineImageSourceMachineImageEncryptionKey, Map<String, dynamic>>(sourceMachineImageEncryptionKey, (value) => value.toMap()),
       'tags': ?tags,
+      'workloadIdentityConfig': ?pulumi.Input.mapOptionalInputValue<InstanceFromMachineImageWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfig, (value) => value.toMap()),
       'zone': ?zone,
     };
   }
@@ -208,10 +230,12 @@ class InstanceFromMachineImageArgs {
       allowStoppingForUpdate: (() { final guardedValue = map['allowStoppingForUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       canIpForward: (() { final guardedValue = map['canIpForward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       confidentialInstanceConfig: (() { final guardedValue = map['confidentialInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromMachineImageConfidentialInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredStatus: (() { final guardedValue = map['desiredStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableDisplay: (() { final guardedValue = map['enableDisplay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      eraseWindowsVssSignature: (() { final guardedValue = map['eraseWindowsVssSignature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       guestAccelerators: (() { final guardedValue = map['guestAccelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceFromMachineImageGuestAccelerator>(guardedValue, (value) => InstanceFromMachineImageGuestAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceEncryptionKey: (() { final guardedValue = map['instanceEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromMachineImageInstanceEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -235,8 +259,8 @@ class InstanceFromMachineImageArgs {
       sourceMachineImage: pulumi.Input.fromValue(map['sourceMachineImage'] as String),
       sourceMachineImageEncryptionKey: (() { final guardedValue = map['sourceMachineImageEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromMachineImageSourceMachineImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      workloadIdentityConfig: (() { final guardedValue = map['workloadIdentityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromMachineImageWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

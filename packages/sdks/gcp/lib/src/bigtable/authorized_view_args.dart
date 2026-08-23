@@ -8,6 +8,17 @@ import 'authorized_view_subset_view.dart';
 /// {@endtemplate}
 /// {@macro pulumi_bigtable_authorized_view_authorized_view_args_doc}
 class AuthorizedViewArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// -----
+  final pulumi.Input<String>? deletionPolicy;
+  /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+  /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
   final pulumi.Input<String>? deletionProtection;
   /// The name of the Bigtable instance in which the authorized view belongs.
   final pulumi.Input<String> instanceName;
@@ -17,20 +28,20 @@ class AuthorizedViewArgs {
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
   /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-  ///
-  /// -----
   final pulumi.Input<AuthorizedViewSubsetView>? subsetView;
   /// The name of the Bigtable table in which the authorized view belongs.
   final pulumi.Input<String> tableName;
 
   /// Creates a new [AuthorizedViewArgs].
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// [deletionProtection] A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
   /// [instanceName] The name of the Bigtable instance in which the authorized view belongs.
   /// [name] The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [subsetView] An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
   /// [tableName] The name of the Bigtable table in which the authorized view belongs.
   const AuthorizedViewArgs({
+    this.deletionPolicy,
     this.deletionProtection,
     required this.instanceName,
     this.name,
@@ -41,6 +52,7 @@ class AuthorizedViewArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'instanceName': instanceName,
       'name': ?name,
@@ -52,6 +64,7 @@ class AuthorizedViewArgs {
 
   factory AuthorizedViewArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedViewArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -61,4 +74,3 @@ class AuthorizedViewArgs {
     );
   }
 }
-

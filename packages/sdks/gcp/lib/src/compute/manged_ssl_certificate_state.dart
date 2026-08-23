@@ -9,6 +9,13 @@ class MangedSslCertificateState {
   final pulumi.Input<int>? certificateId;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Expire time of the certificate in RFC3339 text format.
@@ -42,6 +49,7 @@ class MangedSslCertificateState {
   /// Creates a new [MangedSslCertificateState].
   /// [certificateId] The unique identifier for the resource.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [expireTime] Expire time of the certificate in RFC3339 text format.
   /// [managed] Properties relevant to a managed certificate.  These will be used if the
@@ -53,6 +61,7 @@ class MangedSslCertificateState {
   const MangedSslCertificateState({
     this.certificateId,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.expireTime,
     this.managed,
@@ -67,6 +76,7 @@ class MangedSslCertificateState {
     return <String, dynamic>{
       'certificateId': ?certificateId,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'expireTime': ?expireTime,
       'managed': ?pulumi.Input.mapOptionalInputValue<MangedSslCertificateManaged, Map<String, dynamic>>(managed, (value) => value.toMap()),
@@ -82,6 +92,7 @@ class MangedSslCertificateState {
     return MangedSslCertificateState(
       certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managed: (() { final guardedValue = map['managed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MangedSslCertificateManaged.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -93,4 +104,3 @@ class MangedSslCertificateState {
     );
   }
 }
-

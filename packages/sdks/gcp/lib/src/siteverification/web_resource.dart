@@ -165,6 +165,37 @@ import 'web_resource_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_siteverification_gettoken" "token" {
+///   type                = "INET_DOMAIN"
+///   identifier          = "www.example.com"
+///   verification_method = "DNS_TXT"
+/// }
+///
+/// resource "gcp_dns_recordset" "example" {
+///   managed_zone = "example.com"
+///   name         = "www.example.com."
+///   type         = "TXT"
+///   rrdatas      = [data.gcp_siteverification_gettoken.token.token]
+///   ttl          = 86400
+/// }
+/// resource "gcp_siteverification_webresource" "example" {
+///   depends_on = [gcp_dns_recordset.example]
+///   site = {
+///     type       = data.gcp_siteverification_gettoken.token.type
+///     identifier = data.gcp_siteverification_gettoken.token.identifier
+///   }
+///   verification_method = data.gcp_siteverification_gettoken.token.verification_method
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +210,8 @@ import 'web_resource_state.dart';
 /// import com.pulumi.gcp.siteverification.WebResourceArgs;
 /// import com.pulumi.gcp.siteverification.inputs.WebResourceSiteArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,19 +288,23 @@ import 'web_resource_state.dart';
 /// WebResource can be imported using any of these accepted formats:
 ///
 /// * `webResource/{{web_resource_id}}`
-///
 /// * `{{web_resource_id}}`
+///
 ///
 /// When using the `pulumi import` command, WebResource can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:siteverification/webResource:WebResource default webResource/{{web_resource_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:siteverification/webResource:WebResource default {{web_resource_id}}
 /// ```
 class WebResource extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The email addresses of all direct, verified owners of this exact property. Indirect owners —
   /// for example verified owners of the containing domain—are not included in this list.
   late final pulumi.Output<List<String>> owners;
@@ -297,6 +332,7 @@ class WebResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     owners = registerOutput<List<String>>('owners');
     site = registerOutput<WebResourceSite>('site', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebResourceSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     verificationMethod = registerOutput<String>('verificationMethod');
@@ -326,6 +362,7 @@ class WebResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     owners = registerOutput<List<String>>('owners');
     site = registerOutput<WebResourceSite>('site', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebResourceSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     verificationMethod = registerOutput<String>('verificationMethod');

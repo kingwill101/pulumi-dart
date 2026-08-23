@@ -69,8 +69,6 @@ import 'iam_member_remove_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -94,6 +92,24 @@ import 'iam_member_remove_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "targetProject" {
+/// }
+///
+/// resource "gcp_projects_iammemberremove" "foo" {
+///   role    = "roles/editor"
+///   project = targetProjectGoogleProject.projectId
+///   member  ="serviceAccount:${targetProjectGoogleProject.number}-compute@developer.gserviceaccount.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +120,8 @@ import 'iam_member_remove_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.projects.IamMemberRemove;
 /// import com.pulumi.gcp.projects.IamMemberRemoveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,8 +138,8 @@ import 'iam_member_remove_state.dart';
 ///
 ///         var foo = new IamMemberRemove("foo", IamMemberRemoveArgs.builder()
 ///             .role("roles/editor")
-///             .project(targetProjectGoogleProject.projectId())
-///             .member(String.format("serviceAccount:%s-compute@developer.gserviceaccount.com", targetProjectGoogleProject.number()))
+///             .project(targetProjectGoogleProject.get("projectId"))
+///             .member(String.format("serviceAccount:%s-compute@developer.gserviceaccount.com", targetProjectGoogleProject.get("number")))
 ///             .build());
 ///
 ///     }

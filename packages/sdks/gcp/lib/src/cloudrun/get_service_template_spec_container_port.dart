@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTemplateSpecContainerPort {
   /// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
   final pulumi.Input<int> containerPort;
-  /// The name of the Cloud Run Service.
+  /// Name must be unique within a Google Cloud project and region.
+  /// Is required when creating resources. Name is primarily intended
+  /// for creation idempotence and configuration definition. Cannot be updated.
+  /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
   /// Protocol for port. Must be "TCP". Defaults to "TCP".
   final pulumi.Input<String> protocol;
 
   /// Creates a new [GetServiceTemplateSpecContainerPort].
   /// [containerPort] Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
-  /// [name] The name of the Cloud Run Service.
+  /// [name] Name must be unique within a Google Cloud project and region.
   /// [protocol] Protocol for port. Must be "TCP". Defaults to "TCP".
   const GetServiceTemplateSpecContainerPort({
     required this.containerPort,
@@ -36,4 +39,3 @@ class GetServiceTemplateSpecContainerPort {
     );
   }
 }
-

@@ -7,7 +7,7 @@ import 'google_api_source_logging_config.dart';
 class GoogleApiSourceState {
   /// Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The creation time.
   final pulumi.Input<String>? createTime;
@@ -16,12 +16,20 @@ class GoogleApiSourceState {
   /// It must match the pattern
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   final pulumi.Input<String>? cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Destination is the message bus that the GoogleApiSource is delivering to.
   /// It must be point to the full resource name of a MessageBus. Format:
   /// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
   final pulumi.Input<String>? destination;
   /// Resource display name.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -34,7 +42,7 @@ class GoogleApiSourceState {
   final pulumi.Input<String>? googleApiSourceId;
   /// Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -61,9 +69,10 @@ class GoogleApiSourceState {
   /// [annotations] Resource annotations.
   /// [createTime] The creation time.
   /// [cryptoKeyName] Resource name of a KMS crypto key (managed by the user) used to
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destination] Destination is the message bus that the GoogleApiSource is delivering to.
   /// [displayName] Resource display name.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] This checksum is computed by the server based on the value of other
   /// [googleApiSourceId] The user-provided ID to be assigned to the GoogleApiSource. It should match
@@ -79,6 +88,7 @@ class GoogleApiSourceState {
     this.annotations,
     this.createTime,
     this.cryptoKeyName,
+    this.deletionPolicy,
     this.destination,
     this.displayName,
     this.effectiveAnnotations,
@@ -100,6 +110,7 @@ class GoogleApiSourceState {
       'annotations': ?annotations,
       'createTime': ?createTime,
       'cryptoKeyName': ?cryptoKeyName,
+      'deletionPolicy': ?deletionPolicy,
       'destination': ?destination,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -122,6 +133,7 @@ class GoogleApiSourceState {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cryptoKeyName: (() { final guardedValue = map['cryptoKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -139,4 +151,3 @@ class GoogleApiSourceState {
     );
   }
 }
-

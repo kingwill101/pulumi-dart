@@ -20,16 +20,13 @@ import 'prevention_discovery_config_state.dart';
 /// DiscoveryConfig can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/discoveryConfigs/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DiscoveryConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/discoveryConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/{{name}}
 /// ```
 class PreventionDiscoveryConfig extends pulumi.CustomResource {
@@ -38,6 +35,13 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
   /// Output only. The creation timestamp of a DiscoveryConfig.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Display Name (max 1000 Chars)
   late final pulumi.Output<String?> displayName;
   /// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
@@ -86,6 +90,7 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
         ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
     inspectTemplates = registerOutput<List<String>?>('inspectTemplates');
@@ -125,6 +130,7 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
         ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
     inspectTemplates = registerOutput<List<String>?>('inspectTemplates');

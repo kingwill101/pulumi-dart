@@ -47,4 +47,3 @@ class GetV2OrganizationSourceIamPolicyResult {
     );
   }
 }
-

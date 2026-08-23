@@ -11,9 +11,9 @@ class BucketIpFilter {
   final pulumi.Input<bool>? allowCrossOrgVpcs;
   /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
   ///
-  /// **Note**: Once ip_filter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
+  /// **Note**: Once ipFilter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
   ///
-  /// **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+  /// **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
   final pulumi.Input<String> mode;
   /// The public network IP address ranges that can access the bucket and its data. Structure is documented below.
   final pulumi.Input<BucketIpFilterPublicNetworkSource>? publicNetworkSource;
@@ -54,4 +54,3 @@ class BucketIpFilter {
     );
   }
 }
-

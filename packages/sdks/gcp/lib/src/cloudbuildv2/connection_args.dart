@@ -14,7 +14,7 @@ import 'connection_gitlab_config.dart';
 class ConnectionArgs {
   /// Allows clients to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Configuration for connections to Bitbucket Cloud.
   /// Structure is documented below.
@@ -22,6 +22,13 @@ class ConnectionArgs {
   /// Configuration for connections to Bitbucket Data Center.
   /// Structure is documented below.
   final pulumi.Input<ConnectionBitbucketDataCenterConfig>? bitbucketDataCenterConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
   final pulumi.Input<bool>? disabled;
   /// Configuration for connections to github.com.
@@ -45,6 +52,7 @@ class ConnectionArgs {
   /// [annotations] Allows clients to store small amounts of arbitrary data.
   /// [bitbucketCloudConfig] Configuration for connections to Bitbucket Cloud.
   /// [bitbucketDataCenterConfig] Configuration for connections to Bitbucket Data Center.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
   /// [githubConfig] Configuration for connections to github.com.
   /// [githubEnterpriseConfig] Configuration for connections to an instance of GitHub Enterprise.
@@ -56,6 +64,7 @@ class ConnectionArgs {
     this.annotations,
     this.bitbucketCloudConfig,
     this.bitbucketDataCenterConfig,
+    this.deletionPolicy,
     this.disabled,
     this.githubConfig,
     this.githubEnterpriseConfig,
@@ -70,6 +79,7 @@ class ConnectionArgs {
       'annotations': ?annotations,
       'bitbucketCloudConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionBitbucketCloudConfig, Map<String, dynamic>>(bitbucketCloudConfig, (value) => value.toMap()),
       'bitbucketDataCenterConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionBitbucketDataCenterConfig, Map<String, dynamic>>(bitbucketDataCenterConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'githubConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionGithubConfig, Map<String, dynamic>>(githubConfig, (value) => value.toMap()),
       'githubEnterpriseConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionGithubEnterpriseConfig, Map<String, dynamic>>(githubEnterpriseConfig, (value) => value.toMap()),
@@ -85,6 +95,7 @@ class ConnectionArgs {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       bitbucketCloudConfig: (() { final guardedValue = map['bitbucketCloudConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionBitbucketCloudConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bitbucketDataCenterConfig: (() { final guardedValue = map['bitbucketDataCenterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionBitbucketDataCenterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       githubConfig: (() { final guardedValue = map['githubConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGithubConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       githubEnterpriseConfig: (() { final guardedValue = map['githubEnterpriseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGithubEnterpriseConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -95,4 +106,3 @@ class ConnectionArgs {
     );
   }
 }
-

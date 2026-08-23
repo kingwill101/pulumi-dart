@@ -8,6 +8,13 @@ import 'route_params.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_route_route_args_doc}
 class RouteArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
   final pulumi.Input<String>? description;
@@ -51,11 +58,11 @@ class RouteArgs {
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
   /// * `projects/project/zones/zone/instances/instance`
   /// * `zones/zone/instances/instance`
-  /// * Just the instance name, with the zone in `next_hop_instance_zone`.
+  /// * Just the instance name, with the zone in `nextHopInstanceZone`.
   final pulumi.Input<String>? nextHopInstance;
-  /// (Optional when `next_hop_instance` is
+  /// (Optional when `nextHopInstance` is
   /// specified)  The zone of the instance specified in
-  /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+  /// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
   /// a URL.
   final pulumi.Input<String>? nextHopInstanceZone;
   /// Network IP address of an instance that should handle matching packets.
@@ -78,6 +85,7 @@ class RouteArgs {
   final pulumi.Input<List<String>>? tags;
 
   /// Creates a new [RouteArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property
   /// [destRange] The destination range of outgoing packets that this route applies to.
   /// [name] Name of the resource. Provided by the client when the resource is
@@ -85,7 +93,7 @@ class RouteArgs {
   /// [nextHopGateway] URL to a gateway that should handle matching packets.
   /// [nextHopIlb] The IP address or URL to a forwarding rule of type
   /// [nextHopInstance] URL to an instance that should handle matching packets.
-  /// [nextHopInstanceZone] (Optional when `next_hop_instance` is
+  /// [nextHopInstanceZone] (Optional when `nextHopInstance` is
   /// [nextHopIp] Network IP address of an instance that should handle matching packets.
   /// [nextHopVpnTunnel] URL to a VpnTunnel that should handle matching packets.
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
@@ -93,6 +101,7 @@ class RouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tags] A list of instance tags to which this route applies.
   const RouteArgs({
+    this.deletionPolicy,
     this.description,
     required this.destRange,
     this.name,
@@ -111,6 +120,7 @@ class RouteArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destRange': destRange,
       'name': ?name,
@@ -130,6 +140,7 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destRange: pulumi.Input.fromValue(map['destRange'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -147,4 +158,3 @@ class RouteArgs {
     );
   }
 }
-

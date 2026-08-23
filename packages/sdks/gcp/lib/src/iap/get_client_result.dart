@@ -5,6 +5,7 @@
 class GetClientResult {
   final String brand;
   final String clientId;
+  final String deletionPolicy;
   final String displayName;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -13,12 +14,14 @@ class GetClientResult {
   /// Creates a new [GetClientResult].
   /// [brand] Required.
   /// [clientId] Required.
+  /// [deletionPolicy] Required.
   /// [displayName] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [secret] Required.
   const GetClientResult({
     required this.brand,
     required this.clientId,
+    required this.deletionPolicy,
     required this.displayName,
     required this.id,
     required this.secret,
@@ -28,6 +31,7 @@ class GetClientResult {
     return <String, dynamic>{
       'brand': brand,
       'clientId': clientId,
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'id': id,
       'secret': secret,
@@ -38,10 +42,10 @@ class GetClientResult {
     return GetClientResult(
       brand: map['brand'] as String,
       clientId: map['clientId'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       secret: map['secret'] as String,
     );
   }
 }
-

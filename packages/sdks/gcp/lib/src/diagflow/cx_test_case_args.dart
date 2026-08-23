@@ -9,6 +9,13 @@ import 'cx_test_case_test_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_diagflow_cx_test_case_cx_test_case_args_doc}
 class CxTestCaseArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   final pulumi.Input<String> displayName;
   /// Additional freeform notes about the test case. Limit of 400 characters.
@@ -27,6 +34,7 @@ class CxTestCaseArgs {
   final pulumi.Input<CxTestCaseTestConfig>? testConfig;
 
   /// Creates a new [CxTestCaseArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   /// [notes] Additional freeform notes about the test case. Limit of 400 characters.
   /// [parent] The agent to create the test case for.
@@ -34,6 +42,7 @@ class CxTestCaseArgs {
   /// [testCaseConversationTurns] The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// [testConfig] Config for the test case.
   const CxTestCaseArgs({
+    this.deletionPolicy,
     required this.displayName,
     this.notes,
     this.parent,
@@ -44,6 +53,7 @@ class CxTestCaseArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'notes': ?notes,
       'parent': ?parent,
@@ -55,6 +65,7 @@ class CxTestCaseArgs {
 
   factory CxTestCaseArgs.fromMap(Map<String, dynamic> map) {
     return CxTestCaseArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -64,4 +75,3 @@ class CxTestCaseArgs {
     );
   }
 }
-

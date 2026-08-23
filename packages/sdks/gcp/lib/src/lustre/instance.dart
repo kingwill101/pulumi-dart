@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_access_rules_options.dart';
 import 'instance_args.dart';
+import 'instance_dynamic_tier_options.dart';
+import 'instance_maintenance_policy.dart';
 import 'instance_state.dart';
 
 /// A Managed Lustre instance
@@ -129,7 +131,7 @@ import 'instance_state.dart';
 /// 		// config, add an additional network resource or change
 /// 		// this from "data"to "resource"
 /// 		lustre_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "my-network",
+/// 			Name: pulumi.StringRef("my-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -153,6 +155,40 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "lustre-network" {
+///   name = "my-network"
+/// }
+///
+/// resource "gcp_lustre_instance" "instance" {
+///   instance_id                 = "my-instance"
+///   location                    = "us-central1-a"
+///   description                 = "test lustre instance"
+///   filesystem                  = "testfs"
+///   capacity_gib                = 18000
+///   network                     = data.gcp_compute_getnetwork.lustre-network.id
+///   per_unit_storage_throughput = 1000
+///   labels = {
+///     "test" = "value"
+///   }
+/// }
+/// // This example assumes this network already exists.
+/// // The API creates a tenant network per network authorized for a
+/// // Lustre instance and that network is not deleted when the user-created
+/// // network (authorized_network) is deleted, so this prevents issues
+/// // with tenant network quota.
+/// // If this network hasn't been created and you are using this example in your
+/// // config, add an additional network resource or change
+/// // this from "data"to "resource"
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +199,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
 /// import com.pulumi.gcp.lustre.Instance;
 /// import com.pulumi.gcp.lustre.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,36 +274,42 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance_id}}`
-///
 /// * `{{location}}/{{instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:lustre/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:lustre/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:lustre/instance:Instance default {{location}}/{{instance_id}}
 /// ```
 class Instance extends pulumi.CustomResource {
-  /// Access control rules for the Lustre instance. Configures default root
-  /// squashing behavior and specific access rules based on IP addresses.
+  /// IP-based access rules for the Managed Lustre instance. These options
+  /// define the root user squash configuration.
   /// Structure is documented below.
   late final pulumi.Output<InstanceAccessRulesOptions?> accessRulesOptions;
   /// The storage capacity of the instance in gibibytes (GiB). Allowed values
-  /// are from `18000` to `954000`, in increments of 9000.
+  /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+  /// See [Performance tiers and maximum storage
+  /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+  /// for specific minimums, maximums, and step sizes for each performance tier.
   late final pulumi.Output<String> capacityGib;
   /// Timestamp when the instance was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-readable description of the instance.
   late final pulumi.Output<String?> description;
+  /// Dynamic tier options for a Managed Lustre instance.
+  /// Structure is documented below.
+  late final pulumi.Output<InstanceDynamicTierOptions?> dynamicTierOptions;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The filesystem name for this instance. This name is used by client-side
@@ -283,14 +325,22 @@ class Instance extends pulumi.CustomResource {
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   late final pulumi.Output<String> instanceId;
-  /// The KMS key id to use for encryption of the Lustre instance.
+  /// The Cloud KMS key name to use for data encryption.
+  /// If not set, the instance will use Google-managed encryption keys.
+  /// If set, the instance will use customer-managed encryption keys.
+  /// The key must be in the same region as the instance.
+  /// The key format is:
+  /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
   late final pulumi.Output<String?> kmsKey;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+  /// Defines a maintenance policy for a resource.
+  /// Structure is documented below.
+  late final pulumi.Output<InstanceMaintenancePolicy?> maintenancePolicy;
   /// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
   late final pulumi.Output<String> mountPoint;
   /// Identifier. The name of the instance.
@@ -299,9 +349,14 @@ class Instance extends pulumi.CustomResource {
   /// Must be in the format
   /// `projects/{project_id}/global/networks/{network_name}`.
   late final pulumi.Output<String> network;
-  /// The throughput of the instance in MB/s/TiB.
-  /// Valid values are 125, 250, 500, 1000.
-  late final pulumi.Output<String> perUnitStorageThroughput;
+  /// The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+  /// 500, 1000.
+  /// See [Performance tiers and maximum storage
+  /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+  /// for more information.
+  /// If the instance is using the Dynamic tier, this field must not be set or
+  /// must be set to zero.
+  late final pulumi.Output<String?> perUnitStorageThroughput;
   /// The placement policy name for the instance in the format of
   /// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
   late final pulumi.Output<String?> placementPolicy;
@@ -312,10 +367,25 @@ class Instance extends pulumi.CustomResource {
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The state of the instance.
-  /// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+  /// Possible values:
+  /// ACTIVE
+  /// CREATING
+  /// DELETING
+  /// UPGRADING
+  /// REPAIRING
+  /// STOPPED
+  /// UPDATING
+  /// SUSPENDED
   late final pulumi.Output<String> state;
-  /// The reason why the instance is in a certain state.
+  /// The reason why the instance is in a certain state (e.g. SUSPENDED).
   late final pulumi.Output<String> stateReason;
+  /// Unique ID of the resource.
+  /// This is unrelated to the access rules which allow specifying the root
+  /// squash uid.
+  late final pulumi.Output<String> uid;
+  /// Represents a scheduled maintenance event.
+  /// Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>> upcomingMaintenanceSchedules;
   /// Timestamp when the instance was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -336,7 +406,9 @@ class Instance extends pulumi.CustomResource {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filesystem = registerOutput<String>('filesystem');
     gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
@@ -344,15 +416,18 @@ class Instance extends pulumi.CustomResource {
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
+    maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mountPoint = registerOutput<String>('mountPoint');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    perUnitStorageThroughput = registerOutput<String>('perUnitStorageThroughput');
+    perUnitStorageThroughput = registerOutput<String?>('perUnitStorageThroughput');
     placementPolicy = registerOutput<String?>('placementPolicy');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+    upcomingMaintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('upcomingMaintenanceSchedules');
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -382,7 +457,9 @@ class Instance extends pulumi.CustomResource {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filesystem = registerOutput<String>('filesystem');
     gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
@@ -390,15 +467,18 @@ class Instance extends pulumi.CustomResource {
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
+    maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mountPoint = registerOutput<String>('mountPoint');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    perUnitStorageThroughput = registerOutput<String>('perUnitStorageThroughput');
+    perUnitStorageThroughput = registerOutput<String?>('perUnitStorageThroughput');
     placementPolicy = registerOutput<String?>('placementPolicy');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+    upcomingMaintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('upcomingMaintenanceSchedules');
     updateTime = registerOutput<String>('updateTime');
   }
 }

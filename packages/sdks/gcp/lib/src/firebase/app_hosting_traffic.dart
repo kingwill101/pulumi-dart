@@ -278,6 +278,63 @@ import 'app_hosting_traffic_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingtraffic" "example" {
+///   project  = gcp_firebase_apphostingbackend.example.project
+///   location = gcp_firebase_apphostingbackend.example.location
+///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+///   target = {
+///     splits = [{
+///       "build"   = gcp_firebase_apphostingbuild.example.name
+///       "percent" = 100
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbuild" "example" {
+///   project  = gcp_firebase_apphostingbackend.example.project
+///   location = gcp_firebase_apphostingbackend.example.location
+///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+///   build_id = "target-build"
+///   source = {
+///     container = {
+///       image = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   depends_on       = [gcp_projects_service.fah]
+///   project          = "my-project-name"
+///   location         = "asia-east1"
+///   backend_id       = "traffic-tg"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// ### Include these blocks only once per project if you are starting from scratch ###
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "firebase-app-hosting-compute"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+///   project = "my-project-name"
+///   role    = "roles/firebaseapphosting.computeRunner"
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_service" "fah" {
+///   project = "my-project-name"
+///   service = "firebaseapphosting.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -297,11 +354,12 @@ import 'app_hosting_traffic_target.dart';
 /// import com.pulumi.gcp.firebase.AppHostingTraffic;
 /// import com.pulumi.gcp.firebase.AppHostingTrafficArgs;
 /// import com.pulumi.gcp.firebase.inputs.AppHostingTrafficTargetArgs;
+/// import com.pulumi.gcp.firebase.inputs.AppHostingTrafficTargetSplitArgs;
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -629,6 +687,49 @@ import 'app_hosting_traffic_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingtraffic" "example" {
+///   project  = gcp_firebase_apphostingbackend.example.project
+///   location = gcp_firebase_apphostingbackend.example.location
+///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+///   rollout_policy = {
+///     codebase_branch = "main"
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   depends_on       = [gcp_projects_service.fah]
+///   project          = "my-project-name"
+///   location         = "asia-east1"
+///   backend_id       = "traffic-rp"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// ### Include these blocks only once per project if you are starting from scratch ###
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "firebase-app-hosting-compute"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+///   project = "my-project-name"
+///   role    = "roles/firebaseapphosting.computeRunner"
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_service" "fah" {
+///   project = "my-project-name"
+///   service = "firebaseapphosting.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -647,8 +748,8 @@ import 'app_hosting_traffic_target.dart';
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -952,6 +1053,50 @@ import 'app_hosting_traffic_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingtraffic" "example" {
+///   project  = gcp_firebase_apphostingbackend.example.project
+///   location = gcp_firebase_apphostingbackend.example.location
+///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+///   rollout_policy = {
+///     disabled        = true
+///     codebase_branch = "main"
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   depends_on       = [gcp_projects_service.fah]
+///   project          = "my-project-name"
+///   location         = "asia-east1"
+///   backend_id       = "traffic-rpd"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// ### Include these blocks only once per project if you are starting from scratch ###
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "firebase-app-hosting-compute"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+///   project = "my-project-name"
+///   role    = "roles/firebaseapphosting.computeRunner"
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_service" "fah" {
+///   project = "my-project-name"
+///   service = "firebaseapphosting.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -970,8 +1115,8 @@ import 'app_hosting_traffic_target.dart';
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1079,22 +1224,15 @@ import 'app_hosting_traffic_target.dart';
 /// Traffic can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic`
-///
 /// * `{{project}}/{{location}}/{{backend}}`
-///
 /// * `{{location}}/{{backend}}`
+///
 ///
 /// When using the `pulumi import` command, Traffic can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{project}}/{{location}}/{{backend}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{location}}/{{backend}}
 /// ```
 class AppHostingTraffic extends pulumi.CustomResource {

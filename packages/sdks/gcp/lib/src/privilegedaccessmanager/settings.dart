@@ -6,6 +6,9 @@ import 'settings_state.dart';
 
 /// Settings resource defines the properties, applied directly to the resource or inherited through the hierarchy, to enable consistent, federated use of PAM.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Settings, see:
 ///
 /// * [API documentation](https://cloud.google.com/iam/docs/reference/pam/rest/v1beta/folders.locations/updateSettings)
@@ -185,6 +188,43 @@ import 'settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   name       = "your-project-name"
+///   project_id = "your-project-id"
+///   org_id     = "1234567"
+/// }
+/// resource "gcp_privilegedaccessmanager_settings" "settings" {
+///   depends_on = [wait90s]
+///   location   = "global"
+///   parent     ="projects/${gcp_organizations_project.project.project_id}"
+///   service_account_approver_settings = {
+///     enabled = false
+///   }
+///   email_notification_settings = {
+///     custom_notification_behavior = {
+///       requester_notifications = {
+///         entitlement_assigned      = "DISABLED"
+///         grant_activated           = "DISABLED"
+///         grant_denied              = "ENABLED"
+///         grant_expired             = "DISABLED"
+///         grant_ended               = "DISABLED"
+///         grant_revoked             = "DISABLED"
+///         grant_externally_modified = "DISABLED"
+///         grant_activation_failed   = "DISABLED"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +240,8 @@ import 'settings_state.dart';
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -283,6 +323,7 @@ import 'settings_state.dart';
 /// Settings can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/locations/{{location}}/settings`
+///
 ///
 /// When using the `pulumi import` command, Settings can be imported using one of the formats above. For example:
 ///

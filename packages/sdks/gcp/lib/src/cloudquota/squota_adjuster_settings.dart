@@ -4,9 +4,10 @@ import 'squota_adjuster_settings_state.dart';
 
 /// QuotaAdjusterSettings resource represents your quota adjuster settings for a particular project. When enabled, the quota adjuster monitors your usage for the specified resources and issues quota adjustment requests when resource usage approaches its quota value.
 ///
+///
 /// To get more information about QuotaAdjusterSettings, see:
 ///
-/// * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1beta/projects.locations.quotaAdjusterSettings)
+/// * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1/projects.locations.quotaAdjusterSettings)
 /// * How-to Guides
 /// * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
 ///
@@ -70,6 +71,20 @@ import 'squota_adjuster_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudquota_squotaadjustersettings" "adjuster_settings" {
+///   parent     = "projects/104740170505"
+///   enablement = "ENABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'squota_adjuster_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudquota.SQuotaAdjusterSettings;
 /// import com.pulumi.gcp.cloudquota.SQuotaAdjusterSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,6 +130,7 @@ import 'squota_adjuster_settings_state.dart';
 /// QuotaAdjusterSettings can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/locations/global/quotaAdjusterSettings`
+///
 ///
 /// When using the `pulumi import` command, QuotaAdjusterSettings can be imported using one of the formats above. For example:
 ///

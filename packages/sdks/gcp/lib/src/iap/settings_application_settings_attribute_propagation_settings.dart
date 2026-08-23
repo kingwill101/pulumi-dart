@@ -15,9 +15,9 @@ class SettingsApplicationSettingsAttributePropagationSettings {
   /// Possible values are:
   /// * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
   /// * `JWT`: Propagate attributes in the JWT of the form:
-  /// "additional_claims": { "my_attribute": ["value1", "value2"] }
+  /// "additionalClaims": { "myAttribute": ["value1", "value2"] }
   /// * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
-  /// additional_claims": { "my_attribute": ["value1", "value2"] }
+  /// additionalClaims": { "myAttribute": ["value1", "value2"] }
   /// Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
   final pulumi.Input<List<String>>? outputCredentials;
 
@@ -47,4 +47,3 @@ class SettingsApplicationSettingsAttributePropagationSettings {
     );
   }
 }
-

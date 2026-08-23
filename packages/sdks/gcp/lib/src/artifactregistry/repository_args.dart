@@ -22,6 +22,13 @@ class RepositoryArgs {
   /// If true, the cleanup pipeline is prevented from deleting versions in this
   /// repository.
   final pulumi.Input<bool>? cleanupPolicyDryRun;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The user-provided description of the repository.
   final pulumi.Input<String>? description;
   /// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -44,7 +51,7 @@ class RepositoryArgs {
   /// and dashes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the repository's location. In addition to specific regions,
   /// special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -81,6 +88,7 @@ class RepositoryArgs {
   /// Creates a new [RepositoryArgs].
   /// [cleanupPolicies] Cleanup policies for this repository. Cleanup policies indicate when
   /// [cleanupPolicyDryRun] If true, the cleanup pipeline is prevented from deleting versions in this
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The user-provided description of the repository.
   /// [dockerConfig] Docker repository config contains repository level configuration for the repositories of docker type.
   /// [format] The format of packages that are stored in the repository. Supported formats
@@ -97,6 +105,7 @@ class RepositoryArgs {
   const RepositoryArgs({
     this.cleanupPolicies,
     this.cleanupPolicyDryRun,
+    this.deletionPolicy,
     this.description,
     this.dockerConfig,
     required this.format,
@@ -116,6 +125,7 @@ class RepositoryArgs {
     return <String, dynamic>{
       'cleanupPolicies': ?pulumi.Input.mapOptionalInputValue<List<RepositoryCleanupPolicy>, List<Map<String, dynamic>>>(cleanupPolicies, (value) => pulumi.Input.encodeList<RepositoryCleanupPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cleanupPolicyDryRun': ?cleanupPolicyDryRun,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dockerConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryDockerConfig, Map<String, dynamic>>(dockerConfig, (value) => value.toMap()),
       'format': format,
@@ -136,6 +146,7 @@ class RepositoryArgs {
     return RepositoryArgs(
       cleanupPolicies: (() { final guardedValue = map['cleanupPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RepositoryCleanupPolicy>(guardedValue, (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cleanupPolicyDryRun: (() { final guardedValue = map['cleanupPolicyDryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dockerConfig: (() { final guardedValue = map['dockerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       format: pulumi.Input.fromValue(map['format'] as String),
@@ -152,4 +163,3 @@ class RepositoryArgs {
     );
   }
 }
-

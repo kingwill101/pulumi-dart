@@ -41,4 +41,3 @@ class FirewallPolicyWithRulesRuleMatchLayer4Config {
     );
   }
 }
-

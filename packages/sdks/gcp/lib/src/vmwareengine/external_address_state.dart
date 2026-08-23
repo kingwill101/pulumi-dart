@@ -8,6 +8,13 @@ class ExternalAddressState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for this resource.
   final pulumi.Input<String>? description;
   /// The external IP address of a workload VM.
@@ -31,6 +38,7 @@ class ExternalAddressState {
 
   /// Creates a new [ExternalAddressState].
   /// [createTime] Creation time of this resource.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for this resource.
   /// [externalIp] The external IP address of a workload VM.
   /// [internalIp] The internal IP address of a workload VM.
@@ -41,6 +49,7 @@ class ExternalAddressState {
   /// [updateTime] Last updated time of this resource.
   const ExternalAddressState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.externalIp,
     this.internalIp,
@@ -54,6 +63,7 @@ class ExternalAddressState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'externalIp': ?externalIp,
       'internalIp': ?internalIp,
@@ -68,6 +78,7 @@ class ExternalAddressState {
   factory ExternalAddressState.fromMap(Map<String, dynamic> map) {
     return ExternalAddressState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internalIp: (() { final guardedValue = map['internalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -79,4 +90,3 @@ class ExternalAddressState {
     );
   }
 }
-

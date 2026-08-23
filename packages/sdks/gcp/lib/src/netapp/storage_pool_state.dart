@@ -18,6 +18,13 @@ class StoragePoolState {
   final pulumi.Input<String>? coldTierSizeUsedGib;
   /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
   final pulumi.Input<bool>? customPerformanceEnabled;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -38,13 +45,19 @@ class StoragePoolState {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
   /// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
   final pulumi.Input<bool>? ldapEnabled;
   /// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
   final pulumi.Input<String>? location;
+  /// Mode of the storage pool.
+  /// The operational mode of the storage pool. ONTAP mode enables operations
+  /// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+  /// If not specified during creation, the mode defaults to DEFAULT.
+  /// Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+  final pulumi.Input<String>? mode;
   /// The resource name of the storage pool. Needs to be unique per location/region.
   final pulumi.Input<String>? name;
   /// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
@@ -59,9 +72,19 @@ class StoragePoolState {
   /// Possible values are: AUTO, MANUAL.
   /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
   final pulumi.Input<String>? qosType;
-  /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+  /// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   final pulumi.Input<String>? replicaZone;
+  /// (Optional, Beta, Deprecated)
+  /// The effective scale tier of the storage pool. If `scaleTier` is not
+  /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+  /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+  ///
+  /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+  final pulumi.Input<String>? scaleTier;
+  /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+  /// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+  final pulumi.Input<String>? scaleType;
   /// Service level of the storage pool.
   /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
   final pulumi.Input<String>? serviceLevel;
@@ -78,7 +101,7 @@ class StoragePoolState {
   final pulumi.Input<String>? volumeCapacityGib;
   /// Number of volume in the storage pool.
   final pulumi.Input<int>? volumeCount;
-  /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+  /// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
   final pulumi.Input<String>? zone;
@@ -90,6 +113,7 @@ class StoragePoolState {
   /// [capacityGib] Capacity of the storage pool (in GiB).
   /// [coldTierSizeUsedGib] Total cold tier data rounded down to the nearest GiB used by the storage pool.
   /// [customPerformanceEnabled] Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableHotTierAutoResize] Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
@@ -100,19 +124,22 @@ class StoragePoolState {
   /// [labels] Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   /// [ldapEnabled] When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
   /// [location] Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
+  /// [mode] Mode of the storage pool.
   /// [name] The resource name of the storage pool. Needs to be unique per location/region.
   /// [network] VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [qosType] QoS (Quality of Service) type of the storage pool.
-  /// [replicaZone] Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+  /// [replicaZone] Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+  /// [scaleTier] (Optional, Beta, Deprecated)
+  /// [scaleType] The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
   /// [serviceLevel] Service level of the storage pool.
   /// [totalIops] Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
   /// [totalThroughputMibps] Optional. Custom Performance Total Throughput of the pool (in MiB/s).
   /// [type] Type of the storage pool.
   /// [volumeCapacityGib] Size allocated to volumes in the storage pool (in GiB).
   /// [volumeCount] Number of volume in the storage pool.
-  /// [zone] Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+  /// [zone] Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   const StoragePoolState({
     this.activeDirectory,
     this.allowAutoTiering,
@@ -120,6 +147,7 @@ class StoragePoolState {
     this.capacityGib,
     this.coldTierSizeUsedGib,
     this.customPerformanceEnabled,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.enableHotTierAutoResize,
@@ -130,12 +158,15 @@ class StoragePoolState {
     this.labels,
     this.ldapEnabled,
     this.location,
+    this.mode,
     this.name,
     this.network,
     this.project,
     this.pulumiLabels,
     this.qosType,
     this.replicaZone,
+    this.scaleTier,
+    this.scaleType,
     this.serviceLevel,
     this.totalIops,
     this.totalThroughputMibps,
@@ -153,6 +184,7 @@ class StoragePoolState {
       'capacityGib': ?capacityGib,
       'coldTierSizeUsedGib': ?coldTierSizeUsedGib,
       'customPerformanceEnabled': ?customPerformanceEnabled,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'enableHotTierAutoResize': ?enableHotTierAutoResize,
@@ -163,12 +195,15 @@ class StoragePoolState {
       'labels': ?labels,
       'ldapEnabled': ?ldapEnabled,
       'location': ?location,
+      'mode': ?mode,
       'name': ?name,
       'network': ?network,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'qosType': ?qosType,
       'replicaZone': ?replicaZone,
+      'scaleTier': ?scaleTier,
+      'scaleType': ?scaleType,
       'serviceLevel': ?serviceLevel,
       'totalIops': ?totalIops,
       'totalThroughputMibps': ?totalThroughputMibps,
@@ -187,6 +222,7 @@ class StoragePoolState {
       capacityGib: (() { final guardedValue = map['capacityGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coldTierSizeUsedGib: (() { final guardedValue = map['coldTierSizeUsedGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customPerformanceEnabled: (() { final guardedValue = map['customPerformanceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enableHotTierAutoResize: (() { final guardedValue = map['enableHotTierAutoResize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -197,12 +233,15 @@ class StoragePoolState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       ldapEnabled: (() { final guardedValue = map['ldapEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       qosType: (() { final guardedValue = map['qosType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicaZone: (() { final guardedValue = map['replicaZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scaleTier: (() { final guardedValue = map['scaleTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scaleType: (() { final guardedValue = map['scaleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceLevel: (() { final guardedValue = map['serviceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       totalIops: (() { final guardedValue = map['totalIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       totalThroughputMibps: (() { final guardedValue = map['totalThroughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -213,4 +252,3 @@ class StoragePoolState {
     );
   }
 }
-

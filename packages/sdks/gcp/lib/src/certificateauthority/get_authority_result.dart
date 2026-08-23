@@ -13,6 +13,7 @@ class GetAuthorityResult {
   final String? certificateAuthorityId;
   final List<GetAuthorityConfig> configs;
   final String createTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String desiredState;
   final Map<String, String> effectiveLabels;
@@ -44,6 +45,7 @@ class GetAuthorityResult {
   /// [certificateAuthorityId] Optional.
   /// [configs] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [desiredState] Required.
   /// [effectiveLabels] Required.
@@ -72,6 +74,7 @@ class GetAuthorityResult {
     this.certificateAuthorityId,
     required this.configs,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.desiredState,
     required this.effectiveLabels,
@@ -103,6 +106,7 @@ class GetAuthorityResult {
       'certificateAuthorityId': ?certificateAuthorityId,
       'configs': pulumi.Input.encodeList<GetAuthorityConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'desiredState': desiredState,
       'effectiveLabels': effectiveLabels,
@@ -135,6 +139,7 @@ class GetAuthorityResult {
       certificateAuthorityId: (() { final guardedValue = map['certificateAuthorityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       configs: pulumi.Input.decodeList<GetAuthorityConfig>(map['configs']!, (value) => GetAuthorityConfig.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       desiredState: map['desiredState'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -161,4 +166,3 @@ class GetAuthorityResult {
     );
   }
 }
-

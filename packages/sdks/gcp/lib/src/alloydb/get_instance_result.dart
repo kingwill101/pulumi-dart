@@ -21,6 +21,7 @@ class GetInstanceResult {
   final List<GetInstanceConnectionPoolConfig> connectionPoolConfigs;
   final String createTime;
   final Map<String, String> databaseFlags;
+  final String deletionPolicy;
   final String displayName;
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
@@ -58,6 +59,7 @@ class GetInstanceResult {
   /// [connectionPoolConfigs] Required.
   /// [createTime] Required.
   /// [databaseFlags] Required.
+  /// [deletionPolicy] Required.
   /// [displayName] Required.
   /// [effectiveAnnotations] Required.
   /// [effectiveLabels] Required.
@@ -93,6 +95,7 @@ class GetInstanceResult {
     required this.connectionPoolConfigs,
     required this.createTime,
     required this.databaseFlags,
+    required this.deletionPolicy,
     required this.displayName,
     required this.effectiveAnnotations,
     required this.effectiveLabels,
@@ -131,6 +134,7 @@ class GetInstanceResult {
       'connectionPoolConfigs': pulumi.Input.encodeList<GetInstanceConnectionPoolConfig, Map<String, dynamic>>(connectionPoolConfigs, (value) => value.toMap()),
       'createTime': createTime,
       'databaseFlags': databaseFlags,
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'effectiveAnnotations': effectiveAnnotations,
       'effectiveLabels': effectiveLabels,
@@ -170,6 +174,7 @@ class GetInstanceResult {
       connectionPoolConfigs: pulumi.Input.decodeList<GetInstanceConnectionPoolConfig>(map['connectionPoolConfigs']!, (value) => GetInstanceConnectionPoolConfig.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       databaseFlags: (map['databaseFlags'] as Map).cast<String, String>(),
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -198,4 +203,3 @@ class GetInstanceResult {
     );
   }
 }
-

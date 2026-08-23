@@ -24,4 +24,3 @@ class GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
     );
   }
 }
-

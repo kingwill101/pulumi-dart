@@ -70,6 +70,20 @@ import 'get_scope_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkehub_getfeature" "example" {
+///   location = "global"
+///   name     = "servicemesh"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +92,8 @@ import 'get_scope_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.GkehubFunctions;
 /// import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,6 +200,21 @@ Future<GetFeatureResult> getFeature(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkehub_getfeatureiampolicy" "policy" {
+///   project  = feature.project
+///   location = feature.location
+///   name     = feature.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -194,8 +223,8 @@ Future<GetFeatureResult> getFeature(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.GkehubFunctions;
 /// import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,9 +237,9 @@ Future<GetFeatureResult> getFeature(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = GkehubFunctions.getFeatureIamPolicy(GetFeatureIamPolicyArgs.builder()
-///             .project(feature.project())
-///             .location(feature.location())
-///             .name(feature.name())
+///             .project(feature.get("project"))
+///             .location(feature.get("location"))
+///             .name(feature.get("name"))
 ///             .build());
 ///
 ///     }
@@ -303,6 +332,21 @@ Future<GetFeatureIamPolicyResult> getFeatureIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkehub_getmembership" "example" {
+///   project       = "my-project-id"
+///   location      = "global"
+///   membership_id = "my-membership-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +355,8 @@ Future<GetFeatureIamPolicyResult> getFeatureIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.GkehubFunctions;
 /// import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,6 +470,22 @@ Future<GetMembershipResult> getMembership(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkehub_getmembershipbinding" "example" {
+///   location              = "global"
+///   membership_id         = "my-membership-id"
+///   membership_binding_id = "my-membership-binding-id"
+///   project               = "my-project-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -434,8 +494,8 @@ Future<GetMembershipResult> getMembership(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.GkehubFunctions;
 /// import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -546,6 +606,21 @@ Future<GetMembershipBindingResult> getMembershipBinding(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkehub_getmembershipiampolicy" "policy" {
+///   project       = membership.project
+///   location      = membership.location
+///   membership_id = membership.membershipId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -554,8 +629,8 @@ Future<GetMembershipBindingResult> getMembershipBinding(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.GkehubFunctions;
 /// import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -568,9 +643,9 @@ Future<GetMembershipBindingResult> getMembershipBinding(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
-///             .project(membership.project())
-///             .location(membership.location())
-///             .membershipId(membership.membershipId())
+///             .project(membership.get("project"))
+///             .location(membership.get("location"))
+///             .membershipId(membership.get("membershipId"))
 ///             .build());
 ///
 ///     }
@@ -660,6 +735,20 @@ Future<GetMembershipIamPolicyResult> getMembershipIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkehub_getscopeiampolicy" "policy" {
+///   project  = scope.project
+///   scope_id = scope.scopeId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -668,8 +757,8 @@ Future<GetMembershipIamPolicyResult> getMembershipIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.GkehubFunctions;
 /// import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -682,8 +771,8 @@ Future<GetMembershipIamPolicyResult> getMembershipIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
-///             .project(scope.project())
-///             .scopeId(scope.scopeId())
+///             .project(scope.get("project"))
+///             .scopeId(scope.get("scopeId"))
 ///             .build());
 ///
 ///     }

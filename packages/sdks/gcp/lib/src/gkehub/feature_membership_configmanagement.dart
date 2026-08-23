@@ -14,7 +14,9 @@ class FeatureMembershipConfigmanagement {
   /// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
   /// to migrate from Hierarchy Controller to HNC.
   final pulumi.Input<FeatureMembershipConfigmanagementHierarchyController>? hierarchyController;
-  /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+  /// Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+  /// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+  /// This field was introduced in Terraform version 5.41.0.
   final pulumi.Input<String>? management;
   /// Policy Controller configuration for the cluster. Structure is documented below.
   /// Configuring Policy Controller through the configmanagement feature is no longer recommended.
@@ -26,7 +28,7 @@ class FeatureMembershipConfigmanagement {
   /// Creates a new [FeatureMembershipConfigmanagement].
   /// [configSync] Config Sync configuration for the cluster. Structure is documented below.
   /// [hierarchyController] Hierarchy Controller configuration for the cluster. Structure is documented below.
-  /// [management] Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+  /// [management] Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
   /// [policyController] Policy Controller configuration for the cluster. Structure is documented below.
   /// [version] Version of Config Sync installed.
   const FeatureMembershipConfigmanagement({
@@ -57,4 +59,3 @@ class FeatureMembershipConfigmanagement {
     );
   }
 }
-

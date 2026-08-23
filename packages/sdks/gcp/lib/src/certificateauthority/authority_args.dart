@@ -16,6 +16,17 @@ class AuthorityArgs {
   /// The config used to create a self-signed X.509 certificate or CSR.
   /// Structure is documented below.
   final pulumi.Input<AuthorityConfig> config;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the CertificateAuthority.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the CertificateAuthority will fail.
+  /// When the field is set to false, deleting the CertificateAuthority is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
   /// Possible values: ENABLED, DISABLED, STAGED.
@@ -39,7 +50,7 @@ class AuthorityArgs {
   /// "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -78,7 +89,8 @@ class AuthorityArgs {
   /// Creates a new [AuthorityArgs].
   /// [certificateAuthorityId] The user provided Resource ID for this Certificate Authority.
   /// [config] The config used to create a self-signed X.509 certificate or CSR.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the CertificateAuthority.
   /// [desiredState] Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
   /// [gcsBucket] The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
   /// [ignoreActiveCertificatesOnDeletion] This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
@@ -96,6 +108,7 @@ class AuthorityArgs {
   const AuthorityArgs({
     required this.certificateAuthorityId,
     required this.config,
+    this.deletionPolicy,
     this.deletionProtection,
     this.desiredState,
     this.gcsBucket,
@@ -117,6 +130,7 @@ class AuthorityArgs {
     return <String, dynamic>{
       'certificateAuthorityId': certificateAuthorityId,
       'config': pulumi.Input.mapInputValue<AuthorityConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'desiredState': ?desiredState,
       'gcsBucket': ?gcsBucket,
@@ -139,6 +153,7 @@ class AuthorityArgs {
     return AuthorityArgs(
       certificateAuthorityId: pulumi.Input.fromValue(map['certificateAuthorityId'] as String),
       config: pulumi.Input.fromValue(AuthorityConfig.fromMap((map['config']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gcsBucket: (() { final guardedValue = map['gcsBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -157,4 +172,3 @@ class AuthorityArgs {
     );
   }
 }
-

@@ -6,8 +6,8 @@ import 'environment_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
 ///
 /// * `gcp.apigee.EnvironmentIamPolicy`: Authoritative. Sets the IAM policy for the environment and replaces any existing policy already attached.
-/// * `gcp.apigee.EnvironmentIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the environment are preserved.
-/// * `gcp.apigee.EnvironmentIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the environment are preserved.
+/// * `gcp.apigee.EnvironmentIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the environment are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.apigee.EnvironmentIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the environment are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'environment_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.apigee.EnvironmentIamPolicy` **cannot** be used in conjunction with `gcp.apigee.EnvironmentIamBinding` and `gcp.apigee.EnvironmentIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `gcp.apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.apigee.EnvironmentIamPolicy
@@ -119,6 +118,28 @@ import 'environment_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_apigee_environmentiampolicy" "policy" {
+///   org_id      = apigeeEnvironment.orgId
+///   env_id      = apigeeEnvironment.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,10 +148,11 @@ import 'environment_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.apigee.EnvironmentIamPolicy;
 /// import com.pulumi.gcp.apigee.EnvironmentIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,8 +172,8 @@ import 'environment_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
-///             .orgId(apigeeEnvironment.orgId())
-///             .envId(apigeeEnvironment.name())
+///             .orgId(apigeeEnvironment.get("orgId"))
+///             .envId(apigeeEnvironment.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -248,6 +270,22 @@ import 'environment_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigee_environmentiambinding" "binding" {
+///   org_id  = apigeeEnvironment.orgId
+///   env_id  = apigeeEnvironment.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -256,8 +294,8 @@ import 'environment_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigee.EnvironmentIamBinding;
 /// import com.pulumi.gcp.apigee.EnvironmentIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,8 +308,8 @@ import 'environment_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
-///             .orgId(apigeeEnvironment.orgId())
-///             .envId(apigeeEnvironment.name())
+///             .orgId(apigeeEnvironment.get("orgId"))
+///             .envId(apigeeEnvironment.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -357,6 +395,22 @@ import 'environment_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigee_environmentiammember" "member" {
+///   org_id = apigeeEnvironment.orgId
+///   env_id = apigeeEnvironment.name
+///   role   = "roles/viewer"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +419,8 @@ import 'environment_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigee.EnvironmentIamMember;
 /// import com.pulumi.gcp.apigee.EnvironmentIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -379,8 +433,8 @@ import 'environment_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
-///             .orgId(apigeeEnvironment.orgId())
-///             .envId(apigeeEnvironment.name())
+///             .orgId(apigeeEnvironment.get("orgId"))
+///             .envId(apigeeEnvironment.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -411,8 +465,8 @@ import 'environment_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
 ///
 /// * `gcp.apigee.EnvironmentIamPolicy`: Authoritative. Sets the IAM policy for the environment and replaces any existing policy already attached.
-/// * `gcp.apigee.EnvironmentIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the environment are preserved.
-/// * `gcp.apigee.EnvironmentIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the environment are preserved.
+/// * `gcp.apigee.EnvironmentIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the environment are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.apigee.EnvironmentIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the environment are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -421,7 +475,6 @@ import 'environment_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.apigee.EnvironmentIamPolicy` **cannot** be used in conjunction with `gcp.apigee.EnvironmentIamBinding` and `gcp.apigee.EnvironmentIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `gcp.apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.apigee.EnvironmentIamPolicy
@@ -524,6 +577,28 @@ import 'environment_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_apigee_environmentiampolicy" "policy" {
+///   org_id      = apigeeEnvironment.orgId
+///   env_id      = apigeeEnvironment.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -532,10 +607,11 @@ import 'environment_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.apigee.EnvironmentIamPolicy;
 /// import com.pulumi.gcp.apigee.EnvironmentIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -555,8 +631,8 @@ import 'environment_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
-///             .orgId(apigeeEnvironment.orgId())
-///             .envId(apigeeEnvironment.name())
+///             .orgId(apigeeEnvironment.get("orgId"))
+///             .envId(apigeeEnvironment.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -653,6 +729,22 @@ import 'environment_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigee_environmentiambinding" "binding" {
+///   org_id  = apigeeEnvironment.orgId
+///   env_id  = apigeeEnvironment.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -661,8 +753,8 @@ import 'environment_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigee.EnvironmentIamBinding;
 /// import com.pulumi.gcp.apigee.EnvironmentIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -675,8 +767,8 @@ import 'environment_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
-///             .orgId(apigeeEnvironment.orgId())
-///             .envId(apigeeEnvironment.name())
+///             .orgId(apigeeEnvironment.get("orgId"))
+///             .envId(apigeeEnvironment.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -762,6 +854,22 @@ import 'environment_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigee_environmentiammember" "member" {
+///   org_id = apigeeEnvironment.orgId
+///   env_id = apigeeEnvironment.name
+///   role   = "roles/viewer"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -770,8 +878,8 @@ import 'environment_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigee.EnvironmentIamMember;
 /// import com.pulumi.gcp.apigee.EnvironmentIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -784,8 +892,8 @@ import 'environment_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
-///             .orgId(apigeeEnvironment.orgId())
-///             .envId(apigeeEnvironment.name())
+///             .orgId(apigeeEnvironment.get("orgId"))
+///             .envId(apigeeEnvironment.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -810,7 +918,6 @@ import 'environment_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * {{org_id}}/environments/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -818,25 +925,21 @@ import 'environment_iam_binding_state.dart';
 /// Apigee environment IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:apigee/environmentIamBinding:EnvironmentIamBinding editor "{{org_id}}/environments/{{environment}} roles/viewer user:jane@example.com"
+/// $ terraform import google_apigee_environment_iam_member.editor "{{org_id}}/environments/{{environment}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:apigee/environmentIamBinding:EnvironmentIamBinding editor "{{org_id}}/environments/{{environment}} roles/viewer"
+/// $ terraform import google_apigee_environment_iam_binding.editor "{{org_id}}/environments/{{environment}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:apigee/environmentIamBinding:EnvironmentIamBinding editor {{org_id}}/environments/{{environment}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class EnvironmentIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<EnvironmentIamBindingCondition?> condition;

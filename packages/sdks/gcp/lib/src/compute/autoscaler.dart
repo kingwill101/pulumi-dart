@@ -74,6 +74,7 @@ import 'autoscaler_state.dart';
 ///         maxReplicas: 5,
 ///         minReplicas: 1,
 ///         cooldownPeriod: 60,
+///         stabilizationPeriod: 300,
 ///         metrics: [{
 ///             name: "pubsub.googleapis.com/subscription/num_undelivered_messages",
 ///             filter: "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
@@ -130,10 +131,11 @@ import 'autoscaler_state.dart';
 ///         "max_replicas": 5,
 ///         "min_replicas": 1,
 ///         "cooldown_period": 60,
+///         "stabilization_period": 300,
 ///         "metrics": [{
 ///             "name": "pubsub.googleapis.com/subscription/num_undelivered_messages",
 ///             "filter": "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
-///             "single_instance_assignment": 65535,
+///             "single_instance_assignment": float(65535),
 ///         }],
 ///     })
 /// ```
@@ -224,13 +226,14 @@ import 'autoscaler_state.dart';
 ///             MaxReplicas = 5,
 ///             MinReplicas = 1,
 ///             CooldownPeriod = 60,
+///             StabilizationPeriod = 300,
 ///             Metrics = new[]
 ///             {
 ///                 new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyMetricArgs
 ///                 {
 ///                     Name = "pubsub.googleapis.com/subscription/num_undelivered_messages",
 ///                     Filter = "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
-///                     SingleInstanceAssignment = 65535,
+///                     SingleInstanceAssignment = 65535.0,
 ///                 },
 ///             },
 ///         },
@@ -298,12 +301,12 @@ import 'autoscaler_state.dart';
 /// 			Zone: pulumi.String("us-central1-f"),
 /// 			Versions: compute.InstanceGroupManagerVersionArray{
 /// 				&compute.InstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: defaultInstanceTemplate.ID(),
+/// 					InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 					Name:             pulumi.String("primary"),
 /// 				},
 /// 			},
 /// 			TargetPools: pulumi.StringArray{
-/// 				defaultTargetPool.ID(),
+/// 				defaultTargetPool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			BaseInstanceName: pulumi.String("autoscaler-sample"),
 /// 		})
@@ -313,11 +316,12 @@ import 'autoscaler_state.dart';
 /// 		_, err = compute.NewAutoscaler(ctx, "default", &compute.AutoscalerArgs{
 /// 			Name:   pulumi.String("my-autoscaler"),
 /// 			Zone:   pulumi.String("us-central1-f"),
-/// 			Target: defaultInstanceGroupManager.ID(),
+/// 			Target: defaultInstanceGroupManager.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{
-/// 				MaxReplicas:    pulumi.Int(5),
-/// 				MinReplicas:    pulumi.Int(1),
-/// 				CooldownPeriod: pulumi.Int(60),
+/// 				MaxReplicas:         pulumi.Int(5),
+/// 				MinReplicas:         pulumi.Int(1),
+/// 				CooldownPeriod:      pulumi.Int(60),
+/// 				StabilizationPeriod: pulumi.Int(300),
 /// 				Metrics: compute.AutoscalerAutoscalingPolicyMetricArray{
 /// 					&compute.AutoscalerAutoscalingPolicyMetricArgs{
 /// 						Name:                     pulumi.String("pubsub.googleapis.com/subscription/num_undelivered_messages"),
@@ -332,6 +336,68 @@ import 'autoscaler_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian9" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_autoscaler" "default" {
+///   name   = "my-autoscaler"
+///   zone   = "us-central1-f"
+///   target = gcp_compute_instancegroupmanager.default.id
+///   autoscaling_policy = {
+///     max_replicas         = 5
+///     min_replicas         = 1
+///     cooldown_period      = 60
+///     stabilization_period = 300
+///     metrics = [{
+///       "name"                     = "pubsub.googleapis.com/subscription/num_undelivered_messages"
+///       "filter"                   = "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription"
+///       "singleInstanceAssignment" = 65535
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_instancetemplate" "default" {
+///   name           = "my-instance-template"
+///   machine_type   = "e2-medium"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.debian9.id
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+/// }
+/// resource "gcp_compute_targetpool" "default" {
+///   name = "my-target-pool"
+/// }
+/// resource "gcp_compute_instancegroupmanager" "default" {
+///   name = "my-igm"
+///   zone = "us-central1-f"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.default.id
+///     name              = "primary"
+///   }
+///   target_pools       = [gcp_compute_targetpool.default.id]
+///   base_instance_name = "autoscaler-sample"
 /// }
 /// ```
 /// ```java
@@ -355,8 +421,9 @@ import 'autoscaler_state.dart';
 /// import com.pulumi.gcp.compute.Autoscaler;
 /// import com.pulumi.gcp.compute.AutoscalerArgs;
 /// import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyMetricArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,6 +485,7 @@ import 'autoscaler_state.dart';
 ///                 .maxReplicas(5)
 ///                 .minReplicas(1)
 ///                 .cooldownPeriod(60)
+///                 .stabilizationPeriod(300)
 ///                 .metrics(AutoscalerAutoscalingPolicyMetricArgs.builder()
 ///                     .name("pubsub.googleapis.com/subscription/num_undelivered_messages")
 ///                     .filter("resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription")
@@ -441,6 +509,7 @@ import 'autoscaler_state.dart';
 ///         maxReplicas: 5
 ///         minReplicas: 1
 ///         cooldownPeriod: 60
+///         stabilizationPeriod: 300
 ///         metrics:
 ///           - name: pubsub.googleapis.com/subscription/num_undelivered_messages
 ///             filter: resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription
@@ -548,6 +617,7 @@ import 'autoscaler_state.dart';
 ///         maxReplicas: 5,
 ///         minReplicas: 1,
 ///         cooldownPeriod: 60,
+///         stabilizationPeriod: 300,
 ///         cpuUtilization: {
 ///             target: 0.5,
 ///         },
@@ -602,6 +672,7 @@ import 'autoscaler_state.dart';
 ///         "max_replicas": 5,
 ///         "min_replicas": 1,
 ///         "cooldown_period": 60,
+///         "stabilization_period": 300,
 ///         "cpu_utilization": {
 ///             "target": 0.5,
 ///         },
@@ -694,6 +765,7 @@ import 'autoscaler_state.dart';
 ///             MaxReplicas = 5,
 ///             MinReplicas = 1,
 ///             CooldownPeriod = 60,
+///             StabilizationPeriod = 300,
 ///             CpuUtilization = new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyCpuUtilizationArgs
 ///             {
 ///                 Target = 0.5,
@@ -763,12 +835,12 @@ import 'autoscaler_state.dart';
 /// 			Zone: pulumi.String("us-central1-f"),
 /// 			Versions: compute.InstanceGroupManagerVersionArray{
 /// 				&compute.InstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: foobarInstanceTemplate.ID(),
+/// 					InstanceTemplate: foobarInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 					Name:             pulumi.String("primary"),
 /// 				},
 /// 			},
 /// 			TargetPools: pulumi.StringArray{
-/// 				foobarTargetPool.ID(),
+/// 				foobarTargetPool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			BaseInstanceName: pulumi.String("foobar"),
 /// 		})
@@ -778,11 +850,12 @@ import 'autoscaler_state.dart';
 /// 		_, err = compute.NewAutoscaler(ctx, "foobar", &compute.AutoscalerArgs{
 /// 			Name:   pulumi.String("my-autoscaler"),
 /// 			Zone:   pulumi.String("us-central1-f"),
-/// 			Target: foobarInstanceGroupManager.ID(),
+/// 			Target: foobarInstanceGroupManager.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{
-/// 				MaxReplicas:    pulumi.Int(5),
-/// 				MinReplicas:    pulumi.Int(1),
-/// 				CooldownPeriod: pulumi.Int(60),
+/// 				MaxReplicas:         pulumi.Int(5),
+/// 				MinReplicas:         pulumi.Int(1),
+/// 				CooldownPeriod:      pulumi.Int(60),
+/// 				StabilizationPeriod: pulumi.Int(300),
 /// 				CpuUtilization: &compute.AutoscalerAutoscalingPolicyCpuUtilizationArgs{
 /// 					Target: pulumi.Float64(0.5),
 /// 				},
@@ -793,6 +866,66 @@ import 'autoscaler_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian9" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_autoscaler" "foobar" {
+///   name   = "my-autoscaler"
+///   zone   = "us-central1-f"
+///   target = gcp_compute_instancegroupmanager.foobar.id
+///   autoscaling_policy = {
+///     max_replicas         = 5
+///     min_replicas         = 1
+///     cooldown_period      = 60
+///     stabilization_period = 300
+///     cpu_utilization = {
+///       target = 0.5
+///     }
+///   }
+/// }
+/// resource "gcp_compute_instancetemplate" "foobar" {
+///   name           = "my-instance-template"
+///   machine_type   = "e2-medium"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.debian9.id
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+/// }
+/// resource "gcp_compute_targetpool" "foobar" {
+///   name = "my-target-pool"
+/// }
+/// resource "gcp_compute_instancegroupmanager" "foobar" {
+///   name = "my-igm"
+///   zone = "us-central1-f"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.foobar.id
+///     name              = "primary"
+///   }
+///   target_pools       = [gcp_compute_targetpool.foobar.id]
+///   base_instance_name = "foobar"
 /// }
 /// ```
 /// ```java
@@ -817,8 +950,8 @@ import 'autoscaler_state.dart';
 /// import com.pulumi.gcp.compute.AutoscalerArgs;
 /// import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyCpuUtilizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -880,6 +1013,7 @@ import 'autoscaler_state.dart';
 ///                 .maxReplicas(5)
 ///                 .minReplicas(1)
 ///                 .cooldownPeriod(60)
+///                 .stabilizationPeriod(300)
 ///                 .cpuUtilization(AutoscalerAutoscalingPolicyCpuUtilizationArgs.builder()
 ///                     .target(0.5)
 ///                     .build())
@@ -901,6 +1035,7 @@ import 'autoscaler_state.dart';
 ///         maxReplicas: 5
 ///         minReplicas: 1
 ///         cooldownPeriod: 60
+///         stabilizationPeriod: 300
 ///         cpuUtilization:
 ///           target: 0.5
 ///   foobarInstanceTemplate:
@@ -956,28 +1091,17 @@ import 'autoscaler_state.dart';
 /// Autoscaler can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/autoscaler:Autoscaler default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/autoscaler:Autoscaler default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/autoscaler:Autoscaler default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/autoscaler:Autoscaler default {{name}}
 /// ```
 class Autoscaler extends pulumi.CustomResource {
@@ -990,6 +1114,13 @@ class Autoscaler extends pulumi.CustomResource {
   late final pulumi.Output<AutoscalerAutoscalingPolicy> autoscalingPolicy;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Name of the resource. The name must be 1-63 characters long and match
@@ -1024,6 +1155,7 @@ class Autoscaler extends pulumi.CustomResource {
         ) {
     autoscalingPolicy = registerOutput<AutoscalerAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalerAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1057,6 +1189,7 @@ class Autoscaler extends pulumi.CustomResource {
         ) {
     autoscalingPolicy = registerOutput<AutoscalerAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalerAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountConnectorProviderOauthConfig {
-  /// Required. User selected scopes to apply to the Oauth config
+  /// User selected scopes to apply to the Oauth config
   /// In the event of changing scopes, user records under AccountConnector will
   /// be deleted and users will re-auth again.
   final pulumi.Input<List<String>> scopes;
-  /// List of providers that are owned by Developer Connect.
   /// Possible values:
   /// GITHUB
   /// GITLAB
@@ -16,11 +15,12 @@ class AccountConnectorProviderOauthConfig {
   /// ROVO
   /// NEW_RELIC
   /// DATASTAX
+  /// DYNATRACE
   final pulumi.Input<String>? systemProviderId;
 
   /// Creates a new [AccountConnectorProviderOauthConfig].
-  /// [scopes] Required. User selected scopes to apply to the Oauth config
-  /// [systemProviderId] List of providers that are owned by Developer Connect.
+  /// [scopes] User selected scopes to apply to the Oauth config
+  /// [systemProviderId] Possible values:
   const AccountConnectorProviderOauthConfig({
     required this.scopes,
     this.systemProviderId,
@@ -40,4 +40,3 @@ class AccountConnectorProviderOauthConfig {
     );
   }
 }
-

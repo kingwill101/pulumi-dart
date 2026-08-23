@@ -25,4 +25,3 @@ class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
     );
   }
 }
-

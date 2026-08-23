@@ -102,7 +102,7 @@ import 'service_state.dart';
 ///     location: "us-central1",
 ///     applicationId: application.applicationId,
 ///     serviceId: forwardingRule.name,
-///     discoveredService: catalog_service.apply(catalog_service => catalog_service.name),
+///     discoveredService: catalog_service.name,
 /// });
 /// ```
 /// ```python
@@ -409,7 +409,7 @@ import 'service_state.dart';
 /// 			Project:     serviceProject.ProjectId,
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     ilbNetwork.ID(),
+/// 			Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -434,7 +434,7 @@ import 'service_state.dart';
 /// 			Name:         pulumi.String("l7-ilb-backend-subnet"),
 /// 			Project:      serviceProject.ProjectId,
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: _default.ID(),
+/// 			HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -447,9 +447,9 @@ import 'service_state.dart';
 /// 			IpVersion:           pulumi.String("IPV4"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 			AllPorts:            pulumi.Bool(true),
-/// 			BackendService:      backend.ID(),
-/// 			Network:             ilbNetwork.ID(),
-/// 			Subnetwork:          ilbSubnet.ID(),
+/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -457,7 +457,7 @@ import 'service_state.dart';
 /// 		// discovered service block
 /// 		catalog_service := apphub.GetDiscoveredServiceOutput(ctx, apphub.GetDiscoveredServiceOutputArgs{
 /// 			Location: pulumi.String("us-central1"),
-/// 			ServiceUri: forwardingRule.ID().ApplyT(func(id string) (string, error) {
+/// 			ServiceUri: forwardingRule.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("//compute.googleapis.com/%v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		}, nil)
@@ -470,12 +470,10 @@ import 'service_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apphub.NewService(ctx, "example", &apphub.ServiceArgs{
-/// 			Location:      pulumi.String("us-central1"),
-/// 			ApplicationId: application.ApplicationId,
-/// 			ServiceId:     forwardingRule.Name,
-/// 			DiscoveredService: pulumi.String(catalog_service.ApplyT(func(catalog_service apphub.GetDiscoveredServiceResult) (*string, error) {
-/// 				return &catalog_service.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Location:          pulumi.String("us-central1"),
+/// 			ApplicationId:     application.ApplicationId,
+/// 			ServiceId:         forwardingRule.Name,
+/// 			DiscoveredService: catalog_service.Name(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -483,6 +481,108 @@ import 'service_state.dart';
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apphub_getdiscoveredservice" "catalog-service" {
+///   location    = "us-central1"
+///   service_uri ="//compute.googleapis.com/${gcp_compute_forwardingrule.forwarding_rule.id}"
+/// }
+///
+/// resource "gcp_apphub_application" "application" {
+///   location       = "us-central1"
+///   application_id = "example-application-1"
+///   scope = {
+///     type = "REGIONAL"
+///   }
+/// }
+/// resource "gcp_organizations_project" "service_project" {
+///   project_id      = "project-1"
+///   name            = "Service Project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// # Enable Compute API
+/// resource "gcp_projects_service" "compute_service_project" {
+///   project = gcp_organizations_project.service_project.project_id
+///   service = "compute.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_120s" {
+///   depends_on      = [gcp_projects_service.compute_service_project]
+///   create_duration = "120s"
+/// }
+/// resource "gcp_apphub_serviceprojectattachment" "service_project_attachment" {
+///   depends_on                    = [time_sleep.wait_120s]
+///   service_project_attachment_id = gcp_organizations_project.service_project.project_id
+/// }
+/// resource "time_sleep" "wait_120s_for_resource_ingestion" {
+///   depends_on      = [gcp_compute_forwardingrule.forwarding_rule]
+///   create_duration = "120s"
+/// }
+/// resource "gcp_apphub_service" "example" {
+///   location           = "us-central1"
+///   application_id     = gcp_apphub_application.application.application_id
+///   service_id         = gcp_compute_forwardingrule.forwarding_rule.name
+///   discovered_service = data.gcp_apphub_getdiscoveredservice.catalog-service.name
+/// }
+/// #creates service
+/// # VPC network
+/// resource "gcp_compute_network" "ilb_network" {
+///   depends_on              = [time_sleep.wait_120s]
+///   name                    = "l7-ilb-network"
+///   project                 = gcp_organizations_project.service_project.project_id
+///   auto_create_subnetworks = false
+/// }
+/// # backend subnet
+/// resource "gcp_compute_subnetwork" "ilb_subnet" {
+///   name          = "l7-ilb-subnet"
+///   project       = gcp_organizations_project.service_project.project_id
+///   ip_cidr_range = "10.0.1.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.ilb_network.id
+/// }
+/// # forwarding rule
+/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+///   name                  = "l7-ilb-forwarding-rule"
+///   project               = gcp_organizations_project.service_project.project_id
+///   region                = "us-central1"
+///   ip_version            = "IPV4"
+///   load_balancing_scheme = "INTERNAL"
+///   all_ports             = true
+///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   network               = gcp_compute_network.ilb_network.id
+///   subnetwork            = gcp_compute_subnetwork.ilb_subnet.id
+/// }
+/// # backend service
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name          = "l7-ilb-backend-subnet"
+///   project       = gcp_organizations_project.service_project.project_id
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.default.id
+/// }
+/// # health check
+/// resource "gcp_compute_healthcheck" "default" {
+///   depends_on         = [time_sleep.wait_120s]
+///   name               = "l7-ilb-hc"
+///   project            = gcp_organizations_project.service_project.project_id
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// # discovered service block
 /// ```
 /// ```java
 /// package generated_program;
@@ -513,8 +613,8 @@ import 'service_state.dart';
 /// import com.pulumi.gcp.apphub.ApphubFunctions;
 /// import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -849,7 +949,7 @@ import 'service_state.dart';
 ///     location: "us-central1",
 ///     applicationId: application.applicationId,
 ///     serviceId: forwardingRule.name,
-///     discoveredService: catalog_service.apply(catalog_service => catalog_service.name),
+///     discoveredService: catalog_service.name,
 ///     displayName: "Example Service Full",
 ///     description: "Register service for testing",
 ///     attributes: {
@@ -1237,7 +1337,7 @@ import 'service_state.dart';
 /// 			Project:     serviceProject.ProjectId,
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     ilbNetwork.ID(),
+/// 			Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1262,7 +1362,7 @@ import 'service_state.dart';
 /// 			Name:         pulumi.String("l7-ilb-backend-subnet"),
 /// 			Project:      serviceProject.ProjectId,
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: _default.ID(),
+/// 			HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1275,9 +1375,9 @@ import 'service_state.dart';
 /// 			IpVersion:           pulumi.String("IPV4"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 			AllPorts:            pulumi.Bool(true),
-/// 			BackendService:      backend.ID(),
-/// 			Network:             ilbNetwork.ID(),
-/// 			Subnetwork:          ilbSubnet.ID(),
+/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1285,7 +1385,7 @@ import 'service_state.dart';
 /// 		// discovered service block
 /// 		catalog_service := apphub.GetDiscoveredServiceOutput(ctx, apphub.GetDiscoveredServiceOutputArgs{
 /// 			Location: pulumi.String("us-central1"),
-/// 			ServiceUri: forwardingRule.ID().ApplyT(func(id string) (string, error) {
+/// 			ServiceUri: forwardingRule.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("//compute.googleapis.com/%v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		}, nil)
@@ -1298,14 +1398,12 @@ import 'service_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apphub.NewService(ctx, "example", &apphub.ServiceArgs{
-/// 			Location:      pulumi.String("us-central1"),
-/// 			ApplicationId: application.ApplicationId,
-/// 			ServiceId:     forwardingRule.Name,
-/// 			DiscoveredService: pulumi.String(catalog_service.ApplyT(func(catalog_service apphub.GetDiscoveredServiceResult) (*string, error) {
-/// 				return &catalog_service.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			DisplayName: pulumi.String("Example Service Full"),
-/// 			Description: pulumi.String("Register service for testing"),
+/// 			Location:          pulumi.String("us-central1"),
+/// 			ApplicationId:     application.ApplicationId,
+/// 			ServiceId:         forwardingRule.Name,
+/// 			DiscoveredService: catalog_service.Name(),
+/// 			DisplayName:       pulumi.String("Example Service Full"),
+/// 			Description:       pulumi.String("Register service for testing"),
 /// 			Attributes: &apphub.ServiceAttributesArgs{
 /// 				Environment: &apphub.ServiceAttributesEnvironmentArgs{
 /// 					Type: pulumi.String("STAGING"),
@@ -1340,6 +1438,130 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_apphub_getdiscoveredservice" "catalog-service" {
+///   location    = "us-central1"
+///   service_uri ="//compute.googleapis.com/${gcp_compute_forwardingrule.forwarding_rule.id}"
+/// }
+///
+/// resource "gcp_apphub_application" "application" {
+///   location       = "us-central1"
+///   application_id = "example-application-1"
+///   scope = {
+///     type = "REGIONAL"
+///   }
+/// }
+/// resource "gcp_organizations_project" "service_project" {
+///   project_id      = "project-1"
+///   name            = "Service Project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// # Enable Compute API
+/// resource "gcp_projects_service" "compute_service_project" {
+///   project = gcp_organizations_project.service_project.project_id
+///   service = "compute.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_120s" {
+///   depends_on      = [gcp_projects_service.compute_service_project]
+///   create_duration = "120s"
+/// }
+/// resource "gcp_apphub_serviceprojectattachment" "service_project_attachment" {
+///   depends_on                    = [time_sleep.wait_120s]
+///   service_project_attachment_id = gcp_organizations_project.service_project.project_id
+/// }
+/// resource "time_sleep" "wait_120s_for_resource_ingestion" {
+///   depends_on      = [gcp_compute_forwardingrule.forwarding_rule]
+///   create_duration = "120s"
+/// }
+/// resource "gcp_apphub_service" "example" {
+///   location           = "us-central1"
+///   application_id     = gcp_apphub_application.application.application_id
+///   service_id         = gcp_compute_forwardingrule.forwarding_rule.name
+///   discovered_service = data.gcp_apphub_getdiscoveredservice.catalog-service.name
+///   display_name       = "Example Service Full"
+///   description        = "Register service for testing"
+///   attributes = {
+///     environment = {
+///       type = "STAGING"
+///     }
+///     criticality = {
+///       type = "MISSION_CRITICAL"
+///     }
+///     business_owners = [{
+///       "displayName" = "Alice"
+///       "email"       = "alice@google.com"
+///     }]
+///     developer_owners = [{
+///       "displayName" = "Bob"
+///       "email"       = "bob@google.com"
+///     }]
+///     operator_owners = [{
+///       "displayName" = "Charlie"
+///       "email"       = "charlie@google.com"
+///     }]
+///   }
+/// }
+/// #creates service
+/// # VPC network
+/// resource "gcp_compute_network" "ilb_network" {
+///   depends_on              = [time_sleep.wait_120s]
+///   name                    = "l7-ilb-network"
+///   project                 = gcp_organizations_project.service_project.project_id
+///   auto_create_subnetworks = false
+/// }
+/// # backend subnet
+/// resource "gcp_compute_subnetwork" "ilb_subnet" {
+///   name          = "l7-ilb-subnet"
+///   project       = gcp_organizations_project.service_project.project_id
+///   ip_cidr_range = "10.0.1.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.ilb_network.id
+/// }
+/// # forwarding rule
+/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+///   name                  = "l7-ilb-forwarding-rule"
+///   project               = gcp_organizations_project.service_project.project_id
+///   region                = "us-central1"
+///   ip_version            = "IPV4"
+///   load_balancing_scheme = "INTERNAL"
+///   all_ports             = true
+///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   network               = gcp_compute_network.ilb_network.id
+///   subnetwork            = gcp_compute_subnetwork.ilb_subnet.id
+/// }
+/// # backend service
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name          = "l7-ilb-backend-subnet"
+///   project       = gcp_organizations_project.service_project.project_id
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.default.id
+/// }
+/// # health check
+/// resource "gcp_compute_healthcheck" "default" {
+///   depends_on         = [time_sleep.wait_120s]
+///   name               = "l7-ilb-hc"
+///   project            = gcp_organizations_project.service_project.project_id
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// # discovered service block
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1371,9 +1593,12 @@ import 'service_state.dart';
 /// import com.pulumi.gcp.apphub.inputs.ServiceAttributesArgs;
 /// import com.pulumi.gcp.apphub.inputs.ServiceAttributesEnvironmentArgs;
 /// import com.pulumi.gcp.apphub.inputs.ServiceAttributesCriticalityArgs;
+/// import com.pulumi.gcp.apphub.inputs.ServiceAttributesBusinessOwnerArgs;
+/// import com.pulumi.gcp.apphub.inputs.ServiceAttributesDeveloperOwnerArgs;
+/// import com.pulumi.gcp.apphub.inputs.ServiceAttributesOperatorOwnerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1659,22 +1884,15 @@ import 'service_state.dart';
 /// Service can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}`
-///
 /// * `{{project}}/{{location}}/{{application_id}}/{{service_id}}`
-///
 /// * `{{location}}/{{application_id}}/{{service_id}}`
+///
 ///
 /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apphub/service:Service default projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/service:Service default {{project}}/{{location}}/{{application_id}}/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/service:Service default {{location}}/{{application_id}}/{{service_id}}
 /// ```
 class Service extends pulumi.CustomResource {
@@ -1685,6 +1903,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<ServiceAttributes?> attributes;
   /// Output only. Create time.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-defined description of a Service.
   late final pulumi.Output<String?> description;
   /// Immutable. The resource name of the original discovered service.
@@ -1732,6 +1957,7 @@ class Service extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveredService = registerOutput<String>('discoveredService');
     displayName = registerOutput<String?>('displayName');
@@ -1772,6 +1998,7 @@ class Service extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveredService = registerOutput<String>('discoveredService');
     displayName = registerOutput<String?>('displayName');

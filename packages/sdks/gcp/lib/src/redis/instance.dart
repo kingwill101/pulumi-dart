@@ -77,6 +77,21 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_instance" "cache" {
+///   name                = "memory-cache"
+///   memory_size_gb      = 1
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +100,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.redis.Instance;
 /// import com.pulumi.gcp.redis.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +295,7 @@ import 'instance_state.dart';
 /// 		// config, add an additional network resource or change
 /// 		// this from "data"to "resource"
 /// 		redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "redis-test-network",
+/// 			Name: pulumi.StringRef("redis-test-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -320,6 +335,54 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "redis-network" {
+///   name = "redis-test-network"
+/// }
+///
+/// resource "gcp_redis_instance" "cache" {
+///   name                    = "ha-memory-cache"
+///   tier                    = "STANDARD_HA"
+///   memory_size_gb          = 1
+///   location_id             = "us-central1-a"
+///   alternative_location_id = "us-central1-f"
+///   authorized_network      = data.gcp_compute_getnetwork.redis-network.id
+///   redis_version           = "REDIS_7_2"
+///   display_name            = "Test Instance"
+///   reserved_ip_range       = "192.168.0.0/29"
+///   labels = {
+///     "my_key"    = "my_val"
+///     "other_key" = "other_val"
+///   }
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "TUESDAY"
+///       "startTime" = {
+///         "hours"   = 0
+///         "minutes" = 30
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+/// }
+/// // This example assumes this network already exists.
+/// // The API creates a tenant network per network authorized for a
+/// // Redis instance and that network is not deleted when the user-created
+/// // network (authorized_network) is deleted, so this prevents issues
+/// // with tenant network quota.
+/// // If this network hasn't been created and you are using this example in your
+/// // config, add an additional network resource or change
+/// // this from "data"to "resource"
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +394,10 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.redis.Instance;
 /// import com.pulumi.gcp.redis.InstanceArgs;
 /// import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -514,6 +579,27 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_instance" "cache-persis" {
+///   name                    = "ha-memory-cache-persis"
+///   tier                    = "STANDARD_HA"
+///   memory_size_gb          = 1
+///   location_id             = "us-central1-a"
+///   alternative_location_id = "us-central1-f"
+///   persistence_config = {
+///     persistence_mode    = "RDB"
+///     rdb_snapshot_period = "TWELVE_HOURS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -523,8 +609,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.redis.Instance;
 /// import com.pulumi.gcp.redis.InstanceArgs;
 /// import com.pulumi.gcp.redis.inputs.InstancePersistenceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -736,13 +822,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      redis_network.ID(),
+/// 			Network:      redis_network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: redis_network.ID(),
+/// 			Network: redis_network.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				serviceRange.Name,
@@ -757,7 +843,7 @@ import 'instance_state.dart';
 /// 			MemorySizeGb:          pulumi.Int(1),
 /// 			LocationId:            pulumi.String("us-central1-a"),
 /// 			AlternativeLocationId: pulumi.String("us-central1-f"),
-/// 			AuthorizedNetwork:     redis_network.ID(),
+/// 			AuthorizedNetwork:     redis_network.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 /// 			RedisVersion:          pulumi.String("REDIS_7_2"),
 /// 			DisplayName:           pulumi.String("Test Instance"),
@@ -769,6 +855,51 @@ import 'instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // This example assumes this network already exists.
+/// // The API creates a tenant network per network authorized for a
+/// // Redis instance and that network is not deleted when the user-created
+/// // network (authorized_network) is deleted, so this prevents issues
+/// // with tenant network quota.
+/// // If this network hasn't been created and you are using this example in your
+/// // config, add an additional network resource or change
+/// // this from "data"to "resource"
+/// resource "gcp_compute_network" "redis-network" {
+///   name = "redis-test-network"
+/// }
+/// resource "gcp_compute_globaladdress" "service_range" {
+///   name          = "address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.redis-network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "private_service_connection" {
+///   network                 = gcp_compute_network.redis-network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.service_range.name]
+/// }
+/// resource "gcp_redis_instance" "cache" {
+///   depends_on              = [gcp_servicenetworking_connection.private_service_connection]
+///   name                    = "private-cache"
+///   tier                    = "STANDARD_HA"
+///   memory_size_gb          = 1
+///   location_id             = "us-central1-a"
+///   alternative_location_id = "us-central1-f"
+///   authorized_network      = gcp_compute_network.redis-network.id
+///   connect_mode            = "PRIVATE_SERVICE_ACCESS"
+///   redis_version           = "REDIS_7_2"
+///   display_name            = "Test Instance"
 /// }
 /// ```
 /// ```java
@@ -786,8 +917,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.redis.Instance;
 /// import com.pulumi.gcp.redis.InstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -917,7 +1048,7 @@ import 'instance_state.dart';
 ///     alternativeLocationId: "us-central1-f",
 ///     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
 ///     redisVersion: "REDIS_7_2",
-///     displayName: "Terraform Test Instance",
+///     displayName: "Test Instance",
 ///     replicaCount: 5,
 ///     readReplicasMode: "READ_REPLICAS_ENABLED",
 ///     labels: {
@@ -947,7 +1078,7 @@ import 'instance_state.dart';
 ///     alternative_location_id="us-central1-f",
 ///     authorized_network=redis_network.id,
 ///     redis_version="REDIS_7_2",
-///     display_name="Terraform Test Instance",
+///     display_name="Test Instance",
 ///     replica_count=5,
 ///     read_replicas_mode="READ_REPLICAS_ENABLED",
 ///     labels={
@@ -985,7 +1116,7 @@ import 'instance_state.dart';
 ///         AlternativeLocationId = "us-central1-f",
 ///         AuthorizedNetwork = redis_network.Apply(redis_network => redis_network.Apply(getNetworkResult => getNetworkResult.Id)),
 ///         RedisVersion = "REDIS_7_2",
-///         DisplayName = "Terraform Test Instance",
+///         DisplayName = "Test Instance",
 ///         ReplicaCount = 5,
 ///         ReadReplicasMode = "READ_REPLICAS_ENABLED",
 ///         Labels =
@@ -1017,7 +1148,7 @@ import 'instance_state.dart';
 /// 		// config, add an additional network resource or change
 /// 		// this from "data"to "resource"
 /// 		redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "redis-test-network",
+/// 			Name: pulumi.StringRef("redis-test-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -1030,7 +1161,7 @@ import 'instance_state.dart';
 /// 			AlternativeLocationId: pulumi.String("us-central1-f"),
 /// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
 /// 			RedisVersion:          pulumi.String("REDIS_7_2"),
-/// 			DisplayName:           pulumi.String("Terraform Test Instance"),
+/// 			DisplayName:           pulumi.String("Test Instance"),
 /// 			ReplicaCount:          pulumi.Int(5),
 /// 			ReadReplicasMode:      pulumi.String("READ_REPLICAS_ENABLED"),
 /// 			Labels: pulumi.StringMap{
@@ -1045,6 +1176,44 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "redis-network" {
+///   name = "redis-test-network"
+/// }
+///
+/// resource "gcp_redis_instance" "cache" {
+///   name                    = "mrr-memory-cache"
+///   tier                    = "STANDARD_HA"
+///   memory_size_gb          = 5
+///   location_id             = "us-central1-a"
+///   alternative_location_id = "us-central1-f"
+///   authorized_network      = data.gcp_compute_getnetwork.redis-network.id
+///   redis_version           = "REDIS_7_2"
+///   display_name            = "Test Instance"
+///   replica_count           = 5
+///   read_replicas_mode      = "READ_REPLICAS_ENABLED"
+///   labels = {
+///     "my_key"    = "my_val"
+///     "other_key" = "other_val"
+///   }
+/// }
+/// // This example assumes this network already exists.
+/// // The API creates a tenant network per network authorized for a
+/// // Redis instance and that network is not deleted when the user-created
+/// // network (authorized_network) is deleted, so this prevents issues
+/// // with tenant network quota.
+/// // If this network hasn't been created and you are using this example in your
+/// // config, add an additional network resource or change
+/// // this from "data"to "resource"
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1055,8 +1224,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
 /// import com.pulumi.gcp.redis.Instance;
 /// import com.pulumi.gcp.redis.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1088,7 +1257,7 @@ import 'instance_state.dart';
 ///             .alternativeLocationId("us-central1-f")
 ///             .authorizedNetwork(redis_network.id())
 ///             .redisVersion("REDIS_7_2")
-///             .displayName("Terraform Test Instance")
+///             .displayName("Test Instance")
 ///             .replicaCount(5)
 ///             .readReplicasMode("READ_REPLICAS_ENABLED")
 ///             .labels(Map.ofEntries(
@@ -1112,7 +1281,7 @@ import 'instance_state.dart';
 ///       alternativeLocationId: us-central1-f
 ///       authorizedNetwork: ${["redis-network"].id}
 ///       redisVersion: REDIS_7_2
-///       displayName: Terraform Test Instance
+///       displayName: Test Instance
 ///       replicaCount: 5
 ///       readReplicasMode: READ_REPLICAS_ENABLED
 ///       labels:
@@ -1169,7 +1338,7 @@ import 'instance_state.dart';
 ///     alternativeLocationId: "us-central1-f",
 ///     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
 ///     redisVersion: "REDIS_7_2",
-///     displayName: "Terraform Test Instance",
+///     displayName: "Test Instance",
 ///     labels: {
 ///         my_key: "my_val",
 ///         other_key: "other_val",
@@ -1204,7 +1373,7 @@ import 'instance_state.dart';
 ///     alternative_location_id="us-central1-f",
 ///     authorized_network=redis_network.id,
 ///     redis_version="REDIS_7_2",
-///     display_name="Terraform Test Instance",
+///     display_name="Test Instance",
 ///     labels={
 ///         "my_key": "my_val",
 ///         "other_key": "other_val",
@@ -1253,7 +1422,7 @@ import 'instance_state.dart';
 ///         AlternativeLocationId = "us-central1-f",
 ///         AuthorizedNetwork = redis_network.Apply(redis_network => redis_network.Apply(getNetworkResult => getNetworkResult.Id)),
 ///         RedisVersion = "REDIS_7_2",
-///         DisplayName = "Terraform Test Instance",
+///         DisplayName = "Test Instance",
 ///         Labels =
 ///         {
 ///             { "my_key", "my_val" },
@@ -1285,7 +1454,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		redisKey, err := kms.NewCryptoKey(ctx, "redis_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("redis-key"),
-/// 			KeyRing: redisKeyring.ID(),
+/// 			KeyRing: redisKeyring.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1299,7 +1468,7 @@ import 'instance_state.dart';
 /// 		// config, add an additional network resource or change
 /// 		// this from "data"to "resource"
 /// 		redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "redis-test-network",
+/// 			Name: pulumi.StringRef("redis-test-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -1312,12 +1481,12 @@ import 'instance_state.dart';
 /// 			AlternativeLocationId: pulumi.String("us-central1-f"),
 /// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
 /// 			RedisVersion:          pulumi.String("REDIS_7_2"),
-/// 			DisplayName:           pulumi.String("Terraform Test Instance"),
+/// 			DisplayName:           pulumi.String("Test Instance"),
 /// 			Labels: pulumi.StringMap{
 /// 				"my_key":    pulumi.String("my_val"),
 /// 				"other_key": pulumi.String("other_val"),
 /// 			},
-/// 			CustomerManagedKey: redisKey.ID(),
+/// 			CustomerManagedKey: redisKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1325,6 +1494,51 @@ import 'instance_state.dart';
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "redis-network" {
+///   name = "redis-test-network"
+/// }
+///
+/// resource "gcp_redis_instance" "cache" {
+///   name                    = "cmek-memory-cache"
+///   tier                    = "STANDARD_HA"
+///   memory_size_gb          = 1
+///   location_id             = "us-central1-a"
+///   alternative_location_id = "us-central1-f"
+///   authorized_network      = data.gcp_compute_getnetwork.redis-network.id
+///   redis_version           = "REDIS_7_2"
+///   display_name            = "Test Instance"
+///   labels = {
+///     "my_key"    = "my_val"
+///     "other_key" = "other_val"
+///   }
+///   customer_managed_key = gcp_kms_cryptokey.redis_key.id
+/// }
+/// resource "gcp_kms_keyring" "redis_keyring" {
+///   name     = "redis-keyring"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokey" "redis_key" {
+///   name     = "redis-key"
+///   key_ring = gcp_kms_keyring.redis_keyring.id
+/// }
+/// // This example assumes this network already exists.
+/// // The API creates a tenant network per network authorized for a
+/// // Redis instance and that network is not deleted when the user-created
+/// // network (authorized_network) is deleted, so this prevents issues
+/// // with tenant network quota.
+/// // If this network hasn't been created and you are using this example in your
+/// // config, add an additional network resource or change
+/// // this from "data"to "resource"
 /// ```
 /// ```java
 /// package generated_program;
@@ -1340,8 +1554,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
 /// import com.pulumi.gcp.redis.Instance;
 /// import com.pulumi.gcp.redis.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1383,7 +1597,7 @@ import 'instance_state.dart';
 ///             .alternativeLocationId("us-central1-f")
 ///             .authorizedNetwork(redis_network.id())
 ///             .redisVersion("REDIS_7_2")
-///             .displayName("Terraform Test Instance")
+///             .displayName("Test Instance")
 ///             .labels(Map.ofEntries(
 ///                 Map.entry("my_key", "my_val"),
 ///                 Map.entry("other_key", "other_val")
@@ -1406,7 +1620,7 @@ import 'instance_state.dart';
 ///       alternativeLocationId: us-central1-f
 ///       authorizedNetwork: ${["redis-network"].id}
 ///       redisVersion: REDIS_7_2
-///       displayName: Terraform Test Instance
+///       displayName: Test Instance
 ///       labels:
 ///         my_key: my_val
 ///         other_key: other_val
@@ -1445,28 +1659,17 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:redis/instance:Instance default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:redis/instance:Instance default {{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -1479,7 +1682,7 @@ class Instance extends pulumi.CustomResource {
   /// instance. If set to "true" AUTH is enabled on the instance.
   /// Default value is "false" meaning AUTH is disabled.
   late final pulumi.Output<bool?> authEnabled;
-  /// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+  /// AUTH String set on the instance. This field will only be populated if authEnabled is true.
   late final pulumi.Output<String> authString;
   /// The full name of the Google Compute Engine network to which the
   /// instance is connected. If left unspecified, the default network
@@ -1501,6 +1704,19 @@ class Instance extends pulumi.CustomResource {
   /// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
   /// instance. If this is provided, CMEK is enabled.
   late final pulumi.Output<String?> customerManagedKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the instance.
+  /// When a`terraform destroy` or `pulumi up` would delete the instance,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the instance will fail.
+  /// When the field is set to false, deleting the instance is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// An arbitrary and optional user-provided name for the instance.
   late final pulumi.Output<String?> displayName;
@@ -1517,7 +1733,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> host;
   /// Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The zone where the instance will be provisioned. If not provided,
   /// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -1634,6 +1850,7 @@ class Instance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     currentLocationId = registerOutput<String>('currentLocationId');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1697,6 +1914,7 @@ class Instance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     currentLocationId = registerOutput<String>('currentLocationId');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

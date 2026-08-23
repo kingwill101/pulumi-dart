@@ -180,7 +180,7 @@ import 'organization_feed_state.dart';
 /// 			},
 /// 			FeedOutputConfig: &cloudasset.OrganizationFeedFeedOutputConfigArgs{
 /// 				PubsubDestination: &cloudasset.OrganizationFeedFeedOutputConfigPubsubDestinationArgs{
-/// 					Topic: feedOutput.ID(),
+/// 					Topic: feedOutput.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Condition: &cloudasset.OrganizationFeedConditionArgs{
@@ -204,6 +204,46 @@ import 'organization_feed_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+///   project_id = "my-project-name"
+/// }
+///
+/// # Create a feed that sends notifications about network resource updates under a
+/// # particular organization.
+/// resource "gcp_cloudasset_organizationfeed" "organization_feed" {
+///   billing_project = "my-project-name"
+///   org_id          = "123456789"
+///   feed_id         = "network-updates"
+///   content_type    = "RESOURCE"
+///   asset_types     = ["compute.googleapis.com/Subnetwork", "compute.googleapis.com/Network"]
+///   feed_output_config = {
+///     pubsub_destination = {
+///       topic = gcp_pubsub_topic.feed_output.id
+///     }
+///   }
+///   condition = {
+///     expression  = "!temporal_asset.deleted &&\ntemporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST\n"
+///     title       = "created"
+///     description = "Send notifications on creation events"
+///   }
+/// }
+/// # The topic where the resource change notifications will be sent.
+/// resource "gcp_pubsub_topic" "feed_output" {
+///   project = "my-project-name"
+///   name    = "network-updates"
+/// }
+/// # Find the project number of the project whose identity will be used for sending
+/// # the asset change notifications.
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +259,8 @@ import 'organization_feed_state.dart';
 /// import com.pulumi.gcp.cloudasset.inputs.OrganizationFeedConditionArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -319,16 +359,13 @@ import 'organization_feed_state.dart';
 /// OrganizationFeed can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{org_id}}/feeds/{{name}}`
-///
 /// * `{{org_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationFeed can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default organizations/{{org_id}}/feeds/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default {{org_id}}/{{name}}
 /// ```
 class OrganizationFeed extends pulumi.CustomResource {
@@ -357,6 +394,13 @@ class OrganizationFeed extends pulumi.CustomResource {
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
   late final pulumi.Output<String?> contentType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   late final pulumi.Output<String> feedId;
   /// Output configuration for asset feed destination.
@@ -386,6 +430,7 @@ class OrganizationFeed extends pulumi.CustomResource {
     billingProject = registerOutput<String>('billingProject');
     condition = registerOutput<OrganizationFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<OrganizationFeedFeedOutputConfig>('feedOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationFeedFeedOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -420,6 +465,7 @@ class OrganizationFeed extends pulumi.CustomResource {
     billingProject = registerOutput<String>('billingProject');
     condition = registerOutput<OrganizationFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<OrganizationFeedFeedOutputConfig>('feedOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationFeedFeedOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

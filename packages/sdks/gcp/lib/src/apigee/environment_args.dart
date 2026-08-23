@@ -17,6 +17,13 @@ class EnvironmentArgs {
   /// The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
   /// Structure is documented below.
   final pulumi.Input<EnvironmentClientIpResolutionConfig>? clientIpResolutionConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Deployment type supported by the environment. The deployment type can be
   /// set when creating the environment and cannot be changed. When you enable archive
   /// deployment, you will be prevented from performing a subset of actions within the
@@ -53,6 +60,7 @@ class EnvironmentArgs {
   /// Creates a new [EnvironmentArgs].
   /// [apiProxyType] Optional. API Proxy type supported by the environment. The type can be set when creating
   /// [clientIpResolutionConfig] The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deploymentType] Optional. Deployment type supported by the environment. The deployment type can be
   /// [description] Description of the environment.
   /// [displayName] Display name of the environment.
@@ -65,6 +73,7 @@ class EnvironmentArgs {
   const EnvironmentArgs({
     this.apiProxyType,
     this.clientIpResolutionConfig,
+    this.deletionPolicy,
     this.deploymentType,
     this.description,
     this.displayName,
@@ -80,6 +89,7 @@ class EnvironmentArgs {
     return <String, dynamic>{
       'apiProxyType': ?apiProxyType,
       'clientIpResolutionConfig': ?pulumi.Input.mapOptionalInputValue<EnvironmentClientIpResolutionConfig, Map<String, dynamic>>(clientIpResolutionConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'deploymentType': ?deploymentType,
       'description': ?description,
       'displayName': ?displayName,
@@ -96,6 +106,7 @@ class EnvironmentArgs {
     return EnvironmentArgs(
       apiProxyType: (() { final guardedValue = map['apiProxyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientIpResolutionConfig: (() { final guardedValue = map['clientIpResolutionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentClientIpResolutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -108,4 +119,3 @@ class EnvironmentArgs {
     );
   }
 }
-

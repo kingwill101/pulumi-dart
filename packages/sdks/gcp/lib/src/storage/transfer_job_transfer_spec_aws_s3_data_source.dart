@@ -10,7 +10,7 @@ class TransferJobTransferSpecAwsS3DataSource {
   final pulumi.Input<String> bucketName;
   /// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
   final pulumi.Input<String>? cloudfrontDomain;
-  /// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+  /// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
   final pulumi.Input<String>? credentialsSecret;
   /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
   final pulumi.Input<bool>? managedPrivateNetwork;
@@ -23,7 +23,7 @@ class TransferJobTransferSpecAwsS3DataSource {
   /// [awsAccessKey] AWS credentials block.
   /// [bucketName] S3 Bucket name.
   /// [cloudfrontDomain] The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
-  /// [credentialsSecret] The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+  /// [credentialsSecret] The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
   /// [managedPrivateNetwork] Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
   /// [path] S3 Bucket path in bucket to transfer.
   /// [roleArn] The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -61,4 +61,3 @@ class TransferJobTransferSpecAwsS3DataSource {
     );
   }
 }
-

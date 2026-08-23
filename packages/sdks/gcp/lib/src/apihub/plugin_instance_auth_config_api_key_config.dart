@@ -19,7 +19,7 @@ class PluginInstanceAuthConfigApiKeyConfig {
   final pulumi.Input<String> httpElementLocation;
   /// The parameter name of the API key.
   /// E.g. If the API request is "https://example.com/act?api_key=",
-  /// "api_key" would be the parameter name.
+  /// "apiKey" would be the parameter name.
   final pulumi.Input<String> name;
 
   /// Creates a new [PluginInstanceAuthConfigApiKeyConfig].
@@ -48,4 +48,3 @@ class PluginInstanceAuthConfigApiKeyConfig {
     );
   }
 }
-

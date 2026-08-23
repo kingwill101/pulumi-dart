@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'urlmap_path_matcher_default_route_action_cache_policy.dart';
 import 'urlmap_path_matcher_default_route_action_cors_policy.dart';
 import 'urlmap_path_matcher_default_route_action_fault_injection_policy.dart';
 import 'urlmap_path_matcher_default_route_action_max_stream_duration.dart';
@@ -11,6 +12,12 @@ import 'urlmap_path_matcher_default_route_action_url_rewrite.dart';
 import 'urlmap_path_matcher_default_route_action_weighted_backend_service.dart';
 
 class URLMapPathMatcherDefaultRouteAction {
+  /// Specifies the cache policy configuration for matched traffic. Available
+  /// only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+  /// property must be specified. This policy cannot be specified if any target
+  /// backend has Identity-Aware Proxy enabled.
+  /// Structure is documented below.
+  final pulumi.Input<URLMapPathMatcherDefaultRouteActionCachePolicy>? cachePolicy;
   /// The specification for allowing client side cross-origin requests. Please see
   /// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
   /// Structure is documented below.
@@ -56,6 +63,7 @@ class URLMapPathMatcherDefaultRouteAction {
   final pulumi.Input<List<URLMapPathMatcherDefaultRouteActionWeightedBackendService>>? weightedBackendServices;
 
   /// Creates a new [URLMapPathMatcherDefaultRouteAction].
+  /// [cachePolicy] Specifies the cache policy configuration for matched traffic. Available
   /// [corsPolicy] The specification for allowing client side cross-origin requests. Please see
   /// [faultInjectionPolicy] The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
   /// [maxStreamDuration] Specifies the maximum duration (timeout) for streams on the selected route.
@@ -65,6 +73,7 @@ class URLMapPathMatcherDefaultRouteAction {
   /// [urlRewrite] The spec to modify the URL of the request, prior to forwarding the request to the matched service.
   /// [weightedBackendServices] A list of weighted backend services to send traffic to when a route match occurs.
   const URLMapPathMatcherDefaultRouteAction({
+    this.cachePolicy,
     this.corsPolicy,
     this.faultInjectionPolicy,
     this.maxStreamDuration,
@@ -77,6 +86,7 @@ class URLMapPathMatcherDefaultRouteAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'cachePolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherDefaultRouteActionCachePolicy, Map<String, dynamic>>(cachePolicy, (value) => value.toMap()),
       'corsPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherDefaultRouteActionCorsPolicy, Map<String, dynamic>>(corsPolicy, (value) => value.toMap()),
       'faultInjectionPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy, Map<String, dynamic>>(faultInjectionPolicy, (value) => value.toMap()),
       'maxStreamDuration': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherDefaultRouteActionMaxStreamDuration, Map<String, dynamic>>(maxStreamDuration, (value) => value.toMap()),
@@ -90,6 +100,7 @@ class URLMapPathMatcherDefaultRouteAction {
 
   factory URLMapPathMatcherDefaultRouteAction.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherDefaultRouteAction(
+      cachePolicy: (() { final guardedValue = map['cachePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherDefaultRouteActionCachePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       corsPolicy: (() { final guardedValue = map['corsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherDefaultRouteActionCorsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       faultInjectionPolicy: (() { final guardedValue = map['faultInjectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxStreamDuration: (() { final guardedValue = map['maxStreamDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherDefaultRouteActionMaxStreamDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -101,4 +112,3 @@ class URLMapPathMatcherDefaultRouteAction {
     );
   }
 }
-

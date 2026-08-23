@@ -134,7 +134,7 @@ import 'v2_organization_scc_big_query_export_state.dart';
 /// 			Name:             pulumi.String("my-export"),
 /// 			BigQueryExportId: pulumi.String("my-export"),
 /// 			Organization:     pulumi.String("123456789"),
-/// 			Dataset:          _default.ID(),
+/// 			Dataset:          _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:         pulumi.String("global"),
 /// 			Description:      pulumi.String("Cloud Security Command Center Findings Big Query Export Config"),
 /// 			Filter:           pulumi.String("state=\"ACTIVE\" AND NOT mute=\"MUTED\""),
@@ -144,6 +144,36 @@ import 'v2_organization_scc_big_query_export_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "default" {
+///   dataset_id                      = "my-dataset"
+///   friendly_name                   = "test"
+///   description                     = "This is a test description"
+///   location                        = "US"
+///   default_table_expiration_ms     = 3600000
+///   default_partition_expiration_ms = null
+///   labels = {
+///     "env" = "default"
+///   }
+/// }
+/// resource "gcp_securitycenter_v2organizationsccbigqueryexport" "custom_big_query_export_config" {
+///   name                = "my-export"
+///   big_query_export_id = "my-export"
+///   organization        = "123456789"
+///   dataset             = gcp_bigquery_dataset.default.id
+///   location            = "global"
+///   description         = "Cloud Security Command Center Findings Big Query Export Config"
+///   filter              = "state=\"ACTIVE\" AND NOT mute=\"MUTED\""
 /// }
 /// ```
 /// ```java
@@ -156,8 +186,8 @@ import 'v2_organization_scc_big_query_export_state.dart';
 /// import com.pulumi.gcp.bigquery.DatasetArgs;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSccBigQueryExport;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSccBigQueryExportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,16 +254,13 @@ import 'v2_organization_scc_big_query_export_state.dart';
 /// OrganizationSccBigQueryExport can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`
-///
 /// * `{{organization}}/{{location}}/{{big_query_export_id}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationSccBigQueryExport can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport default organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport default {{organization}}/{{location}}/{{big_query_export_id}}
 /// ```
 class V2OrganizationSccBigQueryExport extends pulumi.CustomResource {
@@ -244,9 +271,16 @@ class V2OrganizationSccBigQueryExport extends pulumi.CustomResource {
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
   /// The dataset to write findings' updates to.
-  /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+  /// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   late final pulumi.Output<String?> dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
   /// Expression that defines the filter to apply across create/update
@@ -305,6 +339,7 @@ class V2OrganizationSccBigQueryExport extends pulumi.CustomResource {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String?>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     filter = registerOutput<String?>('filter');
     location = registerOutput<String?>('location');
@@ -341,6 +376,7 @@ class V2OrganizationSccBigQueryExport extends pulumi.CustomResource {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String?>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     filter = registerOutput<String?>('filter');
     location = registerOutput<String?>('location');

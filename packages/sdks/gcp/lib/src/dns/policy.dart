@@ -188,10 +188,10 @@ import 'policy_state.dart';
 /// 			},
 /// 			Networks: dns.PolicyNetworkArray{
 /// 				&dns.PolicyNetworkArgs{
-/// 					NetworkUrl: network_1.ID(),
+/// 					NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				&dns.PolicyNetworkArgs{
-/// 					NetworkUrl: network_2.ID(),
+/// 					NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -200,6 +200,43 @@ import 'policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_policy" "example-policy" {
+///   name                      = "example-policy"
+///   enable_inbound_forwarding = true
+///   enable_logging            = true
+///   alternative_name_server_config = {
+///     target_name_servers = [{
+///       "ipv4Address"    = "172.16.1.10"
+///       "forwardingPath" = "private"
+///       }, {
+///       "ipv4Address" = "172.16.1.20"
+///     }]
+///   }
+///   networks {
+///     network_url = gcp_compute_network.network-1.id
+///   }
+///   networks {
+///     network_url = gcp_compute_network.network-2.id
+///   }
+/// }
+/// resource "gcp_compute_network" "network-1" {
+///   name                    = "network-1"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_network" "network-2" {
+///   name                    = "network-2"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -213,9 +250,10 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.dns.Policy;
 /// import com.pulumi.gcp.dns.PolicyArgs;
 /// import com.pulumi.gcp.dns.inputs.PolicyAlternativeNameServerConfigArgs;
+/// import com.pulumi.gcp.dns.inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs;
 /// import com.pulumi.gcp.dns.inputs.PolicyNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -297,22 +335,15 @@ import 'policy_state.dart';
 /// Policy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/policies/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/policy:Policy default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/policy:Policy default {{name}}
 /// ```
 class Policy extends pulumi.CustomResource {
@@ -321,6 +352,13 @@ class Policy extends pulumi.CustomResource {
   /// Names such as .internal are not available when an alternative name server is specified.
   /// Structure is documented below.
   late final pulumi.Output<PolicyAlternativeNameServerConfig?> alternativeNameServerConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A textual description field. Defaults to 'Managed by Pulumi'.
   late final pulumi.Output<String?> description;
   /// Configurations related to DNS64 for this Policy.
@@ -358,6 +396,7 @@ class Policy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfig?>('alternativeNameServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAlternativeNameServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dns64Config = registerOutput<PolicyDns64Config>('dns64Config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDns64Config.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');
@@ -391,6 +430,7 @@ class Policy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfig?>('alternativeNameServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAlternativeNameServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dns64Config = registerOutput<PolicyDns64Config>('dns64Config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDns64Config.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');

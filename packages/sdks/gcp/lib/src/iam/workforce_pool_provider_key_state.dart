@@ -5,6 +5,13 @@ import 'workforce_pool_provider_key_key_data.dart';
 
 /// Input properties used for looking up and filtering WorkforcePoolProviderKey resources.
 class WorkforcePoolProviderKeyState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The time after which the key will be permanently deleted and cannot be recovered.
   /// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
   final pulumi.Input<String>? expireTime;
@@ -29,6 +36,7 @@ class WorkforcePoolProviderKeyState {
   final pulumi.Input<String>? workforcePoolId;
 
   /// Creates a new [WorkforcePoolProviderKeyState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [expireTime] The time after which the key will be permanently deleted and cannot be recovered.
   /// [keyData] Immutable. Public half of the asymmetric key.
   /// [keyId] The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -39,6 +47,7 @@ class WorkforcePoolProviderKeyState {
   /// [use] The purpose of the key.
   /// [workforcePoolId] The ID of the workforce pool.
   const WorkforcePoolProviderKeyState({
+    this.deletionPolicy,
     this.expireTime,
     this.keyData,
     this.keyId,
@@ -52,6 +61,7 @@ class WorkforcePoolProviderKeyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'expireTime': ?expireTime,
       'keyData': ?pulumi.Input.mapOptionalInputValue<WorkforcePoolProviderKeyKeyData, Map<String, dynamic>>(keyData, (value) => value.toMap()),
       'keyId': ?keyId,
@@ -66,6 +76,7 @@ class WorkforcePoolProviderKeyState {
 
   factory WorkforcePoolProviderKeyState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyData: (() { final guardedValue = map['keyData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkforcePoolProviderKeyKeyData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyId: (() { final guardedValue = map['keyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -78,4 +89,3 @@ class WorkforcePoolProviderKeyState {
     );
   }
 }
-

@@ -12,6 +12,13 @@ class PatchDeploymentState {
   /// Time the patch deployment was created. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the patch deployment. Length of the description is limited to 1024 characters.
   final pulumi.Input<String>? description;
   /// Duration of the patch. After the duration ends, the patch times out.
@@ -54,6 +61,7 @@ class PatchDeploymentState {
 
   /// Creates a new [PatchDeploymentState].
   /// [createTime] Time the patch deployment was created. Timestamp is in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the patch deployment. Length of the description is limited to 1024 characters.
   /// [duration] Duration of the patch. After the duration ends, the patch times out.
   /// [instanceFilter] VM instances to patch.
@@ -68,6 +76,7 @@ class PatchDeploymentState {
   /// [updateTime] Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
   const PatchDeploymentState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.duration,
     this.instanceFilter,
@@ -85,6 +94,7 @@ class PatchDeploymentState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'duration': ?duration,
       'instanceFilter': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentInstanceFilter, Map<String, dynamic>>(instanceFilter, (value) => value.toMap()),
@@ -103,6 +113,7 @@ class PatchDeploymentState {
   factory PatchDeploymentState.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceFilter: (() { final guardedValue = map['instanceFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PatchDeploymentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -118,4 +129,3 @@ class PatchDeploymentState {
     );
   }
 }
-

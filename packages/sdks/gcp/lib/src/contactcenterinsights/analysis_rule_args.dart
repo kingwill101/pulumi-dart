@@ -13,7 +13,7 @@ class AnalysisRuleArgs {
   final pulumi.Input<bool>? active;
   /// Percentage of conversations that we should apply this analysis setting
   /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-  /// are sampled in a determenestic way. The original runtime_percentage &
+  /// are sampled in a determenestic way. The original runtimePercentage &
   /// upload percentage will be replaced by defining filters on the conversation.
   final pulumi.Input<double>? analysisPercentage;
   /// Selector of all available annotators and phrase matchers to run.
@@ -25,6 +25,13 @@ class AnalysisRuleArgs {
   /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
   /// for details.
   final pulumi.Input<String>? conversationFilter;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Display Name of the analysis rule.
   final pulumi.Input<String>? displayName;
   /// Location of the resource.
@@ -38,6 +45,7 @@ class AnalysisRuleArgs {
   /// [analysisPercentage] Percentage of conversations that we should apply this analysis setting
   /// [annotatorSelector] Selector of all available annotators and phrase matchers to run.
   /// [conversationFilter] Filter for the conversations that should apply this analysis
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Display Name of the analysis rule.
   /// [location] Location of the resource.
   /// [project] The ID of the project in which the resource belongs.
@@ -46,6 +54,7 @@ class AnalysisRuleArgs {
     this.analysisPercentage,
     this.annotatorSelector,
     this.conversationFilter,
+    this.deletionPolicy,
     this.displayName,
     required this.location,
     this.project,
@@ -57,6 +66,7 @@ class AnalysisRuleArgs {
       'analysisPercentage': ?analysisPercentage,
       'annotatorSelector': ?pulumi.Input.mapOptionalInputValue<AnalysisRuleAnnotatorSelector, Map<String, dynamic>>(annotatorSelector, (value) => value.toMap()),
       'conversationFilter': ?conversationFilter,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'location': location,
       'project': ?project,
@@ -69,10 +79,10 @@ class AnalysisRuleArgs {
       analysisPercentage: (() { final guardedValue = map['analysisPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       annotatorSelector: (() { final guardedValue = map['annotatorSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalysisRuleAnnotatorSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conversationFilter: (() { final guardedValue = map['conversationFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -5,8 +5,8 @@ import 'listing_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for BigQuery Analytics Hub Listing. Each of these resources serves a different use case:
 ///
 /// * `gcp.bigqueryanalyticshub.ListingIamPolicy`: Authoritative. Sets the IAM policy for the listing and replaces any existing policy already attached.
-/// * `gcp.bigqueryanalyticshub.ListingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the listing are preserved.
-/// * `gcp.bigqueryanalyticshub.ListingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the listing are preserved.
+/// * `gcp.bigqueryanalyticshub.ListingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the listing are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.bigqueryanalyticshub.ListingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the listing are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,6 @@ import 'listing_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.bigqueryanalyticshub.ListingIamPolicy` **cannot** be used in conjunction with `gcp.bigqueryanalyticshub.ListingIamBinding` and `gcp.bigqueryanalyticshub.ListingIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.bigqueryanalyticshub.ListingIamPolicy
@@ -126,6 +125,30 @@ import 'listing_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_listingiampolicy" "policy" {
+///   project          = listing.project
+///   location         = listing.location
+///   data_exchange_id = listing.dataExchangeId
+///   listing_id       = listing.listingId
+///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,10 +157,11 @@ import 'listing_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamPolicy;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,10 +181,10 @@ import 'listing_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()
-///             .project(listing.project())
-///             .location(listing.location())
-///             .dataExchangeId(listing.dataExchangeId())
-///             .listingId(listing.listingId())
+///             .project(listing.get("project"))
+///             .location(listing.get("location"))
+///             .dataExchangeId(listing.get("dataExchangeId"))
+///             .listingId(listing.get("listingId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -267,6 +291,24 @@ import 'listing_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_listingiambinding" "binding" {
+///   project          = listing.project
+///   location         = listing.location
+///   data_exchange_id = listing.dataExchangeId
+///   listing_id       = listing.listingId
+///   role             = "roles/viewer"
+///   members          = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +317,8 @@ import 'listing_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamBinding;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,10 +331,10 @@ import 'listing_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()
-///             .project(listing.project())
-///             .location(listing.location())
-///             .dataExchangeId(listing.dataExchangeId())
-///             .listingId(listing.listingId())
+///             .project(listing.get("project"))
+///             .location(listing.get("location"))
+///             .dataExchangeId(listing.get("dataExchangeId"))
+///             .listingId(listing.get("listingId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -388,6 +430,24 @@ import 'listing_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_listingiammember" "member" {
+///   project          = listing.project
+///   location         = listing.location
+///   data_exchange_id = listing.dataExchangeId
+///   listing_id       = listing.listingId
+///   role             = "roles/viewer"
+///   member           = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -396,8 +456,8 @@ import 'listing_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamMember;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -410,10 +470,10 @@ import 'listing_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()
-///             .project(listing.project())
-///             .location(listing.location())
-///             .dataExchangeId(listing.dataExchangeId())
-///             .listingId(listing.listingId())
+///             .project(listing.get("project"))
+///             .location(listing.get("location"))
+///             .dataExchangeId(listing.get("dataExchangeId"))
+///             .listingId(listing.get("listingId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -445,8 +505,8 @@ import 'listing_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for BigQuery Analytics Hub Listing. Each of these resources serves a different use case:
 ///
 /// * `gcp.bigqueryanalyticshub.ListingIamPolicy`: Authoritative. Sets the IAM policy for the listing and replaces any existing policy already attached.
-/// * `gcp.bigqueryanalyticshub.ListingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the listing are preserved.
-/// * `gcp.bigqueryanalyticshub.ListingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the listing are preserved.
+/// * `gcp.bigqueryanalyticshub.ListingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the listing are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.bigqueryanalyticshub.ListingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the listing are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -455,7 +515,6 @@ import 'listing_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.bigqueryanalyticshub.ListingIamPolicy` **cannot** be used in conjunction with `gcp.bigqueryanalyticshub.ListingIamBinding` and `gcp.bigqueryanalyticshub.ListingIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.bigqueryanalyticshub.ListingIamPolicy
@@ -566,6 +625,30 @@ import 'listing_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_listingiampolicy" "policy" {
+///   project          = listing.project
+///   location         = listing.location
+///   data_exchange_id = listing.dataExchangeId
+///   listing_id       = listing.listingId
+///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -574,10 +657,11 @@ import 'listing_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamPolicy;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -597,10 +681,10 @@ import 'listing_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()
-///             .project(listing.project())
-///             .location(listing.location())
-///             .dataExchangeId(listing.dataExchangeId())
-///             .listingId(listing.listingId())
+///             .project(listing.get("project"))
+///             .location(listing.get("location"))
+///             .dataExchangeId(listing.get("dataExchangeId"))
+///             .listingId(listing.get("listingId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -707,6 +791,24 @@ import 'listing_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_listingiambinding" "binding" {
+///   project          = listing.project
+///   location         = listing.location
+///   data_exchange_id = listing.dataExchangeId
+///   listing_id       = listing.listingId
+///   role             = "roles/viewer"
+///   members          = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -715,8 +817,8 @@ import 'listing_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamBinding;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -729,10 +831,10 @@ import 'listing_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()
-///             .project(listing.project())
-///             .location(listing.location())
-///             .dataExchangeId(listing.dataExchangeId())
-///             .listingId(listing.listingId())
+///             .project(listing.get("project"))
+///             .location(listing.get("location"))
+///             .dataExchangeId(listing.get("dataExchangeId"))
+///             .listingId(listing.get("listingId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -828,6 +930,24 @@ import 'listing_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_listingiammember" "member" {
+///   project          = listing.project
+///   location         = listing.location
+///   data_exchange_id = listing.dataExchangeId
+///   listing_id       = listing.listingId
+///   role             = "roles/viewer"
+///   member           = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -836,8 +956,8 @@ import 'listing_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamMember;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -850,10 +970,10 @@ import 'listing_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()
-///             .project(listing.project())
-///             .location(listing.location())
-///             .dataExchangeId(listing.dataExchangeId())
-///             .listingId(listing.listingId())
+///             .project(listing.get("project"))
+///             .location(listing.get("location"))
+///             .dataExchangeId(listing.get("dataExchangeId"))
+///             .listingId(listing.get("listingId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -880,11 +1000,8 @@ import 'listing_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}
-///
 /// * {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}
-///
 /// * {{location}}/{{data_exchange_id}}/{{listing_id}}
-///
 /// * {{listing_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -892,25 +1009,21 @@ import 'listing_iam_policy_state.dart';
 /// BigQuery Analytics Hub listing IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy editor "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} roles/viewer user:jane@example.com"
+/// $ terraform import google_bigquery_analytics_hub_listing_iam_member.editor "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy editor "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} roles/viewer"
+/// $ terraform import google_bigquery_analytics_hub_listing_iam_binding.editor "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy editor projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ListingIamPolicy extends pulumi.CustomResource {
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to

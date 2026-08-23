@@ -19,14 +19,34 @@ class DatabaseArgs {
   /// The concurrency control mode to use for this database.
   /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
   final pulumi.Input<String>? concurrencyMode;
-  /// The database edition.
+  /// The database edition. When set to 'ENTERPRISE', then type must be set to
+  /// 'FIRESTORE_NATIVE'.
   /// Possible values are: `STANDARD`, `ENTERPRISE`.
   final pulumi.Input<String>? databaseEdition;
+  /// State of delete protection for the database.
+  /// When delete protection is enabled, this database cannot be deleted.
+  /// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+  /// **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+  /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
   final pulumi.Input<String>? deleteProtectionState;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to ABANDON.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
+  /// The Firestore API data access mode to use for this database. Can only be
+  /// specified for 'ENTERPRISE' edition databases.
+  /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+  final pulumi.Input<String>? firestoreDataAccessMode;
   /// The location of the database. Available locations are listed at
   /// https://cloud.google.com/firestore/docs/locations.
   final pulumi.Input<String> locationId;
+  /// The MongoDB compatible API data access mode to use for this database. Can
+  /// only be specified for 'ENTERPRISE' edition databases.
+  /// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+  final pulumi.Input<String>? mongodbCompatibleDataAccessMode;
   /// The ID to use for the database, which will become the final
   /// component of the database's resource name. This value should be 4-63
   /// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -45,6 +65,10 @@ class DatabaseArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// The Realtime Updates mode to use for this database. Can only be specified
+  /// for 'ENTERPRISE' edition databases.
+  /// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+  final pulumi.Input<String>? realtimeUpdatesMode;
   /// Input only. A map of resource manager tags. Resource manager tag keys
   /// and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -62,13 +86,16 @@ class DatabaseArgs {
   /// [appEngineIntegrationMode] The App Engine integration mode to use for this database.
   /// [cmekConfig] The CMEK (Customer Managed Encryption Key) configuration for a Firestore
   /// [concurrencyMode] The concurrency control mode to use for this database.
-  /// [databaseEdition] The database edition.
-  /// [deleteProtectionState] Optional.
-  /// [deletionPolicy] Optional.
+  /// [databaseEdition] The database edition. When set to 'ENTERPRISE', then type must be set to
+  /// [deleteProtectionState] State of delete protection for the database.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to ABANDON.
+  /// [firestoreDataAccessMode] The Firestore API data access mode to use for this database. Can only be
   /// [locationId] The location of the database. Available locations are listed at
+  /// [mongodbCompatibleDataAccessMode] The MongoDB compatible API data access mode to use for this database. Can
   /// [name] The ID to use for the database, which will become the final
   /// [pointInTimeRecoveryEnablement] Whether to enable the PITR feature on this database.
   /// [project] The ID of the project in which the resource belongs.
+  /// [realtimeUpdatesMode] The Realtime Updates mode to use for this database. Can only be specified
   /// [tags] Input only. A map of resource manager tags. Resource manager tag keys
   /// [type] The type of the database.
   const DatabaseArgs({
@@ -78,10 +105,13 @@ class DatabaseArgs {
     this.databaseEdition,
     this.deleteProtectionState,
     this.deletionPolicy,
+    this.firestoreDataAccessMode,
     required this.locationId,
+    this.mongodbCompatibleDataAccessMode,
     this.name,
     this.pointInTimeRecoveryEnablement,
     this.project,
+    this.realtimeUpdatesMode,
     this.tags,
     required this.type,
   });
@@ -94,10 +124,13 @@ class DatabaseArgs {
       'databaseEdition': ?databaseEdition,
       'deleteProtectionState': ?deleteProtectionState,
       'deletionPolicy': ?deletionPolicy,
+      'firestoreDataAccessMode': ?firestoreDataAccessMode,
       'locationId': locationId,
+      'mongodbCompatibleDataAccessMode': ?mongodbCompatibleDataAccessMode,
       'name': ?name,
       'pointInTimeRecoveryEnablement': ?pointInTimeRecoveryEnablement,
       'project': ?project,
+      'realtimeUpdatesMode': ?realtimeUpdatesMode,
       'tags': ?tags,
       'type': type,
     };
@@ -111,13 +144,15 @@ class DatabaseArgs {
       databaseEdition: (() { final guardedValue = map['databaseEdition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteProtectionState: (() { final guardedValue = map['deleteProtectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firestoreDataAccessMode: (() { final guardedValue = map['firestoreDataAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locationId: pulumi.Input.fromValue(map['locationId'] as String),
+      mongodbCompatibleDataAccessMode: (() { final guardedValue = map['mongodbCompatibleDataAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pointInTimeRecoveryEnablement: (() { final guardedValue = map['pointInTimeRecoveryEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      realtimeUpdatesMode: (() { final guardedValue = map['realtimeUpdatesMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

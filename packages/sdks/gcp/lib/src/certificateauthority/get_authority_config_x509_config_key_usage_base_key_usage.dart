@@ -72,4 +72,3 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     );
   }
 }
-

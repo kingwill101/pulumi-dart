@@ -74,6 +74,7 @@ import 'packet_mirroring_state.dart';
 /// const foobar = new gcp.compute.PacketMirroring("foobar", {
 ///     name: "my-mirroring",
 ///     description: "bar",
+///     enable: "TRUE",
 ///     network: {
 ///         url: _default.id,
 ///     },
@@ -141,6 +142,7 @@ import 'packet_mirroring_state.dart';
 /// foobar = gcp.compute.PacketMirroring("foobar",
 ///     name="my-mirroring",
 ///     description="bar",
+///     enable="TRUE",
 ///     network={
 ///         "url": default.id,
 ///     },
@@ -246,6 +248,7 @@ import 'packet_mirroring_state.dart';
 ///     {
 ///         Name = "my-mirroring",
 ///         Description = "bar",
+///         Enable = "TRUE",
 ///         Network = new Gcp.Compute.Inputs.PacketMirroringNetworkArgs
 ///         {
 ///             Url = @default.Id,
@@ -313,7 +316,7 @@ import 'packet_mirroring_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Network: _default.ID(),
+/// 					Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("my-instance"),
@@ -329,7 +332,7 @@ import 'packet_mirroring_state.dart';
 /// 		}
 /// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -348,7 +351,7 @@ import 'packet_mirroring_state.dart';
 /// 		}
 /// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("my-service"),
-/// 			HealthChecks: defaultHealthCheck.ID(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -358,10 +361,10 @@ import 'packet_mirroring_state.dart';
 /// 			IsMirroringCollector: pulumi.Bool(true),
 /// 			IpProtocol:           pulumi.String("TCP"),
 /// 			LoadBalancingScheme:  pulumi.String("INTERNAL"),
-/// 			BackendService:       defaultRegionBackendService.ID(),
+/// 			BackendService:       defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:             pulumi.Bool(true),
-/// 			Network:              _default.ID(),
-/// 			Subnetwork:           defaultSubnetwork.ID(),
+/// 			Network:              _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkTier:          pulumi.String("PREMIUM"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			defaultSubnetwork,
@@ -372,11 +375,12 @@ import 'packet_mirroring_state.dart';
 /// 		_, err = compute.NewPacketMirroring(ctx, "foobar", &compute.PacketMirroringArgs{
 /// 			Name:        pulumi.String("my-mirroring"),
 /// 			Description: pulumi.String("bar"),
+/// 			Enable:      pulumi.String("TRUE"),
 /// 			Network: &compute.PacketMirroringNetworkArgs{
-/// 				Url: _default.ID(),
+/// 				Url: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			CollectorIlb: &compute.PacketMirroringCollectorIlbArgs{
-/// 				Url: defaultForwardingRule.ID(),
+/// 				Url: defaultForwardingRule.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			MirroredResources: &compute.PacketMirroringMirroredResourcesArgs{
 /// 				Tags: pulumi.StringArray{
@@ -384,12 +388,12 @@ import 'packet_mirroring_state.dart';
 /// 				},
 /// 				Instances: compute.PacketMirroringMirroredResourcesInstanceArray{
 /// 					&compute.PacketMirroringMirroredResourcesInstanceArgs{
-/// 						Url: mirror.ID(),
+/// 						Url: mirror.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 				Subnetworks: compute.PacketMirroringMirroredResourcesSubnetworkArray{
 /// 					&compute.PacketMirroringMirroredResourcesSubnetworkArgs{
-/// 						Url: defaultSubnetwork.ID(),
+/// 						Url: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -410,6 +414,87 @@ import 'packet_mirroring_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instance" "mirror" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = gcp_compute_network.default.id
+///   }
+///   name         = "my-instance"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "my-network"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "my-subnetwork"
+///   network       = gcp_compute_network.default.id
+///   ip_cidr_range = "10.2.0.0/16"
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name          = "my-service"
+///   health_checks = gcp_compute_healthcheck.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "my-healthcheck"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_forwardingrule" "default" {
+///   depends_on             = [gcp_compute_subnetwork.default]
+///   name                   = "my-ilb"
+///   is_mirroring_collector = true
+///   ip_protocol            = "TCP"
+///   load_balancing_scheme  = "INTERNAL"
+///   backend_service        = gcp_compute_regionbackendservice.default.id
+///   all_ports              = true
+///   network                = gcp_compute_network.default.id
+///   subnetwork             = gcp_compute_subnetwork.default.id
+///   network_tier           = "PREMIUM"
+/// }
+/// resource "gcp_compute_packetmirroring" "foobar" {
+///   name        = "my-mirroring"
+///   description = "bar"
+///   enable      = "TRUE"
+///   network = {
+///     url = gcp_compute_network.default.id
+///   }
+///   collector_ilb = {
+///     url = gcp_compute_forwardingrule.default.id
+///   }
+///   mirrored_resources = {
+///     tags = ["foo"]
+///     instances = [{
+///       "url" = gcp_compute_instance.mirror.id
+///     }]
+///     subnetworks = [{
+///       "url" = gcp_compute_subnetwork.default.id
+///     }]
+///   }
+///   filter = {
+///     ip_protocols = ["tcp"]
+///     cidr_ranges  = ["0.0.0.0/0"]
+///     direction    = "BOTH"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -421,6 +506,7 @@ import 'packet_mirroring_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.Subnetwork;
@@ -437,10 +523,12 @@ import 'packet_mirroring_state.dart';
 /// import com.pulumi.gcp.compute.inputs.PacketMirroringNetworkArgs;
 /// import com.pulumi.gcp.compute.inputs.PacketMirroringCollectorIlbArgs;
 /// import com.pulumi.gcp.compute.inputs.PacketMirroringMirroredResourcesArgs;
+/// import com.pulumi.gcp.compute.inputs.PacketMirroringMirroredResourcesInstanceArgs;
+/// import com.pulumi.gcp.compute.inputs.PacketMirroringMirroredResourcesSubnetworkArgs;
 /// import com.pulumi.gcp.compute.inputs.PacketMirroringFilterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,6 +596,7 @@ import 'packet_mirroring_state.dart';
 ///         var foobar = new PacketMirroring("foobar", PacketMirroringArgs.builder()
 ///             .name("my-mirroring")
 ///             .description("bar")
+///             .enable("TRUE")
 ///             .network(PacketMirroringNetworkArgs.builder()
 ///                 .url(default_.id())
 ///                 .build())
@@ -594,6 +683,7 @@ import 'packet_mirroring_state.dart';
 ///     properties:
 ///       name: my-mirroring
 ///       description: bar
+///       enable: TRUE
 ///       network:
 ///         url: ${default.id}
 ///       collectorIlb:
@@ -619,39 +709,39 @@ import 'packet_mirroring_state.dart';
 /// PacketMirroring can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
 /// ```
 class PacketMirroring extends pulumi.CustomResource {
   /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
   /// that will be used as collector for mirrored traffic. The
-  /// specified forwarding rule must have is_mirroring_collector
+  /// specified forwarding rule must have isMirroringCollector
   /// set to true.
   /// Structure is documented below.
   late final pulumi.Output<PacketMirroringCollectorIlb> collectorIlb;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the rule.
   late final pulumi.Output<String?> description;
+  /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+  /// policy will not be enforced on the network. The default is TRUE.
+  /// Possible values are: `TRUE`, `FALSE`.
+  late final pulumi.Output<String> enable;
   /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
   /// Structure is documented below.
   late final pulumi.Output<PacketMirroringFilter?> filter;
@@ -691,7 +781,9 @@ class PacketMirroring extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringCollectorIlb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    enable = registerOutput<String>('enable');
     filter = registerOutput<PacketMirroringFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mirroredResources = registerOutput<PacketMirroringMirroredResources>('mirroredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringMirroredResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -725,7 +817,9 @@ class PacketMirroring extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringCollectorIlb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    enable = registerOutput<String>('enable');
     filter = registerOutput<PacketMirroringFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mirroredResources = registerOutput<PacketMirroringMirroredResources>('mirroredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringMirroredResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

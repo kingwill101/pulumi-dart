@@ -5,7 +5,7 @@ import 'node_pool_upgrade_settings_blue_green_settings_autoscaled_rollout_policy
 import 'node_pool_upgrade_settings_blue_green_settings_standard_rollout_policy.dart';
 
 class NodePoolUpgradeSettingsBlueGreenSettings {
-  /// Autoscaled rollout policy for blue-green upgrade.
+  /// ) Autoscaled rollout policy for blue-green upgrade.
   final pulumi.Input<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy>? autoscaledRolloutPolicy;
   /// Time needed after draining the entire blue pool.
   /// After this period, the blue pool will be cleaned up.
@@ -14,7 +14,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings {
   final pulumi.Input<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy>? standardRolloutPolicy;
 
   /// Creates a new [NodePoolUpgradeSettingsBlueGreenSettings].
-  /// [autoscaledRolloutPolicy] Autoscaled rollout policy for blue-green upgrade.
+  /// [autoscaledRolloutPolicy] ) Autoscaled rollout policy for blue-green upgrade.
   /// [nodePoolSoakDuration] Time needed after draining the entire blue pool.
   /// [standardRolloutPolicy] Specifies the standard policy settings for blue-green upgrades.
   const NodePoolUpgradeSettingsBlueGreenSettings({
@@ -39,4 +39,3 @@ class NodePoolUpgradeSettingsBlueGreenSettings {
     );
   }
 }
-

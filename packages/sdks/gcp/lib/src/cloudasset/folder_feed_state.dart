@@ -31,6 +31,13 @@ class FolderFeedState {
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
   final pulumi.Input<String>? contentType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   final pulumi.Input<String>? feedId;
   /// Output configuration for asset feed destination.
@@ -50,6 +57,7 @@ class FolderFeedState {
   /// [billingProject] The project whose identity will be used when sending messages to the
   /// [condition] A condition which determines whether an asset update should be published. If specified, an asset
   /// [contentType] Asset content type. If not specified, no content but the asset name and type will be returned.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [feedId] This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   /// [feedOutputConfig] Output configuration for asset feed destination.
   /// [folder] The folder this feed should be created in.
@@ -61,6 +69,7 @@ class FolderFeedState {
     this.billingProject,
     this.condition,
     this.contentType,
+    this.deletionPolicy,
     this.feedId,
     this.feedOutputConfig,
     this.folder,
@@ -75,6 +84,7 @@ class FolderFeedState {
       'billingProject': ?billingProject,
       'condition': ?pulumi.Input.mapOptionalInputValue<FolderFeedCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'contentType': ?contentType,
+      'deletionPolicy': ?deletionPolicy,
       'feedId': ?feedId,
       'feedOutputConfig': ?pulumi.Input.mapOptionalInputValue<FolderFeedFeedOutputConfig, Map<String, dynamic>>(feedOutputConfig, (value) => value.toMap()),
       'folder': ?folder,
@@ -90,6 +100,7 @@ class FolderFeedState {
       billingProject: (() { final guardedValue = map['billingProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FolderFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       feedId: (() { final guardedValue = map['feedId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       feedOutputConfig: (() { final guardedValue = map['feedOutputConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FolderFeedFeedOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -98,4 +109,3 @@ class FolderFeedState {
     );
   }
 }
-

@@ -61,13 +61,16 @@ class BackendServiceBackend {
   /// For CONNECTION mode, either maxConnections or
   /// maxConnectionsPerInstance must be set.
   final pulumi.Input<int>? maxConnectionsPerInstance;
+  /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for the whole NEG
   /// or instance group. Not available if backend's balancingMode is RATE
   /// or CONNECTION.
   final pulumi.Input<int>? maxInFlightRequests;
+  /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for a single endpoint.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
   final pulumi.Input<int>? maxInFlightRequestsPerEndpoint;
+  /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for a single VM.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
   final pulumi.Input<int>? maxInFlightRequestsPerInstance;
@@ -98,6 +101,7 @@ class BackendServiceBackend {
   /// traffic would be assigned based on the load balancing algorithm you use. This is the default
   /// Possible values are: `PREFERRED`, `DEFAULT`.
   final pulumi.Input<String>? preference;
+  /// (Optional, Beta)
   /// This field specifies how long a connection should be kept alive for:
   /// - LONG: Most of the requests are expected to take more than multiple
   /// seconds to finish.
@@ -114,15 +118,15 @@ class BackendServiceBackend {
   /// [maxConnections] The max number of simultaneous connections for the group. Can
   /// [maxConnectionsPerEndpoint] The max number of simultaneous connections that a single backend
   /// [maxConnectionsPerInstance] The max number of simultaneous connections that a single
-  /// [maxInFlightRequests] Defines a maximum number of in-flight requests for the whole NEG
-  /// [maxInFlightRequestsPerEndpoint] Defines a maximum number of in-flight requests for a single endpoint.
-  /// [maxInFlightRequestsPerInstance] Defines a maximum number of in-flight requests for a single VM.
+  /// [maxInFlightRequests] (Optional, Beta)
+  /// [maxInFlightRequestsPerEndpoint] (Optional, Beta)
+  /// [maxInFlightRequestsPerInstance] (Optional, Beta)
   /// [maxRate] The max requests per second (RPS) of the group.
   /// [maxRatePerEndpoint] The max requests per second (RPS) that a single backend network
   /// [maxRatePerInstance] The max requests per second (RPS) that a single backend
   /// [maxUtilization] Used when balancingMode is UTILIZATION. This ratio defines the
   /// [preference] This field indicates whether this backend should be fully utilized before sending traffic to backends
-  /// [trafficDuration] This field specifies how long a connection should be kept alive for:
+  /// [trafficDuration] (Optional, Beta)
   const BackendServiceBackend({
     this.balancingMode,
     this.capacityScaler,
@@ -187,4 +191,3 @@ class BackendServiceBackend {
     );
   }
 }
-

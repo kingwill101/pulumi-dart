@@ -9,6 +9,7 @@ import 'get_router_nat_subnetwork.dart';
 /// Result data returned by getRouterNat.
 class GetRouterNatResult {
   final String autoNetworkTier;
+  final String deletionPolicy;
   final List<String> drainNatIps;
   final bool enableDynamicPortAllocation;
   final bool enableEndpointIndependentMapping;
@@ -39,6 +40,7 @@ class GetRouterNatResult {
 
   /// Creates a new [GetRouterNatResult].
   /// [autoNetworkTier] Required.
+  /// [deletionPolicy] Required.
   /// [drainNatIps] Required.
   /// [enableDynamicPortAllocation] Required.
   /// [enableEndpointIndependentMapping] Required.
@@ -67,6 +69,7 @@ class GetRouterNatResult {
   /// [udpIdleTimeoutSec] Required.
   const GetRouterNatResult({
     required this.autoNetworkTier,
+    required this.deletionPolicy,
     required this.drainNatIps,
     required this.enableDynamicPortAllocation,
     required this.enableEndpointIndependentMapping,
@@ -98,6 +101,7 @@ class GetRouterNatResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoNetworkTier': autoNetworkTier,
+      'deletionPolicy': deletionPolicy,
       'drainNatIps': drainNatIps,
       'enableDynamicPortAllocation': enableDynamicPortAllocation,
       'enableEndpointIndependentMapping': enableEndpointIndependentMapping,
@@ -130,6 +134,7 @@ class GetRouterNatResult {
   factory GetRouterNatResult.fromMap(Map<String, dynamic> map) {
     return GetRouterNatResult(
       autoNetworkTier: map['autoNetworkTier'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       drainNatIps: (map['drainNatIps'] as List).cast<String>(),
       enableDynamicPortAllocation: map['enableDynamicPortAllocation'] as bool,
       enableEndpointIndependentMapping: map['enableEndpointIndependentMapping'] as bool,
@@ -159,4 +164,3 @@ class GetRouterNatResult {
     );
   }
 }
-

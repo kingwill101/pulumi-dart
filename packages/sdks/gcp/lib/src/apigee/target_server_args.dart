@@ -8,6 +8,13 @@ import 'target_server_ssl_info.dart';
 /// {@endtemplate}
 /// {@macro pulumi_apigee_target_server_target_server_args_doc}
 class TargetServerArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of this TargetServer.
   final pulumi.Input<String>? description;
   /// The Apigee environment group associated with the Apigee environment,
@@ -29,6 +36,7 @@ class TargetServerArgs {
   final pulumi.Input<TargetServerSSlInfo>? sSlInfo;
 
   /// Creates a new [TargetServerArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of this TargetServer.
   /// [envId] The Apigee environment group associated with the Apigee environment,
   /// [host] The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
@@ -38,6 +46,7 @@ class TargetServerArgs {
   /// [protocol] Immutable. The protocol used by this TargetServer.
   /// [sSlInfo] Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
   const TargetServerArgs({
+    this.deletionPolicy,
     this.description,
     required this.envId,
     required this.host,
@@ -50,6 +59,7 @@ class TargetServerArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'envId': envId,
       'host': host,
@@ -63,6 +73,7 @@ class TargetServerArgs {
 
   factory TargetServerArgs.fromMap(Map<String, dynamic> map) {
     return TargetServerArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       envId: pulumi.Input.fromValue(map['envId'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
@@ -74,4 +85,3 @@ class TargetServerArgs {
     );
   }
 }
-

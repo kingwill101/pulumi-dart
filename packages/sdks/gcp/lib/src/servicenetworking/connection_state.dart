@@ -4,7 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
-  /// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE" or any other value, deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
   /// Name of VPC network connected with service producers using VPC peering.
   final pulumi.Input<String>? network;
@@ -22,7 +27,7 @@ class ConnectionState {
   final pulumi.Input<bool>? updateOnCreationFail;
 
   /// Creates a new [ConnectionState].
-  /// [deletionPolicy] The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [network] Name of VPC network connected with service producers using VPC peering.
   /// [peering] (Computed) The name of the VPC Network Peering connection that was created by the service producer.
   /// [reservedPeeringRanges] Named IP address range(s) of PEERING type reserved for
@@ -59,4 +64,3 @@ class ConnectionState {
     );
   }
 }
-

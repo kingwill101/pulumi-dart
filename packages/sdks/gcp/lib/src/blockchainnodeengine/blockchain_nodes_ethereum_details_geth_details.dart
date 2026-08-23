@@ -6,7 +6,7 @@ class BlockchainNodesEthereumDetailsGethDetails {
   /// Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
   /// Possible values are: `FULL`, `ARCHIVE`.
   ///
-  /// &lt;a name="nested_ethereum_details_additional_endpoints"&gt;&lt;/a&gt;The `additional_endpoints` block contains:
+  /// &lt;a name="nestedEthereumDetailsAdditionalEndpoints"&gt;&lt;/a&gt;The `additionalEndpoints` block contains:
   final pulumi.Input<String>? garbageCollectionMode;
 
   /// Creates a new [BlockchainNodesEthereumDetailsGethDetails].
@@ -27,4 +27,3 @@ class BlockchainNodesEthereumDetailsGethDetails {
     );
   }
 }
-

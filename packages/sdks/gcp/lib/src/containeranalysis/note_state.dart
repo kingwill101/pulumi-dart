@@ -19,6 +19,13 @@ class NoteState {
   final pulumi.Input<NoteAttestationAuthority>? attestationAuthority;
   /// The time this note was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Time of expiration for this note. Leave empty if note does not expire.
   final pulumi.Input<String>? expirationTime;
   /// The type of analysis this note describes
@@ -43,6 +50,7 @@ class NoteState {
   /// Creates a new [NoteState].
   /// [attestationAuthority] Note kind that represents a logical attestation "role" or "authority".
   /// [createTime] The time this note was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [expirationTime] Time of expiration for this note. Leave empty if note does not expire.
   /// [kind] The type of analysis this note describes
   /// [longDescription] A detailed description of the note
@@ -55,6 +63,7 @@ class NoteState {
   const NoteState({
     this.attestationAuthority,
     this.createTime,
+    this.deletionPolicy,
     this.expirationTime,
     this.kind,
     this.longDescription,
@@ -70,6 +79,7 @@ class NoteState {
     return <String, dynamic>{
       'attestationAuthority': ?pulumi.Input.mapOptionalInputValue<NoteAttestationAuthority, Map<String, dynamic>>(attestationAuthority, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'expirationTime': ?expirationTime,
       'kind': ?kind,
       'longDescription': ?longDescription,
@@ -86,6 +96,7 @@ class NoteState {
     return NoteState(
       attestationAuthority: (() { final guardedValue = map['attestationAuthority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       longDescription: (() { final guardedValue = map['longDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -98,4 +109,3 @@ class NoteState {
     );
   }
 }
-

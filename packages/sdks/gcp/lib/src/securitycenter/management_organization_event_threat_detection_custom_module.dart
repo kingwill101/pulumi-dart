@@ -115,7 +115,7 @@ import 'management_organization_event_threat_detection_custom_module_state.dart'
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"metadata": map[string]interface{}{
+/// 			"metadata": map[string]string{
 /// 				"severity":       "LOW",
 /// 				"description":    "Flagged by Forcepoint as malicious",
 /// 				"recommendation": "Contact the owner of the relevant project.",
@@ -145,6 +145,32 @@ import 'management_organization_event_threat_detection_custom_module_state.dart'
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_managementorganizationeventthreatdetectioncustommodule" "example" {
+///   organization     = "123456789"
+///   location         = "global"
+///   display_name     = "basic_custom_module"
+///   enablement_state = "ENABLED"
+///   type             = "CONFIGURABLE_BAD_IP"
+///   description      = "My Event Threat Detection Custom Module"
+///   config = jsonencode({
+///     "metadata" = {
+///       "severity"       = "LOW"
+///       "description"    = "Flagged by Forcepoint as malicious"
+///       "recommendation" = "Contact the owner of the relevant project."
+///     }
+///     "ips" = ["192.0.2.1", "192.0.2.0/24"]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +180,8 @@ import 'management_organization_event_threat_detection_custom_module_state.dart'
 /// import com.pulumi.gcp.securitycenter.ManagementOrganizationEventThreatDetectionCustomModule;
 /// import com.pulumi.gcp.securitycenter.ManagementOrganizationEventThreatDetectionCustomModuleArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,22 +245,26 @@ import 'management_organization_event_threat_detection_custom_module_state.dart'
 /// OrganizationEventThreatDetectionCustomModule can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/locations/{{location}}/eventThreatDetectionCustomModules/{{name}}`
-///
 /// * `{{organization}}/{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationEventThreatDetectionCustomModule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule default organizations/{{organization}}/locations/{{location}}/eventThreatDetectionCustomModules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule default {{organization}}/{{location}}/{{name}}
 /// ```
 class ManagementOrganizationEventThreatDetectionCustomModule extends pulumi.CustomResource {
   /// Config for the module. For the resident module, its config value is defined at this level.
   /// For the inherited module, its config value is inherited from the ancestor module.
   late final pulumi.Output<String?> config;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human readable name to be displayed for the module.
   late final pulumi.Output<String?> displayName;
   /// The state of enablement for the module at the given level of the hierarchy.
@@ -271,6 +301,7 @@ class ManagementOrganizationEventThreatDetectionCustomModule extends pulumi.Cust
           options ?? pulumi.CustomResourceOptions(),
         ) {
     config = registerOutput<String?>('config');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');
@@ -305,6 +336,7 @@ class ManagementOrganizationEventThreatDetectionCustomModule extends pulumi.Cust
           options ?? pulumi.CustomResourceOptions(),
         ) {
     config = registerOutput<String?>('config');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');

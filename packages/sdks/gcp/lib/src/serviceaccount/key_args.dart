@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_serviceaccount_key_key_args_doc}
 class KeyArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
   final pulumi.Input<Map<String, String>>? keepers;
   /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -16,7 +23,7 @@ class KeyArgs {
   final pulumi.Input<String>? keyAlgorithm;
   /// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
   final pulumi.Input<String>? privateKeyType;
-  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
   final pulumi.Input<String>? publicKeyData;
   /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   final pulumi.Input<String>? publicKeyType;
@@ -29,13 +36,15 @@ class KeyArgs {
   final pulumi.Input<String> serviceAccountId;
 
   /// Creates a new [KeyArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [keepers] Arbitrary map of values that, when changed, will trigger a new key to be generated.
   /// [keyAlgorithm] The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
   /// [privateKeyType] The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
-  /// [publicKeyData] Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+  /// [publicKeyData] Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
   /// [publicKeyType] The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   /// [serviceAccountId] The Service account id of the Key. This can be a string in the format
   const KeyArgs({
+    this.deletionPolicy,
     this.keepers,
     this.keyAlgorithm,
     this.privateKeyType,
@@ -46,6 +55,7 @@ class KeyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'keepers': ?keepers,
       'keyAlgorithm': ?keyAlgorithm,
       'privateKeyType': ?privateKeyType,
@@ -57,6 +67,7 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keepers: (() { final guardedValue = map['keepers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       keyAlgorithm: (() { final guardedValue = map['keyAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKeyType: (() { final guardedValue = map['privateKeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -66,4 +77,3 @@ class KeyArgs {
     );
   }
 }
-

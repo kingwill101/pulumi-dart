@@ -15,6 +15,8 @@ import 'get_data_source_reference_result.dart';
 import 'get_data_source_references_args.dart';
 import 'get_data_source_references_result.dart';
 import 'get_data_source_result.dart';
+import 'get_data_sources_args.dart';
+import 'get_data_sources_result.dart';
 import 'get_management_server_args.dart';
 import 'get_management_server_result.dart';
 
@@ -84,6 +86,22 @@ import 'get_management_server_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_backupdisasterrecovery_getbackup" "foo" {
+///   location        = "us-central1"
+///   project         = "project-test"
+///   data_source_id  = "ds-test"
+///   backup_vault_id = "bv-test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +110,8 @@ import 'get_management_server_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +232,20 @@ Future<GetBackupPlanResult> getBackupPlan(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_backupdisasterrecovery_getbackupplanassociation" "my-backupplan-association" {
+///   location                   = "us-central1"
+///   backup_plan_association_id = "bpa-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +254,8 @@ Future<GetBackupPlanResult> getBackupPlan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -321,6 +353,19 @@ Future<GetBackupPlanAssociationResult> getBackupPlanAssociation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_backupdisasterrecovery_getbackupplanassociations" "allAssociations" {
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -329,8 +374,8 @@ Future<GetBackupPlanAssociationResult> getBackupPlanAssociation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -430,6 +475,20 @@ Future<GetBackupPlanAssociationsResult> getBackupPlanAssociations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_backupdisasterrecovery_getbackupvault" "my-backup-vault" {
+///   location        = "us-central1"
+///   backup_vault_id = "bv-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -438,8 +497,8 @@ Future<GetBackupPlanAssociationsResult> getBackupPlanAssociations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -538,7 +597,7 @@ Future<GetBackupVaultResult> getBackupVault(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backupdisasterrecovery.GetDataSource(ctx, &backupdisasterrecovery.GetDataSourceArgs{
 /// 			Location:      "us-central1",
-/// 			Project:       "project-test",
+/// 			Project:       pulumi.StringRef("project-test"),
 /// 			DataSourceId:  "ds-test",
 /// 			BackupVaultId: "bv-test",
 /// 		}, nil)
@@ -549,6 +608,22 @@ Future<GetBackupVaultResult> getBackupVault(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_backupdisasterrecovery_getdatasource" "foo" {
+///   location        = "us-central1"
+///   project         = "project-test"
+///   data_source_id  = "ds-test"
+///   backup_vault_id = "bv-test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -557,8 +632,8 @@ Future<GetBackupVaultResult> getBackupVault(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -638,7 +713,142 @@ Future<GetDataSourceReferencesResult> getDataSourceReferences(
   return GetDataSourceReferencesResult.fromMap(result);
 }
 
+/// A Backup and DR Data Sources.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const foo = gcp.backupdisasterrecovery.getDataSources({
+///     location: "us-central1",
+///     project: "project-test",
+///     backupVaultId: "bv-test",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// foo = gcp.backupdisasterrecovery.get_data_sources(location="us-central1",
+///     project="project-test",
+///     backup_vault_id="bv-test")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var foo = Gcp.BackupDisasterRecovery.GetDataSources.Invoke(new()
+///     {
+///         Location = "us-central1",
+///         Project = "project-test",
+///         BackupVaultId = "bv-test",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := backupdisasterrecovery.GetDataSources(ctx, &backupdisasterrecovery.GetDataSourcesArgs{
+/// 			Location:      "us-central1",
+/// 			Project:       pulumi.StringRef("project-test"),
+/// 			BackupVaultId: "bv-test",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_backupdisasterrecovery_getdatasources" "foo" {
+///   location        = "us-central1"
+///   project         = "project-test"
+///   backup_vault_id = "bv-test"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var foo = BackupdisasterrecoveryFunctions.getDataSources(GetDataSourcesArgs.builder()
+///             .location("us-central1")
+///             .project("project-test")
+///             .backupVaultId("bv-test")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   foo:
+///     fn::invoke:
+///       function: gcp:backupdisasterrecovery:getDataSources
+///       arguments:
+///         location: us-central1
+///         project: project-test
+///         backupVaultId: bv-test
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_backupdisasterrecovery_get_data_sources_get_data_sources_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDataSourcesResult> getDataSources(
+  GetDataSourcesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getDataSources:getDataSources',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDataSourcesResult.fromMap(result);
+}
+
 /// Get information about a Google Backup DR Management server.
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## Example Usage
 ///
@@ -692,6 +902,19 @@ Future<GetDataSourceReferencesResult> getDataSourceReferences(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_backupdisasterrecovery_getmanagementserver" "my-backup-dr-management-server" {
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -700,8 +923,8 @@ Future<GetDataSourceReferencesResult> getDataSourceReferences(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

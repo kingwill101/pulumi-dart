@@ -4,6 +4,7 @@
 /// Result data returned by getExternalAddress.
 class GetExternalAddressResult {
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final String externalIp;
   /// The provider-assigned unique ID for this managed resource.
@@ -17,6 +18,7 @@ class GetExternalAddressResult {
 
   /// Creates a new [GetExternalAddressResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [externalIp] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -28,6 +30,7 @@ class GetExternalAddressResult {
   /// [updateTime] Required.
   const GetExternalAddressResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.externalIp,
     required this.id,
@@ -42,6 +45,7 @@ class GetExternalAddressResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'externalIp': externalIp,
       'id': id,
@@ -57,6 +61,7 @@ class GetExternalAddressResult {
   factory GetExternalAddressResult.fromMap(Map<String, dynamic> map) {
     return GetExternalAddressResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       externalIp: map['externalIp'] as String,
       id: map['id'] as String,
@@ -69,4 +74,3 @@ class GetExternalAddressResult {
     );
   }
 }
-

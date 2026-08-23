@@ -13,6 +13,13 @@ class InstanceState {
   final pulumi.Input<String>? createTime;
   /// The version of DAOS software running in the instance.
   final pulumi.Input<String>? daosVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Parallelstore Instance deployment type.
   /// Possible values:
   /// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -73,7 +80,7 @@ class InstanceState {
   /// allow `"_"` in a future release. "
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String>? location;
@@ -111,6 +118,7 @@ class InstanceState {
   /// [capacityGib] Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
   /// [createTime] The time when the instance was created.
   /// [daosVersion] The version of DAOS software running in the instance.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deploymentType] Parallelstore Instance deployment type.
   /// [description] The description of the instance. 2048 characters or less.
   /// [directoryStripeLevel] Stripe level for directories.
@@ -132,6 +140,7 @@ class InstanceState {
     this.capacityGib,
     this.createTime,
     this.daosVersion,
+    this.deletionPolicy,
     this.deploymentType,
     this.description,
     this.directoryStripeLevel,
@@ -156,6 +165,7 @@ class InstanceState {
       'capacityGib': ?capacityGib,
       'createTime': ?createTime,
       'daosVersion': ?daosVersion,
+      'deletionPolicy': ?deletionPolicy,
       'deploymentType': ?deploymentType,
       'description': ?description,
       'directoryStripeLevel': ?directoryStripeLevel,
@@ -181,6 +191,7 @@ class InstanceState {
       capacityGib: (() { final guardedValue = map['capacityGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       daosVersion: (() { final guardedValue = map['daosVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       directoryStripeLevel: (() { final guardedValue = map['directoryStripeLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -200,4 +211,3 @@ class InstanceState {
     );
   }
 }
-

@@ -7,7 +7,7 @@ class TableExternalCatalogTableOptions {
   /// The connection specifying the credentials to be
   /// used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
   /// connection is needed to read the open source table from BigQuery Engine. The
-  /// connection_id can have the form `&lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt;`
+  /// connectionId can have the form `&lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt;`
   /// or `projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;`.
   final pulumi.Input<String>? connectionId;
   /// A map of key value pairs defining the parameters and
@@ -44,4 +44,3 @@ class TableExternalCatalogTableOptions {
     );
   }
 }
-

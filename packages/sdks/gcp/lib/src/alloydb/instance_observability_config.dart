@@ -17,6 +17,8 @@ class InstanceObservabilityConfig {
   final pulumi.Input<bool>? recordApplicationTags;
   /// Track actively running queries. If not set, default value is "off".
   final pulumi.Input<bool>? trackActiveQueries;
+  /// Track client address for an instance. If not set, default value is "off".
+  final pulumi.Input<bool>? trackClientAddress;
   /// Record wait event types during query execution for an instance.
   final pulumi.Input<bool>? trackWaitEventTypes;
   /// Record wait events during query execution for an instance.
@@ -30,6 +32,7 @@ class InstanceObservabilityConfig {
   /// [queryPlansPerMinute] Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
   /// [recordApplicationTags] Record application tags for an instance. This flag is turned "on" by default.
   /// [trackActiveQueries] Track actively running queries. If not set, default value is "off".
+  /// [trackClientAddress] Track client address for an instance. If not set, default value is "off".
   /// [trackWaitEventTypes] Record wait event types during query execution for an instance.
   /// [trackWaitEvents] Record wait events during query execution for an instance.
   const InstanceObservabilityConfig({
@@ -40,6 +43,7 @@ class InstanceObservabilityConfig {
     this.queryPlansPerMinute,
     this.recordApplicationTags,
     this.trackActiveQueries,
+    this.trackClientAddress,
     this.trackWaitEventTypes,
     this.trackWaitEvents,
   });
@@ -53,6 +57,7 @@ class InstanceObservabilityConfig {
       'queryPlansPerMinute': ?queryPlansPerMinute,
       'recordApplicationTags': ?recordApplicationTags,
       'trackActiveQueries': ?trackActiveQueries,
+      'trackClientAddress': ?trackClientAddress,
       'trackWaitEventTypes': ?trackWaitEventTypes,
       'trackWaitEvents': ?trackWaitEvents,
     };
@@ -67,9 +72,9 @@ class InstanceObservabilityConfig {
       queryPlansPerMinute: (() { final guardedValue = map['queryPlansPerMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       recordApplicationTags: (() { final guardedValue = map['recordApplicationTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trackActiveQueries: (() { final guardedValue = map['trackActiveQueries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      trackClientAddress: (() { final guardedValue = map['trackClientAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trackWaitEventTypes: (() { final guardedValue = map['trackWaitEventTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trackWaitEvents: (() { final guardedValue = map['trackWaitEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

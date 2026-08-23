@@ -2,7 +2,7 @@
 
 All notable changes to this package will be documented in this file.
 
-## 9.11.0
+## 9.35.0
 
 - Initial generated release.
 

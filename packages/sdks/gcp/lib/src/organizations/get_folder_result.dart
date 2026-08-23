@@ -7,6 +7,7 @@ class GetFolderResult {
   final List<String> configuredCapabilities;
   /// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   final String createTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   /// The folder's display name.
   final String displayName;
@@ -21,7 +22,7 @@ class GetFolderResult {
   final String managementProject;
   /// The resource name of the Folder in the form `folders/{folder_id}`.
   final String name;
-  /// If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
+  /// If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
   final String organization;
   /// The resource name of the parent Folder or Organization.
   final String parent;
@@ -29,6 +30,7 @@ class GetFolderResult {
   /// Creates a new [GetFolderResult].
   /// [configuredCapabilities] Optional capabilities configured for this folder.
   /// [createTime] Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [displayName] The folder's display name.
   /// [folder] Required.
@@ -38,11 +40,12 @@ class GetFolderResult {
   /// [lookupOrganization] Optional.
   /// [managementProject] Management Project associated with this folder (if capability is enabled).
   /// [name] The resource name of the Folder in the form `folders/{folder_id}`.
-  /// [organization] If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
+  /// [organization] If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
   /// [parent] The resource name of the parent Folder or Organization.
   const GetFolderResult({
     required this.configuredCapabilities,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.displayName,
     required this.folder,
@@ -60,6 +63,7 @@ class GetFolderResult {
     return <String, dynamic>{
       'configuredCapabilities': configuredCapabilities,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'displayName': displayName,
       'folder': folder,
@@ -78,6 +82,7 @@ class GetFolderResult {
     return GetFolderResult(
       configuredCapabilities: (map['configuredCapabilities'] as List).cast<String>(),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       displayName: map['displayName'] as String,
       folder: map['folder'] as String,
@@ -92,4 +97,3 @@ class GetFolderResult {
     );
   }
 }
-

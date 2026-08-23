@@ -11,6 +11,13 @@ class RouteState {
   final pulumi.Input<List<RouteAsPath>>? asPaths;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
   final pulumi.Input<String>? description;
@@ -56,11 +63,11 @@ class RouteState {
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
   /// * `projects/project/zones/zone/instances/instance`
   /// * `zones/zone/instances/instance`
-  /// * Just the instance name, with the zone in `next_hop_instance_zone`.
+  /// * Just the instance name, with the zone in `nextHopInstanceZone`.
   final pulumi.Input<String>? nextHopInstance;
-  /// (Optional when `next_hop_instance` is
+  /// (Optional when `nextHopInstance` is
   /// specified)  The zone of the instance specified in
-  /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+  /// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
   /// a URL.
   final pulumi.Input<String>? nextHopInstanceZone;
   /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
@@ -110,6 +117,7 @@ class RouteState {
   /// Creates a new [RouteState].
   /// [asPaths] Structure is documented below.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property
   /// [destRange] The destination range of outgoing packets that this route applies to.
   /// [name] Name of the resource. Provided by the client when the resource is
@@ -118,7 +126,7 @@ class RouteState {
   /// [nextHopHub] The hub network that should handle matching packets, which should conform to RFC1035.
   /// [nextHopIlb] The IP address or URL to a forwarding rule of type
   /// [nextHopInstance] URL to an instance that should handle matching packets.
-  /// [nextHopInstanceZone] (Optional when `next_hop_instance` is
+  /// [nextHopInstanceZone] (Optional when `nextHopInstance` is
   /// [nextHopInterRegionCost] Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
   /// [nextHopIp] Network IP address of an instance that should handle matching packets.
   /// [nextHopMed] Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
@@ -137,6 +145,7 @@ class RouteState {
   const RouteState({
     this.asPaths,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.destRange,
     this.name,
@@ -167,6 +176,7 @@ class RouteState {
     return <String, dynamic>{
       'asPaths': ?pulumi.Input.mapOptionalInputValue<List<RouteAsPath>, List<Map<String, dynamic>>>(asPaths, (value) => pulumi.Input.encodeList<RouteAsPath, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destRange': ?destRange,
       'name': ?name,
@@ -198,6 +208,7 @@ class RouteState {
     return RouteState(
       asPaths: (() { final guardedValue = map['asPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RouteAsPath>(guardedValue, (value) => RouteAsPath.fromMap((value as Map).cast<String, dynamic>()))); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destRange: (() { final guardedValue = map['destRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -225,4 +236,3 @@ class RouteState {
     );
   }
 }
-

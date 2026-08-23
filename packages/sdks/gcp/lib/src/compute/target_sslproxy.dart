@@ -46,10 +46,15 @@ import 'target_sslproxy_state.dart';
 ///     protocol: "SSL",
 ///     healthChecks: defaultHealthCheck.id,
 /// });
+/// const defaultCertificateMap = new gcp.certificatemanager.CertificateMap("default", {
+///     name: "certificate-map-test",
+///     description: "My acceptance test certificate map",
+/// });
 /// const _default = new gcp.compute.TargetSSLProxy("default", {
 ///     name: "test-proxy",
 ///     backendService: defaultBackendService.id,
 ///     sslCertificates: [defaultSSLCertificate.id],
+///     certificateMap: pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificateMap.id}`,
 /// });
 /// ```
 /// ```python
@@ -72,10 +77,14 @@ import 'target_sslproxy_state.dart';
 ///     name="backend-service",
 ///     protocol="SSL",
 ///     health_checks=default_health_check.id)
+/// default_certificate_map = gcp.certificatemanager.CertificateMap("default",
+///     name="certificate-map-test",
+///     description="My acceptance test certificate map")
 /// default = gcp.compute.TargetSSLProxy("default",
 ///     name="test-proxy",
 ///     backend_service=default_backend_service.id,
-///     ssl_certificates=[default_ssl_certificate.id])
+///     ssl_certificates=[default_ssl_certificate.id],
+///     certificate_map=default_certificate_map.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}"))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -117,6 +126,12 @@ import 'target_sslproxy_state.dart';
 ///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
+///     var defaultCertificateMap = new Gcp.CertificateManager.CertificateMap("default", new()
+///     {
+///         Name = "certificate-map-test",
+///         Description = "My acceptance test certificate map",
+///     });
+///
 ///     var @default = new Gcp.Compute.TargetSSLProxy("default", new()
 ///     {
 ///         Name = "test-proxy",
@@ -125,6 +140,7 @@ import 'target_sslproxy_state.dart';
 ///         {
 ///             defaultSSLCertificate.Id,
 ///         },
+///         CertificateMap = defaultCertificateMap.Id.Apply(id => $"//certificatemanager.googleapis.com/{id}"),
 ///     });
 ///
 /// });
@@ -133,6 +149,9 @@ import 'target_sslproxy_state.dart';
 /// package main
 ///
 /// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -174,23 +193,74 @@ import 'target_sslproxy_state.dart';
 /// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
 /// 			Protocol:     pulumi.String("SSL"),
-/// 			HealthChecks: defaultHealthCheck.ID(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultCertificateMap, err := certificatemanager.NewCertificateMapResource(ctx, "default", &certificatemanager.CertificateMapResourceArgs{
+/// 			Name:        pulumi.String("certificate-map-test"),
+/// 			Description: pulumi.String("My acceptance test certificate map"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewTargetSSLProxy(ctx, "default", &compute.TargetSSLProxyArgs{
 /// 			Name:           pulumi.String("test-proxy"),
-/// 			BackendService: defaultBackendService.ID(),
+/// 			BackendService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			SslCertificates: pulumi.StringArray{
-/// 				defaultSSLCertificate.ID(),
+/// 				defaultSSLCertificate.ID().ToIDOutput().ToStringOutput(),
 /// 			},
+/// 			CertificateMap: defaultCertificateMap.ID().ApplyT(func(id pulumi.ID) (string, error) {
+/// 				return fmt.Sprintf("//certificatemanager.googleapis.com/%v", id), nil
+/// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_targetsslproxy" "default" {
+///   name             = "test-proxy"
+///   backend_service  = gcp_compute_backendservice.default.id
+///   ssl_certificates = [gcp_compute_sslcertificate.default.id]
+///   certificate_map  ="//certificatemanager.googleapis.com/${gcp_certificatemanager_certificatemap.default.id}"
+/// }
+/// resource "gcp_compute_sslcertificate" "default" {
+///   name        = "default-cert"
+///   private_key = file("path/to/private.key")
+///   certificate = file("path/to/certificate.crt")
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   protocol      = "SSL"
+///   health_checks = gcp_compute_healthcheck.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "443"
+///   }
+/// }
+/// resource "gcp_certificatemanager_certificatemap" "default" {
+///   name        = "certificate-map-test"
+///   description = "My acceptance test certificate map"
 /// }
 /// ```
 /// ```java
@@ -208,10 +278,12 @@ import 'target_sslproxy_state.dart';
 /// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
+/// import com.pulumi.gcp.certificatemanager.CertificateMap;
+/// import com.pulumi.gcp.certificatemanager.CertificateMapArgs;
 /// import com.pulumi.gcp.compute.TargetSSLProxy;
 /// import com.pulumi.gcp.compute.TargetSSLProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -248,10 +320,16 @@ import 'target_sslproxy_state.dart';
 ///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
+///         var defaultCertificateMap = new CertificateMap("defaultCertificateMap", CertificateMapArgs.builder()
+///             .name("certificate-map-test")
+///             .description("My acceptance test certificate map")
+///             .build());
+///
 ///         var default_ = new TargetSSLProxy("default", TargetSSLProxyArgs.builder()
 ///             .name("test-proxy")
 ///             .backendService(defaultBackendService.id())
 ///             .sslCertificates(defaultSSLCertificate.id())
+///             .certificateMap(defaultCertificateMap.id().applyValue(_id -> String.format("//certificatemanager.googleapis.com/%s", _id)))
 ///             .build());
 ///
 ///     }
@@ -266,6 +344,7 @@ import 'target_sslproxy_state.dart';
 ///       backendService: ${defaultBackendService.id}
 ///       sslCertificates:
 ///         - ${defaultSSLCertificate.id}
+///       certificateMap: //certificatemanager.googleapis.com/${defaultCertificateMap.id}
 ///   defaultSSLCertificate:
 ///     type: gcp:compute:SSLCertificate
 ///     name: default
@@ -299,6 +378,12 @@ import 'target_sslproxy_state.dart';
 ///       timeoutSec: 1
 ///       tcpHealthCheck:
 ///         port: '443'
+///   defaultCertificateMap:
+///     type: gcp:certificatemanager:CertificateMap
+///     name: default
+///     properties:
+///       name: certificate-map-test
+///       description: My acceptance test certificate map
 /// ```
 ///
 ///
@@ -307,22 +392,15 @@ import 'target_sslproxy_state.dart';
 /// TargetSslProxy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/targetSslProxies/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
 /// ```
 class TargetSSLProxy extends pulumi.CustomResource {
@@ -334,6 +412,13 @@ class TargetSSLProxy extends pulumi.CustomResource {
   late final pulumi.Output<String?> certificateMap;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Name of the resource. Provided by the client when the resource is
@@ -382,6 +467,7 @@ class TargetSSLProxy extends pulumi.CustomResource {
     backendService = registerOutput<String>('backendService');
     certificateMap = registerOutput<String?>('certificateMap');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -418,6 +504,7 @@ class TargetSSLProxy extends pulumi.CustomResource {
     backendService = registerOutput<String>('backendService');
     certificateMap = registerOutput<String?>('certificateMap');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

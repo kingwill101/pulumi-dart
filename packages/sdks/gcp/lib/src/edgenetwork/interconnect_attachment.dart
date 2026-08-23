@@ -125,7 +125,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Location:                 pulumi.String("us-west1"),
 /// 			Zone:                     pulumi.String(""),
 /// 			Description:              pulumi.String("Example interconnect attachment."),
-/// 			Network:                  exampleNetwork.ID(),
+/// 			Network:                  exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Interconnect:             pulumi.String("11111111-2222-3333-4444-555555555555"),
 /// 			VlanId:                   pulumi.Int(55),
 /// 			Mtu:                      pulumi.Int(9000),
@@ -140,6 +140,36 @@ import 'interconnect_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_edgenetwork_interconnectattachment" "example_interconnect_attachment" {
+///   interconnect_attachment_id = "example-interconnect-attachment"
+///   location                   = "us-west1"
+///   zone                       = ""
+///   description                = "Example interconnect attachment."
+///   network                    = gcp_edgenetwork_network.example_network.id
+///   interconnect               = "11111111-2222-3333-4444-555555555555"
+///   vlan_id                    = 55
+///   mtu                        = 9000
+///   labels = {
+///     "environment" = "dev"
+///   }
+/// }
+/// resource "gcp_edgenetwork_network" "example_network" {
+///   network_id  = "example-network"
+///   location    = "us-west1"
+///   zone        = ""
+///   description = "Example network."
+///   mtu         = 9000
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +180,8 @@ import 'interconnect_attachment_state.dart';
 /// import com.pulumi.gcp.edgenetwork.NetworkArgs;
 /// import com.pulumi.gcp.edgenetwork.InterconnectAttachment;
 /// import com.pulumi.gcp.edgenetwork.InterconnectAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,34 +249,19 @@ import 'interconnect_attachment_state.dart';
 /// InterconnectAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/interconnectAttachment/{{interconnect_attachment_id}}`
-///
 /// * `{{project}}/{{location}}/{{zone}}/{{interconnect_attachment_id}}`
-///
 /// * `{{location}}/{{zone}}/{{interconnect_attachment_id}}`
-///
 /// * `{{location}}/{{interconnect_attachment_id}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default projects/{{project}}/locations/{{location}}/zones/{{zone}}/interconnectAttachment/{{interconnect_attachment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{project}}/{{location}}/{{zone}}/{{interconnect_attachment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{location}}/{{zone}}/{{interconnect_attachment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{location}}/{{interconnect_attachment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{name}}
 /// ```
 class InterconnectAttachment extends pulumi.CustomResource {
@@ -254,6 +269,13 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -265,7 +287,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   late final pulumi.Output<String> location;
@@ -307,6 +329,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interconnect = registerOutput<String>('interconnect');
@@ -347,6 +370,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interconnect = registerOutput<String>('interconnect');

@@ -13,6 +13,13 @@ class SecurityGatewayApplicationState {
   final pulumi.Input<String>? applicationId;
   /// Output only. Timestamp when the resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. An arbitrary user-provided name for the Application resource.
   /// Cannot exceed 64 characters.
   final pulumi.Input<String>? displayName;
@@ -48,6 +55,7 @@ class SecurityGatewayApplicationState {
   /// Creates a new [SecurityGatewayApplicationState].
   /// [applicationId] User-settable Application resource ID.
   /// [createTime] Output only. Timestamp when the resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Optional. An arbitrary user-provided name for the Application resource.
   /// [endpointMatchers] Required. Endpoint matchers associated with an application.
   /// [name] Identifier. Name of the resource.
@@ -59,6 +67,7 @@ class SecurityGatewayApplicationState {
   const SecurityGatewayApplicationState({
     this.applicationId,
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.endpointMatchers,
     this.name,
@@ -73,6 +82,7 @@ class SecurityGatewayApplicationState {
     return <String, dynamic>{
       'applicationId': ?applicationId,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'endpointMatchers': ?pulumi.Input.mapOptionalInputValue<List<SecurityGatewayApplicationEndpointMatcher>, List<Map<String, dynamic>>>(endpointMatchers, (value) => pulumi.Input.encodeList<SecurityGatewayApplicationEndpointMatcher, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
@@ -88,6 +98,7 @@ class SecurityGatewayApplicationState {
     return SecurityGatewayApplicationState(
       applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointMatchers: (() { final guardedValue = map['endpointMatchers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecurityGatewayApplicationEndpointMatcher>(guardedValue, (value) => SecurityGatewayApplicationEndpointMatcher.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -99,4 +110,3 @@ class SecurityGatewayApplicationState {
     );
   }
 }
-

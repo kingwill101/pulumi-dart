@@ -3,6 +3,15 @@ import 'control_project_intelligence_config_args.dart';
 import 'control_project_intelligence_config_filter.dart';
 import 'control_project_intelligence_config_state.dart';
 
+/// The Project Storage Intelligence Config resource represents GCS Storage Intelligence operating on individual GCP project. Storage Intelligence Config is a singleton resource and individual instance exists on each GCP project.
+///
+/// Storage Intelligence is for Storage Admins to manage GCP storage assets at scale for performance, cost, security & compliance.
+///
+///
+///
+/// &gt; **Warning:** Storage Intelligence Config is a singleton resource which cannot be created or deleted. A single instance of Storage Intelligence Config exist for each GCP Project. Terraform does not create or destroy this resource.
+/// Terraform resource creation for this resource is simply an update operation on existing resource with specified properties, absence of any optional field in the create operation will result in clearance of that field. Terraform deletion won't have any effect on this resource rather it will only remove it from the state file.
+///
 /// ## Example Usage
 ///
 /// ### Storage Control Project Intelligence Config Basic
@@ -98,6 +107,25 @@ import 'control_project_intelligence_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_controlprojectintelligenceconfig" "example" {
+///   name           = "test-project"
+///   edition_config = "TRIAL"
+///   filter = {
+///     included_cloud_storage_buckets = {
+///       bucket_id_regexes = ["test-id-1*", "test-id-2*"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +136,8 @@ import 'control_project_intelligence_config_state.dart';
 /// import com.pulumi.gcp.storage.ControlProjectIntelligenceConfigArgs;
 /// import com.pulumi.gcp.storage.inputs.ControlProjectIntelligenceConfigFilterArgs;
 /// import com.pulumi.gcp.storage.inputs.ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,16 +184,13 @@ import 'control_project_intelligence_config_state.dart';
 /// ProjectIntelligenceConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{name}}/locations/global/intelligenceConfig`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectIntelligenceConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig default projects/{{name}}/locations/global/intelligenceConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig default {{name}}
 /// ```
 class ControlProjectIntelligenceConfig extends pulumi.CustomResource {

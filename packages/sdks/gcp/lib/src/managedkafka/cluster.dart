@@ -118,8 +118,6 @@ import 'cluster_tls_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -161,6 +159,40 @@ import 'cluster_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_managedkafka_cluster" "example" {
+///   cluster_id = "my-cluster"
+///   location   = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 3
+///     memory_bytes = 3221225472
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///       }]
+///     }
+///   }
+///   rebalance_config = {
+///     mode = "AUTO_REBALANCE_ON_SCALE_UP"
+///   }
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,9 +206,10 @@ import 'cluster_tls_config.dart';
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterRebalanceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,8 +416,6 @@ import 'cluster_tls_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -429,7 +460,7 @@ import 'cluster_tls_config.dart';
 /// 				TrustConfig: &managedkafka.ClusterTlsConfigTrustConfigArgs{
 /// 					CasConfigs: managedkafka.ClusterTlsConfigTrustConfigCasConfigArray{
 /// 						&managedkafka.ClusterTlsConfigTrustConfigCasConfigArgs{
-/// 							CaPool: caPool.ID(),
+/// 							CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -441,6 +472,51 @@ import 'cluster_tls_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_managedkafka_cluster" "example" {
+///   cluster_id = "my-cluster"
+///   location   = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 3
+///     memory_bytes = 3221225472
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///       }]
+///     }
+///   }
+///   tls_config = {
+///     trust_config = {
+///       cas_configs = [{
+///         "caPool" = gcp_certificateauthority_capool.ca_pool.id
+///       }]
+///     }
+///     ssl_principal_mapping_rules = "RULE:pattern/replacement/L,DEFAULT"
+///   }
+/// }
+/// resource "gcp_certificateauthority_capool" "ca_pool" {
+///   name     = "my-ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   publishing_options = {
+///     publish_ca_cert = true
+///     publish_crl     = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -459,10 +535,12 @@ import 'cluster_tls_config.dart';
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterTlsConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterTlsConfigTrustConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterTlsConfigTrustConfigCasConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -651,8 +729,6 @@ import 'cluster_tls_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -697,6 +773,39 @@ import 'cluster_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_managedkafka_cluster" "example" {
+///   cluster_id = "my-cluster"
+///   location   = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 3
+///     memory_bytes = 3221225472
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///       }]
+///     }
+///     kms_key = "example-key"
+///   }
+/// }
+/// resource "gcp_projects_serviceidentity" "kafka_service_identity" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   service = "managedkafka.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -710,10 +819,11 @@ import 'cluster_tls_config.dart';
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
 /// import com.pulumi.gcp.projects.ServiceIdentity;
 /// import com.pulumi.gcp.projects.ServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,22 +897,15 @@ import 'cluster_tls_config.dart';
 /// Cluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-///
 /// * `{{project}}/{{location}}/{{cluster_id}}`
-///
 /// * `{{location}}/{{cluster_id}}`
+///
 ///
 /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:managedkafka/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:managedkafka/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:managedkafka/cluster:Cluster default {{location}}/{{cluster_id}}
 /// ```
 class Cluster extends pulumi.CustomResource {
@@ -816,6 +919,13 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterId;
   /// The time when the cluster was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
@@ -823,7 +933,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterGcpConfig> gcpConfig;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   late final pulumi.Output<String> location;
@@ -840,7 +950,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterRebalanceConfig?> rebalanceConfig;
   /// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
   late final pulumi.Output<String> state;
-  /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+  /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
   /// Structure is documented below.
   late final pulumi.Output<ClusterTlsConfig> tlsConfig;
   /// The time when the cluster was last updated.
@@ -864,6 +974,7 @@ class Cluster extends pulumi.CustomResource {
     capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
@@ -904,6 +1015,7 @@ class Cluster extends pulumi.CustomResource {
     capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');

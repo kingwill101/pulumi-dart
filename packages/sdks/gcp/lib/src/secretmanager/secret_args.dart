@@ -22,12 +22,22 @@ class SecretArgs {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+  /// When the field is set to true in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the secret will fail.
   final pulumi.Input<bool>? deletionProtection;
   /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  /// Only one of `expire_time` or `ttl` can be provided.
+  /// Only one of `expireTime` or `ttl` can be provided.
   final pulumi.Input<String>? expireTime;
   /// The labels assigned to this Secret.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -39,7 +49,7 @@ class SecretArgs {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -48,7 +58,7 @@ class SecretArgs {
   /// after the Secret has been created.
   /// Structure is documented below.
   final pulumi.Input<SecretReplication> replication;
-  /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+  /// The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
   /// Structure is documented below.
   final pulumi.Input<SecretRotation>? rotation;
   /// This must be unique within the project.
@@ -62,7 +72,7 @@ class SecretArgs {
   final pulumi.Input<List<SecretTopic>>? topics;
   /// The TTL for the Secret.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  /// Only one of `ttl` or `expire_time` can be provided.
+  /// Only one of `ttl` or `expireTime` can be provided.
   final pulumi.Input<String>? ttl;
   /// Mapping from version alias to version name.
   /// A version alias is a string with a maximum length of 63 characters and can contain
@@ -81,12 +91,13 @@ class SecretArgs {
 
   /// Creates a new [SecretArgs].
   /// [annotations] Custom metadata about the secret.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the secret. Defaults to false.
   /// [expireTime] Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
   /// [labels] The labels assigned to this Secret.
   /// [project] The ID of the project in which the resource belongs.
   /// [replication] The replication policy of the secret data attached to the Secret. It cannot be changed
-  /// [rotation] The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+  /// [rotation] The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
   /// [secretId] This must be unique within the project.
   /// [tags] A map of resource manager tags.
   /// [topics] A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
@@ -95,6 +106,7 @@ class SecretArgs {
   /// [versionDestroyTtl] Secret Version TTL after destruction request.
   const SecretArgs({
     this.annotations,
+    this.deletionPolicy,
     this.deletionProtection,
     this.expireTime,
     this.labels,
@@ -112,6 +124,7 @@ class SecretArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'expireTime': ?expireTime,
       'labels': ?labels,
@@ -130,6 +143,7 @@ class SecretArgs {
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -145,4 +159,3 @@ class SecretArgs {
     );
   }
 }
-

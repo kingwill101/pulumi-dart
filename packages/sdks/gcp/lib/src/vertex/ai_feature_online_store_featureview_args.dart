@@ -14,6 +14,13 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   /// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreFeatureviewBigQuerySource>? bigQuerySource;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The name of the FeatureOnlineStore to use for the featureview.
   final pulumi.Input<String> featureOnlineStore;
   /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
@@ -22,7 +29,7 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   /// A set of key/value label pairs to assign to this FeatureView.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   final pulumi.Input<String>? name;
@@ -34,12 +41,14 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreFeatureviewSyncConfig>? syncConfig;
+  /// (Optional, Beta)
   /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreFeatureviewVectorSearchConfig>? vectorSearchConfig;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewArgs].
   /// [bigQuerySource] Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [featureOnlineStore] The name of the FeatureOnlineStore to use for the featureview.
   /// [featureRegistrySource] Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
   /// [labels] A set of key/value label pairs to assign to this FeatureView.
@@ -47,9 +56,10 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region for the resource. It should be the same as the featureonlinestore region.
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
-  /// [vectorSearchConfig] Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+  /// [vectorSearchConfig] (Optional, Beta)
   const AiFeatureOnlineStoreFeatureviewArgs({
     this.bigQuerySource,
+    this.deletionPolicy,
     required this.featureOnlineStore,
     this.featureRegistrySource,
     this.labels,
@@ -63,6 +73,7 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bigQuerySource': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreFeatureviewBigQuerySource, Map<String, dynamic>>(bigQuerySource, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'featureOnlineStore': featureOnlineStore,
       'featureRegistrySource': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource, Map<String, dynamic>>(featureRegistrySource, (value) => value.toMap()),
       'labels': ?labels,
@@ -77,6 +88,7 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   factory AiFeatureOnlineStoreFeatureviewArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewArgs(
       bigQuerySource: (() { final guardedValue = map['bigQuerySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       featureOnlineStore: pulumi.Input.fromValue(map['featureOnlineStore'] as String),
       featureRegistrySource: (() { final guardedValue = map['featureRegistrySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -88,4 +100,3 @@ class AiFeatureOnlineStoreFeatureviewArgs {
     );
   }
 }
-

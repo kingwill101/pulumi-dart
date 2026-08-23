@@ -41,4 +41,3 @@ class Hl7StoreIamPolicyState {
     );
   }
 }
-

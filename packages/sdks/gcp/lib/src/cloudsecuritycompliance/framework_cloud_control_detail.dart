@@ -7,7 +7,7 @@ class FrameworkCloudControlDetail {
   /// Major revision of cloudcontrol
   final pulumi.Input<String> majorRevisionId;
   /// The name of the CloudControl in the format:
-  /// “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+  /// "{parent}/locations/{location}/cloudControls/{cloud-control}"
   final pulumi.Input<String> name;
   /// Parameters is a key-value pair that is required by the CloudControl. The
   /// specification of these parameters will be present in cloudcontrol.Eg: {
@@ -41,4 +41,3 @@ class FrameworkCloudControlDetail {
     );
   }
 }
-

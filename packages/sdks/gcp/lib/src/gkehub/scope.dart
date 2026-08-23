@@ -109,6 +109,29 @@ import 'scope_gkehub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_scope" "scope" {
+///   scope_id = "my-scope"
+///   namespace_labels = {
+///     "keyb" = "valueb"
+///     "keya" = "valuea"
+///     "keyc" = "valuec"
+///   }
+///   labels = {
+///     "keyb" = "valueb"
+///     "keya" = "valuea"
+///     "keyc" = "valuec"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +140,8 @@ import 'scope_gkehub_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.Scope;
 /// import com.pulumi.gcp.gkehub.ScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,22 +192,15 @@ import 'scope_gkehub_state.dart';
 /// Scope can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
-///
 /// * `{{project}}/{{scope_id}}`
-///
 /// * `{{scope_id}}`
+///
 ///
 /// When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/scope:Scope default {{project}}/{{scope_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
 /// ```
 class Scope extends pulumi.CustomResource {
@@ -192,19 +208,26 @@ class Scope extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Time the Scope was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels for this Scope.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The unique identifier of the scope
   late final pulumi.Output<String> name;
   /// Scope-level cluster namespace labels. For the member clusters bound
   /// to the Scope, these labels are applied to each namespace under the
   /// Scope. Scope-level labels take precedence over Namespace-level
-  /// labels (`namespace_labels` in the Fleet Namespace resource) if they
+  /// labels (`namespaceLabels` in the Fleet Namespace resource) if they
   /// share a key. Keys and values must be Kubernetes-conformant.
   late final pulumi.Output<Map<String, String>?> namespaceLabels;
   /// The ID of the project in which the resource belongs.
@@ -239,6 +262,7 @@ class Scope extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -276,6 +300,7 @@ class Scope extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

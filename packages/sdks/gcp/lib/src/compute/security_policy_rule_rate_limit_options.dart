@@ -7,10 +7,10 @@ import 'security_policy_rule_rate_limit_options_exceed_redirect_options.dart';
 import 'security_policy_rule_rate_limit_options_rate_limit_threshold.dart';
 
 class SecurityPolicyRuleRateLimitOptions {
-  /// Can only be specified if the action for the rule is "rate_based_ban".
+  /// Can only be specified if the action for the rule is "rateBasedBan".
   /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
   final pulumi.Input<int>? banDurationSec;
-  /// Can only be specified if the action for the rule is "rate_based_ban".
+  /// Can only be specified if the action for the rule is "rateBasedBan".
   /// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
   /// Structure is documented below.
   final pulumi.Input<SecurityPolicyRuleRateLimitOptionsBanThreshold>? banThreshold;
@@ -51,8 +51,8 @@ class SecurityPolicyRuleRateLimitOptions {
   final pulumi.Input<SecurityPolicyRuleRateLimitOptionsRateLimitThreshold>? rateLimitThreshold;
 
   /// Creates a new [SecurityPolicyRuleRateLimitOptions].
-  /// [banDurationSec] Can only be specified if the action for the rule is "rate_based_ban".
-  /// [banThreshold] Can only be specified if the action for the rule is "rate_based_ban".
+  /// [banDurationSec] Can only be specified if the action for the rule is "rateBasedBan".
+  /// [banThreshold] Can only be specified if the action for the rule is "rateBasedBan".
   /// [conformAction] Action to take for requests that are under the configured rate limit threshold.
   /// [enforceOnKey] Determines the key to enforce the rateLimitThreshold on. Possible values are:
   /// [enforceOnKeyConfigs] If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
@@ -100,4 +100,3 @@ class SecurityPolicyRuleRateLimitOptions {
     );
   }
 }
-

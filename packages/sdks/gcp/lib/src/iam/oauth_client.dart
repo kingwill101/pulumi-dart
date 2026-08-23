@@ -116,6 +116,27 @@ import 'oauth_client_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_oauthclient" "example" {
+///   oauth_client_id       = "example-client-id"
+///   display_name          = "Display Name of OAuth client"
+///   description           = "A sample OAuth client"
+///   location              = "global"
+///   disabled              = false
+///   allowed_grant_types   = ["AUTHORIZATION_CODE_GRANT"]
+///   allowed_redirect_uris = ["https://www.example.com"]
+///   allowed_scopes        = ["https://www.googleapis.com/auth/cloud-platform"]
+///   client_type           = "CONFIDENTIAL_CLIENT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +145,8 @@ import 'oauth_client_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.OauthClient;
 /// import com.pulumi.gcp.iam.OauthClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,22 +198,15 @@ import 'oauth_client_state.dart';
 /// OauthClient can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauth_client_id}}`
-///
 /// * `{{project}}/{{location}}/{{oauth_client_id}}`
-///
 /// * `{{location}}/{{oauth_client_id}}`
+///
 ///
 /// When using the `pulumi import` command, OauthClient can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/oauthClient:OauthClient default projects/{{project}}/locations/{{location}}/oauthClients/{{oauth_client_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/oauthClient:OauthClient default {{project}}/{{location}}/{{oauth_client_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/oauthClient:OauthClient default {{location}}/{{oauth_client_id}}
 /// ```
 class OauthClient extends pulumi.CustomResource {
@@ -218,6 +232,13 @@ class OauthClient extends pulumi.CustomResource {
   /// PUBLIC_CLIENT
   /// CONFIDENTIAL_CLIENT
   late final pulumi.Output<String?> clientType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-specified description of the OauthClient.
   /// Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
@@ -270,6 +291,7 @@ class OauthClient extends pulumi.CustomResource {
     allowedScopes = registerOutput<List<String>>('allowedScopes');
     clientId = registerOutput<String>('clientId');
     clientType = registerOutput<String?>('clientType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
@@ -309,6 +331,7 @@ class OauthClient extends pulumi.CustomResource {
     allowedScopes = registerOutput<List<String>>('allowedScopes');
     clientId = registerOutput<String>('clientId');
     clientType = registerOutput<String?>('clientType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');

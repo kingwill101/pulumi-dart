@@ -10,7 +10,8 @@ class NetworkEndpointListNetworkEndpoint {
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
-  final pulumi.Input<String> ipAddress;
+  /// **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
+  final pulumi.Input<String>? ipAddress;
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
@@ -22,14 +23,14 @@ class NetworkEndpointListNetworkEndpoint {
   /// [port] Port number of network endpoint.
   const NetworkEndpointListNetworkEndpoint({
     this.instance,
-    required this.ipAddress,
+    this.ipAddress,
     this.port,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'instance': ?instance,
-      'ipAddress': ipAddress,
+      'ipAddress': ?ipAddress,
       'port': ?port,
     };
   }
@@ -37,9 +38,8 @@ class NetworkEndpointListNetworkEndpoint {
   factory NetworkEndpointListNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointListNetworkEndpoint(
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
-

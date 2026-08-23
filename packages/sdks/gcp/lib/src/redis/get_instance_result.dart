@@ -17,6 +17,7 @@ class GetInstanceResult {
   final String createTime;
   final String currentLocationId;
   final String customerManagedKey;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String displayName;
   final Map<String, String> effectiveLabels;
@@ -59,6 +60,7 @@ class GetInstanceResult {
   /// [createTime] Required.
   /// [currentLocationId] Required.
   /// [customerManagedKey] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [displayName] Required.
   /// [effectiveLabels] Required.
@@ -99,6 +101,7 @@ class GetInstanceResult {
     required this.createTime,
     required this.currentLocationId,
     required this.customerManagedKey,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.displayName,
     required this.effectiveLabels,
@@ -142,6 +145,7 @@ class GetInstanceResult {
       'createTime': createTime,
       'currentLocationId': currentLocationId,
       'customerManagedKey': customerManagedKey,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
@@ -186,6 +190,7 @@ class GetInstanceResult {
       createTime: map['createTime'] as String,
       currentLocationId: map['currentLocationId'] as String,
       customerManagedKey: map['customerManagedKey'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -220,4 +225,3 @@ class GetInstanceResult {
     );
   }
 }
-

@@ -30,7 +30,7 @@ class UserStoreState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// The ID of the user store. Currently only accepts "default_user_store".
+  /// The ID of the user store. Currently only accepts "defaultUserStore".
   final pulumi.Input<String>? userStoreId;
 
   /// Creates a new [UserStoreState].
@@ -40,7 +40,7 @@ class UserStoreState {
   /// [location] The geographic location where the data store should reside. The value can
   /// [name] The unique full resource name of the user store. Values are of the format
   /// [project] The ID of the project in which the resource belongs.
-  /// [userStoreId] The ID of the user store. Currently only accepts "default_user_store".
+  /// [userStoreId] The ID of the user store. Currently only accepts "defaultUserStore".
   const UserStoreState({
     this.defaultLicenseConfig,
     this.enableExpiredLicenseAutoUpdate,
@@ -75,4 +75,3 @@ class UserStoreState {
     );
   }
 }
-

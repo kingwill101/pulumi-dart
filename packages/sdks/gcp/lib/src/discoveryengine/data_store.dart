@@ -104,6 +104,26 @@ import 'data_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                     = "global"
+///   data_store_id                = "data-store-id"
+///   display_name                 = "tf-test-structured-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "NO_CONTENT"
+///   solution_types               = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search  = false
+///   skip_default_schema_creation = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +132,8 @@ import 'data_store_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.discoveryengine.DataStore;
 /// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -246,6 +266,27 @@ import 'data_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "kms_key_name" {
+///   location                     = "us"
+///   data_store_id                = "data-store-id"
+///   display_name                 = "tf-test-structured-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "NO_CONTENT"
+///   solution_types               = ["SOLUTION_TYPE_SEARCH"]
+///   kms_key_name                 = "kms-key"
+///   create_advanced_site_search  = false
+///   skip_default_schema_creation = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +295,8 @@ import 'data_store_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.discoveryengine.DataStore;
 /// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,6 +477,36 @@ import 'data_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "document_processing_config" {
+///   location                    = "global"
+///   data_store_id               = "data-store-id"
+///   display_name                = "tf-test-structured-datastore"
+///   industry_vertical           = "GENERIC"
+///   content_config              = "NO_CONTENT"
+///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search = false
+///   document_processing_config = {
+///     default_parsing_config = {
+///       digital_parsing_config = {}
+///     }
+///     parsing_config_overrides = [{
+///       "fileType" = "pdf"
+///       "ocrParsingConfig" = {
+///         "useNativeText" = true
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -447,8 +518,10 @@ import 'data_store_state.dart';
 /// import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs;
+/// import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -612,6 +685,30 @@ import 'data_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "advanced_site_search_config" {
+///   location                     = "global"
+///   data_store_id                = "data-store-id"
+///   display_name                 = "tf-test-advanced-site-search-config-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "PUBLIC_WEBSITE"
+///   solution_types               = ["SOLUTION_TYPE_CHAT"]
+///   create_advanced_site_search  = true
+///   skip_default_schema_creation = false
+///   advanced_site_search_config = {
+///     disable_initial_index     = true
+///     disable_automatic_refresh = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +718,8 @@ import 'data_store_state.dart';
 /// import com.pulumi.gcp.discoveryengine.DataStore;
 /// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.DataStoreAdvancedSiteSearchConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -678,31 +775,31 @@ import 'data_store_state.dart';
 /// DataStore can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}`
-///
 /// * `{{project}}/{{location}}/{{data_store_id}}`
-///
 /// * `{{location}}/{{data_store_id}}`
+///
 ///
 /// When using the `pulumi import` command, DataStore can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/dataStore:DataStore default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{project}}/{{location}}/{{data_store_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/dataStore:DataStore default {{location}}/{{data_store_id}}
 /// ```
 class DataStore extends pulumi.CustomResource {
+  /// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+  /// the source data must have ACL. ACL will be ingested when data is ingested by
+  /// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+  /// Document can't be accessed by calling DocumentService.GetDocument or
+  /// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+  /// industry vertical with non-`PUBLIC_WEBSITE` content config.
+  late final pulumi.Output<bool?> aclEnabled;
   /// Configuration data for advance site search.
   /// Structure is documented below.
   late final pulumi.Output<DataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfig;
   /// The content config of the data store.
   /// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
-  late final pulumi.Output<String> contentConfig;
+  late final pulumi.Output<String?> contentConfig;
   /// If true, an advanced data store for site search will be created. If the
   /// data store is not configured as site search (GENERIC vertical and
   /// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
@@ -713,6 +810,13 @@ class DataStore extends pulumi.CustomResource {
   late final pulumi.Output<String> dataStoreId;
   /// The id of the default Schema associated with this data store.
   late final pulumi.Output<String> defaultSchemaId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the data store. This field must be a UTF-8 encoded
   /// string with a length limit of 128 characters.
   late final pulumi.Output<String> displayName;
@@ -727,7 +831,7 @@ class DataStore extends pulumi.CustomResource {
   /// The KMS key to be used to protect this DataStore at creation time. Must be
   /// set for requests that need to comply with CMEK Org Policy protections.
   /// If this field is set and processed successfully, the DataStore will be
-  /// protected by the KMS key, as indicated in the cmek_config field.
+  /// protected by the KMS key, as indicated in the cmekConfig field.
   late final pulumi.Output<String?> kmsKeyName;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
@@ -766,12 +870,14 @@ class DataStore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aclEnabled = registerOutput<bool?>('aclEnabled');
     advancedSiteSearchConfig = registerOutput<DataStoreAdvancedSiteSearchConfig>('advancedSiteSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    contentConfig = registerOutput<String>('contentConfig');
+    contentConfig = registerOutput<String?>('contentConfig');
     createAdvancedSiteSearch = registerOutput<bool?>('createAdvancedSiteSearch');
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
     defaultSchemaId = registerOutput<String>('defaultSchemaId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentProcessingConfig = registerOutput<DataStoreDocumentProcessingConfig?>('documentProcessingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreDocumentProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     industryVertical = registerOutput<String>('industryVertical');
@@ -806,12 +912,14 @@ class DataStore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aclEnabled = registerOutput<bool?>('aclEnabled');
     advancedSiteSearchConfig = registerOutput<DataStoreAdvancedSiteSearchConfig>('advancedSiteSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    contentConfig = registerOutput<String>('contentConfig');
+    contentConfig = registerOutput<String?>('contentConfig');
     createAdvancedSiteSearch = registerOutput<bool?>('createAdvancedSiteSearch');
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
     defaultSchemaId = registerOutput<String>('defaultSchemaId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentProcessingConfig = registerOutput<DataStoreDocumentProcessingConfig?>('documentProcessingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreDocumentProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     industryVertical = registerOutput<String>('industryVertical');

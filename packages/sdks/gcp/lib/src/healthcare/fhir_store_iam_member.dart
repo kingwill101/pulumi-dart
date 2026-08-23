@@ -3,6 +3,9 @@ import 'fhir_store_iam_member_args.dart';
 import 'fhir_store_iam_member_condition.dart';
 import 'fhir_store_iam_member_state.dart';
 
+/// &gt; **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
 ///
 /// * `gcp.healthcare.FhirStoreIamPolicy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
@@ -109,6 +112,27 @@ import 'fhir_store_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstoreiampolicy" "fhir_store" {
+///   fhir_store_id = "your-fhir-store-id"
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,10 +141,11 @@ import 'fhir_store_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamPolicy;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,6 +258,21 @@ import 'fhir_store_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstoreiambinding" "fhir_store" {
+///   fhir_store_id = "your-fhir-store-id"
+///   role          = "roles/editor"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +281,8 @@ import 'fhir_store_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamBinding;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +377,21 @@ import 'fhir_store_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstoreiammember" "fhir_store" {
+///   fhir_store_id = "your-fhir-store-id"
+///   role          = "roles/editor"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +400,8 @@ import 'fhir_store_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamMember;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -445,6 +500,21 @@ import 'fhir_store_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstoreiambinding" "fhir_store" {
+///   fhir_store_id = "your-fhir-store-id"
+///   role          = "roles/editor"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -453,8 +523,8 @@ import 'fhir_store_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamBinding;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -549,6 +619,21 @@ import 'fhir_store_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstoreiammember" "fhir_store" {
+///   fhir_store_id = "your-fhir-store-id"
+///   role          = "roles/editor"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -557,8 +642,8 @@ import 'fhir_store_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamMember;
 /// import com.pulumi.gcp.healthcare.FhirStoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -593,29 +678,8 @@ import 'fhir_store_iam_member_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
-///
-/// * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
-///
-/// to = google_healthcare_fhir_store_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
-/// ```
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class FhirStoreIamMember extends pulumi.CustomResource {
   late final pulumi.Output<FhirStoreIamMemberCondition?> condition;
   /// (Computed) The etag of the FHIR store's IAM policy.

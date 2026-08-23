@@ -11,6 +11,13 @@ class TenantOauthIdpConfigArgs {
   final pulumi.Input<String> clientId;
   /// The client secret of the OAuth client, to enable OIDC code flow.
   final pulumi.Input<String>? clientSecret;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human friendly display name.
   final pulumi.Input<String> displayName;
   /// If this config allows users to sign in with the provider.
@@ -28,6 +35,7 @@ class TenantOauthIdpConfigArgs {
   /// Creates a new [TenantOauthIdpConfigArgs].
   /// [clientId] The client id of an OAuth client.
   /// [clientSecret] The client secret of the OAuth client, to enable OIDC code flow.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Human friendly display name.
   /// [enabled] If this config allows users to sign in with the provider.
   /// [issuer] For OIDC Idps, the issuer identifier.
@@ -37,6 +45,7 @@ class TenantOauthIdpConfigArgs {
   const TenantOauthIdpConfigArgs({
     required this.clientId,
     this.clientSecret,
+    this.deletionPolicy,
     required this.displayName,
     this.enabled,
     required this.issuer,
@@ -49,6 +58,7 @@ class TenantOauthIdpConfigArgs {
     return <String, dynamic>{
       'clientId': clientId,
       'clientSecret': ?clientSecret,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'enabled': ?enabled,
       'issuer': issuer,
@@ -62,6 +72,7 @@ class TenantOauthIdpConfigArgs {
     return TenantOauthIdpConfigArgs(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
@@ -71,4 +82,3 @@ class TenantOauthIdpConfigArgs {
     );
   }
 }
-

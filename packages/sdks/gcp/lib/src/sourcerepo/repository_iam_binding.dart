@@ -6,8 +6,8 @@ import 'repository_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
 ///
 /// * `gcp.sourcerepo.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
-/// * `gcp.sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
-/// * `gcp.sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+/// * `gcp.sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'repository_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.sourcerepo.RepositoryIamPolicy` **cannot** be used in conjunction with `gcp.sourcerepo.RepositoryIamBinding` and `gcp.sourcerepo.RepositoryIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.sourcerepo.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.sourcerepo.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.sourcerepo.RepositoryIamPolicy
@@ -119,6 +118,28 @@ import 'repository_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_sourcerepo_repositoryiampolicy" "policy" {
+///   project     = my-repo.project
+///   repository  = my-repo.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,10 +148,11 @@ import 'repository_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamPolicy;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,8 +172,8 @@ import 'repository_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
-///             .project(my_repo.project())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .repository(my_repo.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -248,6 +270,22 @@ import 'repository_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sourcerepo_repositoryiambinding" "binding" {
+///   project    = my-repo.project
+///   repository = my-repo.name
+///   role       = "roles/viewer"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -256,8 +294,8 @@ import 'repository_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamBinding;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,8 +308,8 @@ import 'repository_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
-///             .project(my_repo.project())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .repository(my_repo.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -357,6 +395,22 @@ import 'repository_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sourcerepo_repositoryiammember" "member" {
+///   project    = my-repo.project
+///   repository = my-repo.name
+///   role       = "roles/viewer"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +419,8 @@ import 'repository_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamMember;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -379,8 +433,8 @@ import 'repository_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
-///             .project(my_repo.project())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .repository(my_repo.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -410,8 +464,8 @@ import 'repository_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
 ///
 /// * `gcp.sourcerepo.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
-/// * `gcp.sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
-/// * `gcp.sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+/// * `gcp.sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -420,7 +474,6 @@ import 'repository_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.sourcerepo.RepositoryIamPolicy` **cannot** be used in conjunction with `gcp.sourcerepo.RepositoryIamBinding` and `gcp.sourcerepo.RepositoryIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.sourcerepo.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.sourcerepo.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.sourcerepo.RepositoryIamPolicy
@@ -523,6 +576,28 @@ import 'repository_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_sourcerepo_repositoryiampolicy" "policy" {
+///   project     = my-repo.project
+///   repository  = my-repo.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -531,10 +606,11 @@ import 'repository_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamPolicy;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -554,8 +630,8 @@ import 'repository_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
-///             .project(my_repo.project())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .repository(my_repo.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -652,6 +728,22 @@ import 'repository_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sourcerepo_repositoryiambinding" "binding" {
+///   project    = my-repo.project
+///   repository = my-repo.name
+///   role       = "roles/viewer"
+///   members    = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -660,8 +752,8 @@ import 'repository_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamBinding;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -674,8 +766,8 @@ import 'repository_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
-///             .project(my_repo.project())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .repository(my_repo.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -761,6 +853,22 @@ import 'repository_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sourcerepo_repositoryiammember" "member" {
+///   project    = my-repo.project
+///   repository = my-repo.name
+///   role       = "roles/viewer"
+///   member     = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -769,8 +877,8 @@ import 'repository_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamMember;
 /// import com.pulumi.gcp.sourcerepo.RepositoryIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -783,8 +891,8 @@ import 'repository_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
-///             .project(my_repo.project())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .repository(my_repo.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -809,7 +917,6 @@ import 'repository_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/repos/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -817,25 +924,21 @@ import 'repository_iam_binding_state.dart';
 /// Cloud Source Repositories repository IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding editor "projects/{{project}}/repos/{{repository}} roles/viewer user:jane@example.com"
+/// $ terraform import google_sourcerepo_repository_iam_member.editor "projects/{{project}}/repos/{{repository}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding editor "projects/{{project}}/repos/{{repository}} roles/viewer"
+/// $ terraform import google_sourcerepo_repository_iam_binding.editor "projects/{{project}}/repos/{{repository}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding editor projects/{{project}}/repos/{{repository}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class RepositoryIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<RepositoryIamBindingCondition?> condition;

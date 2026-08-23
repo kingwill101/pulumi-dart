@@ -85,6 +85,23 @@ import 'capacity_commitment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_capacitycommitment" "example" {
+///   capacity_commitment_id = "example-commitment"
+///   location               = "us-west2"
+///   slot_count             = 100
+///   plan                   = "FLEX_FLAT_RATE"
+///   edition                = "ENTERPRISE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +110,8 @@ import 'capacity_commitment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.CapacityCommitment;
 /// import com.pulumi.gcp.bigquery.CapacityCommitmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,22 +152,15 @@ import 'capacity_commitment_state.dart';
 /// CapacityCommitment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}`
-///
 /// * `{{project}}/{{location}}/{{capacity_commitment_id}}`
-///
 /// * `{{location}}/{{capacity_commitment_id}}`
+///
 ///
 /// When using the `pulumi import` command, CapacityCommitment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
 /// ```
 class CapacityCommitment extends pulumi.CustomResource {
@@ -163,6 +173,13 @@ class CapacityCommitment extends pulumi.CustomResource {
   late final pulumi.Output<String> commitmentEndTime;
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   late final pulumi.Output<String> commitmentStartTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   late final pulumi.Output<String?> edition;
   /// If true, fail the request if another project in the organization has a capacity commitment.
@@ -201,6 +218,7 @@ class CapacityCommitment extends pulumi.CustomResource {
     capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');
     commitmentStartTime = registerOutput<String>('commitmentStartTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     edition = registerOutput<String?>('edition');
     enforceSingleAdminProjectPerOrg = registerOutput<String?>('enforceSingleAdminProjectPerOrg');
     location = registerOutput<String?>('location');
@@ -238,6 +256,7 @@ class CapacityCommitment extends pulumi.CustomResource {
     capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');
     commitmentStartTime = registerOutput<String>('commitmentStartTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     edition = registerOutput<String?>('edition');
     enforceSingleAdminProjectPerOrg = registerOutput<String?>('enforceSingleAdminProjectPerOrg');
     location = registerOutput<String?>('location');

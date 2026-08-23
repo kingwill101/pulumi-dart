@@ -85,6 +85,22 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_gateway" "default" {
+///   name  = "my-gateway"
+///   scope = "default-scope-basic"
+///   type  = "OPEN_MESH"
+///   ports = [443]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +109,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkservices.Gateway;
 /// import com.pulumi.gcp.networkservices.GatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,6 +232,26 @@ import 'gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_gateway" "default" {
+///   name = "my-gateway"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   type        = "OPEN_MESH"
+///   ports       = [443]
+///   scope       = "default-scope-advance"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +260,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkservices.Gateway;
 /// import com.pulumi.gcp.networkservices.GatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -542,7 +578,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("PRIVATE"),
 /// 			IpCidrRange: pulumi.String("10.128.0.0/20"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -553,7 +589,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/23"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -590,11 +626,11 @@ import 'gateway_state.dart';
 /// 			},
 /// 			Scope: pulumi.String("my-default-scope1"),
 /// 			CertificateUrls: pulumi.StringArray{
-/// 				_default.ID(),
+/// 				_default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
-/// 			Network:                         defaultNetwork.ID(),
-/// 			Subnetwork:                      defaultSubnetwork.ID(),
+/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxyonlysubnet,
@@ -604,6 +640,75 @@ import 'gateway_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name     = "my-certificate"
+///   location = "us-central1"
+///   self_managed = {
+///     pem_certificate = file("test-fixtures/cert.pem")
+///     pem_private_key = file("test-fixtures/private-key.pem")
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "my-network"
+///   routing_mode            = "REGIONAL"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "my-subnetwork-name"
+///   purpose       = "PRIVATE"
+///   ip_cidr_range = "10.128.0.0/20"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+///   role          = "ACTIVE"
+/// }
+/// resource "gcp_compute_subnetwork" "proxyonlysubnet" {
+///   name          = "my-proxy-only-subnetwork"
+///   purpose       = "REGIONAL_MANAGED_PROXY"
+///   ip_cidr_range = "192.168.0.0/23"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+///   role          = "ACTIVE"
+/// }
+/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+///   name     = "my-policy-name"
+///   location = "us-central1"
+/// }
+/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+///   name                    = "my-policyrule-name"
+///   location                = "us-central1"
+///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   enabled                 = true
+///   priority                = 1
+///   session_matcher         = "host() == 'example.com'"
+///   basic_profile           = "ALLOW"
+/// }
+/// resource "gcp_networkservices_gateway" "default" {
+///   depends_on                           = [gcp_compute_subnetwork.proxyonlysubnet]
+///   name                                 = "my-gateway1"
+///   location                             = "us-central1"
+///   addresses                            = ["10.128.0.99"]
+///   type                                 = "SECURE_WEB_GATEWAY"
+///   ports                                = [443]
+///   scope                                = "my-default-scope1"
+///   certificate_urls                     = [gcp_certificatemanager_certificate.default.id]
+///   gateway_security_policy              = gcp_networksecurity_gatewaysecuritypolicy.default.id
+///   network                              = gcp_compute_network.default.id
+///   subnetwork                           = gcp_compute_subnetwork.default.id
+///   delete_swg_autogen_router_on_destroy = true
 /// }
 /// ```
 /// ```java
@@ -628,8 +733,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.gcp.networkservices.Gateway;
 /// import com.pulumi.gcp.networkservices.GatewayArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1134,7 +1239,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("PRIVATE"),
 /// 			IpCidrRange: pulumi.String("10.128.0.0/20"),
 /// 			Region:      pulumi.String("us-south1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -1145,7 +1250,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/23"),
 /// 			Region:      pulumi.String("us-south1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -1182,11 +1287,11 @@ import 'gateway_state.dart';
 /// 			},
 /// 			Scope: pulumi.String("my-default-scope1"),
 /// 			CertificateUrls: pulumi.StringArray{
-/// 				_default.ID(),
+/// 				_default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
-/// 			Network:                         defaultNetwork.ID(),
-/// 			Subnetwork:                      defaultSubnetwork.ID(),
+/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxyonlysubnet,
@@ -1206,11 +1311,11 @@ import 'gateway_state.dart';
 /// 			},
 /// 			Scope: pulumi.String("my-default-scope2"),
 /// 			CertificateUrls: pulumi.StringArray{
-/// 				_default.ID(),
+/// 				_default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
-/// 			Network:                         defaultNetwork.ID(),
-/// 			Subnetwork:                      defaultSubnetwork.ID(),
+/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxyonlysubnet,
@@ -1220,6 +1325,89 @@ import 'gateway_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name     = "my-certificate"
+///   location = "us-south1"
+///   self_managed = {
+///     pem_certificate = file("test-fixtures/cert.pem")
+///     pem_private_key = file("test-fixtures/private-key.pem")
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "my-network"
+///   routing_mode            = "REGIONAL"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "my-subnetwork-name"
+///   purpose       = "PRIVATE"
+///   ip_cidr_range = "10.128.0.0/20"
+///   region        = "us-south1"
+///   network       = gcp_compute_network.default.id
+///   role          = "ACTIVE"
+/// }
+/// resource "gcp_compute_subnetwork" "proxyonlysubnet" {
+///   name          = "my-proxy-only-subnetwork"
+///   purpose       = "REGIONAL_MANAGED_PROXY"
+///   ip_cidr_range = "192.168.0.0/23"
+///   region        = "us-south1"
+///   network       = gcp_compute_network.default.id
+///   role          = "ACTIVE"
+/// }
+/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+///   name     = "my-policy-name"
+///   location = "us-south1"
+/// }
+/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+///   name                    = "my-policyrule-name"
+///   location                = "us-south1"
+///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   enabled                 = true
+///   priority                = 1
+///   session_matcher         = "host() == 'example.com'"
+///   basic_profile           = "ALLOW"
+/// }
+/// resource "gcp_networkservices_gateway" "default" {
+///   depends_on                           = [gcp_compute_subnetwork.proxyonlysubnet]
+///   name                                 = "my-gateway1"
+///   location                             = "us-south1"
+///   addresses                            = ["10.128.0.99"]
+///   type                                 = "SECURE_WEB_GATEWAY"
+///   ports                                = [443]
+///   scope                                = "my-default-scope1"
+///   certificate_urls                     = [gcp_certificatemanager_certificate.default.id]
+///   gateway_security_policy              = gcp_networksecurity_gatewaysecuritypolicy.default.id
+///   network                              = gcp_compute_network.default.id
+///   subnetwork                           = gcp_compute_subnetwork.default.id
+///   delete_swg_autogen_router_on_destroy = true
+/// }
+/// resource "gcp_networkservices_gateway" "gateway2" {
+///   depends_on                           = [gcp_compute_subnetwork.proxyonlysubnet]
+///   name                                 = "my-gateway2"
+///   location                             = "us-south1"
+///   addresses                            = ["10.128.0.98"]
+///   type                                 = "SECURE_WEB_GATEWAY"
+///   ports                                = [443]
+///   scope                                = "my-default-scope2"
+///   certificate_urls                     = [gcp_certificatemanager_certificate.default.id]
+///   gateway_security_policy              = gcp_networksecurity_gatewaysecuritypolicy.default.id
+///   network                              = gcp_compute_network.default.id
+///   subnetwork                           = gcp_compute_subnetwork.default.id
+///   delete_swg_autogen_router_on_destroy = true
 /// }
 /// ```
 /// ```java
@@ -1244,8 +1432,8 @@ import 'gateway_state.dart';
 /// import com.pulumi.gcp.networkservices.Gateway;
 /// import com.pulumi.gcp.networkservices.GatewayArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1456,22 +1644,15 @@ import 'gateway_state.dart';
 /// Gateway can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/gateway:Gateway default projects/{{project}}/locations/{{location}}/gateways/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/gateway:Gateway default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/gateway:Gateway default {{location}}/{{name}}
 /// ```
 class Gateway extends pulumi.CustomResource {
@@ -1480,6 +1661,15 @@ class Gateway extends pulumi.CustomResource {
   /// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
   /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
   late final pulumi.Output<List<String>> addresses;
+  /// Configures this gateway to ​listen on all ports.
+  /// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+  /// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+  /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+  late final pulumi.Output<bool?> allPorts;
+  /// Optional. If true, the gateway will allow traffic from clients outside
+  /// of the region where the gateway is located.
+  /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+  late final pulumi.Output<bool?> allowGlobalAccess;
   /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
   /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
   late final pulumi.Output<List<String>?> certificateUrls;
@@ -1488,6 +1678,13 @@ class Gateway extends pulumi.CustomResource {
   /// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
   /// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
   late final pulumi.Output<bool?> deleteSwgAutogenRouterOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1507,7 +1704,7 @@ class Gateway extends pulumi.CustomResource {
   /// Set of label tags associated with the Gateway resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the gateway.
   /// The default value is `global`.
@@ -1519,9 +1716,9 @@ class Gateway extends pulumi.CustomResource {
   /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
   late final pulumi.Output<String?> network;
   /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-  /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+  /// The proxy binds to the specified ports.
   /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
-  late final pulumi.Output<List<int>> ports;
+  late final pulumi.Output<List<int>?> ports;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -1564,9 +1761,12 @@ class Gateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     addresses = registerOutput<List<String>>('addresses');
+    allPorts = registerOutput<bool?>('allPorts');
+    allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
     certificateUrls = registerOutput<List<String>?>('certificateUrls');
     createTime = registerOutput<String>('createTime');
     deleteSwgAutogenRouterOnDestroy = registerOutput<bool?>('deleteSwgAutogenRouterOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     envoyHeaders = registerOutput<String?>('envoyHeaders');
@@ -1576,7 +1776,7 @@ class Gateway extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
-    ports = registerOutput<List<int>>('ports');
+    ports = registerOutput<List<int>?>('ports');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     routingMode = registerOutput<String?>('routingMode');
@@ -1612,9 +1812,12 @@ class Gateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     addresses = registerOutput<List<String>>('addresses');
+    allPorts = registerOutput<bool?>('allPorts');
+    allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
     certificateUrls = registerOutput<List<String>?>('certificateUrls');
     createTime = registerOutput<String>('createTime');
     deleteSwgAutogenRouterOnDestroy = registerOutput<bool?>('deleteSwgAutogenRouterOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     envoyHeaders = registerOutput<String?>('envoyHeaders');
@@ -1624,7 +1827,7 @@ class Gateway extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
-    ports = registerOutput<List<int>>('ports');
+    ports = registerOutput<List<int>?>('ports');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     routingMode = registerOutput<String?>('routingMode');

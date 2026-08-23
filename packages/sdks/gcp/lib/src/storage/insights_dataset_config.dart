@@ -199,6 +199,40 @@ import 'insights_dataset_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_insightsdatasetconfig" "config_includes" {
+///   location              = "us-central1"
+///   dataset_config_id     = "my_config_includes"
+///   retention_period_days = 1
+///   source_projects = {
+///     project_numbers = ["123", "456", "789"]
+///   }
+///   identity = {
+///     type = "IDENTITY_TYPE_PER_CONFIG"
+///   }
+///   description                   = "Sample Description"
+///   link_dataset                  = false
+///   include_newly_created_buckets = true
+///   include_cloud_storage_locations = {
+///     locations = ["us-east1"]
+///   }
+///   include_cloud_storage_buckets = {
+///     cloud_storage_buckets = [{
+///       "bucketName" = "sample-bucket"
+///       }, {
+///       "bucketName" = "sample-regex"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +245,9 @@ import 'insights_dataset_config_state.dart';
 /// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigIdentityArgs;
 /// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigIncludeCloudStorageLocationsArgs;
 /// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigIncludeCloudStorageBucketsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -430,6 +465,36 @@ import 'insights_dataset_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_insightsdatasetconfig" "config_excludes" {
+///   location                            = "us-central1"
+///   dataset_config_id                   = "my_config_excludes"
+///   retention_period_days               = 1
+///   activity_data_retention_period_days = 2
+///   organization_scope                  = true
+///   identity = {
+///     type = "IDENTITY_TYPE_PER_PROJECT"
+///   }
+///   exclude_cloud_storage_locations = {
+///     locations = ["us-east1"]
+///   }
+///   exclude_cloud_storage_buckets = {
+///     cloud_storage_buckets = [{
+///       "bucketName" = "sample-bucket"
+///       }, {
+///       "bucketName" = "sample-regex"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -441,8 +506,9 @@ import 'insights_dataset_config_state.dart';
 /// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigIdentityArgs;
 /// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigExcludeCloudStorageLocationsArgs;
 /// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigExcludeCloudStorageBucketsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.storage.inputs.InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,22 +574,15 @@ import 'insights_dataset_config_state.dart';
 /// DatasetConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}`
-///
 /// * `{{project}}/{{location}}/{{dataset_config_id}}`
-///
 /// * `{{location}}/{{dataset_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, DatasetConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{project}}/{{location}}/{{dataset_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
 /// ```
 class InsightsDatasetConfig extends pulumi.CustomResource {
@@ -535,6 +594,13 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> datasetConfigId;
   /// State of the DatasetConfig.
   late final pulumi.Output<String> datasetConfigState;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
   late final pulumi.Output<String?> description;
   /// Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -554,6 +620,11 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
   late final pulumi.Output<InsightsDatasetConfigIncludeCloudStorageLocations?> includeCloudStorageLocations;
   /// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
   late final pulumi.Output<bool?> includeNewlyCreatedBuckets;
+  /// A boolean terraform only flag to link/unlink dataset.
+  ///
+  /// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+  /// &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+  /// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
   late final pulumi.Output<bool?> linkDataset;
   /// Details of the linked DatasetConfig.
   /// Structure is documented below.
@@ -601,6 +672,7 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     datasetConfigId = registerOutput<String>('datasetConfigId');
     datasetConfigState = registerOutput<String>('datasetConfigState');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     excludeCloudStorageBuckets = registerOutput<InsightsDatasetConfigExcludeCloudStorageBuckets?>('excludeCloudStorageBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     excludeCloudStorageLocations = registerOutput<InsightsDatasetConfigExcludeCloudStorageLocations?>('excludeCloudStorageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigExcludeCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -649,6 +721,7 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     datasetConfigId = registerOutput<String>('datasetConfigId');
     datasetConfigState = registerOutput<String>('datasetConfigState');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     excludeCloudStorageBuckets = registerOutput<InsightsDatasetConfigExcludeCloudStorageBuckets?>('excludeCloudStorageBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     excludeCloudStorageLocations = registerOutput<InsightsDatasetConfigExcludeCloudStorageLocations?>('excludeCloudStorageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigExcludeCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>()); });

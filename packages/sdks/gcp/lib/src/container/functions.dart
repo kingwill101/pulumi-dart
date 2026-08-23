@@ -89,6 +89,26 @@ import 'get_registry_repository_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getattachedinstallmanifest" "manifest" {
+///   location         = "us-west1"
+///   project          = "my-project"
+///   cluster_id       = "test-cluster-1"
+///   platform_version = "1.25.0-gke.1"
+/// }
+///
+/// output "installManifest" {
+///   value = data.gcp_container_getattachedinstallmanifest.manifest
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +117,8 @@ import 'get_registry_repository_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.ContainerFunctions;
 /// import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +234,24 @@ Future<GetAttachedInstallManifestResult> getAttachedInstallManifest(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getattachedversions" "uswest" {
+///   location = "us-west1"
+///   project  = "my-project"
+/// }
+///
+/// output "firstAvailableVersion" {
+///   value = data.gcp_container_getattachedversions.uswest.valid_versions[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +260,8 @@ Future<GetAttachedInstallManifestResult> getAttachedInstallManifest(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.ContainerFunctions;
 /// import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,9 +368,27 @@ Future<GetAttachedVersionsResult> getAttachedVersions(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("firstAvailableVersion", versions.ValidVersions[0])
+/// 		ctx.Export("firstAvailableVersion", pulumi.Any(versions.ValidVersions[0]))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getawsversions" "central1b" {
+///   location = "us-west1"
+///   project  = "my-project"
+/// }
+///
+/// output "firstAvailableVersion" {
+///   value = versions.validVersions[0]
 /// }
 /// ```
 /// ```java
@@ -343,8 +399,8 @@ Future<GetAttachedVersionsResult> getAttachedVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.ContainerFunctions;
 /// import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,7 +417,7 @@ Future<GetAttachedVersionsResult> getAttachedVersions(
 ///             .project("my-project")
 ///             .build());
 ///
-///         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+///         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
 ///     }
 /// }
 /// ```
@@ -451,9 +507,27 @@ Future<GetAwsVersionsResult> getAwsVersions(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("firstAvailableVersion", versions.ValidVersions[0])
+/// 		ctx.Export("firstAvailableVersion", pulumi.Any(versions.ValidVersions[0]))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getazureversions" "central1b" {
+///   location = "us-west1"
+///   project  = "my-project"
+/// }
+///
+/// output "firstAvailableVersion" {
+///   value = versions.validVersions[0]
 /// }
 /// ```
 /// ```java
@@ -464,8 +538,8 @@ Future<GetAwsVersionsResult> getAwsVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.ContainerFunctions;
 /// import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -482,7 +556,7 @@ Future<GetAwsVersionsResult> getAwsVersions(
 ///             .project("my-project")
 ///             .build());
 ///
-///         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+///         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
 ///     }
 /// }
 /// ```
@@ -589,6 +663,33 @@ Future<GetAzureVersionsResult> getAzureVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getcluster" "myCluster" {
+///   name     = "my-cluster"
+///   location = "us-east1-a"
+/// }
+///
+/// output "endpoint" {
+///   value = data.gcp_container_getcluster.myCluster.endpoint
+/// }
+/// output "instanceGroupUrls" {
+///   value = data.gcp_container_getcluster.myCluster.node_pools[0].instance_group_urls
+/// }
+/// output "nodeConfig" {
+///   value = data.gcp_container_getcluster.myCluster.node_configs
+/// }
+/// output "nodePools" {
+///   value = data.gcp_container_getcluster.myCluster.node_pools
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -597,8 +698,8 @@ Future<GetAzureVersionsResult> getAzureVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.ContainerFunctions;
 /// import com.pulumi.gcp.container.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -635,6 +736,160 @@ Future<GetAzureVersionsResult> getAzureVersions(
 ///   instanceGroupUrls: ${myCluster.nodePools[0].instanceGroupUrls}
 ///   nodeConfig: ${myCluster.nodeConfigs}
 ///   nodePools: ${myCluster.nodePools}
+/// ```
+///
+///
+/// ### Autopilot
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.serviceaccount.Account("default", {
+///     accountId: "service-account-id",
+///     displayName: "Service Account",
+/// });
+/// const primary = new gcp.container.Cluster("primary", {
+///     name: "marcellus-wallace",
+///     location: "us-central1-a",
+///     enableAutopilot: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.serviceaccount.Account("default",
+///     account_id="service-account-id",
+///     display_name="Service Account")
+/// primary = gcp.container.Cluster("primary",
+///     name="marcellus-wallace",
+///     location="us-central1-a",
+///     enable_autopilot=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.ServiceAccount.Account("default", new()
+///     {
+///         AccountId = "service-account-id",
+///         DisplayName = "Service Account",
+///     });
+///
+///     var primary = new Gcp.Container.Cluster("primary", new()
+///     {
+///         Name = "marcellus-wallace",
+///         Location = "us-central1-a",
+///         EnableAutopilot = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
+/// 			AccountId:   pulumi.String("service-account-id"),
+/// 			DisplayName: pulumi.String("Service Account"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
+/// 			Name:            pulumi.String("marcellus-wallace"),
+/// 			Location:        pulumi.String("us-central1-a"),
+/// 			EnableAutopilot: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "default" {
+///   account_id   = "service-account-id"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_container_cluster" "primary" {
+///   name             = "marcellus-wallace"
+///   location         = "us-central1-a"
+///   enable_autopilot = true
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.container.Cluster;
+/// import com.pulumi.gcp.container.ClusterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Account("default", AccountArgs.builder()
+///             .accountId("service-account-id")
+///             .displayName("Service Account")
+///             .build());
+///
+///         var primary = new Cluster("primary", ClusterArgs.builder()
+///             .name("marcellus-wallace")
+///             .location("us-central1-a")
+///             .enableAutopilot(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:serviceaccount:Account
+///     properties:
+///       accountId: service-account-id
+///       displayName: Service Account
+///   primary:
+///     type: gcp:container:Cluster
+///     properties:
+///       name: marcellus-wallace
+///       location: us-central1-a
+///       enableAutopilot: true
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_container_get_cluster_get_cluster_args_doc}
 /// [options] Invoke options controlling this call.
@@ -757,6 +1012,33 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getengineversions" "central1b" {
+///   location       = "us-central1-b"
+///   version_prefix = "1.12."
+/// }
+///
+/// resource "gcp_container_cluster" "foo" {
+///   name               = "test-cluster"
+///   location           = "us-central1-b"
+///   node_version       = data.gcp_container_getengineversions.central1b.latest_node_version
+///   initial_node_count = 1
+/// }
+/// output "stableChannelDefaultVersion" {
+///   value = data.gcp_container_getengineversions.central1b.release_channel_default_version["STABLE"]
+/// }
+/// output "stableChannelLatestVersion" {
+///   value = data.gcp_container_getengineversions.central1b.release_channel_latest_version["STABLE"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -767,8 +1049,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -897,6 +1179,23 @@ Future<GetEngineVersionsResult> getEngineVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getregistryimage" "debian" {
+///   name = "debian"
+/// }
+///
+/// output "gcrLocation" {
+///   value = data.gcp_container_getregistryimage.debian.image_url
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -905,8 +1204,8 @@ Future<GetEngineVersionsResult> getEngineVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.ContainerFunctions;
 /// import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1009,6 +1308,22 @@ Future<GetRegistryImageResult> getRegistryImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getregistryrepository" "foo" {
+/// }
+///
+/// output "gcrLocation" {
+///   value = data.gcp_container_getregistryrepository.foo.repository_url
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1017,8 +1332,8 @@ Future<GetRegistryImageResult> getRegistryImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.ContainerFunctions;
 /// import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

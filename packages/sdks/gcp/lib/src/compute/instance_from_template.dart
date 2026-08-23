@@ -11,6 +11,7 @@ import 'instance_from_template_scheduling.dart';
 import 'instance_from_template_service_account.dart';
 import 'instance_from_template_shielded_instance_config.dart';
 import 'instance_from_template_state.dart';
+import 'instance_from_template_workload_identity_config.dart';
 
 /// Manages a VM instance resource within GCE. For more information see
 /// [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -18,7 +19,7 @@ import 'instance_from_template_state.dart';
 /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 ///
 /// This resource is specifically to create a compute instance from a given
-/// `source_instance_template`. To create an instance without a template, use the
+/// `sourceInstanceTemplate`. To create an instance without a template, use the
 /// `gcp.compute.Instance` resource.
 ///
 ///
@@ -185,6 +186,42 @@ import 'instance_from_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "tpl" {
+///   name         = "template"
+///   machine_type = "e2-medium"
+///   disks {
+///     source_image = "debian-cloud/debian-11"
+///     auto_delete  = true
+///     disk_size_gb = 100
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+///   can_ip_forward = true
+/// }
+/// resource "gcp_compute_instancefromtemplate" "tpl" {
+///   name                     = "instance-from-template"
+///   zone                     = "us-central1-a"
+///   source_instance_template = gcp_compute_instancetemplate.tpl.self_link_unique
+///   can_ip_forward           = false
+///   labels = {
+///     "my_key" = "my_value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +234,8 @@ import 'instance_from_template_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
 /// import com.pulumi.gcp.compute.InstanceFromTemplate;
 /// import com.pulumi.gcp.compute.InstanceFromTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,6 +310,7 @@ import 'instance_from_template_state.dart';
 class InstanceFromTemplate extends pulumi.CustomResource {
   /// Controls for advanced machine-related behavior features.
   late final pulumi.Output<InstanceFromTemplateAdvancedMachineFeatures> advancedMachineFeatures;
+  /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
   late final pulumi.Output<bool> allowStoppingForUpdate;
   /// List of disks attached to the instance
   late final pulumi.Output<List<Map<String, dynamic>>> attachedDisks;
@@ -280,7 +318,7 @@ class InstanceFromTemplate extends pulumi.CustomResource {
   late final pulumi.Output<InstanceFromTemplateBootDisk> bootDisk;
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
   late final pulumi.Output<bool> canIpForward;
-  /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+  /// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
   late final pulumi.Output<InstanceFromTemplateConfidentialInstanceConfig> confidentialInstanceConfig;
   /// The CPU platform used by this instance.
   late final pulumi.Output<String> cpuPlatform;
@@ -290,15 +328,25 @@ class InstanceFromTemplate extends pulumi.CustomResource {
   /// This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
   /// For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
   late final pulumi.Output<String> currentStatus;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether deletion protection is enabled on this instance.
   late final pulumi.Output<bool> deletionProtection;
   /// A brief description of the resource.
   late final pulumi.Output<String> description;
   /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
   late final pulumi.Output<String> desiredStatus;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Whether the instance has virtual displays enabled.
   late final pulumi.Output<bool> enableDisplay;
+  /// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+  late final pulumi.Output<bool> eraseWindowsVssSignature;
   /// List of the type and count of accelerator cards attached to the instance.
   late final pulumi.Output<List<Map<String, dynamic>>> guestAccelerators;
   /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -337,17 +385,19 @@ class InstanceFromTemplate extends pulumi.CustomResource {
   late final pulumi.Output<InstanceFromTemplateParams> params;
   /// Partner Metadata Map made available within the instance.
   late final pulumi.Output<Map<String, String>> partnerMetadata;
-  /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Specifies the reservations that this instance can consume from.
   late final pulumi.Output<InstanceFromTemplateReservationAffinity> reservationAffinity;
-  /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   late final pulumi.Output<String> resourcePolicies;
   /// The scheduling strategy being used by the instance.
   late final pulumi.Output<InstanceFromTemplateScheduling> scheduling;
-  /// The scratch disks attached to the instance.
+  /// * `network_interface.alias_ip_range`
+  /// * `network_interface.alias_ipv6_range` [Beta]
+  /// * `network_interface.access_config`
   late final pulumi.Output<List<Map<String, dynamic>>> scratchDisks;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
@@ -357,7 +407,7 @@ class InstanceFromTemplate extends pulumi.CustomResource {
   late final pulumi.Output<InstanceFromTemplateShieldedInstanceConfig> shieldedInstanceConfig;
   /// Name or self link of an instance
   /// template to create the instance based on. It is recommended to reference
-  /// instance templates through their unique id (`self_link_unique` attribute).
+  /// instance templates through their unique id (`selfLinkUnique` attribute).
   ///
   /// - - -
   late final pulumi.Output<String> sourceInstanceTemplate;
@@ -365,12 +415,17 @@ class InstanceFromTemplate extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> tags;
   /// The unique fingerprint of the tags.
   late final pulumi.Output<String> tagsFingerprint;
+  /// Workload identity config.
+  late final pulumi.Output<InstanceFromTemplateWorkloadIdentityConfig> workloadIdentityConfig;
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
   /// In addition to these, all arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the template. All exported attributes
   /// from `gcp.compute.Instance` are likewise exported here.
+  ///
+  /// To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+  /// are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
   late final pulumi.Output<String> zone;
 
   /// Creates a new [InstanceFromTemplate].
@@ -396,11 +451,13 @@ class InstanceFromTemplate extends pulumi.CustomResource {
     cpuPlatform = registerOutput<String>('cpuPlatform');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     currentStatus = registerOutput<String>('currentStatus');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String>('description');
     desiredStatus = registerOutput<String>('desiredStatus');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableDisplay = registerOutput<bool>('enableDisplay');
+    eraseWindowsVssSignature = registerOutput<bool>('eraseWindowsVssSignature');
     guestAccelerators = registerOutput<List<Map<String, dynamic>>>('guestAccelerators');
     hostname = registerOutput<String>('hostname');
     instanceEncryptionKey = registerOutput<InstanceFromTemplateInstanceEncryptionKey>('instanceEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromTemplateInstanceEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -430,6 +487,7 @@ class InstanceFromTemplate extends pulumi.CustomResource {
     sourceInstanceTemplate = registerOutput<String>('sourceInstanceTemplate');
     tags = registerOutput<List<String>>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    workloadIdentityConfig = registerOutput<InstanceFromTemplateWorkloadIdentityConfig>('workloadIdentityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String>('zone');
   }
 
@@ -465,11 +523,13 @@ class InstanceFromTemplate extends pulumi.CustomResource {
     cpuPlatform = registerOutput<String>('cpuPlatform');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     currentStatus = registerOutput<String>('currentStatus');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String>('description');
     desiredStatus = registerOutput<String>('desiredStatus');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableDisplay = registerOutput<bool>('enableDisplay');
+    eraseWindowsVssSignature = registerOutput<bool>('eraseWindowsVssSignature');
     guestAccelerators = registerOutput<List<Map<String, dynamic>>>('guestAccelerators');
     hostname = registerOutput<String>('hostname');
     instanceEncryptionKey = registerOutput<InstanceFromTemplateInstanceEncryptionKey>('instanceEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromTemplateInstanceEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -499,6 +559,7 @@ class InstanceFromTemplate extends pulumi.CustomResource {
     sourceInstanceTemplate = registerOutput<String>('sourceInstanceTemplate');
     tags = registerOutput<List<String>>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    workloadIdentityConfig = registerOutput<InstanceFromTemplateWorkloadIdentityConfig>('workloadIdentityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String>('zone');
   }
 }

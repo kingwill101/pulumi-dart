@@ -6,8 +6,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Identity-Aware Proxy WebForwardingRuleService. Each of these resources serves a different use case:
 ///
 /// * `gcp.iap.WebForwardingRuleServiceIamPolicy`: Authoritative. Sets the IAM policy for the webforwardingruleservice and replaces any existing policy already attached.
-/// * `gcp.iap.WebForwardingRuleServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webforwardingruleservice are preserved.
-/// * `gcp.iap.WebForwardingRuleServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webforwardingruleservice are preserved.
+/// * `gcp.iap.WebForwardingRuleServiceIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the webforwardingruleservice are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.iap.WebForwardingRuleServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the webforwardingruleservice are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,7 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.iap.WebForwardingRuleServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebForwardingRuleServiceIamBinding` and `gcp.iap.WebForwardingRuleServiceIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.iap.WebForwardingRuleServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebForwardingRuleServiceIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.iap.WebForwardingRuleServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebForwardingRuleServiceIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -120,6 +120,28 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiampolicy" "policy" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   policy_data                  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,10 +150,11 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicy;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,8 +174,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -300,6 +323,33 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiampolicy" "policy" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   policy_data                  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -308,10 +358,12 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicy;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,8 +388,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -437,6 +489,22 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiambinding" "binding" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   members                      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -445,8 +513,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBinding;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -459,8 +527,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -572,6 +640,27 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiambinding" "binding" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   members                      = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -581,8 +670,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBinding;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBindingArgs;
 /// import com.pulumi.gcp.iap.inputs.WebForwardingRuleServiceIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,8 +684,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .condition(WebForwardingRuleServiceIamBindingConditionArgs.builder()
@@ -690,6 +779,22 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiammember" "member" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   member                       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -698,8 +803,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMember;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -712,8 +817,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -819,6 +924,27 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiammember" "member" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   member                       = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -828,8 +954,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMember;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMemberArgs;
 /// import com.pulumi.gcp.iap.inputs.WebForwardingRuleServiceIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -842,8 +968,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .condition(WebForwardingRuleServiceIamMemberConditionArgs.builder()
@@ -881,8 +1007,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Identity-Aware Proxy WebForwardingRuleService. Each of these resources serves a different use case:
 ///
 /// * `gcp.iap.WebForwardingRuleServiceIamPolicy`: Authoritative. Sets the IAM policy for the webforwardingruleservice and replaces any existing policy already attached.
-/// * `gcp.iap.WebForwardingRuleServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webforwardingruleservice are preserved.
-/// * `gcp.iap.WebForwardingRuleServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webforwardingruleservice are preserved.
+/// * `gcp.iap.WebForwardingRuleServiceIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the webforwardingruleservice are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.iap.WebForwardingRuleServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the webforwardingruleservice are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -890,7 +1016,7 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.iap.WebForwardingRuleServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebForwardingRuleServiceIamBinding` and `gcp.iap.WebForwardingRuleServiceIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.iap.WebForwardingRuleServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebForwardingRuleServiceIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.iap.WebForwardingRuleServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebForwardingRuleServiceIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -995,6 +1121,28 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiampolicy" "policy" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   policy_data                  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1003,10 +1151,11 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicy;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1026,8 +1175,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1175,6 +1324,33 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/iap.httpsResourceAccessor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiampolicy" "policy" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   policy_data                  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1183,10 +1359,12 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicy;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1211,8 +1389,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1312,6 +1490,22 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiambinding" "binding" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   members                      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1320,8 +1514,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBinding;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1334,8 +1528,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1447,6 +1641,27 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiambinding" "binding" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   members                      = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1456,8 +1671,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBinding;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamBindingArgs;
 /// import com.pulumi.gcp.iap.inputs.WebForwardingRuleServiceIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1470,8 +1685,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .members("user:jane@example.com")
 ///             .condition(WebForwardingRuleServiceIamBindingConditionArgs.builder()
@@ -1565,6 +1780,22 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiammember" "member" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   member                       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1573,8 +1804,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMember;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1587,8 +1818,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1694,6 +1925,27 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iap_webforwardingruleserviceiammember" "member" {
+///   project                      = default.project
+///   forwarding_rule_service_name = default.name
+///   role                         = "roles/iap.httpsResourceAccessor"
+///   member                       = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1703,8 +1955,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMember;
 /// import com.pulumi.gcp.iap.WebForwardingRuleServiceIamMemberArgs;
 /// import com.pulumi.gcp.iap.inputs.WebForwardingRuleServiceIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1717,8 +1969,8 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
-///             .project(default_.project())
-///             .forwardingRuleServiceName(default_.name())
+///             .project(default_.get("project"))
+///             .forwardingRuleServiceName(default_.get("name"))
 ///             .role("roles/iap.httpsResourceAccessor")
 ///             .member("user:jane@example.com")
 ///             .condition(WebForwardingRuleServiceIamMemberConditionArgs.builder()
@@ -1752,9 +2004,7 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/iap_web/forwarding_rule/services/{{name}}
-///
 /// * {{project}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1762,25 +2012,21 @@ import 'web_forwarding_rule_service_iam_member_state.dart';
 /// Identity-Aware Proxy webforwardingruleservice IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:iap/webForwardingRuleServiceIamMember:WebForwardingRuleServiceIamMember editor "projects/{{project}}/iap_web/forwarding_rule/services/{{web_forwarding_rule_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
+/// $ terraform import google_iap_web_forwarding_rule_service_iam_member.editor "projects/{{project}}/iap_web/forwarding_rule/services/{{web_forwarding_rule_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:iap/webForwardingRuleServiceIamMember:WebForwardingRuleServiceIamMember editor "projects/{{project}}/iap_web/forwarding_rule/services/{{web_forwarding_rule_service}} roles/iap.httpsResourceAccessor"
+/// $ terraform import google_iap_web_forwarding_rule_service_iam_binding.editor "projects/{{project}}/iap_web/forwarding_rule/services/{{web_forwarding_rule_service}} roles/iap.httpsResourceAccessor"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:iap/webForwardingRuleServiceIamMember:WebForwardingRuleServiceIamMember editor projects/{{project}}/iap_web/forwarding_rule/services/{{web_forwarding_rule_service}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class WebForwardingRuleServiceIamMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -1807,7 +2053,7 @@ class WebForwardingRuleServiceIamMember extends pulumi.CustomResource {
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
   /// The role that should be applied. Only one
-  /// `gcp.iap.WebForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `gcp.iap.WebForwardingRuleServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
 

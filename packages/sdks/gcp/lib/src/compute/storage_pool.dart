@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_pool_args.dart';
+import 'storage_pool_params.dart';
 import 'storage_pool_state.dart';
 
 /// A Hyperdisk Storage Pool is a pre-purchased collection of capacity, throughput, and IOPS
@@ -123,6 +124,33 @@ import 'storage_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_storagepool" "test-storage-pool-basic" {
+///   name                         = "storage-pool-basic"
+///   pool_provisioned_capacity_gb = "10240"
+///   pool_provisioned_throughput  = 100
+///   storage_pool_type            = "hyperdisk-throughput"
+///   zone                         = "us-central1-a"
+///   labels = {
+///     "environment" = "test"
+///     "purpose"     = "storage-pool-testing"
+///     "team"        = "infrastructure"
+///     "cost_center" = "engineering"
+///   }
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +161,8 @@ import 'storage_pool_state.dart';
 /// import com.pulumi.gcp.compute.StoragePoolArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -333,6 +361,41 @@ import 'storage_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+/// data "gcp_compute_getstoragepooltypes" "balanced" {
+///   zone              = "us-central1-a"
+///   storage_pool_type = "hyperdisk-balanced"
+/// }
+///
+/// resource "gcp_compute_storagepool" "test-storage-pool-full" {
+///   name                          = "storage-pool-full"
+///   description                   = "Hyperdisk Balanced storage pool"
+///   capacity_provisioning_type    = "STANDARD"
+///   pool_provisioned_capacity_gb  = "10240"
+///   performance_provisioning_type = "STANDARD"
+///   pool_provisioned_iops         = "10000"
+///   pool_provisioned_throughput   = "1024"
+///   storage_pool_type             = data.gcp_compute_getstoragepooltypes.balanced.self_link
+///   labels = {
+///     "environment" = "test"
+///     "purpose"     = "storage-pool-testing"
+///     "team"        = "infrastructure"
+///     "cost_center" = "engineering"
+///   }
+///   deletion_protection = false
+///   zone                = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +408,8 @@ import 'storage_pool_state.dart';
 /// import com.pulumi.gcp.compute.StoragePoolArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,28 +490,17 @@ import 'storage_pool_state.dart';
 /// StoragePool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/storagePools/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/storagePool:StoragePool default projects/{{project}}/zones/{{zone}}/storagePools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/storagePool:StoragePool default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
 /// ```
 class StoragePool extends pulumi.CustomResource {
@@ -457,6 +509,17 @@ class StoragePool extends pulumi.CustomResource {
   late final pulumi.Output<String> capacityProvisioningType;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the StoragePool.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the StoragePool will fail.
+  /// When the field is set to false, deleting the StoragePool is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// A description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
@@ -470,7 +533,7 @@ class StoragePool extends pulumi.CustomResource {
   /// Labels to apply to this storage pool. These can be later modified by the setLabels method.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -480,6 +543,9 @@ class StoragePool extends pulumi.CustomResource {
   /// and all following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<StoragePoolParams?> params;
   /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
   /// Possible values are: `STANDARD`, `ADVANCED`.
   late final pulumi.Output<String> performanceProvisioningType;
@@ -528,6 +594,7 @@ class StoragePool extends pulumi.CustomResource {
         ) {
     capacityProvisioningType = registerOutput<String>('capacityProvisioningType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -535,6 +602,7 @@ class StoragePool extends pulumi.CustomResource {
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
+    params = registerOutput<StoragePoolParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoragePoolParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     performanceProvisioningType = registerOutput<String>('performanceProvisioningType');
     poolProvisionedCapacityGb = registerOutput<String>('poolProvisionedCapacityGb');
     poolProvisionedIops = registerOutput<String?>('poolProvisionedIops');
@@ -572,6 +640,7 @@ class StoragePool extends pulumi.CustomResource {
         ) {
     capacityProvisioningType = registerOutput<String>('capacityProvisioningType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -579,6 +648,7 @@ class StoragePool extends pulumi.CustomResource {
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
+    params = registerOutput<StoragePoolParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoragePoolParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     performanceProvisioningType = registerOutput<String>('performanceProvisioningType');
     poolProvisionedCapacityGb = registerOutput<String>('poolProvisionedCapacityGb');
     poolProvisionedIops = registerOutput<String?>('poolProvisionedIops');

@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_region_target_http_proxy_region_target_http_proxy_args_doc}
 class RegionTargetHttpProxyArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Specifies how long to keep a connection open, after completing a response,
@@ -34,6 +41,7 @@ class RegionTargetHttpProxyArgs {
   final pulumi.Input<String> urlMap;
 
   /// Creates a new [RegionTargetHttpProxyArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [httpKeepAliveTimeoutSec] Specifies how long to keep a connection open, after completing a response,
   /// [name] Name of the resource. Provided by the client when the resource is
@@ -41,6 +49,7 @@ class RegionTargetHttpProxyArgs {
   /// [region] The Region in which the created target https proxy should reside.
   /// [urlMap] A reference to the RegionUrlMap resource that defines the mapping from URL
   const RegionTargetHttpProxyArgs({
+    this.deletionPolicy,
     this.description,
     this.httpKeepAliveTimeoutSec,
     this.name,
@@ -51,6 +60,7 @@ class RegionTargetHttpProxyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'httpKeepAliveTimeoutSec': ?httpKeepAliveTimeoutSec,
       'name': ?name,
@@ -62,6 +72,7 @@ class RegionTargetHttpProxyArgs {
 
   factory RegionTargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpProxyArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpKeepAliveTimeoutSec: (() { final guardedValue = map['httpKeepAliveTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -71,4 +82,3 @@ class RegionTargetHttpProxyArgs {
     );
   }
 }
-

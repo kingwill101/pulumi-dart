@@ -4,6 +4,8 @@ import 'environment_container_image.dart';
 import 'environment_state.dart';
 import 'environment_vm_image.dart';
 
+/// &gt; **Warning:** `gcp.notebooks.Environment` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+///
 /// A Cloud AI Platform Notebook environment.
 ///
 ///
@@ -86,6 +88,23 @@ import 'environment_vm_image.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_environment" "environment" {
+///   name     = "notebooks-environment"
+///   location = "us-west1-a"
+///   container_image = {
+///     repository = "gcr.io/deeplearning-platform-release/base-cpu"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'environment_vm_image.dart';
 /// import com.pulumi.gcp.notebooks.Environment;
 /// import com.pulumi.gcp.notebooks.EnvironmentArgs;
 /// import com.pulumi.gcp.notebooks.inputs.EnvironmentContainerImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,22 +155,15 @@ import 'environment_vm_image.dart';
 /// Environment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
 /// ```
 class Environment extends pulumi.CustomResource {
@@ -160,6 +172,13 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<EnvironmentContainerImage?> containerImage;
   /// Instance creation time
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A brief description of this environment.
   late final pulumi.Output<String?> description;
   /// Display name of this environment for the UI.
@@ -195,6 +214,7 @@ class Environment extends pulumi.CustomResource {
         ) {
     containerImage = registerOutput<EnvironmentContainerImage?>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
@@ -229,6 +249,7 @@ class Environment extends pulumi.CustomResource {
         ) {
     containerImage = registerOutput<EnvironmentContainerImage?>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');

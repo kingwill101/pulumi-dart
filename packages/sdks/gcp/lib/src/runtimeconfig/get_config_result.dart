@@ -3,6 +3,7 @@
 
 /// Result data returned by getConfig.
 class GetConfigResult {
+  final String deletionPolicy;
   final String description;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -10,11 +11,13 @@ class GetConfigResult {
   final String? project;
 
   /// Creates a new [GetConfigResult].
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [project] Optional.
   const GetConfigResult({
+    required this.deletionPolicy,
     required this.description,
     required this.id,
     required this.name,
@@ -23,6 +26,7 @@ class GetConfigResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'id': id,
       'name': name,
@@ -32,6 +36,7 @@ class GetConfigResult {
 
   factory GetConfigResult.fromMap(Map<String, dynamic> map) {
     return GetConfigResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -39,4 +44,3 @@ class GetConfigResult {
     );
   }
 }
-

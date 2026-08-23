@@ -65,6 +65,21 @@ import 'get_queue_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudtasks_getqueueiampolicy" "policy" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'get_queue_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudtasks.CloudtasksFunctions;
 /// import com.pulumi.gcp.cloudtasks.inputs.GetQueueIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -87,9 +102,9 @@ import 'get_queue_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }

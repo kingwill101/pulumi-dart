@@ -25,7 +25,7 @@ class SecurityPolicyRule {
   /// An unique positive integer indicating the priority of evaluation for a rule.
   /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
   final pulumi.Input<int> priority;
-  /// Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
+  /// Must be specified if the `action` is `rateBasedBan` or `throttle`. Cannot be specified for other actions. Structure is documented below.
   final pulumi.Input<SecurityPolicyRuleRateLimitOptions>? rateLimitOptions;
   /// Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
   final pulumi.Input<SecurityPolicyRuleRedirectOptions>? redirectOptions;
@@ -38,7 +38,7 @@ class SecurityPolicyRule {
   /// [preconfiguredWafConfig] Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
   /// [preview] When set to true, the `action` specified above is not enforced.
   /// [priority] An unique positive integer indicating the priority of evaluation for a rule.
-  /// [rateLimitOptions] Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
+  /// [rateLimitOptions] Must be specified if the `action` is `rateBasedBan` or `throttle`. Cannot be specified for other actions. Structure is documented below.
   /// [redirectOptions] Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
   const SecurityPolicyRule({
     required this.action,
@@ -80,4 +80,3 @@ class SecurityPolicyRule {
     );
   }
 }
-

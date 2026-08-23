@@ -15,6 +15,7 @@ import 'get_instance_scheduling.dart';
 import 'get_instance_scratch_disk.dart';
 import 'get_instance_service_account.dart';
 import 'get_instance_shielded_instance_config.dart';
+import 'get_instance_workload_identity_config.dart';
 
 /// Result data returned by getInstance.
 class GetInstanceResult {
@@ -33,6 +34,7 @@ class GetInstanceResult {
   final String creationTimestamp;
   /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
   final String currentStatus;
+  final String deletionPolicy;
   /// Whether deletion protection is enabled on this instance.
   final bool deletionProtection;
   /// A brief description of the resource.
@@ -41,6 +43,7 @@ class GetInstanceResult {
   final Map<String, String> effectiveLabels;
   /// Whether the instance has virtual displays enabled.
   final bool enableDisplay;
+  final bool eraseWindowsVssSignature;
   /// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
   final List<GetInstanceGuestAccelerator> guestAccelerators;
   final String hostname;
@@ -74,7 +77,7 @@ class GetInstanceResult {
   final String? project;
   final Map<String, String> pulumiLabels;
   final List<GetInstanceReservationAffinity> reservationAffinities;
-  /// A list of self_links to resource policies attached to the selected `boot_disk`
+  /// A list of selfLinks to resource policies attached to the selected `bootDisk`
   final List<String> resourcePolicies;
   /// The scheduling strategy being used by the instance. Structure is documented below
   final List<GetInstanceScheduling> schedulings;
@@ -90,6 +93,7 @@ class GetInstanceResult {
   final List<String> tags;
   /// The unique fingerprint of the tags.
   final String tagsFingerprint;
+  final List<GetInstanceWorkloadIdentityConfig> workloadIdentityConfigs;
   final String? zone;
 
   /// Creates a new [GetInstanceResult].
@@ -102,11 +106,13 @@ class GetInstanceResult {
   /// [cpuPlatform] The CPU platform used by this instance.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [currentStatus] The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Whether deletion protection is enabled on this instance.
   /// [description] A brief description of the resource.
   /// [desiredStatus] Required.
   /// [effectiveLabels] Required.
   /// [enableDisplay] Whether the instance has virtual displays enabled.
+  /// [eraseWindowsVssSignature] Required.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance. Structure is documented below.
   /// [hostname] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -128,7 +134,7 @@ class GetInstanceResult {
   /// [project] Optional.
   /// [pulumiLabels] Required.
   /// [reservationAffinities] Required.
-  /// [resourcePolicies] A list of self_links to resource policies attached to the selected `boot_disk`
+  /// [resourcePolicies] A list of selfLinks to resource policies attached to the selected `bootDisk`
   /// [schedulings] The scheduling strategy being used by the instance. Structure is documented below
   /// [scratchDisks] The scratch disks attached to the instance. Structure is documented below.
   /// [selfLink] The URI of the created resource.
@@ -136,6 +142,7 @@ class GetInstanceResult {
   /// [shieldedInstanceConfigs] The shielded vm config being used by the instance. Structure is documented below.
   /// [tags] The list of tags attached to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
+  /// [workloadIdentityConfigs] Required.
   /// [zone] Optional.
   const GetInstanceResult({
     required this.advancedMachineFeatures,
@@ -147,11 +154,13 @@ class GetInstanceResult {
     required this.cpuPlatform,
     required this.creationTimestamp,
     required this.currentStatus,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.description,
     required this.desiredStatus,
     required this.effectiveLabels,
     required this.enableDisplay,
+    required this.eraseWindowsVssSignature,
     required this.guestAccelerators,
     required this.hostname,
     required this.id,
@@ -181,6 +190,7 @@ class GetInstanceResult {
     required this.shieldedInstanceConfigs,
     required this.tags,
     required this.tagsFingerprint,
+    required this.workloadIdentityConfigs,
     this.zone,
   });
 
@@ -195,11 +205,13 @@ class GetInstanceResult {
       'cpuPlatform': cpuPlatform,
       'creationTimestamp': creationTimestamp,
       'currentStatus': currentStatus,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'description': description,
       'desiredStatus': desiredStatus,
       'effectiveLabels': effectiveLabels,
       'enableDisplay': enableDisplay,
+      'eraseWindowsVssSignature': eraseWindowsVssSignature,
       'guestAccelerators': pulumi.Input.encodeList<GetInstanceGuestAccelerator, Map<String, dynamic>>(guestAccelerators, (value) => value.toMap()),
       'hostname': hostname,
       'id': id,
@@ -229,6 +241,7 @@ class GetInstanceResult {
       'shieldedInstanceConfigs': pulumi.Input.encodeList<GetInstanceShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfigs, (value) => value.toMap()),
       'tags': tags,
       'tagsFingerprint': tagsFingerprint,
+      'workloadIdentityConfigs': pulumi.Input.encodeList<GetInstanceWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfigs, (value) => value.toMap()),
       'zone': ?zone,
     };
   }
@@ -244,11 +257,13 @@ class GetInstanceResult {
       cpuPlatform: map['cpuPlatform'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       currentStatus: map['currentStatus'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
       desiredStatus: map['desiredStatus'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       enableDisplay: map['enableDisplay'] as bool,
+      eraseWindowsVssSignature: map['eraseWindowsVssSignature'] as bool,
       guestAccelerators: pulumi.Input.decodeList<GetInstanceGuestAccelerator>(map['guestAccelerators']!, (value) => GetInstanceGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())),
       hostname: map['hostname'] as String,
       id: map['id'] as String,
@@ -278,8 +293,8 @@ class GetInstanceResult {
       shieldedInstanceConfigs: pulumi.Input.decodeList<GetInstanceShieldedInstanceConfig>(map['shieldedInstanceConfigs']!, (value) => GetInstanceShieldedInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as List).cast<String>(),
       tagsFingerprint: map['tagsFingerprint'] as String,
+      workloadIdentityConfigs: pulumi.Input.decodeList<GetInstanceWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetInstanceWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
-

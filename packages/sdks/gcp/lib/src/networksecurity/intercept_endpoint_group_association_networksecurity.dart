@@ -153,7 +153,7 @@ import 'intercept_endpoint_group_association_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "deployment_group", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    producerNetwork.ID(),
+/// 			Network:                    producerNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -161,7 +161,7 @@ import 'intercept_endpoint_group_association_state.dart';
 /// 		endpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "endpoint_group", &networksecurity.InterceptEndpointGroupArgs{
 /// 			InterceptEndpointGroupId: pulumi.String("example-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			InterceptDeploymentGroup: deploymentGroup.ID(),
+/// 			InterceptDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -169,8 +169,8 @@ import 'intercept_endpoint_group_association_state.dart';
 /// 		_, err = networksecurity.NewInterceptEndpointGroupAssociation(ctx, "default", &networksecurity.InterceptEndpointGroupAssociationArgs{
 /// 			InterceptEndpointGroupAssociationId: pulumi.String("example-ega"),
 /// 			Location:                            pulumi.String("global"),
-/// 			Network:                             consumerNetwork.ID(),
-/// 			InterceptEndpointGroup:              endpointGroup.ID(),
+/// 			Network:                             consumerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			InterceptEndpointGroup:              endpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -180,6 +180,43 @@ import 'intercept_endpoint_group_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "producer_network" {
+///   name                    = "example-prod-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_network" "consumer_network" {
+///   name                    = "example-cons-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networksecurity_interceptdeploymentgroup" "deployment_group" {
+///   intercept_deployment_group_id = "example-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.producer_network.id
+/// }
+/// resource "gcp_networksecurity_interceptendpointgroup" "endpoint_group" {
+///   intercept_endpoint_group_id = "example-eg"
+///   location                    = "global"
+///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.deployment_group.id
+/// }
+/// resource "gcp_networksecurity_interceptendpointgroupassociation" "default" {
+///   intercept_endpoint_group_association_id = "example-ega"
+///   location                                = "global"
+///   network                                 = gcp_compute_network.consumer_network.id
+///   intercept_endpoint_group                = gcp_networksecurity_interceptendpointgroup.endpoint_group.id
+///   labels = {
+///     "foo" = "bar"
+///   }
 /// }
 /// ```
 /// ```java
@@ -196,8 +233,8 @@ import 'intercept_endpoint_group_association_state.dart';
 /// import com.pulumi.gcp.networksecurity.InterceptEndpointGroupArgs;
 /// import com.pulumi.gcp.networksecurity.InterceptEndpointGroupAssociation;
 /// import com.pulumi.gcp.networksecurity.InterceptEndpointGroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,28 +324,28 @@ import 'intercept_endpoint_group_association_state.dart';
 /// InterceptEndpointGroupAssociation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}`
-///
 /// * `{{project}}/{{location}}/{{intercept_endpoint_group_association_id}}`
-///
 /// * `{{location}}/{{intercept_endpoint_group_association_id}}`
+///
 ///
 /// When using the `pulumi import` command, InterceptEndpointGroupAssociation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{project}}/{{location}}/{{intercept_endpoint_group_association_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{location}}/{{intercept_endpoint_group_association_id}}
 /// ```
 class InterceptEndpointGroupAssociationNetworksecurity extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The endpoint group that this association is connected to, for example:
@@ -321,7 +358,7 @@ class InterceptEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
   late final pulumi.Output<String?> interceptEndpointGroupAssociationId;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The cloud location of the association, currently restricted to `global`.
   late final pulumi.Output<String> location;
@@ -380,6 +417,7 @@ class InterceptEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interceptEndpointGroup = registerOutput<String>('interceptEndpointGroup');
     interceptEndpointGroupAssociationId = registerOutput<String?>('interceptEndpointGroupAssociationId');
@@ -420,6 +458,7 @@ class InterceptEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interceptEndpointGroup = registerOutput<String>('interceptEndpointGroup');
     interceptEndpointGroupAssociationId = registerOutput<String?>('interceptEndpointGroupAssociationId');

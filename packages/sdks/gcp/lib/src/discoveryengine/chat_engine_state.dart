@@ -22,6 +22,13 @@ class ChatEngineState {
   final pulumi.Input<String>? createTime;
   /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
   final pulumi.Input<List<String>>? dataStoreIds;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   final pulumi.Input<String>? displayName;
   /// The ID to use for chat engine.
@@ -50,6 +57,7 @@ class ChatEngineState {
   /// [commonConfig] Common config spec that specifies the metadata of the engine.
   /// [createTime] Timestamp the Engine was created at.
   /// [dataStoreIds] The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   /// [engineId] The ID to use for chat engine.
   /// [industryVertical] The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
@@ -64,6 +72,7 @@ class ChatEngineState {
     this.commonConfig,
     this.createTime,
     this.dataStoreIds,
+    this.deletionPolicy,
     this.displayName,
     this.engineId,
     this.industryVertical,
@@ -81,6 +90,7 @@ class ChatEngineState {
       'commonConfig': ?pulumi.Input.mapOptionalInputValue<ChatEngineCommonConfig, Map<String, dynamic>>(commonConfig, (value) => value.toMap()),
       'createTime': ?createTime,
       'dataStoreIds': ?dataStoreIds,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'engineId': ?engineId,
       'industryVertical': ?industryVertical,
@@ -99,6 +109,7 @@ class ChatEngineState {
       commonConfig: (() { final guardedValue = map['commonConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChatEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataStoreIds: (() { final guardedValue = map['dataStoreIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineId: (() { final guardedValue = map['engineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       industryVertical: (() { final guardedValue = map['industryVertical']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -109,4 +120,3 @@ class ChatEngineState {
     );
   }
 }
-

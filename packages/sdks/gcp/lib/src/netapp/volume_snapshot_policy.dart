@@ -11,7 +11,7 @@ class VolumeSnapshotPolicy {
   /// Structure is documented below.
   final pulumi.Input<VolumeSnapshotPolicyDailySchedule>? dailySchedule;
   /// Enables automated snapshot creation according to defined schedule. Default is false.
-  /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+  /// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
   final pulumi.Input<bool>? enabled;
   /// Hourly schedule policy.
   /// Structure is documented below.
@@ -57,4 +57,3 @@ class VolumeSnapshotPolicy {
     );
   }
 }
-

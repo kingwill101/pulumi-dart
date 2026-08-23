@@ -69,6 +69,20 @@ import 'get_topic_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_pubsub_getschemaiampolicy" "policy" {
+///   project = example.project
+///   schema  = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +91,8 @@ import 'get_topic_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.PubsubFunctions;
 /// import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -91,8 +105,8 @@ import 'get_topic_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = PubsubFunctions.getSchemaIamPolicy(GetSchemaIamPolicyArgs.builder()
-///             .project(example.project())
-///             .schema(example.name())
+///             .project(example.get("project"))
+///             .schema(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -178,6 +192,19 @@ Future<GetSchemaIamPolicyResult> getSchemaIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_pubsub_getsubscription" "my-pubsub-subscription" {
+///   name = "my-pubsub-subscription"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +213,8 @@ Future<GetSchemaIamPolicyResult> getSchemaIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.PubsubFunctions;
 /// import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -283,6 +310,19 @@ Future<GetSubscriptionResult> getSubscription(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_pubsub_getsubscriptioniampolicy" "policy" {
+///   subscription = subscription.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -291,8 +331,8 @@ Future<GetSubscriptionResult> getSubscription(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.PubsubFunctions;
 /// import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,7 +345,7 @@ Future<GetSubscriptionResult> getSubscription(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = PubsubFunctions.getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs.builder()
-///             .subscription(subscription.id())
+///             .subscription(subscription.get("id"))
 ///             .build());
 ///
 ///     }
@@ -390,6 +430,19 @@ Future<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_pubsub_gettopic" "my-pubsub-topic" {
+///   name = "my-pubsub-topic"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -398,8 +451,8 @@ Future<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.PubsubFunctions;
 /// import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -500,6 +553,20 @@ Future<GetTopicResult> getTopic(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_pubsub_gettopiciampolicy" "policy" {
+///   project = example.project
+///   topic   = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -508,8 +575,8 @@ Future<GetTopicResult> getTopic(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.PubsubFunctions;
 /// import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,8 +589,8 @@ Future<GetTopicResult> getTopic(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = PubsubFunctions.getTopicIamPolicy(GetTopicIamPolicyArgs.builder()
-///             .project(example.project())
-///             .topic(example.name())
+///             .project(example.get("project"))
+///             .topic(example.get("name"))
 ///             .build());
 ///
 ///     }

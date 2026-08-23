@@ -92,6 +92,24 @@ import 'router_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_routerpeer" "peer" {
+///   name                      = "my-router-peer"
+///   router                    = "my-router"
+///   region                    = "us-central1"
+///   peer_asn                  = 65513
+///   advertised_route_priority = 100
+///   interface                 = "interface-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +118,8 @@ import 'router_peer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +238,26 @@ import 'router_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_routerpeer" "peer" {
+///   name                      = "my-router-peer"
+///   router                    = "my-router"
+///   region                    = "us-central1"
+///   peer_ip_address           = "169.254.1.2"
+///   peer_asn                  = 65513
+///   advertised_route_priority = 100
+///   interface                 = "interface-1"
+///   enable                    = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +266,8 @@ import 'router_peer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,6 +411,31 @@ import 'router_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_routerpeer" "peer" {
+///   name                      = "my-router-peer"
+///   router                    = "my-router"
+///   region                    = "us-central1"
+///   peer_ip_address           = "169.254.1.2"
+///   peer_asn                  = 65513
+///   advertised_route_priority = 100
+///   interface                 = "interface-1"
+///   bfd = {
+///     min_receive_interval        = 1000
+///     min_transmit_interval       = 1000
+///     multiplier                  = 5
+///     session_initialization_mode = "ACTIVE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -382,8 +445,8 @@ import 'router_peer_state.dart';
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterPeerBfdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,6 +574,25 @@ import 'router_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_routerpeer" "peer" {
+///   name                               = "my-router-peer"
+///   router                             = "my-router"
+///   region                             = "us-central1"
+///   interface                          = "interface-1"
+///   peer_asn                           = 65513
+///   custom_learned_route_priority      = 0
+///   zero_custom_learned_route_priority = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -519,8 +601,8 @@ import 'router_peer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -637,6 +719,25 @@ import 'router_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_routerpeer" "peer" {
+///   name                           = "my-router-peer"
+///   router                         = "my-router"
+///   region                         = "us-central1"
+///   interface                      = "interface-1"
+///   peer_asn                       = 65513
+///   advertised_route_priority      = 0
+///   zero_advertised_route_priority = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -645,8 +746,8 @@ import 'router_peer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1008,140 +1109,241 @@ import 'router_peer_state.dart';
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-/// Name: pulumi.String("my-router-net"),
-/// AutoCreateSubnetworks: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("my-router-net"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("my-router-sub"),
+/// 			Network:     network.SelfLink,
+/// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		addrIntf, err := compute.NewAddress(ctx, "addr_intf", &compute.AddressArgs{
+/// 			Name:        pulumi.String("my-router-addr-intf"),
+/// 			Region:      subnetwork.Region,
+/// 			Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			AddressType: pulumi.String("INTERNAL"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		addrIntfRedundant, err := compute.NewAddress(ctx, "addr_intf_redundant", &compute.AddressArgs{
+/// 			Name:        pulumi.String("my-router-addr-intf-red"),
+/// 			Region:      subnetwork.Region,
+/// 			Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			AddressType: pulumi.String("INTERNAL"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		addrPeer, err := compute.NewAddress(ctx, "addr_peer", &compute.AddressArgs{
+/// 			Name:        pulumi.String("my-router-addr-peer"),
+/// 			Region:      subnetwork.Region,
+/// 			Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			AddressType: pulumi.String("INTERNAL"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
+/// 			Name:         pulumi.String("router-appliance"),
+/// 			Zone:         pulumi.String("us-central1-a"),
+/// 			MachineType:  pulumi.String("e2-medium"),
+/// 			CanIpForward: pulumi.Bool(true),
+/// 			BootDisk: &compute.InstanceBootDiskArgs{
+/// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 				},
+/// 			},
+/// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+/// 				&compute.InstanceNetworkInterfaceArgs{
+/// 					NetworkIp:  addrPeer.Address,
+/// 					Subnetwork: subnetwork.SelfLink,
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		hub, err := networkconnectivity.NewHub(ctx, "hub", &networkconnectivity.HubArgs{
+/// 			Name: pulumi.String("my-router-hub"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
+/// 			Name:     pulumi.String("my-router-spoke"),
+/// 			Location: subnetwork.Region,
+/// 			Hub:      hub.ID().ToIDOutput().ToStringOutput(),
+/// 			LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
+/// 				Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
+/// 					&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
+/// 						VirtualMachine: instance.SelfLink,
+/// 						IpAddress:      addrPeer.Address,
+/// 					},
+/// 				},
+/// 				SiteToSiteDataTransfer: pulumi.Bool(false),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+/// 			Name:    pulumi.String("my-router-router"),
+/// 			Region:  subnetwork.Region,
+/// 			Network: network.SelfLink,
+/// 			Bgp: &compute.RouterBgpArgs{
+/// 				Asn: pulumi.Int(64514),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		interfaceRedundant, err := compute.NewRouterInterface(ctx, "interface_redundant", &compute.RouterInterfaceArgs{
+/// 			Name:             pulumi.String("my-router-intf-red"),
+/// 			Region:           router.Region,
+/// 			Router:           router.Name,
+/// 			Subnetwork:       subnetwork.SelfLink,
+/// 			PrivateIpAddress: addrIntfRedundant.Address,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_interface, err := compute.NewRouterInterface(ctx, "interface", &compute.RouterInterfaceArgs{
+/// 			Name:               pulumi.String("my-router-intf"),
+/// 			Region:             router.Region,
+/// 			Router:             router.Name,
+/// 			Subnetwork:         subnetwork.SelfLink,
+/// 			PrivateIpAddress:   addrIntf.Address,
+/// 			RedundantInterface: interfaceRedundant.Name,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+/// 			Name:                    pulumi.String("my-router-peer"),
+/// 			Router:                  router.Name,
+/// 			Region:                  router.Region,
+/// 			Interface:               _interface.Name,
+/// 			RouterApplianceInstance: instance.SelfLink,
+/// 			PeerAsn:                 pulumi.Int(65513),
+/// 			PeerIpAddress:           addrPeer.Address,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-/// Name: pulumi.String("my-router-sub"),
-/// Network: network.SelfLink,
-/// IpCidrRange: pulumi.String("10.0.0.0/16"),
-/// Region: pulumi.String("us-central1"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
 /// }
-/// addrIntf, err := compute.NewAddress(ctx, "addr_intf", &compute.AddressArgs{
-/// Name: pulumi.String("my-router-addr-intf"),
-/// Region: subnetwork.Region,
-/// Subnetwork: subnetwork.ID(),
-/// AddressType: pulumi.String("INTERNAL"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "my-router-net"
+///   auto_create_subnetworks = false
 /// }
-/// addrIntfRedundant, err := compute.NewAddress(ctx, "addr_intf_redundant", &compute.AddressArgs{
-/// Name: pulumi.String("my-router-addr-intf-red"),
-/// Region: subnetwork.Region,
-/// Subnetwork: subnetwork.ID(),
-/// AddressType: pulumi.String("INTERNAL"),
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "my-router-sub"
+///   network       = gcp_compute_network.network.self_link
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
 /// }
-/// addrPeer, err := compute.NewAddress(ctx, "addr_peer", &compute.AddressArgs{
-/// Name: pulumi.String("my-router-addr-peer"),
-/// Region: subnetwork.Region,
-/// Subnetwork: subnetwork.ID(),
-/// AddressType: pulumi.String("INTERNAL"),
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_address" "addr_intf" {
+///   name         = "my-router-addr-intf"
+///   region       = gcp_compute_subnetwork.subnetwork.region
+///   subnetwork   = gcp_compute_subnetwork.subnetwork.id
+///   address_type = "INTERNAL"
 /// }
-/// instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-/// Name: pulumi.String("router-appliance"),
-/// Zone: pulumi.String("us-central1-a"),
-/// MachineType: pulumi.String("e2-medium"),
-/// CanIpForward: pulumi.Bool(true),
-/// BootDisk: &compute.InstanceBootDiskArgs{
-/// InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// Image: pulumi.String("debian-cloud/debian-11"),
-/// },
-/// },
-/// NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-/// &compute.InstanceNetworkInterfaceArgs{
-/// NetworkIp: addrPeer.Address,
-/// Subnetwork: subnetwork.SelfLink,
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_address" "addr_intf_redundant" {
+///   name         = "my-router-addr-intf-red"
+///   region       = gcp_compute_subnetwork.subnetwork.region
+///   subnetwork   = gcp_compute_subnetwork.subnetwork.id
+///   address_type = "INTERNAL"
 /// }
-/// hub, err := networkconnectivity.NewHub(ctx, "hub", &networkconnectivity.HubArgs{
-/// Name: pulumi.String("my-router-hub"),
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_address" "addr_peer" {
+///   name         = "my-router-addr-peer"
+///   region       = gcp_compute_subnetwork.subnetwork.region
+///   subnetwork   = gcp_compute_subnetwork.subnetwork.id
+///   address_type = "INTERNAL"
 /// }
-/// _, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
-/// Name: pulumi.String("my-router-spoke"),
-/// Location: subnetwork.Region,
-/// Hub: hub.ID(),
-/// LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
-/// Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
-/// &networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
-/// VirtualMachine: instance.SelfLink,
-/// IpAddress: addrPeer.Address,
-/// },
-/// },
-/// SiteToSiteDataTransfer: pulumi.Bool(false),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_instance" "instance" {
+///   name           = "router-appliance"
+///   zone           = "us-central1-a"
+///   machine_type   = "e2-medium"
+///   can_ip_forward = true
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+///   network_interfaces {
+///     network_ip = gcp_compute_address.addr_peer.address
+///     subnetwork = gcp_compute_subnetwork.subnetwork.self_link
+///   }
 /// }
-/// router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
-/// Name: pulumi.String("my-router-router"),
-/// Region: subnetwork.Region,
-/// Network: network.SelfLink,
-/// Bgp: &compute.RouterBgpArgs{
-/// Asn: pulumi.Int(64514),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_networkconnectivity_hub" "hub" {
+///   name = "my-router-hub"
 /// }
-/// interfaceRedundant, err := compute.NewRouterInterface(ctx, "interface_redundant", &compute.RouterInterfaceArgs{
-/// Name: pulumi.String("my-router-intf-red"),
-/// Region: router.Region,
-/// Router: router.Name,
-/// Subnetwork: subnetwork.SelfLink,
-/// PrivateIpAddress: addrIntfRedundant.Address,
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_networkconnectivity_spoke" "spoke" {
+///   name     = "my-router-spoke"
+///   location = gcp_compute_subnetwork.subnetwork.region
+///   hub      = gcp_networkconnectivity_hub.hub.id
+///   linked_router_appliance_instances = {
+///     instances = [{
+///       "virtualMachine" = gcp_compute_instance.instance.self_link
+///       "ipAddress"      = gcp_compute_address.addr_peer.address
+///     }]
+///     site_to_site_data_transfer = false
+///   }
 /// }
-/// interface, err := compute.NewRouterInterface(ctx, "interface", &compute.RouterInterfaceArgs{
-/// Name: pulumi.String("my-router-intf"),
-/// Region: router.Region,
-/// Router: router.Name,
-/// Subnetwork: subnetwork.SelfLink,
-/// PrivateIpAddress: addrIntf.Address,
-/// RedundantInterface: interfaceRedundant.Name,
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_router" "router" {
+///   name    = "my-router-router"
+///   region  = gcp_compute_subnetwork.subnetwork.region
+///   network = gcp_compute_network.network.self_link
+///   bgp = {
+///     asn = 64514
+///   }
 /// }
-/// _, err = compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
-/// Name: pulumi.String("my-router-peer"),
-/// Router: router.Name,
-/// Region: router.Region,
-/// Interface: interface.Name,
-/// RouterApplianceInstance: instance.SelfLink,
-/// PeerAsn: pulumi.Int(65513),
-/// PeerIpAddress: addrPeer.Address,
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_routerinterface" "interface_redundant" {
+///   name               = "my-router-intf-red"
+///   region             = gcp_compute_router.router.region
+///   router             = gcp_compute_router.router.name
+///   subnetwork         = gcp_compute_subnetwork.subnetwork.self_link
+///   private_ip_address = gcp_compute_address.addr_intf_redundant.address
 /// }
-/// return nil
-/// })
+/// resource "gcp_compute_routerinterface" "interface" {
+///   name                = "my-router-intf"
+///   region              = gcp_compute_router.router.region
+///   router              = gcp_compute_router.router.name
+///   subnetwork          = gcp_compute_subnetwork.subnetwork.self_link
+///   private_ip_address  = gcp_compute_address.addr_intf.address
+///   redundant_interface = gcp_compute_routerinterface.interface_redundant.name
+/// }
+/// resource "gcp_compute_routerpeer" "peer" {
+///   name                      = "my-router-peer"
+///   router                    = gcp_compute_router.router.name
+///   region                    = gcp_compute_router.router.region
+///   interface                 = gcp_compute_routerinterface.interface.name
+///   router_appliance_instance = gcp_compute_instance.instance.self_link
+///   peer_asn                  = 65513
+///   peer_ip_address           = gcp_compute_address.addr_peer.address
 /// }
 /// ```
 /// ```java
@@ -1166,6 +1368,7 @@ import 'router_peer_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
+/// import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs;
 /// import com.pulumi.gcp.compute.Router;
 /// import com.pulumi.gcp.compute.RouterArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
@@ -1173,8 +1376,8 @@ import 'router_peer_state.dart';
 /// import com.pulumi.gcp.compute.RouterInterfaceArgs;
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1491,6 +1694,29 @@ import 'router_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_routerpeer" "foobar" {
+///   name                      = "%s-peer"
+///   router                    = foobarGoogleComputeRouter.name
+///   region                    = foobarGoogleComputeRouter.region
+///   peer_asn                  = 65515
+///   advertised_route_priority = 100
+///   interface                 = foobarGoogleComputeRouterInterface.name
+///   peer_ip_address           = "169.254.3.2"
+///   md5_authentication_key = {
+///     name = "%s-peer-key"
+///     key  = "%s-peer-key-value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1500,8 +1726,8 @@ import 'router_peer_state.dart';
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterPeerMd5AuthenticationKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1515,11 +1741,11 @@ import 'router_peer_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var foobar = new RouterPeer("foobar", RouterPeerArgs.builder()
 ///             .name("%s-peer")
-///             .router(foobarGoogleComputeRouter.name())
-///             .region(foobarGoogleComputeRouter.region())
+///             .router(foobarGoogleComputeRouter.get("name"))
+///             .region(foobarGoogleComputeRouter.get("region"))
 ///             .peerAsn(65515)
 ///             .advertisedRoutePriority(100)
-///             .interface_(foobarGoogleComputeRouterInterface.name())
+///             .interface_(foobarGoogleComputeRouterInterface.get("name"))
 ///             .peerIpAddress("169.254.3.2")
 ///             .md5AuthenticationKey(RouterPeerMd5AuthenticationKeyArgs.builder()
 ///                 .name("%s-peer-key")
@@ -2025,8 +2251,8 @@ import 'router_peer_state.dart';
 /// 		vpnTunnel, err := compute.NewVPNTunnel(ctx, "vpn_tunnel", &compute.VPNTunnelArgs{
 /// 			Name:                         pulumi.String("my-router"),
 /// 			Region:                       subnetwork.Region,
-/// 			VpnGateway:                   vpnGateway.ID(),
-/// 			PeerExternalGateway:          externalGateway.ID(),
+/// 			VpnGateway:                   vpnGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerExternalGateway:          externalGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerExternalGatewayInterface: pulumi.Int(0),
 /// 			SharedSecret:                 pulumi.String("unguessable"),
 /// 			Router:                       router.Name,
@@ -2126,6 +2352,119 @@ import 'router_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "my-router-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "my-router-subnet"
+///   network       = gcp_compute_network.network.self_link
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+/// }
+/// resource "gcp_compute_address" "address" {
+///   name   = "my-router"
+///   region = gcp_compute_subnetwork.subnetwork.region
+/// }
+/// resource "gcp_compute_havpngateway" "vpn_gateway" {
+///   name    = "my-router-gateway"
+///   network = gcp_compute_network.network.self_link
+///   region  = gcp_compute_subnetwork.subnetwork.region
+/// }
+/// resource "gcp_compute_externalvpngateway" "external_gateway" {
+///   name            = "my-router-external-gateway"
+///   redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
+///   description     = "An externally managed VPN gateway"
+///   interfaces {
+///     id         = 0
+///     ip_address = "8.8.8.8"
+///   }
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "my-router"
+///   region  = gcp_compute_subnetwork.subnetwork.region
+///   network = gcp_compute_network.network.self_link
+///   bgp = {
+///     asn = 64514
+///   }
+/// }
+/// resource "gcp_compute_vpntunnel" "vpn_tunnel" {
+///   name                            = "my-router"
+///   region                          = gcp_compute_subnetwork.subnetwork.region
+///   vpn_gateway                     = gcp_compute_havpngateway.vpn_gateway.id
+///   peer_external_gateway           = gcp_compute_externalvpngateway.external_gateway.id
+///   peer_external_gateway_interface = 0
+///   shared_secret                   = "unguessable"
+///   router                          = gcp_compute_router.router.name
+///   vpn_gateway_interface           = 0
+/// }
+/// resource "gcp_compute_routerinterface" "router_interface" {
+///   name       = "my-router"
+///   router     = gcp_compute_router.router.name
+///   region     = gcp_compute_router.router.region
+///   vpn_tunnel = gcp_compute_vpntunnel.vpn_tunnel.name
+/// }
+/// resource "gcp_compute_routerroutepolicy" "rp-export" {
+///   depends_on = [gcp_compute_routerinterface.router_interface]
+///   name       = "my-router-rp-export"
+///   router     = gcp_compute_router.router.name
+///   region     = gcp_compute_router.router.region
+///   type       = "ROUTE_POLICY_TYPE_EXPORT"
+///   terms {
+///     priority = 2
+///     match = {
+///       expression  = "destination == '10.0.0.0/12'"
+///       title       = "export_expression"
+///       description = "acceptance expression for export"
+///     }
+///     actions {
+///       expression = "accept()"
+///     }
+///   }
+/// }
+/// resource "gcp_compute_routerroutepolicy" "rp-import" {
+///   depends_on = [gcp_compute_routerinterface.router_interface, gcp_compute_routerroutepolicy.rp-export]
+///   name       = "my-router-rp-import"
+///   router     = gcp_compute_router.router.name
+///   region     = gcp_compute_router.router.region
+///   type       = "ROUTE_POLICY_TYPE_IMPORT"
+///   terms {
+///     priority = 1
+///     match = {
+///       expression  = "destination == '10.0.0.0/12'"
+///       title       = "import_expression"
+///       description = "acceptance expression for import"
+///     }
+///     actions {
+///       expression = "accept()"
+///     }
+///   }
+/// }
+/// resource "gcp_compute_routerpeer" "router_peer" {
+///   depends_on                = [gcp_compute_routerroutepolicy.rp-export, gcp_compute_routerroutepolicy.rp-import, gcp_compute_routerinterface.router_interface]
+///   name                      = "my-router-peer"
+///   router                    = gcp_compute_router.router.name
+///   region                    = gcp_compute_router.router.region
+///   peer_asn                  = 65515
+///   advertised_route_priority = 100
+///   interface                 = gcp_compute_routerinterface.router_interface.name
+///   md5_authentication_key = {
+///     name = "my-router-peer-key"
+///     key  = "my-router-peer-key-value"
+///   }
+///   import_policies = [gcp_compute_routerroutepolicy.rp-import.name]
+///   export_policies = [gcp_compute_routerroutepolicy.rp-export.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2154,12 +2493,13 @@ import 'router_peer_state.dart';
 /// import com.pulumi.gcp.compute.RouterRoutePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermActionArgs;
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterPeerMd5AuthenticationKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2427,28 +2767,18 @@ import 'router_peer_state.dart';
 /// RouterBgpPeer can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{router}}/{{name}}`
-///
 /// * `{{region}}/{{router}}/{{name}}`
-///
 /// * `{{router}}/{{name}}`
+///
+///
 ///
 /// When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
 /// ```
 class RouterPeer extends pulumi.CustomResource {
@@ -2492,6 +2822,13 @@ class RouterPeer extends pulumi.CustomResource {
   /// You can choose a value from 0 to 65335. If you don't provide a value,
   /// Google Cloud assigns a priority of 100 to the ranges.
   late final pulumi.Output<int?> customLearnedRoutePriority;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The status of the BGP peer connection. If set to false, any active session
   /// with the peer is terminated and all associated routing information is removed.
   /// If set to true, the peer connection can be established with routing information.
@@ -2501,9 +2838,11 @@ class RouterPeer extends pulumi.CustomResource {
   late final pulumi.Output<bool> enableIpv4;
   /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
   late final pulumi.Output<bool?> enableIpv6;
+  /// (Optional, Beta)
   /// routers.list of export policies applied to this peer, in the order they must be evaluated.
   /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
   late final pulumi.Output<List<String>?> exportPolicies;
+  /// (Optional, Beta)
   /// routers.list of import policies applied to this peer, in the order they must be evaluated.
   /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
   late final pulumi.Output<List<String>?> importPolicies;
@@ -2547,7 +2886,7 @@ class RouterPeer extends pulumi.CustomResource {
   /// Each BGP interface may use a different value.
   late final pulumi.Output<int> peerAsn;
   /// IP address of the BGP interface outside Google Cloud Platform.
-  /// Only IPv4 is supported. Required if `ip_address` is set.
+  /// Only IPv4 is supported. Required if `ipAddress` is set.
   late final pulumi.Output<String> peerIpAddress;
   /// IPv4 address of the BGP interface outside Google Cloud Platform.
   late final pulumi.Output<String> peerIpv4NexthopAddress;
@@ -2573,10 +2912,10 @@ class RouterPeer extends pulumi.CustomResource {
   /// this Cloud Router. The VM instance is the peer side of the BGP session.
   late final pulumi.Output<String?> routerApplianceInstance;
   /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-  /// This value has to be set true to force the advertised_route_priority to be 0.
+  /// This value has to be set true to force the advertisedRoutePriority to be 0.
   late final pulumi.Output<bool?> zeroAdvertisedRoutePriority;
   /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-  /// This value has to be set true to force the custom_learned_route_priority to be 0.
+  /// This value has to be set true to force the customLearnedRoutePriority to be 0.
   late final pulumi.Output<bool?> zeroCustomLearnedRoutePriority;
 
   /// Creates a new [RouterPeer].
@@ -2600,6 +2939,7 @@ class RouterPeer extends pulumi.CustomResource {
     bfd = registerOutput<RouterPeerBfd>('bfd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterPeerBfd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customLearnedIpRanges = registerOutput<List<Map<String, dynamic>>?>('customLearnedIpRanges');
     customLearnedRoutePriority = registerOutput<int?>('customLearnedRoutePriority');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enable = registerOutput<bool?>('enable');
     enableIpv4 = registerOutput<bool>('enableIpv4');
     enableIpv6 = registerOutput<bool?>('enableIpv6');
@@ -2656,6 +2996,7 @@ class RouterPeer extends pulumi.CustomResource {
     bfd = registerOutput<RouterPeerBfd>('bfd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterPeerBfd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customLearnedIpRanges = registerOutput<List<Map<String, dynamic>>?>('customLearnedIpRanges');
     customLearnedRoutePriority = registerOutput<int?>('customLearnedRoutePriority');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enable = registerOutput<bool?>('enable');
     enableIpv4 = registerOutput<bool>('enableIpv4');
     enableIpv6 = registerOutput<bool?>('enableIpv6');

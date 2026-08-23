@@ -78,6 +78,22 @@ import 'api_hub_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apihub_apihubinstance" "apihub-instance-without-search" {
+///   location = "us-central1"
+///   config = {
+///     disable_search = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +103,8 @@ import 'api_hub_instance_state.dart';
 /// import com.pulumi.gcp.apihub.ApiHubInstance;
 /// import com.pulumi.gcp.apihub.ApiHubInstanceArgs;
 /// import com.pulumi.gcp.apihub.inputs.ApiHubInstanceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +240,31 @@ import 'api_hub_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apihub_apihubinstance" "apihub-instance-search" {
+///   project             = "my-project"
+///   api_hub_instance_id = "test-instance-full"
+///   description         = "Test API hub instance"
+///   location            = "us-central1"
+///   config = {
+///     encryption_type = "CMEK"
+///     cmek_key_name   = "projects/my-project/locations/us-central1/keyRings/apihub/cryptoKeys/apihub-key"
+///     disable_search  = false
+///     vertex_location = "us"
+///   }
+///   labels = {
+///     "environment" = "dev"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +274,8 @@ import 'api_hub_instance_state.dart';
 /// import com.pulumi.gcp.apihub.ApiHubInstance;
 /// import com.pulumi.gcp.apihub.ApiHubInstanceArgs;
 /// import com.pulumi.gcp.apihub.inputs.ApiHubInstanceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,22 +328,15 @@ import 'api_hub_instance_state.dart';
 /// ApiHubInstance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{api_hub_instance_id}}`
-///
 /// * `{{location}}/{{api_hub_instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, ApiHubInstance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{project}}/{{location}}/{{api_hub_instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
 /// ```
 class ApiHubInstance extends pulumi.CustomResource {
@@ -325,7 +359,7 @@ class ApiHubInstance extends pulumi.CustomResource {
   /// Refer to cloud documentation on labels for more details.
   /// https://cloud.google.com/compute/docs/labeling-resources
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;

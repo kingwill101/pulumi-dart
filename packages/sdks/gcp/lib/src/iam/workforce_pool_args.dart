@@ -12,6 +12,13 @@ class WorkforcePoolArgs {
   /// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
   /// Structure is documented below.
   final pulumi.Input<WorkforcePoolAccessRestrictions>? accessRestrictions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-specified description of the pool. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -36,6 +43,7 @@ class WorkforcePoolArgs {
 
   /// Creates a new [WorkforcePoolArgs].
   /// [accessRestrictions] Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A user-specified description of the pool. Cannot exceed 256 characters.
   /// [disabled] Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
   /// [displayName] A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
@@ -45,6 +53,7 @@ class WorkforcePoolArgs {
   /// [workforcePoolId] The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
   const WorkforcePoolArgs({
     this.accessRestrictions,
+    this.deletionPolicy,
     this.description,
     this.disabled,
     this.displayName,
@@ -57,6 +66,7 @@ class WorkforcePoolArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessRestrictions': ?pulumi.Input.mapOptionalInputValue<WorkforcePoolAccessRestrictions, Map<String, dynamic>>(accessRestrictions, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disabled': ?disabled,
       'displayName': ?displayName,
@@ -70,6 +80,7 @@ class WorkforcePoolArgs {
   factory WorkforcePoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolArgs(
       accessRestrictions: (() { final guardedValue = map['accessRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -80,4 +91,3 @@ class WorkforcePoolArgs {
     );
   }
 }
-

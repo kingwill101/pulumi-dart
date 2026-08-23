@@ -112,6 +112,30 @@ import 'organization_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getorganization" "default" {
+///   organization = "123456789"
+/// }
+///
+/// resource "gcp_logging_organizationbucketconfig" "basic" {
+///   organization   = data.gcp_organizations_getorganization.default.organization
+///   location       = "global"
+///   retention_days = 30
+///   bucket_id      = "_Default"
+///   index_configs {
+///     field_path = "jsonPayload.request.status"
+///     type       = "INDEX_TYPE_STRING"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +147,8 @@ import 'organization_bucket_config_state.dart';
 /// import com.pulumi.gcp.logging.OrganizationBucketConfig;
 /// import com.pulumi.gcp.logging.OrganizationBucketConfigArgs;
 /// import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigIndexConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,6 +205,7 @@ import 'organization_bucket_config_state.dart';
 ///
 /// * `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}`
 ///
+///
 /// When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -191,6 +216,13 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
   late final pulumi.Output<OrganizationBucketConfigCmekSettings?> cmekSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this bucket.
   late final pulumi.Output<String> description;
   /// A list of indexed fields and related configuration data. Structure is documented below.
@@ -222,6 +254,7 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
     lifecycleState = registerOutput<String>('lifecycleState');
@@ -256,6 +289,7 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
     lifecycleState = registerOutput<String>('lifecycleState');

@@ -17,10 +17,10 @@ class JobPrestoConfig {
   /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
   final pulumi.Input<Map<String, String>>? properties;
   /// The HCFS URI of the script that contains SQL queries.
-  /// Conflicts with `query_list`
+  /// Conflicts with `queryList`
   final pulumi.Input<String>? queryFileUri;
   /// The list of SQL queries or statements to execute as part of the job.
-  /// Conflicts with `query_file_uri`
+  /// Conflicts with `queryFileUri`
   final pulumi.Input<List<String>>? queryLists;
 
   /// Creates a new [JobPrestoConfig].
@@ -65,4 +65,3 @@ class JobPrestoConfig {
     );
   }
 }
-

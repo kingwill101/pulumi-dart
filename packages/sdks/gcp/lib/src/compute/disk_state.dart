@@ -30,6 +30,13 @@ class DiskState {
   final pulumi.Input<String>? createSnapshotBeforeDestroyPrefix;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -49,14 +56,17 @@ class DiskState {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Whether this disk is using confidential compute mode.
-  /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+  /// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
   final pulumi.Input<bool>? enableConfidentialCompute;
+  /// (Optional, Beta)
+  /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+  final pulumi.Input<bool>? eraseWindowsVssSignature;
   /// A list of features to enable on the guest operating system.
   /// Applicable only for bootable disks.
   /// Structure is documented below.
   final pulumi.Input<List<DiskGuestOsFeature>>? guestOsFeatures;
   /// The image from which to initialize this disk. This can be
-  /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+  /// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -65,6 +75,7 @@ class DiskState {
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
   final pulumi.Input<String>? image;
+  /// (Optional, Beta, Deprecated)
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
   /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -75,7 +86,7 @@ class DiskState {
   /// Labels to apply to this disk.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Last attach timestamp in RFC3339 text format.
   final pulumi.Input<String>? lastAttachTimestamp;
@@ -83,6 +94,7 @@ class DiskState {
   final pulumi.Input<String>? lastDetachTimestamp;
   /// Any applicable license URI.
   final pulumi.Input<List<String>>? licenses;
+  /// (Optional, Beta)
   /// Indicates whether or not the disk can be read/write attached to more than one instance.
   final pulumi.Input<bool>? multiWriter;
   /// Name of the resource. Provided by the client when the resource is
@@ -116,6 +128,7 @@ class DiskState {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+  /// (Optional, Beta)
   /// Resource policies applied to this disk for automatic snapshot creations.
   /// ~&gt;**NOTE** This value does not support updating the
   /// resource policy, as resource policies can not be updated more than
@@ -221,20 +234,22 @@ class DiskState {
   /// [createSnapshotBeforeDestroy] If set to true, a snapshot of the disk will be created before it is destroyed.
   /// [createSnapshotBeforeDestroyPrefix] This will set a custom name prefix for the snapshot that's created when the disk is deleted.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [diskEncryptionKey] Encrypts the disk using a customer-supplied encryption key.
   /// [diskId] The unique identifier for the resource. This identifier is defined by the server.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableConfidentialCompute] Whether this disk is using confidential compute mode.
+  /// [eraseWindowsVssSignature] (Optional, Beta)
   /// [guestOsFeatures] A list of features to enable on the guest operating system.
   /// [image] The image from which to initialize this disk. This can be
-  /// [interface] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+  /// [interface] (Optional, Beta, Deprecated)
   /// [labelFingerprint] The fingerprint used for optimistic locking of this resource.  Used
   /// [labels] Labels to apply to this disk.  A list of key-&gt;value pairs.
   /// [lastAttachTimestamp] Last attach timestamp in RFC3339 text format.
   /// [lastDetachTimestamp] Last detach timestamp in RFC3339 text format.
   /// [licenses] Any applicable license URI.
-  /// [multiWriter] Indicates whether or not the disk can be read/write attached to more than one instance.
+  /// [multiWriter] (Optional, Beta)
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [physicalBlockSizeBytes] Physical block size of the persistent disk, in bytes. If not present
@@ -242,7 +257,7 @@ class DiskState {
   /// [provisionedIops] Indicates how many IOPS must be provisioned for the disk.
   /// [provisionedThroughput] Indicates how much Throughput must be provisioned for the disk.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  /// [resourcePolicies] Resource policies applied to this disk for automatic snapshot creations.
+  /// [resourcePolicies] (Optional, Beta)
   /// [selfLink] The URI of the created resource.
   /// [size] Size of the persistent disk, specified in GB. You can specify this
   /// [snapshot] The source snapshot used to create this disk. You can provide this as
@@ -266,11 +281,13 @@ class DiskState {
     this.createSnapshotBeforeDestroy,
     this.createSnapshotBeforeDestroyPrefix,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.diskEncryptionKey,
     this.diskId,
     this.effectiveLabels,
     this.enableConfidentialCompute,
+    this.eraseWindowsVssSignature,
     this.guestOsFeatures,
     this.image,
     this.interface,
@@ -314,11 +331,13 @@ class DiskState {
       'createSnapshotBeforeDestroy': ?createSnapshotBeforeDestroy,
       'createSnapshotBeforeDestroyPrefix': ?createSnapshotBeforeDestroyPrefix,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskEncryptionKey': ?pulumi.Input.mapOptionalInputValue<DiskDiskEncryptionKey, Map<String, dynamic>>(diskEncryptionKey, (value) => value.toMap()),
       'diskId': ?diskId,
       'effectiveLabels': ?effectiveLabels,
       'enableConfidentialCompute': ?enableConfidentialCompute,
+      'eraseWindowsVssSignature': ?eraseWindowsVssSignature,
       'guestOsFeatures': ?pulumi.Input.mapOptionalInputValue<List<DiskGuestOsFeature>, List<Map<String, dynamic>>>(guestOsFeatures, (value) => pulumi.Input.encodeList<DiskGuestOsFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': ?image,
       'interface': ?interface,
@@ -363,11 +382,13 @@ class DiskState {
       createSnapshotBeforeDestroy: (() { final guardedValue = map['createSnapshotBeforeDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       createSnapshotBeforeDestroyPrefix: (() { final guardedValue = map['createSnapshotBeforeDestroyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskEncryptionKey: (() { final guardedValue = map['diskEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enableConfidentialCompute: (() { final guardedValue = map['enableConfidentialCompute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      eraseWindowsVssSignature: (() { final guardedValue = map['eraseWindowsVssSignature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       guestOsFeatures: (() { final guardedValue = map['guestOsFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DiskGuestOsFeature>(guardedValue, (value) => DiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -404,4 +425,3 @@ class DiskState {
     );
   }
 }
-

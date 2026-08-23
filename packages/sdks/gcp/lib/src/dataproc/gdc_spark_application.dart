@@ -118,6 +118,28 @@ import 'gdc_spark_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+///   spark_application_id = "tf-e2e-spark-app-basic"
+///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
+///   project              = "my-project"
+///   location             = "us-west2"
+///   namespace            = "default"
+///   spark_application_config = {
+///     main_class    = "org.apache.spark.examples.SparkPi"
+///     jar_file_uris = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+///     args          = ["10000"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +149,8 @@ import 'gdc_spark_application_state.dart';
 /// import com.pulumi.gcp.dataproc.GdcSparkApplication;
 /// import com.pulumi.gcp.dataproc.GdcSparkApplicationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcSparkApplicationSparkApplicationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,6 +385,47 @@ import 'gdc_spark_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_gdcapplicationenvironment" "app_env" {
+///   application_environment_id = "tf-e2e-spark-app-env"
+///   serviceinstance            = "do-not-delete-dataproc-gdc-instance"
+///   project                    = "my-project"
+///   location                   = "us-west2"
+///   namespace                  = "default"
+/// }
+/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+///   spark_application_id = "tf-e2e-spark-app"
+///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
+///   project              = "my-project"
+///   location             = "us-west2"
+///   namespace            = "default"
+///   labels = {
+///     "test-label" = "label-value"
+///   }
+///   annotations = {
+///     "an_annotation" = "annotation_value"
+///   }
+///   properties = {
+///     "spark.executor.instances" = "2"
+///   }
+///   application_environment = gcp_dataproc_gdcapplicationenvironment.app_env.name
+///   version                 = "1.2"
+///   spark_application_config = {
+///     main_jar_file_uri = "file:///usr/lib/spark/examples/jars/spark-examples.jar"
+///     jar_file_uris     = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+///     archive_uris      = ["file://usr/lib/spark/examples/spark-examples.jar"]
+///     file_uris         = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -374,8 +437,8 @@ import 'gdc_spark_application_state.dart';
 /// import com.pulumi.gcp.dataproc.GdcSparkApplication;
 /// import com.pulumi.gcp.dataproc.GdcSparkApplicationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcSparkApplicationSparkApplicationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,6 +658,33 @@ import 'gdc_spark_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+///   spark_application_id = "tf-e2e-pyspark-app"
+///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
+///   project              = "my-project"
+///   location             = "us-west2"
+///   namespace            = "default"
+///   display_name         = "A Pyspark application for a Terraform create test"
+///   dependency_images    = ["gcr.io/some/image"]
+///   pyspark_application_config = {
+///     main_python_file_uri = "gs://goog-dataproc-initialization-actions-us-west2/conda/test_conda.py"
+///     jar_file_uris        = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+///     python_file_uris     = ["gs://goog-dataproc-initialization-actions-us-west2/conda/get-sys-exec.py"]
+///     file_uris            = ["file://usr/lib/spark/examples/spark-examples.jar"]
+///     archive_uris         = ["file://usr/lib/spark/examples/spark-examples.jar"]
+///     args                 = ["10"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -604,8 +694,8 @@ import 'gdc_spark_application_state.dart';
 /// import com.pulumi.gcp.dataproc.GdcSparkApplication;
 /// import com.pulumi.gcp.dataproc.GdcSparkApplicationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcSparkApplicationPysparkApplicationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -779,6 +869,30 @@ import 'gdc_spark_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+///   spark_application_id = "tf-e2e-sparkr-app"
+///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
+///   project              = "my-project"
+///   location             = "us-west2"
+///   namespace            = "default"
+///   display_name         = "A SparkR application for a Terraform create test"
+///   spark_r_application_config = {
+///     main_r_file_uri = "gs://some-bucket/something.R"
+///     file_uris       = ["file://usr/lib/spark/examples/spark-examples.jar"]
+///     archive_uris    = ["file://usr/lib/spark/examples/spark-examples.jar"]
+///     args            = ["10"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -788,8 +902,8 @@ import 'gdc_spark_application_state.dart';
 /// import com.pulumi.gcp.dataproc.GdcSparkApplication;
 /// import com.pulumi.gcp.dataproc.GdcSparkApplicationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcSparkApplicationSparkRApplicationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -963,6 +1077,33 @@ import 'gdc_spark_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+///   spark_application_id = "tf-e2e-sparksql-app"
+///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
+///   project              = "my-project"
+///   location             = "us-west2"
+///   namespace            = "default"
+///   display_name         = "A SparkSql application for a Terraform create test"
+///   spark_sql_application_config = {
+///     jar_file_uris = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+///     query_list = {
+///       queries = ["show tables;"]
+///     }
+///     script_variables = {
+///       "MY_VAR" = "1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -973,8 +1114,8 @@ import 'gdc_spark_application_state.dart';
 /// import com.pulumi.gcp.dataproc.GdcSparkApplicationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcSparkApplicationSparkSqlApplicationConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1135,6 +1276,31 @@ import 'gdc_spark_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_gdcsparkapplication" "spark-application" {
+///   spark_application_id = "tf-e2e-sparksql-app"
+///   serviceinstance      = "do-not-delete-dataproc-gdc-instance"
+///   project              = "my-project"
+///   location             = "us-west2"
+///   namespace            = "default"
+///   display_name         = "A SparkSql application for a Terraform create test"
+///   spark_sql_application_config = {
+///     jar_file_uris  = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+///     query_file_uri = "gs://some-bucket/something.sql"
+///     script_variables = {
+///       "MY_VAR" = "1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1144,8 +1310,8 @@ import 'gdc_spark_application_state.dart';
 /// import com.pulumi.gcp.dataproc.GdcSparkApplication;
 /// import com.pulumi.gcp.dataproc.GdcSparkApplicationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcSparkApplicationSparkSqlApplicationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1199,43 +1365,44 @@ import 'gdc_spark_application_state.dart';
 /// SparkApplication can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
-///
 /// * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
-///
 /// * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
+///
 ///
 /// When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
 /// ```
 class GdcSparkApplication extends pulumi.CustomResource {
   /// The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// An ApplicationEnvironment from which to inherit configuration properties.
   late final pulumi.Output<String?> applicationEnvironment;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
   late final pulumi.Output<List<String>?> dependencyImages;
   /// User-provided human-readable name to be used in user interfaces.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the spark application.
   late final pulumi.Output<String> location;
@@ -1309,6 +1476,7 @@ class GdcSparkApplication extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     applicationEnvironment = registerOutput<String?>('applicationEnvironment');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dependencyImages = registerOutput<List<String>?>('dependencyImages');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1362,6 +1530,7 @@ class GdcSparkApplication extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     applicationEnvironment = registerOutput<String?>('applicationEnvironment');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dependencyImages = registerOutput<List<String>?>('dependencyImages');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

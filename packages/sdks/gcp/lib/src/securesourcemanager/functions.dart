@@ -67,6 +67,21 @@ import 'get_repository_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_securesourcemanager_getinstanceiampolicy" "policy" {
+///   project     = default.project
+///   location    = default.location
+///   instance_id = default.instanceId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'get_repository_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securesourcemanager.SecuresourcemanagerFunctions;
 /// import com.pulumi.gcp.securesourcemanager.inputs.GetInstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -89,9 +104,9 @@ import 'get_repository_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .instanceId(default_.instanceId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .instanceId(default_.get("instanceId"))
 ///             .build());
 ///
 ///     }
@@ -185,6 +200,21 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_securesourcemanager_getrepositoryiampolicy" "policy" {
+///   project       = default.project
+///   location      = default.location
+///   repository_id = default.repositoryId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +223,8 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securesourcemanager.SecuresourcemanagerFunctions;
 /// import com.pulumi.gcp.securesourcemanager.inputs.GetRepositoryIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,9 +237,9 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = SecuresourcemanagerFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .repositoryId(default_.repositoryId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .repositoryId(default_.get("repositoryId"))
 ///             .build());
 ///
 ///     }

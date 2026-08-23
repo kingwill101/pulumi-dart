@@ -11,13 +11,14 @@ class RolloutSequenceStage {
   /// List of Fleet projects to select the clusters from.
   /// Expected format: projects/{project}
   final pulumi.Input<List<String>> fleetProjects;
-  /// Soak time after upgrading all the clusters in the stage, specified in seconds.
+  /// Soak time after upgrading all the clusters in the stage.
+  /// Has to be specified in seconds, minutes, hours or days.
   final pulumi.Input<String>? soakDuration;
 
   /// Creates a new [RolloutSequenceStage].
   /// [clusterSelector] Filter to select a subset of clusters from the specified Fleet projects.
   /// [fleetProjects] List of Fleet projects to select the clusters from.
-  /// [soakDuration] Soak time after upgrading all the clusters in the stage, specified in seconds.
+  /// [soakDuration] Soak time after upgrading all the clusters in the stage.
   const RolloutSequenceStage({
     this.clusterSelector,
     required this.fleetProjects,
@@ -40,4 +41,3 @@ class RolloutSequenceStage {
     );
   }
 }
-

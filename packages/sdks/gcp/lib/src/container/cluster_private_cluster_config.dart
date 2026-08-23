@@ -7,7 +7,7 @@ class ClusterPrivateClusterConfig {
   /// When `true`, the cluster's private
   /// endpoint is used as the cluster endpoint and access through the public endpoint
   /// is disabled. When `false`, either endpoint can be used. This field only applies
-  /// to private clusters, when `enable_private_nodes` is `true`.
+  /// to private clusters, when `enablePrivateNodes` is `true`.
   final pulumi.Input<bool>? enablePrivateEndpoint;
   /// Enables the private cluster feature,
   /// creating a private endpoint on the cluster. In a private cluster, nodes only
@@ -24,7 +24,7 @@ class ClusterPrivateClusterConfig {
   /// with any other ranges in use within the cluster's network, and it must be a /28
   /// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
   /// for more details. This field only applies to private clusters, when
-  /// `enable_private_nodes` is `true`.
+  /// `enablePrivateNodes` is `true`.
   final pulumi.Input<String>? masterIpv4CidrBlock;
   /// The name of the peering between this cluster and the Google owned VPC.
   final pulumi.Input<String>? peeringName;
@@ -34,8 +34,8 @@ class ClusterPrivateClusterConfig {
   final pulumi.Input<String>? privateEndpointSubnetwork;
   /// The external IP address of this cluster's master endpoint.
   ///
-  /// !&gt; The Google provider is unable to validate certain configurations of
-  /// `private_cluster_config` when `enable_private_nodes` is `false`. It's
+  /// &gt; The Google provider is unable to validate certain configurations of
+  /// `privateClusterConfig` when `enablePrivateNodes` is `false`. It's
   /// recommended that you omit the block entirely if the field is not set to `true`.
   final pulumi.Input<String>? publicEndpoint;
 
@@ -85,4 +85,3 @@ class ClusterPrivateClusterConfig {
     );
   }
 }
-

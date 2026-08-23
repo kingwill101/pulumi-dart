@@ -7,6 +7,7 @@ import 'get_cloud_exadata_infrastructure_property.dart';
 class GetCloudExadataInfrastructureResult {
   final String cloudExadataInfrastructureId;
   final String createTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String displayName;
   final Map<String, String> effectiveLabels;
@@ -24,6 +25,7 @@ class GetCloudExadataInfrastructureResult {
   /// Creates a new [GetCloudExadataInfrastructureResult].
   /// [cloudExadataInfrastructureId] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [displayName] Required.
   /// [effectiveLabels] Required.
@@ -39,6 +41,7 @@ class GetCloudExadataInfrastructureResult {
   const GetCloudExadataInfrastructureResult({
     required this.cloudExadataInfrastructureId,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.displayName,
     required this.effectiveLabels,
@@ -57,6 +60,7 @@ class GetCloudExadataInfrastructureResult {
     return <String, dynamic>{
       'cloudExadataInfrastructureId': cloudExadataInfrastructureId,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
@@ -76,6 +80,7 @@ class GetCloudExadataInfrastructureResult {
     return GetCloudExadataInfrastructureResult(
       cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -91,4 +96,3 @@ class GetCloudExadataInfrastructureResult {
     );
   }
 }
-

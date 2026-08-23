@@ -95,6 +95,26 @@ import 'ssh_public_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientopeniduserinfo" "me" {
+/// }
+///
+/// resource "gcp_oslogin_sshpublickey" "cache" {
+///   user = data.gcp_organizations_getclientopeniduserinfo.me.email
+///   key  = file("path/to/id_rsa.pub")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,8 @@ import 'ssh_public_key_state.dart';
 /// import com.pulumi.gcp.oslogin.SshPublicKeyArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,19 +176,23 @@ import 'ssh_public_key_state.dart';
 /// SSHPublicKey can be imported using any of these accepted formats:
 ///
 /// * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
-///
 /// * `{{user}}/{{fingerprint}}`
+///
 ///
 /// When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
 /// ```
 class SshPublicKey extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An expiration time in microseconds since epoch.
   late final pulumi.Output<String?> expirationTimeUsec;
   /// The SHA-256 fingerprint of the SSH public key.
@@ -194,6 +218,7 @@ class SshPublicKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');
     fingerprint = registerOutput<String>('fingerprint');
     key = registerOutput<String>('key');
@@ -224,6 +249,7 @@ class SshPublicKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');
     fingerprint = registerOutput<String>('fingerprint');
     key = registerOutput<String>('key');

@@ -266,13 +266,13 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -284,7 +284,7 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -292,7 +292,7 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// 			return err
 /// 		}
 /// 		apigeeEnvironment, err := apigee.NewEnvironment(ctx, "apigee_environment", &apigee.EnvironmentArgs{
-/// 			OrgId:       apigeeOrg.ID(),
+/// 			OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:        pulumi.String("tf-test-env"),
 /// 			Description: pulumi.String("Apigee Environment"),
 /// 			DisplayName: pulumi.String("Apigee Environment"),
@@ -303,13 +303,13 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// 		apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:     pulumi.String("tf-test-instance"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			OrgId:    apigeeOrg.ID(),
+/// 			OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeInstanceAttachment, err := apigee.NewInstanceAttachment(ctx, "apigee_instance_attachment", &apigee.InstanceAttachmentArgs{
-/// 			InstanceId:  apigeeInstance.ID(),
+/// 			InstanceId:  apigeeInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			Environment: apigeeEnvironment.Name,
 /// 		})
 /// 		if err != nil {
@@ -328,7 +328,7 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigee.NewEnvironmentKeyvaluemapsEntries(ctx, "apigee_environment_keyvaluemaps_entries", &apigee.EnvironmentKeyvaluemapsEntriesArgs{
-/// 			EnvKeyvaluemapId: apigeeEnvironmentKeyvaluemaps.ID(),
+/// 			EnvKeyvaluemapId: apigeeEnvironmentKeyvaluemaps.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:             pulumi.String("testName"),
 /// 			Value:            pulumi.String("testValue"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -343,6 +343,66 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_compute_network" "apigee_network" {
+///   name = "apigee-network"
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   analytics_region   = "us-central1"
+///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_environment" "apigee_environment" {
+///   org_id       = gcp_apigee_organization.apigee_org.id
+///   name         = "tf-test-env"
+///   description  = "Apigee Environment"
+///   display_name = "Apigee Environment"
+/// }
+/// resource "gcp_apigee_instance" "apigee_instance" {
+///   name     = "tf-test-instance"
+///   location = "us-central1"
+///   org_id   = gcp_apigee_organization.apigee_org.id
+/// }
+/// resource "gcp_apigee_instanceattachment" "apigee_instance_attachment" {
+///   instance_id = gcp_apigee_instance.apigee_instance.id
+///   environment = gcp_apigee_environment.apigee_environment.name
+/// }
+/// resource "gcp_apigee_environmentkeyvaluemaps" "apigee_environment_keyvaluemaps" {
+///   depends_on = [gcp_apigee_organization.apigee_org, gcp_apigee_environment.apigee_environment, gcp_apigee_instance.apigee_instance, gcp_apigee_instanceattachment.apigee_instance_attachment]
+///   env_id     = createApigeeEnvironment.id
+///   name       = "tf-test-env-kvms"
+/// }
+/// resource "gcp_apigee_environmentkeyvaluemapsentries" "apigee_environment_keyvaluemaps_entries" {
+///   depends_on         = [gcp_apigee_organization.apigee_org, gcp_apigee_environment.apigee_environment, gcp_apigee_instance.apigee_instance, gcp_apigee_instanceattachment.apigee_instance_attachment, gcp_apigee_environmentkeyvaluemaps.apigee_environment_keyvaluemaps]
+///   env_keyvaluemap_id = gcp_apigee_environmentkeyvaluemaps.apigee_environment_keyvaluemaps.id
+///   name               = "testName"
+///   value              = "testValue"
 /// }
 /// ```
 /// ```java
@@ -371,8 +431,8 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// import com.pulumi.gcp.apigee.EnvironmentKeyvaluemapsEntries;
 /// import com.pulumi.gcp.apigee.EnvironmentKeyvaluemapsEntriesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -431,7 +491,7 @@ import 'environment_keyvaluemaps_entries_state.dart';
 ///             .build());
 ///
 ///         var apigeeEnvironmentKeyvaluemaps = new EnvironmentKeyvaluemaps("apigeeEnvironmentKeyvaluemaps", EnvironmentKeyvaluemapsArgs.builder()
-///             .envId(createApigeeEnvironment.id())
+///             .envId(createApigeeEnvironment.get("id"))
 ///             .name("tf-test-env-kvms")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
@@ -551,19 +611,23 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// EnvironmentKeyvaluemapsEntries can be imported using any of these accepted formats:
 ///
 /// * `{{env_keyvaluemap_id}}/entries/{{name}}`
-///
 /// * `{{env_keyvaluemap_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EnvironmentKeyvaluemapsEntries can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/entries/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/{{name}}
 /// ```
 class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
   late final pulumi.Output<String> envKeyvaluemapId;
@@ -586,6 +650,7 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');
     this.name = registerOutput<String>('name');
     value = registerOutput<String>('value');
@@ -614,6 +679,7 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');
     this.name = registerOutput<String>('name');
     value = registerOutput<String>('value');

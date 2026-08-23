@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetMultiTarget {
-  /// Required. The target_ids of this multiTarget.
+  /// Required. The targetIds of this multiTarget.
   final pulumi.Input<List<String>> targetIds;
 
   /// Creates a new [TargetMultiTarget].
-  /// [targetIds] Required. The target_ids of this multiTarget.
+  /// [targetIds] Required. The targetIds of this multiTarget.
   const TargetMultiTarget({
     required this.targetIds,
   });
@@ -24,4 +24,3 @@ class TargetMultiTarget {
     );
   }
 }
-

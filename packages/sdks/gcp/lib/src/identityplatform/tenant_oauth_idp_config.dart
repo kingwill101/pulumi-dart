@@ -103,6 +103,28 @@ import 'tenant_oauth_idp_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_identityplatform_tenant" "tenant" {
+///   display_name = "tenant"
+/// }
+/// resource "gcp_identityplatform_tenantoauthidpconfig" "tenant_oauth_idp_config" {
+///   name          = "oidc.oauth-idp-config"
+///   tenant        = gcp_identityplatform_tenant.tenant.name
+///   display_name  = "Display Name"
+///   client_id     = "client-id"
+///   issuer        = "issuer"
+///   enabled       = true
+///   client_secret = "secret"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +135,8 @@ import 'tenant_oauth_idp_config_state.dart';
 /// import com.pulumi.gcp.identityplatform.TenantArgs;
 /// import com.pulumi.gcp.identityplatform.TenantOauthIdpConfig;
 /// import com.pulumi.gcp.identityplatform.TenantOauthIdpConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,22 +190,15 @@ import 'tenant_oauth_idp_config_state.dart';
 /// TenantOauthIdpConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}`
-///
 /// * `{{project}}/{{tenant}}/{{name}}`
-///
 /// * `{{tenant}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TenantOauthIdpConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
 /// ```
 class TenantOauthIdpConfig extends pulumi.CustomResource {
@@ -191,6 +206,13 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> clientId;
   /// The client secret of the OAuth client, to enable OIDC code flow.
   late final pulumi.Output<String?> clientSecret;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human friendly display name.
   late final pulumi.Output<String> displayName;
   /// If this config allows users to sign in with the provider.
@@ -221,6 +243,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     issuer = registerOutput<String>('issuer');
@@ -254,6 +277,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     issuer = registerOutput<String>('issuer');

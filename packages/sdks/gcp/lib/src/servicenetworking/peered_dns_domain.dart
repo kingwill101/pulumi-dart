@@ -77,6 +77,23 @@ import 'peered_dns_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_servicenetworking_peereddnsdomain" "name" {
+///   project    = 10000000
+///   name       = "example-com"
+///   network    = "default"
+///   dns_suffix = "example.com."
+///   service    = "peering-service"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'peered_dns_domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.servicenetworking.PeeredDnsDomain;
 /// import com.pulumi.gcp.servicenetworking.PeeredDnsDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -127,14 +144,12 @@ import 'peered_dns_domain_state.dart';
 /// Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where:
 ///
 /// - `service` is the service connection, defaults to `servicenetworking.googleapis.com`.
-///
 /// - `project` is the producer project name.
-///
 /// - `network` is the consumer network name.
-///
 /// - `name` is the name of your peered DNS domain.
 ///
 /// * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`
+///
 ///
 /// When using the `pulumi import` command, project peered DNS domains can be imported using one of the formats above. For example:
 ///
@@ -142,6 +157,13 @@ import 'peered_dns_domain_state.dart';
 /// $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
 /// ```
 class PeeredDnsDomain extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
   late final pulumi.Output<String> dnsSuffix;
   /// Internal name used for the peered DNS domain.
@@ -169,6 +191,7 @@ class PeeredDnsDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsSuffix = registerOutput<String>('dnsSuffix');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
@@ -200,6 +223,7 @@ class PeeredDnsDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsSuffix = registerOutput<String>('dnsSuffix');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

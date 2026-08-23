@@ -5,13 +5,13 @@ import 'instance_boot_disk_initialize_params_source_image_encryption_key.dart';
 import 'instance_boot_disk_initialize_params_source_snapshot_encryption_key.dart';
 
 class InstanceBootDiskInitializeParams {
-  /// The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+  /// The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
   final pulumi.Input<String>? architecture;
   /// Whether this disk is using confidential compute mode.
-  /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+  /// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
   final pulumi.Input<bool>? enableConfidentialCompute;
   /// The image from which to initialize this disk. This can be
-  /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+  /// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -39,9 +39,11 @@ class InstanceBootDiskInitializeParams {
   /// for an update of throughput every 4 hours. To update your hyperdisk more
   /// frequently, you'll need to manually delete and recreate it.
   final pulumi.Input<int>? provisionedThroughput;
-  /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+  /// A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+  final pulumi.Input<List<String>>? replicaZones;
+  /// A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
   final pulumi.Input<Map<String, String>>? resourceManagerTags;
-  /// A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+  /// A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
   final pulumi.Input<String>? resourcePolicies;
   /// The size of the image in gigabytes. If not specified, it
   /// will inherit the size of its base image.
@@ -63,14 +65,15 @@ class InstanceBootDiskInitializeParams {
   final pulumi.Input<String>? type;
 
   /// Creates a new [InstanceBootDiskInitializeParams].
-  /// [architecture] The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+  /// [architecture] The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
   /// [enableConfidentialCompute] Whether this disk is using confidential compute mode.
   /// [image] The image from which to initialize this disk. This can be
   /// [labels] A set of key/value label pairs assigned to the disk. This
   /// [provisionedIops] Indicates how many IOPS to provision for the disk.
   /// [provisionedThroughput] Indicates how much throughput to provision for the disk.
-  /// [resourceManagerTags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-  /// [resourcePolicies] A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+  /// [replicaZones] A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+  /// [resourceManagerTags] A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
+  /// [resourcePolicies] A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
   /// [size] The size of the image in gigabytes. If not specified, it
   /// [snapshot] The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
   /// [sourceImageEncryptionKey] Encryption key used to decrypt the given image. Structure is documented below.
@@ -84,6 +87,7 @@ class InstanceBootDiskInitializeParams {
     this.labels,
     this.provisionedIops,
     this.provisionedThroughput,
+    this.replicaZones,
     this.resourceManagerTags,
     this.resourcePolicies,
     this.size,
@@ -102,6 +106,7 @@ class InstanceBootDiskInitializeParams {
       'labels': ?labels,
       'provisionedIops': ?provisionedIops,
       'provisionedThroughput': ?provisionedThroughput,
+      'replicaZones': ?replicaZones,
       'resourceManagerTags': ?resourceManagerTags,
       'resourcePolicies': ?resourcePolicies,
       'size': ?size,
@@ -121,6 +126,7 @@ class InstanceBootDiskInitializeParams {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaZones: (() { final guardedValue = map['replicaZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -132,4 +138,3 @@ class InstanceBootDiskInitializeParams {
     );
   }
 }
-

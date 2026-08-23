@@ -87,6 +87,24 @@ import 'environment_api_revision_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigee_environmentapirevisiondeployment" "proxy_deployment_basic" {
+///   org_id            = "my-org"
+///   environment       = "dev"
+///   api               = "hello-proxy"
+///   revision          = 1
+///   override          = true
+///   sequenced_rollout = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'environment_api_revision_deployment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.apigee.EnvironmentApiRevisionDeployment;
 /// import com.pulumi.gcp.apigee.EnvironmentApiRevisionDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -140,22 +158,15 @@ import 'environment_api_revision_deployment_state.dart';
 /// EnvironmentApiRevisionDeployment can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{org_id}}/environments/{{environment}}/apis/{{api}}/revisions/{{revision}}`
-///
 /// * `{{org_id}}/{{environment}}/{{api}}/{{revision}}`
-///
 /// * `{{id}}`
+///
 ///
 /// When using the `pulumi import` command, EnvironmentApiRevisionDeployment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{api}}/revisions/{{revision}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default {{org_id}}/{{environment}}/{{api}}/{{revision}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default {{id}}
 /// ```
 class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
@@ -163,6 +174,13 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String> api;
   /// Basepaths associated with the deployed proxy.
   late final pulumi.Output<List<String>> basepaths;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// RFC3339 timestamp when deployment started.
   late final pulumi.Output<String> deployStartTime;
   /// Apigee environment name.
@@ -196,6 +214,7 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
         ) {
     api = registerOutput<String>('api');
     basepaths = registerOutput<List<String>>('basepaths');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployStartTime = registerOutput<String>('deployStartTime');
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');
@@ -231,6 +250,7 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
         ) {
     api = registerOutput<String>('api');
     basepaths = registerOutput<List<String>>('basepaths');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployStartTime = registerOutput<String>('deployStartTime');
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');

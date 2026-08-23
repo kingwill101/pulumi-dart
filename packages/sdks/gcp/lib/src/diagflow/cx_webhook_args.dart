@@ -9,6 +9,13 @@ import 'cx_webhook_service_directory.dart';
 /// {@endtemplate}
 /// {@macro pulumi_diagflow_cx_webhook_cx_webhook_args_doc}
 class CxWebhookArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Indicates whether the webhook is disabled.
   final pulumi.Input<bool>? disabled;
   /// The human-readable name of the webhook, unique within the agent.
@@ -32,6 +39,7 @@ class CxWebhookArgs {
   final pulumi.Input<String>? timeout;
 
   /// Creates a new [CxWebhookArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] Indicates whether the webhook is disabled.
   /// [displayName] The human-readable name of the webhook, unique within the agent.
   /// [enableSpellCorrection] Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
@@ -42,6 +50,7 @@ class CxWebhookArgs {
   /// [serviceDirectory] Configuration for a Service Directory service.
   /// [timeout] Webhook execution timeout.
   const CxWebhookArgs({
+    this.deletionPolicy,
     this.disabled,
     required this.displayName,
     this.enableSpellCorrection,
@@ -55,6 +64,7 @@ class CxWebhookArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'displayName': displayName,
       'enableSpellCorrection': ?enableSpellCorrection,
@@ -69,6 +79,7 @@ class CxWebhookArgs {
 
   factory CxWebhookArgs.fromMap(Map<String, dynamic> map) {
     return CxWebhookArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enableSpellCorrection: (() { final guardedValue = map['enableSpellCorrection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -81,4 +92,3 @@ class CxWebhookArgs {
     );
   }
 }
-

@@ -2,6 +2,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autokey_config_args.dart';
 import 'autokey_config_state.dart';
 
+/// `AutokeyConfig` is a singleton resource used to configure the auto-provisioning
+/// flow of CryptoKeys for CMEK.
+///
+/// &gt; **Note:** AutokeyConfigs cannot be deleted from Google Cloud Platform.
+/// Destroying a Terraform-managed AutokeyConfig will remove it from state but
+/// *will not delete the resource from the project.*
+///
+///
+/// To get more information about AutokeyConfig, see:
+///
+/// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/AutokeyConfig)
+/// * How-to Guides
+/// * [Cloud KMS with Autokey](https://cloud.google.com/kms/docs/kms-with-autokey)
+///
 /// ## Example Usage
 ///
 /// ### Kms Autokey Config All
@@ -67,6 +81,7 @@ import 'autokey_config_state.dart';
 /// const example_autokeyconfig = new gcp.kms.AutokeyConfig("example-autokeyconfig", {
 ///     folder: autokmsFolder.id,
 ///     keyProject: pulumi.interpolate`projects/${keyProject.projectId}`,
+///     keyProjectResolutionMode: "DEDICATED_KEY_PROJECT",
 /// }, {
 ///     dependsOn: [waitSrvAccPermissions],
 /// });
@@ -123,6 +138,7 @@ import 'autokey_config_state.dart';
 /// example_autokeyconfig = gcp.kms.AutokeyConfig("example-autokeyconfig",
 ///     folder=autokms_folder.id,
 ///     key_project=key_project.project_id.apply(lambda project_id: f"projects/{project_id}"),
+///     key_project_resolution_mode="DEDICATED_KEY_PROJECT",
 ///     opts = pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
 /// # Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
 /// # because setting the config takes a little to fully propagate.
@@ -243,6 +259,7 @@ import 'autokey_config_state.dart';
 ///     {
 ///         Folder = autokmsFolder.Id,
 ///         KeyProject = keyProject.ProjectId.Apply(projectId => $"projects/{projectId}"),
+///         KeyProjectResolutionMode = "DEDICATED_KEY_PROJECT",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -365,10 +382,11 @@ import 'autokey_config_state.dart';
 /// 			return err
 /// 		}
 /// 		example_autokeyconfig, err := kms.NewAutokeyConfig(ctx, "example-autokeyconfig", &kms.AutokeyConfigArgs{
-/// 			Folder: autokmsFolder.ID(),
+/// 			Folder: autokmsFolder.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyProject: keyProject.ProjectId.ApplyT(func(projectId string) (string, error) {
 /// 				return fmt.Sprintf("projects/%v", projectId), nil
 /// 			}).(pulumi.StringOutput),
+/// 			KeyProjectResolutionMode: pulumi.String("DEDICATED_KEY_PROJECT"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			waitSrvAccPermissions,
 /// 		}))
@@ -387,6 +405,81 @@ import 'autokey_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// # Create Folder in GCP Organization
+/// resource "gcp_organizations_folder" "autokms_folder" {
+///   display_name        = "folder-cfg"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// # Create the key project
+/// resource "gcp_organizations_project" "key_project" {
+///   depends_on      = [gcp_organizations_folder.autokms_folder]
+///   project_id      = "key-proj"
+///   name            = "key-proj"
+///   folder_id       = gcp_organizations_folder.autokms_folder.folder_id
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// # Enable the Cloud KMS API
+/// resource "gcp_projects_service" "kms_api_service" {
+///   depends_on                 = [gcp_organizations_project.key_project]
+///   service                    = "cloudkms.googleapis.com"
+///   project                    = gcp_organizations_project.key_project.project_id
+///   disable_dependent_services = true
+/// }
+/// # Wait delay after enabling APIs
+/// resource "time_sleep" "wait_enable_service_api" {
+///   depends_on      = [gcp_projects_service.kms_api_service]
+///   create_duration = "30s"
+/// }
+/// #Create KMS Service Agent
+/// resource "gcp_projects_serviceidentity" "kms_service_agent" {
+///   depends_on = [time_sleep.wait_enable_service_api]
+///   service    = "cloudkms.googleapis.com"
+///   project    = gcp_organizations_project.key_project.number
+/// }
+/// # Wait delay after creating service agent.
+/// resource "time_sleep" "wait_service_agent" {
+///   depends_on      = [gcp_projects_serviceidentity.kms_service_agent]
+///   create_duration = "10s"
+/// }
+/// #Grant the KMS Service Agent the Cloud KMS Admin role
+/// resource "gcp_projects_iammember" "autokey_project_admin" {
+///   depends_on = [time_sleep.wait_service_agent]
+///   project    = gcp_organizations_project.key_project.project_id
+///   role       = "roles/cloudkms.admin"
+///   member     ="serviceAccount:service-${gcp_organizations_project.key_project.number}@gcp-sa-cloudkms.iam.gserviceaccount.com"
+/// }
+/// # Wait delay after granting IAM permissions
+/// resource "time_sleep" "wait_srv_acc_permissions" {
+///   depends_on      = [gcp_projects_iammember.autokey_project_admin]
+///   create_duration = "10s"
+/// }
+/// resource "gcp_kms_autokeyconfig" "example-autokeyconfig" {
+///   depends_on                  = [time_sleep.wait_srv_acc_permissions]
+///   folder                      = gcp_organizations_folder.autokms_folder.id
+///   key_project                 ="projects/${gcp_organizations_project.key_project.project_id}"
+///   key_project_resolution_mode = "DEDICATED_KEY_PROJECT"
+/// }
+/// # Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
+/// # because setting the config takes a little to fully propagate.
+/// resource "time_sleep" "wait_autokey_propagation" {
+///   depends_on      = [gcp_kms_autokeyconfig.example-autokeyconfig]
+///   create_duration = "30s"
 /// }
 /// ```
 /// ```java
@@ -410,8 +503,8 @@ import 'autokey_config_state.dart';
 /// import com.pulumi.gcp.kms.AutokeyConfig;
 /// import com.pulumi.gcp.kms.AutokeyConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,6 +584,7 @@ import 'autokey_config_state.dart';
 ///         var example_autokeyconfig = new AutokeyConfig("example-autokeyconfig", AutokeyConfigArgs.builder()
 ///             .folder(autokmsFolder.id())
 ///             .keyProject(keyProject.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
+///             .keyProjectResolutionMode("DEDICATED_KEY_PROJECT")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(waitSrvAccPermissions)
 ///                 .build());
@@ -593,6 +687,7 @@ import 'autokey_config_state.dart';
 ///     properties:
 ///       folder: ${autokmsFolder.id}
 ///       keyProject: projects/${keyProject.projectId}
+///       keyProjectResolutionMode: DEDICATED_KEY_PROJECT
 ///     options:
 ///       dependsOn:
 ///         - ${waitSrvAccPermissions}
@@ -614,19 +709,23 @@ import 'autokey_config_state.dart';
 /// AutokeyConfig can be imported using any of these accepted formats:
 ///
 /// * `folders/{{folder}}/autokeyConfig`
-///
 /// * `{{folder}}`
+///
 ///
 /// When using the `pulumi import` command, AutokeyConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default folders/{{folder}}/autokeyConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default {{folder}}
 /// ```
 class AutokeyConfig extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The etag of the AutokeyConfig for optimistic concurrency control.
   late final pulumi.Output<String> etag;
   /// The folder for which to retrieve config.
@@ -635,6 +734,9 @@ class AutokeyConfig extends pulumi.CustomResource {
   /// CryptoKey for any new KeyHandle the Developer creates. Should have the form
   /// `projects/&lt;project_id_or_number&gt;`.
   late final pulumi.Output<String?> keyProject;
+  /// How Autokey determines which project to use when provisioning CMEK keys.
+  /// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+  late final pulumi.Output<String?> keyProjectResolutionMode;
 
   /// Creates a new [AutokeyConfig].
   /// [name] The Pulumi resource name.
@@ -650,9 +752,11 @@ class AutokeyConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     folder = registerOutput<String>('folder');
     keyProject = registerOutput<String?>('keyProject');
+    keyProjectResolutionMode = registerOutput<String?>('keyProjectResolutionMode');
   }
 
   /// Gets an existing [AutokeyConfig] resource's state with the given [name] and [id].
@@ -678,8 +782,10 @@ class AutokeyConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     folder = registerOutput<String>('folder');
     keyProject = registerOutput<String?>('keyProject');
+    keyProjectResolutionMode = registerOutput<String?>('keyProjectResolutionMode');
   }
 }

@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagKeyArgs {
   /// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
   final pulumi.Input<String>? allowedValuesRegex;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-assigned description of the TagKey. Must not exceed 256 characters.
   final pulumi.Input<String>? description;
   /// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
@@ -26,6 +33,7 @@ class TagKeyArgs {
 
   /// Creates a new [TagKeyArgs].
   /// [allowedValuesRegex] Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-assigned description of the TagKey. Must not exceed 256 characters.
   /// [parent] Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
   /// [purpose] Optional. A purpose cannot be changed once set.
@@ -33,6 +41,7 @@ class TagKeyArgs {
   /// [shortName] Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
   const TagKeyArgs({
     this.allowedValuesRegex,
+    this.deletionPolicy,
     this.description,
     required this.parent,
     this.purpose,
@@ -43,6 +52,7 @@ class TagKeyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedValuesRegex': ?allowedValuesRegex,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'parent': parent,
       'purpose': ?purpose,
@@ -54,6 +64,7 @@ class TagKeyArgs {
   factory TagKeyArgs.fromMap(Map<String, dynamic> map) {
     return TagKeyArgs(
       allowedValuesRegex: (() { final guardedValue = map['allowedValuesRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
       purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -62,4 +73,3 @@ class TagKeyArgs {
     );
   }
 }
-

@@ -16,7 +16,7 @@ class WorkerPoolState {
   /// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Settings for the Binary Authorization feature.
   /// Structure is documented below.
@@ -36,13 +36,27 @@ class WorkerPoolState {
   /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
   /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
   ///
-  /// &gt; **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+  /// &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
   final pulumi.Input<List<String>>? customAudiences;
   /// The deletion time.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the service. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the service,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the WorkerPool will fail.
+  /// When the field is set to false, deleting the WorkerPool is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// User-provided description of the WorkerPool. This field currently has a 512-character limit.
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -63,7 +77,7 @@ class WorkerPoolState {
   /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
   /// All system labels in v1 now have a corresponding field in v2 WorkerPool.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Email address of the last authenticated modifier.
   final pulumi.Input<String>? lastModifier;
@@ -117,9 +131,10 @@ class WorkerPoolState {
   /// [creator] Email address of the authenticated creator.
   /// [customAudiences] (Optional, Deprecated)
   /// [deleteTime] The deletion time.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the service. Defaults to true.
   /// [description] User-provided description of the WorkerPool. This field currently has a 512-character limit.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
   /// [expireTime] For a deleted resource, the time after which it will be permanently deleted.
@@ -152,6 +167,7 @@ class WorkerPoolState {
     this.creator,
     this.customAudiences,
     this.deleteTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.description,
     this.effectiveAnnotations,
@@ -190,6 +206,7 @@ class WorkerPoolState {
       'creator': ?creator,
       'customAudiences': ?customAudiences,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -229,6 +246,7 @@ class WorkerPoolState {
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customAudiences: (() { final guardedValue = map['customAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -257,4 +275,3 @@ class WorkerPoolState {
     );
   }
 }
-

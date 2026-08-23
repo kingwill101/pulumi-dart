@@ -67,6 +67,21 @@ import 'get_restore_plan_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkebackup_getbackupplaniampolicy" "policy" {
+///   project  = basic.project
+///   location = basic.location
+///   name     = basic.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'get_restore_plan_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkebackup.GkebackupFunctions;
 /// import com.pulumi.gcp.gkebackup.inputs.GetBackupPlanIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -89,9 +104,9 @@ import 'get_restore_plan_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = GkebackupFunctions.getBackupPlanIamPolicy(GetBackupPlanIamPolicyArgs.builder()
-///             .project(basic.project())
-///             .location(basic.location())
-///             .name(basic.name())
+///             .project(basic.get("project"))
+///             .location(basic.get("location"))
+///             .name(basic.get("name"))
 ///             .build());
 ///
 ///     }
@@ -185,6 +200,21 @@ Future<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_gkebackup_getrestoreplaniampolicy" "policy" {
+///   project  = allNs.project
+///   location = allNs.location
+///   name     = allNs.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +223,8 @@ Future<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkebackup.GkebackupFunctions;
 /// import com.pulumi.gcp.gkebackup.inputs.GetRestorePlanIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,9 +237,9 @@ Future<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = GkebackupFunctions.getRestorePlanIamPolicy(GetRestorePlanIamPolicyArgs.builder()
-///             .project(allNs.project())
-///             .location(allNs.location())
-///             .name(allNs.name())
+///             .project(allNs.get("project"))
+///             .location(allNs.get("location"))
+///             .name(allNs.get("name"))
 ///             .build());
 ///
 ///     }

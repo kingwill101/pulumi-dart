@@ -9,6 +9,13 @@ class BackupScheduleState {
   final pulumi.Input<Map<String, dynamic>>? dailyRecurrence;
   /// The Firestore database id. Defaults to `"(default)"`.
   final pulumi.Input<String>? database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The unique backup schedule identifier across all locations and databases for the given project. Format:
   /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
   final pulumi.Input<String>? name;
@@ -26,6 +33,7 @@ class BackupScheduleState {
   /// Creates a new [BackupScheduleState].
   /// [dailyRecurrence] For a schedule that runs daily.
   /// [database] The Firestore database id. Defaults to `"(default)"`.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] The unique backup schedule identifier across all locations and databases for the given project. Format:
   /// [project] The ID of the project in which the resource belongs.
   /// [retention] At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
@@ -33,6 +41,7 @@ class BackupScheduleState {
   const BackupScheduleState({
     this.dailyRecurrence,
     this.database,
+    this.deletionPolicy,
     this.name,
     this.project,
     this.retention,
@@ -43,6 +52,7 @@ class BackupScheduleState {
     return <String, dynamic>{
       'dailyRecurrence': ?dailyRecurrence,
       'database': ?database,
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'project': ?project,
       'retention': ?retention,
@@ -54,6 +64,7 @@ class BackupScheduleState {
     return BackupScheduleState(
       dailyRecurrence: (() { final guardedValue = map['dailyRecurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -61,4 +72,3 @@ class BackupScheduleState {
     );
   }
 }
-

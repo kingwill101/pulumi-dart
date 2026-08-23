@@ -44,4 +44,3 @@ class BackendServiceSecuritySettingsAwsV4Authentication {
     );
   }
 }
-

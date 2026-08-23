@@ -129,7 +129,7 @@ import 'metastore_federation_state.dart';
 /// 			BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
 /// 				&dataproc.MetastoreFederationBackendMetastoreArgs{
 /// 					Rank:          pulumi.String("1"),
-/// 					Name:          defaultMetastoreService.ID(),
+/// 					Name:          defaultMetastoreService.ID().ToIDOutput().ToStringOutput(),
 /// 					MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 /// 				},
 /// 			},
@@ -139,6 +139,36 @@ import 'metastore_federation_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastorefederation" "default" {
+///   location      = "us-central1"
+///   federation_id = "metastore-fed"
+///   version       = "3.1.2"
+///   backend_metastores {
+///     rank           = "1"
+///     name           = gcp_dataproc_metastoreservice.default.id
+///     metastore_type = "DATAPROC_METASTORE"
+///   }
+/// }
+/// resource "gcp_dataproc_metastoreservice" "default" {
+///   service_id = "metastore-service"
+///   location   = "us-central1"
+///   tier       = "DEVELOPER"
+///   hive_metastore_config = {
+///     version           = "3.1.2"
+///     endpoint_protocol = "GRPC"
+///   }
+///   deletion_protection = false
 /// }
 /// ```
 /// ```java
@@ -153,8 +183,8 @@ import 'metastore_federation_state.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreFederation;
 /// import com.pulumi.gcp.dataproc.MetastoreFederationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreFederationBackendMetastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,7 +397,7 @@ import 'metastore_federation_state.dart';
 /// 				},
 /// 				&dataproc.MetastoreFederationBackendMetastoreArgs{
 /// 					Rank:          pulumi.String("1"),
-/// 					Name:          defaultMetastoreService.ID(),
+/// 					Name:          defaultMetastoreService.ID().ToIDOutput().ToStringOutput(),
 /// 					MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 /// 				},
 /// 			},
@@ -377,6 +407,43 @@ import 'metastore_federation_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_dataproc_metastorefederation" "default" {
+///   location      = "us-central1"
+///   federation_id = "metastore-fed"
+///   version       = "3.1.2"
+///   backend_metastores {
+///     rank           = "2"
+///     name           = data.gcp_organizations_getproject.project.id
+///     metastore_type = "BIGQUERY"
+///   }
+///   backend_metastores {
+///     rank           = "1"
+///     name           = gcp_dataproc_metastoreservice.default.id
+///     metastore_type = "DATAPROC_METASTORE"
+///   }
+/// }
+/// resource "gcp_dataproc_metastoreservice" "default" {
+///   service_id = "metastore-service"
+///   location   = "us-central1"
+///   tier       = "DEVELOPER"
+///   hive_metastore_config = {
+///     version           = "3.1.2"
+///     endpoint_protocol = "GRPC"
+///   }
 /// }
 /// ```
 /// ```java
@@ -393,8 +460,8 @@ import 'metastore_federation_state.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreFederation;
 /// import com.pulumi.gcp.dataproc.MetastoreFederationArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreFederationBackendMetastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -477,22 +544,15 @@ import 'metastore_federation_state.dart';
 /// Federation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
-///
 /// * `{{project}}/{{location}}/{{federation_id}}`
-///
 /// * `{{location}}/{{federation_id}}`
+///
 ///
 /// When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
 /// ```
 class MetastoreFederation extends pulumi.CustomResource {
@@ -501,6 +561,16 @@ class MetastoreFederation extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> backendMetastores;
   /// Output only. The time when the metastore federation was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the federation. Defaults to false.
+  /// When the field is set to true in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the federation will fail.
   late final pulumi.Output<bool?> deletionProtection;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -512,7 +582,7 @@ class MetastoreFederation extends pulumi.CustomResource {
   late final pulumi.Output<String> federationId;
   /// User-defined labels for the metastore federation.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the metastore federation should reside.
   late final pulumi.Output<String?> location;
@@ -555,6 +625,7 @@ class MetastoreFederation extends pulumi.CustomResource {
         ) {
     backendMetastores = registerOutput<List<Map<String, dynamic>>>('backendMetastores');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointUri = registerOutput<String>('endpointUri');
@@ -597,6 +668,7 @@ class MetastoreFederation extends pulumi.CustomResource {
         ) {
     backendMetastores = registerOutput<List<Map<String, dynamic>>>('backendMetastores');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointUri = registerOutput<String>('endpointUri');

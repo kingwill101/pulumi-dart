@@ -43,7 +43,7 @@ class AccessLevelBasicCondition {
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   final pulumi.Input<List<String>>? requiredAccessLevels;
-  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
   /// Structure is documented below.
   final pulumi.Input<List<AccessLevelBasicConditionVpcNetworkSource>>? vpcNetworkSources;
 
@@ -54,7 +54,7 @@ class AccessLevelBasicCondition {
   /// [negate] Whether to negate the Condition. If true, the Condition becomes
   /// [regions] The request must originate from one of the provided
   /// [requiredAccessLevels] A list of other access levels defined in the same Policy,
-  /// [vpcNetworkSources] The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+  /// [vpcNetworkSources] The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
   const AccessLevelBasicCondition({
     this.devicePolicy,
     this.ipSubnetworks,
@@ -89,4 +89,3 @@ class AccessLevelBasicCondition {
     );
   }
 }
-

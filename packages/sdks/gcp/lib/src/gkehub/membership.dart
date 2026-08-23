@@ -123,7 +123,7 @@ import 'membership_state.dart';
 /// 			Location:     pulumi.String("us-west1"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -134,6 +134,33 @@ import 'membership_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name                = "basic-cluster"
+///   location            = "us-central1-a"
+///   initial_node_count  = 1
+///   deletion_protection = false
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "basic"
+///   location      = "us-west1"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.primary.id}"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -148,8 +175,8 @@ import 'membership_state.dart';
 /// import com.pulumi.gcp.gkehub.MembershipArgs;
 /// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
 /// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,7 +345,7 @@ import 'membership_state.dart';
 /// 			MembershipId: pulumi.String("basic"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -334,6 +361,35 @@ import 'membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name                = "basic-cluster"
+///   location            = "us-central1-a"
+///   initial_node_count  = 1
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "basic"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.primary.id}"
+///     }
+///   }
+///   labels = {
+///     "env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -346,8 +402,8 @@ import 'membership_state.dart';
 /// import com.pulumi.gcp.gkehub.MembershipArgs;
 /// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
 /// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,11 +586,11 @@ import 'membership_state.dart';
 /// 			MembershipId: pulumi.String("basic"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: primary.ID(),
+/// 					ResourceLink: primary.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Authority: &gkehub.MembershipAuthorityArgs{
-/// 				Issuer: primary.ID().ApplyT(func(id string) (string, error) {
+/// 				Issuer: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("https://container.googleapis.com/v1/%v", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -544,6 +600,38 @@ import 'membership_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "basic-cluster"
+///   location           = "us-central1-a"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   membership_id = "basic"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link = gcp_container_cluster.primary.id
+///     }
+///   }
+///   authority = {
+///     issuer ="https://container.googleapis.com/v1/${gcp_container_cluster.primary.id}"
+///   }
 /// }
 /// ```
 /// ```java
@@ -560,8 +648,8 @@ import 'membership_state.dart';
 /// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
 /// import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
 /// import com.pulumi.gcp.gkehub.inputs.MembershipAuthorityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -630,22 +718,15 @@ import 'membership_state.dart';
 /// Membership can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
-///
 /// * `{{project}}/{{location}}/{{membership_id}}`
-///
 /// * `{{location}}/{{membership_id}}`
+///
 ///
 /// When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
 /// ```
 class Membership extends pulumi.CustomResource {
@@ -654,6 +735,13 @@ class Membership extends pulumi.CustomResource {
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
   /// Structure is documented below.
   late final pulumi.Output<MembershipAuthority?> authority;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -662,7 +750,7 @@ class Membership extends pulumi.CustomResource {
   /// Labels to apply to this membership.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location of the membership.
   /// The default value is `global`.
@@ -693,6 +781,7 @@ class Membership extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authority = registerOutput<MembershipAuthority?>('authority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoint = registerOutput<MembershipEndpoint?>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
@@ -727,6 +816,7 @@ class Membership extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authority = registerOutput<MembershipAuthority?>('authority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoint = registerOutput<MembershipEndpoint?>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_config_node_config_ip_allocation_policy.dart';
+import 'environment_config_node_config_traffic_routing_config.dart';
 
 class EnvironmentConfigNodeConfig {
   /// IPv4 cidr range that will be used by Composer internal components.
@@ -28,6 +29,8 @@ class EnvironmentConfigNodeConfig {
   final pulumi.Input<String>? subnetwork;
   /// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
   final pulumi.Input<List<String>>? tags;
+  /// Traffic routing configuration for Cloud Composer environment.
+  final pulumi.Input<EnvironmentConfigNodeConfigTrafficRoutingConfig>? trafficRoutingConfig;
   /// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   final pulumi.Input<String>? zone;
 
@@ -44,6 +47,7 @@ class EnvironmentConfigNodeConfig {
   /// [serviceAccount] The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
   /// [subnetwork] The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
   /// [tags] The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+  /// [trafficRoutingConfig] Traffic routing configuration for Cloud Composer environment.
   /// [zone] The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   const EnvironmentConfigNodeConfig({
     this.composerInternalIpv4CidrBlock,
@@ -58,6 +62,7 @@ class EnvironmentConfigNodeConfig {
     this.serviceAccount,
     this.subnetwork,
     this.tags,
+    this.trafficRoutingConfig,
     this.zone,
   });
 
@@ -75,6 +80,7 @@ class EnvironmentConfigNodeConfig {
       'serviceAccount': ?serviceAccount,
       'subnetwork': ?subnetwork,
       'tags': ?tags,
+      'trafficRoutingConfig': ?pulumi.Input.mapOptionalInputValue<EnvironmentConfigNodeConfigTrafficRoutingConfig, Map<String, dynamic>>(trafficRoutingConfig, (value) => value.toMap()),
       'zone': ?zone,
     };
   }
@@ -93,8 +99,8 @@ class EnvironmentConfigNodeConfig {
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      trafficRoutingConfig: (() { final guardedValue = map['trafficRoutingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfigNodeConfigTrafficRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

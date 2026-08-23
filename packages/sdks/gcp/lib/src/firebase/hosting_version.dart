@@ -5,6 +5,9 @@ import 'hosting_version_state.dart';
 
 /// A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Version, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
@@ -146,6 +149,35 @@ import 'hosting_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     redirects = [{
+///       "glob"       = "/google/**"
+///       "statusCode" = 302
+///       "location"   = "https://www.google.com"
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "Redirect to Google"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,10 +189,11 @@ import 'hosting_version_state.dart';
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRedirectArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,6 +394,36 @@ import 'hosting_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     headers = [{
+///       "glob" = "/headers/**"
+///       "headers" = {
+///         "my-header" = "my-value"
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "With custom headers"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -372,10 +435,11 @@ import 'hosting_version_state.dart';
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigHeaderArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,6 +639,36 @@ import 'hosting_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     headers = [{
+///       "regex" = "^~/headers$"
+///       "headers" = {
+///         "my-header" = "my-value"
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "With custom headers"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -586,10 +680,11 @@ import 'hosting_version_state.dart';
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigHeaderArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -780,6 +875,34 @@ import 'hosting_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     rewrites = [{
+///       "glob" = "**"
+///       "path" = "/index.html"
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "Path Rewrite"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -791,10 +914,11 @@ import 'hosting_version_state.dart';
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1057,6 +1181,49 @@ import 'hosting_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_cloudrunv2_service" "default" {
+///   project  = "my-project-name"
+///   name     = "cloud-run-service-via-hosting"
+///   location = "us-central1"
+///   ingress  = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     rewrites = [{
+///       "glob" = "/hello/**"
+///       "run" = {
+///         "serviceId" = gcp_cloudrunv2_service.default.name
+///         "region"    = gcp_cloudrunv2_service.default.location
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "Cloud Run Integration"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1068,13 +1235,16 @@ import 'hosting_version_state.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteRunArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1440,6 +1610,66 @@ import 'hosting_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   project                     = "my-project-name"
+///   name                        = "site-id-function-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   project     = "my-project-name"
+///   name        = "cloud-function-via-hosting"
+///   location    = "us-central1"
+///   description = "A Cloud Function connected to Firebase Hosing"
+///   build_config = {
+///     runtime     = "nodejs22"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///   }
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     rewrites = [{
+///       "glob"     = "/hello/**"
+///       "function" = gcp_cloudfunctionsv2_function.function.name
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "Cloud Functions Integration"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1461,11 +1691,12 @@ import 'hosting_version_state.dart';
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1556,7 +1787,7 @@ import 'hosting_version_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -1599,16 +1830,13 @@ import 'hosting_version_state.dart';
 /// Version can be imported using any of these accepted formats:
 ///
 /// * `sites/{{site_id}}/versions/{{version_id}}`
-///
 /// * `{{site_id}}/{{version_id}}`
+///
 ///
 /// When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
 /// ```
 class HostingVersion extends pulumi.CustomResource {

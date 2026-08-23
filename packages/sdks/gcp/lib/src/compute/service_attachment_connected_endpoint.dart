@@ -10,7 +10,9 @@ class ServiceAttachmentConnectedEndpoint {
   /// The URL of the consumer forwarding rule.
   final pulumi.Input<String>? endpoint;
   /// (Output)
-  /// The nat IPs of the connected endpoint.
+  /// NOTE: This field is temporarily non-functional due to an underlying API issue.
+  /// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+  /// 'The nat IPs of the connected endpoint.'
   final pulumi.Input<List<String>>? natIps;
   /// (Output)
   /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
@@ -61,4 +63,3 @@ class ServiceAttachmentConnectedEndpoint {
     );
   }
 }
-

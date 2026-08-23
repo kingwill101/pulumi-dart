@@ -6,8 +6,8 @@ import 'lake_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
-/// * `gcp.dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
-/// * `gcp.dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved.
+/// * `gcp.dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'lake_iam_member_state.dart';
 /// &gt; **Note:** `gcp.dataplex.LakeIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.LakeIamBinding` and `gcp.dataplex.LakeIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataplex.LakeIamBinding` resources **can be** used in conjunction with `gcp.dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataplex.LakeIamPolicy
@@ -123,6 +122,29 @@ import 'lake_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataplex_lakeiampolicy" "policy" {
+///   project     = example.project
+///   location    = example.location
+///   lake        = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,10 +153,11 @@ import 'lake_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataplex.LakeIamPolicy;
 /// import com.pulumi.gcp.dataplex.LakeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,9 +177,9 @@ import 'lake_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -258,6 +281,23 @@ import 'lake_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_lakeiambinding" "binding" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +306,8 @@ import 'lake_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.LakeIamBinding;
 /// import com.pulumi.gcp.dataplex.LakeIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,9 +320,9 @@ import 'lake_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -373,6 +413,23 @@ import 'lake_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_lakeiammember" "member" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +438,8 @@ import 'lake_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.LakeIamMember;
 /// import com.pulumi.gcp.dataplex.LakeIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,9 +452,9 @@ import 'lake_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -428,8 +485,8 @@ import 'lake_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
-/// * `gcp.dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
-/// * `gcp.dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved.
+/// * `gcp.dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -438,7 +495,6 @@ import 'lake_iam_member_state.dart';
 /// &gt; **Note:** `gcp.dataplex.LakeIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.LakeIamBinding` and `gcp.dataplex.LakeIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataplex.LakeIamBinding` resources **can be** used in conjunction with `gcp.dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataplex.LakeIamPolicy
@@ -545,6 +601,29 @@ import 'lake_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataplex_lakeiampolicy" "policy" {
+///   project     = example.project
+///   location    = example.location
+///   lake        = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -553,10 +632,11 @@ import 'lake_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataplex.LakeIamPolicy;
 /// import com.pulumi.gcp.dataplex.LakeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,9 +656,9 @@ import 'lake_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -680,6 +760,23 @@ import 'lake_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_lakeiambinding" "binding" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -688,8 +785,8 @@ import 'lake_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.LakeIamBinding;
 /// import com.pulumi.gcp.dataplex.LakeIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,9 +799,9 @@ import 'lake_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -795,6 +892,23 @@ import 'lake_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_lakeiammember" "member" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -803,8 +917,8 @@ import 'lake_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.LakeIamMember;
 /// import com.pulumi.gcp.dataplex.LakeIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,9 +931,9 @@ import 'lake_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -845,11 +959,8 @@ import 'lake_iam_member_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/lakes/{{name}}
-///
 /// * {{project}}/{{location}}/{{name}}
-///
 /// * {{location}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -857,25 +968,21 @@ import 'lake_iam_member_state.dart';
 /// Dataplex lake IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
+/// $ terraform import google_dataplex_lake_iam_member.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
+/// $ terraform import google_dataplex_lake_iam_binding.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class LakeIamMember extends pulumi.CustomResource {
   late final pulumi.Output<LakeIamMemberCondition?> condition;

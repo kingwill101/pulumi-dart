@@ -138,6 +138,31 @@ import 'oauth_client_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_oauthclient" "oauth_client" {
+///   oauth_client_id       = "example-client-id"
+///   location              = "global"
+///   allowed_grant_types   = ["AUTHORIZATION_CODE_GRANT"]
+///   allowed_redirect_uris = ["https://www.example.com"]
+///   allowed_scopes        = ["https://www.googleapis.com/auth/cloud-platform"]
+///   client_type           = "CONFIDENTIAL_CLIENT"
+/// }
+/// resource "gcp_iam_oauthclientcredential" "example" {
+///   oauthclient                = gcp_iam_oauthclient.oauth_client.oauth_client_id
+///   location                   = gcp_iam_oauthclient.oauth_client.location
+///   oauth_client_credential_id = "cred-id"
+///   disabled                   = true
+///   display_name               = "Display Name of credential"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +173,8 @@ import 'oauth_client_credential_state.dart';
 /// import com.pulumi.gcp.iam.OauthClientArgs;
 /// import com.pulumi.gcp.iam.OauthClientCredential;
 /// import com.pulumi.gcp.iam.OauthClientCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,22 +237,15 @@ import 'oauth_client_credential_state.dart';
 /// OauthClientCredential can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}`
-///
 /// * `{{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
-///
 /// * `{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
+///
 ///
 /// When using the `pulumi import` command, OauthClientCredential can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
 /// ```
 class OauthClientCredential extends pulumi.CustomResource {
@@ -238,6 +256,13 @@ class OauthClientCredential extends pulumi.CustomResource {
   /// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> clientSecret;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether the OauthClientCredential is disabled. You cannot use a
   /// disabled OauthClientCredential.
   late final pulumi.Output<bool?> disabled;
@@ -276,6 +301,7 @@ class OauthClientCredential extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clientSecret = registerOutput<String>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
@@ -309,6 +335,7 @@ class OauthClientCredential extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clientSecret = registerOutput<String>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');

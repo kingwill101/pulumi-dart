@@ -81,6 +81,23 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apphub_application" "example" {
+///   location       = "us-east1"
+///   application_id = "example-application"
+///   scope = {
+///     type = "REGIONAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +107,8 @@ import 'application_state.dart';
 /// import com.pulumi.gcp.apphub.Application;
 /// import com.pulumi.gcp.apphub.ApplicationArgs;
 /// import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,6 +213,23 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apphub_application" "example" {
+///   location       = "global"
+///   application_id = "example-application"
+///   scope = {
+///     type = "GLOBAL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +239,8 @@ import 'application_state.dart';
 /// import com.pulumi.gcp.apphub.Application;
 /// import com.pulumi.gcp.apphub.ApplicationArgs;
 /// import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -420,6 +454,45 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apphub_application" "example2" {
+///   location       = "us-east1"
+///   application_id = "example-application"
+///   display_name   = "Application Full"
+///   scope = {
+///     type = "REGIONAL"
+///   }
+///   description = "Application for testing"
+///   attributes = {
+///     environment = {
+///       type = "STAGING"
+///     }
+///     criticality = {
+///       type = "MISSION_CRITICAL"
+///     }
+///     business_owners = [{
+///       "displayName" = "Alice"
+///       "email"       = "alice@google.com"
+///     }]
+///     developer_owners = [{
+///       "displayName" = "Bob"
+///       "email"       = "bob@google.com"
+///     }]
+///     operator_owners = [{
+///       "displayName" = "Charlie"
+///       "email"       = "charlie@google.com"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -432,8 +505,11 @@ import 'application_state.dart';
 /// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesArgs;
 /// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesEnvironmentArgs;
 /// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesCriticalityArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesBusinessOwnerArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesDeveloperOwnerArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesOperatorOwnerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,22 +587,15 @@ import 'application_state.dart';
 /// Application can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}`
-///
 /// * `{{project}}/{{location}}/{{application_id}}`
-///
 /// * `{{location}}/{{application_id}}`
+///
 ///
 /// When using the `pulumi import` command, Application can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apphub/application:Application default projects/{{project}}/locations/{{location}}/applications/{{application_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/application:Application default {{project}}/{{location}}/{{application_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/application:Application default {{location}}/{{application_id}}
 /// ```
 class Application extends pulumi.CustomResource {
@@ -537,6 +606,13 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<ApplicationAttributes?> attributes;
   /// Output only. Create time.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. User-defined description of an Application.
   late final pulumi.Output<String?> description;
   /// Optional. User-defined name for the Application.
@@ -581,6 +657,7 @@ class Application extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ApplicationAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
@@ -618,6 +695,7 @@ class Application extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ApplicationAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');

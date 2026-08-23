@@ -12,6 +12,13 @@ import 'patch_deployment_rollout.dart';
 /// {@endtemplate}
 /// {@macro pulumi_osconfig_patch_deployment_patch_deployment_args_doc}
 class PatchDeploymentArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the patch deployment. Length of the description is limited to 1024 characters.
   final pulumi.Input<String>? description;
   /// Duration of the patch. After the duration ends, the patch times out.
@@ -44,6 +51,7 @@ class PatchDeploymentArgs {
   final pulumi.Input<PatchDeploymentRollout>? rollout;
 
   /// Creates a new [PatchDeploymentArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the patch deployment. Length of the description is limited to 1024 characters.
   /// [duration] Duration of the patch. After the duration ends, the patch times out.
   /// [instanceFilter] VM instances to patch.
@@ -54,6 +62,7 @@ class PatchDeploymentArgs {
   /// [recurringSchedule] Schedule recurring executions.
   /// [rollout] Rollout strategy of the patch job.
   const PatchDeploymentArgs({
+    this.deletionPolicy,
     this.description,
     this.duration,
     required this.instanceFilter,
@@ -67,6 +76,7 @@ class PatchDeploymentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'duration': ?duration,
       'instanceFilter': pulumi.Input.mapInputValue<PatchDeploymentInstanceFilter, Map<String, dynamic>>(instanceFilter, (value) => value.toMap()),
@@ -81,6 +91,7 @@ class PatchDeploymentArgs {
 
   factory PatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceFilter: pulumi.Input.fromValue(PatchDeploymentInstanceFilter.fromMap((map['instanceFilter']! as Map).cast<String, dynamic>())),
@@ -93,4 +104,3 @@ class PatchDeploymentArgs {
     );
   }
 }
-

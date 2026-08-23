@@ -105,8 +105,6 @@ import 'location_tag_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -131,7 +129,7 @@ import 'location_tag_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-/// 			Parent:      key.ID(),
+/// 			Parent:      key.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("valuename"),
 /// 			Description: pulumi.String("For valuename resources."),
 /// 		})
@@ -140,7 +138,7 @@ import 'location_tag_binding_state.dart';
 /// 		}
 /// 		_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
 /// 			Parent:   pulumi.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", projectGoogleProject.Number, _default.Location, _default.Name),
-/// 			TagValue: value.ID(),
+/// 			TagValue: value.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -148,6 +146,36 @@ import 'location_tag_binding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id = "project_id"
+///   name       = "project_id"
+///   org_id     = "123456789"
+/// }
+/// resource "gcp_tags_tagkey" "key" {
+///   parent      = "organizations/123456789"
+///   short_name  = "keyname"
+///   description = "For keyname resources."
+/// }
+/// resource "gcp_tags_tagvalue" "value" {
+///   parent      = gcp_tags_tagkey.key.id
+///   short_name  = "valuename"
+///   description = "For valuename resources."
+/// }
+/// resource "gcp_tags_locationtagbinding" "binding" {
+///   parent    ="//run.googleapis.com/projects/${projectGoogleProject.number}/locations/${default.location}/services/${default.name}"
+///   tag_value = gcp_tags_tagvalue.value.id
+///   location  = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -164,8 +192,8 @@ import 'location_tag_binding_state.dart';
 /// import com.pulumi.gcp.tags.TagValueArgs;
 /// import com.pulumi.gcp.tags.LocationTagBinding;
 /// import com.pulumi.gcp.tags.LocationTagBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,7 +224,7 @@ import 'location_tag_binding_state.dart';
 ///             .build());
 ///
 ///         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
-///             .parent(String.format("//run.googleapis.com/projects/%s/locations/%s/services/%s", projectGoogleProject.number(),default_.location(),default_.name()))
+///             .parent(String.format("//run.googleapis.com/projects/%s/locations/%s/services/%s", projectGoogleProject.get("number"),default_.get("location"),default_.get("name")))
 ///             .tagValue(value.id())
 ///             .location("us-central1")
 ///             .build());
@@ -350,7 +378,7 @@ import 'location_tag_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-/// 			Parent:      key.ID(),
+/// 			Parent:      key.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("valuename"),
 /// 			Description: pulumi.String("For valuename resources."),
 /// 		})
@@ -361,7 +389,7 @@ import 'location_tag_binding_state.dart';
 /// 			Parent: project.Number.ApplyT(func(number string) (string, error) {
 /// 				return fmt.Sprintf("//compute.googleapis.com/projects/%v/zones/us-central1-a/instances/%v", number, instance.InstanceId), nil
 /// 			}).(pulumi.StringOutput),
-/// 			TagValue: value.ID(),
+/// 			TagValue: value.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1-a"),
 /// 		})
 /// 		if err != nil {
@@ -369,6 +397,36 @@ import 'location_tag_binding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id = "project_id"
+///   name       = "project_id"
+///   org_id     = "123456789"
+/// }
+/// resource "gcp_tags_tagkey" "key" {
+///   parent      = "organizations/123456789"
+///   short_name  = "keyname"
+///   description = "For keyname resources."
+/// }
+/// resource "gcp_tags_tagvalue" "value" {
+///   parent      = gcp_tags_tagkey.key.id
+///   short_name  = "valuename"
+///   description = "For valuename resources."
+/// }
+/// resource "gcp_tags_locationtagbinding" "binding" {
+///   parent    ="//compute.googleapis.com/projects/${gcp_organizations_project.project.number}/zones/us-central1-a/instances/${instance.instanceId}"
+///   tag_value = gcp_tags_tagvalue.value.id
+///   location  = "us-central1-a"
 /// }
 /// ```
 /// ```java
@@ -385,8 +443,8 @@ import 'location_tag_binding_state.dart';
 /// import com.pulumi.gcp.tags.TagValueArgs;
 /// import com.pulumi.gcp.tags.LocationTagBinding;
 /// import com.pulumi.gcp.tags.LocationTagBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -417,7 +475,7 @@ import 'location_tag_binding_state.dart';
 ///             .build());
 ///
 ///         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
-///             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.instanceId())))
+///             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.get("instanceId"))))
 ///             .tagValue(value.id())
 ///             .location("us-central1-a")
 ///             .build());
@@ -574,6 +632,32 @@ import 'location_tag_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id = "project_id"
+///   name       = "project_id"
+///   org_id     = "123456789"
+/// }
+/// resource "gcp_tags_tagkey" "key" {
+///   parent               = "organizations/123456789"
+///   short_name           = "keyname"
+///   description          = "For keyname resources."
+///   allowed_values_regex = "^[a-z]+$"
+/// }
+/// resource "gcp_tags_locationtagbinding" "binding" {
+///   parent    ="//compute.googleapis.com/projects/${gcp_organizations_project.project.number}/zones/us-central1-a/instances/${instance.instanceId}"
+///   tag_value ="${gcp_tags_tagkey.key.namespaced_name}/test-value"
+///   location  = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -586,8 +670,8 @@ import 'location_tag_binding_state.dart';
 /// import com.pulumi.gcp.tags.TagKeyArgs;
 /// import com.pulumi.gcp.tags.LocationTagBinding;
 /// import com.pulumi.gcp.tags.LocationTagBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,7 +697,7 @@ import 'location_tag_binding_state.dart';
 ///             .build());
 ///
 ///         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
-///             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.instanceId())))
+///             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.get("instanceId"))))
 ///             .tagValue(key.namespacedName().applyValue(_namespacedName -> String.format("%s/test-value", _namespacedName)))
 ///             .location("us-central1-a")
 ///             .build());
@@ -651,15 +735,23 @@ import 'location_tag_binding_state.dart';
 ///
 /// * `{{location}}/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding default {{location}}/{{name}}
 /// ```
 class LocationTagBinding extends pulumi.CustomResource {
-  /// Location of the target resource.
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
+  late final pulumi.Output<String> deletionPolicy;
+  /// Location of the target resource.
   late final pulumi.Output<String?> location;
   /// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
   late final pulumi.Output<String> name;
@@ -682,6 +774,7 @@ class LocationTagBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -711,6 +804,7 @@ class LocationTagBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

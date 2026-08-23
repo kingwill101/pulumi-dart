@@ -16,6 +16,13 @@ class AppVersionState {
   final pulumi.Input<String>? createTime;
   /// Email of the user who created the app version.
   final pulumi.Input<String>? creator;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the app version.
   final pulumi.Input<String>? description;
   /// The display name of the app version.
@@ -44,6 +51,7 @@ class AppVersionState {
   /// [appVersionId] The ID to use for the app version, which will become the final component
   /// [createTime] (Output)
   /// [creator] Email of the user who created the app version.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the app version.
   /// [displayName] The display name of the app version.
   /// [etag] (Output)
@@ -56,6 +64,7 @@ class AppVersionState {
     this.appVersionId,
     this.createTime,
     this.creator,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.etag,
@@ -71,6 +80,7 @@ class AppVersionState {
       'appVersionId': ?appVersionId,
       'createTime': ?createTime,
       'creator': ?creator,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'etag': ?etag,
@@ -87,6 +97,7 @@ class AppVersionState {
       appVersionId: (() { final guardedValue = map['appVersionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -97,4 +108,3 @@ class AppVersionState {
     );
   }
 }
-

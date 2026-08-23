@@ -96,6 +96,26 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_edgenetwork_network" "example_network" {
+///   network_id  = "example-network"
+///   location    = "us-west1"
+///   zone        = ""
+///   description = "Example network."
+///   mtu         = 9000
+///   labels = {
+///     "environment" = "dev"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +124,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.edgenetwork.Network;
 /// import com.pulumi.gcp.edgenetwork.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,34 +170,19 @@ import 'network_state.dart';
 /// Network can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
-///
 /// * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
-///
 /// * `{{location}}/{{zone}}/{{network_id}}`
-///
 /// * `{{location}}/{{network_id}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgenetwork/network:Network default {{name}}
 /// ```
 class Network extends pulumi.CustomResource {
@@ -185,6 +190,13 @@ class Network extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -192,7 +204,7 @@ class Network extends pulumi.CustomResource {
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   late final pulumi.Output<String> location;
@@ -231,6 +243,7 @@ class Network extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -268,6 +281,7 @@ class Network extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

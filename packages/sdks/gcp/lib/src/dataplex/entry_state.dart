@@ -11,6 +11,13 @@ class EntryState {
   final pulumi.Input<List<EntryAspect>>? aspects;
   /// The time when the Entry was created in Dataplex.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The entry group id of the entry group the entry will be created in.
   final pulumi.Input<String>? entryGroupId;
   /// The entry id of the entry.
@@ -38,6 +45,7 @@ class EntryState {
   /// Creates a new [EntryState].
   /// [aspects] The aspects that are attached to the entry.
   /// [createTime] The time when the Entry was created in Dataplex.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [entryGroupId] The entry group id of the entry group the entry will be created in.
   /// [entryId] The entry id of the entry.
   /// [entrySource] A nested object resource.
@@ -51,6 +59,7 @@ class EntryState {
   const EntryState({
     this.aspects,
     this.createTime,
+    this.deletionPolicy,
     this.entryGroupId,
     this.entryId,
     this.entrySource,
@@ -67,6 +76,7 @@ class EntryState {
     return <String, dynamic>{
       'aspects': ?pulumi.Input.mapOptionalInputValue<List<EntryAspect>, List<Map<String, dynamic>>>(aspects, (value) => pulumi.Input.encodeList<EntryAspect, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'entryGroupId': ?entryGroupId,
       'entryId': ?entryId,
       'entrySource': ?pulumi.Input.mapOptionalInputValue<EntryEntrySource, Map<String, dynamic>>(entrySource, (value) => value.toMap()),
@@ -84,6 +94,7 @@ class EntryState {
     return EntryState(
       aspects: (() { final guardedValue = map['aspects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EntryAspect>(guardedValue, (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryGroupId: (() { final guardedValue = map['entryGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryId: (() { final guardedValue = map['entryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entrySource: (() { final guardedValue = map['entrySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntryEntrySource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -97,4 +108,3 @@ class EntryState {
     );
   }
 }
-

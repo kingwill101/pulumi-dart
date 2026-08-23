@@ -15,7 +15,7 @@ import 'database_state.dart';
 /// &gt; **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
 /// (and run `pulumi up` to write the field to state) in order to destroy an instance.
 /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
-/// On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
+/// On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
 /// on databases in order to prevent accidental data loss.
 ///
 /// ## Example Usage
@@ -29,6 +29,7 @@ import 'database_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const main = new gcp.spanner.Instance("main", {
+///     name: "my-instance",
 ///     config: "regional-europe-west1",
 ///     displayName: "main-instance",
 ///     numNodes: 1,
@@ -50,6 +51,7 @@ import 'database_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// main = gcp.spanner.Instance("main",
+///     name="my-instance",
 ///     config="regional-europe-west1",
 ///     display_name="main-instance",
 ///     num_nodes=1)
@@ -74,6 +76,7 @@ import 'database_state.dart';
 /// {
 ///     var main = new Gcp.Spanner.Instance("main", new()
 ///     {
+///         Name = "my-instance",
 ///         Config = "regional-europe-west1",
 ///         DisplayName = "main-instance",
 ///         NumNodes = 1,
@@ -106,6 +109,7 @@ import 'database_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
+/// 			Name:        pulumi.String("my-instance"),
 /// 			Config:      pulumi.String("regional-europe-west1"),
 /// 			DisplayName: pulumi.String("main-instance"),
 /// 			NumNodes:    pulumi.Int(1),
@@ -131,6 +135,30 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_spanner_instance" "main" {
+///   name         = "my-instance"
+///   config       = "regional-europe-west1"
+///   display_name = "main-instance"
+///   num_nodes    = 1
+/// }
+/// resource "gcp_spanner_database" "database" {
+///   instance                 = gcp_spanner_instance.main.name
+///   name                     = "my-database"
+///   version_retention_period = "3d"
+///   default_time_zone        = "UTC"
+///   ddls                     = ["CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)", "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"]
+///   deletion_protection      = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +169,8 @@ import 'database_state.dart';
 /// import com.pulumi.gcp.spanner.InstanceArgs;
 /// import com.pulumi.gcp.spanner.Database;
 /// import com.pulumi.gcp.spanner.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,6 +183,7 @@ import 'database_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var main = new Instance("main", InstanceArgs.builder()
+///             .name("my-instance")
 ///             .config("regional-europe-west1")
 ///             .displayName("main-instance")
 ///             .numNodes(1)
@@ -179,6 +208,7 @@ import 'database_state.dart';
 ///   main:
 ///     type: gcp:spanner:Instance
 ///     properties:
+///       name: my-instance
 ///       config: regional-europe-west1
 ///       displayName: main-instance
 ///       numNodes: 1
@@ -201,28 +231,17 @@ import 'database_state.dart';
 /// Database can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
-///
 /// * `instances/{{instance}}/databases/{{name}}`
-///
 /// * `{{project}}/{{instance}}/{{name}}`
-///
 /// * `{{instance}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
 /// ```
 class Database extends pulumi.CustomResource {
@@ -230,13 +249,35 @@ class Database extends pulumi.CustomResource {
   /// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
   /// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
   late final pulumi.Output<String> databaseDialect;
+  /// An optional list of DDL statements to run inside the database. Statements can create
+  /// tables, indexes, etc.
+  /// During creation these statements execute atomically with the creation of the database
+  /// and if there is an error in any statement, the database is not created.
+  /// Terraform does not perform drift detection on this field and assumes that the values
+  /// recorded in state are accurate. Limited updates to this field are supported, and
+  /// newly appended DDL statements can be executed in an update. However, modifications
+  /// to prior statements will create a plan that marks the resource for recreation.
   late final pulumi.Output<List<String>?> ddls;
   /// The default time zone for the database. The default time zone must be a valid name
   /// from the tz database. Default value is "America/Los_angeles".
   late final pulumi.Output<String?> defaultTimeZone;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `destroy` or `update` that would delete the instance will fail.
   late final pulumi.Output<bool?> deletionProtection;
+  /// Whether drop protection is enabled for this database. Defaults to false.
+  /// Drop protection is different from
+  /// the "deletionProtection" attribute in the following ways:
+  /// (1) "deletionProtection" only protects the database from deletions in Terraform.
+  /// whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+  /// (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+  /// "deletionProtection" attribute does not provide protection against the deletion of the parent instance.
   late final pulumi.Output<bool?> enableDropProtection;
   /// Encryption configuration for the database
   /// Structure is documented below.
@@ -275,6 +316,7 @@ class Database extends pulumi.CustomResource {
     databaseDialect = registerOutput<String>('databaseDialect');
     ddls = registerOutput<List<String>?>('ddls');
     defaultTimeZone = registerOutput<String?>('defaultTimeZone');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     enableDropProtection = registerOutput<bool?>('enableDropProtection');
     encryptionConfig = registerOutput<DatabaseEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -311,6 +353,7 @@ class Database extends pulumi.CustomResource {
     databaseDialect = registerOutput<String>('databaseDialect');
     ddls = registerOutput<List<String>?>('ddls');
     defaultTimeZone = registerOutput<String?>('defaultTimeZone');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     enableDropProtection = registerOutput<bool?>('enableDropProtection');
     encryptionConfig = registerOutput<DatabaseEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

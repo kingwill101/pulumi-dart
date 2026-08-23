@@ -6,6 +6,13 @@ class GetTagValuesValue {
   /// Creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String> createTime;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
   /// User-assigned description of the TagValue.
   final pulumi.Input<String> description;
   /// an identifier for the resource with format `tagValues/{{name}}`
@@ -22,6 +29,7 @@ class GetTagValuesValue {
 
   /// Creates a new [GetTagValuesValue].
   /// [createTime] Creation time.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [description] User-assigned description of the TagValue.
   /// [name] an identifier for the resource with format `tagValues/{{name}}`
   /// [namespacedName] Namespaced name of the TagValue.
@@ -30,6 +38,7 @@ class GetTagValuesValue {
   /// [updateTime] Update time.
   const GetTagValuesValue({
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.name,
     required this.namespacedName,
@@ -41,6 +50,7 @@ class GetTagValuesValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'name': name,
       'namespacedName': namespacedName,
@@ -53,6 +63,7 @@ class GetTagValuesValue {
   factory GetTagValuesValue.fromMap(Map<String, dynamic> map) {
     return GetTagValuesValue(
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       namespacedName: pulumi.Input.fromValue(map['namespacedName'] as String),
@@ -62,4 +73,3 @@ class GetTagValuesValue {
     );
   }
 }
-

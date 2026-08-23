@@ -6,6 +6,7 @@ import 'get_region_instance_template_scheduling_local_ssd_recovery_timeout.dart'
 import 'get_region_instance_template_scheduling_max_run_duration.dart';
 import 'get_region_instance_template_scheduling_node_affinity.dart';
 import 'get_region_instance_template_scheduling_on_instance_stop_action.dart';
+import 'get_region_instance_template_scheduling_preemption_notice_duration.dart';
 
 class GetRegionInstanceTemplateScheduling {
   /// Specifies whether the instance should be
@@ -16,7 +17,7 @@ class GetRegionInstanceTemplateScheduling {
   final pulumi.Input<int> availabilityDomain;
   /// Settings for the instance to perform a graceful shutdown.
   final pulumi.Input<List<GetRegionInstanceTemplateSchedulingGracefulShutdown>> gracefulShutdowns;
-  /// Beta Time in seconds for host error detection.
+  /// Time in seconds for host error detection.
   final pulumi.Input<int> hostErrorTimeoutSeconds;
   /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
   final pulumi.Input<String> instanceTerminationAction;
@@ -46,7 +47,9 @@ class GetRegionInstanceTemplateScheduling {
   /// false. Read more on this
   /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
   final pulumi.Input<bool> preemptible;
-  /// Describe the type of preemptible VM.
+  /// The duration of the notice that the instance will receive before it is preempted.
+  final pulumi.Input<List<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration>> preemptionNoticeDurations;
+  /// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
   final pulumi.Input<String> provisioningModel;
   /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   final pulumi.Input<bool> skipGuestOsShutdown;
@@ -59,7 +62,7 @@ class GetRegionInstanceTemplateScheduling {
   /// [automaticRestart] Specifies whether the instance should be
   /// [availabilityDomain] Specifies the availability domain, which this instance should be scheduled on.
   /// [gracefulShutdowns] Settings for the instance to perform a graceful shutdown.
-  /// [hostErrorTimeoutSeconds] Beta Time in seconds for host error detection.
+  /// [hostErrorTimeoutSeconds] Time in seconds for host error detection.
   /// [instanceTerminationAction] Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
   /// [localSsdRecoveryTimeouts] Specifies the maximum amount of time a Local Ssd Vm should wait while
   /// [maintenanceInterval] Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
@@ -69,7 +72,8 @@ class GetRegionInstanceTemplateScheduling {
   /// [onHostMaintenance] Defines the maintenance behavior for this
   /// [onInstanceStopActions] Defines the behaviour for instances with the instance_termination_action.
   /// [preemptible] Allows instance to be preempted. This defaults to
-  /// [provisioningModel] Describe the type of preemptible VM.
+  /// [preemptionNoticeDurations] The duration of the notice that the instance will receive before it is preempted.
+  /// [provisioningModel] Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
   /// [skipGuestOsShutdown] Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   /// [terminationTime] Specifies the timestamp, when the instance will be terminated,
   const GetRegionInstanceTemplateScheduling({
@@ -86,6 +90,7 @@ class GetRegionInstanceTemplateScheduling {
     required this.onHostMaintenance,
     required this.onInstanceStopActions,
     required this.preemptible,
+    required this.preemptionNoticeDurations,
     required this.provisioningModel,
     required this.skipGuestOsShutdown,
     required this.terminationTime,
@@ -106,6 +111,7 @@ class GetRegionInstanceTemplateScheduling {
       'onHostMaintenance': onHostMaintenance,
       'onInstanceStopActions': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateSchedulingOnInstanceStopAction>, List<Map<String, dynamic>>>(onInstanceStopActions, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateSchedulingOnInstanceStopAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'preemptible': preemptible,
+      'preemptionNoticeDurations': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration>, List<Map<String, dynamic>>>(preemptionNoticeDurations, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningModel': provisioningModel,
       'skipGuestOsShutdown': skipGuestOsShutdown,
       'terminationTime': terminationTime,
@@ -127,10 +133,10 @@ class GetRegionInstanceTemplateScheduling {
       onHostMaintenance: pulumi.Input.fromValue(map['onHostMaintenance'] as String),
       onInstanceStopActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingOnInstanceStopAction>(map['onInstanceStopActions']!, (value) => GetRegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap((value as Map).cast<String, dynamic>()))),
       preemptible: pulumi.Input.fromValue(map['preemptible'] as bool),
+      preemptionNoticeDurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration>(map['preemptionNoticeDurations']!, (value) => GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration.fromMap((value as Map).cast<String, dynamic>()))),
       provisioningModel: pulumi.Input.fromValue(map['provisioningModel'] as String),
       skipGuestOsShutdown: pulumi.Input.fromValue(map['skipGuestOsShutdown'] as bool),
       terminationTime: pulumi.Input.fromValue(map['terminationTime'] as String),
     );
   }
 }
-

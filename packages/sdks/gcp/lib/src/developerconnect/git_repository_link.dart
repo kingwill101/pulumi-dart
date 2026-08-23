@@ -200,7 +200,7 @@ import 'git_repository_link_state.dart';
 /// 			return err
 /// 		}
 /// 		github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     github_token_secret.ID(),
+/// 			Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -233,7 +233,7 @@ import 'git_repository_link_state.dart';
 /// 				GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
 /// 				AppInstallationId: pulumi.String("123123"),
 /// 				AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-/// 					OauthTokenSecretVersion: github_token_secret_version.ID(),
+/// 					OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -253,6 +253,58 @@ import 'git_repository_link_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+///   bindings {
+///     role    = "roles/secretmanager.secretAccessor"
+///     members = ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"]
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "github-token-secret" {
+///   secret_id = "github-token-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "github-token-secret-version" {
+///   secret      = gcp_secretmanager_secret.github-token-secret.id
+///   secret_data = file("my-github-token.txt")
+/// }
+/// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
+/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+///   secret_id   = gcp_secretmanager_secret.github-token-secret.secret_id
+///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+/// }
+/// resource "gcp_developerconnect_connection" "my-connection" {
+///   location      = "us-central1"
+///   connection_id = "my-connection"
+///   github_config = {
+///     github_app          = "DEVELOPER_CONNECT"
+///     app_installation_id = 123123
+///     authorizer_credential = {
+///       oauth_token_secret_version = gcp_secretmanager_secretversion.github-token-secret-version.id
+///     }
+///   }
+/// }
+/// resource "gcp_developerconnect_gitrepositorylink" "my-repository" {
+///   location               = "us-central1"
+///   git_repository_link_id = "my-repo"
+///   parent_connection      = gcp_developerconnect_connection.my-connection.connection_id
+///   remote_uri             = "https://github.com/myuser/myrepo.git"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,6 +321,7 @@ import 'git_repository_link_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicy;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
 /// import com.pulumi.gcp.developerconnect.Connection;
@@ -277,8 +330,8 @@ import 'git_repository_link_state.dart';
 /// import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
 /// import com.pulumi.gcp.developerconnect.GitRepositoryLink;
 /// import com.pulumi.gcp.developerconnect.GitRepositoryLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -396,28 +449,21 @@ import 'git_repository_link_state.dart';
 /// GitRepositoryLink can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/gitRepositoryLinks/{{git_repository_link_id}}`
-///
 /// * `{{project}}/{{location}}/{{parent_connection}}/{{git_repository_link_id}}`
-///
 /// * `{{location}}/{{parent_connection}}/{{git_repository_link_id}}`
+///
 ///
 /// When using the `pulumi import` command, GitRepositoryLink can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/gitRepositoryLinks/{{git_repository_link_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{project}}/{{location}}/{{parent_connection}}/{{git_repository_link_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{location}}/{{parent_connection}}/{{git_repository_link_id}}
 /// ```
 class GitRepositoryLink extends pulumi.CustomResource {
   /// Optional. Allows clients to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Required. Git Clone URI.
   late final pulumi.Output<String> cloneUri;
@@ -425,6 +471,14 @@ class GitRepositoryLink extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Output only. [Output only] Delete timestamp
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -438,7 +492,7 @@ class GitRepositoryLink extends pulumi.CustomResource {
   late final pulumi.Output<String> gitRepositoryLinkId;
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
   late final pulumi.Output<String> location;
@@ -479,6 +533,7 @@ class GitRepositoryLink extends pulumi.CustomResource {
     cloneUri = registerOutput<String>('cloneUri');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String?>('etag');
@@ -521,6 +576,7 @@ class GitRepositoryLink extends pulumi.CustomResource {
     cloneUri = registerOutput<String>('cloneUri');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String?>('etag');

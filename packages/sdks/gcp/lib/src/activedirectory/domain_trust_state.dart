@@ -4,6 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering DomainTrust resources.
 class DomainTrustState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
   final pulumi.Input<String>? domain;
@@ -27,6 +34,7 @@ class DomainTrustState {
   final pulumi.Input<String>? trustType;
 
   /// Creates a new [DomainTrustState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [domain] The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// [project] The ID of the project in which the resource belongs.
   /// [selectiveAuthentication] Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -36,6 +44,7 @@ class DomainTrustState {
   /// [trustHandshakeSecret] The trust secret used for the handshake with the target domain. This will not be stored.
   /// [trustType] The type of trust represented by the trust resource.
   const DomainTrustState({
+    this.deletionPolicy,
     this.domain,
     this.project,
     this.selectiveAuthentication,
@@ -48,6 +57,7 @@ class DomainTrustState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'domain': ?domain,
       'project': ?project,
       'selectiveAuthentication': ?selectiveAuthentication,
@@ -61,6 +71,7 @@ class DomainTrustState {
 
   factory DomainTrustState.fromMap(Map<String, dynamic> map) {
     return DomainTrustState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selectiveAuthentication: (() { final guardedValue = map['selectiveAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -72,4 +83,3 @@ class DomainTrustState {
     );
   }
 }
-

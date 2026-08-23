@@ -15,6 +15,13 @@ class PipelineJobArgs {
   final pulumi.Input<PipelineJobBackfillPipelineJob>? backfillPipelineJob;
   /// Healthcare Dataset under which the Pipeline Job is to run
   final pulumi.Input<String> dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If true, disables writing lineage for the pipeline.
   final pulumi.Input<bool>? disableLineage;
   /// User-supplied key-value pairs used to organize Pipeline Jobs.
@@ -29,7 +36,7 @@ class PipelineJobArgs {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location where the Pipeline Job is to run
   final pulumi.Input<String> location;
@@ -45,6 +52,7 @@ class PipelineJobArgs {
   /// Creates a new [PipelineJobArgs].
   /// [backfillPipelineJob] Specifies the backfill configuration.
   /// [dataset] Healthcare Dataset under which the Pipeline Job is to run
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disableLineage] If true, disables writing lineage for the pipeline.
   /// [labels] User-supplied key-value pairs used to organize Pipeline Jobs.
   /// [location] Location where the Pipeline Job is to run
@@ -54,6 +62,7 @@ class PipelineJobArgs {
   const PipelineJobArgs({
     this.backfillPipelineJob,
     required this.dataset,
+    this.deletionPolicy,
     this.disableLineage,
     this.labels,
     required this.location,
@@ -66,6 +75,7 @@ class PipelineJobArgs {
     return <String, dynamic>{
       'backfillPipelineJob': ?pulumi.Input.mapOptionalInputValue<PipelineJobBackfillPipelineJob, Map<String, dynamic>>(backfillPipelineJob, (value) => value.toMap()),
       'dataset': dataset,
+      'deletionPolicy': ?deletionPolicy,
       'disableLineage': ?disableLineage,
       'labels': ?labels,
       'location': location,
@@ -79,6 +89,7 @@ class PipelineJobArgs {
     return PipelineJobArgs(
       backfillPipelineJob: (() { final guardedValue = map['backfillPipelineJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineJobBackfillPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataset: pulumi.Input.fromValue(map['dataset'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableLineage: (() { final guardedValue = map['disableLineage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -88,4 +99,3 @@ class PipelineJobArgs {
     );
   }
 }
-

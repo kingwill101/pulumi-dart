@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_storage_get_control_project_intelligence_config_get_control_project_intelligence_config_args_doc}
 class GetControlProjectIntelligenceConfigArgs {
-  /// The name or number of the GCP project.
+  /// Identifier of the GCP project. For GCP project, this field can be project name or project number.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetControlProjectIntelligenceConfigArgs].
-  /// [name] The name or number of the GCP project.
+  /// [name] Identifier of the GCP project. For GCP project, this field can be project name or project number.
   const GetControlProjectIntelligenceConfigArgs({
     required this.name,
   });
@@ -28,4 +28,3 @@ class GetControlProjectIntelligenceConfigArgs {
     );
   }
 }
-

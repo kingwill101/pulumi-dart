@@ -41,6 +41,7 @@ import 'db_system_state.dart';
 ///                 adminPassword: "ABcde_1#234",
 ///                 databaseId: "mydb",
 ///                 dbName: "db",
+///                 dbUniqueName: "db",
 ///             },
 ///         },
 ///     },
@@ -75,6 +76,7 @@ import 'db_system_state.dart';
 ///                 "admin_password": "ABcde_1#234",
 ///                 "database_id": "mydb",
 ///                 "db_name": "db",
+///                 "db_unique_name": "db",
 ///             },
 ///         },
 ///     },
@@ -120,6 +122,7 @@ import 'db_system_state.dart';
 ///                     AdminPassword = "ABcde_1#234",
 ///                     DatabaseId = "mydb",
 ///                     DbName = "db",
+///                     DbUniqueName = "db",
 ///                 },
 ///             },
 ///         },
@@ -164,6 +167,7 @@ import 'db_system_state.dart';
 /// 						AdminPassword: pulumi.String("ABcde_1#234"),
 /// 						DatabaseId:    pulumi.String("mydb"),
 /// 						DbName:        pulumi.String("db"),
+/// 						DbUniqueName:  pulumi.String("db"),
 /// 					},
 /// 				},
 /// 			},
@@ -174,6 +178,46 @@ import 'db_system_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_dbsystem" "my_db_system" {
+///   db_system_id = "my-instance"
+///   display_name = "my-instance displayname"
+///   location     = "europe-west2"
+///   project      = "my-project"
+///   odb_network  = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork"
+///   odb_subnet   = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"
+///   properties = {
+///     ssh_public_keys              = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"]
+///     compute_count                = "4"
+///     hostname_prefix              = "hostname1"
+///     shape                        = "VM.Standard.x86"
+///     initial_data_storage_size_gb = "256"
+///     database_edition             = "STANDARD_EDITION"
+///     license_model                = "LICENSE_INCLUDED"
+///     time_zone = {
+///       id = "UTC"
+///     }
+///     db_home = {
+///       db_version = "19.0.0.0"
+///       database = {
+///         admin_password = "ABcde_1#234"
+///         database_id    = "mydb"
+///         db_name        = "db"
+///         db_unique_name = "db"
+///       }
+///     }
+///   }
+///   deletion_protection = "true"
 /// }
 /// ```
 /// ```java
@@ -188,8 +232,8 @@ import 'db_system_state.dart';
 /// import com.pulumi.gcp.oracledatabase.inputs.DbSystemPropertiesTimeZoneArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.DbSystemPropertiesDbHomeArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.DbSystemPropertiesDbHomeDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,6 +269,7 @@ import 'db_system_state.dart';
 ///                         .adminPassword("ABcde_1#234")
 ///                         .databaseId("mydb")
 ///                         .dbName("db")
+///                         .dbUniqueName("db")
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -263,6 +308,7 @@ import 'db_system_state.dart';
 ///             adminPassword: ABcde_1#234
 ///             databaseId: mydb
 ///             dbName: db
+///             dbUniqueName: db
 ///       deletionProtection: 'true'
 /// ```
 ///
@@ -284,7 +330,7 @@ import 'db_system_state.dart';
 ///     properties: {
 ///         sshPublicKeys: ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
 ///         computeCount: 4,
-///         hostnamePrefix: "hostname3",
+///         hostnamePrefix: "hostname4",
 ///         computeModel: "ECPU",
 ///         dataStorageSizeGb: 256,
 ///         memorySizeGb: 8,
@@ -292,15 +338,16 @@ import 'db_system_state.dart';
 ///         initialDataStorageSizeGb: 256,
 ///         databaseEdition: "STANDARD_EDITION",
 ///         licenseModel: "LICENSE_INCLUDED",
-///         privateIp: "10.1.2.127",
 ///         dbHome: {
 ///             dbVersion: "19.0.0.0",
 ///             database: {
 ///                 dbName: "db",
-///                 dbUniqueName: "dbunique",
+///                 dbUniqueName: "db",
 ///                 adminPassword: "ABcde_1#2345",
 ///                 tdeWalletPassword: "ABcde_1#2345",
 ///                 databaseId: "mydb",
+///                 pluggableDatabaseId: "mypdb",
+///                 pluggableDatabaseName: "mypdb",
 ///             },
 ///             isUnifiedAuditingEnabled: true,
 ///         },
@@ -322,7 +369,7 @@ import 'db_system_state.dart';
 ///     properties={
 ///         "ssh_public_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
 ///         "compute_count": 4,
-///         "hostname_prefix": "hostname3",
+///         "hostname_prefix": "hostname4",
 ///         "compute_model": "ECPU",
 ///         "data_storage_size_gb": 256,
 ///         "memory_size_gb": 8,
@@ -330,15 +377,16 @@ import 'db_system_state.dart';
 ///         "initial_data_storage_size_gb": 256,
 ///         "database_edition": "STANDARD_EDITION",
 ///         "license_model": "LICENSE_INCLUDED",
-///         "private_ip": "10.1.2.127",
 ///         "db_home": {
 ///             "db_version": "19.0.0.0",
 ///             "database": {
 ///                 "db_name": "db",
-///                 "db_unique_name": "dbunique",
+///                 "db_unique_name": "db",
 ///                 "admin_password": "ABcde_1#2345",
 ///                 "tde_wallet_password": "ABcde_1#2345",
 ///                 "database_id": "mydb",
+///                 "pluggable_database_id": "mypdb",
+///                 "pluggable_database_name": "mypdb",
 ///             },
 ///             "is_unified_auditing_enabled": True,
 ///         },
@@ -368,7 +416,7 @@ import 'db_system_state.dart';
 ///                 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com",
 ///             },
 ///             ComputeCount = 4,
-///             HostnamePrefix = "hostname3",
+///             HostnamePrefix = "hostname4",
 ///             ComputeModel = "ECPU",
 ///             DataStorageSizeGb = 256,
 ///             MemorySizeGb = 8,
@@ -376,17 +424,18 @@ import 'db_system_state.dart';
 ///             InitialDataStorageSizeGb = 256,
 ///             DatabaseEdition = "STANDARD_EDITION",
 ///             LicenseModel = "LICENSE_INCLUDED",
-///             PrivateIp = "10.1.2.127",
 ///             DbHome = new Gcp.OracleDatabase.Inputs.DbSystemPropertiesDbHomeArgs
 ///             {
 ///                 DbVersion = "19.0.0.0",
 ///                 Database = new Gcp.OracleDatabase.Inputs.DbSystemPropertiesDbHomeDatabaseArgs
 ///                 {
 ///                     DbName = "db",
-///                     DbUniqueName = "dbunique",
+///                     DbUniqueName = "db",
 ///                     AdminPassword = "ABcde_1#2345",
 ///                     TdeWalletPassword = "ABcde_1#2345",
 ///                     DatabaseId = "mydb",
+///                     PluggableDatabaseId = "mypdb",
+///                     PluggableDatabaseName = "mypdb",
 ///                 },
 ///                 IsUnifiedAuditingEnabled = true,
 ///             },
@@ -418,7 +467,7 @@ import 'db_system_state.dart';
 /// 					pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"),
 /// 				},
 /// 				ComputeCount:             pulumi.Int(4),
-/// 				HostnamePrefix:           pulumi.String("hostname3"),
+/// 				HostnamePrefix:           pulumi.String("hostname4"),
 /// 				ComputeModel:             pulumi.String("ECPU"),
 /// 				DataStorageSizeGb:        pulumi.Int(256),
 /// 				MemorySizeGb:             pulumi.Int(8),
@@ -426,15 +475,16 @@ import 'db_system_state.dart';
 /// 				InitialDataStorageSizeGb: pulumi.Int(256),
 /// 				DatabaseEdition:          pulumi.String("STANDARD_EDITION"),
 /// 				LicenseModel:             pulumi.String("LICENSE_INCLUDED"),
-/// 				PrivateIp:                pulumi.String("10.1.2.127"),
 /// 				DbHome: &oracledatabase.DbSystemPropertiesDbHomeArgs{
 /// 					DbVersion: pulumi.String("19.0.0.0"),
 /// 					Database: &oracledatabase.DbSystemPropertiesDbHomeDatabaseArgs{
-/// 						DbName:            pulumi.String("db"),
-/// 						DbUniqueName:      pulumi.String("dbunique"),
-/// 						AdminPassword:     pulumi.String("ABcde_1#2345"),
-/// 						TdeWalletPassword: pulumi.String("ABcde_1#2345"),
-/// 						DatabaseId:        pulumi.String("mydb"),
+/// 						DbName:                pulumi.String("db"),
+/// 						DbUniqueName:          pulumi.String("db"),
+/// 						AdminPassword:         pulumi.String("ABcde_1#2345"),
+/// 						TdeWalletPassword:     pulumi.String("ABcde_1#2345"),
+/// 						DatabaseId:            pulumi.String("mydb"),
+/// 						PluggableDatabaseId:   pulumi.String("mypdb"),
+/// 						PluggableDatabaseName: pulumi.String("mypdb"),
 /// 					},
 /// 					IsUnifiedAuditingEnabled: pulumi.Bool(true),
 /// 				},
@@ -448,6 +498,50 @@ import 'db_system_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_dbsystem" "my_db_system" {
+///   db_system_id = "my-instance"
+///   display_name = "my-instance displayname"
+///   location     = "europe-west2"
+///   project      = "my-project"
+///   odb_network  = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork"
+///   odb_subnet   = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"
+///   properties = {
+///     ssh_public_keys              = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"]
+///     compute_count                = "4"
+///     hostname_prefix              = "hostname4"
+///     compute_model                = "ECPU"
+///     data_storage_size_gb         = "256"
+///     memory_size_gb               = "8"
+///     shape                        = "VM.Standard.x86"
+///     initial_data_storage_size_gb = "256"
+///     database_edition             = "STANDARD_EDITION"
+///     license_model                = "LICENSE_INCLUDED"
+///     db_home = {
+///       db_version = "19.0.0.0"
+///       database = {
+///         db_name                 = "db"
+///         db_unique_name          = "db"
+///         admin_password          = "ABcde_1#2345"
+///         tde_wallet_password     = "ABcde_1#2345"
+///         database_id             = "mydb"
+///         pluggable_database_id   = "mypdb"
+///         pluggable_database_name = "mypdb"
+///       }
+///       is_unified_auditing_enabled = "true"
+///     }
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -459,8 +553,8 @@ import 'db_system_state.dart';
 /// import com.pulumi.gcp.oracledatabase.inputs.DbSystemPropertiesArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.DbSystemPropertiesDbHomeArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.DbSystemPropertiesDbHomeDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -482,7 +576,7 @@ import 'db_system_state.dart';
 ///             .properties(DbSystemPropertiesArgs.builder()
 ///                 .sshPublicKeys("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com")
 ///                 .computeCount(4)
-///                 .hostnamePrefix("hostname3")
+///                 .hostnamePrefix("hostname4")
 ///                 .computeModel("ECPU")
 ///                 .dataStorageSizeGb(256)
 ///                 .memorySizeGb(8)
@@ -490,15 +584,16 @@ import 'db_system_state.dart';
 ///                 .initialDataStorageSizeGb(256)
 ///                 .databaseEdition("STANDARD_EDITION")
 ///                 .licenseModel("LICENSE_INCLUDED")
-///                 .privateIp("10.1.2.127")
 ///                 .dbHome(DbSystemPropertiesDbHomeArgs.builder()
 ///                     .dbVersion("19.0.0.0")
 ///                     .database(DbSystemPropertiesDbHomeDatabaseArgs.builder()
 ///                         .dbName("db")
-///                         .dbUniqueName("dbunique")
+///                         .dbUniqueName("db")
 ///                         .adminPassword("ABcde_1#2345")
 ///                         .tdeWalletPassword("ABcde_1#2345")
 ///                         .databaseId("mydb")
+///                         .pluggableDatabaseId("mypdb")
+///                         .pluggableDatabaseName("mypdb")
 ///                         .build())
 ///                     .isUnifiedAuditingEnabled(true)
 ///                     .build())
@@ -525,7 +620,7 @@ import 'db_system_state.dart';
 ///         sshPublicKeys:
 ///           - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com
 ///         computeCount: '4'
-///         hostnamePrefix: hostname3
+///         hostnamePrefix: hostname4
 ///         computeModel: ECPU
 ///         dataStorageSizeGb: '256'
 ///         memorySizeGb: '8'
@@ -533,15 +628,16 @@ import 'db_system_state.dart';
 ///         initialDataStorageSizeGb: '256'
 ///         databaseEdition: STANDARD_EDITION
 ///         licenseModel: LICENSE_INCLUDED
-///         privateIp: 10.1.2.127
 ///         dbHome:
 ///           dbVersion: 19.0.0.0
 ///           database:
 ///             dbName: db
-///             dbUniqueName: dbunique
+///             dbUniqueName: db
 ///             adminPassword: ABcde_1#2345
 ///             tdeWalletPassword: ABcde_1#2345
 ///             databaseId: mydb
+///             pluggableDatabaseId: mypdb
+///             pluggableDatabaseName: mypdb
 ///           isUnifiedAuditingEnabled: 'true'
 ///       deletionProtection: 'true'
 /// ```
@@ -552,22 +648,15 @@ import 'db_system_state.dart';
 /// DbSystem can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}`
-///
 /// * `{{project}}/{{location}}/{{db_system_id}}`
-///
 /// * `{{location}}/{{db_system_id}}`
+///
 ///
 /// When using the `pulumi import` command, DbSystem can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{project}}/{{location}}/{{db_system_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
 /// ```
 class DbSystem extends pulumi.CustomResource {
@@ -578,6 +667,14 @@ class DbSystem extends pulumi.CustomResource {
   /// 63 characters in length. The value must start with a letter and end with a
   /// letter or a number.
   late final pulumi.Output<String> dbSystemId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   late final pulumi.Output<bool?> deletionProtection;
   /// The display name for the System db. The name does not have to
   /// be unique within your project.
@@ -592,7 +689,7 @@ class DbSystem extends pulumi.CustomResource {
   late final pulumi.Output<String> gcpOracleZone;
   /// The labels or tags associated with the DbSystem.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -636,6 +733,7 @@ class DbSystem extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dbSystemId = registerOutput<String>('dbSystemId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -677,6 +775,7 @@ class DbSystem extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dbSystemId = registerOutput<String>('dbSystemId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

@@ -44,4 +44,3 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     );
   }
 }
-

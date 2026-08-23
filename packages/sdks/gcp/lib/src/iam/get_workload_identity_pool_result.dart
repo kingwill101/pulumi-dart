@@ -1,11 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_workload_identity_pool_attestation_rule.dart';
 import 'get_workload_identity_pool_inline_certificate_issuance_config.dart';
 import 'get_workload_identity_pool_inline_trust_config.dart';
 
 /// Result data returned by getWorkloadIdentityPool.
 class GetWorkloadIdentityPoolResult {
+  final List<GetWorkloadIdentityPoolAttestationRule> attestationRules;
+  final String deletionPolicy;
   final String description;
   final bool disabled;
   final String displayName;
@@ -20,6 +23,8 @@ class GetWorkloadIdentityPoolResult {
   final String workloadIdentityPoolId;
 
   /// Creates a new [GetWorkloadIdentityPoolResult].
+  /// [attestationRules] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [disabled] Required.
   /// [displayName] Required.
@@ -32,6 +37,8 @@ class GetWorkloadIdentityPoolResult {
   /// [state] Required.
   /// [workloadIdentityPoolId] Required.
   const GetWorkloadIdentityPoolResult({
+    required this.attestationRules,
+    required this.deletionPolicy,
     required this.description,
     required this.disabled,
     required this.displayName,
@@ -47,6 +54,8 @@ class GetWorkloadIdentityPoolResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'attestationRules': pulumi.Input.encodeList<GetWorkloadIdentityPoolAttestationRule, Map<String, dynamic>>(attestationRules, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'disabled': disabled,
       'displayName': displayName,
@@ -63,6 +72,8 @@ class GetWorkloadIdentityPoolResult {
 
   factory GetWorkloadIdentityPoolResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolResult(
+      attestationRules: pulumi.Input.decodeList<GetWorkloadIdentityPoolAttestationRule>(map['attestationRules']!, (value) => GetWorkloadIdentityPoolAttestationRule.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       disabled: map['disabled'] as bool,
       displayName: map['displayName'] as String,
@@ -77,4 +88,3 @@ class GetWorkloadIdentityPoolResult {
     );
   }
 }
-

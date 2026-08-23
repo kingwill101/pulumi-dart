@@ -140,7 +140,7 @@ import 'runtime_state.dart';
 /// 			Name:     pulumi.String("colab-runtime"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-/// 				NotebookRuntimeTemplate: myTemplate.ID(),
+/// 				NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DisplayName: pulumi.String("Runtime basic"),
 /// 			RuntimeUser: pulumi.String("gterraformtestuser@gmail.com"),
@@ -152,6 +152,37 @@ import 'runtime_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "my_template" {
+///   name         = "colab-runtime"
+///   display_name = "Runtime template basic"
+///   location     = "us-central1"
+///   machine_spec = {
+///     machine_type = "e2-standard-4"
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+/// }
+/// resource "gcp_colab_runtime" "runtime" {
+///   depends_on = [gcp_colab_runtimetemplate.my_template]
+///   name       = "colab-runtime"
+///   location   = "us-central1"
+///   notebook_runtime_template_ref = {
+///     notebook_runtime_template = gcp_colab_runtimetemplate.my_template.id
+///   }
+///   display_name = "Runtime basic"
+///   runtime_user = "gterraformtestuser@gmail.com"
 /// }
 /// ```
 /// ```java
@@ -168,8 +199,8 @@ import 'runtime_state.dart';
 /// import com.pulumi.gcp.colab.RuntimeArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeNotebookRuntimeTemplateRefArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +395,7 @@ import 'runtime_state.dart';
 /// 			Name:     pulumi.String("colab-runtime"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-/// 				NotebookRuntimeTemplate: myTemplate.ID(),
+/// 				NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DesiredState: pulumi.String("STOPPED"),
 /// 			DisplayName:  pulumi.String("Runtime stopped"),
@@ -377,6 +408,38 @@ import 'runtime_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "my_template" {
+///   name         = "colab-runtime"
+///   display_name = "Runtime template basic"
+///   location     = "us-central1"
+///   machine_spec = {
+///     machine_type = "e2-standard-4"
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+/// }
+/// resource "gcp_colab_runtime" "runtime" {
+///   depends_on = [gcp_colab_runtimetemplate.my_template]
+///   name       = "colab-runtime"
+///   location   = "us-central1"
+///   notebook_runtime_template_ref = {
+///     notebook_runtime_template = gcp_colab_runtimetemplate.my_template.id
+///   }
+///   desired_state = "STOPPED"
+///   display_name  = "Runtime stopped"
+///   runtime_user  = "gterraformtestuser@gmail.com"
 /// }
 /// ```
 /// ```java
@@ -393,8 +456,8 @@ import 'runtime_state.dart';
 /// import com.pulumi.gcp.colab.RuntimeArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeNotebookRuntimeTemplateRefArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -708,7 +771,7 @@ import 'runtime_state.dart';
 /// 			Name:     pulumi.String("colab-runtime"),
 /// 			Location: pulumi.String("us-central1"),
 /// 			NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-/// 				NotebookRuntimeTemplate: myTemplate.ID(),
+/// 				NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DisplayName:  pulumi.String("Runtime full"),
 /// 			RuntimeUser:  pulumi.String("gterraformtestuser@gmail.com"),
@@ -723,6 +786,63 @@ import 'runtime_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "my_template" {
+///   name         = "colab-runtime"
+///   display_name = "Runtime template full"
+///   location     = "us-central1"
+///   description  = "Full runtime template"
+///   machine_spec = {
+///     machine_type      = "n1-standard-2"
+///     accelerator_type  = "NVIDIA_TESLA_T4"
+///     accelerator_count = "1"
+///   }
+///   data_persistent_disk_spec = {
+///     disk_type    = "pd-standard"
+///     disk_size_gb = 200
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+///   labels = {
+///     "k" = "val"
+///   }
+///   idle_shutdown_config = {
+///     idle_timeout = "3600s"
+///   }
+///   euc_config = {
+///     euc_disabled = true
+///   }
+///   shielded_vm_config = {
+///     enable_secure_boot = true
+///   }
+///   network_tags = ["abc", "def"]
+///   encryption_spec = {
+///     kms_key_name = "my-crypto-key"
+///   }
+/// }
+/// resource "gcp_colab_runtime" "runtime" {
+///   depends_on = [gcp_colab_runtimetemplate.my_template]
+///   name       = "colab-runtime"
+///   location   = "us-central1"
+///   notebook_runtime_template_ref = {
+///     notebook_runtime_template = gcp_colab_runtimetemplate.my_template.id
+///   }
+///   display_name  = "Runtime full"
+///   runtime_user  = "gterraformtestuser@gmail.com"
+///   description   = "Full runtime"
+///   desired_state = "ACTIVE"
+///   auto_upgrade  = true
 /// }
 /// ```
 /// ```java
@@ -744,8 +864,8 @@ import 'runtime_state.dart';
 /// import com.pulumi.gcp.colab.RuntimeArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeNotebookRuntimeTemplateRefArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -865,27 +985,27 @@ import 'runtime_state.dart';
 /// Runtime can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/notebookRuntimes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:colab/runtime:Runtime default projects/{{project}}/locations/{{location}}/notebookRuntimes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:colab/runtime:Runtime default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:colab/runtime:Runtime default {{location}}/{{name}}
 /// ```
 class Runtime extends pulumi.CustomResource {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
   late final pulumi.Output<bool?> autoUpgrade;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the Runtime.
   late final pulumi.Output<String?> description;
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -928,6 +1048,7 @@ class Runtime extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     desiredState = registerOutput<String?>('desiredState');
     displayName = registerOutput<String>('displayName');
@@ -966,6 +1087,7 @@ class Runtime extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     desiredState = registerOutput<String?>('desiredState');
     displayName = registerOutput<String>('displayName');

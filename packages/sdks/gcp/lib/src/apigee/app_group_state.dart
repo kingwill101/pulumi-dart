@@ -16,6 +16,13 @@ class AppGroupState {
   final pulumi.Input<String>? channelUri;
   /// Created time as milliseconds since epoch.
   final pulumi.Input<String>? createdAt;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// App group name displayed in the UI
   final pulumi.Input<String>? displayName;
   /// Modified time as milliseconds since epoch.
@@ -37,6 +44,7 @@ class AppGroupState {
   /// [channelId] Channel identifier identifies the owner maintaining this grouping.
   /// [channelUri] A reference to the associated storefront/marketplace.
   /// [createdAt] Created time as milliseconds since epoch.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] App group name displayed in the UI
   /// [lastModifiedAt] Modified time as milliseconds since epoch.
   /// [name] Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
@@ -49,6 +57,7 @@ class AppGroupState {
     this.channelId,
     this.channelUri,
     this.createdAt,
+    this.deletionPolicy,
     this.displayName,
     this.lastModifiedAt,
     this.name,
@@ -64,6 +73,7 @@ class AppGroupState {
       'channelId': ?channelId,
       'channelUri': ?channelUri,
       'createdAt': ?createdAt,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'lastModifiedAt': ?lastModifiedAt,
       'name': ?name,
@@ -80,6 +90,7 @@ class AppGroupState {
       channelId: (() { final guardedValue = map['channelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       channelUri: (() { final guardedValue = map['channelUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastModifiedAt: (() { final guardedValue = map['lastModifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -89,4 +100,3 @@ class AppGroupState {
     );
   }
 }
-

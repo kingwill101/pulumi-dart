@@ -72,7 +72,7 @@ import 'example_state.dart';
 ///     displayName: "base agent",
 ///     instruction: "You are a helpful assistant for this example.",
 ///     modelSettings: {
-///         model: "gemini-2.5-flash",
+///         model: "gemini-3.0-flash-001",
 ///         temperature: 0.5,
 ///     },
 ///     llmAgent: {},
@@ -84,7 +84,7 @@ import 'example_state.dart';
 ///     displayName: "child agent",
 ///     instruction: "You are a helpful assistant for this example.",
 ///     modelSettings: {
-///         model: "gemini-2.5-flash",
+///         model: "gemini-3.0-flash-001",
 ///         temperature: 0.5,
 ///     },
 ///     llmAgent: {},
@@ -95,12 +95,12 @@ import 'example_state.dart';
 ///     app: my_app.name,
 ///     exampleId: "example-id",
 ///     description: "example description",
-///     entryAgent: pulumi.all([my_app.project, my_app.appId, cesBaseAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
+///     entryAgent: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/agents/${cesBaseAgent.agentId}`,
 ///     messages: [{
 ///         chunks: [
 ///             {
 ///                 agentTransfer: {
-///                     targetAgent: pulumi.all([my_app.project, my_app.appId, cesChildAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
+///                     targetAgent: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/agents/${cesChildAgent.agentId}`,
 ///                 },
 ///             },
 ///             {
@@ -227,7 +227,7 @@ import 'example_state.dart';
 ///     display_name="base agent",
 ///     instruction="You are a helpful assistant for this example.",
 ///     model_settings={
-///         "model": "gemini-2.5-flash",
+///         "model": "gemini-3.0-flash-001",
 ///         "temperature": 0.5,
 ///     },
 ///     llm_agent={})
@@ -238,7 +238,7 @@ import 'example_state.dart';
 ///     display_name="child agent",
 ///     instruction="You are a helpful assistant for this example.",
 ///     model_settings={
-///         "model": "gemini-2.5-flash",
+///         "model": "gemini-3.0-flash-001",
 ///         "temperature": 0.5,
 ///     },
 ///     llm_agent={})
@@ -432,7 +432,7 @@ import 'example_state.dart';
 ///         Instruction = "You are a helpful assistant for this example.",
 ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
 ///         {
-///             Model = "gemini-2.5-flash",
+///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
 ///         LlmAgent = null,
@@ -447,7 +447,7 @@ import 'example_state.dart';
 ///         Instruction = "You are a helpful assistant for this example.",
 ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
 ///         {
-///             Model = "gemini-2.5-flash",
+///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
 ///         LlmAgent = null,
@@ -679,7 +679,7 @@ import 'example_state.dart';
 /// 			DisplayName: pulumi.String("base agent"),
 /// 			Instruction: pulumi.String("You are a helpful assistant for this example."),
 /// 			ModelSettings: &ces.AgentModelSettingsArgs{
-/// 				Model:       pulumi.String("gemini-2.5-flash"),
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 				Temperature: pulumi.Float64(0.5),
 /// 			},
 /// 			LlmAgent: &ces.AgentLlmAgentArgs{},
@@ -694,7 +694,7 @@ import 'example_state.dart';
 /// 			DisplayName: pulumi.String("child agent"),
 /// 			Instruction: pulumi.String("You are a helpful assistant for this example."),
 /// 			ModelSettings: &ces.AgentModelSettingsArgs{
-/// 				Model:       pulumi.String("gemini-2.5-flash"),
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 				Temperature: pulumi.Float64(0.5),
 /// 			},
 /// 			LlmAgent: &ces.AgentLlmAgentArgs{},
@@ -702,7 +702,7 @@ import 'example_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"arg1": "val1",
 /// 			"arg2": "val2",
 /// 		})
@@ -710,7 +710,7 @@ import 'example_state.dart';
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string]string{
 /// 			"arg1": "val1",
 /// 			"arg2": "val2",
 /// 		})
@@ -718,21 +718,21 @@ import 'example_state.dart';
 /// 			return err
 /// 		}
 /// 		json1 := string(tmpJSON1)
-/// 		tmpJSON2, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON2, err := json.Marshal(map[string]string{
 /// 			"output": "example-output",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json2 := string(tmpJSON2)
-/// 		tmpJSON3, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON3, err := json.Marshal(map[string]string{
 /// 			"output": "example-output",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json3 := string(tmpJSON3)
-/// 		tmpJSON4, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON4, err := json.Marshal(map[string]string{
 /// 			"var1": "val1",
 /// 			"var2": "val2",
 /// 		})
@@ -849,6 +849,158 @@ import 'example_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.app_id
+///   tool_id        = "tool-1"
+///   execution_type = "SYNCHRONOUS"
+///   python_function = {
+///     name        = "example_function"
+///     python_code = "def example_function() -> int: return 0"
+///   }
+/// }
+/// resource "gcp_ces_toolset" "ces_toolset" {
+///   toolset_id   = "toolset-id"
+///   location     = "us"
+///   app          = gcp_ces_app.my-app.app_id
+///   display_name = "Basic toolset display name"
+///   open_api_toolset = {
+///     open_api_schema       = "openapi: 3.0.0\ninfo:\n    title: My Sample API\n    version: 1.0.0\n    description: A simple API example\nservers:\n    - url: https://api.example.com/v1\npaths: {}\n"
+///     ignore_unknown_fields = false
+///     tls_config = {
+///       ca_certs = [{
+///         "displayName" = "example"
+///         "cert"        = "ZXhhbXBsZQ=="
+///       }]
+///     }
+///     service_directory_config = {
+///       service = "projects/example/locations/us/namespaces/namespace/services/service"
+///     }
+///     api_authentication = {
+///       service_agent_id_token_auth_config = {}
+///     }
+///   }
+/// }
+/// resource "gcp_ces_agent" "ces_base_agent" {
+///   agent_id     = "base-agent-id"
+///   location     = "us"
+///   app          = gcp_ces_app.my-app.app_id
+///   display_name = "base agent"
+///   instruction  = "You are a helpful assistant for this example."
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   llm_agent = {}
+/// }
+/// resource "gcp_ces_agent" "ces_child_agent" {
+///   agent_id     = "child-agent-id"
+///   location     = "us"
+///   app          = gcp_ces_app.my-app.app_id
+///   display_name = "child agent"
+///   instruction  = "You are a helpful assistant for this example."
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   llm_agent = {}
+/// }
+/// resource "gcp_ces_example" "my-example" {
+///   location     = "us"
+///   display_name = "my-example"
+///   app          = gcp_ces_app.my-app.name
+///   example_id   = "example-id"
+///   description  = "example description"
+///   entry_agent  ="projects/${gcp_ces_app.my-app.project}/locations/us/apps/${gcp_ces_app.my-app.app_id}/agents/${gcp_ces_agent.ces_base_agent.agent_id}"
+///   messages {
+///     chunks {
+///       agent_transfer = {
+///         target_agent ="projects/${gcp_ces_app.my-app.project}/locations/us/apps/${gcp_ces_app.my-app.app_id}/agents/${gcp_ces_agent.ces_child_agent.agent_id}"
+///       }
+///     }
+///     chunks {
+///       image = {
+///         mime_type = "image/png"
+///         data      = base64encode("This is some fake image binary data.")
+///       }
+///     }
+///     chunks {
+///       text = "text_data"
+///     }
+///     chunks {
+///       tool_call = {
+///         args = jsonencode({
+///           "arg1" = "val1"
+///           "arg2" = "val2"
+///         })
+///         id   = "tool_call_id"
+///         tool ="projects/${gcp_ces_app.my-app.project}/locations/us/apps/${gcp_ces_app.my-app.app_id}/tools/${gcp_ces_tool.ces_tool.tool_id}"
+///       }
+///     }
+///     chunks {
+///       tool_call = {
+///         args = jsonencode({
+///           "arg1" = "val1"
+///           "arg2" = "val2"
+///         })
+///         id = "tool_call_id2"
+///         toolset_tool = {
+///           toolset ="projects/${gcp_ces_app.my-app.project}/locations/us/apps/${gcp_ces_app.my-app.app_id}/toolsets/${gcp_ces_toolset.ces_toolset.toolset_id}"
+///           tool_id = "example-id"
+///         }
+///       }
+///     }
+///     chunks {
+///       tool_response = {
+///         id = "tool_call_id"
+///         response = jsonencode({
+///           "output" = "example-output"
+///         })
+///         tool ="projects/${gcp_ces_app.my-app.project}/locations/us/apps/${gcp_ces_app.my-app.app_id}/tools/${gcp_ces_tool.ces_tool.tool_id}"
+///       }
+///     }
+///     chunks {
+///       tool_response = {
+///         id = "tool_call_id2"
+///         response = jsonencode({
+///           "output" = "example-output"
+///         })
+///         toolset_tool = {
+///           toolset ="projects/${gcp_ces_app.my-app.project}/locations/us/apps/${gcp_ces_app.my-app.app_id}/toolsets/${gcp_ces_toolset.ces_toolset.toolset_id}"
+///           tool_id = "example-id"
+///         }
+///       }
+///     }
+///     chunks {
+///       updated_variables = jsonencode({
+///         "var1" = "val1"
+///         "var2" = "val2"
+///       })
+///     }
+///     role = "agent"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -865,6 +1017,7 @@ import 'example_state.dart';
 /// import com.pulumi.gcp.ces.ToolsetArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
@@ -875,11 +1028,18 @@ import 'example_state.dart';
 /// import com.pulumi.gcp.ces.Example;
 /// import com.pulumi.gcp.ces.ExampleArgs;
 /// import com.pulumi.gcp.ces.inputs.ExampleMessageArgs;
+/// import com.pulumi.gcp.ces.inputs.ExampleMessageChunkArgs;
+/// import com.pulumi.gcp.ces.inputs.ExampleMessageChunkAgentTransferArgs;
+/// import com.pulumi.gcp.ces.inputs.ExampleMessageChunkImageArgs;
+/// import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolCallArgs;
+/// import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolCallToolsetToolArgs;
+/// import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolResponseArgs;
+/// import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolResponseToolsetToolArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -951,7 +1111,7 @@ import 'example_state.dart';
 ///             .displayName("base agent")
 ///             .instruction("You are a helpful assistant for this example.")
 ///             .modelSettings(AgentModelSettingsArgs.builder()
-///                 .model("gemini-2.5-flash")
+///                 .model("gemini-3.0-flash-001")
 ///                 .temperature(0.5)
 ///                 .build())
 ///             .llmAgent(AgentLlmAgentArgs.builder()
@@ -965,7 +1125,7 @@ import 'example_state.dart';
 ///             .displayName("child agent")
 ///             .instruction("You are a helpful assistant for this example.")
 ///             .modelSettings(AgentModelSettingsArgs.builder()
-///                 .model("gemini-2.5-flash")
+///                 .model("gemini-3.0-flash-001")
 ///                 .temperature(0.5)
 ///                 .build())
 ///             .llmAgent(AgentLlmAgentArgs.builder()
@@ -1147,7 +1307,7 @@ import 'example_state.dart';
 ///       displayName: base agent
 ///       instruction: You are a helpful assistant for this example.
 ///       modelSettings:
-///         model: gemini-2.5-flash
+///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
 ///       llmAgent: {}
 ///   cesChildAgent:
@@ -1160,7 +1320,7 @@ import 'example_state.dart';
 ///       displayName: child agent
 ///       instruction: You are a helpful assistant for this example.
 ///       modelSettings:
-///         model: gemini-2.5-flash
+///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
 ///       llmAgent: {}
 ///   my-example:
@@ -1228,22 +1388,15 @@ import 'example_state.dart';
 /// Example can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{app}}/{{name}}`
-///
 /// * `{{location}}/{{app}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Example can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:ces/example:Example default projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
 /// ```
 class Example extends pulumi.CustomResource {
@@ -1251,6 +1404,13 @@ class Example extends pulumi.CustomResource {
   late final pulumi.Output<String> app;
   /// Timestamp when the example was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human-readable description of the example.
   late final pulumi.Output<String?> description;
   /// Display name of the example.
@@ -1263,6 +1423,8 @@ class Example extends pulumi.CustomResource {
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   late final pulumi.Output<String> etag;
+  /// The ID to use for the example, which will become the final component of
+  /// the example's resource name. In Terraform, this field is required.
   late final pulumi.Output<String> exampleId;
   /// The example may become invalid if referencing resources are deleted.
   /// Invalid examples will not be used as few-shot examples.
@@ -1298,6 +1460,7 @@ class Example extends pulumi.CustomResource {
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     entryAgent = registerOutput<String?>('entryAgent');
@@ -1336,6 +1499,7 @@ class Example extends pulumi.CustomResource {
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     entryAgent = registerOutput<String?>('entryAgent');

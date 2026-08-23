@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServingConfigState {
   /// The resource IDs of the boost controls to be applied.
   final pulumi.Input<List<String>>? boostControlIds;
-  /// The collection ID. Currently only accepts "default_collection".
+  /// The collection ID. Currently only accepts "defaultCollection".
   final pulumi.Input<String>? collectionId;
   /// The ID of the engine associated with the serving config.
   final pulumi.Input<String>? engineId;
@@ -25,14 +25,14 @@ class ServingConfigState {
   final pulumi.Input<List<String>>? promoteControlIds;
   /// The resource IDs of the redirect controls to be applied.
   final pulumi.Input<List<String>>? redirectControlIds;
-  /// 'The unique ID of the serving config. Currently only accepts "default_search".'
+  /// 'The unique ID of the serving config. Currently only accepts "defaultSearch".'
   final pulumi.Input<String>? servingConfigId;
   /// The resource IDs of the synonyms controls to be applied.
   final pulumi.Input<List<String>>? synonymsControlIds;
 
   /// Creates a new [ServingConfigState].
   /// [boostControlIds] The resource IDs of the boost controls to be applied.
-  /// [collectionId] The collection ID. Currently only accepts "default_collection".
+  /// [collectionId] The collection ID. Currently only accepts "defaultCollection".
   /// [engineId] The ID of the engine associated with the serving config.
   /// [filterControlIds] The resource IDs of the filter controls to be applied.
   /// [location] The geographic location where the data store should reside. The value can
@@ -40,7 +40,7 @@ class ServingConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [promoteControlIds] The resource IDs of the promote controls to be applied.
   /// [redirectControlIds] The resource IDs of the redirect controls to be applied.
-  /// [servingConfigId] 'The unique ID of the serving config. Currently only accepts "default_search".'
+  /// [servingConfigId] 'The unique ID of the serving config. Currently only accepts "defaultSearch".'
   /// [synonymsControlIds] The resource IDs of the synonyms controls to be applied.
   const ServingConfigState({
     this.boostControlIds,
@@ -88,4 +88,3 @@ class ServingConfigState {
     );
   }
 }
-

@@ -148,6 +148,36 @@ import 'app_check_recaptcha_v3_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_webapp" "default" {
+///   project      = "my-project-name"
+///   display_name = "Web App for reCAPTCHA V3"
+/// }
+/// # It takes a while for App Check to recognize the new app
+/// # If your app already exists, you don't have to wait 30 seconds.
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_firebase_webapp.default]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_appcheckrecaptchav3config" "default" {
+///   depends_on  = [time_sleep.wait_30s]
+///   project     = "my-project-name"
+///   app_id      = gcp_firebase_webapp.default.app_id
+///   site_secret = "6Lf9YnQpAAAAAC3-MHmdAllTbPwTZxpUw5d34YzX"
+///   token_ttl   = "7200s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -161,8 +191,8 @@ import 'app_check_recaptcha_v3_config_state.dart';
 /// import com.pulumi.gcp.firebase.AppCheckRecaptchaV3Config;
 /// import com.pulumi.gcp.firebase.AppCheckRecaptchaV3ConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,22 +265,15 @@ import 'app_check_recaptcha_v3_config_state.dart';
 /// RecaptchaV3Config can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/apps/{{app_id}}/recaptchaV3Config`
-///
 /// * `{{project}}/{{app_id}}`
-///
 /// * `{{app_id}}`
+///
 ///
 /// When using the `pulumi import` command, RecaptchaV3Config can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default projects/{{project}}/apps/{{app_id}}/recaptchaV3Config
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{project}}/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{app_id}}
 /// ```
 class AppCheckRecaptchaV3Config extends pulumi.CustomResource {

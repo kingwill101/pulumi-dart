@@ -9,10 +9,17 @@ import 'service_perimeter_status.dart';
 /// {@endtemplate}
 /// {@macro pulumi_accesscontextmanager_service_perimeter_service_perimeter_args_doc}
 class ServicePerimeterArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   final pulumi.Input<String>? description;
-  /// Resource name for the ServicePerimeter. The short_name component must
+  /// Resource name for the ServicePerimeter. The shortName component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   final pulumi.Input<String>? name;
@@ -61,8 +68,9 @@ class ServicePerimeterArgs {
   final pulumi.Input<bool>? useExplicitDryRunSpec;
 
   /// Creates a new [ServicePerimeterArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the ServicePerimeter and its use. Does not affect
-  /// [name] Resource name for the ServicePerimeter. The short_name component must
+  /// [name] Resource name for the ServicePerimeter. The shortName component must
   /// [parent] The AccessPolicy this ServicePerimeter lives in.
   /// [perimeterType] Specifies the type of the Perimeter. There are two types: regular and
   /// [spec] Proposed (or dry run) ServicePerimeter configuration.
@@ -70,6 +78,7 @@ class ServicePerimeterArgs {
   /// [title] Human readable title. Must be unique within the Policy.
   /// [useExplicitDryRunSpec] Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   const ServicePerimeterArgs({
+    this.deletionPolicy,
     this.description,
     this.name,
     required this.parent,
@@ -82,6 +91,7 @@ class ServicePerimeterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'parent': parent,
@@ -95,6 +105,7 @@ class ServicePerimeterArgs {
 
   factory ServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
@@ -106,4 +117,3 @@ class ServicePerimeterArgs {
     );
   }
 }
-

@@ -14,27 +14,32 @@ import 'api_state.dart';
 /// An API proxy can be imported using any of these accepted formats:
 ///
 /// * `{{org_id}}/apis/{{name}}`
-///
 /// * `{{org_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, API proxy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/api:Api default {{org_id}}/apis/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/api:Api default {{org_id}}/{{name}}
 /// ```
 class Api extends pulumi.CustomResource {
   /// Path to the config zip bundle.
+  late final pulumi.Output<String> configBundle;
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  late final pulumi.Output<String> configBundle;
-  late final pulumi.Output<String?> detectMd5hash;
+  late final pulumi.Output<String> deletionPolicy;
+  /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+  late final pulumi.Output<String> detectMd5hash;
   /// The id of the most recently created revision for this API proxy.
   late final pulumi.Output<String> latestRevisionId;
-  /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+  /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
   late final pulumi.Output<String> md5hash;
   /// Metadata describing the API proxy.
   /// Structure is documented below.
@@ -61,7 +66,8 @@ class Api extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configBundle = registerOutput<String>('configBundle');
-    detectMd5hash = registerOutput<String?>('detectMd5hash');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    detectMd5hash = registerOutput<String>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
     metaDatas = registerOutput<List<Map<String, dynamic>>>('metaDatas');
@@ -94,7 +100,8 @@ class Api extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configBundle = registerOutput<String>('configBundle');
-    detectMd5hash = registerOutput<String?>('detectMd5hash');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    detectMd5hash = registerOutput<String>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
     metaDatas = registerOutput<List<Map<String, dynamic>>>('metaDatas');

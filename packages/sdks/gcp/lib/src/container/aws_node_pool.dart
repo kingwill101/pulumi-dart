@@ -624,6 +624,142 @@ import 'aws_node_pool_update_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getawsversions" "versions" {
+///   project  = "my-project-name"
+///   location = "us-west1"
+/// }
+///
+/// resource "gcp_container_awscluster" "primary" {
+///   authorization = {
+///     admin_users = [{
+///       "username" = "my@service-account.com"
+///     }]
+///   }
+///   aws_region = "my-aws-region"
+///   control_plane = {
+///     aws_services_authentication = {
+///       role_arn          = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"
+///       role_session_name = "my--1p-dev-session"
+///     }
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     database_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-controlplane"
+///     subnet_ids           = ["subnet-00000000000000000"]
+///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     instance_type        = "t3.medium"
+///     main_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "owner" = "my@service-account.com"
+///     }
+///   }
+///   fleet = {
+///     project = "my-project-number"
+///   }
+///   location = "us-west1"
+///   name     = "name"
+///   networking = {
+///     pod_address_cidr_blocks     = ["10.2.0.0/16"]
+///     service_address_cidr_blocks = ["10.1.0.0/16"]
+///     vpc_id                      = "vpc-00000000000000000"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   description = "A sample aws cluster"
+///   project     = "my-project-name"
+/// }
+/// resource "gcp_container_awsnodepool" "primary" {
+///   autoscaling = {
+///     max_node_count = 5
+///     min_node_count = 1
+///   }
+///   cluster = gcp_container_awscluster.primary.name
+///   config = {
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-nodepool"
+///     instance_type        = "t3.medium"
+///     labels = {
+///       "label-one" = "value-one"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "tag-one" = "value-one"
+///     }
+///     taints = [{
+///       "effect" = "PREFER_NO_SCHEDULE"
+///       "key"    = "taint-key"
+///       "value"  = "taint-value"
+///     }]
+///   }
+///   location = "us-west1"
+///   max_pods_constraint = {
+///     max_pods_per_node = 110
+///   }
+///   name      = "node-pool-name"
+///   subnet_id = "subnet-00000000000000000"
+///   version   = data.gcp_container_getawsversions.versions.valid_versions[0]
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   management = {
+///     auto_repair = true
+///   }
+///   kubelet_config = {
+///     cpu_manager_policy   = "none"
+///     cpu_cfs_quota        = true
+///     cpu_cfs_quota_period = "100ms"
+///     pod_pids_limit       = 1024
+///   }
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -635,6 +771,7 @@ import 'aws_node_pool_update_settings.dart';
 /// import com.pulumi.gcp.container.AwsCluster;
 /// import com.pulumi.gcp.container.AwsClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+/// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -653,11 +790,12 @@ import 'aws_node_pool_update_settings.dart';
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigRootVolumeArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
+/// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigTaintArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolKubeletConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1475,6 +1613,133 @@ import 'aws_node_pool_update_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getawsversions" "versions" {
+///   project  = "my-project-name"
+///   location = "us-west1"
+/// }
+///
+/// resource "gcp_container_awscluster" "primary" {
+///   authorization = {
+///     admin_users = [{
+///       "username" = "my@service-account.com"
+///     }]
+///   }
+///   aws_region = "my-aws-region"
+///   control_plane = {
+///     aws_services_authentication = {
+///       role_arn          = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"
+///       role_session_name = "my--1p-dev-session"
+///     }
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     database_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-controlplane"
+///     subnet_ids           = ["subnet-00000000000000000"]
+///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     instance_type        = "t3.medium"
+///     main_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "owner" = "my@service-account.com"
+///     }
+///   }
+///   fleet = {
+///     project = "my-project-number"
+///   }
+///   location = "us-west1"
+///   name     = "name"
+///   networking = {
+///     pod_address_cidr_blocks     = ["10.2.0.0/16"]
+///     service_address_cidr_blocks = ["10.1.0.0/16"]
+///     vpc_id                      = "vpc-00000000000000000"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   description = "A sample aws cluster"
+///   project     = "my-project-name"
+/// }
+/// resource "gcp_container_awsnodepool" "primary" {
+///   autoscaling = {
+///     max_node_count = 5
+///     min_node_count = 1
+///   }
+///   cluster = gcp_container_awscluster.primary.name
+///   config = {
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-nodepool"
+///     instance_type        = "t3.medium"
+///     labels = {
+///       "label-one" = "value-one"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "gp3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "tag-one" = "value-one"
+///     }
+///     taints = [{
+///       "effect" = "prefer_no_schedule"
+///       "key"    = "taint-key"
+///       "value"  = "taint-value"
+///     }]
+///   }
+///   location = "us-west1"
+///   max_pods_constraint = {
+///     max_pods_per_node = 110
+///   }
+///   name      = "node-pool-name"
+///   subnet_id = "subnet-00000000000000000"
+///   version   = data.gcp_container_getawsversions.versions.valid_versions[0]
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1486,6 +1751,7 @@ import 'aws_node_pool_update_settings.dart';
 /// import com.pulumi.gcp.container.AwsCluster;
 /// import com.pulumi.gcp.container.AwsClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+/// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -1504,9 +1770,10 @@ import 'aws_node_pool_update_settings.dart';
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigRootVolumeArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
+/// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigTaintArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2325,6 +2592,137 @@ import 'aws_node_pool_update_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getawsversions" "versions" {
+///   project  = "my-project-name"
+///   location = "us-west1"
+/// }
+///
+/// resource "gcp_container_awscluster" "primary" {
+///   authorization = {
+///     admin_users = [{
+///       "username" = "my@service-account.com"
+///     }]
+///   }
+///   aws_region = "my-aws-region"
+///   control_plane = {
+///     aws_services_authentication = {
+///       role_arn          = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"
+///       role_session_name = "my--1p-dev-session"
+///     }
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     database_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-controlplane"
+///     subnet_ids           = ["subnet-00000000000000000"]
+///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     instance_type        = "t3.medium"
+///     main_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "owner" = "my@service-account.com"
+///     }
+///   }
+///   fleet = {
+///     project = "my-project-number"
+///   }
+///   location = "us-west1"
+///   name     = "name"
+///   networking = {
+///     pod_address_cidr_blocks     = ["10.2.0.0/16"]
+///     service_address_cidr_blocks = ["10.1.0.0/16"]
+///     vpc_id                      = "vpc-00000000000000000"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   description = "A sample aws cluster"
+///   project     = "my-project-name"
+/// }
+/// resource "gcp_container_awsnodepool" "primary" {
+///   autoscaling = {
+///     max_node_count = 5
+///     min_node_count = 1
+///   }
+///   cluster = gcp_container_awscluster.primary.name
+///   config = {
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-nodepool"
+///     instance_type        = "t3.medium"
+///     labels = {
+///       "label-one" = "value-one"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "gp3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "tag-one" = "value-one"
+///     }
+///     taints = [{
+///       "effect" = "prefer_no_schedule"
+///       "key"    = "taint-key"
+///       "value"  = "taint-value"
+///     }]
+///     instance_placement = {
+///       tenancy = "dedicated"
+///     }
+///     image_type = "ubuntu"
+///   }
+///   location = "us-west1"
+///   max_pods_constraint = {
+///     max_pods_per_node = 110
+///   }
+///   name      = "node-pool-name"
+///   subnet_id = "subnet-00000000000000000"
+///   version   = data.gcp_container_getawsversions.versions.valid_versions[0]
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2336,6 +2734,7 @@ import 'aws_node_pool_update_settings.dart';
 /// import com.pulumi.gcp.container.AwsCluster;
 /// import com.pulumi.gcp.container.AwsClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+/// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -2354,10 +2753,11 @@ import 'aws_node_pool_update_settings.dart';
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigRootVolumeArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
+/// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigTaintArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolConfigInstancePlacementArgs;
 /// import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2598,31 +2998,23 @@ import 'aws_node_pool_update_settings.dart';
 /// ## Import
 ///
 /// NodePool can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{cluster}}/{{name}}`
-///
 /// * `{{location}}/{{cluster}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:container/awsNodePool:AwsNodePool default projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{location}}/{{cluster}}/{{name}}
 /// ```
 class AwsNodePool extends pulumi.CustomResource {
   /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Autoscaler configuration for this node pool.
   late final pulumi.Output<AwsNodePoolAutoscaling> autoscaling;
@@ -2632,6 +3024,14 @@ class AwsNodePool extends pulumi.CustomResource {
   late final pulumi.Output<AwsNodePoolConfig> config;
   /// Output only. The time at which this node pool was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
@@ -2681,6 +3081,7 @@ class AwsNodePool extends pulumi.CustomResource {
     cluster = registerOutput<String>('cluster');
     config = registerOutput<AwsNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolKubeletConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2726,6 +3127,7 @@ class AwsNodePool extends pulumi.CustomResource {
     cluster = registerOutput<String>('cluster');
     config = registerOutput<AwsNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolKubeletConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

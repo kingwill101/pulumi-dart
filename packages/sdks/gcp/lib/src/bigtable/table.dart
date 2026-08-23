@@ -256,6 +256,46 @@ import 'table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "tf-instance"
+///   clusters {
+///     cluster_id   = "tf-instance-cluster"
+///     zone         = "us-central1-b"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+/// }
+/// resource "gcp_bigtable_table" "table" {
+///   name          = "tf-table"
+///   instance_name = gcp_bigtable_instance.instance.name
+///   split_keys    = ["a", "b", "c"]
+///   column_families {
+///     family = "family-first"
+///   }
+///   column_families {
+///     family = "family-second"
+///     type   = "intsum"
+///   }
+///   column_families {
+///     family = "family-third"
+///     type   = "        {\n\\t\\t\\t\\t\\t\\\"aggregateType\\\": {\n\\t\\t\\t\\t\\t\\t\\\"max\\\": {},\n\\t\\t\\t\\t\\t\\t\\\"inputType\\\": {\n\\t\\t\\t\\t\\t\\t\\t\\\"int64Type\\\": {\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"encoding\\\": {\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"bigEndianBytes\\\": {}\n\\t\\t\\t\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t}\n"
+///   }
+///   change_stream_retention = "24h0m0s"
+///   automated_backup_policy = {
+///     retention_period = "72h0m0s"
+///     frequency        = "24h0m0s"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +309,8 @@ import 'table_state.dart';
 /// import com.pulumi.gcp.bigtable.TableArgs;
 /// import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
 /// import com.pulumi.gcp.bigtable.inputs.TableAutomatedBackupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -381,38 +421,38 @@ import 'table_state.dart';
 ///
 /// ## Import
 ///
-/// -&gt; **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
+/// &gt; **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `splitKeys`
 ///
 /// Bigtable Tables can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
-///
 /// * `{{project}}/{{instance_name}}/{{name}}`
-///
 /// * `{{instance_name}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
 /// ```
 class Table extends pulumi.CustomResource {
-  /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
-  ///
-  /// -----
+  /// Defines an automated backup policy for a table, specified by `retentionPeriod` and `frequency`. To create a table with automated backup disabled, either omit the `automatedBackupPolicy` argument or set both `retentionPeriod` and `frequency` to "0". To disable automated backup on an existing table that has automated backup enabled, set both `retentionPeriod` and `frequency` to "0". When updating an existing table, change the `retentionPeriod` or `frequency` by setting the respective property to a non-zero value. The policy also accepts an optional `locations` list to specify backup storage locations; if `locations` is omitted, the policy defaults to all clusters in the instance. If the `automatedBackupPolicy` argument is not provided on update, the resource's automated backup policy will not be modified.
   late final pulumi.Output<TableAutomatedBackupPolicy> automatedBackupPolicy;
   /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
   late final pulumi.Output<String> changeStreamRetention;
   /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> columnFamilies;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// -----
+  late final pulumi.Output<String> deletionPolicy;
   /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
   late final pulumi.Output<String> deletionProtection;
   /// The name of the Bigtable instance.
@@ -430,7 +470,7 @@ class Table extends pulumi.CustomResource {
   /// the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
   late final pulumi.Output<String?> rowKeySchema;
   /// A list of predefined keys to split the table on.
-  /// !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+  /// &gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
   /// to delete/recreate the entire `gcp.bigtable.Table` resource.
   late final pulumi.Output<List<String>?> splitKeys;
 
@@ -451,6 +491,7 @@ class Table extends pulumi.CustomResource {
     automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     changeStreamRetention = registerOutput<String>('changeStreamRetention');
     columnFamilies = registerOutput<List<Map<String, dynamic>>?>('columnFamilies');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
@@ -485,6 +526,7 @@ class Table extends pulumi.CustomResource {
     automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     changeStreamRetention = registerOutput<String>('changeStreamRetention');
     columnFamilies = registerOutput<List<Map<String, dynamic>>?>('columnFamilies');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');

@@ -42,4 +42,3 @@ class CertificateConfigX509ConfigKeyUsage {
     );
   }
 }
-

@@ -73,6 +73,20 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   account_id   = "service-account-id"
+///   display_name = "Service Account"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +95,8 @@ import 'account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.serviceaccount.Account;
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -111,19 +125,6 @@ import 'account_state.dart';
 ///       accountId: service-account-id
 ///       displayName: Service Account
 /// ```
-///
-///
-/// ## Import
-///
-/// Service accounts can be imported using their URI, e.g.
-///
-/// * `projects/{{project_id}}/serviceAccounts/{{email}}`
-///
-/// When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
-///
-/// ```sh
-/// $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
-/// ```
 class Account extends pulumi.CustomResource {
   /// The account id that is used to generate the service
   /// account email address and a stable unique id. It is unique within a project,
@@ -132,6 +133,13 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// If set to true, skip service account creation if a service account with the same email already exists.
   late final pulumi.Output<bool?> createIgnoreAlreadyExists;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A text description of the service account.
   /// Must be less than or equal to 256 UTF-8 bytes.
   late final pulumi.Output<String?> description;
@@ -171,6 +179,7 @@ class Account extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
@@ -206,6 +215,7 @@ class Account extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');

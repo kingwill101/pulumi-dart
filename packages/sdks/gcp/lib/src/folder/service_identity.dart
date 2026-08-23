@@ -4,6 +4,9 @@ import 'service_identity_state.dart';
 
 /// Generate folder service identity for a service.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// &gt; **Note:** Once created, this resource cannot be updated or destroyed. These
 /// actions are a no-op.
 ///
@@ -119,6 +122,29 @@ import 'service_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "my_folder" {
+///   parent       = "organizations/1234567"
+///   display_name = "my-folder"
+/// }
+/// resource "gcp_folder_serviceidentity" "osconfig_sa" {
+///   folder  = gcp_organizations_folder.my_folder.folder_id
+///   service = "osconfig.googleapis.com"
+/// }
+/// resource "gcp_folder_iammember" "admin" {
+///   folder = gcp_organizations_folder.my_folder.name
+///   role   = "roles/osconfig.serviceAgent"
+///   member = gcp_folder_serviceidentity.osconfig_sa.member
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +157,8 @@ import 'service_identity_state.dart';
 /// import com.pulumi.gcp.folder.ServiceIdentityArgs;
 /// import com.pulumi.gcp.folder.IAMMember;
 /// import com.pulumi.gcp.folder.IAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

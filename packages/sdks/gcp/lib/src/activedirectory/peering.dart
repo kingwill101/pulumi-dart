@@ -4,6 +4,9 @@ import 'peering_state.dart';
 
 /// Creates a Peering for Managed AD instance.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Peering, see:
 ///
 /// * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1beta1/projects.locations.global.peerings)
@@ -174,7 +177,7 @@ import 'peering_state.dart';
 /// 			},
 /// 			ReservedIpRange: pulumi.String("192.168.255.0/24"),
 /// 			AuthorizedNetworks: pulumi.StringArray{
-/// 				source_network.ID(),
+/// 				source_network.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -191,7 +194,7 @@ import 'peering_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+/// 		compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 /// 			Project: peered_project.ProjectId,
 /// 			Service: pulumi.String("compute.googleapis.com"),
 /// 		})
@@ -199,7 +202,7 @@ import 'peering_state.dart';
 /// 			return err
 /// 		}
 /// 		peered_network, err := compute.NewNetwork(ctx, "peered-network", &compute.NetworkArgs{
-/// 			Project: compute.Project,
+/// 			Project: compute2.Project,
 /// 			Name:    pulumi.String("ad-peered-network"),
 /// 		})
 /// 		if err != nil {
@@ -208,7 +211,7 @@ import 'peering_state.dart';
 /// 		_, err = activedirectory.NewPeering(ctx, "ad-domain-peering", &activedirectory.PeeringArgs{
 /// 			DomainResource:     ad_domain.Name,
 /// 			PeeringId:          pulumi.String("ad-domain-peering"),
-/// 			AuthorizedNetwork:  peered_network.ID(),
+/// 			AuthorizedNetwork:  peered_network.ID().ToIDOutput().ToStringOutput(),
 /// 			DeletionProtection: false,
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -219,6 +222,50 @@ import 'peering_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_activedirectory_peering" "ad-domain-peering" {
+///   domain_resource     = gcp_activedirectory_domain.ad-domain.name
+///   peering_id          = "ad-domain-peering"
+///   authorized_network  = gcp_compute_network.peered-network.id
+///   deletion_protection = false
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_activedirectory_domain" "ad-domain" {
+///   domain_name         = "ad.test.hashicorptest.com"
+///   locations           = ["us-central1"]
+///   reserved_ip_range   = "192.168.255.0/24"
+///   authorized_networks = [gcp_compute_network.source-network.id]
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_network" "peered-network" {
+///   project = gcp_projects_service.compute.project
+///   name    = "ad-peered-network"
+/// }
+/// resource "gcp_compute_network" "source-network" {
+///   name = "ad-network"
+/// }
+/// resource "gcp_projects_service" "compute" {
+///   project = gcp_organizations_project.peered-project.project_id
+///   service = "compute.googleapis.com"
+/// }
+/// resource "gcp_organizations_project" "peered-project" {
+///   name            = "my-peered-project"
+///   project_id      = "my-peered-project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
 /// }
 /// ```
 /// ```java
@@ -237,8 +284,8 @@ import 'peering_state.dart';
 /// import com.pulumi.gcp.projects.ServiceArgs;
 /// import com.pulumi.gcp.activedirectory.Peering;
 /// import com.pulumi.gcp.activedirectory.PeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,13 +390,20 @@ import 'peering_state.dart';
 class Peering extends pulumi.CustomResource {
   /// The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
   late final pulumi.Output<String> authorizedNetwork;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
   late final pulumi.Output<String> domainResource;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Resource labels that can contain user-provided metadata
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
   late final pulumi.Output<String> name;
@@ -381,6 +435,7 @@ class Peering extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domainResource = registerOutput<String>('domainResource');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -416,6 +471,7 @@ class Peering extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domainResource = registerOutput<String>('domainResource');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

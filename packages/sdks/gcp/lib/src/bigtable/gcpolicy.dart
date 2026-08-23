@@ -193,6 +193,38 @@ import 'gcpolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "tf-instance"
+///   clusters {
+///     cluster_id   = "tf-instance-cluster"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+/// }
+/// resource "gcp_bigtable_table" "table" {
+///   name          = "tf-table"
+///   instance_name = gcp_bigtable_instance.instance.name
+///   column_families {
+///     family = "name"
+///   }
+/// }
+/// resource "gcp_bigtable_gcpolicy" "policy" {
+///   instance_name   = gcp_bigtable_instance.instance.name
+///   table           = gcp_bigtable_table.table.name
+///   column_family   = "name"
+///   deletion_policy = "ABANDON"
+///   gc_rules        = "  {\n    \\\"rules\\\": [\n      {\n        \\\"max_age\\\": \\\"168h\\\"\n      }\n    ]\n  }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +239,8 @@ import 'gcpolicy_state.dart';
 /// import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
 /// import com.pulumi.gcp.bigtable.GCPolicy;
 /// import com.pulumi.gcp.bigtable.GCPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -404,6 +436,23 @@ import 'gcpolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_gcpolicy" "policy" {
+///   instance_name   = instance.name
+///   table           = table.name
+///   column_family   = "name"
+///   deletion_policy = "ABANDON"
+///   gc_rules        = "  {\n    \\\"mode\\\": \\\"union\\\",\n    \\\"rules\\\": [\n      {\n        \\\"max_age\\\": \\\"168h\\\"\n      },\n      {\n        \\\"max_version\\\": 10\n      }\n    ]\n  }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -412,8 +461,8 @@ import 'gcpolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigtable.GCPolicy;
 /// import com.pulumi.gcp.bigtable.GCPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,8 +475,8 @@ import 'gcpolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var policy = new GCPolicy("policy", GCPolicyArgs.builder()
-///             .instanceName(instance.name())
-///             .table(table.name())
+///             .instanceName(instance.get("name"))
+///             .table(table.get("name"))
 ///             .columnFamily("name")
 ///             .deletionPolicy("ABANDON")
 ///             .gcRules("""
@@ -657,7 +706,7 @@ import 'gcpolicy_state.dart';
 /// 		}
 /// 		table, err := bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
 /// 			Name:         pulumi.String("your-table"),
-/// 			InstanceName: instance.ID(),
+/// 			InstanceName: instance.ID().ToIDOutput().ToStringOutput(),
 /// 			ColumnFamilies: bigtable.TableColumnFamilyArray{
 /// 				&bigtable.TableColumnFamilyArgs{
 /// 					Family: pulumi.String("cf1"),
@@ -668,7 +717,7 @@ import 'gcpolicy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-/// 			InstanceName:   instance.ID(),
+/// 			InstanceName:   instance.ID().ToIDOutput().ToStringOutput(),
 /// 			Table:          table.Name,
 /// 			ColumnFamily:   pulumi.String("cf1"),
 /// 			DeletionPolicy: pulumi.String("ABANDON"),
@@ -700,6 +749,39 @@ import 'gcpolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "instance_name"
+///   clusters {
+///     cluster_id = "cid"
+///     zone       = "us-central1-b"
+///   }
+///   instance_type       = "DEVELOPMENT"
+///   deletion_protection = false
+/// }
+/// resource "gcp_bigtable_table" "table" {
+///   name          = "your-table"
+///   instance_name = gcp_bigtable_instance.instance.id
+///   column_families {
+///     family = "cf1"
+///   }
+/// }
+/// resource "gcp_bigtable_gcpolicy" "policy" {
+///   instance_name   = gcp_bigtable_instance.instance.id
+///   table           = gcp_bigtable_table.table.name
+///   column_family   = "cf1"
+///   deletion_policy = "ABANDON"
+///   gc_rules        = "  {\n    \\\"mode\\\": \\\"union\\\",\n    \\\"rules\\\": [\n      {\n        \\\"max_age\\\": \\\"10h\\\"\n      },\n      {\n        \\\"mode\\\": \\\"intersection\\\",\n        \\\"rules\\\": [\n          {\n            \\\"max_age\\\": \\\"2h\\\"\n          },\n          {\n            \\\"max_version\\\": 2\n          }\n        ]\n      }\n    ]\n  }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -714,8 +796,8 @@ import 'gcpolicy_state.dart';
 /// import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
 /// import com.pulumi.gcp.bigtable.GCPolicy;
 /// import com.pulumi.gcp.bigtable.GCPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -834,12 +916,17 @@ import 'gcpolicy_state.dart';
 class GCPolicy extends pulumi.CustomResource {
   /// The name of the column family.
   late final pulumi.Output<String> columnFamily;
-  /// The deletion policy for the GC policy.
-  /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+  /// The deletion policy for the GC policy. Setting ABANDON allows the resource
+  /// to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+  /// in a replicated instance.
   ///
-  /// Possible values are: `ABANDON`.
-  late final pulumi.Output<String?> deletionPolicy;
-  /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "DELETE" or "", deleting the resource is allowed.
+  ///
+  /// Possible values: PREVENT, ABANDON, DELETE.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
   late final pulumi.Output<String?> gcRules;
   /// Boolean for whether to allow ignoring warnings when updating the gc policy.
   /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -875,7 +962,7 @@ class GCPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     columnFamily = registerOutput<String>('columnFamily');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     gcRules = registerOutput<String?>('gcRules');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instanceName = registerOutput<String>('instanceName');
@@ -910,7 +997,7 @@ class GCPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     columnFamily = registerOutput<String>('columnFamily');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     gcRules = registerOutput<String?>('gcRules');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instanceName = registerOutput<String>('instanceName');

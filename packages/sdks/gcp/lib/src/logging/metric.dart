@@ -93,8 +93,8 @@ import 'metric_state.dart';
 ///     bucket_options={
 ///         "linear_buckets": {
 ///             "num_finite_buckets": 3,
-///             "width": 1,
-///             "offset": 1,
+///             "width": float(1),
+///             "offset": float(1),
 ///         },
 ///     })
 /// ```
@@ -143,8 +143,8 @@ import 'metric_state.dart';
 ///             LinearBuckets = new Gcp.Logging.Inputs.MetricBucketOptionsLinearBucketsArgs
 ///             {
 ///                 NumFiniteBuckets = 3,
-///                 Width = 1,
-///                 Offset = 1,
+///                 Width = 1.0,
+///                 Offset = 1.0,
 ///             },
 ///         },
 ///     });
@@ -202,6 +202,47 @@ import 'metric_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_metric" "logging_metric" {
+///   name   = "my-(custom)/metric"
+///   filter = "resource.type=gae_app AND severity>=ERROR"
+///   metric_descriptor = {
+///     metric_kind = "DELTA"
+///     value_type  = "DISTRIBUTION"
+///     unit        = "1"
+///     labels = [{
+///       "key"         = "mass"
+///       "valueType"   = "STRING"
+///       "description" = "amount of matter"
+///       }, {
+///       "key"         = "sku"
+///       "valueType"   = "INT64"
+///       "description" = "Identifying number for item"
+///     }]
+///     display_name = "My metric"
+///   }
+///   value_extractor = "EXTRACT(jsonPayload.request)"
+///   label_extractors = {
+///     "mass" = "EXTRACT(jsonPayload.request)"
+///     "sku"  = "EXTRACT(jsonPayload.id)"
+///   }
+///   bucket_options = {
+///     linear_buckets = {
+///       num_finite_buckets = 3
+///       width              = 1
+///       offset             = 1
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,10 +252,11 @@ import 'metric_state.dart';
 /// import com.pulumi.gcp.logging.Metric;
 /// import com.pulumi.gcp.logging.MetricArgs;
 /// import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
+/// import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorLabelArgs;
 /// import com.pulumi.gcp.logging.inputs.MetricBucketOptionsArgs;
 /// import com.pulumi.gcp.logging.inputs.MetricBucketOptionsLinearBucketsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -369,6 +411,24 @@ import 'metric_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_metric" "logging_metric" {
+///   name   = "my-(custom)/metric"
+///   filter = "resource.type=gae_app AND severity>=ERROR"
+///   metric_descriptor = {
+///     metric_kind = "DELTA"
+///     value_type  = "INT64"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -378,8 +438,8 @@ import 'metric_state.dart';
 /// import com.pulumi.gcp.logging.Metric;
 /// import com.pulumi.gcp.logging.MetricArgs;
 /// import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,6 +590,32 @@ import 'metric_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_metric" "logging_metric" {
+///   name   = "my-(custom)/metric"
+///   filter = "resource.type=gae_app AND severity>=ERROR"
+///   metric_descriptor = {
+///     metric_kind = "DELTA"
+///     value_type  = "INT64"
+///     labels = [{
+///       "key"         = "mass"
+///       "valueType"   = "STRING"
+///       "description" = "amount of matter"
+///     }]
+///   }
+///   label_extractors = {
+///     "mass" = "EXTRACT(jsonPayload.request)"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -539,8 +625,9 @@ import 'metric_state.dart';
 /// import com.pulumi.gcp.logging.Metric;
 /// import com.pulumi.gcp.logging.MetricArgs;
 /// import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorLabelArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -675,6 +762,26 @@ import 'metric_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_projectbucketconfig" "logging_metric" {
+///   location  = "global"
+///   project   = "my-project-name"
+///   bucket_id = "_Default"
+/// }
+/// resource "gcp_logging_metric" "logging_metric" {
+///   name        = "my-(custom)/metric"
+///   filter      = "resource.type=gae_app AND severity>=ERROR"
+///   bucket_name = gcp_logging_projectbucketconfig.logging_metric.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -685,8 +792,8 @@ import 'metric_state.dart';
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 /// import com.pulumi.gcp.logging.Metric;
 /// import com.pulumi.gcp.logging.MetricArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -810,6 +917,25 @@ import 'metric_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_metric" "logging_metric" {
+///   name   = "my-(custom)/metric"
+///   filter = "resource.type=gae_app AND severity>=ERROR"
+///   metric_descriptor = {
+///     metric_kind = "DELTA"
+///     value_type  = "INT64"
+///   }
+///   disabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -819,8 +945,8 @@ import 'metric_state.dart';
 /// import com.pulumi.gcp.logging.Metric;
 /// import com.pulumi.gcp.logging.MetricArgs;
 /// import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -865,16 +991,13 @@ import 'metric_state.dart';
 /// Metric can be imported using any of these accepted formats:
 ///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
 ///
 /// ```sh
-/// $ pulumi import gcp:logging/metric:Metric default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_logging_metric.default "{{project}} {{name}}"
 /// $ pulumi import gcp:logging/metric:Metric default {{name}}
 /// ```
 class Metric extends pulumi.CustomResource {
@@ -885,6 +1008,13 @@ class Metric extends pulumi.CustomResource {
   /// describes the bucket boundaries used to create a histogram of the extracted values.
   /// Structure is documented below.
   late final pulumi.Output<MetricBucketOptions?> bucketOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of this metric, which is used in documentation. The maximum length of the
   /// description is 8000 characters.
   late final pulumi.Output<String?> description;
@@ -904,7 +1034,7 @@ class Metric extends pulumi.CustomResource {
   /// number of log entries matching the filter expression.
   /// Structure is documented below.
   late final pulumi.Output<MetricMetricDescriptor> metricDescriptor;
-  /// The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+  /// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
   /// Metric identifiers are limited to 100 characters and can include only the following
   /// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
   /// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
@@ -938,6 +1068,7 @@ class Metric extends pulumi.CustomResource {
         ) {
     bucketName = registerOutput<String?>('bucketName');
     bucketOptions = registerOutput<MetricBucketOptions?>('bucketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricBucketOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     filter = registerOutput<String>('filter');
@@ -973,6 +1104,7 @@ class Metric extends pulumi.CustomResource {
         ) {
     bucketName = registerOutput<String?>('bucketName');
     bucketOptions = registerOutput<MetricBucketOptions?>('bucketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricBucketOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     filter = registerOutput<String>('filter');

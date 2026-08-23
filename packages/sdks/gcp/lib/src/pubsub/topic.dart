@@ -90,6 +90,23 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   message_retention_duration = "86600s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +115,8 @@ import 'topic_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.Topic;
 /// import com.pulumi.gcp.pubsub.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,20 +231,42 @@ import 'topic_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 /// 			Name:       pulumi.String("example-topic"),
-/// 			KmsKeyName: cryptoKey.ID(),
+/// 			KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name         = "example-topic"
+///   kms_key_name = gcp_kms_cryptokey.crypto_key.id
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "example-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "example-keyring"
+///   location = "global"
 /// }
 /// ```
 /// ```java
@@ -242,8 +281,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.kms.CryptoKeyArgs;
 /// import com.pulumi.gcp.pubsub.Topic;
 /// import com.pulumi.gcp.pubsub.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +409,23 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   message_storage_policy = {
+///     allowed_persistence_regions = ["europe-west3"]
+///     enforce_in_transit          = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -379,8 +435,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.Topic;
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicMessageStoragePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,6 +503,8 @@ import 'topic_state.dart';
 ///     schemaSettings: {
 ///         schema: "projects/my-project-name/schemas/example",
 ///         encoding: "JSON",
+///         firstRevisionId: example.revisionId,
+///         lastRevisionId: example.revisionId,
 ///     },
 /// }, {
 ///     dependsOn: [example],
@@ -479,6 +537,8 @@ import 'topic_state.dart';
 ///     schema_settings={
 ///         "schema": "projects/my-project-name/schemas/example",
 ///         "encoding": "JSON",
+///         "first_revision_id": example.revision_id,
+///         "last_revision_id": example.revision_id,
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
@@ -518,6 +578,8 @@ import 'topic_state.dart';
 ///         {
 ///             Schema = "projects/my-project-name/schemas/example",
 ///             Encoding = "JSON",
+///             FirstRevisionId = example.RevisionId,
+///             LastRevisionId = example.RevisionId,
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -564,8 +626,10 @@ import 'topic_state.dart';
 /// 		_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 /// 			Name: pulumi.String("example-topic"),
 /// 			SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
-/// 				Schema:   pulumi.String("projects/my-project-name/schemas/example"),
-/// 				Encoding: pulumi.String("JSON"),
+/// 				Schema:          pulumi.String("projects/my-project-name/schemas/example"),
+/// 				Encoding:        pulumi.String("JSON"),
+/// 				FirstRevisionId: example.RevisionId,
+/// 				LastRevisionId:  example.RevisionId,
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
@@ -575,6 +639,31 @@ import 'topic_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schema" "example" {
+///   name       = "example"
+///   type       = "AVRO"
+///   definition = "{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_pubsub_topic" "example" {
+///   depends_on = [gcp_pubsub_schema.example]
+///   name       = "example-topic"
+///   schema_settings = {
+///     schema            = "projects/my-project-name/schemas/example"
+///     encoding          = "JSON"
+///     first_revision_id = gcp_pubsub_schema.example.revision_id
+///     last_revision_id  = gcp_pubsub_schema.example.revision_id
+///   }
 /// }
 /// ```
 /// ```java
@@ -589,8 +678,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -628,6 +717,8 @@ import 'topic_state.dart';
 ///             .schemaSettings(TopicSchemaSettingsArgs.builder()
 ///                 .schema("projects/my-project-name/schemas/example")
 ///                 .encoding("JSON")
+///                 .firstRevisionId(example.revisionId())
+///                 .lastRevisionId(example.revisionId())
 ///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
@@ -666,6 +757,8 @@ import 'topic_state.dart';
 ///       schemaSettings:
 ///         schema: projects/my-project-name/schemas/example
 ///         encoding: JSON
+///         firstRevisionId: ${example.revisionId}
+///         lastRevisionId: ${example.revisionId}
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -759,6 +852,27 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   ingestion_data_source_settings = {
+///     aws_kinesis = {
+///       stream_arn          = "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name"
+///       consumer_arn        = "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111"
+///       aws_role_arn        = "arn:aws:iam::111111111111:role/fake-role-name"
+///       gcp_service_account = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -769,8 +883,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -921,6 +1035,32 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   ingestion_data_source_settings = {
+///     cloud_storage = {
+///       bucket = "test-bucket"
+///       text_format = {
+///         delimiter = " "
+///       }
+///       minimum_object_create_time = "2024-01-01T00:00:00Z"
+///       match_glob                 = "foo/**"
+///     }
+///     platform_logs_settings = {
+///       severity = "WARNING"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -933,8 +1073,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsCloudStorageArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1083,6 +1223,30 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   ingestion_data_source_settings = {
+///     azure_event_hubs = {
+///       resource_group      = "azure-ingestion-resource-group"
+///       namespace           = "azure-ingestion-namespace"
+///       event_hub           = "azure-ingestion-event-hub"
+///       client_id           = "aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123"
+///       tenant_id           = "0XXXXXXX-YYYY-HHHH-GGGG-123456789123"
+///       subscription_id     = "bXXXXXXX-YYYY-HHHH-GGGG-123456789123"
+///       gcp_service_account = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1093,8 +1257,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAzureEventHubsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1229,6 +1393,27 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   ingestion_data_source_settings = {
+///     aws_msk = {
+///       cluster_arn         = "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name"
+///       topic               = "test-topic"
+///       aws_role_arn        = "arn:aws:iam::111111111111:role/fake-role-name"
+///       gcp_service_account = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1239,8 +1424,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsMskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1373,6 +1558,28 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   ingestion_data_source_settings = {
+///     confluent_cloud = {
+///       bootstrap_server    = "test.us-west2.gcp.confluent.cloud:1111"
+///       cluster_id          = "1234"
+///       topic               = "test-topic"
+///       identity_pool_id    = "test-identity-pool-id"
+///       gcp_service_account = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1383,8 +1590,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsConfluentCloudArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1524,6 +1731,25 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   message_transforms {
+///     javascript_udf = {
+///       function_name = "isYearEven"
+///       code          = "function isYearEven(message, metadata) {\n  const data = JSON.parse(message.data);\n  return message.year %2 === 0;\n}\n"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1534,8 +1760,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformJavascriptUdfArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1759,6 +1985,38 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name = "example-topic"
+///   message_transforms {
+///     javascript_udf = {
+///       function_name = "redactSSN"
+///       code          = "function redactSSN(message, metadata) {\n  const data = JSON.parse(message.data);\n  delete data['ssn'];\n  message.data = JSON.stringify(data);\n  return message;\n}\n"
+///     }
+///   }
+///   message_transforms {
+///     javascript_udf = {
+///       function_name = "otherFunc"
+///       code          = "function otherFunc(message, metadata) {\n  return null;\n}\n"
+///     }
+///   }
+///   message_transforms {
+///     disabled = true
+///     javascript_udf = {
+///       function_name = "someSMTWeDisabled"
+///       code          = "..."
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1769,8 +2027,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformJavascriptUdfArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1966,7 +2224,7 @@ import 'topic_state.dart';
 /// 			return err
 /// 		}
 /// 		tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-/// 			Parent:    tagKey.ID(),
+/// 			Parent:    tagKey.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName: pulumi.String("tag_value"),
 /// 		})
 /// 		if err != nil {
@@ -1976,13 +2234,42 @@ import 'topic_state.dart';
 /// 			Parent: example.Name.ApplyT(func(name string) (string, error) {
 /// 				return fmt.Sprintf("//pubsub.googleapis.com/projects/%v/topics/%v", project.Number, name), nil
 /// 			}).(pulumi.StringOutput),
-/// 			TagValue: tagValue.ID(),
+/// 			TagValue: tagValue.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_topic" "example" {
+///   name    = "example-topic"
+///   project = data.gcp_organizations_getproject.project.project_id
+/// }
+/// resource "gcp_tags_tagkey" "tag_key" {
+///   parent     = data.gcp_organizations_getproject.project.id
+///   short_name = "tag_key"
+/// }
+/// resource "gcp_tags_tagvalue" "tag_value" {
+///   parent     = gcp_tags_tagkey.tag_key.id
+///   short_name = "tag_value"
+/// }
+/// resource "gcp_tags_tagbinding" "binding" {
+///   parent    ="//pubsub.googleapis.com/projects/${data.gcp_organizations_getproject.project.number}/topics/${gcp_pubsub_topic.example.name}"
+///   tag_value = gcp_tags_tagvalue.tag_value.id
 /// }
 /// ```
 /// ```java
@@ -2001,8 +2288,8 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.tags.TagValueArgs;
 /// import com.pulumi.gcp.tags.TagBinding;
 /// import com.pulumi.gcp.tags.TagBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2071,31 +2358,373 @@ import 'topic_state.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Pubsub Topic Ai Inference
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as time from "@pulumiverse/time";
+///
+/// const geminiQueryServiceAccount = new gcp.serviceaccount.Account("gemini_query_service_account", {
+///     accountId: "example-sa",
+///     displayName: "Gemini Query Service Account",
+/// });
+/// const geminiInferenceGet = new gcp.projects.IAMMember("gemini_inference_get", {
+///     project: "my-project-name",
+///     role: "roles/aiplatform.user",
+///     member: pulumi.interpolate`serviceAccount:${geminiQueryServiceAccount.email}`,
+/// });
+/// const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+///     dependsOn: [geminiInferenceGet],
+/// });
+/// const example = new gcp.pubsub.Topic("example", {
+///     name: "example-topic",
+///     messageTransforms: [{
+///         aiInference: {
+///             endpoint: "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///             unstructuredInference: {
+///                 parameters: {
+///                     max_tokens: "25000",
+///                 },
+///             },
+///             serviceAccountEmail: geminiQueryServiceAccount.email,
+///         },
+///     }],
+/// }, {
+///     dependsOn: [wait120Seconds],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumiverse_time as time
+///
+/// gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
+///     account_id="example-sa",
+///     display_name="Gemini Query Service Account")
+/// gemini_inference_get = gcp.projects.IAMMember("gemini_inference_get",
+///     project="my-project-name",
+///     role="roles/aiplatform.user",
+///     member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+/// wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+/// opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
+/// example = gcp.pubsub.Topic("example",
+///     name="example-topic",
+///     message_transforms=[{
+///         "ai_inference": {
+///             "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///             "unstructured_inference": {
+///                 "parameters": {
+///                     "max_tokens": "25000",
+///                 },
+///             },
+///             "service_account_email": gemini_query_service_account.email,
+///         },
+///     }],
+///     opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Time = Pulumiverse.Time;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var geminiQueryServiceAccount = new Gcp.ServiceAccount.Account("gemini_query_service_account", new()
+///     {
+///         AccountId = "example-sa",
+///         DisplayName = "Gemini Query Service Account",
+///     });
+///
+///     var geminiInferenceGet = new Gcp.Projects.IAMMember("gemini_inference_get", new()
+///     {
+///         Project = "my-project-name",
+///         Role = "roles/aiplatform.user",
+///         Member = geminiQueryServiceAccount.Email.Apply(email => $"serviceAccount:{email}"),
+///     });
+///
+///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+///     {
+///         CreateDuration = "120s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             geminiInferenceGet,
+///         },
+///     });
+///
+///     var example = new Gcp.PubSub.Topic("example", new()
+///     {
+///         Name = "example-topic",
+///         MessageTransforms = new[]
+///         {
+///             new Gcp.PubSub.Inputs.TopicMessageTransformArgs
+///             {
+///                 AiInference = new Gcp.PubSub.Inputs.TopicMessageTransformAiInferenceArgs
+///                 {
+///                     Endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                     UnstructuredInference = new Gcp.PubSub.Inputs.TopicMessageTransformAiInferenceUnstructuredInferenceArgs
+///                     {
+///                         Parameters =
+///                         {
+///                             { "max_tokens", "25000" },
+///                         },
+///                     },
+///                     ServiceAccountEmail = geminiQueryServiceAccount.Email,
+///                 },
+///             },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             wait120Seconds,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		geminiQueryServiceAccount, err := serviceaccount.NewAccount(ctx, "gemini_query_service_account", &serviceaccount.AccountArgs{
+/// 			AccountId:   pulumi.String("example-sa"),
+/// 			DisplayName: pulumi.String("Gemini Query Service Account"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		geminiInferenceGet, err := projects.NewIAMMember(ctx, "gemini_inference_get", &projects.IAMMemberArgs{
+/// 			Project: pulumi.String("my-project-name"),
+/// 			Role:    pulumi.String("roles/aiplatform.user"),
+/// 			Member: geminiQueryServiceAccount.Email.ApplyT(func(email string) (string, error) {
+/// 				return fmt.Sprintf("serviceAccount:%v", email), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("120s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			geminiInferenceGet,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+/// 			Name: pulumi.String("example-topic"),
+/// 			MessageTransforms: pubsub.TopicMessageTransformArray{
+/// 				&pubsub.TopicMessageTransformArgs{
+/// 					AiInference: &pubsub.TopicMessageTransformAiInferenceArgs{
+/// 						Endpoint: pulumi.String("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"),
+/// 						UnstructuredInference: &pubsub.TopicMessageTransformAiInferenceUnstructuredInferenceArgs{
+/// 							Parameters: pulumi.StringMap{
+/// 								"max_tokens": pulumi.String("25000"),
+/// 							},
+/// 						},
+/// 						ServiceAccountEmail: geminiQueryServiceAccount.Email,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			wait120Seconds,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "gemini_query_service_account" {
+///   account_id   = "example-sa"
+///   display_name = "Gemini Query Service Account"
+/// }
+/// resource "gcp_projects_iammember" "gemini_inference_get" {
+///   project = "my-project-name"
+///   role    = "roles/aiplatform.user"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.gemini_query_service_account.email}"
+/// }
+/// resource "time_sleep" "wait_120_seconds" {
+///   depends_on      = [gcp_projects_iammember.gemini_inference_get]
+///   create_duration = "120s"
+/// }
+/// resource "gcp_pubsub_topic" "example" {
+///   depends_on = [time_sleep.wait_120_seconds]
+///   name       = "example-topic"
+///   message_transforms {
+///     ai_inference = {
+///       endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///       unstructured_inference = {
+///         parameters = {
+///           "max_tokens" = 25000
+///         }
+///       }
+///       service_account_email = gcp_serviceaccount_account.gemini_query_service_account.email
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.projects.IAMMember;
+/// import com.pulumi.gcp.projects.IAMMemberArgs;
+/// import com.pulumiverse.time.Sleep;
+/// import com.pulumiverse.time.SleepArgs;
+/// import com.pulumi.gcp.pubsub.Topic;
+/// import com.pulumi.gcp.pubsub.TopicArgs;
+/// import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
+/// import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformAiInferenceArgs;
+/// import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformAiInferenceUnstructuredInferenceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var geminiQueryServiceAccount = new Account("geminiQueryServiceAccount", AccountArgs.builder()
+///             .accountId("example-sa")
+///             .displayName("Gemini Query Service Account")
+///             .build());
+///
+///         var geminiInferenceGet = new IAMMember("geminiInferenceGet", IAMMemberArgs.builder()
+///             .project("my-project-name")
+///             .role("roles/aiplatform.user")
+///             .member(geminiQueryServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+///             .build());
+///
+///         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+///             .createDuration("120s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(geminiInferenceGet)
+///                 .build());
+///
+///         var example = new Topic("example", TopicArgs.builder()
+///             .name("example-topic")
+///             .messageTransforms(TopicMessageTransformArgs.builder()
+///                 .aiInference(TopicMessageTransformAiInferenceArgs.builder()
+///                     .endpoint("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash")
+///                     .unstructuredInference(TopicMessageTransformAiInferenceUnstructuredInferenceArgs.builder()
+///                         .parameters(Map.of("max_tokens", "25000"))
+///                         .build())
+///                     .serviceAccountEmail(geminiQueryServiceAccount.email())
+///                     .build())
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(wait120Seconds)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   geminiQueryServiceAccount:
+///     type: gcp:serviceaccount:Account
+///     name: gemini_query_service_account
+///     properties:
+///       accountId: example-sa
+///       displayName: Gemini Query Service Account
+///   geminiInferenceGet:
+///     type: gcp:projects:IAMMember
+///     name: gemini_inference_get
+///     properties:
+///       project: my-project-name
+///       role: roles/aiplatform.user
+///       member: serviceAccount:${geminiQueryServiceAccount.email}
+///   wait120Seconds:
+///     type: time:Sleep
+///     name: wait_120_seconds
+///     properties:
+///       createDuration: 120s
+///     options:
+///       dependsOn:
+///         - ${geminiInferenceGet}
+///   example:
+///     type: gcp:pubsub:Topic
+///     properties:
+///       name: example-topic
+///       messageTransforms:
+///         - aiInference:
+///             endpoint: projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///             unstructuredInference:
+///               parameters:
+///                 max_tokens: 25000
+///             serviceAccountEmail: ${geminiQueryServiceAccount.email}
+///     options:
+///       dependsOn:
+///         - ${wait120Seconds}
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Topic can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/topics/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/topic:Topic default {{name}}
 /// ```
 class Topic extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Settings for ingestion from a data source into this topic.
@@ -2110,7 +2739,7 @@ class Topic extends pulumi.CustomResource {
   /// A set of key/value label pairs to assign to this Topic.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Indicates the minimum duration to retain a message after it is published
   /// to the topic. If this field is set, messages published to the topic in
@@ -2165,6 +2794,7 @@ class Topic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ingestionDataSourceSettings = registerOutput<TopicIngestionDataSourceSettings?>('ingestionDataSourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIngestionDataSourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
@@ -2202,6 +2832,7 @@ class Topic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ingestionDataSourceSettings = registerOutput<TopicIngestionDataSourceSettings?>('ingestionDataSourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIngestionDataSourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');

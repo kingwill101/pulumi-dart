@@ -4,7 +4,6 @@ import 'key_ring_state.dart';
 
 /// A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
 ///
-///
 /// &gt; **Note:** KeyRings cannot be deleted from Google Cloud Platform.
 /// Destroying a provider-managed KeyRing will remove it from state but
 /// *will not delete the resource from the project.*
@@ -76,6 +75,20 @@ import 'key_ring_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "example-keyring" {
+///   name     = "keyring-example"
+///   location = "global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +97,8 @@ import 'key_ring_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KeyRing;
 /// import com.pulumi.gcp.kms.KeyRingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -120,22 +133,15 @@ import 'key_ring_state.dart';
 /// KeyRing can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/keyRings/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
 /// ```
 class KeyRing extends pulumi.CustomResource {

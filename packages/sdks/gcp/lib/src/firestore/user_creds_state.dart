@@ -9,6 +9,13 @@ class UserCredsState {
   final pulumi.Input<String>? createTime;
   /// The Firestore database ID.
   final pulumi.Input<String>? database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The ID to use for the user creds, which will become the final component
   /// of the user cred's resource name.
   /// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -32,6 +39,7 @@ class UserCredsState {
   /// Creates a new [UserCredsState].
   /// [createTime] The timestamp at which these user creds were created.
   /// [database] The Firestore database ID.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] The ID to use for the user creds, which will become the final component
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceIdentities] Describes the Resource Identity principal.
@@ -41,6 +49,7 @@ class UserCredsState {
   const UserCredsState({
     this.createTime,
     this.database,
+    this.deletionPolicy,
     this.name,
     this.project,
     this.resourceIdentities,
@@ -53,6 +62,7 @@ class UserCredsState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'database': ?database,
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'project': ?project,
       'resourceIdentities': ?pulumi.Input.mapOptionalInputValue<List<UserCredsResourceIdentity>, List<Map<String, dynamic>>>(resourceIdentities, (value) => pulumi.Input.encodeList<UserCredsResourceIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -66,6 +76,7 @@ class UserCredsState {
     return UserCredsState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceIdentities: (() { final guardedValue = map['resourceIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserCredsResourceIdentity>(guardedValue, (value) => UserCredsResourceIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -75,4 +86,3 @@ class UserCredsState {
     );
   }
 }
-

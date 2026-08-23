@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_target_type_args.dart';
 import 'custom_target_type_custom_actions.dart';
 import 'custom_target_type_state.dart';
+import 'custom_target_type_tasks.dart';
 
 /// A Cloud Deploy `CustomTargetType` defines a type of custom target that can be referenced in a
 /// Cloud Deploy `Target` in order to facilitate deploying to other systems besides the supported runtimes.
@@ -128,6 +129,33 @@ import 'custom_target_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+///   location    = "us-central1"
+///   name        = "my-custom-target-type"
+///   description = "My custom target type"
+///   annotations = {
+///     "my_first_annotation"  = "example-annotation-1"
+///     "my_second_annotation" = "example-annotation-2"
+///   }
+///   labels = {
+///     "my_first_label"  = "example-label-1"
+///     "my_second_label" = "example-label-2"
+///   }
+///   custom_actions = {
+///     render_action = "renderAction"
+///     deploy_action = "deployAction"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +165,8 @@ import 'custom_target_type_state.dart';
 /// import com.pulumi.gcp.clouddeploy.CustomTargetType;
 /// import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,6 +341,33 @@ import 'custom_target_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+///   location    = "us-central1"
+///   name        = "my-custom-target-type"
+///   description = "My custom target type"
+///   custom_actions = {
+///     render_action = "renderAction"
+///     deploy_action = "deployAction"
+///     include_skaffold_modules = [{
+///       "configs" = ["my-config"]
+///       "git" = {
+///         "repo" = "http://github.com/example/example-repo.git"
+///         "path" = "configs/skaffold.yaml"
+///         "ref"  = "main"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +377,10 @@ import 'custom_target_type_state.dart';
 /// import com.pulumi.gcp.clouddeploy.CustomTargetType;
 /// import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -495,6 +552,32 @@ import 'custom_target_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+///   location    = "us-central1"
+///   name        = "my-custom-target-type"
+///   description = "My custom target type"
+///   custom_actions = {
+///     render_action = "renderAction"
+///     deploy_action = "deployAction"
+///     include_skaffold_modules = [{
+///       "configs" = ["my-config"]
+///       "googleCloudStorage" = {
+///         "source" = "gs://example-bucket/dir/configs/*"
+///         "path"   = "skaffold.yaml"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -504,8 +587,10 @@ import 'custom_target_type_state.dart';
 /// import com.pulumi.gcp.clouddeploy.CustomTargetType;
 /// import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -679,6 +764,33 @@ import 'custom_target_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+///   location    = "us-central1"
+///   name        = "my-custom-target-type"
+///   description = "My custom target type"
+///   custom_actions = {
+///     render_action = "renderAction"
+///     deploy_action = "deployAction"
+///     include_skaffold_modules = [{
+///       "configs" = ["my-config"]
+///       "googleCloudBuildRepo" = {
+///         "repository" = "projects/example/locations/us-central1/connections/git/repositories/example-repo"
+///         "path"       = "configs/skaffold.yaml"
+///         "ref"        = "main"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -688,8 +800,10 @@ import 'custom_target_type_state.dart';
 /// import com.pulumi.gcp.clouddeploy.CustomTargetType;
 /// import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -742,34 +856,233 @@ import 'custom_target_type_state.dart';
 ///               ref: main
 /// ```
 ///
+/// ### Clouddeploy Custom Target Type Tasks
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const custom_target_type = new gcp.clouddeploy.CustomTargetType("custom-target-type", {
+///     location: "us-central1",
+///     name: "my-custom-target-type",
+///     description: "My custom target type",
+///     tasks: {
+///         render: {
+///             container: {
+///                 image: "gcr.io/my-project/my-render-image",
+///             },
+///         },
+///         deploy: {
+///             container: {
+///                 image: "gcr.io/my-project/my-deploy-image",
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// custom_target_type = gcp.clouddeploy.CustomTargetType("custom-target-type",
+///     location="us-central1",
+///     name="my-custom-target-type",
+///     description="My custom target type",
+///     tasks={
+///         "render": {
+///             "container": {
+///                 "image": "gcr.io/my-project/my-render-image",
+///             },
+///         },
+///         "deploy": {
+///             "container": {
+///                 "image": "gcr.io/my-project/my-deploy-image",
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var custom_target_type = new Gcp.CloudDeploy.CustomTargetType("custom-target-type", new()
+///     {
+///         Location = "us-central1",
+///         Name = "my-custom-target-type",
+///         Description = "My custom target type",
+///         Tasks = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksArgs
+///         {
+///             Render = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksRenderArgs
+///             {
+///                 Container = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksRenderContainerArgs
+///                 {
+///                     Image = "gcr.io/my-project/my-render-image",
+///                 },
+///             },
+///             Deploy = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksDeployArgs
+///             {
+///                 Container = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksDeployContainerArgs
+///                 {
+///                     Image = "gcr.io/my-project/my-deploy-image",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := clouddeploy.NewCustomTargetType(ctx, "custom-target-type", &clouddeploy.CustomTargetTypeArgs{
+/// 			Location:    pulumi.String("us-central1"),
+/// 			Name:        pulumi.String("my-custom-target-type"),
+/// 			Description: pulumi.String("My custom target type"),
+/// 			Tasks: &clouddeploy.CustomTargetTypeTasksArgs{
+/// 				Render: &clouddeploy.CustomTargetTypeTasksRenderArgs{
+/// 					Container: &clouddeploy.CustomTargetTypeTasksRenderContainerArgs{
+/// 						Image: pulumi.String("gcr.io/my-project/my-render-image"),
+/// 					},
+/// 				},
+/// 				Deploy: &clouddeploy.CustomTargetTypeTasksDeployArgs{
+/// 					Container: &clouddeploy.CustomTargetTypeTasksDeployContainerArgs{
+/// 						Image: pulumi.String("gcr.io/my-project/my-deploy-image"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+///   location    = "us-central1"
+///   name        = "my-custom-target-type"
+///   description = "My custom target type"
+///   tasks = {
+///     render = {
+///       container = {
+///         image = "gcr.io/my-project/my-render-image"
+///       }
+///     }
+///     deploy = {
+///       container = {
+///         image = "gcr.io/my-project/my-deploy-image"
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.clouddeploy.CustomTargetType;
+/// import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksRenderArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksRenderContainerArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksDeployArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksDeployContainerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()
+///             .location("us-central1")
+///             .name("my-custom-target-type")
+///             .description("My custom target type")
+///             .tasks(CustomTargetTypeTasksArgs.builder()
+///                 .render(CustomTargetTypeTasksRenderArgs.builder()
+///                     .container(CustomTargetTypeTasksRenderContainerArgs.builder()
+///                         .image("gcr.io/my-project/my-render-image")
+///                         .build())
+///                     .build())
+///                 .deploy(CustomTargetTypeTasksDeployArgs.builder()
+///                     .container(CustomTargetTypeTasksDeployContainerArgs.builder()
+///                         .image("gcr.io/my-project/my-deploy-image")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   custom-target-type:
+///     type: gcp:clouddeploy:CustomTargetType
+///     properties:
+///       location: us-central1
+///       name: my-custom-target-type
+///       description: My custom target type
+///       tasks:
+///         render:
+///           container:
+///             image: gcr.io/my-project/my-render-image
+///         deploy:
+///           container:
+///             image: gcr.io/my-project/my-deploy-image
+/// ```
+///
 ///
 /// ## Import
 ///
 /// CustomTargetType can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CustomTargetType can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{location}}/{{name}}
 /// ```
 class CustomTargetType extends pulumi.CustomResource {
   /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Time at which the `CustomTargetType` was created.
   late final pulumi.Output<String> createTime;
@@ -778,8 +1091,16 @@ class CustomTargetType extends pulumi.CustomResource {
   late final pulumi.Output<CustomTargetTypeCustomActions?> customActions;
   /// Resource id of the `CustomTargetType`.
   late final pulumi.Output<String> customTargetTypeId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the `CustomTargetType`. Max length is 255 characters.
   late final pulumi.Output<String?> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -787,7 +1108,7 @@ class CustomTargetType extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the source.
   late final pulumi.Output<String> location;
@@ -799,6 +1120,9 @@ class CustomTargetType extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// Configures render and deploy for the `CustomTargetType` using tasks.
+  /// Structure is documented below.
+  late final pulumi.Output<CustomTargetTypeTasks?> tasks;
   /// Unique identifier of the `CustomTargetType`.
   late final pulumi.Output<String> uid;
   /// Time at which the `CustomTargetType` was updated.
@@ -822,6 +1146,7 @@ class CustomTargetType extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customActions = registerOutput<CustomTargetTypeCustomActions?>('customActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomTargetTypeCustomActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customTargetTypeId = registerOutput<String>('customTargetTypeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -831,6 +1156,7 @@ class CustomTargetType extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    tasks = registerOutput<CustomTargetTypeTasks?>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomTargetTypeTasks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -862,6 +1188,7 @@ class CustomTargetType extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customActions = registerOutput<CustomTargetTypeCustomActions?>('customActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomTargetTypeCustomActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customTargetTypeId = registerOutput<String>('customTargetTypeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -871,6 +1198,7 @@ class CustomTargetType extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    tasks = registerOutput<CustomTargetTypeTasks?>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomTargetTypeTasks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

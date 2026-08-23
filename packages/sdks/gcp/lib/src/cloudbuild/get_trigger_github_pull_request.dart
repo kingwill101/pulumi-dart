@@ -7,13 +7,13 @@ class GetTriggerGithubPullRequest {
   final pulumi.Input<String> branch;
   /// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
   final pulumi.Input<String> commentControl;
-  /// If true, branches that do NOT match the git_ref will trigger a build.
+  /// If true, branches that do NOT match the gitRef will trigger a build.
   final pulumi.Input<bool> invertRegex;
 
   /// Creates a new [GetTriggerGithubPullRequest].
   /// [branch] Regex of branches to match.
   /// [commentControl] Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
-  /// [invertRegex] If true, branches that do NOT match the git_ref will trigger a build.
+  /// [invertRegex] If true, branches that do NOT match the gitRef will trigger a build.
   const GetTriggerGithubPullRequest({
     required this.branch,
     required this.commentControl,
@@ -36,4 +36,3 @@ class GetTriggerGithubPullRequest {
     );
   }
 }
-

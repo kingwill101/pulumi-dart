@@ -10,7 +10,7 @@ class GetClusterPrivateClusterConfig {
   final pulumi.Input<bool> enablePrivateNodes;
   /// Controls cluster master global access settings.
   final pulumi.Input<List<GetClusterPrivateClusterConfigMasterGlobalAccessConfig>> masterGlobalAccessConfigs;
-  /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true.
+  /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
   final pulumi.Input<String> masterIpv4CidrBlock;
   /// The name of the peering between this cluster and the Google owned VPC.
   final pulumi.Input<String> peeringName;
@@ -25,7 +25,7 @@ class GetClusterPrivateClusterConfig {
   /// [enablePrivateEndpoint] When true, the cluster's private endpoint is used as the cluster endpoint and access through the public endpoint is disabled. When false, either endpoint can be used.
   /// [enablePrivateNodes] Enables the private cluster feature, creating a private endpoint on the cluster. In a private cluster, nodes only have RFC 1918 private addresses and communicate with the master's private endpoint via private networking.
   /// [masterGlobalAccessConfigs] Controls cluster master global access settings.
-  /// [masterIpv4CidrBlock] The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true.
+  /// [masterIpv4CidrBlock] The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
   /// [peeringName] The name of the peering between this cluster and the Google owned VPC.
   /// [privateEndpoint] The internal IP address of this cluster's master endpoint.
   /// [privateEndpointSubnetwork] Subnetwork in cluster's network where master's endpoint will be provisioned.
@@ -67,4 +67,3 @@ class GetClusterPrivateClusterConfig {
     );
   }
 }
-

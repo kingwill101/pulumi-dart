@@ -162,6 +162,39 @@ import 'code_tools_setting_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gemini_codetoolssetting" "example" {
+///   code_tools_setting_id = "ls-tf1"
+///   location              = "global"
+///   labels = {
+///     "my_key" = "my_value"
+///   }
+///   enabled_tools {
+///     handle            = "my_handle"
+///     tool              = "my_tool"
+///     account_connector = "my_con"
+///     configs {
+///       key   = "my_key"
+///       value = "my_value"
+///     }
+///     uri_override = "my_uri_override"
+///   }
+/// }
+/// resource "gcp_gemini_codetoolssettingbinding" "example" {
+///   code_tools_setting_id = basic.codeToolsSettingId
+///   setting_binding_id    = "ls-tf1b1"
+///   location              = "global"
+///   target                = "projects/980109375338"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,10 +204,11 @@ import 'code_tools_setting_binding_state.dart';
 /// import com.pulumi.gcp.gemini.CodeToolsSetting;
 /// import com.pulumi.gcp.gemini.CodeToolsSettingArgs;
 /// import com.pulumi.gcp.gemini.inputs.CodeToolsSettingEnabledToolArgs;
+/// import com.pulumi.gcp.gemini.inputs.CodeToolsSettingEnabledToolConfigArgs;
 /// import com.pulumi.gcp.gemini.CodeToolsSettingBinding;
 /// import com.pulumi.gcp.gemini.CodeToolsSettingBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,7 +237,7 @@ import 'code_tools_setting_binding_state.dart';
 ///             .build());
 ///
 ///         var exampleCodeToolsSettingBinding = new CodeToolsSettingBinding("exampleCodeToolsSettingBinding", CodeToolsSettingBindingArgs.builder()
-///             .codeToolsSettingId(basic.codeToolsSettingId())
+///             .codeToolsSettingId(basic.get("codeToolsSettingId"))
 ///             .settingBindingId("ls-tf1b1")
 ///             .location("global")
 ///             .target("projects/980109375338")
@@ -245,22 +279,15 @@ import 'code_tools_setting_binding_state.dart';
 /// CodeToolsSettingBinding can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}`
-///
 /// * `{{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
-///
 /// * `{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}`
+///
 ///
 /// When using the `pulumi import` command, CodeToolsSettingBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}/settingBindings/{{setting_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{project}}/{{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding default {{location}}/{{code_tools_setting_id}}/{{setting_binding_id}}
 /// ```
 class CodeToolsSettingBinding extends pulumi.CustomResource {
@@ -268,11 +295,18 @@ class CodeToolsSettingBinding extends pulumi.CustomResource {
   late final pulumi.Output<String> codeToolsSettingId;
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String?> location;
@@ -311,6 +345,7 @@ class CodeToolsSettingBinding extends pulumi.CustomResource {
         ) {
     codeToolsSettingId = registerOutput<String>('codeToolsSettingId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
@@ -348,6 +383,7 @@ class CodeToolsSettingBinding extends pulumi.CustomResource {
         ) {
     codeToolsSettingId = registerOutput<String>('codeToolsSettingId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');

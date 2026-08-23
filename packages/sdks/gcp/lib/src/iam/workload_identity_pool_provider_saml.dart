@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadIdentityPoolProviderSaml {
   /// SAML Identity provider configuration metadata xml doc.
   ///
-  /// &lt;a name="nested_x509"&gt;&lt;/a&gt;The `x509` block supports:
+  /// &lt;a name="nestedX509"&gt;&lt;/a&gt;The `x509` block supports:
   final pulumi.Input<String> idpMetadataXml;
 
   /// Creates a new [WorkloadIdentityPoolProviderSaml].
@@ -26,4 +26,3 @@ class WorkloadIdentityPoolProviderSaml {
     );
   }
 }
-

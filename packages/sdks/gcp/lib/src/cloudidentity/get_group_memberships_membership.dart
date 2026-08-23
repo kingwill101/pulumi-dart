@@ -10,6 +10,13 @@ class GetGroupMembershipsMembership {
   final pulumi.Input<bool> createIgnoreAlreadyExists;
   /// The time when the Membership was created.
   final pulumi.Input<String> createTime;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
   /// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
   final pulumi.Input<String> group;
   /// EntityKey of the member.  Structure is documented below.
@@ -28,6 +35,7 @@ class GetGroupMembershipsMembership {
   /// Creates a new [GetGroupMembershipsMembership].
   /// [createIgnoreAlreadyExists] If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
   /// [createTime] The time when the Membership was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [group] The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
   /// [memberKeys] EntityKey of the member.  Structure is documented below.
   /// [name] The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
@@ -38,6 +46,7 @@ class GetGroupMembershipsMembership {
   const GetGroupMembershipsMembership({
     required this.createIgnoreAlreadyExists,
     required this.createTime,
+    required this.deletionPolicy,
     required this.group,
     required this.memberKeys,
     required this.name,
@@ -51,6 +60,7 @@ class GetGroupMembershipsMembership {
     return <String, dynamic>{
       'createIgnoreAlreadyExists': createIgnoreAlreadyExists,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'group': group,
       'memberKeys': pulumi.Input.mapInputValue<List<GetGroupMembershipsMembershipMemberKey>, List<Map<String, dynamic>>>(memberKeys, (value) => pulumi.Input.encodeList<GetGroupMembershipsMembershipMemberKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
@@ -65,6 +75,7 @@ class GetGroupMembershipsMembership {
     return GetGroupMembershipsMembership(
       createIgnoreAlreadyExists: pulumi.Input.fromValue(map['createIgnoreAlreadyExists'] as bool),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       group: pulumi.Input.fromValue(map['group'] as String),
       memberKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGroupMembershipsMembershipMemberKey>(map['memberKeys']!, (value) => GetGroupMembershipsMembershipMemberKey.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -75,4 +86,3 @@ class GetGroupMembershipsMembership {
     );
   }
 }
-

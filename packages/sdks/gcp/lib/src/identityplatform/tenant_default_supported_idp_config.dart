@@ -95,6 +95,26 @@ import 'tenant_default_supported_idp_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_identityplatform_tenant" "tenant" {
+///   display_name = "tenant"
+/// }
+/// resource "gcp_identityplatform_tenantdefaultsupportedidpconfig" "idp_config" {
+///   enabled       = true
+///   tenant        = gcp_identityplatform_tenant.tenant.name
+///   idp_id        = "playgames.google.com"
+///   client_id     = "my-client-id"
+///   client_secret = "secret"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +125,8 @@ import 'tenant_default_supported_idp_config_state.dart';
 /// import com.pulumi.gcp.identityplatform.TenantArgs;
 /// import com.pulumi.gcp.identityplatform.TenantDefaultSupportedIdpConfig;
 /// import com.pulumi.gcp.identityplatform.TenantDefaultSupportedIdpConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,22 +176,15 @@ import 'tenant_default_supported_idp_config_state.dart';
 /// TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
-///
 /// * `{{project}}/{{tenant}}/{{idp_id}}`
-///
 /// * `{{tenant}}/{{idp_id}}`
+///
 ///
 /// When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
 /// ```
 class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
@@ -179,6 +192,13 @@ class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> clientId;
   /// OAuth client secret
   late final pulumi.Output<String> clientSecret;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If this IDP allows the user to sign in
   late final pulumi.Output<bool?> enabled;
   /// ID of the IDP. Possible values include:
@@ -217,6 +237,7 @@ class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enabled = registerOutput<bool?>('enabled');
     idpId = registerOutput<String>('idpId');
     this.name = registerOutput<String>('name');
@@ -249,6 +270,7 @@ class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enabled = registerOutput<bool?>('enabled');
     idpId = registerOutput<String>('idpId');
     this.name = registerOutput<String>('name');

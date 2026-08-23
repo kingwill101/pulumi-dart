@@ -59,7 +59,7 @@ import 'connection_profile_state.dart';
 ///         foo: "bar",
 ///     },
 ///     mysql: {
-///         host: cloudsqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+///         host: cloudsqldb.ipAddresses[0].ipAddress,
 ///         port: 3306,
 ///         username: sqldbUser.name,
 ///         password: sqldbUser.password,
@@ -309,8 +309,6 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
@@ -363,7 +361,7 @@ import 'connection_profile_state.dart';
 /// 			},
 /// 			Mysql: &databasemigrationservice.ConnectionProfileMysqlArgs{
 /// 				Host: cloudsqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-/// 					return &ipAddresses[0].IpAddress, nil
+/// 					return ipAddresses[0].IpAddress, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Port:     pulumi.Int(3306),
 /// 				Username: sqldbUser.Name,
@@ -421,6 +419,92 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "cloudsqldb" {
+///   name             = "my-database"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier                        = "db-n1-standard-1"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.cloudsqldb]
+///   common_name = "my-cert"
+///   instance    = gcp_sql_databaseinstance.cloudsqldb.name
+/// }
+/// resource "gcp_sql_user" "sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.sql_client_cert]
+///   name       = "my-username"
+///   instance   = gcp_sql_databaseinstance.cloudsqldb.name
+///   password   = "my-password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "cloudsqlprofile" {
+///   depends_on            = [gcp_sql_user.sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "my-fromprofileid"
+///   display_name          = "my-fromprofileid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   mysql = {
+///     host     = gcp_sql_databaseinstance.cloudsqldb.ip_addresses[0].ip_address
+///     port     = 3306
+///     username = gcp_sql_user.sqldb_user.name
+///     password = gcp_sql_user.sqldb_user.password
+///     ssl = {
+///       client_key         = gcp_sql_sslcert.sql_client_cert.private_key
+///       client_certificate = gcp_sql_sslcert.sql_client_cert.cert
+///       ca_certificate     = gcp_sql_sslcert.sql_client_cert.server_ca_cert
+///       type               = "SERVER_CLIENT"
+///     }
+///     cloud_sql_id = "my-database"
+///   }
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "cloudsqlprofile_destination" {
+///   depends_on            = [gcp_databasemigrationservice_connectionprofile.cloudsqlprofile]
+///   location              = "us-central1"
+///   connection_profile_id = "my-toprofileid"
+///   display_name          = "my-toprofileid_displayname"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   cloudsql = {
+///     settings = {
+///       database_version = "MYSQL_5_7"
+///       user_labels = {
+///         "cloudfoo" = "cloudbar"
+///       }
+///       tier                      = "db-n1-standard-1"
+///       edition                   = "ENTERPRISE"
+///       storage_auto_resize_limit = "0"
+///       activation_policy         = "ALWAYS"
+///       ip_config = {
+///         enable_ipv4 = true
+///         require_ssl = true
+///       }
+///       auto_storage_increase = true
+///       data_disk_type        = "PD_HDD"
+///       data_disk_size_gb     = "11"
+///       zone                  = "us-central1-b"
+///       source_id             ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid"
+///       root_password         = "testpasscloudsql"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +528,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlSettingsArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlSettingsIpConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,7 +575,7 @@ import 'connection_profile_state.dart';
 ///             .displayName("my-fromprofileid_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .mysql(ConnectionProfileMysqlArgs.builder()
-///                 .host(cloudsqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+///                 .host(cloudsqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(3306)
 ///                 .username(sqldbUser.name())
 ///                 .password(sqldbUser.password())
@@ -665,7 +749,7 @@ import 'connection_profile_state.dart';
 ///         foo: "bar",
 ///     },
 ///     postgresql: {
-///         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+///         host: postgresqldb.ipAddresses[0].ipAddress,
 ///         port: 5432,
 ///         username: sqldbUser.name,
 ///         password: sqldbUser.password,
@@ -851,7 +935,7 @@ import 'connection_profile_state.dart';
 /// 			},
 /// 			Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 /// 				Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-/// 					return &ipAddresses[0].IpAddress, nil
+/// 					return ipAddresses[0].IpAddress, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Port:     pulumi.Int(5432),
 /// 				Username: sqldbUser.Name,
@@ -874,6 +958,57 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "postgresqldb" {
+///   name             = "my-database"
+///   database_version = "POSTGRES_12"
+///   settings = {
+///     tier = "db-custom-2-13312"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.postgresqldb]
+///   common_name = "my-cert"
+///   instance    = gcp_sql_databaseinstance.postgresqldb.name
+/// }
+/// resource "gcp_sql_user" "sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.sql_client_cert]
+///   name       = "my-username"
+///   instance   = gcp_sql_databaseinstance.postgresqldb.name
+///   password   = "my-password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "postgresprofile" {
+///   depends_on            = [gcp_sql_user.sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "my-profileid"
+///   display_name          = "my-profileid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     host     = gcp_sql_databaseinstance.postgresqldb.ip_addresses[0].ip_address
+///     port     = 5432
+///     username = gcp_sql_user.sqldb_user.name
+///     password = gcp_sql_user.sqldb_user.password
+///     ssl = {
+///       client_key         = gcp_sql_sslcert.sql_client_cert.private_key
+///       client_certificate = gcp_sql_sslcert.sql_client_cert.cert
+///       ca_certificate     = gcp_sql_sslcert.sql_client_cert.server_ca_cert
+///       type               = "SERVER_CLIENT"
+///     }
+///     cloud_sql_id = "my-database"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -892,8 +1027,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -935,7 +1070,7 @@ import 'connection_profile_state.dart';
 ///             .displayName("my-profileid_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
-///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(5432)
 ///                 .username(sqldbUser.name())
 ///                 .password(sqldbUser.password())
@@ -1044,7 +1179,7 @@ import 'connection_profile_state.dart';
 ///         foo: "bar",
 ///     },
 ///     postgresql: {
-///         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+///         host: postgresqldb.ipAddresses[0].ipAddress,
 ///         port: 5432,
 ///         username: sqldbUser.name,
 ///         password: sqldbUser.password,
@@ -1221,7 +1356,7 @@ import 'connection_profile_state.dart';
 /// 			},
 /// 			Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 /// 				Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-/// 					return &ipAddresses[0].IpAddress, nil
+/// 					return ipAddresses[0].IpAddress, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Port:     pulumi.Int(5432),
 /// 				Username: sqldbUser.Name,
@@ -1239,6 +1374,54 @@ import 'connection_profile_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "postgresqldb" {
+///   name             = "my-database"
+///   database_version = "POSTGRES_12"
+///   settings = {
+///     tier = "db-custom-2-13312"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.postgresqldb]
+///   common_name = "my-cert"
+///   instance    = gcp_sql_databaseinstance.postgresqldb.name
+/// }
+/// resource "gcp_sql_user" "sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.sql_client_cert]
+///   name       = "my-username"
+///   instance   = gcp_sql_databaseinstance.postgresqldb.name
+///   password   = "my-password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "postgresprofile" {
+///   depends_on            = [gcp_sql_user.sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "my-profileid"
+///   display_name          = "my-profileid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     host     = gcp_sql_databaseinstance.postgresqldb.ip_addresses[0].ip_address
+///     port     = 5432
+///     username = gcp_sql_user.sqldb_user.name
+///     password = gcp_sql_user.sqldb_user.password
+///     ssl = {
+///       type = "NONE"
+///     }
+///     cloud_sql_id = "my-database"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1259,8 +1442,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1302,7 +1485,7 @@ import 'connection_profile_state.dart';
 ///             .displayName("my-profileid_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
-///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(5432)
 ///                 .username(sqldbUser.name())
 ///                 .password(sqldbUser.password())
@@ -1405,7 +1588,7 @@ import 'connection_profile_state.dart';
 ///         foo: "bar",
 ///     },
 ///     postgresql: {
-///         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+///         host: postgresqldb.ipAddresses[0].ipAddress,
 ///         port: 5432,
 ///         username: sqldbUser.name,
 ///         password: sqldbUser.password,
@@ -1582,7 +1765,7 @@ import 'connection_profile_state.dart';
 /// 			},
 /// 			Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 /// 				Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-/// 					return &ipAddresses[0].IpAddress, nil
+/// 					return ipAddresses[0].IpAddress, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Port:     pulumi.Int(5432),
 /// 				Username: sqldbUser.Name,
@@ -1600,6 +1783,54 @@ import 'connection_profile_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "postgresqldb" {
+///   name             = "my-database"
+///   database_version = "POSTGRES_12"
+///   settings = {
+///     tier = "db-custom-2-13312"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.postgresqldb]
+///   common_name = "my-cert"
+///   instance    = gcp_sql_databaseinstance.postgresqldb.name
+/// }
+/// resource "gcp_sql_user" "sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.sql_client_cert]
+///   name       = "my-username"
+///   instance   = gcp_sql_databaseinstance.postgresqldb.name
+///   password   = "my-password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "postgresprofile" {
+///   depends_on            = [gcp_sql_user.sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "my-profileid"
+///   display_name          = "my-profileid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     host     = gcp_sql_databaseinstance.postgresqldb.ip_addresses[0].ip_address
+///     port     = 5432
+///     username = gcp_sql_user.sqldb_user.name
+///     password = gcp_sql_user.sqldb_user.password
+///     ssl = {
+///       type = "REQUIRED"
+///     }
+///     cloud_sql_id = "my-database"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1620,8 +1851,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1663,7 +1894,7 @@ import 'connection_profile_state.dart';
 ///             .displayName("my-profileid_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
-///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(5432)
 ///                 .username(sqldbUser.name())
 ///                 .password(sqldbUser.password())
@@ -1837,6 +2068,32 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_databasemigrationservice_connectionprofile" "oracleprofile" {
+///   location              = "us-central1"
+///   connection_profile_id = "my-profileid"
+///   display_name          = "my-profileid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   oracle = {
+///     host                           = "host"
+///     port                           = 1521
+///     username                       = "username"
+///     password                       = "password"
+///     database_service               = "dbprovider"
+///     static_service_ip_connectivity = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1847,8 +2104,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOracleArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOracleStaticServiceIpConnectivityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1928,11 +2185,11 @@ import 'connection_profile_state.dart';
 ///         foo: "bar",
 ///     },
 ///     alloydb: {
-///         clusterId: "tf-test-dbmsalloycluster_22811",
+///         clusterId: "tf-test-dbmsalloycluster_69391",
 ///         settings: {
 ///             initialUser: {
-///                 user: "alloyuser_91042",
-///                 password: "alloypass_72490",
+///                 user: "alloyuser_8270",
+///                 password: "alloypass_41150",
 ///             },
 ///             vpcNetwork: _default.id,
 ///             labels: {
@@ -1978,11 +2235,11 @@ import 'connection_profile_state.dart';
 ///         "foo": "bar",
 ///     },
 ///     alloydb={
-///         "cluster_id": "tf-test-dbmsalloycluster_22811",
+///         "cluster_id": "tf-test-dbmsalloycluster_69391",
 ///         "settings": {
 ///             "initial_user": {
-///                 "user": "alloyuser_91042",
-///                 "password": "alloypass_72490",
+///                 "user": "alloyuser_8270",
+///                 "password": "alloypass_41150",
 ///             },
 ///             "vpc_network": default.id,
 ///             "labels": {
@@ -2047,13 +2304,13 @@ import 'connection_profile_state.dart';
 ///         },
 ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
 ///         {
-///             ClusterId = "tf-test-dbmsalloycluster_22811",
+///             ClusterId = "tf-test-dbmsalloycluster_69391",
 ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
 ///             {
 ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
 ///                 {
-///                     User = "alloyuser_91042",
-///                     Password = "alloypass_72490",
+///                     User = "alloyuser_8270",
+///                     Password = "alloypass_41150",
 ///                 },
 ///                 VpcNetwork = @default.Id,
 ///                 Labels =
@@ -2113,13 +2370,13 @@ import 'connection_profile_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -2136,13 +2393,13 @@ import 'connection_profile_state.dart';
 /// 				"foo": pulumi.String("bar"),
 /// 			},
 /// 			Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
-/// 				ClusterId: pulumi.String("tf-test-dbmsalloycluster_22811"),
+/// 				ClusterId: pulumi.String("tf-test-dbmsalloycluster_69391"),
 /// 				Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
 /// 					InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
-/// 						User:     pulumi.String("alloyuser_91042"),
-/// 						Password: pulumi.String("alloypass_72490"),
+/// 						User:     pulumi.String("alloyuser_8270"),
+/// 						Password: pulumi.String("alloypass_41150"),
 /// 					},
-/// 					VpcNetwork: _default.ID(),
+/// 					VpcNetwork: _default.ID().ToIDOutput().ToStringOutput(),
 /// 					Labels: pulumi.StringMap{
 /// 						"alloyfoo": pulumi.String("alloybar"),
 /// 					},
@@ -2168,6 +2425,66 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "vpc-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "private-ip-alloc"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "alloydbprofile" {
+///   depends_on            = [gcp_servicenetworking_connection.vpc_connection]
+///   location              = "us-central1"
+///   connection_profile_id = "my-profileid"
+///   display_name          = "my-profileid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   alloydb = {
+///     cluster_id = "tf-test-dbmsalloycluster_69391"
+///     settings = {
+///       initial_user = {
+///         user     = "alloyuser_8270"
+///         password = "alloypass_41150"
+///       }
+///       vpc_network = gcp_compute_network.default.id
+///       labels = {
+///         "alloyfoo" = "alloybar"
+///       }
+///       primary_instance_settings = {
+///         id = "priminstid"
+///         machine_config = {
+///           cpu_count = 2
+///         }
+///         database_flags = {}
+///         labels = {
+///           "alloysinstfoo" = "allowinstbar"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2190,8 +2507,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2230,11 +2547,11 @@ import 'connection_profile_state.dart';
 ///             .displayName("my-profileid_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .alloydb(ConnectionProfileAlloydbArgs.builder()
-///                 .clusterId("tf-test-dbmsalloycluster_22811")
+///                 .clusterId("tf-test-dbmsalloycluster_69391")
 ///                 .settings(ConnectionProfileAlloydbSettingsArgs.builder()
 ///                     .initialUser(ConnectionProfileAlloydbSettingsInitialUserArgs.builder()
-///                         .user("alloyuser_91042")
-///                         .password("alloypass_72490")
+///                         .user("alloyuser_8270")
+///                         .password("alloypass_41150")
 ///                         .build())
 ///                     .vpcNetwork(default_.id())
 ///                     .labels(Map.of("alloyfoo", "alloybar"))
@@ -2288,11 +2605,11 @@ import 'connection_profile_state.dart';
 ///       labels:
 ///         foo: bar
 ///       alloydb:
-///         clusterId: tf-test-dbmsalloycluster_22811
+///         clusterId: tf-test-dbmsalloycluster_69391
 ///         settings:
 ///           initialUser:
-///             user: alloyuser_91042
-///             password: alloypass_72490
+///             user: alloyuser_8270
+///             password: alloypass_41150
 ///           vpcNetwork: ${default.id}
 ///           labels:
 ///             alloyfoo: alloybar
@@ -2463,6 +2780,40 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "destination_csql" {
+///   name             = "destination-csql"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier                        = "db-n1-standard-1"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "existing-mysql" {
+///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+///   location              = "us-central1"
+///   connection_profile_id = "destination-cp"
+///   display_name          = "destination-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   mysql = {
+///     cloud_sql_id = "destination-csql"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2478,8 +2829,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileMysqlArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2701,6 +3052,40 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "destination_csql" {
+///   name             = "destination-csql"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier                        = "db-custom-2-13312"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "existing-psql" {
+///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+///   location              = "us-central1"
+///   connection_profile_id = "destination-cp"
+///   display_name          = "destination-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     cloud_sql_id = "destination-csql"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2716,8 +3101,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3012,7 +3397,7 @@ import 'connection_profile_state.dart';
 /// 			ClusterId: pulumi.String("destination-alloydb"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: _default.ID(),
+/// 				Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DatabaseVersion: pulumi.String("POSTGRES_15"),
 /// 			InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -3029,13 +3414,13 @@ import 'connection_profile_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -3075,6 +3460,65 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_cluster" "destination_alloydb" {
+///   cluster_id = "destination-alloydb"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   database_version = "POSTGRES_15"
+///   initial_user = {
+///     user     = "destination-alloydb"
+///     password = "destination-alloydb"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "destination_alloydb_primary" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.destination_alloydb.name
+///   instance_id   = "destination-alloydb-primary"
+///   instance_type = "PRIMARY"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "destination-alloydb"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "destination-alloydb"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "existing-alloydb" {
+///   depends_on            = [gcp_alloydb_cluster.destination_alloydb, gcp_alloydb_instance.destination_alloydb_primary]
+///   location              = "us-central1"
+///   connection_profile_id = "destination-cp"
+///   display_name          = "destination-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     alloydb_cluster_id = "destination-alloydb"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3099,8 +3543,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3245,22 +3689,15 @@ import 'connection_profile_state.dart';
 /// ConnectionProfile can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-///
 /// * `{{project}}/{{location}}/{{connection_profile_id}}`
-///
 /// * `{{location}}/{{connection_profile_id}}`
+///
 ///
 /// When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
 /// ```
 class ConnectionProfile extends pulumi.CustomResource {
@@ -3276,6 +3713,13 @@ class ConnectionProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The database provider.
   late final pulumi.Output<String> dbprovider;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The connection profile display name.
   late final pulumi.Output<String?> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -3286,7 +3730,7 @@ class ConnectionProfile extends pulumi.CustomResource {
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the connection profile should reside.
   late final pulumi.Output<String?> location;
@@ -3307,6 +3751,9 @@ class ConnectionProfile extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// The connection profile role.
+  /// Possible values are: `SOURCE`, `DESTINATION`.
+  late final pulumi.Output<String> role;
   /// The current connection profile state.
   late final pulumi.Output<String> state;
 
@@ -3329,6 +3776,7 @@ class ConnectionProfile extends pulumi.CustomResource {
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createTime = registerOutput<String>('createTime');
     dbprovider = registerOutput<String>('dbprovider');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
@@ -3340,6 +3788,7 @@ class ConnectionProfile extends pulumi.CustomResource {
     postgresql = registerOutput<ConnectionProfilePostgresql?>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    role = registerOutput<String>('role');
     state = registerOutput<String>('state');
   }
 
@@ -3371,6 +3820,7 @@ class ConnectionProfile extends pulumi.CustomResource {
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createTime = registerOutput<String>('createTime');
     dbprovider = registerOutput<String>('dbprovider');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
@@ -3382,6 +3832,7 @@ class ConnectionProfile extends pulumi.CustomResource {
     postgresql = registerOutput<ConnectionProfilePostgresql?>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    role = registerOutput<String>('role');
     this.state = registerOutput<String>('state');
   }
 }

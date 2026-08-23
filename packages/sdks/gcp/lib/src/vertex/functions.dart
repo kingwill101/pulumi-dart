@@ -13,7 +13,16 @@ import 'get_ai_featurestore_iam_policy_args.dart';
 import 'get_ai_featurestore_iam_policy_result.dart';
 import 'get_ai_index_args.dart';
 import 'get_ai_index_result.dart';
+import 'get_ai_reasoning_engine_iam_policy_args.dart';
+import 'get_ai_reasoning_engine_iam_policy_result.dart';
+import 'get_ai_reasoning_engine_query_args.dart';
+import 'get_ai_reasoning_engine_query_result.dart';
 
+/// Retrieves the current IAM policy data for endpoint
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -74,6 +83,21 @@ import 'get_ai_index_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaiendpointiampolicy" "policy" {
+///   project  = endpoint.project
+///   location = endpoint.location
+///   endpoint = endpoint.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'get_ai_index_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.VertexFunctions;
 /// import com.pulumi.gcp.vertex.inputs.GetAiEndpointIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -96,9 +120,9 @@ import 'get_ai_index_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = VertexFunctions.getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs.builder()
-///             .project(endpoint.project())
-///             .location(endpoint.location())
-///             .endpoint(endpoint.name())
+///             .project(endpoint.get("project"))
+///             .location(endpoint.get("location"))
+///             .endpoint(endpoint.get("name"))
 ///             .build());
 ///
 ///     }
@@ -129,6 +153,11 @@ Future<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(
   return GetAiEndpointIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for featuregroup
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -185,6 +214,20 @@ Future<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaifeaturegroupiampolicy" "policy" {
+///   region        = featureGroup.region
+///   feature_group = featureGroup.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +236,8 @@ Future<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.VertexFunctions;
 /// import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,8 +250,8 @@ Future<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
-///             .region(featureGroup.region())
-///             .featureGroup(featureGroup.name())
+///             .region(featureGroup.get("region"))
+///             .featureGroup(featureGroup.get("name"))
 ///             .build());
 ///
 ///     }
@@ -238,6 +281,11 @@ Future<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(
   return GetAiFeatureGroupIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for featureonlinestorefeatureview
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -298,6 +346,21 @@ Future<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaifeatureonlinestorefeatureviewiampolicy" "policy" {
+///   region               = featureview.region
+///   feature_online_store = featureview.featureOnlineStore
+///   feature_view         = featureview.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +369,8 @@ Future<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.VertexFunctions;
 /// import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,9 +383,9 @@ Future<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
-///             .region(featureview.region())
-///             .featureOnlineStore(featureview.featureOnlineStore())
-///             .featureView(featureview.name())
+///             .region(featureview.get("region"))
+///             .featureOnlineStore(featureview.get("featureOnlineStore"))
+///             .featureView(featureview.get("name"))
 ///             .build());
 ///
 ///     }
@@ -353,6 +416,11 @@ Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStor
   return GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for featureonlinestore
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -409,6 +477,20 @@ Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStor
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaifeatureonlinestoreiampolicy" "policy" {
+///   region               = featureOnlineStore.region
+///   feature_online_store = featureOnlineStore.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -417,8 +499,8 @@ Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStor
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.VertexFunctions;
 /// import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -431,8 +513,8 @@ Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStor
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
-///             .region(featureOnlineStore.region())
-///             .featureOnlineStore(featureOnlineStore.name())
+///             .region(featureOnlineStore.get("region"))
+///             .featureOnlineStore(featureOnlineStore.get("name"))
 ///             .build());
 ///
 ///     }
@@ -462,6 +544,11 @@ Future<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(
   return GetAiFeatureOnlineStoreIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for featurestoreentitytype
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -518,6 +605,20 @@ Future<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaifeaturestoreentitytypeiampolicy" "policy" {
+///   featurestore = entity.featurestore
+///   entitytype   = entity.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -526,8 +627,8 @@ Future<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.VertexFunctions;
 /// import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreEntitytypeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -540,8 +641,8 @@ Future<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = VertexFunctions.getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs.builder()
-///             .featurestore(entity.featurestore())
-///             .entitytype(entity.name())
+///             .featurestore(entity.get("featurestore"))
+///             .entitytype(entity.get("name"))
 ///             .build());
 ///
 ///     }
@@ -571,6 +672,11 @@ Future<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIa
   return GetAiFeaturestoreEntitytypeIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for featurestore
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -631,6 +737,21 @@ Future<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIa
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaifeaturestoreiampolicy" "policy" {
+///   project      = featurestore.project
+///   region       = featurestore.region
+///   featurestore = featurestore.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -639,8 +760,8 @@ Future<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIa
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.VertexFunctions;
 /// import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -653,9 +774,9 @@ Future<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIa
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = VertexFunctions.getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs.builder()
-///             .project(featurestore.project())
-///             .region(featurestore.region())
-///             .featurestore(featurestore.name())
+///             .project(featurestore.get("project"))
+///             .region(featurestore.get("region"))
+///             .featurestore(featurestore.get("name"))
 ///             .build());
 ///
 ///     }
@@ -700,4 +821,420 @@ Future<GetAiIndexResult> getAiIndex(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAiIndexResult.fromMap(result);
+}
+
+/// Retrieves the current IAM policy data for reasoningengine
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.vertex.getAiReasoningEngineIamPolicy({
+///     project: reasoningEngine.project,
+///     region: reasoningEngine.region,
+///     reasoningEngine: reasoningEngine.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.vertex.get_ai_reasoning_engine_iam_policy(project=reasoning_engine["project"],
+///     region=reasoning_engine["region"],
+///     reasoning_engine=reasoning_engine["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.Vertex.GetAiReasoningEngineIamPolicy.Invoke(new()
+///     {
+///         Project = reasoningEngine.Project,
+///         Region = reasoningEngine.Region,
+///         ReasoningEngine = reasoningEngine.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := vertex.LookupAiReasoningEngineIamPolicy(ctx, &vertex.LookupAiReasoningEngineIamPolicyArgs{
+/// 			Project:         pulumi.StringRef(reasoningEngine.Project),
+/// 			Region:          pulumi.StringRef(reasoningEngine.Region),
+/// 			ReasoningEngine: reasoningEngine.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaireasoningengineiampolicy" "policy" {
+///   project          = reasoningEngine.project
+///   region           = reasoningEngine.region
+///   reasoning_engine = reasoningEngine.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.vertex.VertexFunctions;
+/// import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
+///             .project(reasoningEngine.get("project"))
+///             .region(reasoningEngine.get("region"))
+///             .reasoningEngine(reasoningEngine.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:vertex:getAiReasoningEngineIamPolicy
+///       arguments:
+///         project: ${reasoningEngine.project}
+///         region: ${reasoningEngine.region}
+///         reasoningEngine: ${reasoningEngine.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_vertex_get_ai_reasoning_engine_iam_policy_get_ai_reasoning_engine_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy(
+  GetAiReasoningEngineIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAiReasoningEngineIamPolicyResult.fromMap(result);
+}
+
+/// Get the output of a query sent to a Vertex AI Reasoning Engine agent.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const defaultAiReasoningEngine = new gcp.vertex.AiReasoningEngine("default", {
+///     displayName: "vertex-mds-_91657",
+///     description: "Retrieves tenant project number",
+///     region: "us-central1",
+///     spec: {
+///         sourceCodeSpec: {
+///             inlineSource: {
+///                 sourceArchive: std.filebase64({
+///                     input: "./test-fixtures/mds_agent_src.tar.gz",
+///                 }).then(invoke => invoke.result),
+///             },
+///             pythonSpec: {
+///                 entrypointModule: "metadata_agent",
+///                 entrypointObject: "root_agent",
+///             },
+///         },
+///     },
+/// });
+/// const _default = gcp.vertex.getAiReasoningEngineQueryOutput({
+///     reasoningEngineId: defaultAiReasoningEngine.name,
+///     region: "us-central1",
+///     classMethod: "query",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// default_ai_reasoning_engine = gcp.vertex.AiReasoningEngine("default",
+///     display_name="vertex-mds-_91657",
+///     description="Retrieves tenant project number",
+///     region="us-central1",
+///     spec={
+///         "source_code_spec": {
+///             "inline_source": {
+///                 "source_archive": std.filebase64(input="./test-fixtures/mds_agent_src.tar.gz").result,
+///             },
+///             "python_spec": {
+///                 "entrypoint_module": "metadata_agent",
+///                 "entrypoint_object": "root_agent",
+///             },
+///         },
+///     })
+/// default = gcp.vertex.get_ai_reasoning_engine_query_output(reasoning_engine_id=default_ai_reasoning_engine.name,
+///     region="us-central1",
+///     class_method="query")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var defaultAiReasoningEngine = new Gcp.Vertex.AiReasoningEngine("default", new()
+///     {
+///         DisplayName = "vertex-mds-_91657",
+///         Description = "Retrieves tenant project number",
+///         Region = "us-central1",
+///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+///         {
+///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+///             {
+///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
+///                 {
+///                     SourceArchive = Std.Filebase64.Invoke(new()
+///                     {
+///                         Input = "./test-fixtures/mds_agent_src.tar.gz",
+///                     }).Apply(invoke => invoke.Result),
+///                 },
+///                 PythonSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs
+///                 {
+///                     EntrypointModule = "metadata_agent",
+///                     EntrypointObject = "root_agent",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var @default = Gcp.Vertex.GetAiReasoningEngineQuery.Invoke(new()
+///     {
+///         ReasoningEngineId = defaultAiReasoningEngine.Name,
+///         Region = "us-central1",
+///         ClassMethod = "query",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+/// 			Input: "./test-fixtures/mds_agent_src.tar.gz",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "default", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("vertex-mds-_91657"),
+/// 			Description: pulumi.String("Retrieves tenant project number"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Spec: &vertex.AiReasoningEngineSpecArgs{
+/// 				SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+/// 					InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
+/// 						SourceArchive: pulumi.String(invokeFilebase64.Result),
+/// 					},
+/// 					PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
+/// 						EntrypointModule: pulumi.String("metadata_agent"),
+/// 						EntrypointObject: pulumi.String("root_agent"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_ = vertex.GetAiReasoningEngineQueryOutput(ctx, vertex.GetAiReasoningEngineQueryOutputArgs{
+/// 			ReasoningEngineId: defaultAiReasoningEngine.Name,
+/// 			Region:            pulumi.String("us-central1"),
+/// 			ClassMethod:       pulumi.String("query"),
+/// 		}, nil)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaireasoningenginequery" "default" {
+///   reasoning_engine_id = gcp_vertex_aireasoningengine.default.name
+///   region              = "us-central1"
+///   class_method        = "query"
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "default" {
+///   display_name = "vertex-mds-_91657"
+///   description  = "Retrieves tenant project number"
+///   region       = "us-central1"
+///   spec = {
+///     source_code_spec = {
+///       inline_source = {
+///         source_archive = filebase64("./test-fixtures/mds_agent_src.tar.gz")
+///       }
+///       python_spec = {
+///         entrypoint_module = "metadata_agent"
+///         entrypoint_object = "root_agent"
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.vertex.AiReasoningEngine;
+/// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.Filebase64Args;
+/// import com.pulumi.gcp.vertex.VertexFunctions;
+/// import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var defaultAiReasoningEngine = new AiReasoningEngine("defaultAiReasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("vertex-mds-_91657")
+///             .description("Retrieves tenant project number")
+///             .region("us-central1")
+///             .spec(AiReasoningEngineSpecArgs.builder()
+///                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+///                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+///                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+///                             .input("./test-fixtures/mds_agent_src.tar.gz")
+///                             .build()).result())
+///                         .build())
+///                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+///                         .entrypointModule("metadata_agent")
+///                         .entrypointObject("root_agent")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         final var default = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+///             .reasoningEngineId(defaultAiReasoningEngine.name())
+///             .region("us-central1")
+///             .classMethod("query")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   defaultAiReasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: default
+///     properties:
+///       displayName: vertex-mds-_91657
+///       description: Retrieves tenant project number
+///       region: us-central1
+///       spec:
+///         sourceCodeSpec:
+///           inlineSource:
+///             sourceArchive:
+///               fn::invoke:
+///                 function: std:filebase64
+///                 arguments:
+///                   input: ./test-fixtures/mds_agent_src.tar.gz
+///                 return: result
+///           pythonSpec:
+///             entrypointModule: metadata_agent
+///             entrypointObject: root_agent
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:vertex:getAiReasoningEngineQuery
+///       arguments:
+///         reasoningEngineId: ${defaultAiReasoningEngine.name}
+///         region: us-central1
+///         classMethod: query
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_vertex_get_ai_reasoning_engine_query_get_ai_reasoning_engine_query_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAiReasoningEngineQueryResult> getAiReasoningEngineQuery(
+  GetAiReasoningEngineQueryArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAiReasoningEngineQueryResult.fromMap(result);
 }

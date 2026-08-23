@@ -34,6 +34,13 @@ class ClusterState {
   /// specified explicitly for a node pool in this cluster. If unspecified, the
   /// Kubernetes default value will be used.
   final pulumi.Input<int>? defaultMaxPodsPerNode;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// The IP address of the Kubernetes API server.
@@ -48,7 +55,7 @@ class ClusterState {
   final pulumi.Input<ClusterFleet>? fleet;
   /// User-defined labels for the edgecloud cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the resource.
   final pulumi.Input<String>? location;
@@ -100,6 +107,7 @@ class ClusterState {
   /// [controlPlaneVersion] The control plane release version.
   /// [createTime] (Output)
   /// [defaultMaxPodsPerNode] The default maximum number of pods per node used if a maximum value is not
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [endpoint] The IP address of the Kubernetes API server.
   /// [externalLoadBalancerIpv4AddressPools] Address pools for cluster data plane external load balancing.
@@ -127,6 +135,7 @@ class ClusterState {
     this.controlPlaneVersion,
     this.createTime,
     this.defaultMaxPodsPerNode,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.endpoint,
     this.externalLoadBalancerIpv4AddressPools,
@@ -157,6 +166,7 @@ class ClusterState {
       'controlPlaneVersion': ?controlPlaneVersion,
       'createTime': ?createTime,
       'defaultMaxPodsPerNode': ?defaultMaxPodsPerNode,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'endpoint': ?endpoint,
       'externalLoadBalancerIpv4AddressPools': ?externalLoadBalancerIpv4AddressPools,
@@ -188,6 +198,7 @@ class ClusterState {
       controlPlaneVersion: (() { final guardedValue = map['controlPlaneVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalLoadBalancerIpv4AddressPools: (() { final guardedValue = map['externalLoadBalancerIpv4AddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -210,4 +221,3 @@ class ClusterState {
     );
   }
 }
-

@@ -4,7 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_service_template_spec_container_env_value_from.dart';
 
 class GetServiceTemplateSpecContainerEnv {
-  /// The name of the Cloud Run Service.
+  /// Name must be unique within a Google Cloud project and region.
+  /// Is required when creating resources. Name is primarily intended
+  /// for creation idempotence and configuration definition. Cannot be updated.
+  /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
   /// Defaults to "".
   final pulumi.Input<String> value;
@@ -12,7 +15,7 @@ class GetServiceTemplateSpecContainerEnv {
   final pulumi.Input<List<GetServiceTemplateSpecContainerEnvValueFrom>> valueFroms;
 
   /// Creates a new [GetServiceTemplateSpecContainerEnv].
-  /// [name] The name of the Cloud Run Service.
+  /// [name] Name must be unique within a Google Cloud project and region.
   /// [value] Defaults to "".
   /// [valueFroms] Source for the environment variable's value. Only supports secret_key_ref.
   const GetServiceTemplateSpecContainerEnv({
@@ -37,4 +40,3 @@ class GetServiceTemplateSpecContainerEnv {
     );
   }
 }
-

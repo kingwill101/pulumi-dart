@@ -6,6 +6,9 @@ import 'consumer_quota_override_state.dart';
 /// Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
 /// producer overrides, or the default limit of the service.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about ConsumerQuotaOverride, see:
 /// * How-to Guides
 /// * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota )
@@ -142,6 +145,33 @@ import 'consumer_quota_override_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name            = "tf-test-project"
+///   project_id      = "quota"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_serviceusage_consumerquotaoverride" "override" {
+///   project        = gcp_organizations_project.my_project.project_id
+///   service        = "servicemanagement.googleapis.com"
+///   metric         = urlencode("servicemanagement.googleapis.com/default_requests")
+///   limit          = urlencode("/min/project")
+///   override_value = "95"
+///   force          = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +184,8 @@ import 'consumer_quota_override_state.dart';
 /// import com.pulumi.gcp.serviceusage.ConsumerQuotaOverrideArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.UrlencodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,6 +393,36 @@ import 'consumer_quota_override_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name            = "tf-test-project"
+///   project_id      = "quota"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_serviceusage_consumerquotaoverride" "override" {
+///   dimensions = {
+///     "region" = "us-central1"
+///   }
+///   project        = gcp_organizations_project.my_project.project_id
+///   service        = "compute.googleapis.com"
+///   metric         = urlencode("compute.googleapis.com/n2_cpus")
+///   limit          = urlencode("/project/region")
+///   override_value = "8"
+///   force          = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -375,8 +435,8 @@ import 'consumer_quota_override_state.dart';
 /// import com.pulumi.gcp.serviceusage.ConsumerQuotaOverrideArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.UrlencodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -587,6 +647,36 @@ import 'consumer_quota_override_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name            = "tf-test-project"
+///   project_id      = "quota"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_serviceusage_consumerquotaoverride" "override" {
+///   project        = gcp_organizations_project.my_project.project_id
+///   service        = "libraryagent.googleapis.com"
+///   metric         = urlencode("libraryagent.googleapis.com/borrows")
+///   limit          = urlencode("/author/project")
+///   override_value = "1"
+///   force          = true
+///   dimensions = {
+///     "author" = "larry"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -599,8 +689,8 @@ import 'consumer_quota_override_state.dart';
 /// import com.pulumi.gcp.serviceusage.ConsumerQuotaOverrideArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.UrlencodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -675,25 +765,25 @@ import 'consumer_quota_override_state.dart';
 /// ConsumerQuotaOverride can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
-///
 /// * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
-///
 /// * `{{service}}/{{metric}}/{{limit}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
 /// ```
 class ConsumerQuotaOverride extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
   late final pulumi.Output<Map<String, String>?> dimensions;
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
@@ -729,6 +819,7 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dimensions = registerOutput<Map<String, String>?>('dimensions');
     force = registerOutput<bool?>('force');
     limit = registerOutput<String>('limit');
@@ -762,6 +853,7 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dimensions = registerOutput<Map<String, String>?>('dimensions');
     force = registerOutput<bool?>('force');
     limit = registerOutput<String>('limit');

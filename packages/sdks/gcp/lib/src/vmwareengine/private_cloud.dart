@@ -136,7 +136,7 @@ import 'private_cloud_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: pc_nw.ID(),
+/// 				VmwareEngineNetwork: pc_nw.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -155,6 +155,38 @@ import 'private_cloud_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_privatecloud" "vmw-engine-pc" {
+///   location    = "us-west1-a"
+///   name        = "sample-pc"
+///   description = "Sample test PC."
+///   network_config = {
+///     management_cidr       = "192.168.30.0/24"
+///     vmware_engine_network = gcp_vmwareengine_network.pc-nw.id
+///   }
+///   management_cluster = {
+///     cluster_id = "sample-mgmt-cluster"
+///     node_type_configs = [{
+///       "nodeTypeId" = "standard-72"
+///       "nodeCount"  = 3
+///     }]
+///   }
+/// }
+/// resource "gcp_vmwareengine_network" "pc-nw" {
+///   name        = "pc-nw"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "PC network description."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +199,9 @@ import 'private_cloud_state.dart';
 /// import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,7 +475,7 @@ import 'private_cloud_state.dart';
 /// 			Type:        pulumi.String("TIME_LIMITED"),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: pc_nw.ID(),
+/// 				VmwareEngineNetwork: pc_nw.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -488,6 +521,64 @@ import 'private_cloud_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_privatecloud" "vmw-engine-pc" {
+///   location    = "us-west1-a"
+///   name        = "sample-pc"
+///   description = "Sample test PC."
+///   type        = "TIME_LIMITED"
+///   network_config = {
+///     management_cidr       = "192.168.30.0/24"
+///     vmware_engine_network = gcp_vmwareengine_network.pc-nw.id
+///   }
+///   management_cluster = {
+///     cluster_id = "sample-mgmt-cluster"
+///     node_type_configs = [{
+///       "nodeTypeId"      = "standard-72"
+///       "nodeCount"       = 1
+///       "customCoreCount" = 32
+///     }]
+///     autoscaling_settings = {
+///       autoscaling_policies = [{
+///         "autoscalePolicyId" = "autoscaling-policy"
+///         "nodeTypeId"        = "standard-72"
+///         "scaleOutSize"      = 1
+///         "cpuThresholds" = {
+///           "scaleOut" = 80
+///           "scaleIn"  = 15
+///         }
+///         "consumedMemoryThresholds" = {
+///           "scaleOut" = 75
+///           "scaleIn"  = 20
+///         }
+///         "storageThresholds" = {
+///           "scaleOut" = 80
+///           "scaleIn"  = 20
+///         }
+///       }]
+///       min_cluster_node_count = 3
+///       max_cluster_node_count = 8
+///       cool_down_period       = "1800s"
+///     }
+///   }
+///   deletion_delay_hours              = 0
+///   send_deletion_delay_hours_if_zero = true
+/// }
+/// resource "gcp_vmwareengine_network" "pc-nw" {
+///   name        = "pc-nw"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "PC network description."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -500,9 +591,14 @@ import 'private_cloud_state.dart';
 /// import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterAutoscalingSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -619,22 +715,15 @@ import 'private_cloud_state.dart';
 /// PrivateCloud can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/privateClouds/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PrivateCloud can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vmwareengine/privateCloud:PrivateCloud default projects/{{project}}/locations/{{location}}/privateClouds/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/privateCloud:PrivateCloud default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/privateCloud:PrivateCloud default {{location}}/{{name}}
 /// ```
 class PrivateCloud extends pulumi.CustomResource {
@@ -648,6 +737,13 @@ class PrivateCloud extends pulumi.CustomResource {
   late final pulumi.Output<String> deleteTime;
   /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
   late final pulumi.Output<int?> deletionDelayHours;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description for this private cloud.
   late final pulumi.Output<String?> description;
   /// Time when the resource will be irreversibly deleted.
@@ -673,7 +769,7 @@ class PrivateCloud extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+  /// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
   late final pulumi.Output<bool?> sendDeletionDelayHoursIfZero;
   /// State of the appliance.
   /// Possible values are: `ACTIVE`, `CREATING`.
@@ -708,6 +804,7 @@ class PrivateCloud extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionDelayHours = registerOutput<int?>('deletionDelayHours');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
     hcxes = registerOutput<List<Map<String, dynamic>>>('hcxes');
@@ -751,6 +848,7 @@ class PrivateCloud extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionDelayHours = registerOutput<int?>('deletionDelayHours');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
     hcxes = registerOutput<List<Map<String, dynamic>>>('hcxes');

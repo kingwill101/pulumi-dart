@@ -4,6 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Key resources.
 class KeyState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
   final pulumi.Input<Map<String, String>>? keepers;
   /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -20,7 +27,7 @@ class KeyState {
   final pulumi.Input<String>? privateKeyType;
   /// The public key, base64 encoded
   final pulumi.Input<String>? publicKey;
-  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
   final pulumi.Input<String>? publicKeyData;
   /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   final pulumi.Input<String>? publicKeyType;
@@ -38,18 +45,20 @@ class KeyState {
   final pulumi.Input<String>? validBefore;
 
   /// Creates a new [KeyState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [keepers] Arbitrary map of values that, when changed, will trigger a new key to be generated.
   /// [keyAlgorithm] The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
   /// [name] The name used for this key pair
   /// [privateKey] The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
   /// [privateKeyType] The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
   /// [publicKey] The public key, base64 encoded
-  /// [publicKeyData] Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+  /// [publicKeyData] Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
   /// [publicKeyType] The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   /// [serviceAccountId] The Service account id of the Key. This can be a string in the format
   /// [validAfter] The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   /// [validBefore] The key can be used before this timestamp.
   const KeyState({
+    this.deletionPolicy,
     this.keepers,
     this.keyAlgorithm,
     this.name,
@@ -65,6 +74,7 @@ class KeyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'keepers': ?keepers,
       'keyAlgorithm': ?keyAlgorithm,
       'name': ?name,
@@ -81,6 +91,7 @@ class KeyState {
 
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keepers: (() { final guardedValue = map['keepers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       keyAlgorithm: (() { final guardedValue = map['keyAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -95,4 +106,3 @@ class KeyState {
     );
   }
 }
-

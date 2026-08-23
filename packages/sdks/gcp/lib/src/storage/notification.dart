@@ -13,11 +13,11 @@ import 'notification_state.dart';
 /// This service account is not created automatically when a project is created.
 /// To ensure the service account exists and obtain its email address for use in granting the correct IAM permission, use the
 /// [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html)
-/// datasource's `email_address` value, and see below for an example of enabling notifications by granting the correct IAM permission.
+/// datasource's `emailAddress` value, and see below for an example of enabling notifications by granting the correct IAM permission.
 /// See [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
 ///
 /// &gt;**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
-/// making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
+/// making this resource dependent on those IAM resources via `dependsOn`. This will safeguard against errors due to IAM race conditions.
 ///
 /// ## Example Usage
 ///
@@ -143,8 +143,6 @@ import 'notification_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -164,7 +162,7 @@ import 'notification_state.dart';
 /// 			return err
 /// 		}
 /// 		binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-/// 			Topic: topic.ID(),
+/// 			Topic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:  pulumi.String("roles/pubsub.publisher"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress),
@@ -184,7 +182,7 @@ import 'notification_state.dart';
 /// 		_, err = storage.NewNotification(ctx, "notification", &storage.NotificationArgs{
 /// 			Bucket:        bucket.Name,
 /// 			PayloadFormat: pulumi.String("JSON_API_V1"),
-/// 			Topic:         topic.ID(),
+/// 			Topic:         topic.ID().ToIDOutput().ToStringOutput(),
 /// 			EventTypes: pulumi.StringArray{
 /// 				pulumi.String("OBJECT_FINALIZE"),
 /// 				pulumi.String("OBJECT_METADATA_UPDATE"),
@@ -201,6 +199,43 @@ import 'notification_state.dart';
 /// 		return nil
 /// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// }
+///
+/// resource "gcp_storage_notification" "notification" {
+///   depends_on     = [gcp_pubsub_topiciambinding.binding]
+///   bucket         = gcp_storage_bucket.bucket.name
+///   payload_format = "JSON_API_V1"
+///   topic          = gcp_pubsub_topic.topic.id
+///   event_types    = ["OBJECT_FINALIZE", "OBJECT_METADATA_UPDATE"]
+///   custom_attributes = {
+///     "new-attribute" = "new-attribute-value"
+///   }
+/// }
+/// resource "gcp_pubsub_topiciambinding" "binding" {
+///   topic   = gcp_pubsub_topic.topic.id
+///   role    = "roles/pubsub.publisher"
+///   members = ["serviceAccount:${data.gcp_storage_getprojectserviceaccount.gcsAccount.email_address}"]
+/// }
+/// // End enabling notifications
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "default_bucket"
+///   location = "US"
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "default_topic"
+/// }
+/// // Enable notifications by giving the correct IAM permission to the unique service account.
 /// ```
 /// ```java
 /// package generated_program;
@@ -219,8 +254,8 @@ import 'notification_state.dart';
 /// import com.pulumi.gcp.storage.Notification;
 /// import com.pulumi.gcp.storage.NotificationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,6 +349,7 @@ import 'notification_state.dart';
 /// Storage notifications can be imported using any of these accepted formats:
 ///
 /// * `{{bucket_name}}/notificationConfigs/{{id}}`
+///
 ///
 /// When using the `pulumi import` command, Storage notifications can be imported using one of the formats above. For example:
 ///

@@ -202,6 +202,45 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_binaryauthorization_policy" "policy" {
+///   admission_whitelist_patterns {
+///     name_pattern = "gcr.io/google_containers/*"
+///   }
+///   default_admission_rule = {
+///     evaluation_mode  = "ALWAYS_ALLOW"
+///     enforcement_mode = "ENFORCED_BLOCK_AND_AUDIT_LOG"
+///   }
+///   cluster_admission_rules {
+///     cluster                   = "us-central1-a.prod-cluster"
+///     evaluation_mode           = "REQUIRE_ATTESTATION"
+///     enforcement_mode          = "ENFORCED_BLOCK_AND_AUDIT_LOG"
+///     require_attestations_bies = [gcp_binaryauthorization_attestor.attestor.name]
+///   }
+/// }
+/// resource "gcp_containeranalysis_note" "note" {
+///   name = "test-attestor-note"
+///   attestation_authority = {
+///     hint = {
+///       human_readable_name = "My attestor"
+///     }
+///   }
+/// }
+/// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   name = "test-attestor"
+///   attestation_authority_note = {
+///     note_reference = gcp_containeranalysis_note.note.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +259,8 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.binaryauthorization.inputs.PolicyAdmissionWhitelistPatternArgs;
 /// import com.pulumi.gcp.binaryauthorization.inputs.PolicyDefaultAdmissionRuleArgs;
 /// import com.pulumi.gcp.binaryauthorization.inputs.PolicyClusterAdmissionRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,6 +486,38 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_binaryauthorization_policy" "policy" {
+///   default_admission_rule = {
+///     evaluation_mode           = "REQUIRE_ATTESTATION"
+///     enforcement_mode          = "ENFORCED_BLOCK_AND_AUDIT_LOG"
+///     require_attestations_bies = [gcp_binaryauthorization_attestor.attestor.name]
+///   }
+///   global_policy_evaluation_mode = "ENABLE"
+/// }
+/// resource "gcp_containeranalysis_note" "note" {
+///   name = "test-attestor-note"
+///   attestation_authority = {
+///     hint = {
+///       human_readable_name = "My attestor"
+///     }
+///   }
+/// }
+/// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   name = "test-attestor"
+///   attestation_authority_note = {
+///     note_reference = gcp_containeranalysis_note.note.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -463,8 +534,8 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.binaryauthorization.Policy;
 /// import com.pulumi.gcp.binaryauthorization.PolicyArgs;
 /// import com.pulumi.gcp.binaryauthorization.inputs.PolicyDefaultAdmissionRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -536,16 +607,13 @@ import 'policy_state.dart';
 /// Policy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:binaryauthorization/policy:Policy default {{project}}
 /// ```
 class Policy extends pulumi.CustomResource {
@@ -559,7 +627,6 @@ class Policy extends pulumi.CustomResource {
   /// to by one or more attestors, that all pod creations will be allowed,
   /// or that all pod creations will be denied. There can be at most one
   /// admission rule per cluster spec.
-  ///
   /// Identifier format: `{{location}}.{{clusterId}}`.
   /// A location is either a compute zone (e.g. `us-central1-a`) or a region
   /// (e.g. `us-central1`).
@@ -569,6 +636,13 @@ class Policy extends pulumi.CustomResource {
   /// rule.
   /// Structure is documented below.
   late final pulumi.Output<PolicyDefaultAdmissionRule> defaultAdmissionRule;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A descriptive comment.
   late final pulumi.Output<String?> description;
   /// Controls the evaluation of a Google-maintained global admission policy
@@ -597,6 +671,7 @@ class Policy extends pulumi.CustomResource {
     admissionWhitelistPatterns = registerOutput<List<Map<String, dynamic>>?>('admissionWhitelistPatterns');
     clusterAdmissionRules = registerOutput<List<Map<String, dynamic>>?>('clusterAdmissionRules');
     defaultAdmissionRule = registerOutput<PolicyDefaultAdmissionRule>('defaultAdmissionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefaultAdmissionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     globalPolicyEvaluationMode = registerOutput<String>('globalPolicyEvaluationMode');
     project = registerOutput<String>('project');
@@ -628,6 +703,7 @@ class Policy extends pulumi.CustomResource {
     admissionWhitelistPatterns = registerOutput<List<Map<String, dynamic>>?>('admissionWhitelistPatterns');
     clusterAdmissionRules = registerOutput<List<Map<String, dynamic>>?>('clusterAdmissionRules');
     defaultAdmissionRule = registerOutput<PolicyDefaultAdmissionRule>('defaultAdmissionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefaultAdmissionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     globalPolicyEvaluationMode = registerOutput<String>('globalPolicyEvaluationMode');
     project = registerOutput<String>('project');

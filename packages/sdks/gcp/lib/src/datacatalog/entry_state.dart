@@ -14,6 +14,13 @@ class EntryState {
   /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
   /// Structure is documented below.
   final pulumi.Input<List<EntryBigqueryTableSpec>>? bigqueryTableSpecs;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
   final pulumi.Input<String>? description;
   /// Display information such as title and description. A short name to identify the entry,
@@ -54,7 +61,7 @@ class EntryState {
   final pulumi.Input<String>? userSpecifiedSystem;
   /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   /// When creating an entry, users should check the enum values first, if nothing matches the entry
-  /// to be created, then provide a custom value, for example "my_special_type".
+  /// to be created, then provide a custom value, for example "mySpecialType".
   /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
   /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
   final pulumi.Input<String>? userSpecifiedType;
@@ -62,6 +69,7 @@ class EntryState {
   /// Creates a new [EntryState].
   /// [bigqueryDateShardedSpecs] Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
   /// [bigqueryTableSpecs] Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Entry description, which can consist of several sentences or paragraphs that describe entry contents.
   /// [displayName] Display information such as title and description. A short name to identify the entry,
   /// [entryGroup] The name of the entry group this entry is in.
@@ -77,6 +85,7 @@ class EntryState {
   const EntryState({
     this.bigqueryDateShardedSpecs,
     this.bigqueryTableSpecs,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.entryGroup,
@@ -95,6 +104,7 @@ class EntryState {
     return <String, dynamic>{
       'bigqueryDateShardedSpecs': ?pulumi.Input.mapOptionalInputValue<List<EntryBigqueryDateShardedSpec>, List<Map<String, dynamic>>>(bigqueryDateShardedSpecs, (value) => pulumi.Input.encodeList<EntryBigqueryDateShardedSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bigqueryTableSpecs': ?pulumi.Input.mapOptionalInputValue<List<EntryBigqueryTableSpec>, List<Map<String, dynamic>>>(bigqueryTableSpecs, (value) => pulumi.Input.encodeList<EntryBigqueryTableSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'entryGroup': ?entryGroup,
@@ -114,6 +124,7 @@ class EntryState {
     return EntryState(
       bigqueryDateShardedSpecs: (() { final guardedValue = map['bigqueryDateShardedSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(guardedValue, (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
       bigqueryTableSpecs: (() { final guardedValue = map['bigqueryTableSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EntryBigqueryTableSpec>(guardedValue, (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryGroup: (() { final guardedValue = map['entryGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -129,4 +140,3 @@ class EntryState {
     );
   }
 }
-

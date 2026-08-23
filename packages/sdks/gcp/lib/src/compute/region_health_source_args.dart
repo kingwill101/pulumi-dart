@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_region_health_source_region_health_source_args_doc}
 class RegionHealthSourceArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   final pulumi.Input<String>? description;
@@ -45,6 +52,7 @@ class RegionHealthSourceArgs {
   final pulumi.Input<String>? sources;
 
   /// Creates a new [RegionHealthSourceArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you
   /// [healthAggregationPolicy] URL to the `HealthAggregationPolicy` resource. Must be set. Must
   /// [name] Name of the resource. Provided by the client when the resource is created.
@@ -53,6 +61,7 @@ class RegionHealthSourceArgs {
   /// [sourceType] Specifies the type of the `HealthSource`. The only allowed value
   /// [sources] URLs to the source resources. Must be size 1. Must be a
   const RegionHealthSourceArgs({
+    this.deletionPolicy,
     this.description,
     this.healthAggregationPolicy,
     this.name,
@@ -64,6 +73,7 @@ class RegionHealthSourceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'healthAggregationPolicy': ?healthAggregationPolicy,
       'name': ?name,
@@ -76,6 +86,7 @@ class RegionHealthSourceArgs {
 
   factory RegionHealthSourceArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthSourceArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthAggregationPolicy: (() { final guardedValue = map['healthAggregationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -86,4 +97,3 @@ class RegionHealthSourceArgs {
     );
   }
 }
-

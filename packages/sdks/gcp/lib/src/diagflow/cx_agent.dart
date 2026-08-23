@@ -417,14 +417,14 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"en": map[string]interface{}{
-/// 				"voice": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]map[string]string{
+/// 			"en": map[string]map[string]string{
+/// 				"voice": map[string]string{
 /// 					"name": "en-US-Neural2-A",
 /// 				},
 /// 			},
-/// 			"fr": map[string]interface{}{
-/// 				"voice": map[string]interface{}{
+/// 			"fr": map[string]map[string]string{
+/// 				"voice": map[string]string{
 /// 					"name": "fr-CA-Neural2-A",
 /// 				},
 /// 			},
@@ -535,6 +535,100 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "dialogflowcx-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_diagflow_cxagent" "full_agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+///   advanced_settings = {
+///     audio_export_gcs_destination = {
+///       uri ="${gcp_storage_bucket.bucket.url}/prefix-"
+///     }
+///     speech_settings = {
+///       endpointer_sensitivity        = 30
+///       no_speech_timeout             = "3.500s"
+///       use_timeout_based_endpointing = true
+///       models = {
+///         "name"  = "wrench"
+///         "mass"  = "1.3kg"
+///         "count" = "3"
+///       }
+///     }
+///     dtmf_settings = {
+///       enabled      = true
+///       max_digits   = 1
+///       finish_digit = "#"
+///     }
+///     logging_settings = {
+///       enable_stackdriver_logging     = true
+///       enable_interaction_logging     = true
+///       enable_consent_based_redaction = true
+///     }
+///   }
+///   git_integration_settings = {
+///     github_settings = {
+///       display_name    = "Github Repo"
+///       repository_uri  = "https://api.github.com/repos/githubtraining/hellogitworld"
+///       tracking_branch = "main"
+///       access_token    = "secret-token"
+///       branches        = ["main"]
+///     }
+///   }
+///   text_to_speech_settings = {
+///     synthesize_speech_configs = jsonencode({
+///       "en" = {
+///         "voice" = {
+///           "name" = "en-US-Neural2-A"
+///         }
+///       }
+///       "fr" = {
+///         "voice" = {
+///           "name" = "fr-CA-Neural2-A"
+///         }
+///       }
+///     })
+///   }
+///   gen_app_builder_settings = {
+///     engine = "projects/-/locations/-/collections/-/engines/-"
+///   }
+///   start_playbook                 = "projects/-/locations/-/agents/-/playbooks/00000000-0000-0000-0000-000000000000"
+///   enable_multi_language_training = false
+///   locked                         = false
+///   answer_feedback_settings = {
+///     enable_answer_feedback = false
+///   }
+///   client_certificate_settings = {
+///     passphrase      = "projects/example-proj/secrets/example-secret/versions/example-version"
+///     private_key     = "projects/example-proj/secrets/example-secret/versions/example-version"
+///     ssl_certificate = "-----BEGIN CERTIFICATE-----\nMIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD\nVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j\naXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50\nIFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2\nMzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs\naWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi\nLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0\nYWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P\n4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\n-----END CERTIFICATE-----\n"
+///   }
+///   personalization_settings = {
+///     default_end_user_metadata = "{\"example-key\": \"example-value\"}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -559,8 +653,8 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxAgentClientCertificateSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxAgentPersonalizationSettingsArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,22 +881,15 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// Agent can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/agents/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
 /// ```
 class CxAgent extends pulumi.CustomResource {
@@ -821,7 +908,28 @@ class CxAgent extends pulumi.CustomResource {
   /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// for a list of the currently supported language codes. This field cannot be updated after creation.
   late final pulumi.Output<String> defaultLanguageCode;
+  /// If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+  /// Otherwise, the chat engine will persist.
+  ///
+  /// This virtual field addresses a critical dependency chain: `agent` &gt; `engine` &gt; `data store`. The chat engine is automatically
+  /// provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+  /// resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+  /// deleteChatEngineOnDestroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+  /// using it. This setting ensures that the entire dependency chain can be properly torn down.
+  /// See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+  ///
+  /// Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+  /// or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+  /// or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+  /// The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
   late final pulumi.Output<bool?> deleteChatEngineOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
   late final pulumi.Output<String?> description;
   /// The human-readable name of the agent, unique within the location.
@@ -833,7 +941,7 @@ class CxAgent extends pulumi.CustomResource {
   /// (Optional, Deprecated)
   /// Determines whether this agent should log conversation queries.
   ///
-  /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+  /// &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
   late final pulumi.Output<bool?> enableStackdriverLogging;
   /// Gen App Builder-related agent-level settings.
   /// Structure is documented below.
@@ -898,6 +1006,7 @@ class CxAgent extends pulumi.CustomResource {
     clientCertificateSettings = registerOutput<CxAgentClientCertificateSettings?>('clientCertificateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentClientCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
     deleteChatEngineOnDestroy = registerOutput<bool?>('deleteChatEngineOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enableMultiLanguageTraining = registerOutput<bool?>('enableMultiLanguageTraining');
@@ -950,6 +1059,7 @@ class CxAgent extends pulumi.CustomResource {
     clientCertificateSettings = registerOutput<CxAgentClientCertificateSettings?>('clientCertificateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentClientCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
     deleteChatEngineOnDestroy = registerOutput<bool?>('deleteChatEngineOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enableMultiLanguageTraining = registerOutput<bool?>('enableMultiLanguageTraining');

@@ -66,6 +66,20 @@ import 'get_instance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_spanner_getdatabase" "foo" {
+///   name     = "foo"
+///   instance = instance.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'get_instance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.spanner.SpannerFunctions;
 /// import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -89,7 +103,7 @@ import 'get_instance_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var foo = SpannerFunctions.getDatabase(GetDatabaseArgs.builder()
 ///             .name("foo")
-///             .instance(instance.name())
+///             .instance(instance.get("name"))
 ///             .build());
 ///
 ///     }
@@ -181,6 +195,21 @@ Future<GetDatabaseResult> getDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_spanner_getdatabaseiampolicy" "foo" {
+///   project  = database.project
+///   database = database.name
+///   instance = database.instance
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +218,8 @@ Future<GetDatabaseResult> getDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.spanner.SpannerFunctions;
 /// import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,9 +232,9 @@ Future<GetDatabaseResult> getDatabase(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
-///             .project(database.project())
-///             .database(database.name())
-///             .instance(database.instance())
+///             .project(database.get("project"))
+///             .database(database.get("name"))
+///             .instance(database.get("instance"))
 ///             .build());
 ///
 ///     }
@@ -290,6 +319,19 @@ Future<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_spanner_getinstance" "foo" {
+///   name = "bar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +340,8 @@ Future<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.spanner.SpannerFunctions;
 /// import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +441,20 @@ Future<GetInstanceResult> getInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_spanner_getinstanceiampolicy" "foo" {
+///   project  = instance.project
+///   instance = instance.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +463,8 @@ Future<GetInstanceResult> getInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.spanner.SpannerFunctions;
 /// import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -421,8 +477,8 @@ Future<GetInstanceResult> getInstance(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-///             .project(instance.project())
-///             .instance(instance.name())
+///             .project(instance.get("project"))
+///             .instance(instance.get("name"))
 ///             .build());
 ///
 ///     }

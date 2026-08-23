@@ -27,7 +27,7 @@ class RegionAutoscalerAutoscalingPolicyMetric {
   /// If not specified, the type defaults to gce_instance.
   /// You should provide a filter that is selective enough to pick just
   /// one TimeSeries for the autoscaled group or for each of the instances
-  /// (if you are using gce_instance resource type). If multiple
+  /// (if you are using gceInstance resource type). If multiple
   /// TimeSeries are returned upon the query execution, the autoscaler
   /// will sum their respective values to obtain its scaling value.
   final pulumi.Input<String>? filter;
@@ -47,7 +47,7 @@ class RegionAutoscalerAutoscalingPolicyMetric {
   /// your instances.
   /// A bad example would be a metric exporting an average or median
   /// latency, since this value can't include a chunk assignable to a
-  /// single instance, it could be better used with utilization_target
+  /// single instance, it could be better used with utilizationTarget
   /// instead.
   final pulumi.Input<double>? singleInstanceAssignment;
   /// The target value of the metric that autoscaler should
@@ -98,4 +98,3 @@ class RegionAutoscalerAutoscalingPolicyMetric {
     );
   }
 }
-

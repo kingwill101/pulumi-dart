@@ -132,6 +132,32 @@ import 'auth_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_applicationintegration_client" "client" {
+///   location = "us-west1"
+/// }
+/// resource "gcp_applicationintegration_authconfig" "basic_example" {
+///   depends_on   = [gcp_applicationintegration_client.client]
+///   location     = "us-west1"
+///   display_name = "test-authconfig"
+///   description  = "Test auth config created via terraform"
+///   decrypted_credential = {
+///     credential_type = "USERNAME_AND_PASSWORD"
+///     username_and_password = {
+///       username = "test-username"
+///       password = "test-password"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +171,8 @@ import 'auth_config_state.dart';
 /// import com.pulumi.gcp.applicationintegration.inputs.AuthConfigDecryptedCredentialArgs;
 /// import com.pulumi.gcp.applicationintegration.inputs.AuthConfigDecryptedCredentialUsernameAndPasswordArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,22 +235,15 @@ import 'auth_config_state.dart';
 /// AuthConfig can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AuthConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_integrations_auth_config.default "{{project}} {{name}}"
 /// $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default {{name}}
 /// ```
 class AuthConfig extends pulumi.CustomResource {
@@ -243,6 +262,13 @@ class AuthConfig extends pulumi.CustomResource {
   /// Raw auth credentials.
   /// Structure is documented below.
   late final pulumi.Output<AuthConfigDecryptedCredential?> decryptedCredential;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the auth config.
   late final pulumi.Output<String?> description;
   /// The name of the auth config.
@@ -299,6 +325,7 @@ class AuthConfig extends pulumi.CustomResource {
     creatorEmail = registerOutput<String>('creatorEmail');
     credentialType = registerOutput<String>('credentialType');
     decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>('decryptedCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigDecryptedCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     encryptedCredential = registerOutput<String>('encryptedCredential');
@@ -344,6 +371,7 @@ class AuthConfig extends pulumi.CustomResource {
     creatorEmail = registerOutput<String>('creatorEmail');
     credentialType = registerOutput<String>('credentialType');
     decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>('decryptedCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigDecryptedCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     encryptedCredential = registerOutput<String>('encryptedCredential');

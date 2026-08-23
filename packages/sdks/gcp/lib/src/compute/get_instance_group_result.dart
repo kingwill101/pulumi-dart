@@ -5,6 +5,7 @@ import 'get_instance_group_named_port.dart';
 
 /// Result data returned by getInstanceGroup.
 class GetInstanceGroupResult {
+  final String deletionPolicy;
   /// Textual description of the instance group.
   final String description;
   /// The provider-assigned unique ID for this managed resource.
@@ -24,6 +25,7 @@ class GetInstanceGroupResult {
   final String zone;
 
   /// Creates a new [GetInstanceGroupResult].
+  /// [deletionPolicy] Required.
   /// [description] Textual description of the instance group.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instances] List of instances in the group.
@@ -35,6 +37,7 @@ class GetInstanceGroupResult {
   /// [size] The number of instances in the group.
   /// [zone] Required.
   const GetInstanceGroupResult({
+    required this.deletionPolicy,
     required this.description,
     required this.id,
     required this.instances,
@@ -49,6 +52,7 @@ class GetInstanceGroupResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'id': id,
       'instances': instances,
@@ -64,6 +68,7 @@ class GetInstanceGroupResult {
 
   factory GetInstanceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       instances: (map['instances'] as List).cast<String>(),
@@ -77,4 +82,3 @@ class GetInstanceGroupResult {
     );
   }
 }
-

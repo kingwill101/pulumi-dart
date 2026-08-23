@@ -3,16 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleRuleCondition {
-  /// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+  /// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
   final pulumi.Input<int>? age;
   /// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
   final pulumi.Input<String>? createdBefore;
   /// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
   final pulumi.Input<String>? customTimeBefore;
-  /// Number of days elapsed since the user-specified timestamp set on an object.
+  /// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
   final pulumi.Input<int>? daysSinceCustomTime;
-  /// Number of days elapsed since the noncurrent timestamp of an object. This
-  /// condition is relevant only for versioned objects.
+  /// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
   final pulumi.Input<int>? daysSinceNoncurrentTime;
   /// One or more matching name prefixes to satisfy this condition.
   final pulumi.Input<List<String>>? matchesPrefixes;
@@ -20,36 +19,42 @@ class BucketLifecycleRuleCondition {
   final pulumi.Input<List<String>>? matchesStorageClasses;
   /// One or more matching name suffixes to satisfy this condition.
   final pulumi.Input<List<String>>? matchesSuffixes;
-  /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+  /// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
   final pulumi.Input<String>? noncurrentTimeBefore;
-  /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+  /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
   final pulumi.Input<int>? numNewerVersions;
-  /// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+  /// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
   final pulumi.Input<bool>? sendAgeIfZero;
-  /// While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+  /// While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
   final pulumi.Input<bool>? sendDaysSinceCustomTimeIfZero;
-  /// While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+  /// While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
   final pulumi.Input<bool>? sendDaysSinceNoncurrentTimeIfZero;
-  /// While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+  /// While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
   final pulumi.Input<bool>? sendNumNewerVersionsIfZero;
+  /// Objects having a size greater than this value in bytes will be matched.
+  final pulumi.Input<int>? sizeAboveBytes;
+  /// Objects having a size smaller than this value in bytes will be matched.
+  final pulumi.Input<int>? sizeBelowBytes;
   /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
   final pulumi.Input<String>? withState;
 
   /// Creates a new [BucketLifecycleRuleCondition].
-  /// [age] Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+  /// [age] Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
   /// [createdBefore] A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
   /// [customTimeBefore] A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
-  /// [daysSinceCustomTime] Number of days elapsed since the user-specified timestamp set on an object.
-  /// [daysSinceNoncurrentTime] Number of days elapsed since the noncurrent timestamp of an object. This
+  /// [daysSinceCustomTime] Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
+  /// [daysSinceNoncurrentTime] Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
   /// [matchesPrefixes] One or more matching name prefixes to satisfy this condition.
   /// [matchesStorageClasses] [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
   /// [matchesSuffixes] One or more matching name suffixes to satisfy this condition.
-  /// [noncurrentTimeBefore] Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
-  /// [numNewerVersions] Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
-  /// [sendAgeIfZero] While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
-  /// [sendDaysSinceCustomTimeIfZero] While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
-  /// [sendDaysSinceNoncurrentTimeIfZero] While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
-  /// [sendNumNewerVersionsIfZero] While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+  /// [noncurrentTimeBefore] Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
+  /// [numNewerVersions] Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
+  /// [sendAgeIfZero] While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
+  /// [sendDaysSinceCustomTimeIfZero] While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
+  /// [sendDaysSinceNoncurrentTimeIfZero] While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
+  /// [sendNumNewerVersionsIfZero] While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
+  /// [sizeAboveBytes] Objects having a size greater than this value in bytes will be matched.
+  /// [sizeBelowBytes] Objects having a size smaller than this value in bytes will be matched.
   /// [withState] Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
   const BucketLifecycleRuleCondition({
     this.age,
@@ -66,6 +71,8 @@ class BucketLifecycleRuleCondition {
     this.sendDaysSinceCustomTimeIfZero,
     this.sendDaysSinceNoncurrentTimeIfZero,
     this.sendNumNewerVersionsIfZero,
+    this.sizeAboveBytes,
+    this.sizeBelowBytes,
     this.withState,
   });
 
@@ -85,6 +92,8 @@ class BucketLifecycleRuleCondition {
       'sendDaysSinceCustomTimeIfZero': ?sendDaysSinceCustomTimeIfZero,
       'sendDaysSinceNoncurrentTimeIfZero': ?sendDaysSinceNoncurrentTimeIfZero,
       'sendNumNewerVersionsIfZero': ?sendNumNewerVersionsIfZero,
+      'sizeAboveBytes': ?sizeAboveBytes,
+      'sizeBelowBytes': ?sizeBelowBytes,
       'withState': ?withState,
     };
   }
@@ -105,8 +114,9 @@ class BucketLifecycleRuleCondition {
       sendDaysSinceCustomTimeIfZero: (() { final guardedValue = map['sendDaysSinceCustomTimeIfZero']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sendDaysSinceNoncurrentTimeIfZero: (() { final guardedValue = map['sendDaysSinceNoncurrentTimeIfZero']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sendNumNewerVersionsIfZero: (() { final guardedValue = map['sendNumNewerVersionsIfZero']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sizeAboveBytes: (() { final guardedValue = map['sizeAboveBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeBelowBytes: (() { final guardedValue = map['sizeBelowBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       withState: (() { final guardedValue = map['withState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

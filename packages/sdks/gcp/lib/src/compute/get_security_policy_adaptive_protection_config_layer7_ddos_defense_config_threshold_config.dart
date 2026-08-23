@@ -11,7 +11,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
   final pulumi.Input<double> detectionAbsoluteQps;
   final pulumi.Input<double> detectionLoadThreshold;
   final pulumi.Input<double> detectionRelativeToBaselineQps;
-  /// The name of the security policy. Provide either this or a `self_link`.
+  /// The name of the security policy. Provide either this or a `selfLink`.
   final pulumi.Input<String> name;
   final pulumi.Input<List<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>> trafficGranularityConfigs;
 
@@ -23,7 +23,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
   /// [detectionAbsoluteQps] Required.
   /// [detectionLoadThreshold] Required.
   /// [detectionRelativeToBaselineQps] Required.
-  /// [name] The name of the security policy. Provide either this or a `self_link`.
+  /// [name] The name of the security policy. Provide either this or a `selfLink`.
   /// [trafficGranularityConfigs] Required.
   const GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig({
     required this.autoDeployConfidenceThreshold,
@@ -65,4 +65,3 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
     );
   }
 }
-

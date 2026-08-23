@@ -5,15 +5,15 @@ import 'security_policy_adaptive_protection_config_auto_deploy_config.dart';
 import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config.dart';
 
 class SecurityPolicyAdaptiveProtectionConfig {
-  /// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+  /// ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
   ///
-  /// &lt;a name="nested_layer_7_ddos_defense_config"&gt;&lt;/a&gt;The `layer_7_ddos_defense_config` block supports:
+  /// &lt;a name="nestedLayer7DdosDefenseConfig"&gt;&lt;/a&gt;The `layer7DdosDefenseConfig` block supports:
   final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig>? autoDeployConfig;
   /// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
   final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig>? layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfig].
-  /// [autoDeployConfig] Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+  /// [autoDeployConfig] ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
   /// [layer7DdosDefenseConfig] Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
   const SecurityPolicyAdaptiveProtectionConfig({
     this.autoDeployConfig,
@@ -34,4 +34,3 @@ class SecurityPolicyAdaptiveProtectionConfig {
     );
   }
 }
-

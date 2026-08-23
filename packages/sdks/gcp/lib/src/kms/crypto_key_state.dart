@@ -10,6 +10,13 @@ class CryptoKeyState {
   /// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
   /// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
   final pulumi.Input<String>? cryptoKeyBackend;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
   /// If not specified at creation time, the default duration is 30 days.
   final pulumi.Input<String>? destroyScheduledDuration;
@@ -17,6 +24,7 @@ class CryptoKeyState {
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Whether this key may contain imported versions only.
   final pulumi.Input<bool>? importOnly;
+  /// (Optional, Beta)
   /// The policy used for Key Access Justifications Policy Enforcement. If this
   /// field is present and this key is enrolled in Key Access Justifications
   /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -33,7 +41,7 @@ class CryptoKeyState {
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The resource name for the CryptoKey.
   final pulumi.Input<String>? name;
@@ -65,10 +73,11 @@ class CryptoKeyState {
 
   /// Creates a new [CryptoKeyState].
   /// [cryptoKeyBackend] The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destroyScheduledDuration] The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [importOnly] Whether this key may contain imported versions only.
-  /// [keyAccessJustificationsPolicy] The policy used for Key Access Justifications Policy Enforcement. If this
+  /// [keyAccessJustificationsPolicy] (Optional, Beta)
   /// [keyRing] The KeyRing that this key belongs to.
   /// [labels] Labels with user-defined metadata to apply to this resource.
   /// [name] The resource name for the CryptoKey.
@@ -80,6 +89,7 @@ class CryptoKeyState {
   /// [versionTemplate] A template describing settings for new crypto key versions.
   const CryptoKeyState({
     this.cryptoKeyBackend,
+    this.deletionPolicy,
     this.destroyScheduledDuration,
     this.effectiveLabels,
     this.importOnly,
@@ -98,6 +108,7 @@ class CryptoKeyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKeyBackend': ?cryptoKeyBackend,
+      'deletionPolicy': ?deletionPolicy,
       'destroyScheduledDuration': ?destroyScheduledDuration,
       'effectiveLabels': ?effectiveLabels,
       'importOnly': ?importOnly,
@@ -117,6 +128,7 @@ class CryptoKeyState {
   factory CryptoKeyState.fromMap(Map<String, dynamic> map) {
     return CryptoKeyState(
       cryptoKeyBackend: (() { final guardedValue = map['cryptoKeyBackend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destroyScheduledDuration: (() { final guardedValue = map['destroyScheduledDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       importOnly: (() { final guardedValue = map['importOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -133,4 +145,3 @@ class CryptoKeyState {
     );
   }
 }
-

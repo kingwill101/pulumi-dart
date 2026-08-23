@@ -32,7 +32,7 @@ class VMwareClusterState {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
   /// least three physical hosts in the datacenter.
@@ -54,10 +54,18 @@ class VMwareClusterState {
   final pulumi.Input<VMwareClusterDataplaneV2>? dataplaneV2;
   /// The time at which VMware User Cluster was deleted.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human readable description of this VMware User Cluster.
   final pulumi.Input<String>? description;
   /// Disable bundled ingress.
   final pulumi.Input<bool>? disableBundledIngress;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// Enable advanced cluster. Default to false.
   final pulumi.Input<bool>? enableAdvancedCluster;
@@ -102,6 +110,9 @@ class VMwareClusterState {
   final pulumi.Input<String>? project;
   /// If set, there are currently changes in flight to the VMware User Cluster.
   final pulumi.Input<bool>? reconciling;
+  /// A list of validations to skip during preflight checks.
+  /// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+  final pulumi.Input<List<String>>? skipValidations;
   /// (Output)
   /// The lifecycle state of the condition.
   final pulumi.Input<String>? state;
@@ -139,9 +150,10 @@ class VMwareClusterState {
   /// [createTime] The time at which VMware User Cluster was created.
   /// [dataplaneV2] VmwareDataplaneV2Config specifies configuration for Dataplane V2.
   /// [deleteTime] The time at which VMware User Cluster was deleted.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human readable description of this VMware User Cluster.
   /// [disableBundledIngress] Disable bundled ingress.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [enableAdvancedCluster] Enable advanced cluster. Default to false.
   /// [enableControlPlaneV2] Enable control plane V2. Default to false.
   /// [endpoint] The DNS name of VMware User Cluster's API server.
@@ -155,6 +167,7 @@ class VMwareClusterState {
   /// [onPremVersion] The Anthos clusters on the VMware version for your user cluster.
   /// [project] The ID of the project in which the resource belongs.
   /// [reconciling] If set, there are currently changes in flight to the VMware User Cluster.
+  /// [skipValidations] A list of validations to skip during preflight checks.
   /// [state] (Output)
   /// [statuses] (Output)
   /// [storage] Storage configuration.
@@ -174,6 +187,7 @@ class VMwareClusterState {
     this.createTime,
     this.dataplaneV2,
     this.deleteTime,
+    this.deletionPolicy,
     this.description,
     this.disableBundledIngress,
     this.effectiveAnnotations,
@@ -190,6 +204,7 @@ class VMwareClusterState {
     this.onPremVersion,
     this.project,
     this.reconciling,
+    this.skipValidations,
     this.state,
     this.statuses,
     this.storage,
@@ -212,6 +227,7 @@ class VMwareClusterState {
       'createTime': ?createTime,
       'dataplaneV2': ?pulumi.Input.mapOptionalInputValue<VMwareClusterDataplaneV2, Map<String, dynamic>>(dataplaneV2, (value) => value.toMap()),
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disableBundledIngress': ?disableBundledIngress,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -228,6 +244,7 @@ class VMwareClusterState {
       'onPremVersion': ?onPremVersion,
       'project': ?project,
       'reconciling': ?reconciling,
+      'skipValidations': ?skipValidations,
       'state': ?state,
       'statuses': ?pulumi.Input.mapOptionalInputValue<List<VMwareClusterStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<VMwareClusterStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storage': ?pulumi.Input.mapOptionalInputValue<VMwareClusterStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
@@ -251,6 +268,7 @@ class VMwareClusterState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataplaneV2: (() { final guardedValue = map['dataplaneV2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterDataplaneV2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableBundledIngress: (() { final guardedValue = map['disableBundledIngress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -267,6 +285,7 @@ class VMwareClusterState {
       onPremVersion: (() { final guardedValue = map['onPremVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      skipValidations: (() { final guardedValue = map['skipValidations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareClusterStatus>(guardedValue, (value) => VMwareClusterStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -279,4 +298,3 @@ class VMwareClusterState {
     );
   }
 }
-

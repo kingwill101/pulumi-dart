@@ -182,6 +182,43 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "test-bucket"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "archive" {
+///   name   = "index.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./path/to/zip/file/which/contains/code")
+/// }
+/// resource "gcp_cloudfunctions_function" "function" {
+///   name                  = "function-test"
+///   description           = "My function"
+///   runtime               = "nodejs20"
+///   available_memory_mb   = 128
+///   source_archive_bucket = gcp_storage_bucket.bucket.name
+///   source_archive_object = gcp_storage_bucketobject.archive.name
+///   trigger_http          = true
+///   entry_point           = "helloGET"
+/// }
+/// # IAM entry for all users to invoke the function
+/// resource "gcp_cloudfunctions_functioniammember" "invoker" {
+///   project        = gcp_cloudfunctions_function.function.project
+///   region         = gcp_cloudfunctions_function.function.region
+///   cloud_function = gcp_cloudfunctions_function.function.name
+///   role           = "roles/cloudfunctions.invoker"
+///   member         = "allUsers"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +234,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctions.FunctionIamMember;
 /// import com.pulumi.gcp.cloudfunctions.FunctionIamMemberArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,7 +294,7 @@ import 'function_state.dart';
 ///       name: index.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: ./path/to/zip/file/which/contains/code
+///         fn::fileAsset: ./path/to/zip/file/which/contains/code
 ///   function:
 ///     type: gcp:cloudfunctions:Function
 ///     properties:
@@ -477,6 +514,51 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "test-bucket"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "archive" {
+///   name   = "index.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./path/to/zip/file/which/contains/code")
+/// }
+/// resource "gcp_cloudfunctions_function" "function" {
+///   name                         = "function-test"
+///   description                  = "My function"
+///   runtime                      = "nodejs20"
+///   available_memory_mb          = 128
+///   source_archive_bucket        = gcp_storage_bucket.bucket.name
+///   source_archive_object        = gcp_storage_bucketobject.archive.name
+///   trigger_http                 = true
+///   https_trigger_security_level = "SECURE_ALWAYS"
+///   timeout                      = 60
+///   entry_point                  = "helloGET"
+///   labels = {
+///     "my-label" = "my-label-value"
+///   }
+///   environment_variables = {
+///     "MY_ENV_VAR" = "my-env-var-value"
+///   }
+/// }
+/// # IAM entry for a single user to invoke the function
+/// resource "gcp_cloudfunctions_functioniammember" "invoker" {
+///   project        = gcp_cloudfunctions_function.function.project
+///   region         = gcp_cloudfunctions_function.function.region
+///   cloud_function = gcp_cloudfunctions_function.function.name
+///   role           = "roles/cloudfunctions.invoker"
+///   member         = "user:myFunctionInvoker@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -492,8 +574,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctions.FunctionIamMember;
 /// import com.pulumi.gcp.cloudfunctions.FunctionIamMemberArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -556,7 +638,7 @@ import 'function_state.dart';
 ///       name: index.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: ./path/to/zip/file/which/contains/code
+///         fn::fileAsset: ./path/to/zip/file/which/contains/code
 ///   function:
 ///     type: gcp:cloudfunctions:Function
 ///     properties:
@@ -591,20 +673,17 @@ import 'function_state.dart';
 /// Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
 ///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
 /// ```
 class FunctionType extends pulumi.CustomResource {
-  /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+  /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
   late final pulumi.Output<Map<String, dynamic>> automaticUpdatePolicy;
   /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
   late final pulumi.Output<int?> availableMemoryMb;
@@ -614,11 +693,18 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String> buildServiceAccount;
   /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
   late final pulumi.Output<String?> buildWorkerPool;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the function.
   late final pulumi.Output<String?> description;
   /// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
   late final pulumi.Output<String> dockerRegistry;
-  /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
+  /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `dockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
   late final pulumi.Output<String?> dockerRepository;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -626,19 +712,19 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String?> entryPoint;
   /// A set of key/value environment variable pairs to assign to the function.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
-  /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+  /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
   late final pulumi.Output<FunctionEventTrigger> eventTrigger;
   /// The security level for the function. The following options are available:
   ///
   /// * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
   /// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
   late final pulumi.Output<String> httpsTriggerSecurityLevel;
-  /// URL which triggers function execution. Returned only if `trigger_http` is used.
+  /// URL which triggers function execution. Returned only if `triggerHttp` is used.
   late final pulumi.Output<String> httpsTriggerUrl;
   /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
   late final pulumi.Output<String?> ingressSettings;
   /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-  /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+  /// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
   late final pulumi.Output<String?> kmsKeyName;
   /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
   ///
@@ -651,7 +737,7 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<int?> minInstances;
   /// A user-defined name of the function. Function names must be unique globally.
   late final pulumi.Output<String> name;
-  /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+  /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
   late final pulumi.Output<FunctionOnDeployUpdatePolicy?> onDeployUpdatePolicy;
   /// Project of the function. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -675,13 +761,13 @@ class FunctionType extends pulumi.CustomResource {
   /// The source archive object (file) in archive bucket.
   late final pulumi.Output<String?> sourceArchiveObject;
   /// Represents parameters related to source repository where a function is hosted.
-  /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+  /// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
   late final pulumi.Output<FunctionSourceRepository?> sourceRepository;
   /// Describes the current stage of a deployment.
   late final pulumi.Output<String> status;
   /// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
   late final pulumi.Output<int?> timeout;
-  /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+  /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
   late final pulumi.Output<bool?> triggerHttp;
   /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
   late final pulumi.Output<String> versionId;
@@ -709,6 +795,7 @@ class FunctionType extends pulumi.CustomResource {
     buildEnvironmentVariables = registerOutput<Map<String, String>?>('buildEnvironmentVariables');
     buildServiceAccount = registerOutput<String>('buildServiceAccount');
     buildWorkerPool = registerOutput<String?>('buildWorkerPool');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerRegistry = registerOutput<String>('dockerRegistry');
     dockerRepository = registerOutput<String?>('dockerRepository');
@@ -771,6 +858,7 @@ class FunctionType extends pulumi.CustomResource {
     buildEnvironmentVariables = registerOutput<Map<String, String>?>('buildEnvironmentVariables');
     buildServiceAccount = registerOutput<String>('buildServiceAccount');
     buildWorkerPool = registerOutput<String?>('buildWorkerPool');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerRegistry = registerOutput<String>('dockerRegistry');
     dockerRepository = registerOutput<String?>('dockerRepository');

@@ -26,6 +26,13 @@ class AlertPolicyState {
   /// be ignored.
   /// Structure is documented below.
   final pulumi.Input<List<AlertPolicyCreationRecord>>? creationRecords;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A short name or phrase used to identify the policy in
   /// dashboards, notifications, and incidents. To avoid confusion, don't use
   /// the same display name for multiple policies in the same project. The
@@ -71,6 +78,7 @@ class AlertPolicyState {
   /// [combiner] How to combine the results of multiple conditions to
   /// [conditions] A list of conditions for the policy. The conditions are combined by
   /// [creationRecords] A read-only record of the creation of the alerting policy.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] A short name or phrase used to identify the policy in
   /// [documentation] Documentation that is included with notifications and incidents related
   /// [enabled] Whether or not the policy is enabled. The default is true.
@@ -84,6 +92,7 @@ class AlertPolicyState {
     this.combiner,
     this.conditions,
     this.creationRecords,
+    this.deletionPolicy,
     this.displayName,
     this.documentation,
     this.enabled,
@@ -100,6 +109,7 @@ class AlertPolicyState {
       'combiner': ?combiner,
       'conditions': ?pulumi.Input.mapOptionalInputValue<List<AlertPolicyCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<AlertPolicyCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationRecords': ?pulumi.Input.mapOptionalInputValue<List<AlertPolicyCreationRecord>, List<Map<String, dynamic>>>(creationRecords, (value) => pulumi.Input.encodeList<AlertPolicyCreationRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'documentation': ?pulumi.Input.mapOptionalInputValue<AlertPolicyDocumentation, Map<String, dynamic>>(documentation, (value) => value.toMap()),
       'enabled': ?enabled,
@@ -117,6 +127,7 @@ class AlertPolicyState {
       combiner: (() { final guardedValue = map['combiner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AlertPolicyCondition>(guardedValue, (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       creationRecords: (() { final guardedValue = map['creationRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AlertPolicyCreationRecord>(guardedValue, (value) => AlertPolicyCreationRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       documentation: (() { final guardedValue = map['documentation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertPolicyDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -128,4 +139,3 @@ class AlertPolicyState {
     );
   }
 }
-

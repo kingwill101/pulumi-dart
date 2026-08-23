@@ -156,7 +156,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("basic-plan"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -169,6 +169,42 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "basic-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "basic-plan"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -185,8 +221,8 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,7 +437,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "autopilot", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("autopilot-plan"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -414,6 +450,43 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name                 = "autopilot-cluster"
+///   location             = "us-central1"
+///   enable_autopilot     = true
+///   ip_allocation_policy = {}
+///   release_channel = {
+///     channel = "RAPID"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "autopilot" {
+///   name     = "autopilot-plan"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -431,8 +504,8 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -707,14 +780,14 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("backup-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "cmek", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("cmek-plan"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -726,7 +799,7 @@ import 'backup_plan_state.dart';
 /// 					},
 /// 				},
 /// 				EncryptionKey: &gkebackup.BackupPlanBackupConfigEncryptionKeyArgs{
-/// 					GcpKmsEncryptionKey: cryptoKey.ID(),
+/// 					GcpKmsEncryptionKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -735,6 +808,55 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "cmek-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "cmek" {
+///   name     = "cmek-plan"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     selected_namespaces = {
+///       namespaces = ["default", "test"]
+///     }
+///     encryption_key = {
+///       gcp_kms_encryption_key = gcp_kms_cryptokey.crypto_key.id
+///     }
+///   }
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "backup-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "backup-key"
+///   location = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -757,8 +879,8 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedNamespacesArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigEncryptionKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1023,7 +1145,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "nslabels", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("nslabels-plan"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -1045,6 +1167,47 @@ import 'backup_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "nslabels-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "nslabels" {
+///   name     = "nslabels-plan"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     selected_namespace_labels = {
+///       resource_labels = [{
+///         "key"   = "key1"
+///         "value" = "value1"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1060,8 +1223,9 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedNamespaceLabelsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1340,7 +1504,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "full", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("full-plan"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
@@ -1373,6 +1537,57 @@ import 'backup_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "full-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "full" {
+///   name     = "full-plan"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   retention_policy = {
+///     backup_delete_lock_days = 30
+///     backup_retain_days      = 180
+///   }
+///   backup_schedule = {
+///     cron_schedule = "0 9 * * 1"
+///   }
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     selected_applications = {
+///       namespaced_names = [{
+///         "name"      = "app1"
+///         "namespace" = "ns1"
+///         }, {
+///         "name"      = "app2"
+///         "namespace" = "ns2"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1390,8 +1605,9 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1692,7 +1908,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "permissive", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("permissive-plan"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
@@ -1726,6 +1942,58 @@ import 'backup_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "permissive-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "permissive" {
+///   name     = "permissive-plan"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   retention_policy = {
+///     backup_delete_lock_days = 30
+///     backup_retain_days      = 180
+///   }
+///   backup_schedule = {
+///     cron_schedule = "0 9 * * 1"
+///   }
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     permissive_mode     = true
+///     selected_applications = {
+///       namespaced_names = [{
+///         "name"      = "app1"
+///         "namespace" = "ns1"
+///         }, {
+///         "name"      = "app2"
+///         "namespace" = "ns2"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1743,8 +2011,9 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2092,7 +2361,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "rpo_daily_window", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rpo-daily-window"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
@@ -2140,6 +2409,72 @@ import 'backup_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "rpo-daily-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "rpo_daily_window" {
+///   name     = "rpo-daily-window"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   retention_policy = {
+///     backup_delete_lock_days = 30
+///     backup_retain_days      = 180
+///   }
+///   backup_schedule = {
+///     paused = true
+///     rpo_config = {
+///       target_rpo_minutes = 1440
+///       exclusion_windows = [{
+///         "startTime" = {
+///           "hours" = 12
+///         }
+///         "duration" = "7200s"
+///         "daily"    = true
+///         }, {
+///         "startTime" = {
+///           "hours"   = 8
+///           "minutes" = 40
+///           "seconds" = 1
+///           "nanos"   = 100
+///         }
+///         "duration" = "3600s"
+///         "singleOccurrenceDate" = {
+///           "year"  = 2024
+///           "month" = 3
+///           "day"   = 16
+///         }
+///       }]
+///     }
+///   }
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2156,9 +2491,12 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2582,7 +2920,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "rpo_weekly_window", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rpo-weekly-window"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
@@ -2645,6 +2983,83 @@ import 'backup_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "rpo-weekly-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "rpo_weekly_window" {
+///   name     = "rpo-weekly-window"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   retention_policy = {
+///     backup_delete_lock_days = 30
+///     backup_retain_days      = 180
+///   }
+///   backup_schedule = {
+///     paused = true
+///     rpo_config = {
+///       target_rpo_minutes = 1440
+///       exclusion_windows = [{
+///         "startTime" = {
+///           "hours"   = 1
+///           "minutes" = 23
+///         }
+///         "duration" = "1800s"
+///         "daysOfWeek" = {
+///           "daysOfWeeks" = ["MONDAY", "THURSDAY"]
+///         }
+///         }, {
+///         "startTime" = {
+///           "hours" = 12
+///         }
+///         "duration" = "3600s"
+///         "singleOccurrenceDate" = {
+///           "year"  = 2024
+///           "month" = 3
+///           "day"   = 17
+///         }
+///         }, {
+///         "startTime" = {
+///           "hours"   = 8
+///           "minutes" = 40
+///         }
+///         "duration" = "600s"
+///         "singleOccurrenceDate" = {
+///           "year"  = 2024
+///           "month" = 3
+///           "day"   = 18
+///         }
+///       }]
+///     }
+///   }
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2661,9 +3076,13 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2818,22 +3237,15 @@ import 'backup_plan_state.dart';
 /// BackupPlan can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default projects/{{project}}/locations/{{location}}/backupPlans/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{location}}/{{name}}
 /// ```
 class BackupPlan extends pulumi.CustomResource {
@@ -2850,6 +3262,13 @@ class BackupPlan extends pulumi.CustomResource {
   /// (except deletes), including the deactivated field itself. It also prevents any new Backups
   /// from being created via this BackupPlan (including scheduled Backups).
   late final pulumi.Output<bool> deactivated;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User specified descriptive string for this BackupPlan.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2866,7 +3285,7 @@ class BackupPlan extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The region of the Backup Plan.
   late final pulumi.Output<String> location;
@@ -2875,6 +3294,8 @@ class BackupPlan extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
+  late final pulumi.Output<int> protectedNamespaceCount;
   /// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
   late final pulumi.Output<int> protectedPodCount;
   /// The combination of labels configured directly on the resource
@@ -2908,6 +3329,7 @@ class BackupPlan extends pulumi.CustomResource {
     backupSchedule = registerOutput<BackupPlanBackupSchedule?>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deactivated = registerOutput<bool>('deactivated');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -2915,6 +3337,7 @@ class BackupPlan extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    protectedNamespaceCount = registerOutput<int>('protectedNamespaceCount');
     protectedPodCount = registerOutput<int>('protectedPodCount');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2950,6 +3373,7 @@ class BackupPlan extends pulumi.CustomResource {
     backupSchedule = registerOutput<BackupPlanBackupSchedule?>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deactivated = registerOutput<bool>('deactivated');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -2957,6 +3381,7 @@ class BackupPlan extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    protectedNamespaceCount = registerOutput<int>('protectedNamespaceCount');
     protectedPodCount = registerOutput<int>('protectedPodCount');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -12,7 +12,7 @@ class AppHostingBuildArgs {
   /// store and arbitrary metadata. They are not queryable and should be
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The ID of the Backend that this Build applies to
   final pulumi.Input<String> backend;
@@ -23,7 +23,7 @@ class AppHostingBuildArgs {
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the Backend that this Build applies to
   final pulumi.Input<String> location;
@@ -80,4 +80,3 @@ class AppHostingBuildArgs {
     );
   }
 }
-

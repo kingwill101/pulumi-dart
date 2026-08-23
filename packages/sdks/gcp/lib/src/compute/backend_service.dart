@@ -32,8 +32,7 @@ import 'backend_service_tls_settings.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 ///
-/// &gt; **Warning:** All arguments including the following potentially sensitive
-/// values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
+///
 ///
 /// ## Example Usage
 ///
@@ -114,13 +113,33 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   health_checks = gcp_compute_httphealthcheck.default.id
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
 /// }
 /// ```
 /// ```java
@@ -133,8 +152,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,6 +280,26 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "tf-test-backend-service-external"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "EXTERNAL"
+///   iap = {
+///     enabled              = true
+///     oauth2_client_id     = "abc"
+///     oauth2_client_secret = "xyz"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -270,8 +309,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceIapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,7 +440,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
@@ -412,6 +451,30 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   health_checks = gcp_compute_httphealthcheck.default.id
+///   enable_cdn    = true
+///   cdn_policy = {
+///     signed_url_cache_max_age_sec = 7200
+///   }
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
 /// }
 /// ```
 /// ```java
@@ -425,8 +488,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -578,6 +641,29 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name       = "backend-service"
+///   enable_cdn = true
+///   cdn_policy = {
+///     cache_mode = "USE_ORIGIN_HEADERS"
+///     cache_key_policy = {
+///       include_host         = true
+///       include_protocol     = true
+///       include_query_string = true
+///       include_http_headers = ["X-My-Header-Field"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -588,8 +674,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -756,6 +842,32 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name       = "backend-service"
+///   enable_cdn = true
+///   cdn_policy = {
+///     cache_mode  = "CACHE_ALL_STATIC"
+///     default_ttl = 3600
+///     client_ttl  = 7200
+///     max_ttl     = 10800
+///     cache_key_policy = {
+///       include_host          = true
+///       include_protocol      = true
+///       include_query_string  = true
+///       include_named_cookies = ["__next_preview_data", "__prerender_bypass"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -766,8 +878,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -927,7 +1039,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -945,6 +1057,35 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   health_checks = gcp_compute_httphealthcheck.default.id
+///   enable_cdn    = true
+///   cdn_policy = {
+///     cache_mode                   = "CACHE_ALL_STATIC"
+///     default_ttl                  = 3600
+///     client_ttl                   = 7200
+///     max_ttl                      = 10800
+///     negative_caching             = true
+///     signed_url_cache_max_age_sec = 7200
+///   }
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -956,8 +1097,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1150,7 +1291,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -1176,6 +1317,40 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   health_checks = gcp_compute_httphealthcheck.default.id
+///   enable_cdn    = true
+///   cdn_policy = {
+///     cache_mode                   = "CACHE_ALL_STATIC"
+///     default_ttl                  = 3600
+///     client_ttl                   = 7200
+///     max_ttl                      = 10800
+///     negative_caching             = true
+///     signed_url_cache_max_age_sec = 7200
+///     bypass_cache_on_request_headers = [{
+///       "headerName" = "Authorization"
+///       }, {
+///       "headerName" = "Proxy-Authorization"
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1187,8 +1362,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1343,7 +1519,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
 /// 		})
@@ -1352,6 +1528,28 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   locality_lb_policy    = "ROUND_ROBIN"
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -1365,8 +1563,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1574,7 +1772,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 /// 			SessionAffinity:     pulumi.String("HTTP_COOKIE"),
@@ -1609,6 +1807,52 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   locality_lb_policy    = "RING_HASH"
+///   session_affinity      = "HTTP_COOKIE"
+///   circuit_breakers = {
+///     max_connections = 10
+///   }
+///   consistent_hash = {
+///     http_cookie = {
+///       ttl = {
+///         seconds = 11
+///         nanos   = 1111
+///       }
+///       name = "mycookie"
+///     }
+///   }
+///   outlier_detection = {
+///     consecutive_errors                    = 2
+///     consecutive_gateway_failure           = 5
+///     enforcing_consecutive_errors          = 100
+///     enforcing_consecutive_gateway_failure = 0
+///     enforcing_success_rate                = 100
+///     max_ejection_percent                  = 10
+///     success_rate_minimum_hosts            = 5
+///     success_rate_request_volume           = 100
+///     success_rate_stdev_factor             = 1900
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1625,8 +1869,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.BackendServiceConsistentHashHttpCookieArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceConsistentHashHttpCookieTtlArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1826,7 +2070,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 /// 			SessionAffinity:     pulumi.String("STRONG_COOKIE_AFFINITY"),
@@ -1845,6 +2089,36 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   locality_lb_policy    = "RING_HASH"
+///   session_affinity      = "STRONG_COOKIE_AFFINITY"
+///   strong_session_affinity_cookie = {
+///     ttl = {
+///       seconds = 11
+///       nanos   = 1111
+///     }
+///     name = "mycookie"
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "health_check" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1858,8 +2132,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieTtlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1943,7 +2217,7 @@ import 'backend_service_tls_settings.dart';
 ///     enableCdn: true,
 ///     timeoutSec: 10,
 ///     connectionDrainingTimeoutSec: 10,
-///     customRequestHeaders: [proxy.fqdn.apply(fqdn => `host: ${fqdn}`)],
+///     customRequestHeaders: [pulumi.interpolate`host: ${proxy.fqdn}`],
 ///     customResponseHeaders: ["X-Cache-Hit: {cdn_cache_status}"],
 ///     backends: [{
 ///         group: externalProxy.id,
@@ -2041,7 +2315,7 @@ import 'backend_service_tls_settings.dart';
 /// 			return err
 /// 		}
 /// 		proxy, err := compute.NewGlobalNetworkEndpoint(ctx, "proxy", &compute.GlobalNetworkEndpointArgs{
-/// 			GlobalNetworkEndpointGroup: externalProxy.ID(),
+/// 			GlobalNetworkEndpointGroup: externalProxy.ID().ToIDOutput().ToStringOutput(),
 /// 			Fqdn:                       pulumi.String("test.example.com"),
 /// 			Port:                       externalProxy.DefaultPort,
 /// 		})
@@ -2063,7 +2337,7 @@ import 'backend_service_tls_settings.dart';
 /// 			},
 /// 			Backends: compute.BackendServiceBackendArray{
 /// 				&compute.BackendServiceBackendArgs{
-/// 					Group: externalProxy.ID(),
+/// 					Group: externalProxy.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -2072,6 +2346,37 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_globalnetworkendpointgroup" "external_proxy" {
+///   name                  = "network-endpoint"
+///   network_endpoint_type = "INTERNET_FQDN_PORT"
+///   default_port          = "443"
+/// }
+/// resource "gcp_compute_globalnetworkendpoint" "proxy" {
+///   global_network_endpoint_group = gcp_compute_globalnetworkendpointgroup.external_proxy.id
+///   fqdn                          = "test.example.com"
+///   port                          = gcp_compute_globalnetworkendpointgroup.external_proxy.default_port
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name                            = "backend-service"
+///   enable_cdn                      = true
+///   timeout_sec                     = 10
+///   connection_draining_timeout_sec = 10
+///   custom_request_headers          = ["host: ${gcp_compute_globalnetworkendpoint.proxy.fqdn}"]
+///   custom_response_headers         = ["X-Cache-Hit: {cdn_cache_status}"]
+///   backends {
+///     group = gcp_compute_globalnetworkendpointgroup.external_proxy.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -2087,8 +2392,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2406,7 +2711,7 @@ import 'backend_service_tls_settings.dart';
 /// 			Name:        pulumi.String("custom-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     custom.ID(),
+/// 			Network:     custom.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2423,8 +2728,8 @@ import 'backend_service_tls_settings.dart';
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-/// 					Network:    custom.ID(),
-/// 					Subnetwork: _default.ID(),
+/// 					Network:    custom.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: _default.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Metadata: pulumi.StringMap{
@@ -2445,7 +2750,7 @@ import 'backend_service_tls_settings.dart';
 /// 			Region:           pulumi.String("us-central1"),
 /// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
 /// 				&compute.RegionInstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: defaultInstanceTemplate.ID(),
+/// 					InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			TargetSize: pulumi.Int(1),
@@ -2485,6 +2790,71 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "custom" {
+///   name                    = "custom-vpc"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "custom-subnet"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.custom.id
+/// }
+/// resource "gcp_compute_instancetemplate" "default" {
+///   name         = "instance-template"
+///   machine_type = "e2-micro"
+///   disks {
+///     source_image = "debian-cloud/debian-11"
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network    = gcp_compute_network.custom.id
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   metadata = {
+///     "startup-script" = "#!/bin/bash\necho \\\"Hello World from MIG VM\\\" > /var/www/html/index.html\napt-get update -y\napt-get install -y apache2\nsystemctl start apache2\n"
+///   }
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "foobar" {
+///   name               = "instance-group-manager"
+///   base_instance_name = "vm"
+///   region             = "us-central1"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.default.id
+///   }
+///   target_size = 1
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   description           = "Hello World 1234"
+///   port_name             = "http"
+///   protocol              = "TCP"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   backends {
+///     group                  = gcp_compute_regioninstancegroupmanager.foobar.instance_group
+///     balancing_mode         = "IN_FLIGHT"
+///     max_in_flight_requests = 1000
+///     traffic_duration       = "LONG"
+///   }
+///   health_checks = gcp_compute_healthcheck.default.self_link
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2508,8 +2878,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2740,7 +3110,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID(),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("H2C"),
 /// 		})
@@ -2749,6 +3119,28 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   protocol              = "H2C"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
 /// }
 /// ```
 /// ```java
@@ -2762,8 +3154,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2872,6 +3264,21 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                        = "backend-service"
+///   load_balancing_scheme       = "EXTERNAL_MANAGED"
+///   ip_address_selection_policy = "IPV6_ONLY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2880,8 +3287,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3126,7 +3533,7 @@ import 'backend_service_tls_settings.dart';
 /// 		// Zonal NEG with GCE_VM_IP_PORT
 /// 		defaultNetworkEndpointGroup, err := compute.NewNetworkEndpointGroup(ctx, "default", &compute.NetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("network-endpoint"),
-/// 			Network:             _default.ID(),
+/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultPort:         pulumi.Int(90),
 /// 			Zone:                pulumi.String("us-central1-a"),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORT"),
@@ -3147,7 +3554,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID(),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("WEIGHTED_ROUND_ROBIN"),
 /// 			CustomMetrics: compute.BackendServiceCustomMetricArray{
@@ -3158,7 +3565,7 @@ import 'backend_service_tls_settings.dart';
 /// 			},
 /// 			Backends: compute.BackendServiceBackendArray{
 /// 				&compute.BackendServiceBackendArgs{
-/// 					Group:         defaultNetworkEndpointGroup.ID(),
+/// 					Group:         defaultNetworkEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					BalancingMode: pulumi.String("CUSTOM_METRICS"),
 /// 					CustomMetrics: compute.BackendServiceBackendCustomMetricArray{
 /// 						&compute.BackendServiceBackendCustomMetricArgs{
@@ -3189,6 +3596,65 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "network"
+/// }
+/// // Zonal NEG with GCE_VM_IP_PORT
+/// resource "gcp_compute_networkendpointgroup" "default" {
+///   name                  = "network-endpoint"
+///   network               = gcp_compute_network.default.id
+///   default_port          = "90"
+///   zone                  = "us-central1-a"
+///   network_endpoint_type = "GCE_VM_IP_PORT"
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   locality_lb_policy    = "WEIGHTED_ROUND_ROBIN"
+///   custom_metrics {
+///     name    = "orca.application_utilization"
+///     dry_run = false
+///   }
+///   # At least one metric should be not dry_run.
+///   backends {
+///     group          = gcp_compute_networkendpointgroup.default.id
+///     balancing_mode = "CUSTOM_METRICS"
+///     custom_metrics {
+///       name            = "orca.cpu_utilization"
+///       max_utilization = 0.9
+///       dry_run         = true
+///     }
+///     custom_metrics {
+///       name    = "orca.named_metrics.foo"
+///       dry_run = false
+///     }
+///   }
+///   # At least one metric should be not dry_run.
+///   log_config = {
+///     enable          = true
+///     optional_mode   = "CUSTOM"
+///     optional_fields = ["orca_load_report", "tls.protocol"]
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3206,9 +3672,10 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCustomMetricArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceBackendCustomMetricArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3477,7 +3944,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID(),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("HTTPS"),
 /// 			TlsSettings: &compute.BackendServiceTlsSettingsArgs{
@@ -3490,7 +3957,7 @@ import 'backend_service_tls_settings.dart';
 /// 						UniformResourceIdentifier: pulumi.String("https://example.com"),
 /// 					},
 /// 				},
-/// 				AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id string) (string, error) {
+/// 				AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -3500,6 +3967,41 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   protocol              = "HTTPS"
+///   tls_settings = {
+///     sni = "example.com"
+///     subject_alt_names = [{
+///       "dnsName" = "example.com"
+///       }, {
+///       "uniformResourceIdentifier" = "https://example.com"
+///     }]
+///     authentication_config ="//networksecurity.googleapis.com/${gcp_networksecurity_backendauthenticationconfig.default.id}"
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+///   name             = "authentication"
+///   well_known_roots = "PUBLIC_ROOTS"
 /// }
 /// ```
 /// ```java
@@ -3516,8 +4018,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsSubjectAltNameArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3672,6 +4175,25 @@ import 'backend_service_tls_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   dynamic_forwarding = {
+///     ip_port_selection = {
+///       enabled = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3682,8 +4204,8 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingIpPortSelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3726,26 +4248,19 @@ import 'backend_service_tls_settings.dart';
 /// BackendService can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/backendServices/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/backendService:BackendService default {{name}}
 /// ```
 class BackendService extends pulumi.CustomResource {
-  /// Lifetime of cookies in seconds if session_affinity is
+  /// Lifetime of cookies in seconds if sessionAffinity is
   /// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
   /// only until the end of the browser session (or equivalent). The
   /// maximum allowed value for TTL is one day.
@@ -3758,7 +4273,7 @@ class BackendService extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceCdnPolicy> cdnPolicy;
   /// Settings controlling the volume of connections to a backend service. This field
-  /// is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+  /// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceCircuitBreakers?> circuitBreakers;
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -3772,8 +4287,8 @@ class BackendService extends pulumi.CustomResource {
   /// policy is applicable only for HTTP connections. The affinity to a particular
   /// destination host will be lost when one or more hosts are added/removed from the
   /// destination service. This field specifies parameters that control consistent
-  /// hashing. This field only applies if the load_balancing_scheme is set to
-  /// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is
+  /// hashing. This field only applies if the loadBalancingScheme is set to
+  /// INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
   /// set to MAGLEV or RING_HASH.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceConsistentHash?> consistentHash;
@@ -3788,8 +4303,16 @@ class BackendService extends pulumi.CustomResource {
   /// Headers that the HTTP/S load balancer should add to proxied
   /// responses.
   late final pulumi.Output<List<String>?> customResponseHeaders;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+  /// (Optional, Beta)
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
@@ -3891,17 +4414,17 @@ class BackendService extends pulumi.CustomResource {
   /// X-Endpoint-Load-Metrics. The reported metrics
   /// to use for computing the weights are specified via the
   /// backends[].customMetrics fields.
-  /// locality_lb_policy is applicable to either:
-  /// * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+  /// localityLbPolicy is applicable to either:
+  /// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
   /// and loadBalancingScheme set to INTERNAL_MANAGED.
-  /// * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+  /// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
   /// Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
   /// Network Load Balancing. The default is MAGLEV.
-  /// If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+  /// If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
   /// or RING_HASH, session affinity settings will not take effect.
   /// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-  /// by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+  /// by a URL map that is bound to target gRPC proxy that has validateForProxyless
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
   late final pulumi.Output<String?> localityLbPolicy;
@@ -3925,6 +4448,7 @@ class BackendService extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// (Optional, Beta)
   /// Configures traffic steering properties of internal passthrough Network Load Balancers.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceNetworkPassThroughLbTrafficPolicy?> networkPassThroughLbTrafficPolicy;
@@ -3953,9 +4477,9 @@ class BackendService extends pulumi.CustomResource {
   /// The security policy associated with this backend service.
   late final pulumi.Output<String?> securityPolicy;
   /// The security settings that apply to this backend service. This field is applicable to either
-  /// a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
-  /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
-  /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+  /// a regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and
+  /// loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+  /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceSecuritySettings?> securitySettings;
   /// The URI of the created resource.
@@ -4004,6 +4528,7 @@ class BackendService extends pulumi.CustomResource {
     customMetrics = registerOutput<List<Map<String, dynamic>>?>('customMetrics');
     customRequestHeaders = registerOutput<List<String>?>('customRequestHeaders');
     customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicForwarding = registerOutput<BackendServiceDynamicForwarding?>('dynamicForwarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
@@ -4071,6 +4596,7 @@ class BackendService extends pulumi.CustomResource {
     customMetrics = registerOutput<List<Map<String, dynamic>>?>('customMetrics');
     customRequestHeaders = registerOutput<List<String>?>('customRequestHeaders');
     customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicForwarding = registerOutput<BackendServiceDynamicForwarding?>('dynamicForwarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');

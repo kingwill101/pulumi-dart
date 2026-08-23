@@ -11,7 +11,7 @@ class CertificateManaged {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_managed_provisioning_issue"&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+  /// &lt;a name="nestedManagedProvisioningIssue"&gt;&lt;/a&gt;The `provisioningIssue` block contains:
   final pulumi.Input<List<CertificateManagedAuthorizationAttemptInfo>>? authorizationAttemptInfos;
   /// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
   final pulumi.Input<List<String>>? dnsAuthorizations;
@@ -68,4 +68,3 @@ class CertificateManaged {
     );
   }
 }
-

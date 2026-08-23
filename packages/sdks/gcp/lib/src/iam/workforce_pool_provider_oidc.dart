@@ -14,8 +14,8 @@ class WorkforcePoolProviderOidc {
   final pulumi.Input<String> issuerUri;
   /// OIDC JWKs in JSON String format. For details on definition of a
   /// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
-  /// use the `jwks_uri` from the discovery document fetched from the
-  /// .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+  /// use the `jwksUri` from the discovery document fetched from the
+  /// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
   /// keys are supported. The JWK must use following format and include only
   /// the following fields:
   /// ```
@@ -74,4 +74,3 @@ class WorkforcePoolProviderOidc {
     );
   }
 }
-

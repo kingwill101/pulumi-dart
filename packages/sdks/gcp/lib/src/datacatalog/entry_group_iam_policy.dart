@@ -2,11 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entry_group_iam_policy_args.dart';
 import 'entry_group_iam_policy_state.dart';
 
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+///
 /// Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 ///
 /// * `gcp.datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
-/// * `gcp.datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
-/// * `gcp.datacatalog.EntryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the entrygroup are preserved.
+/// * `gcp.datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.datacatalog.EntryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the entrygroup are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +17,6 @@ import 'entry_group_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.datacatalog.EntryGroupIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.EntryGroupIamBinding` and `gcp.datacatalog.EntryGroupIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.datacatalog.EntryGroupIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.datacatalog.EntryGroupIamPolicy
@@ -114,6 +115,27 @@ import 'entry_group_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entrygroupiampolicy" "policy" {
+///   entry_group = basicEntryGroup.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,10 +144,11 @@ import 'entry_group_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamPolicy;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,7 +168,7 @@ import 'entry_group_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
-///             .entryGroup(basicEntryGroup.name())
+///             .entryGroup(basicEntryGroup.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -237,6 +260,21 @@ import 'entry_group_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entrygroupiambinding" "binding" {
+///   entry_group = basicEntryGroup.name
+///   role        = "roles/viewer"
+///   members     = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +283,8 @@ import 'entry_group_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamBinding;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -259,7 +297,7 @@ import 'entry_group_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()
-///             .entryGroup(basicEntryGroup.name())
+///             .entryGroup(basicEntryGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -340,6 +378,21 @@ import 'entry_group_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entrygroupiammember" "member" {
+///   entry_group = basicEntryGroup.name
+///   role        = "roles/viewer"
+///   member      = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -348,8 +401,8 @@ import 'entry_group_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamMember;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,7 +415,7 @@ import 'entry_group_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()
-///             .entryGroup(basicEntryGroup.name())
+///             .entryGroup(basicEntryGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -387,12 +440,13 @@ import 'entry_group_iam_policy_state.dart';
 /// -
 ///
 /// # IAM policy for Data Catalog EntryGroup
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
 ///
 /// Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 ///
 /// * `gcp.datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
-/// * `gcp.datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
-/// * `gcp.datacatalog.EntryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the entrygroup are preserved.
+/// * `gcp.datacatalog.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.datacatalog.EntryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the entrygroup are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -401,7 +455,6 @@ import 'entry_group_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.datacatalog.EntryGroupIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.EntryGroupIamBinding` and `gcp.datacatalog.EntryGroupIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.datacatalog.EntryGroupIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.datacatalog.EntryGroupIamPolicy
@@ -500,6 +553,27 @@ import 'entry_group_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entrygroupiampolicy" "policy" {
+///   entry_group = basicEntryGroup.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -508,10 +582,11 @@ import 'entry_group_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamPolicy;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,7 +606,7 @@ import 'entry_group_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
-///             .entryGroup(basicEntryGroup.name())
+///             .entryGroup(basicEntryGroup.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -623,6 +698,21 @@ import 'entry_group_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entrygroupiambinding" "binding" {
+///   entry_group = basicEntryGroup.name
+///   role        = "roles/viewer"
+///   members     = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -631,8 +721,8 @@ import 'entry_group_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamBinding;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -645,7 +735,7 @@ import 'entry_group_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()
-///             .entryGroup(basicEntryGroup.name())
+///             .entryGroup(basicEntryGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -726,6 +816,21 @@ import 'entry_group_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_entrygroupiammember" "member" {
+///   entry_group = basicEntryGroup.name
+///   role        = "roles/viewer"
+///   member      = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -734,8 +839,8 @@ import 'entry_group_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamMember;
 /// import com.pulumi.gcp.datacatalog.EntryGroupIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -748,7 +853,7 @@ import 'entry_group_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()
-///             .entryGroup(basicEntryGroup.name())
+///             .entryGroup(basicEntryGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -772,11 +877,8 @@ import 'entry_group_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{region}}/entryGroups/{{entry_group}}
-///
 /// * {{project}}/{{region}}/{{entry_group}}
-///
 /// * {{region}}/{{entry_group}}
-///
 /// * {{entry_group}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -784,25 +886,21 @@ import 'entry_group_iam_policy_state.dart';
 /// Data Catalog entrygroup IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:datacatalog/entryGroupIamPolicy:EntryGroupIamPolicy editor "projects/{{project}}/locations/{{region}}/entryGroups/{{entry_group}} roles/viewer user:jane@example.com"
+/// $ terraform import google_data_catalog_entry_group_iam_member.editor "projects/{{project}}/locations/{{region}}/entryGroups/{{entry_group}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:datacatalog/entryGroupIamPolicy:EntryGroupIamPolicy editor "projects/{{project}}/locations/{{region}}/entryGroups/{{entry_group}} roles/viewer"
+/// $ terraform import google_data_catalog_entry_group_iam_binding.editor "projects/{{project}}/locations/{{region}}/entryGroups/{{entry_group}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:datacatalog/entryGroupIamPolicy:EntryGroupIamPolicy editor projects/{{project}}/locations/{{region}}/entryGroups/{{entry_group}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class EntryGroupIamPolicy extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to

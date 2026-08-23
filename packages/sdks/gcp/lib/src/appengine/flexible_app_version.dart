@@ -91,8 +91,8 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///     service: "default",
 ///     runtime: "nodejs",
 ///     flexibleRuntimeSettings: {
-///         operatingSystem: "ubuntu22",
-///         runtimeVersion: "20",
+///         operatingSystem: "ubuntu24",
+///         runtimeVersion: "24",
 ///     },
 ///     entrypoint: {
 ///         shell: "node ./app.js",
@@ -178,8 +178,8 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///     service="default",
 ///     runtime="nodejs",
 ///     flexible_runtime_settings={
-///         "operating_system": "ubuntu22",
-///         "runtime_version": "20",
+///         "operating_system": "ubuntu24",
+///         "runtime_version": "24",
 ///     },
 ///     entrypoint={
 ///         "shell": "node ./app.js",
@@ -301,8 +301,8 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///         Runtime = "nodejs",
 ///         FlexibleRuntimeSettings = new Gcp.AppEngine.Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs
 ///         {
-///             OperatingSystem = "ubuntu22",
-///             RuntimeVersion = "20",
+///             OperatingSystem = "ubuntu24",
+///             RuntimeVersion = "24",
 ///         },
 ///         Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
 ///         {
@@ -462,8 +462,8 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// 			Service:   pulumi.String("default"),
 /// 			Runtime:   pulumi.String("nodejs"),
 /// 			FlexibleRuntimeSettings: &appengine.FlexibleAppVersionFlexibleRuntimeSettingsArgs{
-/// 				OperatingSystem: pulumi.String("ubuntu22"),
-/// 				RuntimeVersion:  pulumi.String("20"),
+/// 				OperatingSystem: pulumi.String("ubuntu24"),
+/// 				RuntimeVersion:  pulumi.String("24"),
 /// 			},
 /// 			Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
 /// 				Shell: pulumi.String("node ./app.js"),
@@ -514,6 +514,107 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name            = "appeng-flex"
+///   project_id      = "appeng-flex"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_appengine_application" "app" {
+///   project     = gcp_organizations_project.my_project.project_id
+///   location_id = "us-central"
+/// }
+/// resource "gcp_projects_service" "service" {
+///   project                    = gcp_organizations_project.my_project.project_id
+///   service                    = "appengineflex.googleapis.com"
+///   disable_dependent_services = false
+/// }
+/// resource "gcp_serviceaccount_account" "custom_service_account" {
+///   project      = gcp_projects_service.service.project
+///   account_id   = "my-account"
+///   display_name = "Custom Service Account"
+/// }
+/// resource "gcp_projects_iammember" "gae_api" {
+///   project = gcp_projects_service.service.project
+///   role    = "roles/compute.networkUser"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.custom_service_account.email}"
+/// }
+/// resource "gcp_projects_iammember" "logs_writer" {
+///   project = gcp_projects_service.service.project
+///   role    = "roles/logging.logWriter"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.custom_service_account.email}"
+/// }
+/// resource "gcp_projects_iammember" "storage_viewer" {
+///   project = gcp_projects_service.service.project
+///   role    = "roles/storage.objectViewer"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.custom_service_account.email}"
+/// }
+/// resource "gcp_appengine_flexibleappversion" "myapp_v1" {
+///   version_id = "v1"
+///   project    = gcp_projects_iammember.gae_api.project
+///   service    = "default"
+///   runtime    = "nodejs"
+///   flexible_runtime_settings = {
+///     operating_system = "ubuntu24"
+///     runtime_version  = "24"
+///   }
+///   entrypoint = {
+///     shell = "node ./app.js"
+///   }
+///   deployment = {
+///     zip = {
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///     }
+///   }
+///   liveness_check = {
+///     path = "/"
+///   }
+///   readiness_check = {
+///     path = "/"
+///   }
+///   env_variables = {
+///     "port" = "8080"
+///   }
+///   handlers {
+///     url_regex        = ".*\\/my-path\\/*"
+///     security_level   = "SECURE_ALWAYS"
+///     login            = "LOGIN_REQUIRED"
+///     auth_fail_action = "AUTH_FAIL_ACTION_REDIRECT"
+///     static_files = {
+///       path              = "my-other-path"
+///       upload_path_regex = ".*\\/my-path\\/*"
+///     }
+///   }
+///   automatic_scaling = {
+///     cool_down_period = "120s"
+///     cpu_utilization = {
+///       target_utilization = 0.5
+///     }
+///   }
+///   noop_on_destroy = true
+///   service_account = gcp_serviceaccount_account.custom_service_account.email
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   project  = gcp_organizations_project.my_project.project_id
+///   name     = "appengine-static-content"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "hello-world.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./test-fixtures/hello-world.zip")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -547,8 +648,8 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingArgs;
 /// import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -621,8 +722,8 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///             .service("default")
 ///             .runtime("nodejs")
 ///             .flexibleRuntimeSettings(FlexibleAppVersionFlexibleRuntimeSettingsArgs.builder()
-///                 .operatingSystem("ubuntu22")
-///                 .runtimeVersion("20")
+///                 .operatingSystem("ubuntu24")
+///                 .runtimeVersion("24")
 ///                 .build())
 ///             .entrypoint(FlexibleAppVersionEntrypointArgs.builder()
 ///                 .shell("node ./app.js")
@@ -725,8 +826,8 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///       service: default
 ///       runtime: nodejs
 ///       flexibleRuntimeSettings:
-///         operatingSystem: ubuntu22
-///         runtimeVersion: '20'
+///         operatingSystem: ubuntu24
+///         runtimeVersion: '24'
 ///       entrypoint:
 ///         shell: node ./app.js
 ///       deployment:
@@ -764,7 +865,7 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///       name: hello-world.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/hello-world.zip
+///         fn::fileAsset: ./test-fixtures/hello-world.zip
 /// ```
 ///
 ///
@@ -773,22 +874,15 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// FlexibleAppVersion can be imported using any of these accepted formats:
 ///
 /// * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
-///
 /// * `{{project}}/{{service}}/{{version_id}}`
-///
 /// * `{{service}}/{{version_id}}`
+///
 ///
 /// When using the `pulumi import` command, FlexibleAppVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
 /// ```
 class FlexibleAppVersion extends pulumi.CustomResource {
@@ -805,6 +899,13 @@ class FlexibleAppVersion extends pulumi.CustomResource {
   late final pulumi.Output<String?> defaultExpiration;
   /// If set to `true`, the service will be deleted if it is the last version.
   late final pulumi.Output<bool?> deleteServiceOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
   late final pulumi.Output<FlexibleAppVersionDeployment?> deployment;
@@ -900,6 +1001,7 @@ class FlexibleAppVersion extends pulumi.CustomResource {
     betaSettings = registerOutput<Map<String, String>?>('betaSettings');
     defaultExpiration = registerOutput<String?>('defaultExpiration');
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployment = registerOutput<FlexibleAppVersionDeployment?>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointsApiService = registerOutput<FlexibleAppVersionEndpointsApiService?>('endpointsApiService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEndpointsApiService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entrypoint = registerOutput<FlexibleAppVersionEntrypoint?>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -956,6 +1058,7 @@ class FlexibleAppVersion extends pulumi.CustomResource {
     betaSettings = registerOutput<Map<String, String>?>('betaSettings');
     defaultExpiration = registerOutput<String?>('defaultExpiration');
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployment = registerOutput<FlexibleAppVersionDeployment?>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointsApiService = registerOutput<FlexibleAppVersionEndpointsApiService?>('endpointsApiService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEndpointsApiService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entrypoint = registerOutput<FlexibleAppVersionEntrypoint?>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });

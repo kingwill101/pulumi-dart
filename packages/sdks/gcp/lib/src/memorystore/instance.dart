@@ -222,7 +222,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -232,10 +232,10 @@ import 'instance_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      producerNet.ID(),
+/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID(),
+/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -251,7 +251,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   producerNet.ID(),
+/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -280,6 +280,61 @@ import 'instance_zone_distribution_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_memorystore_instance" "instance-basic" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   instance_id = "basic-instance"
+///   shard_count = 1
+///   desired_auto_created_endpoints {
+///     network    = gcp_compute_network.producer_net.id
+///     project_id = data.gcp_organizations_getproject.project.project_id
+///   }
+///   location                    = "us-central1"
+///   deletion_protection_enabled = false
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.producer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.producer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_network" "producer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -299,9 +354,11 @@ import 'instance_zone_distribution_config.dart';
 /// import com.pulumi.gcp.memorystore.InstanceArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -700,7 +757,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -710,10 +767,10 @@ import 'instance_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      producerNet.ID(),
+/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID(),
+/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -729,7 +786,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   producerNet.ID(),
+/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -782,6 +839,85 @@ import 'instance_zone_distribution_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_memorystore_instance" "instance-full" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   instance_id = "full-instance"
+///   shard_count = 1
+///   desired_auto_created_endpoints {
+///     network    = gcp_compute_network.producer_net.id
+///     project_id = data.gcp_organizations_getproject.project.project_id
+///   }
+///   location                = "us-central1"
+///   replica_count           = 1
+///   node_type               = "SHARED_CORE_NANO"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_DISABLED"
+///   authorization_mode      = "AUTH_DISABLED"
+///   kms_key                 = "my-key"
+///   engine_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   zone_distribution_config = {
+///     mode = "SINGLE_ZONE"
+///     zone = "us-central1-b"
+///   }
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+///   engine_version              = "VALKEY_7_2"
+///   deletion_protection_enabled = false
+///   mode                        = "CLUSTER"
+///   persistence_config = {
+///     mode = "RDB"
+///     rdb_config = {
+///       rdb_snapshot_period     = "ONE_HOUR"
+///       rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+///     }
+///   }
+///   labels = {
+///     "abc" = "xyz"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.producer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.producer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_network" "producer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -802,11 +938,13 @@ import 'instance_zone_distribution_config.dart';
 /// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigRdbConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1148,7 +1286,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID(),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1158,10 +1296,10 @@ import 'instance_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      producerNet.ID(),
+/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID(),
+/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1177,7 +1315,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   producerNet.ID(),
+/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -1197,6 +1335,56 @@ import 'instance_zone_distribution_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_memorystore_instance" "instance-persistence-aof" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   instance_id = "aof-instance"
+///   shard_count = 1
+///   desired_auto_created_endpoints {
+///     network    = gcp_compute_network.producer_net.id
+///     project_id = data.gcp_organizations_getproject.project.project_id
+///   }
+///   location = "us-central1"
+///   persistence_config = {
+///     mode = "AOF"
+///     aof_config = {
+///       append_fsync = "EVERY_SEC"
+///     }
+///   }
+///   deletion_protection_enabled = false
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.producer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.producer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_network" "producer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -1220,8 +1408,8 @@ import 'instance_zone_distribution_config.dart';
 /// import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigAofConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1768,7 +1956,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet-primary-instance"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/29"),
 /// 			Region:      pulumi.String("asia-east1"),
-/// 			Network:     primaryProducerNet.ID(),
+/// 			Network:     primaryProducerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1778,10 +1966,10 @@ import 'instance_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("asia-east1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      primaryProducerNet.ID(),
+/// 			Network:      primaryProducerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					primaryProducerSubnet.ID(),
+/// 					primaryProducerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1798,7 +1986,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   primaryProducerNet.ID(),
+/// 					Network:   primaryProducerNet.ID().ToIDOutput().ToStringOutput(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -1842,7 +2030,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet-secondary-instance"),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/29"),
 /// 			Region:      pulumi.String("europe-north1"),
-/// 			Network:     secondaryProducerNet.ID(),
+/// 			Network:     secondaryProducerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1852,10 +2040,10 @@ import 'instance_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("europe-north1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      secondaryProducerNet.ID(),
+/// 			Network:      secondaryProducerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					secondaryProducerSubnet.ID(),
+/// 					secondaryProducerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1868,7 +2056,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   secondaryProducerNet.ID(),
+/// 					Network:   secondaryProducerNet.ID().ToIDOutput().ToStringOutput(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -1888,7 +2076,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			CrossInstanceReplicationConfig: &memorystore.InstanceCrossInstanceReplicationConfigArgs{
 /// 				InstanceRole: pulumi.String("SECONDARY"),
 /// 				PrimaryInstance: &memorystore.InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{
-/// 					Instance: primaryInstance.ID(),
+/// 					Instance: primaryInstance.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
@@ -1909,6 +2097,132 @@ import 'instance_zone_distribution_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// // Primary instance
+/// resource "gcp_memorystore_instance" "primary_instance" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.primary_policy]
+///   instance_id = "primary-instance"
+///   shard_count = 1
+///   desired_auto_created_endpoints {
+///     network    = gcp_compute_network.primary_producer_net.id
+///     project_id = data.gcp_organizations_getproject.project.project_id
+///   }
+///   location                = "asia-east1"
+///   replica_count           = 1
+///   node_type               = "SHARED_CORE_NANO"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_DISABLED"
+///   authorization_mode      = "AUTH_DISABLED"
+///   engine_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   zone_distribution_config = {
+///     mode = "SINGLE_ZONE"
+///     zone = "asia-east1-c"
+///   }
+///   deletion_protection_enabled = true
+///   persistence_config = {
+///     mode = "RDB"
+///     rdb_config = {
+///       rdb_snapshot_period     = "ONE_HOUR"
+///       rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+///     }
+///   }
+///   labels = {
+///     "abc" = "xyz"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "primary_policy" {
+///   name          = "my-policy-primary-instance"
+///   location      = "asia-east1"
+///   service_class = "gcp-memorystore"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.primary_producer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.primary_producer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "primary_producer_subnet" {
+///   name          = "my-subnet-primary-instance"
+///   ip_cidr_range = "10.0.1.0/29"
+///   region        = "asia-east1"
+///   network       = gcp_compute_network.primary_producer_net.id
+/// }
+/// resource "gcp_compute_network" "primary_producer_net" {
+///   name                    = "my-network-primary-instance"
+///   auto_create_subnetworks = false
+/// }
+/// // Secondary instance
+/// resource "gcp_memorystore_instance" "secondary_instance" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.secondary_policy]
+///   instance_id = "secondary-instance"
+///   shard_count = 1
+///   desired_auto_created_endpoints {
+///     network    = gcp_compute_network.secondary_producer_net.id
+///     project_id = data.gcp_organizations_getproject.project.project_id
+///   }
+///   location                = "europe-north1"
+///   replica_count           = 1
+///   node_type               = "SHARED_CORE_NANO"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_DISABLED"
+///   authorization_mode      = "AUTH_DISABLED"
+///   engine_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   zone_distribution_config = {
+///     mode = "SINGLE_ZONE"
+///     zone = "europe-north1-c"
+///   }
+///   deletion_protection_enabled = true
+///   // Cross instance replication config
+///   cross_instance_replication_config = {
+///     instance_role = "SECONDARY"
+///     primary_instance = {
+///       instance = gcp_memorystore_instance.primary_instance.id
+///     }
+///   }
+///   persistence_config = {
+///     mode = "RDB"
+///     rdb_config = {
+///       rdb_snapshot_period     = "ONE_HOUR"
+///       rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+///     }
+///   }
+///   labels = {
+///     "abc" = "xyz"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "secondary_policy" {
+///   name          = "my-policy-secondary-instance"
+///   location      = "europe-north1"
+///   service_class = "gcp-memorystore"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.secondary_producer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.secondary_producer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "secondary_producer_subnet" {
+///   name          = "my-subnet-secondary-instance"
+///   ip_cidr_range = "10.0.2.0/29"
+///   region        = "europe-north1"
+///   network       = gcp_compute_network.secondary_producer_net.id
+/// }
+/// resource "gcp_compute_network" "secondary_producer_net" {
+///   name                    = "my-network-secondary-instance"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -1935,8 +2249,8 @@ import 'instance_zone_distribution_config.dart';
 /// import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigArgs;
 /// import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2195,34 +2509,770 @@ import 'instance_zone_distribution_config.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Memorystore Instance Flexible Ca
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const _default = new gcp.certificateauthority.CaPool("default", {
+///     name: "ca-pool",
+///     location: "us-central1",
+///     tier: "ENTERPRISE",
+/// });
+/// const memorystoreP4saRequester = new gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester", {
+///     caPool: _default.id,
+///     role: "roles/privateca.certificateRequester",
+///     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-memorystore.iam.gserviceaccount.com`),
+/// });
+/// const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+///     pool: _default.name,
+///     certificateAuthorityId: "ca-auth",
+///     location: "us-central1",
+///     config: {
+///         subjectConfig: {
+///             subject: {
+///                 organization: "Google",
+///                 commonName: "my-memorystore-ca",
+///             },
+///         },
+///         x509Config: {
+///             caOptions: {
+///                 isCa: true,
+///             },
+///             keyUsage: {
+///                 baseKeyUsage: {
+///                     certSign: true,
+///                     crlSign: true,
+///                 },
+///                 extendedKeyUsage: {
+///                     serverAuth: true,
+///                 },
+///             },
+///         },
+///     },
+///     keySpec: {
+///         algorithm: "RSA_PKCS1_4096_SHA256",
+///     },
+///     ignoreActiveCertificatesOnDeletion: true,
+///     deletionProtection: false,
+///     skipGracePeriod: true,
+/// });
+/// const producerNet = new gcp.compute.Network("producer_net", {
+///     name: "ca-network",
+///     autoCreateSubnetworks: false,
+/// });
+/// const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+///     name: "ca-subnet",
+///     ipCidrRange: "10.0.0.248/29",
+///     region: "us-central1",
+///     network: producerNet.id,
+/// });
+/// const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+///     name: "ca-policy",
+///     location: "us-central1",
+///     serviceClass: "gcp-memorystore",
+///     network: producerNet.id,
+///     pscConfig: {
+///         subnetworks: [producerSubnet.id],
+///     },
+/// });
+/// const test_instance = new gcp.memorystore.Instance("test-instance", {
+///     instanceId: "ca-instance",
+///     shardCount: 3,
+///     location: "us-central1",
+///     desiredAutoCreatedEndpoints: [{
+///         network: producerNet.id,
+///         projectId: project.then(project => project.projectId),
+///     }],
+///     transitEncryptionMode: "SERVER_AUTHENTICATION",
+///     serverCaMode: "CUSTOMER_MANAGED_CAS_CA",
+///     serverCaPool: _default.id,
+///     deletionProtectionEnabled: true,
+/// }, {
+///     dependsOn: [
+///         defaultServiceConnectionPolicy,
+///         defaultAuthority,
+///         memorystoreP4saRequester,
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// default = gcp.certificateauthority.CaPool("default",
+///     name="ca-pool",
+///     location="us-central1",
+///     tier="ENTERPRISE")
+/// memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
+///     ca_pool=default.id,
+///     role="roles/privateca.certificateRequester",
+///     member=f"serviceAccount:service-{project.number}@gcp-sa-memorystore.iam.gserviceaccount.com")
+/// default_authority = gcp.certificateauthority.Authority("default",
+///     pool=default.name,
+///     certificate_authority_id="ca-auth",
+///     location="us-central1",
+///     config={
+///         "subject_config": {
+///             "subject": {
+///                 "organization": "Google",
+///                 "common_name": "my-memorystore-ca",
+///             },
+///         },
+///         "x509_config": {
+///             "ca_options": {
+///                 "is_ca": True,
+///             },
+///             "key_usage": {
+///                 "base_key_usage": {
+///                     "cert_sign": True,
+///                     "crl_sign": True,
+///                 },
+///                 "extended_key_usage": {
+///                     "server_auth": True,
+///                 },
+///             },
+///         },
+///     },
+///     key_spec={
+///         "algorithm": "RSA_PKCS1_4096_SHA256",
+///     },
+///     ignore_active_certificates_on_deletion=True,
+///     deletion_protection=False,
+///     skip_grace_period=True)
+/// producer_net = gcp.compute.Network("producer_net",
+///     name="ca-network",
+///     auto_create_subnetworks=False)
+/// producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+///     name="ca-subnet",
+///     ip_cidr_range="10.0.0.248/29",
+///     region="us-central1",
+///     network=producer_net.id)
+/// default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+///     name="ca-policy",
+///     location="us-central1",
+///     service_class="gcp-memorystore",
+///     network=producer_net.id,
+///     psc_config={
+///         "subnetworks": [producer_subnet.id],
+///     })
+/// test_instance = gcp.memorystore.Instance("test-instance",
+///     instance_id="ca-instance",
+///     shard_count=3,
+///     location="us-central1",
+///     desired_auto_created_endpoints=[{
+///         "network": producer_net.id,
+///         "project_id": project.project_id,
+///     }],
+///     transit_encryption_mode="SERVER_AUTHENTICATION",
+///     server_ca_mode="CUSTOMER_MANAGED_CAS_CA",
+///     server_ca_pool=default.id,
+///     deletion_protection_enabled=True,
+///     opts = pulumi.ResourceOptions(depends_on=[
+///             default_service_connection_policy,
+///             default_authority,
+///             memorystore_p4sa_requester,
+///         ]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+///     {
+///         Name = "ca-pool",
+///         Location = "us-central1",
+///         Tier = "ENTERPRISE",
+///     });
+///
+///     var memorystoreP4saRequester = new Gcp.CertificateAuthority.CaPoolIamMember("memorystore_p4sa_requester", new()
+///     {
+///         CaPool = @default.Id,
+///         Role = "roles/privateca.certificateRequester",
+///         Member = $"serviceAccount:service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-memorystore.iam.gserviceaccount.com",
+///     });
+///
+///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
+///     {
+///         Pool = @default.Name,
+///         CertificateAuthorityId = "ca-auth",
+///         Location = "us-central1",
+///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+///         {
+///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+///             {
+///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+///                 {
+///                     Organization = "Google",
+///                     CommonName = "my-memorystore-ca",
+///                 },
+///             },
+///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+///             {
+///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+///                 {
+///                     IsCa = true,
+///                 },
+///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+///                 {
+///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+///                     {
+///                         CertSign = true,
+///                         CrlSign = true,
+///                     },
+///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+///                     {
+///                         ServerAuth = true,
+///                     },
+///                 },
+///             },
+///         },
+///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+///         {
+///             Algorithm = "RSA_PKCS1_4096_SHA256",
+///         },
+///         IgnoreActiveCertificatesOnDeletion = true,
+///         DeletionProtection = false,
+///         SkipGracePeriod = true,
+///     });
+///
+///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+///     {
+///         Name = "ca-network",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+///     {
+///         Name = "ca-subnet",
+///         IpCidrRange = "10.0.0.248/29",
+///         Region = "us-central1",
+///         Network = producerNet.Id,
+///     });
+///
+///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+///     {
+///         Name = "ca-policy",
+///         Location = "us-central1",
+///         ServiceClass = "gcp-memorystore",
+///         Network = producerNet.Id,
+///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+///         {
+///             Subnetworks = new[]
+///             {
+///                 producerSubnet.Id,
+///             },
+///         },
+///     });
+///
+///     var test_instance = new Gcp.MemoryStore.Instance("test-instance", new()
+///     {
+///         InstanceId = "ca-instance",
+///         ShardCount = 3,
+///         Location = "us-central1",
+///         DesiredAutoCreatedEndpoints = new[]
+///         {
+///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
+///             {
+///                 Network = producerNet.Id,
+///                 ProjectId = project.Apply(getProjectResult => getProjectResult.ProjectId),
+///             },
+///         },
+///         TransitEncryptionMode = "SERVER_AUTHENTICATION",
+///         ServerCaMode = "CUSTOMER_MANAGED_CAS_CA",
+///         ServerCaPool = @default.Id,
+///         DeletionProtectionEnabled = true,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             defaultServiceConnectionPolicy,
+///             defaultAuthority,
+///             memorystoreP4saRequester,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+/// 			Name:     pulumi.String("ca-pool"),
+/// 			Location: pulumi.String("us-central1"),
+/// 			Tier:     pulumi.String("ENTERPRISE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		memorystoreP4saRequester, err := certificateauthority.NewCaPoolIamMember(ctx, "memorystore_p4sa_requester", &certificateauthority.CaPoolIamMemberArgs{
+/// 			CaPool: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   pulumi.String("roles/privateca.certificateRequester"),
+/// 			Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-memorystore.iam.gserviceaccount.com", project.Number),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+/// 			Pool:                   _default.Name,
+/// 			CertificateAuthorityId: pulumi.String("ca-auth"),
+/// 			Location:               pulumi.String("us-central1"),
+/// 			Config: &certificateauthority.AuthorityConfigArgs{
+/// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+/// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+/// 						Organization: pulumi.String("Google"),
+/// 						CommonName:   pulumi.String("my-memorystore-ca"),
+/// 					},
+/// 				},
+/// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+/// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+/// 						IsCa: pulumi.Bool(true),
+/// 					},
+/// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+/// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+/// 							CertSign: pulumi.Bool(true),
+/// 							CrlSign:  pulumi.Bool(true),
+/// 						},
+/// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+/// 							ServerAuth: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+/// 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+/// 			},
+/// 			IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+/// 			DeletionProtection:                 pulumi.Bool(false),
+/// 			SkipGracePeriod:                    pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("ca-network"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("ca-subnet"),
+/// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+/// 			Name:         pulumi.String("ca-policy"),
+/// 			Location:     pulumi.String("us-central1"),
+/// 			ServiceClass: pulumi.String("gcp-memorystore"),
+/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+/// 				Subnetworks: pulumi.StringArray{
+/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = memorystore.NewInstance(ctx, "test-instance", &memorystore.InstanceArgs{
+/// 			InstanceId: pulumi.String("ca-instance"),
+/// 			ShardCount: pulumi.Int(3),
+/// 			Location:   pulumi.String("us-central1"),
+/// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
+/// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
+/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					ProjectId: pulumi.String(project.ProjectId),
+/// 				},
+/// 			},
+/// 			TransitEncryptionMode:     pulumi.String("SERVER_AUTHENTICATION"),
+/// 			ServerCaMode:              pulumi.String("CUSTOMER_MANAGED_CAS_CA"),
+/// 			ServerCaPool:              _default.ID().ToIDOutput().ToStringOutput(),
+/// 			DeletionProtectionEnabled: pulumi.Bool(true),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			defaultServiceConnectionPolicy,
+/// 			defaultAuthority,
+/// 			memorystoreP4saRequester,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_memorystore_instance" "test-instance" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default, gcp_certificateauthority_authority.default, gcp_certificateauthority_capooliammember.memorystore_p4sa_requester]
+///   instance_id = "ca-instance"
+///   shard_count = 3
+///   location    = "us-central1"
+///   desired_auto_created_endpoints {
+///     network    = gcp_compute_network.producer_net.id
+///     project_id = data.gcp_organizations_getproject.project.project_id
+///   }
+///   transit_encryption_mode     = "SERVER_AUTHENTICATION"
+///   server_ca_mode              = "CUSTOMER_MANAGED_CAS_CA"
+///   server_ca_pool              = gcp_certificateauthority_capool.default.id
+///   deletion_protection_enabled = true
+/// }
+/// resource "gcp_certificateauthority_capool" "default" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_capooliammember" "memorystore_p4sa_requester" {
+///   ca_pool = gcp_certificateauthority_capool.default.id
+///   role    = "roles/privateca.certificateRequester"
+///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-memorystore.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "ca-auth"
+///   location                 = "us-central1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "Google"
+///         common_name  = "my-memorystore-ca"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   ignore_active_certificates_on_deletion = true
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "ca-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore"
+///   network       = gcp_compute_network.producer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.producer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   name          = "ca-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer_net.id
+/// }
+/// resource "gcp_compute_network" "producer_net" {
+///   name                    = "ca-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.certificateauthority.CaPool;
+/// import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+/// import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
+/// import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
+/// import com.pulumi.gcp.certificateauthority.Authority;
+/// import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+/// import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+/// import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+/// import com.pulumi.gcp.memorystore.Instance;
+/// import com.pulumi.gcp.memorystore.InstanceArgs;
+/// import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var default_ = new CaPool("default", CaPoolArgs.builder()
+///             .name("ca-pool")
+///             .location("us-central1")
+///             .tier("ENTERPRISE")
+///             .build());
+///
+///         var memorystoreP4saRequester = new CaPoolIamMember("memorystoreP4saRequester", CaPoolIamMemberArgs.builder()
+///             .caPool(default_.id())
+///             .role("roles/privateca.certificateRequester")
+///             .member(String.format("serviceAccount:service-%s@gcp-sa-memorystore.iam.gserviceaccount.com", project.number()))
+///             .build());
+///
+///         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+///             .pool(default_.name())
+///             .certificateAuthorityId("ca-auth")
+///             .location("us-central1")
+///             .config(AuthorityConfigArgs.builder()
+///                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+///                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+///                         .organization("Google")
+///                         .commonName("my-memorystore-ca")
+///                         .build())
+///                     .build())
+///                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+///                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+///                         .isCa(true)
+///                         .build())
+///                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+///                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+///                             .certSign(true)
+///                             .crlSign(true)
+///                             .build())
+///                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+///                             .serverAuth(true)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .keySpec(AuthorityKeySpecArgs.builder()
+///                 .algorithm("RSA_PKCS1_4096_SHA256")
+///                 .build())
+///             .ignoreActiveCertificatesOnDeletion(true)
+///             .deletionProtection(false)
+///             .skipGracePeriod(true)
+///             .build());
+///
+///         var producerNet = new Network("producerNet", NetworkArgs.builder()
+///             .name("ca-network")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
+///             .name("ca-subnet")
+///             .ipCidrRange("10.0.0.248/29")
+///             .region("us-central1")
+///             .network(producerNet.id())
+///             .build());
+///
+///         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
+///             .name("ca-policy")
+///             .location("us-central1")
+///             .serviceClass("gcp-memorystore")
+///             .network(producerNet.id())
+///             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+///                 .subnetworks(producerSubnet.id())
+///                 .build())
+///             .build());
+///
+///         var test_instance = new Instance("test-instance", InstanceArgs.builder()
+///             .instanceId("ca-instance")
+///             .shardCount(3)
+///             .location("us-central1")
+///             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
+///                 .network(producerNet.id())
+///                 .projectId(project.projectId())
+///                 .build())
+///             .transitEncryptionMode("SERVER_AUTHENTICATION")
+///             .serverCaMode("CUSTOMER_MANAGED_CAS_CA")
+///             .serverCaPool(default_.id())
+///             .deletionProtectionEnabled(true)
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     defaultServiceConnectionPolicy,
+///                     defaultAuthority,
+///                     memorystoreP4saRequester)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   test-instance:
+///     type: gcp:memorystore:Instance
+///     properties:
+///       instanceId: ca-instance
+///       shardCount: 3
+///       location: us-central1
+///       desiredAutoCreatedEndpoints:
+///         - network: ${producerNet.id}
+///           projectId: ${project.projectId}
+///       transitEncryptionMode: SERVER_AUTHENTICATION
+///       serverCaMode: CUSTOMER_MANAGED_CAS_CA
+///       serverCaPool: ${default.id}
+///       deletionProtectionEnabled: true
+///     options:
+///       dependsOn:
+///         - ${defaultServiceConnectionPolicy}
+///         - ${defaultAuthority}
+///         - ${memorystoreP4saRequester}
+///   default:
+///     type: gcp:certificateauthority:CaPool
+///     properties:
+///       name: ca-pool
+///       location: us-central1
+///       tier: ENTERPRISE
+///   memorystoreP4saRequester:
+///     type: gcp:certificateauthority:CaPoolIamMember
+///     name: memorystore_p4sa_requester
+///     properties:
+///       caPool: ${default.id}
+///       role: roles/privateca.certificateRequester
+///       member: serviceAccount:service-${project.number}@gcp-sa-memorystore.iam.gserviceaccount.com
+///   defaultAuthority:
+///     type: gcp:certificateauthority:Authority
+///     name: default
+///     properties:
+///       pool: ${default.name}
+///       certificateAuthorityId: ca-auth
+///       location: us-central1
+///       config:
+///         subjectConfig:
+///           subject:
+///             organization: Google
+///             commonName: my-memorystore-ca
+///         x509Config:
+///           caOptions:
+///             isCa: true
+///           keyUsage:
+///             baseKeyUsage:
+///               certSign: true
+///               crlSign: true
+///             extendedKeyUsage:
+///               serverAuth: true
+///       keySpec:
+///         algorithm: RSA_PKCS1_4096_SHA256
+///       ignoreActiveCertificatesOnDeletion: true
+///       deletionProtection: false
+///       skipGracePeriod: true
+///   defaultServiceConnectionPolicy:
+///     type: gcp:networkconnectivity:ServiceConnectionPolicy
+///     name: default
+///     properties:
+///       name: ca-policy
+///       location: us-central1
+///       serviceClass: gcp-memorystore
+///       network: ${producerNet.id}
+///       pscConfig:
+///         subnetworks:
+///           - ${producerSubnet.id}
+///   producerSubnet:
+///     type: gcp:compute:Subnetwork
+///     name: producer_subnet
+///     properties:
+///       name: ca-subnet
+///       ipCidrRange: 10.0.0.248/29
+///       region: us-central1
+///       network: ${producerNet.id}
+///   producerNet:
+///     type: gcp:compute:Network
+///     name: producer_net
+///     properties:
+///       name: ca-network
+///       autoCreateSubnetworks: false
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance_id}}`
-///
 /// * `{{location}}/{{instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:memorystore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memorystore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memorystore/instance:Instance default {{location}}/{{instance_id}}
 /// ```
 class Instance extends pulumi.CustomResource {
   /// Optional. Immutable. Authorization mode of the instance. Possible values:
   /// AUTH_DISABLED
-  /// IAM_AUTH
+  /// IAM_AUTH.
+  /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
   late final pulumi.Output<String> authorizationMode;
   /// The automated backup config for a instance.
   /// Structure is documented below.
@@ -2237,11 +3287,18 @@ class Instance extends pulumi.CustomResource {
   /// Cross instance replication config
   /// Structure is documented below.
   late final pulumi.Output<InstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. If set to true deletion of the instance will fail.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
   /// Immutable. User inputs for the auto-created endpoints connections.
   late final pulumi.Output<List<Map<String, dynamic>>?> desiredAutoCreatedEndpoints;
-  /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+  /// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
   late final pulumi.Output<List<Map<String, dynamic>>?> desiredPscAutoConnections;
   /// (Deprecated)
   /// Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -2274,7 +3331,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String?> kmsKey;
   /// Optional. Labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
   late final pulumi.Output<String> location;
@@ -2284,13 +3341,13 @@ class Instance extends pulumi.CustomResource {
   /// Upcoming maintenance schedule.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> maintenanceSchedules;
-  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
   late final pulumi.Output<String?> maintenanceVersion;
   /// Managed backup source for the instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceManagedBackupSource?> managedBackupSource;
-  /// Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
+  /// Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> managedServerCas;
   /// Optional. cluster or cluster-disabled.
@@ -2308,9 +3365,15 @@ class Instance extends pulumi.CustomResource {
   /// Optional. Machine type for individual nodes of the instance.
   /// Possible values:
   /// SHARED_CORE_NANO
+  /// CUSTOM_PICO
+  /// CUSTOM_MICRO
+  /// CUSTOM_MINI
   /// HIGHMEM_MEDIUM
+  /// HIGHCPU_MEDIUM
   /// HIGHMEM_XLARGE
   /// STANDARD_SMALL
+  /// STANDARD_LARGE
+  /// HIGHMEM_2XLARGE
   late final pulumi.Output<String> nodeType;
   /// Represents persistence configuration for a instance.
   /// Structure is documented below.
@@ -2330,6 +3393,14 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
   late final pulumi.Output<int> replicaCount;
+  /// The serverCaMode for the TLS enabled Memorystore instance.
+  /// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+  /// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+  late final pulumi.Output<String> serverCaMode;
+  /// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+  /// as the server_ca_mode.
+  /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+  late final pulumi.Output<String?> serverCaPool;
   /// Required. Number of shards for the instance.
   late final pulumi.Output<int> shardCount;
   /// Output only. Current state of the instance.
@@ -2375,6 +3446,7 @@ class Instance extends pulumi.CustomResource {
     backupCollection = registerOutput<String>('backupCollection');
     createTime = registerOutput<String>('createTime');
     crossInstanceReplicationConfig = registerOutput<InstanceCrossInstanceReplicationConfig>('crossInstanceReplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCrossInstanceReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
     desiredAutoCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredAutoCreatedEndpoints');
     desiredPscAutoConnections = registerOutput<List<Map<String, dynamic>>?>('desiredPscAutoConnections');
@@ -2404,6 +3476,8 @@ class Instance extends pulumi.CustomResource {
     pscAutoConnections = registerOutput<List<Map<String, dynamic>>>('pscAutoConnections');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     replicaCount = registerOutput<int>('replicaCount');
+    serverCaMode = registerOutput<String>('serverCaMode');
+    serverCaPool = registerOutput<String?>('serverCaPool');
     shardCount = registerOutput<int>('shardCount');
     state = registerOutput<String>('state');
     stateInfos = registerOutput<List<Map<String, dynamic>>>('stateInfos');
@@ -2442,6 +3516,7 @@ class Instance extends pulumi.CustomResource {
     backupCollection = registerOutput<String>('backupCollection');
     createTime = registerOutput<String>('createTime');
     crossInstanceReplicationConfig = registerOutput<InstanceCrossInstanceReplicationConfig>('crossInstanceReplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCrossInstanceReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
     desiredAutoCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredAutoCreatedEndpoints');
     desiredPscAutoConnections = registerOutput<List<Map<String, dynamic>>?>('desiredPscAutoConnections');
@@ -2471,6 +3546,8 @@ class Instance extends pulumi.CustomResource {
     pscAutoConnections = registerOutput<List<Map<String, dynamic>>>('pscAutoConnections');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     replicaCount = registerOutput<int>('replicaCount');
+    serverCaMode = registerOutput<String>('serverCaMode');
+    serverCaPool = registerOutput<String?>('serverCaPool');
     shardCount = registerOutput<int>('shardCount');
     this.state = registerOutput<String>('state');
     stateInfos = registerOutput<List<Map<String, dynamic>>>('stateInfos');

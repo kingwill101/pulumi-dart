@@ -14,7 +14,7 @@ class GetDataSourceArgs {
   /// The location in which the Data Source belongs.
   final pulumi.Input<String> location;
   /// The Google Cloud Project in which the Data Source belongs.
-  final pulumi.Input<String> project;
+  final pulumi.Input<String>? project;
 
   /// Creates a new [GetDataSourceArgs].
   /// [backupVaultId] The ID of the Backup Vault in which the Data Source belongs.
@@ -25,7 +25,7 @@ class GetDataSourceArgs {
     required this.backupVaultId,
     required this.dataSourceId,
     required this.location,
-    required this.project,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
@@ -33,7 +33,7 @@ class GetDataSourceArgs {
       'backupVaultId': backupVaultId,
       'dataSourceId': dataSourceId,
       'location': location,
-      'project': project,
+      'project': ?project,
     };
   }
 
@@ -42,8 +42,7 @@ class GetDataSourceArgs {
       backupVaultId: pulumi.Input.fromValue(map['backupVaultId'] as String),
       dataSourceId: pulumi.Input.fromValue(map['dataSourceId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: pulumi.Input.fromValue(map['project'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

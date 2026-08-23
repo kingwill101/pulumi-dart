@@ -76,6 +76,23 @@ import 'router_interface_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_routerinterface" "foobar" {
+///   name       = "interface-1"
+///   router     = "router-1"
+///   region     = "us-central1"
+///   ip_range   = "169.254.1.1/30"
+///   vpn_tunnel = "tunnel-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'router_interface_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.RouterInterface;
 /// import com.pulumi.gcp.compute.RouterInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,22 +143,26 @@ import 'router_interface_state.dart';
 /// Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g.
 ///
 /// * `{{project_id}}/{{region}}/{{router}}/{{name}}`
-///
 /// * `{{region}}/{{router}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, router interfaces can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/routerInterface:RouterInterface default {{project_id}}/{{region}}/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerInterface:RouterInterface default {{region}}/{{router}}/{{name}}
 /// ```
 class RouterInterface extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name or resource link to the
   /// VLAN interconnect for this interface. Changing this forces a new interface to
-  /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+  /// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
   late final pulumi.Output<String?> interconnectAttachment;
   /// IP address and range of the interface. The IP range must be
   /// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
@@ -166,16 +187,16 @@ class RouterInterface extends pulumi.CustomResource {
   /// The name of the router this interface will be attached to.
   /// Changing this forces a new interface to be created.
   ///
-  /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+  /// In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
   ///
   /// - - -
   late final pulumi.Output<String> router;
   /// The URI of the subnetwork resource that this interface
-  /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+  /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
   late final pulumi.Output<String?> subnetwork;
   /// The name or resource link to the VPN tunnel this
   /// interface will be linked to. Changing this forces a new interface to be created. Only
-  /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+  /// one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
   late final pulumi.Output<String?> vpnTunnel;
 
   /// Creates a new [RouterInterface].
@@ -192,6 +213,7 @@ class RouterInterface extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     interconnectAttachment = registerOutput<String?>('interconnectAttachment');
     ipRange = registerOutput<String>('ipRange');
     ipVersion = registerOutput<String>('ipVersion');
@@ -228,6 +250,7 @@ class RouterInterface extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     interconnectAttachment = registerOutput<String?>('interconnectAttachment');
     ipRange = registerOutput<String>('ipRange');
     ipVersion = registerOutput<String>('ipVersion');

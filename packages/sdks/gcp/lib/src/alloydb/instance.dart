@@ -10,6 +10,19 @@ import 'instance_query_insights_config.dart';
 import 'instance_read_pool_config.dart';
 import 'instance_state.dart';
 
+/// A managed alloydb cluster instance.
+///
+///
+/// To get more information about Instance, see:
+///
+/// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
+/// * How-to Guides
+/// * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+///
+/// &gt; **Warning:** Deleting an instance with instanceType = SECONDARY does not delete the secondary instance, and abandons it instead.
+/// Use deletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+/// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+///
 /// ## Example Usage
 ///
 /// ### Alloydb Instance Basic
@@ -182,7 +195,7 @@ import 'instance_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-cluster"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: defaultNetwork.ID(),
+/// 				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			InitialUser: &alloydb.ClusterInitialUserArgs{
 /// 				Password: pulumi.String("alloydb-cluster"),
@@ -197,13 +210,13 @@ import 'instance_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -233,6 +246,54 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_instance" "default" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   initial_user = {
+///     password = "alloydb-cluster"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-cluster"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +316,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -624,7 +685,7 @@ import 'instance_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-primary-cluster"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: _default.ID(),
+/// 				Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -636,13 +697,13 @@ import 'instance_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -706,6 +767,77 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_cluster" "primary" {
+///   cluster_id = "alloydb-primary-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "primary" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.primary.name
+///   instance_id   = "alloydb-primary-instance"
+///   instance_type = "PRIMARY"
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_alloydb_cluster" "secondary" {
+///   depends_on = [gcp_alloydb_instance.primary]
+///   cluster_id = "alloydb-secondary-cluster"
+///   location   = "us-east1"
+///   network_config = {
+///     network = defaultGoogleComputeNetwork.id
+///   }
+///   cluster_type = "SECONDARY"
+///   continuous_backup_config = {
+///     enabled = false
+///   }
+///   secondary_config = {
+///     primary_cluster_name = gcp_alloydb_cluster.primary.name
+///   }
+///   deletion_policy     = "FORCE"
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "secondary" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.secondary.name
+///   instance_id   = "alloydb-secondary-instance"
+///   instance_type = gcp_alloydb_cluster.secondary.cluster_type
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-secondary-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-secondary-instance"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -729,8 +861,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -784,7 +916,7 @@ import 'instance_state.dart';
 ///             .clusterId("alloydb-secondary-cluster")
 ///             .location("us-east1")
 ///             .networkConfig(ClusterNetworkConfigArgs.builder()
-///                 .network(defaultGoogleComputeNetwork.id())
+///                 .network(defaultGoogleComputeNetwork.get("id"))
 ///                 .build())
 ///             .clusterType("SECONDARY")
 ///             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
@@ -901,22 +1033,15 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}`
-///
 /// * `{{location}}/{{cluster}}/{{instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -932,7 +1057,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> activationPolicy;
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
   /// Note that primary and read instances can have different availability types.
@@ -955,8 +1080,16 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
   late final pulumi.Output<Map<String, String>> databaseFlags;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-settable and human-readable display name for the Instance.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -964,12 +1097,20 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String?> gceZone;
   /// The ID of the alloydb instance.
   late final pulumi.Output<String> instanceId;
+  /// The type of the instance.
+  /// If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
+  /// If the instance type is SECONDARY, point to the clusterType of the associated secondary cluster instead of mentioning SECONDARY.
+  /// Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+  /// If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+  /// Use deletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+  /// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+  /// Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
   late final pulumi.Output<String> instanceType;
   /// The IP address for the Instance. This is the connection endpoint for an end-user application.
   late final pulumi.Output<String> ipAddress;
   /// User-defined labels for the alloydb instance.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Configurations for the machines that host the underlying database engine.
   /// Structure is documented below.
@@ -979,6 +1120,7 @@ class Instance extends pulumi.CustomResource {
   /// Instance level network configuration.
   /// Structure is documented below.
   late final pulumi.Output<InstanceNetworkConfig> networkConfig;
+  /// (Optional, Beta)
   /// Configuration for enhanced query insights.
   /// Structure is documented below.
   late final pulumi.Output<InstanceObservabilityConfig> observabilityConfig;
@@ -1033,6 +1175,7 @@ class Instance extends pulumi.CustomResource {
     connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1088,6 +1231,7 @@ class Instance extends pulumi.CustomResource {
     connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

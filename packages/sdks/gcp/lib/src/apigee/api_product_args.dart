@@ -22,6 +22,13 @@ class ApiProductArgs {
   /// Use this property to specify the access level of the API product as either public, private, or internal.
   /// Structure is documented below.
   final pulumi.Input<List<ApiProductAttribute>>? attributes;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the API product. Include key information about the API product that is not captured by other fields.
   final pulumi.Input<String>? description;
   /// Name displayed in the UI or developer portal to developers registering for API access.
@@ -66,6 +73,7 @@ class ApiProductArgs {
   /// [apiResources] Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the proxy.pathsuffix variable.
   /// [approvalType] Flag that specifies how API keys are approved to access the APIs defined by the API product.
   /// [attributes] Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the API product. Include key information about the API product that is not captured by other fields.
   /// [displayName] Name displayed in the UI or developer portal to developers registering for API access.
   /// [environments] Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
@@ -85,6 +93,7 @@ class ApiProductArgs {
     this.apiResources,
     this.approvalType,
     this.attributes,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.environments,
@@ -107,6 +116,7 @@ class ApiProductArgs {
       'apiResources': ?apiResources,
       'approvalType': ?approvalType,
       'attributes': ?pulumi.Input.mapOptionalInputValue<List<ApiProductAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<ApiProductAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'environments': ?environments,
@@ -130,6 +140,7 @@ class ApiProductArgs {
       apiResources: (() { final guardedValue = map['apiResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       approvalType: (() { final guardedValue = map['approvalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApiProductAttribute>(guardedValue, (value) => ApiProductAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       environments: (() { final guardedValue = map['environments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -148,4 +159,3 @@ class ApiProductArgs {
     );
   }
 }
-

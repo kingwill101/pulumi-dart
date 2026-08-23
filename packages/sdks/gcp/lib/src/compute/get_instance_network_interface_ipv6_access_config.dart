@@ -7,7 +7,7 @@ class GetInstanceNetworkInterfaceIpv6AccessConfig {
   final pulumi.Input<String> externalIpv6;
   /// The prefix length of the external IPv6 range.
   final pulumi.Input<String> externalIpv6PrefixLength;
-  /// The name of the instance. One of `name` or `self_link` must be provided.
+  /// The name of the instance. One of `name` or `selfLink` must be provided.
   final pulumi.Input<String> name;
   /// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
   final pulumi.Input<String> networkTier;
@@ -19,7 +19,7 @@ class GetInstanceNetworkInterfaceIpv6AccessConfig {
   /// Creates a new [GetInstanceNetworkInterfaceIpv6AccessConfig].
   /// [externalIpv6] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
   /// [externalIpv6PrefixLength] The prefix length of the external IPv6 range.
-  /// [name] The name of the instance. One of `name` or `self_link` must be provided.
+  /// [name] The name of the instance. One of `name` or `selfLink` must be provided.
   /// [networkTier] The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
   /// [publicPtrDomainName] The DNS domain name for the public PTR record.
   /// [securityPolicy] A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
@@ -54,4 +54,3 @@ class GetInstanceNetworkInterfaceIpv6AccessConfig {
     );
   }
 }
-

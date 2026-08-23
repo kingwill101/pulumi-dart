@@ -88,6 +88,24 @@ import 'mute_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_muteconfig" "default" {
+///   mute_config_id = "my-config"
+///   parent         = "organizations/123456789"
+///   filter         = "category: \"OS_VULNERABILITY\""
+///   description    = "My Mute Config"
+///   type           = "DYNAMIC"
+///   expiry_time    = "2215-02-03T15:01:23Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'mute_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securitycenter.MuteConfig;
 /// import com.pulumi.gcp.securitycenter.MuteConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,6 +159,7 @@ import 'mute_config_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -150,6 +169,13 @@ class MuteConfig extends pulumi.CustomResource {
   /// The time at which the mute config was created. This field is set by
   /// the server and will be ignored if provided on config creation.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the mute config.
   late final pulumi.Output<String?> description;
   /// Optional. The expiry of the mute config. Only applicable for dynamic configs.
@@ -175,8 +201,8 @@ class MuteConfig extends pulumi.CustomResource {
   /// or projects/{project}/muteConfigs/{configId}
   late final pulumi.Output<String> name;
   /// Resource name of the new mute configs's parent. Its format is
-  /// "organizations/[organization_id]", "folders/[folder_id]", or
-  /// "projects/[project_id]".
+  /// "organizations/[organizationId]", "folders/[folderId]", or
+  /// "projects/[projectId]".
   late final pulumi.Output<String> parent;
   /// The type of the mute config, which determines what type of mute state the config affects.
   /// Default value is `DYNAMIC`.
@@ -202,6 +228,7 @@ class MuteConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expiryTime = registerOutput<String?>('expiryTime');
     filter = registerOutput<String>('filter');
@@ -237,6 +264,7 @@ class MuteConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expiryTime = registerOutput<String?>('expiryTime');
     filter = registerOutput<String>('filter');

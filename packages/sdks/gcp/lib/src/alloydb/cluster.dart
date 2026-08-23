@@ -2,16 +2,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'cluster_automated_backup_policy.dart';
 import 'cluster_continuous_backup_config.dart';
+import 'cluster_dataplex_config.dart';
 import 'cluster_encryption_config.dart';
 import 'cluster_initial_user.dart';
 import 'cluster_maintenance_update_policy.dart';
 import 'cluster_network_config.dart';
 import 'cluster_psc_config.dart';
 import 'cluster_restore_backup_source.dart';
+import 'cluster_restore_backupdr_backup_source.dart';
+import 'cluster_restore_backupdr_pitr_source.dart';
 import 'cluster_restore_continuous_backup_source.dart';
 import 'cluster_secondary_config.dart';
 import 'cluster_state.dart';
 
+/// A managed alloydb cluster.
+///
+///
+/// To get more information about Cluster, see:
+///
+/// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+/// * How-to Guides
+/// * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+///
+/// &gt; **Note:** Users can promote a secondary cluster to a primary cluster with the help of `clusterType`.
+/// To promote, users have to set the `clusterType` property as `PRIMARY` and remove the `secondaryConfig` field from cluster configuration.
+/// See Example.
+///
+/// Switchover is supported in terraform by refreshing the state of the terraform configurations.
+/// The switchover operation still needs to be called outside of terraform.
+/// After the switchover operation is completed successfully:
+/// 1. Refresh the state of the AlloyDB resources by running `pulumi up -refresh-only --auto-approve` .
+/// 2. Manually update the terraform configuration file(s) to match the actual state of the resources by modifying the `clusterType` and `secondaryConfig` fields.
+/// 3. Verify the sync of terraform state by running `pulumi preview` and ensure that the infrastructure matches the configuration and no changes are required.
+///
+///
+///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `initial_user.password_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Alloydb Cluster Basic
@@ -97,7 +125,7 @@ import 'cluster_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-cluster"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: defaultNetwork.ID(),
+/// 				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -110,6 +138,30 @@ import 'cluster_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-cluster"
 /// }
 /// ```
 /// ```java
@@ -125,8 +177,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,7 +341,7 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "alloydb-network",
+/// 			Name: pulumi.StringRef("alloydb-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -324,6 +376,40 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "alloydb-network"
+/// }
+///
+/// resource "gcp_alloydb_instance" "default" {
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = data.gcp_compute_getnetwork.default.id
+///   }
+///   database_version = "POSTGRES_14"
+///   initial_user = {
+///     password = "alloydb-cluster"
+///   }
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +425,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.gcp.alloydb.Instance;
 /// import com.pulumi.gcp.alloydb.InstanceArgs;
 /// import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,7 +608,7 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "alloydb-network",
+/// 			Name: pulumi.StringRef("alloydb-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -557,6 +643,40 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "alloydb-network"
+/// }
+///
+/// resource "gcp_alloydb_instance" "default" {
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = data.gcp_compute_getnetwork.default.id
+///   }
+///   database_version = "POSTGRES_15"
+///   initial_user = {
+///     password = "alloydb-cluster"
+///   }
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -572,8 +692,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.gcp.alloydb.Instance;
 /// import com.pulumi.gcp.alloydb.InstanceArgs;
 /// import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -838,7 +958,7 @@ import 'cluster_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-cluster-full"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: _default.ID(),
+/// 				Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DatabaseVersion: pulumi.String("POSTGRES_15"),
 /// 			InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -889,6 +1009,62 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_cluster" "full" {
+///   cluster_id = "alloydb-cluster-full"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   database_version = "POSTGRES_15"
+///   initial_user = {
+///     user     = "alloydb-cluster-full"
+///     password = "alloydb-cluster-full"
+///   }
+///   continuous_backup_config = {
+///     enabled              = true
+///     recovery_window_days = 14
+///   }
+///   automated_backup_policy = {
+///     location      = "us-central1"
+///     backup_window = "1800s"
+///     enabled       = true
+///     weekly_schedule = {
+///       days_of_weeks = ["MONDAY"]
+///       start_times = [{
+///         "hours"   = 23
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }]
+///     }
+///     quantity_based_retention = {
+///       count = 1
+///     }
+///     labels = {
+///       "test" = "alloydb-cluster-full"
+///     }
+///   }
+///   labels = {
+///     "test" = "alloydb-cluster-full"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-cluster-full"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -904,11 +1080,12 @@ import 'cluster_state.dart';
 /// import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
 /// import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
 /// import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs;
+/// import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs;
 /// import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1269,7 +1446,7 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "alloydb-network",
+/// 			Name: pulumi.StringRef("alloydb-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -1366,6 +1543,81 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "alloydb-network"
+/// }
+///
+/// resource "gcp_alloydb_cluster" "source" {
+///   cluster_id = "alloydb-source-cluster"
+///   location   = "us-central1"
+///   network    = data.gcp_compute_getnetwork.default.id
+///   initial_user = {
+///     password = "alloydb-source-cluster"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "source" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.source.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_alloydb_backup" "source" {
+///   depends_on   = [gcp_alloydb_instance.source]
+///   backup_id    = "alloydb-backup"
+///   location     = "us-central1"
+///   cluster_name = gcp_alloydb_cluster.source.name
+/// }
+/// resource "gcp_alloydb_cluster" "restored_from_backup" {
+///   cluster_id = "alloydb-backup-restored"
+///   location   = "us-central1"
+///   network_config = {
+///     network = data.gcp_compute_getnetwork.default.id
+///   }
+///   restore_backup_source = {
+///     backup_name = gcp_alloydb_backup.source.name
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_cluster" "restored_via_pitr" {
+///   cluster_id = "alloydb-pitr-restored"
+///   location   = "us-central1"
+///   network_config = {
+///     network = data.gcp_compute_getnetwork.default.id
+///   }
+///   restore_continuous_backup_source = {
+///     cluster       = gcp_alloydb_cluster.source.name
+///     point_in_time = "2023-08-03T19:19:00.094Z"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-source-cluster"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = data.gcp_compute_getnetwork.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = data.gcp_compute_getnetwork.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1392,8 +1644,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1786,7 +2038,7 @@ import 'cluster_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-primary-cluster"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: _default.ID(),
+/// 				Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -1798,13 +2050,13 @@ import 'cluster_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -1830,7 +2082,7 @@ import 'cluster_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-secondary-cluster"),
 /// 			Location:  pulumi.String("us-east1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: _default.ID(),
+/// 				Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ClusterType: pulumi.String("SECONDARY"),
 /// 			ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{
@@ -1852,6 +2104,67 @@ import 'cluster_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_cluster" "primary" {
+///   cluster_id = "alloydb-primary-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "primary" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.primary.name
+///   instance_id   = "alloydb-primary-instance"
+///   instance_type = "PRIMARY"
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_alloydb_cluster" "secondary" {
+///   depends_on = [gcp_alloydb_instance.primary]
+///   cluster_id = "alloydb-secondary-cluster"
+///   location   = "us-east1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   cluster_type = "SECONDARY"
+///   continuous_backup_config = {
+///     enabled = false
+///   }
+///   secondary_config = {
+///     primary_cluster_name = gcp_alloydb_cluster.primary.name
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-secondary-cluster"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-secondary-cluster"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
 /// }
 /// ```
 /// ```java
@@ -1877,8 +2190,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2024,28 +2337,17 @@ import 'cluster_state.dart';
 /// Cluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-///
 /// * `{{project}}/{{location}}/{{cluster_id}}`
-///
 /// * `{{location}}/{{cluster_id}}`
-///
 /// * `{{cluster_id}}`
+///
 ///
 /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
 /// ```
 class Cluster extends pulumi.CustomResource {
@@ -2053,7 +2355,7 @@ class Cluster extends pulumi.CustomResource {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
   /// Structure is documented below.
@@ -2061,6 +2363,9 @@ class Cluster extends pulumi.CustomResource {
   /// Cluster created from backup.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> backupSources;
+  /// Cluster created from a BackupDR backup.
+  /// Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>> backupdrBackupSources;
   /// The ID of the alloydb cluster.
   late final pulumi.Output<String> clusterId;
   /// The type of cluster. If not set, defaults to PRIMARY.
@@ -2077,14 +2382,29 @@ class Cluster extends pulumi.CustomResource {
   /// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
   /// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
   late final pulumi.Output<String> databaseVersion;
+  /// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+  /// Structure is documented below.
+  late final pulumi.Output<ClusterDataplexConfig> dataplexConfig;
   /// Policy to determine if the cluster should be deleted forcefully.
   /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-  /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
-  /// Possible values: DEFAULT, FORCE
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the cluster.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the cluster will fail.
+  /// When the field is set to false, deleting the cluster is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// User-settable and human-readable display name for the Cluster.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -2102,7 +2422,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterInitialUser?> initialUser;
   /// User-defined labels for the alloydb cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the alloydb cluster should reside.
   late final pulumi.Output<String> location;
@@ -2130,10 +2450,16 @@ class Cluster extends pulumi.CustomResource {
   /// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
   /// This can happen due to user-triggered updates or system actions like failover or maintenance.
   late final pulumi.Output<bool> reconciling;
-  /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+  /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// Structure is documented below.
   late final pulumi.Output<ClusterRestoreBackupSource?> restoreBackupSource;
-  /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+  /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+  /// Structure is documented below.
+  late final pulumi.Output<ClusterRestoreBackupdrBackupSource?> restoreBackupdrBackupSource;
+  /// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+  /// Structure is documented below.
+  late final pulumi.Output<ClusterRestoreBackupdrPitrSource?> restoreBackupdrPitrSource;
+  /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// Structure is documented below.
   late final pulumi.Output<ClusterRestoreContinuousBackupSource?> restoreContinuousBackupSource;
   /// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
@@ -2171,12 +2497,14 @@ class Cluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     automatedBackupPolicy = registerOutput<ClusterAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupSources = registerOutput<List<Map<String, dynamic>>>('backupSources');
+    backupdrBackupSources = registerOutput<List<Map<String, dynamic>>>('backupdrBackupSources');
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String?>('clusterType');
     continuousBackupConfig = registerOutput<ClusterContinuousBackupConfig>('continuousBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterContinuousBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     continuousBackupInfos = registerOutput<List<Map<String, dynamic>>>('continuousBackupInfos');
     databaseVersion = registerOutput<String>('databaseVersion');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    dataplexConfig = registerOutput<ClusterDataplexConfig>('dataplexConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDataplexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -2196,6 +2524,8 @@ class Cluster extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
     restoreBackupSource = registerOutput<ClusterRestoreBackupSource?>('restoreBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupdrBackupSource = registerOutput<ClusterRestoreBackupdrBackupSource?>('restoreBackupdrBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupdrPitrSource = registerOutput<ClusterRestoreBackupdrPitrSource?>('restoreBackupdrPitrSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrPitrSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     restoreContinuousBackupSource = registerOutput<ClusterRestoreContinuousBackupSource?>('restoreContinuousBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreContinuousBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secondaryConfig = registerOutput<ClusterSecondaryConfig?>('secondaryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecondaryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipAwaitMajorVersionUpgrade = registerOutput<bool?>('skipAwaitMajorVersionUpgrade');
@@ -2231,12 +2561,14 @@ class Cluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     automatedBackupPolicy = registerOutput<ClusterAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupSources = registerOutput<List<Map<String, dynamic>>>('backupSources');
+    backupdrBackupSources = registerOutput<List<Map<String, dynamic>>>('backupdrBackupSources');
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String?>('clusterType');
     continuousBackupConfig = registerOutput<ClusterContinuousBackupConfig>('continuousBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterContinuousBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     continuousBackupInfos = registerOutput<List<Map<String, dynamic>>>('continuousBackupInfos');
     databaseVersion = registerOutput<String>('databaseVersion');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    dataplexConfig = registerOutput<ClusterDataplexConfig>('dataplexConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDataplexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -2256,6 +2588,8 @@ class Cluster extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
     restoreBackupSource = registerOutput<ClusterRestoreBackupSource?>('restoreBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupdrBackupSource = registerOutput<ClusterRestoreBackupdrBackupSource?>('restoreBackupdrBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupdrPitrSource = registerOutput<ClusterRestoreBackupdrPitrSource?>('restoreBackupdrPitrSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrPitrSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     restoreContinuousBackupSource = registerOutput<ClusterRestoreContinuousBackupSource?>('restoreContinuousBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreContinuousBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secondaryConfig = registerOutput<ClusterSecondaryConfig?>('secondaryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecondaryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipAwaitMajorVersionUpgrade = registerOutput<bool?>('skipAwaitMajorVersionUpgrade');

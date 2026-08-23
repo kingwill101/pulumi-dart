@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_admin_sdk_config_args.dart';
+import 'get_admin_sdk_config_result.dart';
 import 'get_android_app_args.dart';
 import 'get_android_app_config_args.dart';
 import 'get_android_app_config_result.dart';
@@ -14,7 +16,35 @@ import 'get_web_app_config_args.dart';
 import 'get_web_app_config_result.dart';
 import 'get_web_app_result.dart';
 
+/// A Google Cloud Firebase Admin SDK configuration
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+/// To get more information about AdminSdkConfig, see:
+///
+/// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+/// * How-to Guides
+/// * [Official Documentation](https://firebase.google.com/)
+/// [args] Arguments passed to this invoke. {@macro pulumi_firebase_get_admin_sdk_config_get_admin_sdk_config_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAdminSdkConfigResult> getAdminSdkConfig(
+  GetAdminSdkConfigArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:firebase/getAdminSdkConfig:getAdminSdkConfig',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAdminSdkConfigResult.fromMap(result);
+}
+
 /// A Google Cloud Firebase Android application instance
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebase_get_android_app_get_android_app_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAndroidAppResult> getAndroidApp(
@@ -46,6 +76,9 @@ Future<GetAndroidAppConfigResult> getAndroidAppConfig(
 }
 
 /// A Google Cloud Firebase Apple application instance
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebase_get_apple_app_get_apple_app_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAppleAppResult> getAppleApp(
@@ -62,6 +95,9 @@ Future<GetAppleAppResult> getAppleApp(
 }
 
 /// A Google Cloud Firebase Apple application configuration
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about iosApp, see:
 ///
@@ -84,6 +120,9 @@ Future<GetAppleAppConfigResult> getAppleAppConfig(
 }
 
 /// A Google Cloud Firebase Hosting Channel instance
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebase_get_hosting_channel_get_hosting_channel_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHostingChannelResult> getHostingChannel(
@@ -100,6 +139,9 @@ Future<GetHostingChannelResult> getHostingChannel(
 }
 
 /// A Google Cloud Firebase web application instance
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebase_get_web_app_get_web_app_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWebAppResult> getWebApp(
@@ -116,6 +158,9 @@ Future<GetWebAppResult> getWebApp(
 }
 
 /// A Google Cloud Firebase web application configuration
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about WebApp, see:
 ///

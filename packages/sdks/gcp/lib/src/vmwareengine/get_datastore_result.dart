@@ -7,6 +7,7 @@ import 'get_datastore_nfs_datastore.dart';
 class GetDatastoreResult {
   final List<String> clusters;
   final String createTime;
+  final String deletionPolicy;
   final String description;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -21,6 +22,7 @@ class GetDatastoreResult {
   /// Creates a new [GetDatastoreResult].
   /// [clusters] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
@@ -33,6 +35,7 @@ class GetDatastoreResult {
   const GetDatastoreResult({
     required this.clusters,
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.id,
     required this.location,
@@ -48,6 +51,7 @@ class GetDatastoreResult {
     return <String, dynamic>{
       'clusters': clusters,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'id': id,
       'location': location,
@@ -64,6 +68,7 @@ class GetDatastoreResult {
     return GetDatastoreResult(
       clusters: (map['clusters'] as List).cast<String>(),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
@@ -76,4 +81,3 @@ class GetDatastoreResult {
     );
   }
 }
-

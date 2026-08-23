@@ -15,16 +15,14 @@ import 'keystores_aliases_pkcs12_state.dart';
 /// KeystoresAliasesPkcs12 can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}`
-///
 /// * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}`
+///
 ///
 /// When using the `pulumi import` command, KeystoresAliasesPkcs12 can be imported using one of the formats above. For example:
 ///
-/// ```sh
-/// $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
-/// ```
 ///
 /// ```sh
+/// $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
 /// $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
 /// ```
 class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
@@ -33,11 +31,18 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
   /// Chain of certificates under this alias.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  late final pulumi.Output<String> deletionPolicy;
   /// Environment associated with the alias
   late final pulumi.Output<String> environment;
   /// PKCS12 file content
-  ///
-  /// - - -
   late final pulumi.Output<String> file;
   /// Hash of the pkcs file
   late final pulumi.Output<String> filehash;
@@ -66,6 +71,7 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
         ) {
     alias = registerOutput<String>('alias');
     certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     file = registerOutput<String>('file');
     filehash = registerOutput<String>('filehash');
@@ -100,6 +106,7 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
         ) {
     alias = registerOutput<String>('alias');
     certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     file = registerOutput<String>('file');
     filehash = registerOutput<String>('filehash');

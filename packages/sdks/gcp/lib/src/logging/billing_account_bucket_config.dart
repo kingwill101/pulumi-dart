@@ -90,6 +90,26 @@ import 'billing_account_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getbillingaccount" "default" {
+///   billing_account = "00AA00-000AAA-00AA0A"
+/// }
+///
+/// resource "gcp_logging_billingaccountbucketconfig" "basic" {
+///   billing_account = data.gcp_organizations_getbillingaccount.default.billing_account
+///   location        = "global"
+///   retention_days  = 30
+///   bucket_id       = "_Default"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'billing_account_bucket_config_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
 /// import com.pulumi.gcp.logging.BillingAccountBucketConfig;
 /// import com.pulumi.gcp.logging.BillingAccountBucketConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +252,26 @@ import 'billing_account_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_billingaccountbucketconfig" "example-billing-account-bucket-index-configs" {
+///   folder         = default.billingAccount
+///   location       = "global"
+///   retention_days = 30
+///   bucket_id      = "_Default"
+///   index_configs {
+///     field_path = "jsonPayload.request.status"
+///     type       = "INDEX_TYPE_STRING"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +281,8 @@ import 'billing_account_bucket_config_state.dart';
 /// import com.pulumi.gcp.logging.BillingAccountBucketConfig;
 /// import com.pulumi.gcp.logging.BillingAccountBucketConfigArgs;
 /// import com.pulumi.gcp.logging.inputs.BillingAccountBucketConfigIndexConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,7 +295,7 @@ import 'billing_account_bucket_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example_billing_account_bucket_index_configs = new BillingAccountBucketConfig("example-billing-account-bucket-index-configs", BillingAccountBucketConfigArgs.builder()
-///             .folder(default_.billingAccount())
+///             .folder(default_.get("billingAccount"))
 ///             .location("global")
 ///             .retentionDays(30)
 ///             .bucketId("_Default")
@@ -289,6 +329,7 @@ import 'billing_account_bucket_config_state.dart';
 ///
 /// * `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}`
 ///
+///
 /// When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -301,6 +342,13 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
   late final pulumi.Output<BillingAccountBucketConfigCmekSettings?> cmekSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this bucket.
   late final pulumi.Output<String> description;
   /// A list of indexed fields and related configuration data. Structure is documented below.
@@ -331,6 +379,7 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
     billingAccount = registerOutput<String>('billingAccount');
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<BillingAccountBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
     lifecycleState = registerOutput<String>('lifecycleState');
@@ -365,6 +414,7 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
     billingAccount = registerOutput<String>('billingAccount');
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<BillingAccountBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
     lifecycleState = registerOutput<String>('lifecycleState');

@@ -16,6 +16,13 @@ class DataTransferConfigState {
   final pulumi.Input<int>? dataRefreshWindowDays;
   /// The data source id. Cannot be changed once the transfer config is created.
   final pulumi.Input<String>? dataSourceId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The BigQuery target dataset id.
   final pulumi.Input<String>? destinationDatasetId;
   /// When set to true, no runs are scheduled for a given transfer.
@@ -78,6 +85,7 @@ class DataTransferConfigState {
   /// Creates a new [DataTransferConfigState].
   /// [dataRefreshWindowDays] The number of days to look back to automatically refresh the data.
   /// [dataSourceId] The data source id. Cannot be changed once the transfer config is created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destinationDatasetId] The BigQuery target dataset id.
   /// [disabled] When set to true, no runs are scheduled for a given transfer.
   /// [displayName] The user specified display name for the transfer config.
@@ -95,6 +103,7 @@ class DataTransferConfigState {
   const DataTransferConfigState({
     this.dataRefreshWindowDays,
     this.dataSourceId,
+    this.deletionPolicy,
     this.destinationDatasetId,
     this.disabled,
     this.displayName,
@@ -115,6 +124,7 @@ class DataTransferConfigState {
     return <String, dynamic>{
       'dataRefreshWindowDays': ?dataRefreshWindowDays,
       'dataSourceId': ?dataSourceId,
+      'deletionPolicy': ?deletionPolicy,
       'destinationDatasetId': ?destinationDatasetId,
       'disabled': ?disabled,
       'displayName': ?displayName,
@@ -136,6 +146,7 @@ class DataTransferConfigState {
     return DataTransferConfigState(
       dataRefreshWindowDays: (() { final guardedValue = map['dataRefreshWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       dataSourceId: (() { final guardedValue = map['dataSourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDatasetId: (() { final guardedValue = map['destinationDatasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -153,4 +164,3 @@ class DataTransferConfigState {
     );
   }
 }
-

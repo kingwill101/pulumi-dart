@@ -39,7 +39,7 @@ class TriggerBuildStep {
   /// The elements are of the form "KEY=VALUE" for the environment variable
   /// "KEY" being given the value "VALUE".
   final pulumi.Input<List<String>>? envs;
-  /// Unique identifier for this build step, used in `wait_for` to
+  /// Unique identifier for this build step, used in `waitFor` to
   /// reference this build step as a dependency.
   final pulumi.Input<String>? id;
   /// The name of the container image that will run this particular build step.
@@ -81,8 +81,8 @@ class TriggerBuildStep {
   /// Structure is documented below.
   final pulumi.Input<List<TriggerBuildStepVolume>>? volumes;
   /// The ID(s) of the step(s) that this build step depends on.
-  /// This build step will not start until all the build steps in `wait_for`
-  /// have completed successfully. If `wait_for` is empty, this build step
+  /// This build step will not start until all the build steps in `waitFor`
+  /// have completed successfully. If `waitFor` is empty, this build step
   /// will start when all previous build steps in the `Build.Steps` list
   /// have completed successfully.
   final pulumi.Input<List<String>>? waitFors;
@@ -94,7 +94,7 @@ class TriggerBuildStep {
   /// [dir] Working directory to use when running this step's container.
   /// [entrypoint] Entrypoint to be used instead of the build step image's
   /// [envs] A list of environment variable definitions to be used when
-  /// [id] Unique identifier for this build step, used in `wait_for` to
+  /// [id] Unique identifier for this build step, used in `waitFor` to
   /// [name] The name of the container image that will run this particular build step.
   /// [script] A shell script to be executed in the step.
   /// [secretEnvs] A list of environment variables which are encrypted using
@@ -157,4 +157,3 @@ class TriggerBuildStep {
     );
   }
 }
-

@@ -150,6 +150,36 @@ import 'region_security_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "default" {
+///   region      = "us-west2"
+///   name        = "policyruletest"
+///   description = "basic region security policy"
+///   type        = "CLOUD_ARMOR"
+/// }
+/// resource "gcp_compute_regionsecuritypolicyrule" "policy_rule" {
+///   region          = "us-west2"
+///   security_policy = gcp_compute_regionsecuritypolicy.default.name
+///   description     = "new rule"
+///   priority        = 100
+///   match = {
+///     versioned_expr = "SRC_IPS_V1"
+///     config = {
+///       src_ip_ranges = ["10.10.0.0/16"]
+///     }
+///   }
+///   action  = "allow"
+///   preview = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +192,8 @@ import 'region_security_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -434,6 +464,50 @@ import 'region_security_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "default" {
+///   region      = "us-west2"
+///   name        = "policywithmultiplerules"
+///   description = "basic region security policy"
+///   type        = "CLOUD_ARMOR"
+/// }
+/// resource "gcp_compute_regionsecuritypolicyrule" "policy_rule_one" {
+///   region          = "us-west2"
+///   security_policy = gcp_compute_regionsecuritypolicy.default.name
+///   description     = "new rule one"
+///   priority        = 100
+///   match = {
+///     versioned_expr = "SRC_IPS_V1"
+///     config = {
+///       src_ip_ranges = ["10.10.0.0/16"]
+///     }
+///   }
+///   action  = "allow"
+///   preview = true
+/// }
+/// resource "gcp_compute_regionsecuritypolicyrule" "policy_rule_two" {
+///   region          = "us-west2"
+///   security_policy = gcp_compute_regionsecuritypolicy.default.name
+///   description     = "new rule two"
+///   priority        = 101
+///   match = {
+///     versioned_expr = "SRC_IPS_V1"
+///     config = {
+///       src_ip_ranges = ["192.168.0.0/16", "10.0.0.0/8"]
+///     }
+///   }
+///   action  = "allow"
+///   preview = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -446,8 +520,8 @@ import 'region_security_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -739,6 +813,49 @@ import 'region_security_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "default" {
+///   region      = "us-west2"
+///   name        = "policywithdefaultrule"
+///   description = "basic region security policy"
+///   type        = "CLOUD_ARMOR"
+/// }
+/// resource "gcp_compute_regionsecuritypolicyrule" "default_rule" {
+///   region          = "us-west2"
+///   security_policy = gcp_compute_regionsecuritypolicy.default.name
+///   description     = "new rule"
+///   action          = "deny"
+///   priority        = "2147483647"
+///   match = {
+///     versioned_expr = "SRC_IPS_V1"
+///     config = {
+///       src_ip_ranges = ["*"]
+///     }
+///   }
+/// }
+/// resource "gcp_compute_regionsecuritypolicyrule" "policy_rule" {
+///   region          = "us-west2"
+///   security_policy = gcp_compute_regionsecuritypolicy.default.name
+///   description     = "new rule"
+///   priority        = 100
+///   match = {
+///     versioned_expr = "SRC_IPS_V1"
+///     config = {
+///       src_ip_ranges = ["10.10.0.0/16"]
+///     }
+///   }
+///   action  = "allow"
+///   preview = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -751,8 +868,8 @@ import 'region_security_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1119,6 +1236,58 @@ import 'region_security_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionsecuritypolicy" "default" {
+///   region      = "asia-southeast1"
+///   name        = "policyruletest"
+///   description = "basic region security policy"
+///   type        = "CLOUD_ARMOR"
+/// }
+/// resource "gcp_compute_regionsecuritypolicyrule" "policy_rule" {
+///   region          = "asia-southeast1"
+///   security_policy = gcp_compute_regionsecuritypolicy.default.name
+///   description     = "new rule"
+///   priority        = 100
+///   match = {
+///     versioned_expr = "SRC_IPS_V1"
+///     config = {
+///       src_ip_ranges = ["10.10.0.0/16"]
+///     }
+///   }
+///   preconfigured_waf_config = {
+///     exclusions = [{
+///       "requestUris" = [{
+///         "operator" = "STARTS_WITH"
+///         "value"    = "/admin"
+///       }]
+///       "targetRuleSet" = "rce-stable"
+///       }, {
+///       "requestQueryParams" = [{
+///         "operator" = "CONTAINS"
+///         "value"    = "password"
+///         }, {
+///         "operator" = "STARTS_WITH"
+///         "value"    = "freeform"
+///         }, {
+///         "operator" = "EQUALS"
+///         "value"    = "description"
+///       }]
+///       "targetRuleSet" = "xss-stable"
+///       "targetRuleIds" = ["owasp-crs-v030001-id941330-xss", "owasp-crs-v030001-id941340-xss"]
+///     }]
+///   }
+///   action  = "allow"
+///   preview = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1132,8 +1301,11 @@ import 'region_security_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1511,6 +1683,62 @@ import 'region_security_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # First activate advanced network DDoS protection for the desired region
+/// resource "gcp_compute_regionsecuritypolicy" "policyddosprotection" {
+///   region      = "us-west2"
+///   name        = "policyddosprotection"
+///   description = "policy for activating network DDoS protection for the desired region"
+///   type        = "CLOUD_ARMOR_NETWORK"
+///   ddos_protection_config = {
+///     ddos_protection = "ADVANCED_PREVIEW"
+///   }
+/// }
+/// resource "gcp_compute_networkedgesecurityservice" "edge_sec_service" {
+///   region          = "us-west2"
+///   name            = "edgesecservice"
+///   description     = "linking policy to edge security service"
+///   security_policy = gcp_compute_regionsecuritypolicy.policyddosprotection.self_link
+/// }
+/// # Add the desired policy and custom rule.
+/// resource "gcp_compute_regionsecuritypolicy" "policynetworkmatch" {
+///   depends_on  = [gcp_compute_networkedgesecurityservice.edge_sec_service]
+///   region      = "us-west2"
+///   name        = "policyfornetworkmatch"
+///   description = "region security policy for network match"
+///   type        = "CLOUD_ARMOR_NETWORK"
+///   user_defined_fields {
+///     name   = "SIG1_AT_0"
+///     base   = "TCP"
+///     offset = 8
+///     size   = 2
+///     mask   = "0x8F00"
+///   }
+/// }
+/// resource "gcp_compute_regionsecuritypolicyrule" "policy_rule_network_match" {
+///   region          = "us-west2"
+///   security_policy = gcp_compute_regionsecuritypolicy.policynetworkmatch.name
+///   description     = "custom rule for network match"
+///   priority        = 100
+///   network_match = {
+///     src_ip_ranges = ["10.10.0.0/16"]
+///     user_defined_fields = [{
+///       "name"   = "SIG1_AT_0"
+///       "values" = ["0x8F00"]
+///     }]
+///   }
+///   action  = "allow"
+///   preview = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1526,9 +1754,10 @@ import 'region_security_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyRule;
 /// import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1656,28 +1885,17 @@ import 'region_security_policy_rule_state.dart';
 /// RegionSecurityPolicyRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}`
-///
 /// * `{{project}}/{{region}}/{{security_policy}}/{{priority}}`
-///
 /// * `{{region}}/{{security_policy}}/{{priority}}`
-///
 /// * `{{security_policy}}/{{priority}}`
+///
 ///
 /// When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default {{project}}/{{region}}/{{security_policy}}/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default {{region}}/{{security_policy}}/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default {{security_policy}}/{{priority}}
 /// ```
 class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
@@ -1688,6 +1906,13 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
   /// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
   late final pulumi.Output<String> action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// A match condition that incoming traffic is evaluated against.
@@ -1700,8 +1925,8 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
   /// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
   /// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
   /// Example:
-  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
-  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
+  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
   /// Structure is documented below.
   late final pulumi.Output<RegionSecurityPolicyRuleNetworkMatch?> networkMatch;
   /// Preconfigured WAF configuration to be applied for the rule.
@@ -1717,7 +1942,7 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// Structure is documented below.
   late final pulumi.Output<RegionSecurityPolicyRuleRateLimitOptions?> rateLimitOptions;
   /// The Region in which the created Region Security Policy rule should reside.
@@ -1740,6 +1965,7 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     action = registerOutput<String>('action');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     match = registerOutput<RegionSecurityPolicyRuleMatch?>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkMatch = registerOutput<RegionSecurityPolicyRuleNetworkMatch?>('networkMatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRuleNetworkMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1776,6 +2002,7 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     action = registerOutput<String>('action');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     match = registerOutput<RegionSecurityPolicyRuleMatch?>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkMatch = registerOutput<RegionSecurityPolicyRuleNetworkMatch?>('networkMatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRuleNetworkMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });

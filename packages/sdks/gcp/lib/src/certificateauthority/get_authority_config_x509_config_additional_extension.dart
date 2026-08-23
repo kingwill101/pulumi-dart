@@ -38,4 +38,3 @@ class GetAuthorityConfigX509ConfigAdditionalExtension {
     );
   }
 }
-

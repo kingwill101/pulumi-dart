@@ -143,6 +143,35 @@ import 'inbound_saml_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_identityplatform_inboundsamlconfig" "saml_config" {
+///   name         = "saml.tf-config"
+///   display_name = "Display Name"
+///   idp_config = {
+///     idp_entity_id = "tf-idp"
+///     sign_request  = true
+///     sso_url       = "https://example.com"
+///     idp_certificates = [{
+///       "x509Certificate" = file("test-fixtures/rsa_cert.pem")
+///     }]
+///   }
+///   sp_config = {
+///     sp_entity_id = "tf-sp"
+///     callback_uri = "https://example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -152,11 +181,12 @@ import 'inbound_saml_config_state.dart';
 /// import com.pulumi.gcp.identityplatform.InboundSamlConfig;
 /// import com.pulumi.gcp.identityplatform.InboundSamlConfigArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigIdpConfigArgs;
+/// import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigIdpConfigIdpCertificateArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigSpConfigArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,25 +250,25 @@ import 'inbound_saml_config_state.dart';
 /// InboundSamlConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/inboundSamlConfigs/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
 /// ```
 class InboundSamlConfig extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human friendly display name.
   late final pulumi.Output<String> displayName;
   /// If this config allows users to sign in with the provider.
@@ -272,6 +302,7 @@ class InboundSamlConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     idpConfig = registerOutput<InboundSamlConfigIdpConfig>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -303,6 +334,7 @@ class InboundSamlConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     idpConfig = registerOutput<InboundSamlConfigIdpConfig>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

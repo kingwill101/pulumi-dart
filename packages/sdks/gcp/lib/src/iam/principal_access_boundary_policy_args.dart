@@ -12,8 +12,15 @@ class PrincipalAccessBoundaryPolicyArgs {
   /// for more details such as format and size limitations
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Principal access boundary policy details
   /// Structure is documented below.
   final pulumi.Input<PrincipalAccessBoundaryPolicyDetails>? details;
@@ -29,6 +36,7 @@ class PrincipalAccessBoundaryPolicyArgs {
 
   /// Creates a new [PrincipalAccessBoundaryPolicyArgs].
   /// [annotations] User defined annotations. See https://google.aip.dev/148#annotations
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [details] Principal access boundary policy details
   /// [displayName] The description of the principal access boundary policy. Must be less than or equal to 63 characters.
   /// [location] The location the principal access boundary policy is in.
@@ -36,6 +44,7 @@ class PrincipalAccessBoundaryPolicyArgs {
   /// [principalAccessBoundaryPolicyId] The ID to use to create the principal access boundary policy.
   const PrincipalAccessBoundaryPolicyArgs({
     this.annotations,
+    this.deletionPolicy,
     this.details,
     this.displayName,
     required this.location,
@@ -46,6 +55,7 @@ class PrincipalAccessBoundaryPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'deletionPolicy': ?deletionPolicy,
       'details': ?pulumi.Input.mapOptionalInputValue<PrincipalAccessBoundaryPolicyDetails, Map<String, dynamic>>(details, (value) => value.toMap()),
       'displayName': ?displayName,
       'location': location,
@@ -57,6 +67,7 @@ class PrincipalAccessBoundaryPolicyArgs {
   factory PrincipalAccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrincipalAccessBoundaryPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -65,4 +76,3 @@ class PrincipalAccessBoundaryPolicyArgs {
     );
   }
 }
-

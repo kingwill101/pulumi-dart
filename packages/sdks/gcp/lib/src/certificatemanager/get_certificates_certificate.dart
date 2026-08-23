@@ -4,8 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_certificates_certificate_managed.dart';
 
 class GetCertificatesCertificate {
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
   /// A human-readable description of the resource.
   final pulumi.Input<String> description;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveLabels;
   /// Set of label tags associated with the Certificate resource.
   ///
@@ -46,8 +54,9 @@ class GetCertificatesCertificate {
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetCertificatesCertificate].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [description] A human-readable description of the resource.
-  /// [effectiveLabels] Required.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   /// [labels] Set of label tags associated with the Certificate resource.
   /// [location] The Certificate Manager location. If not specified, "global" is used.
   /// [manageds] Configuration and state of a Managed Certificate.
@@ -57,6 +66,7 @@ class GetCertificatesCertificate {
   /// [sanDnsnames] The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
   /// [scope] The scope of the certificate.
   const GetCertificatesCertificate({
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.labels,
@@ -71,6 +81,7 @@ class GetCertificatesCertificate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'labels': labels,
@@ -86,6 +97,7 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
@@ -99,4 +111,3 @@ class GetCertificatesCertificate {
     );
   }
 }
-

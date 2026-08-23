@@ -7,6 +7,13 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
   /// Config for the module. For the resident module, its config value is defined at this level.
   /// For the inherited module, its config value is inherited from the ancestor module.
   final pulumi.Input<String>? config;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human readable name to be displayed for the module.
   final pulumi.Input<String>? displayName;
   /// The state of enablement for the module at the given level of the hierarchy.
@@ -30,6 +37,7 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
 
   /// Creates a new [ManagementOrganizationEventThreatDetectionCustomModuleState].
   /// [config] Config for the module. For the resident module, its config value is defined at this level.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human readable name to be displayed for the module.
   /// [enablementState] The state of enablement for the module at the given level of the hierarchy.
   /// [lastEditor] The editor that last updated the custom module
@@ -40,6 +48,7 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
   /// [updateTime] The time at which the custom module was last updated.
   const ManagementOrganizationEventThreatDetectionCustomModuleState({
     this.config,
+    this.deletionPolicy,
     this.displayName,
     this.enablementState,
     this.lastEditor,
@@ -53,6 +62,7 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'config': ?config,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'enablementState': ?enablementState,
       'lastEditor': ?lastEditor,
@@ -67,6 +77,7 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
   factory ManagementOrganizationEventThreatDetectionCustomModuleState.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationEventThreatDetectionCustomModuleState(
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enablementState: (() { final guardedValue = map['enablementState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastEditor: (() { final guardedValue = map['lastEditor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -78,4 +89,3 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
     );
   }
 }
-

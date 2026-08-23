@@ -118,6 +118,31 @@ import 'gateway_security_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+///   name        = "my-gateway-security-policy"
+///   location    = "us-central1"
+///   description = "gateway security policy created to be used as reference by the rule."
+/// }
+/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+///   name                    = "my-gateway-security-policy-rule"
+///   location                = "us-central1"
+///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   enabled                 = true
+///   description             = "my description"
+///   priority                = 0
+///   session_matcher         = "host() == 'example.com'"
+///   basic_profile           = "ALLOW"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +153,8 @@ import 'gateway_security_policy_rule_state.dart';
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRule;
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -297,6 +322,33 @@ import 'gateway_security_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+///   name        = "my-gateway-security-policy"
+///   location    = "us-central1"
+///   description = "gateway security policy created to be used as reference by the rule."
+/// }
+/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+///   name                    = "my-gateway-security-policy-rule"
+///   location                = "us-central1"
+///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   enabled                 = true
+///   description             = "my description"
+///   priority                = 0
+///   session_matcher         = "host() == 'example.com'"
+///   application_matcher     = "request.method == 'POST'"
+///   tls_inspection_enabled  = false
+///   basic_profile           = "ALLOW"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +359,8 @@ import 'gateway_security_policy_rule_state.dart';
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRule;
 /// import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,22 +424,15 @@ import 'gateway_security_policy_rule_state.dart';
 /// GatewaySecurityPolicyRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}`
-///
 /// * `{{location}}/{{gateway_security_policy}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, GatewaySecurityPolicyRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{project}}/{{location}}/{{gateway_security_policy}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{location}}/{{gateway_security_policy}}/{{name}}
 /// ```
 class GatewaySecurityPolicyRule extends pulumi.CustomResource {
@@ -400,6 +445,13 @@ class GatewaySecurityPolicyRule extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Free-text description of the resource.
   late final pulumi.Output<String?> description;
   /// Whether the rule is enforced.
@@ -445,6 +497,7 @@ class GatewaySecurityPolicyRule extends pulumi.CustomResource {
     applicationMatcher = registerOutput<String?>('applicationMatcher');
     basicProfile = registerOutput<String>('basicProfile');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     gatewaySecurityPolicy = registerOutput<String>('gatewaySecurityPolicy');
@@ -484,6 +537,7 @@ class GatewaySecurityPolicyRule extends pulumi.CustomResource {
     applicationMatcher = registerOutput<String?>('applicationMatcher');
     basicProfile = registerOutput<String>('basicProfile');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     gatewaySecurityPolicy = registerOutput<String>('gatewaySecurityPolicy');

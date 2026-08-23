@@ -93,6 +93,25 @@ import 'ai_tensorboard_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aitensorboard" "tensorboard" {
+///   display_name = "terraform"
+///   description  = "sample description"
+///   labels = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+///   region = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +120,8 @@ import 'ai_tensorboard_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiTensorboard;
 /// import com.pulumi.gcp.vertex.AiTensorboardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -236,8 +255,6 @@ import 'ai_tensorboard_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
@@ -279,6 +296,37 @@ import 'ai_tensorboard_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aitensorboard" "tensorboard" {
+///   depends_on   = [gcp_kms_cryptokeyiammember.crypto_key]
+///   display_name = "terraform"
+///   description  = "sample description"
+///   labels = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+///   region = "us-central1"
+///   encryption_spec = {
+///     kms_key_name = "kms-name"
+///   }
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   crypto_key_id = "kms-name"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -293,8 +341,8 @@ import 'ai_tensorboard_state.dart';
 /// import com.pulumi.gcp.vertex.AiTensorboardArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiTensorboardEncryptionSpecArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -369,28 +417,17 @@ import 'ai_tensorboard_state.dart';
 /// Tensorboard can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Tensorboard can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default projects/{{project}}/locations/{{region}}/tensorboards/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
 /// ```
 class AiTensorboard extends pulumi.CustomResource {
@@ -398,6 +435,13 @@ class AiTensorboard extends pulumi.CustomResource {
   late final pulumi.Output<String> blobStoragePathPrefix;
   /// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of this Tensorboard.
   late final pulumi.Output<String?> description;
   /// User provided name of this Tensorboard.
@@ -410,7 +454,7 @@ class AiTensorboard extends pulumi.CustomResource {
   /// The labels with user-defined metadata to organize your Tensorboards.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the Tensorboard.
   late final pulumi.Output<String> name;
@@ -443,6 +487,7 @@ class AiTensorboard extends pulumi.CustomResource {
         ) {
     blobStoragePathPrefix = registerOutput<String>('blobStoragePathPrefix');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -481,6 +526,7 @@ class AiTensorboard extends pulumi.CustomResource {
         ) {
     blobStoragePathPrefix = registerOutput<String>('blobStoragePathPrefix');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

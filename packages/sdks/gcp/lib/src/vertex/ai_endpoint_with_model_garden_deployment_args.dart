@@ -10,6 +10,13 @@ import 'ai_endpoint_with_model_garden_deployment_model_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vertex_ai_endpoint_with_model_garden_deployment_ai_endpoint_with_model_garden_deployment_args_doc}
 class AiEndpointWithModelGardenDeploymentArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
   final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfig>? deployConfig;
@@ -34,6 +41,7 @@ class AiEndpointWithModelGardenDeploymentArgs {
   final pulumi.Input<String>? publisherModelName;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deployConfig] The deploy config to use for the deployment.
   /// [endpointConfig] The endpoint config to use for the deployment.
   /// [huggingFaceModelId] The Hugging Face model to deploy.
@@ -42,6 +50,7 @@ class AiEndpointWithModelGardenDeploymentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [publisherModelName] The Model Garden model to deploy.
   const AiEndpointWithModelGardenDeploymentArgs({
+    this.deletionPolicy,
     this.deployConfig,
     this.endpointConfig,
     this.huggingFaceModelId,
@@ -53,6 +62,7 @@ class AiEndpointWithModelGardenDeploymentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'deployConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentDeployConfig, Map<String, dynamic>>(deployConfig, (value) => value.toMap()),
       'endpointConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentEndpointConfig, Map<String, dynamic>>(endpointConfig, (value) => value.toMap()),
       'huggingFaceModelId': ?huggingFaceModelId,
@@ -65,6 +75,7 @@ class AiEndpointWithModelGardenDeploymentArgs {
 
   factory AiEndpointWithModelGardenDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployConfig: (() { final guardedValue = map['deployConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       endpointConfig: (() { final guardedValue = map['endpointConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       huggingFaceModelId: (() { final guardedValue = map['huggingFaceModelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -75,4 +86,3 @@ class AiEndpointWithModelGardenDeploymentArgs {
     );
   }
 }
-

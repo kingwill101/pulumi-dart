@@ -11,6 +11,7 @@ import 'region_instance_template_reservation_affinity.dart';
 import 'region_instance_template_scheduling.dart';
 import 'region_instance_template_service_account.dart';
 import 'region_instance_template_shielded_instance_config.dart';
+import 'region_instance_template_workload_identity_config.dart';
 
 /// Input properties used for looking up and filtering RegionInstanceTemplate resources.
 class RegionInstanceTemplateState {
@@ -23,6 +24,13 @@ class RegionInstanceTemplateState {
   final pulumi.Input<RegionInstanceTemplateConfidentialInstanceConfig>? confidentialInstanceConfig;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A brief description of this resource.
   final pulumi.Input<String>? description;
   /// Disks to attach to instances created from this template.
@@ -32,7 +40,7 @@ class RegionInstanceTemplateState {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+  /// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
   final pulumi.Input<bool>? enableDisplay;
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
   final pulumi.Input<List<RegionInstanceTemplateGuestAccelerator>>? guestAccelerators;
@@ -59,30 +67,32 @@ class RegionInstanceTemplateState {
   /// The unique fingerprint of the metadata.
   final pulumi.Input<String>? metadataFingerprint;
   /// An alternative to using the
-  /// startup-script metadata key, mostly to match the compute_instance resource.
+  /// startup-script metadata key, mostly to match the computeInstance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
   final pulumi.Input<String>? metadataStartupScript;
   /// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
   /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
   final pulumi.Input<String>? minCpuPlatform;
+  /// The name of the instance template. If you leave
+  /// this blank, Terraform will auto-generate a unique name.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
   ///
-  /// Resulting name for a `name_prefix` &lt;= 37 characters:
-  /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-  /// Resulting name for a `name_prefix` 38 - 54 characters:
-  /// `name_prefix` + YYmmdd + 3 digit incremental counter
+  /// Resulting name for a `namePrefix` &lt;= 37 characters:
+  /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `namePrefix` 38 - 54 characters:
+  /// `namePrefix` + YYmmdd + 3 digit incremental counter
   final pulumi.Input<String>? namePrefix;
   /// Networks to attach to instances created from
   /// this template. This can be specified multiple times for multiple networks.
   /// Structure is documented below.
   final pulumi.Input<List<RegionInstanceTemplateNetworkInterface>>? networkInterfaces;
   /// Configures network performance settings for the instance created from the
-  /// template. Structure is documented below. **Note**: `machine_type`
+  /// template. Structure is documented below. **Note**: `machineType`
   /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
   /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
   /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -105,7 +115,7 @@ class RegionInstanceTemplateState {
   final pulumi.Input<RegionInstanceTemplateReservationAffinity>? reservationAffinity;
   /// A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
   final pulumi.Input<Map<String, String>>? resourceManagerTags;
-  /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   final pulumi.Input<String>? resourcePolicies;
   /// The scheduling strategy to use. More details about
   /// this configuration option are detailed below.
@@ -115,18 +125,22 @@ class RegionInstanceTemplateState {
   /// Service account to attach to the instance. Structure is documented below.
   final pulumi.Input<RegionInstanceTemplateServiceAccount>? serviceAccount;
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
   final pulumi.Input<RegionInstanceTemplateShieldedInstanceConfig>? shieldedInstanceConfig;
   /// Tags to attach to the instance.
   final pulumi.Input<List<String>>? tags;
   /// The unique fingerprint of the tags.
   final pulumi.Input<String>? tagsFingerprint;
+  /// Workload Identity Config. More details about
+  /// this configuration option are detailed below.
+  final pulumi.Input<RegionInstanceTemplateWorkloadIdentityConfig>? workloadIdentityConfig;
 
   /// Creates a new [RegionInstanceTemplateState].
   /// [advancedMachineFeatures] Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
   /// [canIpForward] Whether to allow sending and receiving of
   /// [confidentialInstanceConfig] Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] A brief description of this resource.
   /// [disks] Disks to attach to instances created from this template.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -140,7 +154,7 @@ class RegionInstanceTemplateState {
   /// [metadataFingerprint] The unique fingerprint of the metadata.
   /// [metadataStartupScript] An alternative to using the
   /// [minCpuPlatform] Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
-  /// [name] Optional.
+  /// [name] The name of the instance template. If you leave
   /// [namePrefix] Creates a unique name beginning with the specified
   /// [networkInterfaces] Networks to attach to instances created from
   /// [networkPerformanceConfig] Configures network performance settings for the instance created from the
@@ -151,18 +165,20 @@ class RegionInstanceTemplateState {
   /// [region] The Region in which the resource belongs.
   /// [reservationAffinity] Specifies the reservations that this instance can consume from.
   /// [resourceManagerTags] A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
-  /// [resourcePolicies] - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// [resourcePolicies] - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   /// [scheduling] The scheduling strategy to use. More details about
   /// [selfLink] The URI of the created resource.
   /// [serviceAccount] Service account to attach to the instance. Structure is documented below.
   /// [shieldedInstanceConfig] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] Tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
+  /// [workloadIdentityConfig] Workload Identity Config. More details about
   const RegionInstanceTemplateState({
     this.advancedMachineFeatures,
     this.canIpForward,
     this.confidentialInstanceConfig,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.disks,
     this.effectiveLabels,
@@ -194,6 +210,7 @@ class RegionInstanceTemplateState {
     this.shieldedInstanceConfig,
     this.tags,
     this.tagsFingerprint,
+    this.workloadIdentityConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -202,6 +219,7 @@ class RegionInstanceTemplateState {
       'canIpForward': ?canIpForward,
       'confidentialInstanceConfig': ?pulumi.Input.mapOptionalInputValue<RegionInstanceTemplateConfidentialInstanceConfig, Map<String, dynamic>>(confidentialInstanceConfig, (value) => value.toMap()),
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disks': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceTemplateDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<RegionInstanceTemplateDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveLabels': ?effectiveLabels,
@@ -233,6 +251,7 @@ class RegionInstanceTemplateState {
       'shieldedInstanceConfig': ?pulumi.Input.mapOptionalInputValue<RegionInstanceTemplateShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
       'tags': ?tags,
       'tagsFingerprint': ?tagsFingerprint,
+      'workloadIdentityConfig': ?pulumi.Input.mapOptionalInputValue<RegionInstanceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfig, (value) => value.toMap()),
     };
   }
 
@@ -242,6 +261,7 @@ class RegionInstanceTemplateState {
       canIpForward: (() { final guardedValue = map['canIpForward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       confidentialInstanceConfig: (() { final guardedValue = map['confidentialInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceTemplateConfidentialInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disks: (() { final guardedValue = map['disks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceTemplateDisk>(guardedValue, (value) => RegionInstanceTemplateDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -273,7 +293,7 @@ class RegionInstanceTemplateState {
       shieldedInstanceConfig: (() { final guardedValue = map['shieldedInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceTemplateShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tagsFingerprint: (() { final guardedValue = map['tagsFingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityConfig: (() { final guardedValue = map['workloadIdentityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionInstanceTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

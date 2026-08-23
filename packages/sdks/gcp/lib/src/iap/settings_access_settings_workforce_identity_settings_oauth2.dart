@@ -39,4 +39,3 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
     );
   }
 }
-

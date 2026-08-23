@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_beyondcorp_app_gateway_app_gateway_args_doc}
 class AppGatewayArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An arbitrary user-provided name for the AppGateway.
   final pulumi.Input<String>? displayName;
   /// The type of hosting used by the AppGateway.
@@ -16,7 +23,7 @@ class AppGatewayArgs {
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// ID of the AppGateway.
   final pulumi.Input<String>? name;
@@ -31,6 +38,7 @@ class AppGatewayArgs {
   final pulumi.Input<String>? type;
 
   /// Creates a new [AppGatewayArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] An arbitrary user-provided name for the AppGateway.
   /// [hostType] The type of hosting used by the AppGateway.
   /// [labels] Resource labels to represent user provided metadata.
@@ -39,6 +47,7 @@ class AppGatewayArgs {
   /// [region] The region of the AppGateway.
   /// [type] The type of network connectivity used by the AppGateway.
   const AppGatewayArgs({
+    this.deletionPolicy,
     this.displayName,
     this.hostType,
     this.labels,
@@ -50,6 +59,7 @@ class AppGatewayArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'hostType': ?hostType,
       'labels': ?labels,
@@ -62,6 +72,7 @@ class AppGatewayArgs {
 
   factory AppGatewayArgs.fromMap(Map<String, dynamic> map) {
     return AppGatewayArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -72,4 +83,3 @@ class AppGatewayArgs {
     );
   }
 }
-

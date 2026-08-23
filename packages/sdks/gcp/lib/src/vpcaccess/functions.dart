@@ -98,6 +98,28 @@ import 'get_connector_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vpcaccess_getconnector" "sample" {
+///   name = "vpc-con"
+/// }
+///
+/// resource "gcp_vpcaccess_connector" "connector" {
+///   name          = "vpc-con"
+///   ip_cidr_range = "10.8.0.0/28"
+///   network       = "default"
+///   region        = "us-central1"
+///   min_instances = 2
+///   max_instances = 3
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +130,8 @@ import 'get_connector_result.dart';
 /// import com.pulumi.gcp.vpcaccess.inputs.GetConnectorArgs;
 /// import com.pulumi.gcp.vpcaccess.Connector;
 /// import com.pulumi.gcp.vpcaccess.ConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

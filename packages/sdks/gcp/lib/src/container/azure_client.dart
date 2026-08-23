@@ -77,6 +77,23 @@ import 'azure_client_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_azureclient" "primary" {
+///   application_id = "12345678-1234-1234-1234-123456789111"
+///   location       = "us-west1"
+///   name           = "client-name"
+///   tenant_id      = "12345678-1234-1234-1234-123456789111"
+///   project        = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'azure_client_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.AzureClient;
 /// import com.pulumi.gcp.container.AzureClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -125,24 +142,16 @@ import 'azure_client_state.dart';
 /// ## Import
 ///
 /// Client can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/{{location}}/azureClients/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:container/azureClient:AzureClient default projects/{{project}}/locations/{{location}}/azureClients/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/azureClient:AzureClient default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/azureClient:AzureClient default {{location}}/{{name}}
 /// ```
 class AzureClient extends pulumi.CustomResource {
@@ -152,6 +161,13 @@ class AzureClient extends pulumi.CustomResource {
   late final pulumi.Output<String> certificate;
   /// Output only. The time at which this resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The location for the resource
   late final pulumi.Output<String> location;
   /// The name of this resource.
@@ -184,6 +200,7 @@ class AzureClient extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     certificate = registerOutput<String>('certificate');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -217,6 +234,7 @@ class AzureClient extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     certificate = registerOutput<String>('certificate');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

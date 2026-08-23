@@ -420,6 +420,82 @@ import 'certificate_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_certificatetemplate" "default" {
+///   name        = "my-template"
+///   location    = "us-central1"
+///   description = "A sample certificate template"
+///   identity_constraints = {
+///     allow_subject_alt_names_passthrough = true
+///     allow_subject_passthrough           = true
+///     cel_expression = {
+///       description = "Always true"
+///       expression  = "true"
+///       location    = "any.file.anywhere"
+///       title       = "Sample expression"
+///     }
+///   }
+///   maximum_lifetime = "86400s"
+///   passthrough_extensions = {
+///     additional_extensions = [{
+///       "objectIdPaths" = [1, 6]
+///     }]
+///     known_extensions = ["EXTENDED_KEY_USAGE"]
+///   }
+///   predefined_values = {
+///     additional_extensions = [{
+///       "objectId" = {
+///         "objectIdPaths" = [1, 6]
+///       }
+///       "value"    = "c3RyaW5nCg=="
+///       "critical" = true
+///     }]
+///     aia_ocsp_servers = ["string"]
+///     ca_options = {
+///       is_ca                  = false
+///       max_issuer_path_length = 6
+///     }
+///     key_usage = {
+///       base_key_usage = {
+///         cert_sign          = false
+///         content_commitment = true
+///         crl_sign           = false
+///         data_encipherment  = true
+///         decipher_only      = true
+///         digital_signature  = true
+///         encipher_only      = true
+///         key_agreement      = true
+///         key_encipherment   = true
+///       }
+///       extended_key_usage = {
+///         client_auth      = true
+///         code_signing     = true
+///         email_protection = true
+///         ocsp_signing     = true
+///         server_auth      = true
+///         time_stamping    = true
+///       }
+///       unknown_extended_key_usages = [{
+///         "objectIdPaths" = [1, 6]
+///       }]
+///     }
+///     policy_ids = [{
+///       "objectIdPaths" = [1, 6]
+///     }]
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -431,13 +507,18 @@ import 'certificate_template_state.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsCelExpressionArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesAdditionalExtensionArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesCaOptionsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesPolicyIdArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1151,6 +1232,95 @@ import 'certificate_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_certificatetemplate" "default" {
+///   name        = "my-template"
+///   location    = "us-central1"
+///   description = "A sample certificate template"
+///   identity_constraints = {
+///     allow_subject_alt_names_passthrough = true
+///     allow_subject_passthrough           = true
+///     cel_expression = {
+///       description = "Always true"
+///       expression  = "true"
+///       location    = "any.file.anywhere"
+///       title       = "Sample expression"
+///     }
+///   }
+///   maximum_lifetime = "86400s"
+///   passthrough_extensions = {
+///     additional_extensions = [{
+///       "objectIdPaths" = [1, 6]
+///     }]
+///     known_extensions = ["EXTENDED_KEY_USAGE"]
+///   }
+///   predefined_values = {
+///     additional_extensions = [{
+///       "objectId" = {
+///         "objectIdPaths" = [1, 6]
+///       }
+///       "value"    = "c3RyaW5nCg=="
+///       "critical" = true
+///     }]
+///     aia_ocsp_servers = ["string"]
+///     ca_options = {
+///       is_ca                       = false
+///       null_ca                     = true
+///       zero_max_issuer_path_length = true
+///       max_issuer_path_length      = 0
+///     }
+///     key_usage = {
+///       base_key_usage = {
+///         cert_sign          = false
+///         content_commitment = true
+///         crl_sign           = false
+///         data_encipherment  = true
+///         decipher_only      = true
+///         digital_signature  = true
+///         encipher_only      = true
+///         key_agreement      = true
+///         key_encipherment   = true
+///       }
+///       extended_key_usage = {
+///         client_auth      = true
+///         code_signing     = true
+///         email_protection = true
+///         ocsp_signing     = true
+///         server_auth      = true
+///         time_stamping    = true
+///       }
+///       unknown_extended_key_usages = [{
+///         "objectIdPaths" = [1, 6]
+///       }]
+///     }
+///     policy_ids = [{
+///       "objectIdPaths" = [1, 6]
+///     }]
+///     name_constraints = {
+///       critical                  = true
+///       permitted_dns_names       = ["*.example1.com", "*.example2.com"]
+///       excluded_dns_names        = ["*.deny.example1.com", "*.deny.example2.com"]
+///       permitted_ip_ranges       = ["10.0.0.0/8", "11.0.0.0/8"]
+///       excluded_ip_ranges        = ["10.1.1.0/24", "11.1.1.0/24"]
+///       permitted_email_addresses = [".example1.com", ".example2.com"]
+///       excluded_email_addresses  = [".deny.example1.com", ".deny.example2.com"]
+///       permitted_uris            = [".example1.com", ".example2.com"]
+///       excluded_uris             = [".deny.example1.com", ".deny.example2.com"]
+///     }
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1162,14 +1332,19 @@ import 'certificate_template_state.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsCelExpressionArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesAdditionalExtensionArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesCaOptionsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesPolicyIdArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesNameConstraintsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1387,27 +1562,27 @@ import 'certificate_template_state.dart';
 /// CertificateTemplate can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CertificateTemplate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{location}}/{{name}}
 /// ```
 class CertificateTemplate extends pulumi.CustomResource {
   /// Output only. The time at which this CertificateTemplate was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. A human-readable description of scenarios this template is intended for.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1417,7 +1592,7 @@ class CertificateTemplate extends pulumi.CustomResource {
   late final pulumi.Output<CertificateTemplateIdentityConstraints?> identityConstraints;
   /// Optional. Labels with user-defined metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -1425,10 +1600,10 @@ class CertificateTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String?> maximumLifetime;
   /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
   late final pulumi.Output<String> name;
-  /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+  /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
   /// Structure is documented below.
   late final pulumi.Output<CertificateTemplatePassthroughExtensions?> passthroughExtensions;
-  /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+  /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
   /// Structure is documented below.
   late final pulumi.Output<CertificateTemplatePredefinedValues?> predefinedValues;
   /// The ID of the project in which the resource belongs.
@@ -1455,6 +1630,7 @@ class CertificateTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     identityConstraints = registerOutput<CertificateTemplateIdentityConstraints?>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIdentityConstraints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1493,6 +1669,7 @@ class CertificateTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     identityConstraints = registerOutput<CertificateTemplateIdentityConstraints?>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIdentityConstraints.fromMap((guardedValue as Map).cast<String, dynamic>()); });

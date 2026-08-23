@@ -60,7 +60,7 @@ import 'autonomous_database_state.dart';
 ///     network=default.id,
 ///     cidr="10.5.0.0/24",
 ///     properties={
-///         "compute_count": 2,
+///         "compute_count": float(2),
 ///         "data_storage_size_tb": 1,
 ///         "db_version": "19c",
 ///         "db_workload": "OLTP",
@@ -93,7 +93,7 @@ import 'autonomous_database_state.dart';
 ///         Cidr = "10.5.0.0/24",
 ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
 ///         {
-///             ComputeCount = 2,
+///             ComputeCount = 2.0,
 ///             DataStorageSizeTb = 1,
 ///             DbVersion = "19c",
 ///             DbWorkload = "OLTP",
@@ -116,7 +116,7 @@ import 'autonomous_database_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name:    "new",
+/// 			Name:    pulumi.StringRef("new"),
 /// 			Project: pulumi.StringRef("my-project"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -146,6 +146,38 @@ import 'autonomous_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name    = "new"
+///   project = "my-project"
+/// }
+///
+/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+///   autonomous_database_id = "my-instance"
+///   location               = "us-east4"
+///   project                = "my-project"
+///   database               = "mydatabase"
+///   admin_password         = "123Abpassword"
+///   network                = data.gcp_compute_getnetwork.default.id
+///   cidr                   = "10.5.0.0/24"
+///   properties = {
+///     compute_count        = "2"
+///     data_storage_size_tb = "1"
+///     db_version           = "19c"
+///     db_workload          = "OLTP"
+///     license_type         = "LICENSE_INCLUDED"
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +189,8 @@ import 'autonomous_database_state.dart';
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,10 +264,6 @@ import 'autonomous_database_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = gcp.compute.getNetwork({
-///     name: "new",
-///     project: "my-project",
-/// });
 /// const myADB = new gcp.oracledatabase.AutonomousDatabase("myADB", {
 ///     autonomousDatabaseId: "my-instance",
 ///     location: "us-east4",
@@ -243,8 +271,8 @@ import 'autonomous_database_state.dart';
 ///     displayName: "autonomousDatabase displayname",
 ///     database: "mydatabase",
 ///     adminPassword: "123Abpassword",
-///     network: _default.then(_default => _default.id),
-///     cidr: "10.5.0.0/24",
+///     odbNetwork: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+///     odbSubnet: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
 ///     labels: {
 ///         "label-one": "value-one",
 ///     },
@@ -271,13 +299,15 @@ import 'autonomous_database_state.dart';
 ///     },
 ///     deletionProtection: true,
 /// });
+/// const _default = gcp.compute.getNetwork({
+///     name: "new",
+///     project: "my-project",
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default = gcp.compute.get_network(name="new",
-///     project="my-project")
 /// my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
 ///     autonomous_database_id="my-instance",
 ///     location="us-east4",
@@ -285,13 +315,13 @@ import 'autonomous_database_state.dart';
 ///     display_name="autonomousDatabase displayname",
 ///     database="mydatabase",
 ///     admin_password="123Abpassword",
-///     network=default.id,
-///     cidr="10.5.0.0/24",
+///     odb_network="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+///     odb_subnet="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
 ///     labels={
 ///         "label-one": "value-one",
 ///     },
 ///     properties={
-///         "compute_count": 2,
+///         "compute_count": float(2),
 ///         "data_storage_size_gb": 48,
 ///         "db_version": "19c",
 ///         "db_edition": "STANDARD_EDITION",
@@ -312,6 +342,8 @@ import 'autonomous_database_state.dart';
 ///         "private_endpoint_label": "myendpoint",
 ///     },
 ///     deletion_protection=True)
+/// default = gcp.compute.get_network(name="new",
+///     project="my-project")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -321,12 +353,6 @@ import 'autonomous_database_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
-///     {
-///         Name = "new",
-///         Project = "my-project",
-///     });
-///
 ///     var myADB = new Gcp.OracleDatabase.AutonomousDatabase("myADB", new()
 ///     {
 ///         AutonomousDatabaseId = "my-instance",
@@ -335,15 +361,15 @@ import 'autonomous_database_state.dart';
 ///         DisplayName = "autonomousDatabase displayname",
 ///         Database = "mydatabase",
 ///         AdminPassword = "123Abpassword",
-///         Network = @default.Apply(@default => @default.Apply(getNetworkResult => getNetworkResult.Id)),
-///         Cidr = "10.5.0.0/24",
+///         OdbNetwork = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+///         OdbSubnet = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
 ///         Labels =
 ///         {
 ///             { "label-one", "value-one" },
 ///         },
 ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
 ///         {
-///             ComputeCount = 2,
+///             ComputeCount = 2.0,
 ///             DataStorageSizeGb = 48,
 ///             DbVersion = "19c",
 ///             DbEdition = "STANDARD_EDITION",
@@ -370,6 +396,12 @@ import 'autonomous_database_state.dart';
 ///         DeletionProtection = true,
 ///     });
 ///
+///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
+///     {
+///         Name = "new",
+///         Project = "my-project",
+///     });
+///
 /// });
 /// ```
 /// ```go
@@ -383,22 +415,15 @@ import 'autonomous_database_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name:    "new",
-/// 			Project: pulumi.StringRef("my-project"),
-/// 		}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = oracledatabase.NewAutonomousDatabase(ctx, "myADB", &oracledatabase.AutonomousDatabaseArgs{
+/// 		_, err := oracledatabase.NewAutonomousDatabase(ctx, "myADB", &oracledatabase.AutonomousDatabaseArgs{
 /// 			AutonomousDatabaseId: pulumi.String("my-instance"),
 /// 			Location:             pulumi.String("us-east4"),
 /// 			Project:              pulumi.String("my-project"),
 /// 			DisplayName:          pulumi.String("autonomousDatabase displayname"),
 /// 			Database:             pulumi.String("mydatabase"),
 /// 			AdminPassword:        pulumi.String("123Abpassword"),
-/// 			Network:              pulumi.String(_default.Id),
-/// 			Cidr:                 pulumi.String("10.5.0.0/24"),
+/// 			OdbNetwork:           pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork"),
+/// 			OdbSubnet:            pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
@@ -430,8 +455,65 @@ import 'autonomous_database_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		_, err = compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+/// 			Name:    pulumi.StringRef("new"),
+/// 			Project: pulumi.StringRef("my-project"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name    = "new"
+///   project = "my-project"
+/// }
+///
+/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+///   autonomous_database_id = "my-instance"
+///   location               = "us-east4"
+///   project                = "my-project"
+///   display_name           = "autonomousDatabase displayname"
+///   database               = "mydatabase"
+///   admin_password         = "123Abpassword"
+///   odb_network            = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork"
+///   odb_subnet             = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   properties = {
+///     compute_count                   = "2"
+///     data_storage_size_gb            = "48"
+///     db_version                      = "19c"
+///     db_edition                      = "STANDARD_EDITION"
+///     db_workload                     = "OLTP"
+///     is_auto_scaling_enabled         = "true"
+///     license_type                    = "BRING_YOUR_OWN_LICENSE"
+///     backup_retention_period_days    = "60"
+///     character_set                   = "AL32UTF8"
+///     is_storage_auto_scaling_enabled = "false"
+///     maintenance_schedule_type       = "REGULAR"
+///     mtls_connection_required        = "false"
+///     n_character_set                 = "AL16UTF16"
+///     operations_insights_state       = "NOT_ENABLED"
+///     customer_contacts = [{
+///       "email" = "xyz@example.com"
+///     }]
+///     private_endpoint_ip    = "10.5.0.11"
+///     private_endpoint_label = "myendpoint"
+///   }
+///   deletion_protection = "true"
 /// }
 /// ```
 /// ```java
@@ -440,13 +522,14 @@ import 'autonomous_database_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.ComputeFunctions;
-/// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesCustomerContactArgs;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -458,11 +541,6 @@ import 'autonomous_database_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
-///             .name("new")
-///             .project("my-project")
-///             .build());
-///
 ///         var myADB = new AutonomousDatabase("myADB", AutonomousDatabaseArgs.builder()
 ///             .autonomousDatabaseId("my-instance")
 ///             .location("us-east4")
@@ -470,8 +548,8 @@ import 'autonomous_database_state.dart';
 ///             .displayName("autonomousDatabase displayname")
 ///             .database("mydatabase")
 ///             .adminPassword("123Abpassword")
-///             .network(default_.id())
-///             .cidr("10.5.0.0/24")
+///             .odbNetwork("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork")
+///             .odbSubnet("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet")
 ///             .labels(Map.of("label-one", "value-one"))
 ///             .properties(AutonomousDatabasePropertiesArgs.builder()
 ///                 .computeCount(2.0)
@@ -497,6 +575,11 @@ import 'autonomous_database_state.dart';
 ///             .deletionProtection(true)
 ///             .build());
 ///
+///         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+///             .name("new")
+///             .project("my-project")
+///             .build());
+///
 ///     }
 /// }
 /// ```
@@ -511,8 +594,8 @@ import 'autonomous_database_state.dart';
 ///       displayName: autonomousDatabase displayname
 ///       database: mydatabase
 ///       adminPassword: 123Abpassword
-///       network: ${default.id}
-///       cidr: 10.5.0.0/24
+///       odbNetwork: projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork
+///       odbSubnet: projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet
 ///       labels:
 ///         label-one: value-one
 ///       properties:
@@ -583,7 +666,7 @@ import 'autonomous_database_state.dart';
 ///     odb_network="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
 ///     odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
 ///     properties={
-///         "compute_count": 2,
+///         "compute_count": float(2),
 ///         "data_storage_size_tb": 1,
 ///         "db_version": "19c",
 ///         "db_workload": "OLTP",
@@ -610,7 +693,7 @@ import 'autonomous_database_state.dart';
 ///         OdbSubnet = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
 ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
 ///         {
-///             ComputeCount = 2,
+///             ComputeCount = 2.0,
 ///             DataStorageSizeTb = 1,
 ///             DbVersion = "19c",
 ///             DbWorkload = "OLTP",
@@ -655,6 +738,33 @@ import 'autonomous_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+///   autonomous_database_id = "my-instance"
+///   location               = "europe-west2"
+///   project                = "my-project"
+///   database               = "mydatabase"
+///   admin_password         = "123Abpassword"
+///   odb_network            = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork"
+///   odb_subnet             = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"
+///   properties = {
+///     compute_count        = "2"
+///     data_storage_size_tb = "1"
+///     db_version           = "19c"
+///     db_workload          = "OLTP"
+///     license_type         = "LICENSE_INCLUDED"
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -664,8 +774,8 @@ import 'autonomous_database_state.dart';
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -755,7 +865,7 @@ import 'autonomous_database_state.dart';
 ///     database="mydatabase",
 ///     admin_password="123Abpassword",
 ///     properties={
-///         "compute_count": 2,
+///         "compute_count": float(2),
 ///         "data_storage_size_tb": 1,
 ///         "db_version": "19c",
 ///         "db_workload": "OLTP",
@@ -781,7 +891,7 @@ import 'autonomous_database_state.dart';
 ///         AdminPassword = "123Abpassword",
 ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
 ///         {
-///             ComputeCount = 2,
+///             ComputeCount = 2.0,
 ///             DataStorageSizeTb = 1,
 ///             DbVersion = "19c",
 ///             DbWorkload = "OLTP",
@@ -826,6 +936,32 @@ import 'autonomous_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+///   autonomous_database_id = "my-instance"
+///   location               = "europe-west2"
+///   project                = "my-project"
+///   database               = "mydatabase"
+///   admin_password         = "123Abpassword"
+///   properties = {
+///     compute_count            = "2"
+///     data_storage_size_tb     = "1"
+///     db_version               = "19c"
+///     db_workload              = "OLTP"
+///     license_type             = "LICENSE_INCLUDED"
+///     mtls_connection_required = "true"
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -835,8 +971,8 @@ import 'autonomous_database_state.dart';
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
 /// import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
 /// import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -888,27 +1024,293 @@ import 'autonomous_database_state.dart';
 ///       deletionProtection: 'true'
 /// ```
 ///
+/// ### Oracledatabase Autonomous Database Disaster Recovery
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const adb_dr = new gcp.oracledatabase.AutonomousDatabase("adb-dr", {
+///     autonomousDatabaseId: "my-instance",
+///     location: "us-east4",
+///     project: "my-project",
+///     database: "mydatabase",
+///     adminPassword: "123Abpassword",
+///     properties: {
+///         computeCount: 2,
+///         dataStorageSizeGb: 20,
+///         dbVersion: "19c",
+///         dbWorkload: "OLTP",
+///         licenseType: "LICENSE_INCLUDED",
+///         mtlsConnectionRequired: true,
+///     },
+///     deletionProtection: true,
+/// });
+/// const myADB = new gcp.oracledatabase.AutonomousDatabase("myADB", {
+///     autonomousDatabaseId: "my-instance",
+///     location: "my-location",
+///     project: "my-project",
+///     sourceConfig: {
+///         autonomousDatabase: adb_dr.name,
+///         automaticBackupsReplicationEnabled: false,
+///     },
+///     deletionProtection: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// adb_dr = gcp.oracledatabase.AutonomousDatabase("adb-dr",
+///     autonomous_database_id="my-instance",
+///     location="us-east4",
+///     project="my-project",
+///     database="mydatabase",
+///     admin_password="123Abpassword",
+///     properties={
+///         "compute_count": float(2),
+///         "data_storage_size_gb": 20,
+///         "db_version": "19c",
+///         "db_workload": "OLTP",
+///         "license_type": "LICENSE_INCLUDED",
+///         "mtls_connection_required": True,
+///     },
+///     deletion_protection=True)
+/// my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
+///     autonomous_database_id="my-instance",
+///     location="my-location",
+///     project="my-project",
+///     source_config={
+///         "autonomous_database": adb_dr.name,
+///         "automatic_backups_replication_enabled": False,
+///     },
+///     deletion_protection=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var adb_dr = new Gcp.OracleDatabase.AutonomousDatabase("adb-dr", new()
+///     {
+///         AutonomousDatabaseId = "my-instance",
+///         Location = "us-east4",
+///         Project = "my-project",
+///         Database = "mydatabase",
+///         AdminPassword = "123Abpassword",
+///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
+///         {
+///             ComputeCount = 2.0,
+///             DataStorageSizeGb = 20,
+///             DbVersion = "19c",
+///             DbWorkload = "OLTP",
+///             LicenseType = "LICENSE_INCLUDED",
+///             MtlsConnectionRequired = true,
+///         },
+///         DeletionProtection = true,
+///     });
+///
+///     var myADB = new Gcp.OracleDatabase.AutonomousDatabase("myADB", new()
+///     {
+///         AutonomousDatabaseId = "my-instance",
+///         Location = "my-location",
+///         Project = "my-project",
+///         SourceConfig = new Gcp.OracleDatabase.Inputs.AutonomousDatabaseSourceConfigArgs
+///         {
+///             AutonomousDatabase = adb_dr.Name,
+///             AutomaticBackupsReplicationEnabled = false,
+///         },
+///         DeletionProtection = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		adb_dr, err := oracledatabase.NewAutonomousDatabase(ctx, "adb-dr", &oracledatabase.AutonomousDatabaseArgs{
+/// 			AutonomousDatabaseId: pulumi.String("my-instance"),
+/// 			Location:             pulumi.String("us-east4"),
+/// 			Project:              pulumi.String("my-project"),
+/// 			Database:             pulumi.String("mydatabase"),
+/// 			AdminPassword:        pulumi.String("123Abpassword"),
+/// 			Properties: &oracledatabase.AutonomousDatabasePropertiesArgs{
+/// 				ComputeCount:           pulumi.Float64(2),
+/// 				DataStorageSizeGb:      pulumi.Int(20),
+/// 				DbVersion:              pulumi.String("19c"),
+/// 				DbWorkload:             pulumi.String("OLTP"),
+/// 				LicenseType:            pulumi.String("LICENSE_INCLUDED"),
+/// 				MtlsConnectionRequired: pulumi.Bool(true),
+/// 			},
+/// 			DeletionProtection: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = oracledatabase.NewAutonomousDatabase(ctx, "myADB", &oracledatabase.AutonomousDatabaseArgs{
+/// 			AutonomousDatabaseId: pulumi.String("my-instance"),
+/// 			Location:             pulumi.String("my-location"),
+/// 			Project:              pulumi.String("my-project"),
+/// 			SourceConfig: &oracledatabase.AutonomousDatabaseSourceConfigArgs{
+/// 				AutonomousDatabase:                 adb_dr.Name,
+/// 				AutomaticBackupsReplicationEnabled: pulumi.Bool(false),
+/// 			},
+/// 			DeletionProtection: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_oracledatabase_autonomousdatabase" "adb-dr" {
+///   autonomous_database_id = "my-instance"
+///   location               = "us-east4"
+///   project                = "my-project"
+///   database               = "mydatabase"
+///   admin_password         = "123Abpassword"
+///   properties = {
+///     compute_count            = "2"
+///     data_storage_size_gb     = "20"
+///     db_version               = "19c"
+///     db_workload              = "OLTP"
+///     license_type             = "LICENSE_INCLUDED"
+///     mtls_connection_required = "true"
+///   }
+///   deletion_protection = "true"
+/// }
+/// resource "gcp_oracledatabase_autonomousdatabase" "myADB" {
+///   autonomous_database_id = "my-instance"
+///   location               = "my-location"
+///   project                = "my-project"
+///   source_config = {
+///     autonomous_database                   = gcp_oracledatabase_autonomousdatabase.adb-dr.name
+///     automatic_backups_replication_enabled = "false"
+///   }
+///   deletion_protection = "true"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
+/// import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
+/// import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+/// import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabaseSourceConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var adb_dr = new AutonomousDatabase("adb-dr", AutonomousDatabaseArgs.builder()
+///             .autonomousDatabaseId("my-instance")
+///             .location("us-east4")
+///             .project("my-project")
+///             .database("mydatabase")
+///             .adminPassword("123Abpassword")
+///             .properties(AutonomousDatabasePropertiesArgs.builder()
+///                 .computeCount(2.0)
+///                 .dataStorageSizeGb(20)
+///                 .dbVersion("19c")
+///                 .dbWorkload("OLTP")
+///                 .licenseType("LICENSE_INCLUDED")
+///                 .mtlsConnectionRequired(true)
+///                 .build())
+///             .deletionProtection(true)
+///             .build());
+///
+///         var myADB = new AutonomousDatabase("myADB", AutonomousDatabaseArgs.builder()
+///             .autonomousDatabaseId("my-instance")
+///             .location("my-location")
+///             .project("my-project")
+///             .sourceConfig(AutonomousDatabaseSourceConfigArgs.builder()
+///                 .autonomousDatabase(adb_dr.name())
+///                 .automaticBackupsReplicationEnabled(false)
+///                 .build())
+///             .deletionProtection(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   adb-dr:
+///     type: gcp:oracledatabase:AutonomousDatabase
+///     properties:
+///       autonomousDatabaseId: my-instance
+///       location: us-east4
+///       project: my-project
+///       database: mydatabase
+///       adminPassword: 123Abpassword
+///       properties:
+///         computeCount: '2'
+///         dataStorageSizeGb: '20'
+///         dbVersion: 19c
+///         dbWorkload: OLTP
+///         licenseType: LICENSE_INCLUDED
+///         mtlsConnectionRequired: 'true'
+///       deletionProtection: 'true'
+///   myADB:
+///     type: gcp:oracledatabase:AutonomousDatabase
+///     properties:
+///       autonomousDatabaseId: my-instance
+///       location: my-location
+///       project: my-project
+///       sourceConfig:
+///         autonomousDatabase: ${["adb-dr"].name}
+///         automaticBackupsReplicationEnabled: 'false'
+///       deletionProtection: 'true'
+/// ```
+///
+///
 /// ## Import
 ///
 /// AutonomousDatabase can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}`
-///
 /// * `{{project}}/{{location}}/{{autonomous_database_id}}`
-///
 /// * `{{location}}/{{autonomous_database_id}}`
+///
 ///
 /// When using the `pulumi import` command, AutonomousDatabase can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
 /// ```
 class AutonomousDatabase extends pulumi.CustomResource {
@@ -927,6 +1329,14 @@ class AutonomousDatabase extends pulumi.CustomResource {
   /// the project. The name must begin with a letter and can
   /// contain a maximum of 30 alphanumeric characters.
   late final pulumi.Output<String> database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   late final pulumi.Output<bool?> deletionProtection;
   /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
   late final pulumi.Output<List<String>> disasterRecoverySupportedLocations;
@@ -940,7 +1350,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
   late final pulumi.Output<String> entitlementId;
   /// The labels or tags associated with the Autonomous Database.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
   late final pulumi.Output<String> location;
@@ -954,7 +1364,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
-  /// the odb_subnet and backup_odb_subnet.
+  /// the odbSubnet and backup_odb_subnet.
   late final pulumi.Output<String> odbNetwork;
   /// The name of the OdbSubnet associated with the Autonomous Database for
   /// IP allocation. Format:
@@ -994,6 +1404,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
     cidr = registerOutput<String?>('cidr');
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations');
     displayName = registerOutput<String>('displayName');
@@ -1040,6 +1451,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
     cidr = registerOutput<String?>('cidr');
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations');
     displayName = registerOutput<String>('displayName');

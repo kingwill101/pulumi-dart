@@ -9,7 +9,7 @@ import 'certificate_revocation_detail.dart';
 class CertificateState {
   /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
   /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-  /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+  /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
   /// should be set to `my-ca`.
   final pulumi.Input<String>? certificateAuthority;
   /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
@@ -27,6 +27,13 @@ class CertificateState {
   /// The time that this resource was created on the server.
   /// This is in RFC3339 text format.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
@@ -34,7 +41,7 @@ class CertificateState {
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -73,6 +80,7 @@ class CertificateState {
   /// [certificateTemplate] The resource name for a CertificateTemplate used to issue this certificate,
   /// [config] The config used to create a self-signed X.509 certificate or CSR.
   /// [createTime] The time that this resource was created on the server.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [issuerCertificateAuthority] The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
   /// [labels] Labels with user-defined metadata to apply to this resource.
@@ -93,6 +101,7 @@ class CertificateState {
     this.certificateTemplate,
     this.config,
     this.createTime,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.issuerCertificateAuthority,
     this.labels,
@@ -116,6 +125,7 @@ class CertificateState {
       'certificateTemplate': ?certificateTemplate,
       'config': ?pulumi.Input.mapOptionalInputValue<CertificateConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'issuerCertificateAuthority': ?issuerCertificateAuthority,
       'labels': ?labels,
@@ -140,6 +150,7 @@ class CertificateState {
       certificateTemplate: (() { final guardedValue = map['certificateTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       issuerCertificateAuthority: (() { final guardedValue = map['issuerCertificateAuthority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -157,4 +168,3 @@ class CertificateState {
     );
   }
 }
-

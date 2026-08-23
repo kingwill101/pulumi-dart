@@ -4,6 +4,9 @@ import 'get_workstation_config_iam_policy_result.dart';
 import 'get_workstation_iam_policy_args.dart';
 import 'get_workstation_iam_policy_result.dart';
 
+/// Retrieves the current IAM policy data for workstationconfig
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -68,6 +71,22 @@ import 'get_workstation_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_workstations_getworkstationconfigiampolicy" "policy" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +95,8 @@ import 'get_workstation_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workstations.WorkstationsFunctions;
 /// import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -90,10 +109,10 @@ import 'get_workstation_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
 ///             .build());
 ///
 ///     }
@@ -125,6 +144,9 @@ Future<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(
   return GetWorkstationConfigIamPolicyResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for workstation
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -193,6 +215,23 @@ Future<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_workstations_getworkstationiampolicy" "policy" {
+///   project                = default.project
+///   location               = default.location
+///   workstation_cluster_id = default.workstationClusterId
+///   workstation_config_id  = default.workstationConfigId
+///   workstation_id         = default.workstationId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +240,8 @@ Future<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workstations.WorkstationsFunctions;
 /// import com.pulumi.gcp.workstations.inputs.GetWorkstationIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,11 +254,11 @@ Future<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .workstationClusterId(default_.workstationClusterId())
-///             .workstationConfigId(default_.workstationConfigId())
-///             .workstationId(default_.workstationId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .workstationClusterId(default_.get("workstationClusterId"))
+///             .workstationConfigId(default_.get("workstationConfigId"))
+///             .workstationId(default_.get("workstationId"))
 ///             .build());
 ///
 ///     }

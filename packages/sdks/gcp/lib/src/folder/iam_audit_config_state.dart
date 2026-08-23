@@ -11,14 +11,14 @@ class IamAuditConfigState {
   final pulumi.Input<String>? etag;
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   final pulumi.Input<String>? folder;
-  /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
   final pulumi.Input<String>? service;
 
   /// Creates a new [IamAuditConfigState].
   /// [auditLogConfigs] The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
   /// [etag] (Computed) The etag of the folder's IAM policy.
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-  /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
   const IamAuditConfigState({
     this.auditLogConfigs,
     this.etag,
@@ -44,4 +44,3 @@ class IamAuditConfigState {
     );
   }
 }
-

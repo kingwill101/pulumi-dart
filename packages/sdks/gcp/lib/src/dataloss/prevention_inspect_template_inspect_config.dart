@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_inspect_template_inspect_config_custom_info_type.dart';
 import 'prevention_inspect_template_inspect_config_info_type.dart';
 import 'prevention_inspect_template_inspect_config_limits.dart';
+import 'prevention_inspect_template_inspect_config_min_likelihood_per_info_type.dart';
 import 'prevention_inspect_template_inspect_config_rule_set.dart';
 
 class PreventionInspectTemplateInspectConfig {
@@ -30,6 +31,11 @@ class PreventionInspectTemplateInspectConfig {
   /// Default value is `POSSIBLE`.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
   final pulumi.Input<String>? minLikelihood;
+  /// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+  /// The system only returns a finding if its likelihood is above this threshold. If this field
+  /// is not set, the system uses the InspectConfig min_likelihood.
+  /// Structure is documented below.
+  final pulumi.Input<List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType>>? minLikelihoodPerInfoTypes;
   /// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
   /// other rules are executed in the order they are specified for each info type.
   /// Structure is documented below.
@@ -43,6 +49,7 @@ class PreventionInspectTemplateInspectConfig {
   /// [infoTypes] Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
   /// [limits] Configuration to control the number of findings returned.
   /// [minLikelihood] Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+  /// [minLikelihoodPerInfoTypes] Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
   /// [ruleSets] Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
   const PreventionInspectTemplateInspectConfig({
     this.contentOptions,
@@ -52,6 +59,7 @@ class PreventionInspectTemplateInspectConfig {
     this.infoTypes,
     this.limits,
     this.minLikelihood,
+    this.minLikelihoodPerInfoTypes,
     this.ruleSets,
   });
 
@@ -64,6 +72,7 @@ class PreventionInspectTemplateInspectConfig {
       'infoTypes': ?pulumi.Input.mapOptionalInputValue<List<PreventionInspectTemplateInspectConfigInfoType>, List<Map<String, dynamic>>>(infoTypes, (value) => pulumi.Input.encodeList<PreventionInspectTemplateInspectConfigInfoType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'limits': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigLimits, Map<String, dynamic>>(limits, (value) => value.toMap()),
       'minLikelihood': ?minLikelihood,
+      'minLikelihoodPerInfoTypes': ?pulumi.Input.mapOptionalInputValue<List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType>, List<Map<String, dynamic>>>(minLikelihoodPerInfoTypes, (value) => pulumi.Input.encodeList<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleSets': ?pulumi.Input.mapOptionalInputValue<List<PreventionInspectTemplateInspectConfigRuleSet>, List<Map<String, dynamic>>>(ruleSets, (value) => pulumi.Input.encodeList<PreventionInspectTemplateInspectConfigRuleSet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
@@ -77,8 +86,8 @@ class PreventionInspectTemplateInspectConfig {
       infoTypes: (() { final guardedValue = map['infoTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigInfoType>(guardedValue, (value) => PreventionInspectTemplateInspectConfigInfoType.fromMap((value as Map).cast<String, dynamic>()))); })(),
       limits: (() { final guardedValue = map['limits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       minLikelihood: (() { final guardedValue = map['minLikelihood']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minLikelihoodPerInfoTypes: (() { final guardedValue = map['minLikelihoodPerInfoTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType>(guardedValue, (value) => PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleSets: (() { final guardedValue = map['ruleSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigRuleSet>(guardedValue, (value) => PreventionInspectTemplateInspectConfigRuleSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

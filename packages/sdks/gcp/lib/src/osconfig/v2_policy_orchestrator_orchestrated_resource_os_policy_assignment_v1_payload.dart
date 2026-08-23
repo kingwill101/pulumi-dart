@@ -113,4 +113,3 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload {
     );
   }
 }
-

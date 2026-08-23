@@ -8,6 +8,13 @@ import 'region_network_firewall_policy_with_rules_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_region_network_firewall_policy_with_rules_region_network_firewall_policy_with_rules_args_doc}
 class RegionNetworkFirewallPolicyWithRulesArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// User-provided name of the Network firewall policy.
@@ -20,7 +27,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
-  /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+  /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
   final pulumi.Input<String>? policyType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -32,6 +39,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
   final pulumi.Input<List<RegionNetworkFirewallPolicyWithRulesRule>> rules;
 
   /// Creates a new [RegionNetworkFirewallPolicyWithRulesArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [name] User-provided name of the Network firewall policy.
   /// [policyType] Policy type is used to determine which resources (networks) the policy can be associated with.
@@ -39,6 +47,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
   /// [region] The region of this resource.
   /// [rules] A list of firewall policy rules.
   const RegionNetworkFirewallPolicyWithRulesArgs({
+    this.deletionPolicy,
     this.description,
     this.name,
     this.policyType,
@@ -49,6 +58,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'policyType': ?policyType,
@@ -60,6 +70,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
 
   factory RegionNetworkFirewallPolicyWithRulesArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyWithRulesArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -69,4 +80,3 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
     );
   }
 }
-

@@ -13,10 +13,10 @@ import 'group_state.dart';
 /// * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
 ///
 /// ## Example Usage
 ///
@@ -108,6 +108,27 @@ import 'group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudidentity_group" "cloud_identity_group_basic" {
+///   display_name         = "my-identity-group"
+///   initial_group_config = "WITH_INITIAL_OWNER"
+///   parent               = "customers/A01b123xz"
+///   group_key = {
+///     id = "my-identity-group@example.com"
+///   }
+///   labels = {
+///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +138,8 @@ import 'group_state.dart';
 /// import com.pulumi.gcp.cloudidentity.Group;
 /// import com.pulumi.gcp.cloudidentity.GroupArgs;
 /// import com.pulumi.gcp.cloudidentity.inputs.GroupGroupKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,6 +186,7 @@ import 'group_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -176,6 +198,13 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> additionalGroupKeys;
   /// The time when the Group was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An extended description to help users determine the purpose of a Group.
   /// Must not be longer than 4,096 characters.
   late final pulumi.Output<String?> description;
@@ -197,7 +226,7 @@ class Group extends pulumi.CustomResource {
   /// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
   /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
   late final pulumi.Output<Map<String, String>> labels;
-  /// Resource name of the Group in the format: groups/{group_id}, where group_id
+  /// Resource name of the Group in the format: groups/{group_id}, where groupId
   /// is the unique ID assigned to the Group.
   late final pulumi.Output<String> name;
   /// The resource name of the entity under which this Group resides in the
@@ -224,6 +253,7 @@ class Group extends pulumi.CustomResource {
         ) {
     additionalGroupKeys = registerOutput<List<Map<String, dynamic>>>('additionalGroupKeys');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     groupKey = registerOutput<GroupGroupKey>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -259,6 +289,7 @@ class Group extends pulumi.CustomResource {
         ) {
     additionalGroupKeys = registerOutput<List<Map<String, dynamic>>>('additionalGroupKeys');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     groupKey = registerOutput<GroupGroupKey>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -13,7 +13,7 @@ class SecurityProfileCustomMirroringProfile {
   /// a replica will be mirrored to the location-local target in this group.
   /// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
   final pulumi.Input<String> mirroringEndpointGroup;
-  /// (Output, Beta)
+  /// (Output)
   /// The type of the mirroring endpoint group this profile is attached to.
   /// Possible values:
   /// DIRECT
@@ -23,7 +23,7 @@ class SecurityProfileCustomMirroringProfile {
   /// Creates a new [SecurityProfileCustomMirroringProfile].
   /// [mirroringDeploymentGroups] The target downstream Mirroring Deployment Groups.
   /// [mirroringEndpointGroup] The target Mirroring Endpoint Group.
-  /// [mirroringEndpointGroupType] (Output, Beta)
+  /// [mirroringEndpointGroupType] (Output)
   const SecurityProfileCustomMirroringProfile({
     this.mirroringDeploymentGroups,
     required this.mirroringEndpointGroup,
@@ -46,4 +46,3 @@ class SecurityProfileCustomMirroringProfile {
     );
   }
 }
-

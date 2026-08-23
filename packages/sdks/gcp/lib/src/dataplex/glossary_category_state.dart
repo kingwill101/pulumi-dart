@@ -8,6 +8,13 @@ class GlossaryCategoryState {
   final pulumi.Input<String>? categoryId;
   /// The time at which the GlossaryCategory was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The user-mutable description of the GlossaryCategory.
   final pulumi.Input<String>? description;
   /// User friendly display name of the GlossaryCategory. This is user-mutable. This will be same as the categoryId, if not specified.
@@ -19,7 +26,7 @@ class GlossaryCategoryState {
   /// User-defined labels for the GlossaryCategory.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the glossary category should reside.
   final pulumi.Input<String>? location;
@@ -41,6 +48,7 @@ class GlossaryCategoryState {
   /// Creates a new [GlossaryCategoryState].
   /// [categoryId] The category id for creation.
   /// [createTime] The time at which the GlossaryCategory was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The user-mutable description of the GlossaryCategory.
   /// [displayName] User friendly display name of the GlossaryCategory. This is user-mutable. This will be same as the categoryId, if not specified.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -56,6 +64,7 @@ class GlossaryCategoryState {
   const GlossaryCategoryState({
     this.categoryId,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.effectiveLabels,
@@ -74,6 +83,7 @@ class GlossaryCategoryState {
     return <String, dynamic>{
       'categoryId': ?categoryId,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
@@ -93,6 +103,7 @@ class GlossaryCategoryState {
     return GlossaryCategoryState(
       categoryId: (() { final guardedValue = map['categoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -108,4 +119,3 @@ class GlossaryCategoryState {
     );
   }
 }
-

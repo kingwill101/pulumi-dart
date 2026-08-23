@@ -6,8 +6,8 @@ import 'security_gateway_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for BeyondCorp SecurityGateway. Each of these resources serves a different use case:
 ///
 /// * `gcp.beyondcorp.SecurityGatewayIamPolicy`: Authoritative. Sets the IAM policy for the securitygateway and replaces any existing policy already attached.
-/// * `gcp.beyondcorp.SecurityGatewayIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the securitygateway are preserved.
-/// * `gcp.beyondcorp.SecurityGatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the securitygateway are preserved.
+/// * `gcp.beyondcorp.SecurityGatewayIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the securitygateway are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.beyondcorp.SecurityGatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the securitygateway are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,7 @@ import 'security_gateway_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.beyondcorp.SecurityGatewayIamPolicy` **cannot** be used in conjunction with `gcp.beyondcorp.SecurityGatewayIamBinding` and `gcp.beyondcorp.SecurityGatewayIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.beyondcorp.SecurityGatewayIamBinding` resources **can be** used in conjunction with `gcp.beyondcorp.SecurityGatewayIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.beyondcorp.SecurityGatewayIamBinding` resources **can be** used in conjunction with `gcp.beyondcorp.SecurityGatewayIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -124,6 +124,29 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/beyondcorp.securityGatewayUser"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiampolicy" "policy" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   policy_data         = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,10 +155,11 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicy;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,9 +179,9 @@ import 'security_gateway_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -310,6 +334,34 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/beyondcorp.securityGatewayUser"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiampolicy" "policy" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   policy_data         = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -318,10 +370,12 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicy;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,9 +400,9 @@ import 'security_gateway_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -453,6 +507,23 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiambinding" "binding" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   members             = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -461,8 +532,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBinding;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,9 +546,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -594,6 +665,28 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiambinding" "binding" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   members             = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -603,8 +696,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBinding;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBindingArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -617,9 +710,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .members("user:jane@example.com")
 ///             .condition(SecurityGatewayIamBindingConditionArgs.builder()
@@ -718,6 +811,23 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiammember" "member" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   member              = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -726,8 +836,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMember;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -740,9 +850,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -853,6 +963,28 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiammember" "member" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   member              = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -862,8 +994,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMember;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMemberArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -876,9 +1008,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .member("user:jane@example.com")
 ///             .condition(SecurityGatewayIamMemberConditionArgs.builder()
@@ -917,8 +1049,8 @@ import 'security_gateway_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for BeyondCorp SecurityGateway. Each of these resources serves a different use case:
 ///
 /// * `gcp.beyondcorp.SecurityGatewayIamPolicy`: Authoritative. Sets the IAM policy for the securitygateway and replaces any existing policy already attached.
-/// * `gcp.beyondcorp.SecurityGatewayIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the securitygateway are preserved.
-/// * `gcp.beyondcorp.SecurityGatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the securitygateway are preserved.
+/// * `gcp.beyondcorp.SecurityGatewayIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the securitygateway are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.beyondcorp.SecurityGatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the securitygateway are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -926,7 +1058,7 @@ import 'security_gateway_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.beyondcorp.SecurityGatewayIamPolicy` **cannot** be used in conjunction with `gcp.beyondcorp.SecurityGatewayIamBinding` and `gcp.beyondcorp.SecurityGatewayIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.beyondcorp.SecurityGatewayIamBinding` resources **can be** used in conjunction with `gcp.beyondcorp.SecurityGatewayIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.beyondcorp.SecurityGatewayIamBinding` resources **can be** used in conjunction with `gcp.beyondcorp.SecurityGatewayIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -1035,6 +1167,29 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/beyondcorp.securityGatewayUser"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiampolicy" "policy" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   policy_data         = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1043,10 +1198,11 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicy;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1066,9 +1222,9 @@ import 'security_gateway_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1221,6 +1377,34 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/beyondcorp.securityGatewayUser"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiampolicy" "policy" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   policy_data         = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1229,10 +1413,12 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicy;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1257,9 +1443,9 @@ import 'security_gateway_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1364,6 +1550,23 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiambinding" "binding" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   members             = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1372,8 +1575,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBinding;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1386,9 +1589,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1505,6 +1708,28 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiambinding" "binding" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   members             = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1514,8 +1739,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBinding;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamBindingArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1528,9 +1753,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .members("user:jane@example.com")
 ///             .condition(SecurityGatewayIamBindingConditionArgs.builder()
@@ -1629,6 +1854,23 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiammember" "member" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   member              = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1637,8 +1879,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMember;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1651,9 +1893,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1764,6 +2006,28 @@ import 'security_gateway_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygatewayiammember" "member" {
+///   project             = example.project
+///   location            = example.location
+///   security_gateway_id = example.securityGatewayId
+///   role                = "roles/beyondcorp.securityGatewayUser"
+///   member              = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1773,8 +2037,8 @@ import 'security_gateway_iam_member_state.dart';
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMember;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayIamMemberArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1787,9 +2051,9 @@ import 'security_gateway_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .securityGatewayId(example.securityGatewayId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .securityGatewayId(example.get("securityGatewayId"))
 ///             .role("roles/beyondcorp.securityGatewayUser")
 ///             .member("user:jane@example.com")
 ///             .condition(SecurityGatewayIamMemberConditionArgs.builder()
@@ -1824,11 +2088,8 @@ import 'security_gateway_iam_member_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}
-///
 /// * {{project}}/{{location}}/{{security_gateway_id}}
-///
 /// * {{location}}/{{security_gateway_id}}
-///
 /// * {{security_gateway_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1836,25 +2097,21 @@ import 'security_gateway_iam_member_state.dart';
 /// BeyondCorp securitygateway IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember editor "projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}} roles/beyondcorp.securityGatewayUser user:jane@example.com"
+/// $ terraform import google_beyondcorp_security_gateway_iam_member.editor "projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}} roles/beyondcorp.securityGatewayUser user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember editor "projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}} roles/beyondcorp.securityGatewayUser"
+/// $ terraform import google_beyondcorp_security_gateway_iam_binding.editor "projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}} roles/beyondcorp.securityGatewayUser"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember editor projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class SecurityGatewayIamMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -1883,7 +2140,7 @@ class SecurityGatewayIamMember extends pulumi.CustomResource {
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
   /// The role that should be applied. Only one
-  /// `gcp.beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `gcp.beyondcorp.SecurityGatewayIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
   /// Used to find the parent resource to bind the IAM policy to

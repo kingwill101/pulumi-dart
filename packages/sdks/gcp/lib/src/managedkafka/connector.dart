@@ -65,7 +65,7 @@ import 'connector_task_restart_policy.dart';
 ///             networkConfigs: [{
 ///                 primarySubnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
 ///                 additionalSubnets: [mkcSecondarySubnet.id],
-///                 dnsDomainNames: [Promise.all([gmkCluster.clusterId, project]).then(([clusterId, project]) => `${clusterId}.us-central1.managedkafka.${project.projectId}.cloud.goog`)],
+///                 dnsDomainNames: [pulumi.all([gmkCluster.clusterId, project]).apply(([clusterId, project]) => `${clusterId}.us-central1.managedkafka.${project.projectId}.cloud.goog`)],
 ///             }],
 ///         },
 ///     },
@@ -381,7 +381,7 @@ import 'connector_task_restart_policy.dart';
 /// 						&managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{
 /// 							PrimarySubnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 /// 							AdditionalSubnets: pulumi.StringArray{
-/// 								mkcSecondarySubnet.ID(),
+/// 								mkcSecondarySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 							DnsDomainNames: pulumi.StringArray{
 /// 								gmkCluster.ClusterId.ApplyT(func(clusterId string) (string, error) {
@@ -425,6 +425,93 @@ import 'connector_task_restart_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_subnetwork" "mkc_secondary_subnet" {
+///   project       = data.gcp_organizations_getproject.project.project_id
+///   name          = "my-secondary-subnetwork-00"
+///   ip_cidr_range = "10.5.0.0/16"
+///   region        = "us-central1"
+///   network       = "default"
+/// }
+/// resource "gcp_pubsub_topic" "cps_topic" {
+///   project                    = data.gcp_organizations_getproject.project.project_id
+///   name                       = "my-cps-topic"
+///   message_retention_duration = "86600s"
+/// }
+/// resource "gcp_managedkafka_cluster" "gmk_cluster" {
+///   cluster_id = "my-cluster"
+///   location   = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 3
+///     memory_bytes = 3221225472
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_managedkafka_topic" "gmk_topic" {
+///   topic_id           = "my-topic"
+///   cluster            = gcp_managedkafka_cluster.gmk_cluster.cluster_id
+///   location           = "us-central1"
+///   partition_count    = 2
+///   replication_factor = 3
+/// }
+/// resource "gcp_managedkafka_connectcluster" "mkc_cluster" {
+///   connect_cluster_id = "my-connect-cluster"
+///   kafka_cluster      ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/clusters/${gcp_managedkafka_cluster.gmk_cluster.cluster_id}"
+///   location           = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 12
+///     memory_bytes = 21474836480
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         "primarySubnet"     ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///         "additionalSubnets" = [gcp_compute_subnetwork.mkc_secondary_subnet.id]
+///         "dnsDomainNames"    = ["${gcp_managedkafka_cluster.gmk_cluster.cluster_id}.us-central1.managedkafka.${data.gcp_organizations_getproject.project.project_id}.cloud.goog"]
+///       }]
+///     }
+///   }
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// resource "gcp_managedkafka_connector" "example" {
+///   connector_id    = "my-connector"
+///   connect_cluster = gcp_managedkafka_connectcluster.mkc_cluster.connect_cluster_id
+///   location        = "us-central1"
+///   configs = {
+///     "connector.class" = "com.google.pubsub.kafka.sink.CloudPubSubSinkConnector"
+///     "name"            = "my-connector"
+///     "tasks.max"       = "3"
+///     "topics"          = gcp_managedkafka_topic.gmk_topic.topic_id
+///     "cps.topic"       = gcp_pubsub_topic.cps_topic.name
+///     "cps.project"     = data.gcp_organizations_getproject.project.project_id
+///     "value.converter" = "org.apache.kafka.connect.storage.StringConverter"
+///     "key.converter"   = "org.apache.kafka.connect.storage.StringConverter"
+///   }
+///   task_restart_policy = {
+///     minimum_backoff = "60s"
+///     maximum_backoff = "1800s"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -440,16 +527,18 @@ import 'connector_task_restart_policy.dart';
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
 /// import com.pulumi.gcp.managedkafka.ConnectCluster;
 /// import com.pulumi.gcp.managedkafka.ConnectClusterArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ConnectClusterCapacityConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs;
 /// import com.pulumi.gcp.managedkafka.Connector;
 /// import com.pulumi.gcp.managedkafka.ConnectorArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ConnectorTaskRestartPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -636,22 +725,15 @@ import 'connector_task_restart_policy.dart';
 /// Connector can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster}}/connectors/{{connector_id}}`
-///
 /// * `{{project}}/{{location}}/{{connect_cluster}}/{{connector_id}}`
-///
 /// * `{{location}}/{{connect_cluster}}/{{connector_id}}`
+///
 ///
 /// When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:managedkafka/connector:Connector default projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster}}/connectors/{{connector_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:managedkafka/connector:Connector default {{project}}/{{location}}/{{connect_cluster}}/{{connector_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:managedkafka/connector:Connector default {{location}}/{{connect_cluster}}/{{connector_id}}
 /// ```
 class Connector extends pulumi.CustomResource {
@@ -661,6 +743,13 @@ class Connector extends pulumi.CustomResource {
   late final pulumi.Output<String> connectCluster;
   /// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
   late final pulumi.Output<String> connectorId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   late final pulumi.Output<String> location;
   /// The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
@@ -691,6 +780,7 @@ class Connector extends pulumi.CustomResource {
     configs = registerOutput<Map<String, String>?>('configs');
     connectCluster = registerOutput<String>('connectCluster');
     connectorId = registerOutput<String>('connectorId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -724,6 +814,7 @@ class Connector extends pulumi.CustomResource {
     configs = registerOutput<Map<String, String>?>('configs');
     connectCluster = registerOutput<String>('connectCluster');
     connectorId = registerOutput<String>('connectorId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

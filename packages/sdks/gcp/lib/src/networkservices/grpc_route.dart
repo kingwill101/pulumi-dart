@@ -172,6 +172,38 @@ import 'grpc_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_grpcroute" "default" {
+///   name = "my-grpc-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   hostnames   = ["example"]
+///   rules {
+///     matches {
+///       headers {
+///         key   = "key"
+///         value = "value"
+///       }
+///     }
+///     action = {
+///       retry_policy = {
+///         retry_conditions = ["cancelled"]
+///         num_retries      = 1
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,10 +213,12 @@ import 'grpc_route_state.dart';
 /// import com.pulumi.gcp.networkservices.GrpcRoute;
 /// import com.pulumi.gcp.networkservices.GrpcRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleMatchArgs;
+/// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleMatchHeaderArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionRetryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -503,6 +537,59 @@ import 'grpc_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_grpcroute" "default" {
+///   name = "my-grpc-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   hostnames   = ["example"]
+///   rules {
+///     matches {
+///       headers {
+///         key   = "key"
+///         value = "value"
+///       }
+///     }
+///     matches {
+///       headers {
+///         key   = "key"
+///         value = "value"
+///       }
+///       method = {
+///         grpc_service   = "foo"
+///         grpc_method    = "bar"
+///         case_sensitive = true
+///       }
+///     }
+///     action = {
+///       fault_injection_policy = {
+///         delay = {
+///           fixed_delay = "1s"
+///           percentage  = 1
+///         }
+///         abort = {
+///           http_status = 500
+///           percentage  = 1
+///         }
+///       }
+///       retry_policy = {
+///         retry_conditions = ["cancelled"]
+///         num_retries      = 1
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -512,13 +599,16 @@ import 'grpc_route_state.dart';
 /// import com.pulumi.gcp.networkservices.GrpcRoute;
 /// import com.pulumi.gcp.networkservices.GrpcRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleMatchArgs;
+/// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleMatchHeaderArgs;
+/// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleMatchMethodArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionRetryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -781,6 +871,42 @@ import 'grpc_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_grpcroute" "default" {
+///   name = "my-grpc-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   hostnames   = ["example"]
+///   rules {
+///     action = {
+///       fault_injection_policy = {
+///         delay = {
+///           fixed_delay = "1s"
+///           percentage  = 1
+///         }
+///         abort = {
+///           http_status = 500
+///           percentage  = 1
+///         }
+///       }
+///       retry_policy = {
+///         retry_conditions = ["cancelled"]
+///         num_retries      = 1
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -795,8 +921,8 @@ import 'grpc_route_state.dart';
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionRetryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1010,6 +1136,35 @@ import 'grpc_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_grpcroute" "default" {
+///   name      = "my-grpc-route"
+///   location  = "global"
+///   hostnames = ["example"]
+///   rules {
+///     matches {
+///       headers {
+///         key   = "key"
+///         value = "value"
+///       }
+///     }
+///     action = {
+///       retry_policy = {
+///         retry_conditions = ["cancelled"]
+///         num_retries      = 1
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1019,10 +1174,12 @@ import 'grpc_route_state.dart';
 /// import com.pulumi.gcp.networkservices.GrpcRoute;
 /// import com.pulumi.gcp.networkservices.GrpcRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleMatchArgs;
+/// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleMatchHeaderArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionArgs;
 /// import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionRetryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1084,27 +1241,27 @@ import 'grpc_route_state.dart';
 /// GrpcRoute can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
 /// ```
 class GrpcRoute extends pulumi.CustomResource {
   /// Time the GrpcRoute was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1115,7 +1272,7 @@ class GrpcRoute extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> hostnames;
   /// Set of label tags associated with the GrpcRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
   late final pulumi.Output<String?> location;
@@ -1152,6 +1309,7 @@ class GrpcRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateways = registerOutput<List<String>?>('gateways');
@@ -1191,6 +1349,7 @@ class GrpcRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateways = registerOutput<List<String>?>('gateways');

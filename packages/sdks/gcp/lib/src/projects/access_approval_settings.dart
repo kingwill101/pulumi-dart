@@ -104,6 +104,24 @@ import 'access_approval_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_accessapprovalsettings" "project_access_approval" {
+///   project_id          = "my-project-name"
+///   notification_emails = ["testuser@example.com", "example.user@example.com"]
+///   enrolled_services {
+///     cloud_product    = "all"
+///     enrollment_level = "BLOCK_ALL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +131,8 @@ import 'access_approval_settings_state.dart';
 /// import com.pulumi.gcp.projects.AccessApprovalSettings;
 /// import com.pulumi.gcp.projects.AccessApprovalSettingsArgs;
 /// import com.pulumi.gcp.projects.inputs.AccessApprovalSettingsEnrolledServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,7 +207,7 @@ import 'access_approval_settings_state.dart';
 /// });
 /// const projectAccessApproval = new gcp.projects.AccessApprovalSettings("project_access_approval", {
 ///     projectId: "my-project-name",
-///     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+///     activeKeyVersion: cryptoKeyVersion.name,
 ///     enrolledServices: [{
 ///         cloudProduct: "all",
 ///     }],
@@ -294,8 +312,6 @@ import 'access_approval_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -314,7 +330,7 @@ import 'access_approval_settings_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("crypto-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -330,7 +346,7 @@ import 'access_approval_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 /// 			Member:      pulumi.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail),
 /// 		})
@@ -338,13 +354,11 @@ import 'access_approval_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-/// 			CryptoKey: cryptoKey.ID(),
+/// 			CryptoKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		_, err = projects.NewAccessApprovalSettings(ctx, "project_access_approval", &projects.AccessApprovalSettingsArgs{
-/// 			ProjectId: pulumi.String("my-project-name"),
-/// 			ActiveKeyVersion: pulumi.String(cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-/// 				return &cryptoKeyVersion.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			ProjectId:        pulumi.String("my-project-name"),
+/// 			ActiveKeyVersion: cryptoKeyVersion.Name(),
 /// 			EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
 /// 				&projects.AccessApprovalSettingsEnrolledServiceArgs{
 /// 					CloudProduct: pulumi.String("all"),
@@ -358,6 +372,49 @@ import 'access_approval_settings_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_accessapproval_getprojectserviceaccount" "serviceAccount" {
+///   project_id = "my-project-name"
+/// }
+/// data "gcp_kms_getkmscryptokeyversion" "cryptoKeyVersion" {
+///   crypto_key = gcp_kms_cryptokey.crypto_key.id
+/// }
+///
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "key-ring"
+///   location = "global"
+///   project  = "my-project-name"
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "crypto-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+///   purpose  = "ASYMMETRIC_SIGN"
+///   version_template = {
+///     algorithm = "EC_SIGN_P384_SHA384"
+///   }
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+///   role          = "roles/cloudkms.signerVerifier"
+///   member        ="serviceAccount:${data.gcp_accessapproval_getprojectserviceaccount.serviceAccount.account_email}"
+/// }
+/// resource "gcp_projects_accessapprovalsettings" "project_access_approval" {
+///   depends_on         = [gcp_kms_cryptokeyiammember.iam]
+///   project_id         = "my-project-name"
+///   active_key_version = data.gcp_kms_getkmscryptokeyversion.cryptoKeyVersion.name
+///   enrolled_services {
+///     cloud_product = "all"
+///   }
 /// }
 /// ```
 /// ```java
@@ -381,8 +438,8 @@ import 'access_approval_settings_state.dart';
 /// import com.pulumi.gcp.projects.AccessApprovalSettingsArgs;
 /// import com.pulumi.gcp.projects.inputs.AccessApprovalSettingsEnrolledServiceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -490,25 +547,29 @@ import 'access_approval_settings_state.dart';
 /// ProjectSettings can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project_id}}/accessApprovalSettings`
-///
 /// * `{{project_id}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
 /// ```
 class AccessApprovalSettings extends pulumi.CustomResource {
   /// The asymmetric crypto key version to use for signing approval requests.
-  /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+  /// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
   /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
   late final pulumi.Output<String?> activeKeyVersion;
   /// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
   late final pulumi.Output<bool> ancestorHasActiveKeyVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
   late final pulumi.Output<bool> enrolledAncestor;
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -517,7 +578,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
   /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> enrolledServices;
-  /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+  /// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
   /// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
   /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
   /// as key versions are inherited top-down.
@@ -531,7 +592,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
   /// (Optional, Deprecated)
   /// Project id.
   ///
-  /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+  /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
   late final pulumi.Output<String?> project;
   /// ID of the project of the access approval settings.
   late final pulumi.Output<String> projectId;
@@ -552,6 +613,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
     enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
     invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');
@@ -586,6 +648,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
     enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
     invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');

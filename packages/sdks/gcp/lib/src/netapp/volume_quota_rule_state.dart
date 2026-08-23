@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeQuotaRuleState {
   /// Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description for the quota rule.
   final pulumi.Input<String>? description;
   /// The maximum allowed capacity in MiB.
@@ -15,7 +22,7 @@ class VolumeQuotaRuleState {
   /// Labels as key value pairs of the quota rule. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
   final pulumi.Input<String>? location;
@@ -47,6 +54,7 @@ class VolumeQuotaRuleState {
 
   /// Creates a new [VolumeQuotaRuleState].
   /// [createTime] Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description for the quota rule.
   /// [diskLimitMib] The maximum allowed capacity in MiB.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -62,6 +70,7 @@ class VolumeQuotaRuleState {
   /// [volumeName] Name of the volume to create the quotaRule in.
   const VolumeQuotaRuleState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.diskLimitMib,
     this.effectiveLabels,
@@ -80,6 +89,7 @@ class VolumeQuotaRuleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskLimitMib': ?diskLimitMib,
       'effectiveLabels': ?effectiveLabels,
@@ -99,6 +109,7 @@ class VolumeQuotaRuleState {
   factory VolumeQuotaRuleState.fromMap(Map<String, dynamic> map) {
     return VolumeQuotaRuleState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskLimitMib: (() { final guardedValue = map['diskLimitMib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -115,4 +126,3 @@ class VolumeQuotaRuleState {
     );
   }
 }
-

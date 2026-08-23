@@ -9,8 +9,15 @@ import 'network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_network_firewall_policy_packet_mirroring_rule_network_firewall_policy_packet_mirroring_rule_args_doc}
 class NetworkFirewallPolicyPacketMirroringRuleArgs {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
   final pulumi.Input<String> action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description for this resource.
   final pulumi.Input<String>? description;
   /// The direction in which this rule applies.
@@ -48,7 +55,8 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   final pulumi.Input<bool>? tlsInspect;
 
   /// Creates a new [NetworkFirewallPolicyPacketMirroringRuleArgs].
-  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description for this resource.
   /// [direction] The direction in which this rule applies.
   /// [disabled] Denotes whether the firewall policy rule is disabled.
@@ -62,6 +70,7 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
   const NetworkFirewallPolicyPacketMirroringRuleArgs({
     required this.action,
+    this.deletionPolicy,
     this.description,
     required this.direction,
     this.disabled,
@@ -78,6 +87,7 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'direction': direction,
       'disabled': ?disabled,
@@ -95,6 +105,7 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   factory NetworkFirewallPolicyPacketMirroringRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyPacketMirroringRuleArgs(
       action: pulumi.Input.fromValue(map['action'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -109,4 +120,3 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
     );
   }
 }
-

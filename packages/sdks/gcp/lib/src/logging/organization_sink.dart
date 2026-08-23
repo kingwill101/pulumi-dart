@@ -127,6 +127,32 @@ import 'organization_sink_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_organizationsink" "my-sink" {
+///   name        = "my-sink"
+///   description = "some explanation on what this is"
+///   org_id      = "123456789"
+///   destination ="storage.googleapis.com/${gcp_storage_bucket.log-bucket.name}"
+///   filter      = "resource.type = gce_instance AND severity >= WARNING"
+/// }
+/// resource "gcp_storage_bucket" "log-bucket" {
+///   name     = "organization-logging-bucket"
+///   location = "US"
+/// }
+/// resource "gcp_projects_iammember" "log-writer" {
+///   project = "your-project-id"
+///   role    = "roles/storage.objectCreator"
+///   member  = gcp_logging_organizationsink.my-sink.writer_identity
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +165,8 @@ import 'organization_sink_state.dart';
 /// import com.pulumi.gcp.logging.OrganizationSinkArgs;
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +230,7 @@ import 'organization_sink_state.dart';
 ///
 /// * `organizations/{{organization_id}}/sinks/{{sink_id}}`
 ///
+///
 /// When using the `pulumi import` command, organization-level logging sinks can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -212,6 +239,13 @@ import 'organization_sink_state.dart';
 class OrganizationSink extends pulumi.CustomResource {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
   late final pulumi.Output<OrganizationSinkBigqueryOptions> bigqueryOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of this sink. The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -261,6 +295,7 @@ class OrganizationSink extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bigqueryOptions = registerOutput<OrganizationSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
@@ -297,6 +332,7 @@ class OrganizationSink extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bigqueryOptions = registerOutput<OrganizationSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');

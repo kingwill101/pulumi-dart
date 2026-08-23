@@ -9,6 +9,13 @@ import 'network_policy_internet_access.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vmwareengine_network_policy_network_policy_args_doc}
 class NetworkPolicyArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for this network policy.
   final pulumi.Input<String>? description;
   /// IP address range in CIDR notation used to create internet access and external IP access.
@@ -37,6 +44,7 @@ class NetworkPolicyArgs {
   final pulumi.Input<String> vmwareEngineNetwork;
 
   /// Creates a new [NetworkPolicyArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for this network policy.
   /// [edgeServicesCidr] IP address range in CIDR notation used to create internet access and external IP access.
   /// [externalIp] Network service that allows External IP addresses to be assigned to VMware workloads.
@@ -46,6 +54,7 @@ class NetworkPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
   const NetworkPolicyArgs({
+    this.deletionPolicy,
     this.description,
     required this.edgeServicesCidr,
     this.externalIp,
@@ -58,6 +67,7 @@ class NetworkPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'edgeServicesCidr': edgeServicesCidr,
       'externalIp': ?pulumi.Input.mapOptionalInputValue<NetworkPolicyExternalIp, Map<String, dynamic>>(externalIp, (value) => value.toMap()),
@@ -71,6 +81,7 @@ class NetworkPolicyArgs {
 
   factory NetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edgeServicesCidr: pulumi.Input.fromValue(map['edgeServicesCidr'] as String),
       externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkPolicyExternalIp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -82,4 +93,3 @@ class NetworkPolicyArgs {
     );
   }
 }
-

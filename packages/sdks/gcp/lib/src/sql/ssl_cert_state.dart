@@ -14,6 +14,13 @@ class SslCertState {
   /// The time when the certificate was created in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The time when the certificate expires in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   final pulumi.Input<String>? expirationTime;
@@ -35,6 +42,7 @@ class SslCertState {
   /// [certSerialNumber] The serial number extracted from the certificate data.
   /// [commonName] The common name to be used in the certificate to identify the
   /// [createTime] The time when the certificate was created in RFC 3339 format,
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [expirationTime] The time when the certificate expires in RFC 3339 format,
   /// [instance] The name of the Cloud SQL instance. Changing this
   /// [privateKey] The private key associated with the client certificate.
@@ -46,6 +54,7 @@ class SslCertState {
     this.certSerialNumber,
     this.commonName,
     this.createTime,
+    this.deletionPolicy,
     this.expirationTime,
     this.instance,
     this.privateKey,
@@ -60,6 +69,7 @@ class SslCertState {
       'certSerialNumber': ?certSerialNumber,
       'commonName': ?commonName,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'expirationTime': ?expirationTime,
       'instance': ?instance,
       'privateKey': ?privateKey,
@@ -75,6 +85,7 @@ class SslCertState {
       certSerialNumber: (() { final guardedValue = map['certSerialNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       commonName: (() { final guardedValue = map['commonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -84,4 +95,3 @@ class SslCertState {
     );
   }
 }
-

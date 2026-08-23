@@ -6,8 +6,8 @@ import 'access_policy_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy. Each of these resources serves a different use case:
 ///
 /// * `gcp.accesscontextmanager.AccessPolicyIamPolicy`: Authoritative. Sets the IAM policy for the accesspolicy and replaces any existing policy already attached.
-/// * `gcp.accesscontextmanager.AccessPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the accesspolicy are preserved.
-/// * `gcp.accesscontextmanager.AccessPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the accesspolicy are preserved.
+/// * `gcp.accesscontextmanager.AccessPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the accesspolicy are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.accesscontextmanager.AccessPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the accesspolicy are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'access_policy_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.accesscontextmanager.AccessPolicyIamPolicy` **cannot** be used in conjunction with `gcp.accesscontextmanager.AccessPolicyIamBinding` and `gcp.accesscontextmanager.AccessPolicyIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `gcp.accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.accesscontextmanager.AccessPolicyIamPolicy
@@ -115,6 +114,27 @@ import 'access_policy_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/accesscontextmanager.policyAdmin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesspolicyiampolicy" "policy" {
+///   name        = access-policy.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,10 +143,11 @@ import 'access_policy_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamPolicy;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,7 +167,7 @@ import 'access_policy_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new AccessPolicyIamPolicy("policy", AccessPolicyIamPolicyArgs.builder()
-///             .name(access_policy.name())
+///             .name(access_policy.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -238,6 +259,21 @@ import 'access_policy_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesspolicyiambinding" "binding" {
+///   name    = access-policy.name
+///   role    = "roles/accesscontextmanager.policyAdmin"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +282,8 @@ import 'access_policy_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamBinding;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +296,7 @@ import 'access_policy_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AccessPolicyIamBinding("binding", AccessPolicyIamBindingArgs.builder()
-///             .name(access_policy.name())
+///             .name(access_policy.get("name"))
 ///             .role("roles/accesscontextmanager.policyAdmin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -341,6 +377,21 @@ import 'access_policy_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesspolicyiammember" "member" {
+///   name   = access-policy.name
+///   role   = "roles/accesscontextmanager.policyAdmin"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -349,8 +400,8 @@ import 'access_policy_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamMember;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,7 +414,7 @@ import 'access_policy_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AccessPolicyIamMember("member", AccessPolicyIamMemberArgs.builder()
-///             .name(access_policy.name())
+///             .name(access_policy.get("name"))
 ///             .role("roles/accesscontextmanager.policyAdmin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -393,8 +444,8 @@ import 'access_policy_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy. Each of these resources serves a different use case:
 ///
 /// * `gcp.accesscontextmanager.AccessPolicyIamPolicy`: Authoritative. Sets the IAM policy for the accesspolicy and replaces any existing policy already attached.
-/// * `gcp.accesscontextmanager.AccessPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the accesspolicy are preserved.
-/// * `gcp.accesscontextmanager.AccessPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the accesspolicy are preserved.
+/// * `gcp.accesscontextmanager.AccessPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the accesspolicy are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.accesscontextmanager.AccessPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the accesspolicy are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -403,7 +454,6 @@ import 'access_policy_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.accesscontextmanager.AccessPolicyIamPolicy` **cannot** be used in conjunction with `gcp.accesscontextmanager.AccessPolicyIamBinding` and `gcp.accesscontextmanager.AccessPolicyIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `gcp.accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.accesscontextmanager.AccessPolicyIamPolicy
@@ -502,6 +552,27 @@ import 'access_policy_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/accesscontextmanager.policyAdmin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesspolicyiampolicy" "policy" {
+///   name        = access-policy.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -510,10 +581,11 @@ import 'access_policy_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamPolicy;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -533,7 +605,7 @@ import 'access_policy_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new AccessPolicyIamPolicy("policy", AccessPolicyIamPolicyArgs.builder()
-///             .name(access_policy.name())
+///             .name(access_policy.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -625,6 +697,21 @@ import 'access_policy_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesspolicyiambinding" "binding" {
+///   name    = access-policy.name
+///   role    = "roles/accesscontextmanager.policyAdmin"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -633,8 +720,8 @@ import 'access_policy_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamBinding;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -647,7 +734,7 @@ import 'access_policy_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AccessPolicyIamBinding("binding", AccessPolicyIamBindingArgs.builder()
-///             .name(access_policy.name())
+///             .name(access_policy.get("name"))
 ///             .role("roles/accesscontextmanager.policyAdmin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -728,6 +815,21 @@ import 'access_policy_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesspolicyiammember" "member" {
+///   name   = access-policy.name
+///   role   = "roles/accesscontextmanager.policyAdmin"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -736,8 +838,8 @@ import 'access_policy_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamMember;
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -750,7 +852,7 @@ import 'access_policy_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AccessPolicyIamMember("member", AccessPolicyIamMemberArgs.builder()
-///             .name(access_policy.name())
+///             .name(access_policy.get("name"))
 ///             .role("roles/accesscontextmanager.policyAdmin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -774,7 +876,6 @@ import 'access_policy_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * accessPolicies/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -782,25 +883,21 @@ import 'access_policy_iam_binding_state.dart';
 /// Access Context Manager (VPC Service Controls) accesspolicy IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin user:jane@example.com"
+/// $ terraform import google_access_context_manager_access_policy_iam_member.editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin"
+/// $ terraform import google_access_context_manager_access_policy_iam_binding.editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding editor accessPolicies/{{access_policy}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class AccessPolicyIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<AccessPolicyIamBindingCondition?> condition;

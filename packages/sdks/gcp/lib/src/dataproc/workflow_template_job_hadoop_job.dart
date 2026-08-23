@@ -14,7 +14,7 @@ class WorkflowTemplateJobHadoopJob {
   final pulumi.Input<List<String>>? jarFileUris;
   /// The runtime log config for job execution.
   final pulumi.Input<WorkflowTemplateJobHadoopJobLoggingConfig>? loggingConfig;
-  /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+  /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`.
   final pulumi.Input<String>? mainClass;
   /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
   final pulumi.Input<String>? mainJarFileUri;
@@ -27,7 +27,7 @@ class WorkflowTemplateJobHadoopJob {
   /// [fileUris] HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
   /// [jarFileUris] Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
   /// [loggingConfig] The runtime log config for job execution.
-  /// [mainClass] The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+  /// [mainClass] The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`.
   /// [mainJarFileUri] The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
   /// [properties] A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
   const WorkflowTemplateJobHadoopJob({
@@ -67,4 +67,3 @@ class WorkflowTemplateJobHadoopJob {
     );
   }
 }
-

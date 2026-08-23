@@ -14,6 +14,13 @@ class PreventionDiscoveryConfigArgs {
   /// Actions to execute at the completion of scanning
   /// Structure is documented below.
   final pulumi.Input<List<PreventionDiscoveryConfigAction>>? actions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Display Name (max 1000 Chars)
   final pulumi.Input<String>? displayName;
   /// Detection logic for profile generation
@@ -39,6 +46,7 @@ class PreventionDiscoveryConfigArgs {
 
   /// Creates a new [PreventionDiscoveryConfigArgs].
   /// [actions] Actions to execute at the completion of scanning
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Display Name (max 1000 Chars)
   /// [inspectTemplates] Detection logic for profile generation
   /// [location] Location to create the discovery config in.
@@ -49,6 +57,7 @@ class PreventionDiscoveryConfigArgs {
   /// [targets] Target to match against for determining what to scan and how frequently
   const PreventionDiscoveryConfigArgs({
     this.actions,
+    this.deletionPolicy,
     this.displayName,
     this.inspectTemplates,
     required this.location,
@@ -62,6 +71,7 @@ class PreventionDiscoveryConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actions': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'inspectTemplates': ?inspectTemplates,
       'location': location,
@@ -76,6 +86,7 @@ class PreventionDiscoveryConfigArgs {
   factory PreventionDiscoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigArgs(
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(guardedValue, (value) => PreventionDiscoveryConfigAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inspectTemplates: (() { final guardedValue = map['inspectTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -87,4 +98,3 @@ class PreventionDiscoveryConfigArgs {
     );
   }
 }
-

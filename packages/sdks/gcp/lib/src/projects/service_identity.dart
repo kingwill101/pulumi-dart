@@ -2,6 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_identity_args.dart';
 import 'service_identity_state.dart';
 
+/// &gt; **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// Generate service identity for a service.
 ///
 /// &gt; **Note:** Once created, this resource cannot be updated or destroyed. These
@@ -107,6 +110,28 @@ import 'service_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_projects_serviceidentity" "hc_sa" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   service = "healthcare.googleapis.com"
+/// }
+/// resource "gcp_projects_iammember" "hc_sa_bq_jobuser" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/bigquery.jobUser"
+///   member  = gcp_projects_serviceidentity.hc_sa.member
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +144,8 @@ import 'service_identity_state.dart';
 /// import com.pulumi.gcp.projects.ServiceIdentityArgs;
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

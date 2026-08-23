@@ -17,6 +17,7 @@ class GetJobResult {
   final String createTime;
   final String creator;
   final String deleteTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
@@ -38,6 +39,7 @@ class GetJobResult {
   final bool reconciling;
   final String runExecutionToken;
   final String startExecutionToken;
+  final Map<String, String> tags;
   final List<GetJobTemplate> templates;
   final List<GetJobTerminalCondition> terminalConditions;
   final String uid;
@@ -52,6 +54,7 @@ class GetJobResult {
   /// [createTime] Required.
   /// [creator] Required.
   /// [deleteTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [effectiveAnnotations] Required.
   /// [effectiveLabels] Required.
@@ -72,6 +75,7 @@ class GetJobResult {
   /// [reconciling] Required.
   /// [runExecutionToken] Required.
   /// [startExecutionToken] Required.
+  /// [tags] Required.
   /// [templates] Required.
   /// [terminalConditions] Required.
   /// [uid] Required.
@@ -85,6 +89,7 @@ class GetJobResult {
     required this.createTime,
     required this.creator,
     required this.deleteTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.effectiveAnnotations,
     required this.effectiveLabels,
@@ -105,6 +110,7 @@ class GetJobResult {
     required this.reconciling,
     required this.runExecutionToken,
     required this.startExecutionToken,
+    required this.tags,
     required this.templates,
     required this.terminalConditions,
     required this.uid,
@@ -121,6 +127,7 @@ class GetJobResult {
       'createTime': createTime,
       'creator': creator,
       'deleteTime': deleteTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'effectiveAnnotations': effectiveAnnotations,
       'effectiveLabels': effectiveLabels,
@@ -141,6 +148,7 @@ class GetJobResult {
       'reconciling': reconciling,
       'runExecutionToken': runExecutionToken,
       'startExecutionToken': startExecutionToken,
+      'tags': tags,
       'templates': pulumi.Input.encodeList<GetJobTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
       'terminalConditions': pulumi.Input.encodeList<GetJobTerminalCondition, Map<String, dynamic>>(terminalConditions, (value) => value.toMap()),
       'uid': uid,
@@ -158,6 +166,7 @@ class GetJobResult {
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
       deleteTime: map['deleteTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -178,6 +187,7 @@ class GetJobResult {
       reconciling: map['reconciling'] as bool,
       runExecutionToken: map['runExecutionToken'] as String,
       startExecutionToken: map['startExecutionToken'] as String,
+      tags: (map['tags'] as Map).cast<String, String>(),
       templates: pulumi.Input.decodeList<GetJobTemplate>(map['templates']!, (value) => GetJobTemplate.fromMap((value as Map).cast<String, dynamic>())),
       terminalConditions: pulumi.Input.decodeList<GetJobTerminalCondition>(map['terminalConditions']!, (value) => GetJobTerminalCondition.fromMap((value as Map).cast<String, dynamic>())),
       uid: map['uid'] as String,
@@ -185,4 +195,3 @@ class GetJobResult {
     );
   }
 }
-

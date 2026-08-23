@@ -4,8 +4,8 @@ import 'posture_deployment_state.dart';
 
 /// Represents a deployment of a security posture on a resource. A posture contains user curated policy sets. A posture can
 /// be deployed on a project or on a folder or on an organization. To deploy a posture we need to populate the posture's name
-/// and its revision_id in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
-/// Thus, the updated revision_id should be used in the respective posture deployment's configuration to deploy that posture
+/// and its revisionId in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
+/// Thus, the updated revisionId should be used in the respective posture deployment's configuration to deploy that posture
 /// on a resource.
 ///
 ///
@@ -21,6 +21,7 @@ import 'posture_deployment_state.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}`
 ///
+///
 /// When using the `pulumi import` command, PostureDeployment can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -29,6 +30,13 @@ import 'posture_deployment_state.dart';
 class PostureDeployment extends pulumi.CustomResource {
   /// Time the posture deployment was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the posture deployment.
   late final pulumi.Output<String?> description;
   /// This is an output only optional field which will be filled in case when
@@ -37,7 +45,7 @@ class PostureDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String> desiredPostureId;
   /// This is an output only optional field which will be filled in case when
   /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-  /// It denotes the desired posture revision_id to be deployed.
+  /// It denotes the desired posture revisionId to be deployed.
   late final pulumi.Output<String> desiredPostureRevisionId;
   /// For Resource freshness validation (https://google.aip.dev/154)
   late final pulumi.Output<String> etag;
@@ -87,6 +95,7 @@ class PostureDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     desiredPostureId = registerOutput<String>('desiredPostureId');
     desiredPostureRevisionId = registerOutput<String>('desiredPostureRevisionId');
@@ -128,6 +137,7 @@ class PostureDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     desiredPostureId = registerOutput<String>('desiredPostureId');
     desiredPostureRevisionId = registerOutput<String>('desiredPostureRevisionId');

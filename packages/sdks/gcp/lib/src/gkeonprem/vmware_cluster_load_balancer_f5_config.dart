@@ -38,4 +38,3 @@ class VMwareClusterLoadBalancerF5Config {
     );
   }
 }
-

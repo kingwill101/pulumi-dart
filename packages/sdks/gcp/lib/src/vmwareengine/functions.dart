@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_announcements_args.dart';
+import 'get_announcements_result.dart';
 import 'get_cluster_args.dart';
 import 'get_cluster_result.dart';
 import 'get_datastore_args.dart';
@@ -19,8 +21,128 @@ import 'get_private_cloud_args.dart';
 import 'get_private_cloud_result.dart';
 import 'get_subnet_args.dart';
 import 'get_subnet_result.dart';
+import 'get_upgrades_args.dart';
+import 'get_upgrades_result.dart';
 import 'get_vcenter_credentials_args.dart';
 import 'get_vcenter_credentials_result.dart';
+
+/// Use this data source to list announcements in a region.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const ds = gcp.vmwareengine.getAnnouncements({
+///     parent: "projects/my-project/locations/us-west1-a",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// ds = gcp.vmwareengine.get_announcements(parent="projects/my-project/locations/us-west1-a")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var ds = Gcp.VMwareEngine.GetAnnouncements.Invoke(new()
+///     {
+///         Parent = "projects/my-project/locations/us-west1-a",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := vmwareengine.GetAnnouncements(ctx, &vmwareengine.GetAnnouncementsArgs{
+/// 			Parent: "projects/my-project/locations/us-west1-a",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getannouncements" "ds" {
+///   parent = "projects/my-project/locations/us-west1-a"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+/// import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var ds = VmwareengineFunctions.getAnnouncements(GetAnnouncementsArgs.builder()
+///             .parent("projects/my-project/locations/us-west1-a")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   ds:
+///     fn::invoke:
+///       function: gcp:vmwareengine:getAnnouncements
+///       arguments:
+///         parent: projects/my-project/locations/us-west1-a
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_vmwareengine_get_announcements_get_announcements_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAnnouncementsResult> getAnnouncements(
+  GetAnnouncementsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:vmwareengine/getAnnouncements:getAnnouncements',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAnnouncementsResult.fromMap(result);
+}
 
 /// Use this data source to get details about a cluster resource.
 ///
@@ -83,6 +205,20 @@ import 'get_vcenter_credentials_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getcluster" "myCluster" {
+///   name   = "my-cluster"
+///   parent = "project/locations/us-west1-a/privateClouds/my-cloud"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +227,8 @@ import 'get_vcenter_credentials_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,10 +272,9 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
-/// Use this data source to get details about a datastore resource.
+/// Get information about a Cloud VMware Engine Datastore.
 ///
-/// To get more information about datastore, see:
-/// * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+///
 ///
 /// ## Example Usage
 ///
@@ -148,17 +283,17 @@ Future<GetClusterResult> getCluster(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const testDs = gcp.vmwareengine.getDatastore({
-///     name: "example-ds",
-///     location: "us-west2",
+/// const _default = gcp.vmwareengine.getDatastore({
+///     location: exampleThirdparty.location,
+///     name: exampleThirdparty.name,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// test_ds = gcp.vmwareengine.get_datastore(name="example-ds",
-///     location="us-west2")
+/// default = gcp.vmwareengine.get_datastore(location=example_thirdparty["location"],
+///     name=example_thirdparty["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -168,10 +303,10 @@ Future<GetClusterResult> getCluster(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var testDs = Gcp.VMwareEngine.GetDatastore.Invoke(new()
+///     var @default = Gcp.VMwareEngine.GetDatastore.Invoke(new()
 ///     {
-///         Name = "example-ds",
-///         Location = "us-west2",
+///         Location = exampleThirdparty.Location,
+///         Name = exampleThirdparty.Name,
 ///     });
 ///
 /// });
@@ -187,14 +322,28 @@ Future<GetClusterResult> getCluster(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vmwareengine.LookupDatastore(ctx, &vmwareengine.LookupDatastoreArgs{
-/// 			Name:     "example-ds",
-/// 			Location: "us-west2",
+/// 			Location: exampleThirdparty.Location,
+/// 			Name:     exampleThirdparty.Name,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getdatastore" "default" {
+///   location = exampleThirdparty.location
+///   name     = exampleThirdparty.name
 /// }
 /// ```
 /// ```java
@@ -205,8 +354,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,9 +367,9 @@ Future<GetClusterResult> getCluster(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-///             .name("example-ds")
-///             .location("us-west2")
+///         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+///             .location(exampleThirdparty.get("location"))
+///             .name(exampleThirdparty.get("name"))
 ///             .build());
 ///
 ///     }
@@ -228,12 +377,12 @@ Future<GetClusterResult> getCluster(
 /// ```
 /// ```yaml
 /// variables:
-///   testDs:
+///   default:
 ///     fn::invoke:
 ///       function: gcp:vmwareengine:getDatastore
 ///       arguments:
-///         name: example-ds
-///         location: us-west2
+///         location: ${exampleThirdparty.location}
+///         name: ${exampleThirdparty.name}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmwareengine_get_datastore_get_datastore_args_doc}
 /// [options] Invoke options controlling this call.
@@ -311,6 +460,20 @@ Future<GetDatastoreResult> getDatastore(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getexternalaccessrule" "myExternalAccessRule" {
+///   name   = "my-external-access-rule"
+///   parent = "project/my-project/locations/us-west1-a/networkPolicies/my-network-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +482,8 @@ Future<GetDatastoreResult> getDatastore(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,6 +588,20 @@ Future<GetExternalAccessRuleResult> getExternalAccessRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getexternaladdress" "myExternalAddress" {
+///   name   = "my-external-address"
+///   parent = "project/my-project/locations/us-west1-a/privateClouds/my-cloud"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -433,8 +610,8 @@ Future<GetExternalAccessRuleResult> getExternalAccessRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -539,6 +716,20 @@ Future<GetExternalAddressResult> getExternalAddress(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getnetwork" "myNw" {
+///   name     = "us-central1-default"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -547,8 +738,8 @@ Future<GetExternalAddressResult> getExternalAddress(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -649,6 +840,19 @@ Future<GetNetworkResult> getNetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getnetworkpeering" "myNetworkPeering" {
+///   name = "my-network-peering"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -657,8 +861,8 @@ Future<GetNetworkResult> getNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -761,6 +965,20 @@ Future<GetNetworkPeeringResult> getNetworkPeering(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getnetworkpolicy" "myNetworkPolicy" {
+///   name     = "my-network-policy"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -769,8 +987,8 @@ Future<GetNetworkPeeringResult> getNetworkPeering(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -871,6 +1089,19 @@ Future<GetNetworkPolicyResult> getNetworkPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getnsxcredentials" "ds" {
+///   parent = "projects/my-project/locations/us-west1-a/privateClouds/my-cloud"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -879,8 +1110,8 @@ Future<GetNetworkPolicyResult> getNetworkPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -983,6 +1214,20 @@ Future<GetNsxCredentialsResult> getNsxCredentials(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getprivatecloud" "myPc" {
+///   name     = "my-pc"
+///   location = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -991,8 +1236,8 @@ Future<GetNsxCredentialsResult> getNsxCredentials(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1097,6 +1342,20 @@ Future<GetPrivateCloudResult> getPrivateCloud(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getsubnet" "mySubnet" {
+///   name   = "service-1"
+///   parent = "project/my-project/locations/us-west1-a/privateClouds/my-cloud"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1105,8 +1364,8 @@ Future<GetPrivateCloudResult> getPrivateCloud(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1148,6 +1407,124 @@ Future<GetSubnetResult> getSubnet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetResult.fromMap(result);
+}
+
+/// Use this data source to list upgrades for a Private Cloud.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const ds = gcp.vmwareengine.getUpgrades({
+///     parent: "projects/my-project/locations/us-west1-a/privateClouds/my-cloud",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// ds = gcp.vmwareengine.get_upgrades(parent="projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var ds = Gcp.VMwareEngine.GetUpgrades.Invoke(new()
+///     {
+///         Parent = "projects/my-project/locations/us-west1-a/privateClouds/my-cloud",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := vmwareengine.GetUpgrades(ctx, &vmwareengine.GetUpgradesArgs{
+/// 			Parent: "projects/my-project/locations/us-west1-a/privateClouds/my-cloud",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getupgrades" "ds" {
+///   parent = "projects/my-project/locations/us-west1-a/privateClouds/my-cloud"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+/// import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var ds = VmwareengineFunctions.getUpgrades(GetUpgradesArgs.builder()
+///             .parent("projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   ds:
+///     fn::invoke:
+///       function: gcp:vmwareengine:getUpgrades
+///       arguments:
+///         parent: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_vmwareengine_get_upgrades_get_upgrades_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetUpgradesResult> getUpgrades(
+  GetUpgradesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:vmwareengine/getUpgrades:getUpgrades',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetUpgradesResult.fromMap(result);
 }
 
 /// Use this data source to get Vcenter credentials for a Private Cloud.
@@ -1207,6 +1584,19 @@ Future<GetSubnetResult> getSubnet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vmwareengine_getvcentercredentials" "ds" {
+///   parent = "projects/my-project/locations/us-west1-a/privateClouds/my-cloud"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1215,8 +1605,8 @@ Future<GetSubnetResult> getSubnet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
 /// import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

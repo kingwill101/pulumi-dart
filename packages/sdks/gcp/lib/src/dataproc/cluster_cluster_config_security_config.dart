@@ -5,16 +5,16 @@ import 'cluster_cluster_config_security_config_identity_config.dart';
 import 'cluster_cluster_config_security_config_kerberos_config.dart';
 
 class ClusterClusterConfigSecurityConfig {
-  /// Identity Configuration. At least one of `identity_config`
-  /// or `kerberos_config` is required.
+  /// Identity Configuration. At least one of `identityConfig`
+  /// or `kerberosConfig` is required.
   final pulumi.Input<ClusterClusterConfigSecurityConfigIdentityConfig>? identityConfig;
-  /// Kerberos Configuration. At least one of `identity_config`
-  /// or `kerberos_config` is required.
+  /// Kerberos Configuration. At least one of `identityConfig`
+  /// or `kerberosConfig` is required.
   final pulumi.Input<ClusterClusterConfigSecurityConfigKerberosConfig>? kerberosConfig;
 
   /// Creates a new [ClusterClusterConfigSecurityConfig].
-  /// [identityConfig] Identity Configuration. At least one of `identity_config`
-  /// [kerberosConfig] Kerberos Configuration. At least one of `identity_config`
+  /// [identityConfig] Identity Configuration. At least one of `identityConfig`
+  /// [kerberosConfig] Kerberos Configuration. At least one of `identityConfig`
   const ClusterClusterConfigSecurityConfig({
     this.identityConfig,
     this.kerberosConfig,
@@ -34,4 +34,3 @@ class ClusterClusterConfigSecurityConfig {
     );
   }
 }
-

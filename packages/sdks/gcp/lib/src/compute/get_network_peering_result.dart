@@ -3,6 +3,7 @@
 
 /// Result data returned by getNetworkPeering.
 class GetNetworkPeeringResult {
+  final String deletionPolicy;
   final bool exportCustomRoutes;
   final bool exportSubnetRoutesWithPublicIp;
   /// The provider-assigned unique ID for this managed resource.
@@ -18,6 +19,7 @@ class GetNetworkPeeringResult {
   final String updateStrategy;
 
   /// Creates a new [GetNetworkPeeringResult].
+  /// [deletionPolicy] Required.
   /// [exportCustomRoutes] Required.
   /// [exportSubnetRoutesWithPublicIp] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -31,6 +33,7 @@ class GetNetworkPeeringResult {
   /// [stateDetails] Required.
   /// [updateStrategy] Required.
   const GetNetworkPeeringResult({
+    required this.deletionPolicy,
     required this.exportCustomRoutes,
     required this.exportSubnetRoutesWithPublicIp,
     required this.id,
@@ -47,6 +50,7 @@ class GetNetworkPeeringResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'exportCustomRoutes': exportCustomRoutes,
       'exportSubnetRoutesWithPublicIp': exportSubnetRoutesWithPublicIp,
       'id': id,
@@ -64,6 +68,7 @@ class GetNetworkPeeringResult {
 
   factory GetNetworkPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       exportCustomRoutes: map['exportCustomRoutes'] as bool,
       exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] as bool,
       id: map['id'] as String,
@@ -79,4 +84,3 @@ class GetNetworkPeeringResult {
     );
   }
 }
-

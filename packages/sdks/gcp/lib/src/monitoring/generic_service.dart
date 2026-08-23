@@ -120,6 +120,30 @@ import 'generic_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_genericservice" "my_service" {
+///   service_id   = "my-service"
+///   display_name = "My Service my-service"
+///   user_labels = {
+///     "my_key"       = "my_value"
+///     "my_other_key" = "my_other_value"
+///   }
+///   basic_service = {
+///     service_type = "APP_ENGINE"
+///     service_labels = {
+///       "module_id" = "another-module-id"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +153,8 @@ import 'generic_service_state.dart';
 /// import com.pulumi.gcp.monitoring.GenericService;
 /// import com.pulumi.gcp.monitoring.GenericServiceArgs;
 /// import com.pulumi.gcp.monitoring.inputs.GenericServiceBasicServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,22 +205,15 @@ import 'generic_service_state.dart';
 /// GenericService can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/services/{{service_id}}`
-///
 /// * `{{project}}/{{service_id}}`
-///
 /// * `{{service_id}}`
+///
 ///
 /// When using the `pulumi import` command, GenericService can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:monitoring/genericService:GenericService default projects/{{project}}/services/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:monitoring/genericService:GenericService default {{project}}/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:monitoring/genericService:GenericService default {{service_id}}
 /// ```
 class GenericService extends pulumi.CustomResource {
@@ -205,6 +222,13 @@ class GenericService extends pulumi.CustomResource {
   /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
   /// Structure is documented below.
   late final pulumi.Output<GenericServiceBasicService?> basicService;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name used for UI elements listing this Service.
   late final pulumi.Output<String?> displayName;
   /// The full resource name for this service. The syntax is:
@@ -242,6 +266,7 @@ class GenericService extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     basicService = registerOutput<GenericServiceBasicService?>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenericServiceBasicService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -274,6 +299,7 @@ class GenericService extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     basicService = registerOutput<GenericServiceBasicService?>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenericServiceBasicService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

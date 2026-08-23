@@ -42,4 +42,3 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
     );
   }
 }
-

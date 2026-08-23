@@ -32,6 +32,13 @@ class ConnectionState {
   final pulumi.Input<String>? connectorVersionLaunchStage;
   /// Time the Namespace was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An arbitrary description for the Connection.
   final pulumi.Input<String>? description;
   /// Define the Connectors target endpoint.
@@ -51,7 +58,7 @@ class ConnectionState {
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location in which Connection needs to be created.
   final pulumi.Input<String>? location;
@@ -99,6 +106,7 @@ class ConnectionState {
   /// [connectorVersionInfraConfigs] This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
   /// [connectorVersionLaunchStage] Flag to mark the version indicating the launch stage.
   /// [createTime] Time the Namespace was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An arbitrary description for the Connection.
   /// [destinationConfigs] Define the Connectors target endpoint.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -128,6 +136,7 @@ class ConnectionState {
     this.connectorVersionInfraConfigs,
     this.connectorVersionLaunchStage,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.destinationConfigs,
     this.effectiveLabels,
@@ -160,6 +169,7 @@ class ConnectionState {
       'connectorVersionInfraConfigs': ?pulumi.Input.mapOptionalInputValue<List<ConnectionConnectorVersionInfraConfig>, List<Map<String, dynamic>>>(connectorVersionInfraConfigs, (value) => pulumi.Input.encodeList<ConnectionConnectorVersionInfraConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectorVersionLaunchStage': ?connectorVersionLaunchStage,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destinationConfigs': ?pulumi.Input.mapOptionalInputValue<List<ConnectionDestinationConfig>, List<Map<String, dynamic>>>(destinationConfigs, (value) => pulumi.Input.encodeList<ConnectionDestinationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveLabels': ?effectiveLabels,
@@ -193,6 +203,7 @@ class ConnectionState {
       connectorVersionInfraConfigs: (() { final guardedValue = map['connectorVersionInfraConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionConnectorVersionInfraConfig>(guardedValue, (value) => ConnectionConnectorVersionInfraConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectorVersionLaunchStage: (() { final guardedValue = map['connectorVersionLaunchStage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationConfigs: (() { final guardedValue = map['destinationConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionDestinationConfig>(guardedValue, (value) => ConnectionDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -217,4 +228,3 @@ class ConnectionState {
     );
   }
 }
-

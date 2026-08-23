@@ -245,6 +245,59 @@ import 'asset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "basic_bucket" {
+///   name                        = "bucket"
+///   location                    = "us-west1"
+///   uniform_bucket_level_access = true
+///   project                     = "my-project-name"
+/// }
+/// resource "gcp_dataplex_lake" "basic_lake" {
+///   name     = "lake"
+///   location = "us-west1"
+///   project  = "my-project-name"
+/// }
+/// resource "gcp_dataplex_zone" "basic_zone" {
+///   name     = "zone"
+///   location = "us-west1"
+///   lake     = gcp_dataplex_lake.basic_lake.name
+///   type     = "RAW"
+///   discovery_spec = {
+///     enabled = false
+///   }
+///   resource_spec = {
+///     location_type = "SINGLE_REGION"
+///   }
+///   project = "my-project-name"
+/// }
+/// resource "gcp_dataplex_asset" "primary" {
+///   depends_on    = [gcp_storage_bucket.basic_bucket]
+///   name          = "asset"
+///   location      = "us-west1"
+///   lake          = gcp_dataplex_lake.basic_lake.name
+///   dataplex_zone = gcp_dataplex_zone.basic_zone.name
+///   discovery_spec = {
+///     enabled = false
+///   }
+///   resource_spec = {
+///     name = "projects/my-project-name/buckets/bucket"
+///     type = "STORAGE_BUCKET"
+///   }
+///   labels = {
+///     "env"      = "foo"
+///     "my-asset" = "exists"
+///   }
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +317,8 @@ import 'asset_state.dart';
 /// import com.pulumi.gcp.dataplex.inputs.AssetDiscoverySpecArgs;
 /// import com.pulumi.gcp.dataplex.inputs.AssetResourceSpecArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,24 +436,16 @@ import 'asset_state.dart';
 /// ## Import
 ///
 /// Asset can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
-///
 /// * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/asset:Asset default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/asset:Asset default {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/asset:Asset default {{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
 /// ```
 class Asset extends pulumi.CustomResource {
@@ -408,6 +453,13 @@ class Asset extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The zone for the resource
   late final pulumi.Output<String> dataplexZone;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. Description of the asset.
   late final pulumi.Output<String?> description;
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
@@ -421,7 +473,7 @@ class Asset extends pulumi.CustomResource {
   /// Optional. User defined labels for the asset.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The lake for the resource
   late final pulumi.Output<String> lake;
@@ -462,6 +514,7 @@ class Asset extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dataplexZone = registerOutput<String>('dataplexZone');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     discoveryStatuses = registerOutput<List<Map<String, dynamic>>>('discoveryStatuses');
@@ -506,6 +559,7 @@ class Asset extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dataplexZone = registerOutput<String>('dataplexZone');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     discoveryStatuses = registerOutput<List<Map<String, dynamic>>>('discoveryStatuses');

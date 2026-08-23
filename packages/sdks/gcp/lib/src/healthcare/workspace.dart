@@ -106,7 +106,7 @@ import 'workspace_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewWorkspace(ctx, "default", &healthcare.WorkspaceArgs{
 /// 			Name:    pulumi.String("example-dm-workspace"),
-/// 			Dataset: dataset.ID(),
+/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Settings: &healthcare.WorkspaceSettingsArgs{
 /// 				DataProjectIds: pulumi.StringArray{
 /// 					pulumi.String("example-data-source-project-id"),
@@ -123,6 +123,30 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_workspace" "default" {
+///   name    = "example-dm-workspace"
+///   dataset = gcp_healthcare_dataset.dataset.id
+///   settings = {
+///     data_project_ids = ["example-data-source-project-id"]
+///   }
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +158,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.gcp.healthcare.Workspace;
 /// import com.pulumi.gcp.healthcare.WorkspaceArgs;
 /// import com.pulumi.gcp.healthcare.inputs.WorkspaceSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,6 +214,7 @@ import 'workspace_state.dart';
 ///
 /// * `{{dataset}}/dataMapperWorkspaces/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Workspace can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -199,12 +224,19 @@ class Workspace extends pulumi.CustomResource {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   late final pulumi.Output<String> dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
   late final pulumi.Output<String> name;
@@ -230,6 +262,7 @@ class Workspace extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -261,6 +294,7 @@ class Workspace extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

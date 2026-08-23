@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
-  /// Number of characters after the finding to consider. Either this or window_before must be specified
+  /// Number of characters after the finding to consider. Either this or windowBefore must be specified
   final pulumi.Input<int>? windowAfter;
-  /// Number of characters before the finding to consider. Either this or window_after must be specified
+  /// Number of characters before the finding to consider. Either this or windowAfter must be specified
   final pulumi.Input<int>? windowBefore;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity].
-  /// [windowAfter] Number of characters after the finding to consider. Either this or window_before must be specified
-  /// [windowBefore] Number of characters before the finding to consider. Either this or window_after must be specified
+  /// [windowAfter] Number of characters after the finding to consider. Either this or windowBefore must be specified
+  /// [windowBefore] Number of characters before the finding to consider. Either this or windowAfter must be specified
   const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity({
     this.windowAfter,
     this.windowBefore,
@@ -30,4 +30,3 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     );
   }
 }
-

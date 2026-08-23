@@ -5,7 +5,7 @@ import 'resource_policy_attachment_state.dart';
 /// Adds existing resource policies to a compute instance. You can only add one policy
 /// which will be applied to this instance for scheduling start/stop operations.
 ///
-/// This resource can be used instead of setting the resource_policy directly in the
+/// This resource can be used instead of setting the resourcePolicy directly in the
 /// compute instance resource to avoid dependency issues when using instance-level IAM
 /// permissions.
 ///
@@ -207,6 +207,49 @@ import 'resource_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instance" "instance" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = "default"
+///   }
+///   name         = "my-instance"
+///   machine_type = "e2-medium"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+/// }
+/// resource "gcp_compute_resourcepolicy" "policy" {
+///   name   = "my-resource-policy"
+///   region = "us-central1"
+///   instance_schedule_policy = {
+///     vm_start_schedule = {
+///       schedule = "0 8 * * *"
+///     }
+///     vm_stop_schedule = {
+///       schedule = "0 18 * * *"
+///     }
+///     time_zone = "America/New_York"
+///   }
+/// }
+/// resource "gcp_compute_resourcepolicyattachment" "attachment" {
+///   name     = gcp_compute_resourcepolicy.policy.name
+///   instance = gcp_compute_instance.instance.name
+///   zone     = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,6 +259,7 @@ import 'resource_policy_attachment_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.ResourcePolicy;
@@ -225,8 +269,8 @@ import 'resource_policy_attachment_state.dart';
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs;
 /// import com.pulumi.gcp.compute.ResourcePolicyAttachment;
 /// import com.pulumi.gcp.compute.ResourcePolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,31 +361,27 @@ import 'resource_policy_attachment_state.dart';
 /// ResourcePolicyAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/instances/{{instance}}/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{instance}}/{{name}}`
-///
 /// * `{{zone}}/{{instance}}/{{name}}`
-///
 /// * `{{instance}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ResourcePolicyAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/instances/{{instance}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{project}}/{{zone}}/{{instance}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{zone}}/{{instance}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{instance}}/{{name}}
 /// ```
 class ResourcePolicyAttachment extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the instance in which the resource policies are attached to.
   late final pulumi.Output<String> instance;
   /// The resource policy to be attached to the instance for scheduling start/stop
@@ -367,6 +407,7 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -396,6 +437,7 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

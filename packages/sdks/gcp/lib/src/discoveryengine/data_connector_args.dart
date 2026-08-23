@@ -1,6 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_connector_action_config.dart';
+import 'data_connector_bap_config.dart';
+import 'data_connector_destination_config.dart';
 import 'data_connector_entity.dart';
 
 /// {@template pulumi_discoveryengine_data_connector_data_connector_args_doc}
@@ -8,8 +11,17 @@ import 'data_connector_entity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_discoveryengine_data_connector_data_connector_args_doc}
 class DataConnectorArgs {
+  /// Action configuration for the data connector. Configures action
+  /// capabilities for connectors that support the ACTIONS connector mode.
+  /// Structure is documented below.
+  final pulumi.Input<DataConnectorActionConfig>? actionConfig;
   /// Indicates whether full syncs are paused for this connector
   final pulumi.Input<bool>? autoRunDisabled;
+  /// BAP (Business Application Platform) configuration for the data
+  /// connector. Controls which actions are enabled for connectors
+  /// using the ACTIONS connector mode.
+  /// Structure is documented below.
+  final pulumi.Input<DataConnectorBapConfig>? bapConfig;
   /// The display name of the Collection.
   /// Should be human readable, used to display collections in the Console
   /// Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -26,9 +38,25 @@ class DataConnectorArgs {
   /// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
   /// 'EUA', 'FEDERATED_AND_EUA'.
   final pulumi.Input<List<String>>? connectorModes;
-  /// The name of the data source.
-  /// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+  /// The identifier for the data source.
+  /// This is a partial list of supported connectors. Please refer to the
+  /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+  /// for the full list of connectors.
+  /// Supported first-party connectors include:
   final pulumi.Input<String> dataSource;
+  /// The version of the data source. For example, `3` for Jira v3.
+  final pulumi.Input<int>? dataSourceVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Destination connector configurations for the data connector,
+  /// used to configure where data is served.
+  /// Structure is documented below.
+  final pulumi.Input<List<DataConnectorDestinationConfig>>? destinationConfigs;
   /// List of entities from the connected data source to ingest.
   /// Structure is documented below.
   final pulumi.Input<List<DataConnectorEntity>>? entities;
@@ -70,11 +98,16 @@ class DataConnectorArgs {
   final pulumi.Input<String>? syncMode;
 
   /// Creates a new [DataConnectorArgs].
+  /// [actionConfig] Action configuration for the data connector. Configures action
   /// [autoRunDisabled] Indicates whether full syncs are paused for this connector
+  /// [bapConfig] BAP (Business Application Platform) configuration for the data
   /// [collectionDisplayName] The display name of the Collection.
   /// [collectionId] The ID to use for the Collection, which will become the final component
   /// [connectorModes] The modes enabled for this connector. The possible value can be:
-  /// [dataSource] The name of the data source.
+  /// [dataSource] The identifier for the data source.
+  /// [dataSourceVersion] The version of the data source. For example, `3` for Jira v3.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [destinationConfigs] Destination connector configurations for the data connector,
   /// [entities] List of entities from the connected data source to ingest.
   /// [incrementalRefreshInterval] The refresh interval specifically for incremental data syncs. If unset,
   /// [incrementalSyncDisabled] Indicates whether incremental syncs are paused for this connector.
@@ -87,11 +120,16 @@ class DataConnectorArgs {
   /// [staticIpEnabled] Whether customer has enabled static IP addresses for this connector.
   /// [syncMode] The data synchronization mode supported by the data connector. The possible value can be:
   const DataConnectorArgs({
+    this.actionConfig,
     this.autoRunDisabled,
+    this.bapConfig,
     required this.collectionDisplayName,
     required this.collectionId,
     this.connectorModes,
     required this.dataSource,
+    this.dataSourceVersion,
+    this.deletionPolicy,
+    this.destinationConfigs,
     this.entities,
     this.incrementalRefreshInterval,
     this.incrementalSyncDisabled,
@@ -107,11 +145,16 @@ class DataConnectorArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'actionConfig': ?pulumi.Input.mapOptionalInputValue<DataConnectorActionConfig, Map<String, dynamic>>(actionConfig, (value) => value.toMap()),
       'autoRunDisabled': ?autoRunDisabled,
+      'bapConfig': ?pulumi.Input.mapOptionalInputValue<DataConnectorBapConfig, Map<String, dynamic>>(bapConfig, (value) => value.toMap()),
       'collectionDisplayName': collectionDisplayName,
       'collectionId': collectionId,
       'connectorModes': ?connectorModes,
       'dataSource': dataSource,
+      'dataSourceVersion': ?dataSourceVersion,
+      'deletionPolicy': ?deletionPolicy,
+      'destinationConfigs': ?pulumi.Input.mapOptionalInputValue<List<DataConnectorDestinationConfig>, List<Map<String, dynamic>>>(destinationConfigs, (value) => pulumi.Input.encodeList<DataConnectorDestinationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'entities': ?pulumi.Input.mapOptionalInputValue<List<DataConnectorEntity>, List<Map<String, dynamic>>>(entities, (value) => pulumi.Input.encodeList<DataConnectorEntity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'incrementalRefreshInterval': ?incrementalRefreshInterval,
       'incrementalSyncDisabled': ?incrementalSyncDisabled,
@@ -128,11 +171,16 @@ class DataConnectorArgs {
 
   factory DataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorArgs(
+      actionConfig: (() { final guardedValue = map['actionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataConnectorActionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       autoRunDisabled: (() { final guardedValue = map['autoRunDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bapConfig: (() { final guardedValue = map['bapConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataConnectorBapConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       collectionDisplayName: pulumi.Input.fromValue(map['collectionDisplayName'] as String),
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
       connectorModes: (() { final guardedValue = map['connectorModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
+      dataSourceVersion: (() { final guardedValue = map['dataSourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationConfigs: (() { final guardedValue = map['destinationConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorDestinationConfig>(guardedValue, (value) => DataConnectorDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       entities: (() { final guardedValue = map['entities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorEntity>(guardedValue, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>()))); })(),
       incrementalRefreshInterval: (() { final guardedValue = map['incrementalRefreshInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       incrementalSyncDisabled: (() { final guardedValue = map['incrementalSyncDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -147,4 +195,3 @@ class DataConnectorArgs {
     );
   }
 }
-

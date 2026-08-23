@@ -79,6 +79,21 @@ import 'node_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "template" {
+///   name      = "soletenant-tmpl"
+///   region    = "us-central1"
+///   node_type = "n1-node-96-624"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +102,8 @@ import 'node_template_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.NodeTemplate;
 /// import com.pulumi.gcp.compute.NodeTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,6 +237,31 @@ import 'node_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnodetypes" "central1a" {
+///   zone = "us-central1-a"
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "template" {
+///   name      = "soletenant-with-licenses"
+///   region    = "us-central1"
+///   node_type = "n1-node-96-624"
+///   node_affinity_labels = {
+///     "foo" = "baz"
+///   }
+///   server_binding = {
+///     type = "RESTART_NODE_ON_MINIMAL_SERVERS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +273,8 @@ import 'node_template_state.dart';
 /// import com.pulumi.gcp.compute.NodeTemplate;
 /// import com.pulumi.gcp.compute.NodeTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.NodeTemplateServerBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,6 +422,29 @@ import 'node_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnodetypes" "central1a" {
+///   zone = "us-central1-a"
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "template" {
+///   name      = "soletenant-with-accelerators"
+///   region    = "us-central1"
+///   node_type = "n1-node-96-624"
+///   accelerators {
+///     accelerator_type  = "nvidia-tesla-t4"
+///     accelerator_count = 4
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -393,8 +456,8 @@ import 'node_template_state.dart';
 /// import com.pulumi.gcp.compute.NodeTemplate;
 /// import com.pulumi.gcp.compute.NodeTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.NodeTemplateAcceleratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -545,6 +608,30 @@ import 'node_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnodetypes" "central1a" {
+///   zone = "us-central1-a"
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "template" {
+///   name      = "soletenant-with-disks"
+///   region    = "us-central1"
+///   node_type = "n2-node-80-640"
+///   disks {
+///     disk_count   = 16
+///     disk_size_gb = 375
+///     disk_type    = "local-ssd"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -556,8 +643,8 @@ import 'node_template_state.dart';
 /// import com.pulumi.gcp.compute.NodeTemplate;
 /// import com.pulumi.gcp.compute.NodeTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.NodeTemplateDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,28 +700,17 @@ import 'node_template_state.dart';
 /// NodeTemplate can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
 /// ```
 class NodeTemplate extends pulumi.CustomResource {
@@ -648,6 +724,13 @@ class NodeTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String?> cpuOvercommitType;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional textual description of the resource.
   late final pulumi.Output<String?> description;
   /// List of the type, size and count of disks attached to the
@@ -698,6 +781,7 @@ class NodeTemplate extends pulumi.CustomResource {
     accelerators = registerOutput<List<Map<String, dynamic>>?>('accelerators');
     cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disks = registerOutput<List<Map<String, dynamic>>?>('disks');
     this.name = registerOutput<String>('name');
@@ -736,6 +820,7 @@ class NodeTemplate extends pulumi.CustomResource {
     accelerators = registerOutput<List<Map<String, dynamic>>?>('accelerators');
     cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disks = registerOutput<List<Map<String, dynamic>>?>('disks');
     this.name = registerOutput<String>('name');

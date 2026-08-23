@@ -9,6 +9,13 @@ import 'feature_membership_policycontroller.dart';
 class FeatureMembershipState {
   /// Config Management-specific spec. Structure is documented below.
   final pulumi.Input<FeatureMembershipConfigmanagement>? configmanagement;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The name of the feature
   final pulumi.Input<String>? feature;
   /// The location of the feature
@@ -26,6 +33,7 @@ class FeatureMembershipState {
 
   /// Creates a new [FeatureMembershipState].
   /// [configmanagement] Config Management-specific spec. Structure is documented below.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [feature] The name of the feature
   /// [location] The location of the feature
   /// [membership] The name of the membership
@@ -35,6 +43,7 @@ class FeatureMembershipState {
   /// [project] The project of the feature
   const FeatureMembershipState({
     this.configmanagement,
+    this.deletionPolicy,
     this.feature,
     this.location,
     this.membership,
@@ -47,6 +56,7 @@ class FeatureMembershipState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configmanagement': ?pulumi.Input.mapOptionalInputValue<FeatureMembershipConfigmanagement, Map<String, dynamic>>(configmanagement, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'feature': ?feature,
       'location': ?location,
       'membership': ?membership,
@@ -60,6 +70,7 @@ class FeatureMembershipState {
   factory FeatureMembershipState.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipState(
       configmanagement: (() { final guardedValue = map['configmanagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureMembershipConfigmanagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       feature: (() { final guardedValue = map['feature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       membership: (() { final guardedValue = map['membership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -70,4 +81,3 @@ class FeatureMembershipState {
     );
   }
 }
-

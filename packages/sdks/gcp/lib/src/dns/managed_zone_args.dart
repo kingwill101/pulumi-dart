@@ -16,6 +16,13 @@ class ManagedZoneArgs {
   /// Cloud logging configuration
   /// Structure is documented below.
   final pulumi.Input<ManagedZoneCloudLoggingConfig>? cloudLoggingConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A textual description field. Defaults to 'Managed by Pulumi'.
   final pulumi.Input<String>? description;
   /// The DNS name of this managed zone, for instance "example.com.".
@@ -33,7 +40,7 @@ class ManagedZoneArgs {
   /// A set of key/value label pairs to assign to this ManagedZone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// User assigned name for this resource.
   /// Must be unique within the project.
@@ -43,16 +50,18 @@ class ManagedZoneArgs {
   /// Structure is documented below.
   final pulumi.Input<ManagedZonePeeringConfig>? peeringConfig;
   /// For privately visible zones, the set of Virtual Private Cloud
-  /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
+  /// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
   /// Structure is documented below.
   final pulumi.Input<ManagedZonePrivateVisibilityConfig>? privateVisibilityConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// (Optional, Beta)
   /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
   /// lookup queries using automatically configured records for VPC resources. This only applies
-  /// to networks listed under `private_visibility_config`.
+  /// to networks listed under `privateVisibilityConfig`.
   final pulumi.Input<bool>? reverseLookup;
+  /// (Optional, Beta)
   /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
   /// Structure is documented below.
   final pulumi.Input<ManagedZoneServiceDirectoryConfig>? serviceDirectoryConfig;
@@ -64,6 +73,7 @@ class ManagedZoneArgs {
 
   /// Creates a new [ManagedZoneArgs].
   /// [cloudLoggingConfig] Cloud logging configuration
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A textual description field. Defaults to 'Managed by Pulumi'.
   /// [dnsName] The DNS name of this managed zone, for instance "example.com.".
   /// [dnssecConfig] DNSSEC configuration
@@ -74,11 +84,12 @@ class ManagedZoneArgs {
   /// [peeringConfig] The presence of this field indicates that DNS Peering is enabled for this
   /// [privateVisibilityConfig] For privately visible zones, the set of Virtual Private Cloud
   /// [project] The ID of the project in which the resource belongs.
-  /// [reverseLookup] Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-  /// [serviceDirectoryConfig] The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+  /// [reverseLookup] (Optional, Beta)
+  /// [serviceDirectoryConfig] (Optional, Beta)
   /// [visibility] The zone's visibility: public zones are exposed to the Internet,
   const ManagedZoneArgs({
     this.cloudLoggingConfig,
+    this.deletionPolicy,
     this.description,
     required this.dnsName,
     this.dnssecConfig,
@@ -97,6 +108,7 @@ class ManagedZoneArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cloudLoggingConfig': ?pulumi.Input.mapOptionalInputValue<ManagedZoneCloudLoggingConfig, Map<String, dynamic>>(cloudLoggingConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dnsName': dnsName,
       'dnssecConfig': ?pulumi.Input.mapOptionalInputValue<ManagedZoneDnssecConfig, Map<String, dynamic>>(dnssecConfig, (value) => value.toMap()),
@@ -116,6 +128,7 @@ class ManagedZoneArgs {
   factory ManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneArgs(
       cloudLoggingConfig: (() { final guardedValue = map['cloudLoggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedZoneCloudLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
       dnssecConfig: (() { final guardedValue = map['dnssecConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedZoneDnssecConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -132,4 +145,3 @@ class ManagedZoneArgs {
     );
   }
 }
-

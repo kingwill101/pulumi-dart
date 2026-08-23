@@ -20,6 +20,8 @@ class AgentRemoteDialogflowAgent {
   /// variables names to be sent back to the CES agent after the Dialogflow
   /// agent execution ends.
   final pulumi.Input<Map<String, String>>? outputVariableMapping;
+  /// Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+  final pulumi.Input<bool>? respectResponseInterruptionSettings;
 
   /// Creates a new [AgentRemoteDialogflowAgent].
   /// [agent] The
@@ -27,12 +29,14 @@ class AgentRemoteDialogflowAgent {
   /// [flowId] The flow ID of the flow in the Dialogflow agent.
   /// [inputVariableMapping] The mapping of the app variables names to the Dialogflow session
   /// [outputVariableMapping] The mapping of the Dialogflow session parameters names to the app
+  /// [respectResponseInterruptionSettings] Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
   const AgentRemoteDialogflowAgent({
     required this.agent,
     this.environmentId,
     required this.flowId,
     this.inputVariableMapping,
     this.outputVariableMapping,
+    this.respectResponseInterruptionSettings,
   });
 
   Map<String, dynamic> toMap() {
@@ -42,6 +46,7 @@ class AgentRemoteDialogflowAgent {
       'flowId': flowId,
       'inputVariableMapping': ?inputVariableMapping,
       'outputVariableMapping': ?outputVariableMapping,
+      'respectResponseInterruptionSettings': ?respectResponseInterruptionSettings,
     };
   }
 
@@ -52,7 +57,7 @@ class AgentRemoteDialogflowAgent {
       flowId: pulumi.Input.fromValue(map['flowId'] as String),
       inputVariableMapping: (() { final guardedValue = map['inputVariableMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       outputVariableMapping: (() { final guardedValue = map['outputVariableMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      respectResponseInterruptionSettings: (() { final guardedValue = map['respectResponseInterruptionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

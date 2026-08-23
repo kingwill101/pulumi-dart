@@ -15,13 +15,20 @@ class SloArgs {
   /// SLIs are used to measure and calculate the quality of the Service's
   /// performance with respect to a single aspect of service quality.
   /// Exactly one of the following must be set:
-  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+  /// `basicSli`, `requestBasedSli`, `windowsBasedSli`
   /// Structure is documented below.
   final pulumi.Input<SloBasicSli>? basicSli;
   /// A calendar period, semantically "since the start of the current
   /// &lt;calendarPeriod&gt;".
   /// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
   final pulumi.Input<String>? calendarPeriod;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Name used for UI elements listing this SLO.
   final pulumi.Input<String>? displayName;
   /// The fraction of service that must be good in order for this objective
@@ -36,7 +43,7 @@ class SloArgs {
   /// It is used to measure and calculate the quality of the Service's
   /// performance with respect to a single aspect of service quality.
   /// Exactly one of the following must be set:
-  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+  /// `basicSli`, `requestBasedSli`, `windowsBasedSli`
   /// Structure is documented below.
   final pulumi.Input<SloRequestBasedSli>? requestBasedSli;
   /// A rolling time period, semantically "in the past X days".
@@ -53,19 +60,20 @@ class SloArgs {
   /// must begin with a letter.
   final pulumi.Input<Map<String, String>>? userLabels;
   /// A windows-based SLI defines the criteria for time windows.
-  /// good_service is defined based off the count of these time windows
+  /// goodService is defined based off the count of these time windows
   /// for which the provided service was of good quality.
   /// A SLI describes a good service. It is used to measure and calculate
   /// the quality of the Service's performance with respect to a single
   /// aspect of service quality.
   /// Exactly one of the following must be set:
-  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+  /// `basicSli`, `requestBasedSli`, `windowsBasedSli`
   /// Structure is documented below.
   final pulumi.Input<SloWindowsBasedSli>? windowsBasedSli;
 
   /// Creates a new [SloArgs].
   /// [basicSli] Basic Service-Level Indicator (SLI) on a well-known service type.
   /// [calendarPeriod] A calendar period, semantically "since the start of the current
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Name used for UI elements listing this SLO.
   /// [goal] The fraction of service that must be good in order for this objective
   /// [project] The ID of the project in which the resource belongs.
@@ -78,6 +86,7 @@ class SloArgs {
   const SloArgs({
     this.basicSli,
     this.calendarPeriod,
+    this.deletionPolicy,
     this.displayName,
     required this.goal,
     this.project,
@@ -93,6 +102,7 @@ class SloArgs {
     return <String, dynamic>{
       'basicSli': ?pulumi.Input.mapOptionalInputValue<SloBasicSli, Map<String, dynamic>>(basicSli, (value) => value.toMap()),
       'calendarPeriod': ?calendarPeriod,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'goal': goal,
       'project': ?project,
@@ -109,6 +119,7 @@ class SloArgs {
     return SloArgs(
       basicSli: (() { final guardedValue = map['basicSli']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SloBasicSli.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       calendarPeriod: (() { final guardedValue = map['calendarPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       goal: pulumi.Input.fromValue(map['goal'] as double),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -121,4 +132,3 @@ class SloArgs {
     );
   }
 }
-

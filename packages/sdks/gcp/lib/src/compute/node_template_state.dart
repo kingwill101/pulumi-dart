@@ -18,6 +18,13 @@ class NodeTemplateState {
   final pulumi.Input<String>? cpuOvercommitType;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional textual description of the resource.
   final pulumi.Input<String>? description;
   /// List of the type, size and count of disks attached to the
@@ -55,6 +62,7 @@ class NodeTemplateState {
   /// [accelerators] List of the type and count of accelerator cards attached to the
   /// [cpuOvercommitType] CPU overcommit.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional textual description of the resource.
   /// [disks] List of the type, size and count of disks attached to the
   /// [name] Name of the resource.
@@ -69,6 +77,7 @@ class NodeTemplateState {
     this.accelerators,
     this.cpuOvercommitType,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.disks,
     this.name,
@@ -86,6 +95,7 @@ class NodeTemplateState {
       'accelerators': ?pulumi.Input.mapOptionalInputValue<List<NodeTemplateAccelerator>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<NodeTemplateAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cpuOvercommitType': ?cpuOvercommitType,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disks': ?pulumi.Input.mapOptionalInputValue<List<NodeTemplateDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<NodeTemplateDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
@@ -104,6 +114,7 @@ class NodeTemplateState {
       accelerators: (() { final guardedValue = map['accelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeTemplateAccelerator>(guardedValue, (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cpuOvercommitType: (() { final guardedValue = map['cpuOvercommitType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disks: (() { final guardedValue = map['disks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeTemplateDisk>(guardedValue, (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -117,4 +128,3 @@ class NodeTemplateState {
     );
   }
 }
-

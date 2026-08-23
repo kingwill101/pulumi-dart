@@ -83,6 +83,23 @@ import 'data_access_label_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccesslabel" "example" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_label_id = "label-id"
+///   udm_query            = "principal.hostname=\"google.com\""
+///   description          = "label-description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +108,8 @@ import 'data_access_label_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.chronicle.DataAccessLabel;
 /// import com.pulumi.gcp.chronicle.DataAccessLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,22 +150,15 @@ import 'data_access_label_state.dart';
 /// DataAccessLabel can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessLabels/{{data_access_label_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{data_access_label_id}}`
-///
 /// * `{{location}}/{{instance}}/{{data_access_label_id}}`
+///
 ///
 /// When using the `pulumi import` command, DataAccessLabel can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessLabels/{{data_access_label_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{project}}/{{location}}/{{instance}}/{{data_access_label_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{location}}/{{instance}}/{{data_access_label_id}}
 /// ```
 class DataAccessLabel extends pulumi.CustomResource {
@@ -161,6 +171,13 @@ class DataAccessLabel extends pulumi.CustomResource {
   /// maximum number of characters should be 63. Regex pattern is as per AIP:
   /// https://google.aip.dev/122#resource-id-segments
   late final pulumi.Output<String> dataAccessLabelId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. A description of the data access label for a human reader.
   late final pulumi.Output<String?> description;
   /// Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
@@ -200,6 +217,7 @@ class DataAccessLabel extends pulumi.CustomResource {
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessLabelId = registerOutput<String>('dataAccessLabelId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     instance = registerOutput<String>('instance');
@@ -237,6 +255,7 @@ class DataAccessLabel extends pulumi.CustomResource {
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessLabelId = registerOutput<String>('dataAccessLabelId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     instance = registerOutput<String>('instance');

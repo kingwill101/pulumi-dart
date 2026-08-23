@@ -9,6 +9,14 @@ class FolderState {
   /// Timestamp when the Folder was created. Assigned by the server.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
   final pulumi.Input<bool>? deletionProtection;
   /// The folder’s display name.
   /// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -30,7 +38,8 @@ class FolderState {
   /// Creates a new [FolderState].
   /// [configuredCapabilities] Optional capabilities configured for this folder.
   /// [createTime] Timestamp when the Folder was created. Assigned by the server.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// [deletionProtection] Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
   /// [displayName] The folder’s display name.
   /// [folderId] The folder id from the name "folders/{folder_id}"
   /// [lifecycleState] The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
@@ -41,6 +50,7 @@ class FolderState {
   const FolderState({
     this.configuredCapabilities,
     this.createTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.displayName,
     this.folderId,
@@ -55,6 +65,7 @@ class FolderState {
     return <String, dynamic>{
       'configuredCapabilities': ?configuredCapabilities,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
       'folderId': ?folderId,
@@ -70,6 +81,7 @@ class FolderState {
     return FolderState(
       configuredCapabilities: (() { final guardedValue = map['configuredCapabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folderId: (() { final guardedValue = map['folderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -81,4 +93,3 @@ class FolderState {
     );
   }
 }
-

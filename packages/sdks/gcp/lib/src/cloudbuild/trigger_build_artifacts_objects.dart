@@ -15,7 +15,7 @@ class TriggerBuildArtifactsObjects {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_build_artifacts_objects_timing"&gt;&lt;/a&gt;The `timing` block contains:
+  /// &lt;a name="nestedBuildArtifactsObjectsTiming"&gt;&lt;/a&gt;The `timing` block contains:
   final pulumi.Input<List<TriggerBuildArtifactsObjectsTiming>>? timings;
 
   /// Creates a new [TriggerBuildArtifactsObjects].
@@ -44,4 +44,3 @@ class TriggerBuildArtifactsObjects {
     );
   }
 }
-

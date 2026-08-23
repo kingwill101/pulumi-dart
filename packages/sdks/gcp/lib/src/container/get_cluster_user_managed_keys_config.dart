@@ -9,6 +9,8 @@ class GetClusterUserManagedKeysConfig {
   final pulumi.Input<String> clusterCa;
   /// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
   final pulumi.Input<String> controlPlaneDiskEncryptionKey;
+  /// The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
+  final pulumi.Input<List<String>> controlPlaneDiskEncryptionKeyVersions;
   /// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
   final pulumi.Input<String> etcdApiCa;
   /// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
@@ -24,6 +26,7 @@ class GetClusterUserManagedKeysConfig {
   /// [aggregationCa] The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
   /// [clusterCa] The Certificate Authority Service caPool to use for the cluster CA in this cluster.
   /// [controlPlaneDiskEncryptionKey] The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+  /// [controlPlaneDiskEncryptionKeyVersions] The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
   /// [etcdApiCa] The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
   /// [etcdPeerCa] The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
   /// [gkeopsEtcdBackupEncryptionKey] Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
@@ -33,6 +36,7 @@ class GetClusterUserManagedKeysConfig {
     required this.aggregationCa,
     required this.clusterCa,
     required this.controlPlaneDiskEncryptionKey,
+    required this.controlPlaneDiskEncryptionKeyVersions,
     required this.etcdApiCa,
     required this.etcdPeerCa,
     required this.gkeopsEtcdBackupEncryptionKey,
@@ -45,6 +49,7 @@ class GetClusterUserManagedKeysConfig {
       'aggregationCa': aggregationCa,
       'clusterCa': clusterCa,
       'controlPlaneDiskEncryptionKey': controlPlaneDiskEncryptionKey,
+      'controlPlaneDiskEncryptionKeyVersions': controlPlaneDiskEncryptionKeyVersions,
       'etcdApiCa': etcdApiCa,
       'etcdPeerCa': etcdPeerCa,
       'gkeopsEtcdBackupEncryptionKey': gkeopsEtcdBackupEncryptionKey,
@@ -58,6 +63,7 @@ class GetClusterUserManagedKeysConfig {
       aggregationCa: pulumi.Input.fromValue(map['aggregationCa'] as String),
       clusterCa: pulumi.Input.fromValue(map['clusterCa'] as String),
       controlPlaneDiskEncryptionKey: pulumi.Input.fromValue(map['controlPlaneDiskEncryptionKey'] as String),
+      controlPlaneDiskEncryptionKeyVersions: pulumi.Input.fromValue((map['controlPlaneDiskEncryptionKeyVersions'] as List).cast<String>()),
       etcdApiCa: pulumi.Input.fromValue(map['etcdApiCa'] as String),
       etcdPeerCa: pulumi.Input.fromValue(map['etcdPeerCa'] as String),
       gkeopsEtcdBackupEncryptionKey: pulumi.Input.fromValue(map['gkeopsEtcdBackupEncryptionKey'] as String),
@@ -66,4 +72,3 @@ class GetClusterUserManagedKeysConfig {
     );
   }
 }
-

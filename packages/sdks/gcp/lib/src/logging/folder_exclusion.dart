@@ -96,6 +96,26 @@ import 'folder_exclusion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_folderexclusion" "my-exclusion" {
+///   name        = "my-instance-debug-exclusion"
+///   folder      = gcp_organizations_folder.my-folder.name
+///   description = "Exclude GCE instance debug logs"
+///   filter      = "resource.type = gce_instance AND severity <= DEBUG"
+/// }
+/// resource "gcp_organizations_folder" "my-folder" {
+///   display_name = "My folder"
+///   parent       = "organizations/123456"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,8 @@ import 'folder_exclusion_state.dart';
 /// import com.pulumi.gcp.organizations.FolderArgs;
 /// import com.pulumi.gcp.logging.FolderExclusion;
 /// import com.pulumi.gcp.logging.FolderExclusionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,6 +176,7 @@ import 'folder_exclusion_state.dart';
 /// Folder-level logging exclusions can be imported using their URI, e.g.
 ///
 /// * `folders/{{folder}}/exclusions/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, folder-level logging exclusions can be imported using one of the formats above. For example:
 ///

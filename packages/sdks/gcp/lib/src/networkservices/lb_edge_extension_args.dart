@@ -8,6 +8,13 @@ import 'lb_edge_extension_extension_chain.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_lb_edge_extension_lb_edge_extension_args_doc}
 class LbEdgeExtensionArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of the resource.
   final pulumi.Input<String>? description;
   /// A set of ordered extension chains that contain the match conditions and extensions to execute.
@@ -21,7 +28,7 @@ class LbEdgeExtensionArgs {
   final pulumi.Input<List<String>> forwardingRules;
   /// Set of labels associated with the LbEdgeExtension resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// All forwarding rules referenced by this extension must share the same load balancing scheme.
   /// Possible values are: `EXTERNAL_MANAGED`.
@@ -35,6 +42,7 @@ class LbEdgeExtensionArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [LbEdgeExtensionArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of the resource.
   /// [extensionChains] A set of ordered extension chains that contain the match conditions and extensions to execute.
   /// [forwardingRules] A list of references to the forwarding rules to which this service extension is attached.
@@ -44,6 +52,7 @@ class LbEdgeExtensionArgs {
   /// [name] Name of the LbEdgeExtension resource in the following format: projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}
   /// [project] The ID of the project in which the resource belongs.
   const LbEdgeExtensionArgs({
+    this.deletionPolicy,
     this.description,
     required this.extensionChains,
     required this.forwardingRules,
@@ -56,6 +65,7 @@ class LbEdgeExtensionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'extensionChains': pulumi.Input.mapInputValue<List<LbEdgeExtensionExtensionChain>, List<Map<String, dynamic>>>(extensionChains, (value) => pulumi.Input.encodeList<LbEdgeExtensionExtensionChain, Map<String, dynamic>>(value, (value) => value.toMap())),
       'forwardingRules': forwardingRules,
@@ -69,6 +79,7 @@ class LbEdgeExtensionArgs {
 
   factory LbEdgeExtensionArgs.fromMap(Map<String, dynamic> map) {
     return LbEdgeExtensionArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extensionChains: pulumi.Input.fromValue(pulumi.Input.decodeList<LbEdgeExtensionExtensionChain>(map['extensionChains']!, (value) => LbEdgeExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))),
       forwardingRules: pulumi.Input.fromValue((map['forwardingRules'] as List).cast<String>()),
@@ -80,4 +91,3 @@ class LbEdgeExtensionArgs {
     );
   }
 }
-

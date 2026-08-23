@@ -99,6 +99,27 @@ import 'project_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "default" {
+///   project_id = "your-project-id"
+///   name       = "your-project-id"
+///   org_id     = "123456789"
+/// }
+/// resource "gcp_logging_projectbucketconfig" "basic" {
+///   project        = gcp_organizations_project.default.project_id
+///   location       = "global"
+///   retention_days = 30
+///   bucket_id      = "_Default"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +130,8 @@ import 'project_bucket_config_state.dart';
 /// import com.pulumi.gcp.organizations.ProjectArgs;
 /// import com.pulumi.gcp.logging.ProjectBucketConfig;
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,6 +242,22 @@ import 'project_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_projectbucketconfig" "basic" {
+///   project        = "project_id"
+///   location       = "global"
+///   retention_days = 30
+///   bucket_id      = "custom-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +266,8 @@ import 'project_bucket_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.ProjectBucketConfig;
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -333,6 +370,23 @@ import 'project_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_projectbucketconfig" "analytics-enabled-bucket" {
+///   project          = "project_id"
+///   location         = "global"
+///   retention_days   = 30
+///   enable_analytics = true
+///   bucket_id        = "custom-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -341,8 +395,8 @@ import 'project_bucket_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.logging.ProjectBucketConfig;
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -500,8 +554,6 @@ import 'project_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -524,14 +576,14 @@ import 'project_bucket_config_state.dart';
 /// 		}
 /// 		key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
 /// 			Name:           pulumi.String("crypto-key-example"),
-/// 			KeyRing:        keyring.ID(),
+/// 			KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			RotationPeriod: pulumi.String("7776000s"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
-/// 			CryptoKeyId: key.ID(),
+/// 			CryptoKeyId: key.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId),
@@ -546,7 +598,7 @@ import 'project_bucket_config_state.dart';
 /// 			RetentionDays: pulumi.Int(30),
 /// 			BucketId:      pulumi.String("custom-bucket"),
 /// 			CmekSettings: &logging.ProjectBucketConfigCmekSettingsArgs{
-/// 				KmsKeyName: key.ID(),
+/// 				KmsKeyName: key.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			cryptoKeyBinding,
@@ -556,6 +608,44 @@ import 'project_bucket_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getprojectcmeksettings" "cmekSettings" {
+///   project = "project_id"
+/// }
+///
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "keyring-example"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokey" "key" {
+///   name            = "crypto-key-example"
+///   key_ring        = gcp_kms_keyring.keyring.id
+///   rotation_period = "7776000s"
+/// }
+/// resource "gcp_kms_cryptokeyiambinding" "crypto_key_binding" {
+///   crypto_key_id = gcp_kms_cryptokey.key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   members       = ["serviceAccount:${data.gcp_logging_getprojectcmeksettings.cmekSettings.service_account_id}"]
+/// }
+/// resource "gcp_logging_projectbucketconfig" "example-project-bucket-cmek-settings" {
+///   depends_on     = [gcp_kms_cryptokeyiambinding.crypto_key_binding]
+///   project        = "project_id"
+///   location       = "us-central1"
+///   retention_days = 30
+///   bucket_id      = "custom-bucket"
+///   cmek_settings = {
+///     kms_key_name = gcp_kms_cryptokey.key.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -576,8 +666,8 @@ import 'project_bucket_config_state.dart';
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 /// import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -754,6 +844,26 @@ import 'project_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_projectbucketconfig" "example-project-bucket-index-configs" {
+///   project        = "project_id"
+///   location       = "global"
+///   retention_days = 30
+///   bucket_id      = "custom-bucket"
+///   index_configs {
+///     field_path = "jsonPayload.request.status"
+///     type       = "INDEX_TYPE_STRING"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -763,8 +873,8 @@ import 'project_bucket_config_state.dart';
 /// import com.pulumi.gcp.logging.ProjectBucketConfig;
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 /// import com.pulumi.gcp.logging.inputs.ProjectBucketConfigIndexConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -811,6 +921,7 @@ import 'project_bucket_config_state.dart';
 ///
 /// * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
 ///
+///
 /// When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -821,6 +932,13 @@ class ProjectBucketConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
   late final pulumi.Output<ProjectBucketConfigCmekSettings?> cmekSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this bucket.
   late final pulumi.Output<String> description;
   /// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
@@ -856,6 +974,7 @@ class ProjectBucketConfig extends pulumi.CustomResource {
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<ProjectBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     enableAnalytics = registerOutput<bool?>('enableAnalytics');
     indexConfigs = registerOutput<List<Map<String, dynamic>>?>('indexConfigs');
@@ -892,6 +1011,7 @@ class ProjectBucketConfig extends pulumi.CustomResource {
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<ProjectBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     enableAnalytics = registerOutput<bool?>('enableAnalytics');
     indexConfigs = registerOutput<List<Map<String, dynamic>>?>('indexConfigs');

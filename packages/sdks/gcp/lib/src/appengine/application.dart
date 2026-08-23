@@ -95,6 +95,25 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name       = "My Project"
+///   project_id = "your-project-id"
+///   org_id     = "1234567"
+/// }
+/// resource "gcp_appengine_application" "app" {
+///   project     = gcp_organizations_project.my_project.project_id
+///   location_id = "us-central"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +124,8 @@ import 'application_state.dart';
 /// import com.pulumi.gcp.organizations.ProjectArgs;
 /// import com.pulumi.gcp.appengine.Application;
 /// import com.pulumi.gcp.appengine.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,6 +173,7 @@ import 'application_state.dart';
 /// Applications can be imported using the ID of the project the application belongs to, e.g.
 ///
 /// * `{{project-id}}`
+///
 ///
 /// When using the `pulumi import` command, Applications can be imported using one of the formats above. For example:
 ///

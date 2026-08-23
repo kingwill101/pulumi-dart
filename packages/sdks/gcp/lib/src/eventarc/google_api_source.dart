@@ -132,8 +132,6 @@ import 'google_api_source_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -180,7 +178,7 @@ import 'google_api_source_state.dart';
 /// 		_, err = eventarc.NewGoogleApiSource(ctx, "primary", &eventarc.GoogleApiSourceArgs{
 /// 			Location:          pulumi.String("us-central1"),
 /// 			GoogleApiSourceId: pulumi.String("some-google-api-source"),
-/// 			Destination:       messageBus.ID(),
+/// 			Destination:       messageBus.ID().ToIDOutput().ToStringOutput(),
 /// 			CryptoKeyName:     pulumi.String(key.Id),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			keyMember,
@@ -190,6 +188,44 @@ import 'google_api_source_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "testProject" {
+///   project_id = "my-project-name"
+/// }
+/// data "gcp_kms_getkmskeyring" "testKeyRing" {
+///   name     = "keyring"
+///   location = "us-central1"
+/// }
+/// data "gcp_kms_getkmscryptokey" "key" {
+///   name     = "key"
+///   key_ring = data.gcp_kms_getkmskeyring.testKeyRing.id
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "key_member" {
+///   crypto_key_id = data.gcp_kms_getkmscryptokey.key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_eventarc_messagebus" "message_bus" {
+///   location       = "us-central1"
+///   message_bus_id = "some-message-bus"
+/// }
+/// resource "gcp_eventarc_googleapisource" "primary" {
+///   depends_on           = [gcp_kms_cryptokeyiammember.key_member]
+///   location             = "us-central1"
+///   google_api_source_id = "some-google-api-source"
+///   destination          = gcp_eventarc_messagebus.message_bus.id
+///   crypto_key_name      = data.gcp_kms_getkmscryptokey.key.id
 /// }
 /// ```
 /// ```java
@@ -210,8 +246,8 @@ import 'google_api_source_state.dart';
 /// import com.pulumi.gcp.eventarc.GoogleApiSource;
 /// import com.pulumi.gcp.eventarc.GoogleApiSourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,28 +347,21 @@ import 'google_api_source_state.dart';
 /// GoogleApiSource can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}`
-///
 /// * `{{project}}/{{location}}/{{google_api_source_id}}`
-///
 /// * `{{location}}/{{google_api_source_id}}`
+///
 ///
 /// When using the `pulumi import` command, GoogleApiSource can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{project}}/{{location}}/{{google_api_source_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{location}}/{{google_api_source_id}}
 /// ```
 class GoogleApiSource extends pulumi.CustomResource {
   /// Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The creation time.
   late final pulumi.Output<String> createTime;
@@ -341,12 +370,20 @@ class GoogleApiSource extends pulumi.CustomResource {
   /// It must match the pattern
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   late final pulumi.Output<String?> cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Destination is the message bus that the GoogleApiSource is delivering to.
   /// It must be point to the full resource name of a MessageBus. Format:
   /// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
   late final pulumi.Output<String> destination;
   /// Resource display name.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -359,7 +396,7 @@ class GoogleApiSource extends pulumi.CustomResource {
   late final pulumi.Output<String> googleApiSourceId;
   /// Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -399,6 +436,7 @@ class GoogleApiSource extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -441,6 +479,7 @@ class GoogleApiSource extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

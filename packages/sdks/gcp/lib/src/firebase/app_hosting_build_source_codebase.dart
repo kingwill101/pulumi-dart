@@ -14,7 +14,7 @@ class AppHostingBuildSourceCodebase {
   /// The commit in the codebase to build from.
   ///
   ///
-  /// &lt;a name="nested_source_codebase_author"&gt;&lt;/a&gt;The `author` block contains:
+  /// &lt;a name="nestedSourceCodebaseAuthor"&gt;&lt;/a&gt;The `author` block contains:
   final pulumi.Input<String>? commit;
   /// (Output)
   /// The message of a codebase change.
@@ -80,4 +80,3 @@ class AppHostingBuildSourceCodebase {
     );
   }
 }
-

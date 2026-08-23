@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
-  /// Required. The Service Directory service name.
+  /// The Service Directory service name.
   /// Format:
   /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
   final pulumi.Input<String> service;
 
   /// Creates a new [ConnectionGithubEnterpriseConfigServiceDirectoryConfig].
-  /// [service] Required. The Service Directory service name.
+  /// [service] The Service Directory service name.
   const ConnectionGithubEnterpriseConfigServiceDirectoryConfig({
     required this.service,
   });
@@ -26,4 +26,3 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
     );
   }
 }
-

@@ -17,12 +17,14 @@ class GetDiskResult {
   final String createSnapshotBeforeDestroyPrefix;
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
+  final String deletionPolicy;
   /// The optional description of this resource.
   final String description;
   final List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
   final String diskId;
   final Map<String, String> effectiveLabels;
   final bool enableConfidentialCompute;
+  final bool eraseWindowsVssSignature;
   final List<GetDiskGuestOsFeature> guestOsFeatures;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -94,11 +96,13 @@ class GetDiskResult {
   /// [createSnapshotBeforeDestroy] Required.
   /// [createSnapshotBeforeDestroyPrefix] Required.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Required.
   /// [description] The optional description of this resource.
   /// [diskEncryptionKeys] Required.
   /// [diskId] Required.
   /// [effectiveLabels] Required.
   /// [enableConfidentialCompute] Required.
+  /// [eraseWindowsVssSignature] Required.
   /// [guestOsFeatures] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [image] The image from which to initialize this disk.
@@ -140,11 +144,13 @@ class GetDiskResult {
     required this.createSnapshotBeforeDestroy,
     required this.createSnapshotBeforeDestroyPrefix,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.diskEncryptionKeys,
     required this.diskId,
     required this.effectiveLabels,
     required this.enableConfidentialCompute,
+    required this.eraseWindowsVssSignature,
     required this.guestOsFeatures,
     required this.id,
     required this.image,
@@ -189,11 +195,13 @@ class GetDiskResult {
       'createSnapshotBeforeDestroy': createSnapshotBeforeDestroy,
       'createSnapshotBeforeDestroyPrefix': createSnapshotBeforeDestroyPrefix,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'diskEncryptionKeys': pulumi.Input.encodeList<GetDiskDiskEncryptionKey, Map<String, dynamic>>(diskEncryptionKeys, (value) => value.toMap()),
       'diskId': diskId,
       'effectiveLabels': effectiveLabels,
       'enableConfidentialCompute': enableConfidentialCompute,
+      'eraseWindowsVssSignature': eraseWindowsVssSignature,
       'guestOsFeatures': pulumi.Input.encodeList<GetDiskGuestOsFeature, Map<String, dynamic>>(guestOsFeatures, (value) => value.toMap()),
       'id': id,
       'image': image,
@@ -239,11 +247,13 @@ class GetDiskResult {
       createSnapshotBeforeDestroy: map['createSnapshotBeforeDestroy'] as bool,
       createSnapshotBeforeDestroyPrefix: map['createSnapshotBeforeDestroyPrefix'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       diskEncryptionKeys: pulumi.Input.decodeList<GetDiskDiskEncryptionKey>(map['diskEncryptionKeys']!, (value) => GetDiskDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       diskId: map['diskId'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
+      eraseWindowsVssSignature: map['eraseWindowsVssSignature'] as bool,
       guestOsFeatures: pulumi.Input.decodeList<GetDiskGuestOsFeature>(map['guestOsFeatures']!, (value) => GetDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       image: map['image'] as String,
@@ -281,4 +291,3 @@ class GetDiskResult {
     );
   }
 }
-

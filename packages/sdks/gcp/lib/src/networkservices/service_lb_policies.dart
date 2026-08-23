@@ -7,6 +7,9 @@ import 'service_lb_policies_state.dart';
 
 /// ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about ServiceLbPolicies, see:
 ///
 /// * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
@@ -71,6 +74,20 @@ import 'service_lb_policies_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_servicelbpolicies" "default" {
+///   name     = "my-lb-policy"
+///   location = "global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +96,8 @@ import 'service_lb_policies_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkservices.ServiceLbPolicies;
 /// import com.pulumi.gcp.networkservices.ServiceLbPoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,7 +257,7 @@ import 'service_lb_policies_state.dart';
 /// 			Description:         pulumi.String("my description"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 			Protocol:            pulumi.String("HTTP"),
-/// 			ServiceLbPolicy: _default.ID().ApplyT(func(id string) (string, error) {
+/// 			ServiceLbPolicy: _default.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -249,6 +266,38 @@ import 'service_lb_policies_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_servicelbpolicies" "default" {
+///   name                     = "my-lb-policy"
+///   location                 = "global"
+///   description              = "my description"
+///   load_balancing_algorithm = "SPRAY_TO_REGION"
+///   auto_capacity_drain = {
+///     enable = true
+///   }
+///   failover_config = {
+///     failover_health_threshold = 70
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "my-lb-backend"
+///   description           = "my description"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   protocol              = "HTTP"
+///   service_lb_policy     ="//networkservices.googleapis.com/${gcp_networkservices_servicelbpolicies.default.id}"
 /// }
 /// ```
 /// ```java
@@ -263,8 +312,8 @@ import 'service_lb_policies_state.dart';
 /// import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesFailoverConfigArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,7 +524,7 @@ import 'service_lb_policies_state.dart';
 /// 			Description:         pulumi.String("my description"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 			Protocol:            pulumi.String("HTTP"),
-/// 			ServiceLbPolicy: _default.ID().ApplyT(func(id string) (string, error) {
+/// 			ServiceLbPolicy: _default.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -484,6 +533,42 @@ import 'service_lb_policies_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_servicelbpolicies" "default" {
+///   name                     = "my-lb-policy"
+///   location                 = "global"
+///   description              = "my description"
+///   load_balancing_algorithm = "SPRAY_TO_REGION"
+///   auto_capacity_drain = {
+///     enable = true
+///   }
+///   failover_config = {
+///     failover_health_threshold = 70
+///   }
+///   isolation_config = {
+///     isolation_granularity = "REGION"
+///     isolation_mode        = "NEAREST"
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "my-lb-backend"
+///   description           = "my description"
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+///   protocol              = "HTTP"
+///   service_lb_policy     ="//networkservices.googleapis.com/${gcp_networkservices_servicelbpolicies.default.id}"
 /// }
 /// ```
 /// ```java
@@ -499,8 +584,8 @@ import 'service_lb_policies_state.dart';
 /// import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesIsolationConfigArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,22 +661,15 @@ import 'service_lb_policies_state.dart';
 /// ServiceLbPolicies can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
 /// ```
 class ServiceLbPolicies extends pulumi.CustomResource {
@@ -600,6 +678,13 @@ class ServiceLbPolicies extends pulumi.CustomResource {
   late final pulumi.Output<ServiceLbPoliciesAutoCapacityDrain?> autoCapacityDrain;
   /// Time the ServiceLbPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -612,7 +697,7 @@ class ServiceLbPolicies extends pulumi.CustomResource {
   late final pulumi.Output<ServiceLbPoliciesIsolationConfig?> isolationConfig;
   /// Set of label tags associated with the ServiceLbPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
   /// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
@@ -646,6 +731,7 @@ class ServiceLbPolicies extends pulumi.CustomResource {
         ) {
     autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>('autoCapacityDrain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesAutoCapacityDrain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>('failoverConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesFailoverConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -684,6 +770,7 @@ class ServiceLbPolicies extends pulumi.CustomResource {
         ) {
     autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>('autoCapacityDrain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesAutoCapacityDrain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>('failoverConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesFailoverConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

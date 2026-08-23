@@ -26,4 +26,3 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
     );
   }
 }
-

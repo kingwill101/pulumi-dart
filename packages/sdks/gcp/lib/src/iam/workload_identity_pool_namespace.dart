@@ -5,6 +5,7 @@ import 'workload_identity_pool_namespace_state.dart';
 /// Represents a namespace for a workload identity pool. Namespaces are used to segment identities
 /// within the pool.
 ///
+///
 /// To get more information about WorkloadIdentityPoolNamespace, see:
 ///
 /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces)
@@ -92,6 +93,24 @@ import 'workload_identity_pool_namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+///   mode                      = "TRUST_DOMAIN"
+/// }
+/// resource "gcp_iam_workloadidentitypoolnamespace" "example" {
+///   workload_identity_pool_id           = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id = "example-namespace"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +121,8 @@ import 'workload_identity_pool_namespace_state.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolNamespace;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,6 +247,26 @@ import 'workload_identity_pool_namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+///   mode                      = "TRUST_DOMAIN"
+/// }
+/// resource "gcp_iam_workloadidentitypoolnamespace" "example" {
+///   workload_identity_pool_id           = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id = "example-namespace"
+///   description                         = "Example Namespace in a Workload Identity Pool"
+///   disabled                            = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +277,8 @@ import 'workload_identity_pool_namespace_state.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolNamespace;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,25 +327,25 @@ import 'workload_identity_pool_namespace_state.dart';
 /// WorkloadIdentityPoolNamespace can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}`
-///
 /// * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}`
-///
 /// * `{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkloadIdentityPoolNamespace can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
 /// ```
 class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the namespace. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
@@ -339,7 +378,6 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
-  ///
   /// The prefix `gcp-` will be reserved for future uses.
   late final pulumi.Output<String> workloadIdentityPoolNamespaceId;
 
@@ -357,6 +395,7 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
@@ -390,6 +429,7 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');

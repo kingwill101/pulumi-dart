@@ -31,17 +31,27 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
   /// on remaining lifetime. Must be between '50' - '80'. If unspecified, this will be defaulted
   /// to '50'.
   final pulumi.Input<int> rotationWindowPercentage;
+  /// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+  /// CA in the same region as the workload will be selected to issue the certificate. Enabling
+  /// this will clear any existing 'ca_pools' configuration to provision the certificates.
+  ///
+  /// &gt; **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
+  /// certificates will be automatically provisioned from the default shared CAs. This flag should
+  /// not be set if you want to use your own CA pools to provision the certificates.
+  final pulumi.Input<bool> useDefaultSharedCa;
 
   /// Creates a new [GetWorkloadIdentityPoolInlineCertificateIssuanceConfig].
   /// [caPools] A required mapping of a cloud region to the CA pool resource located in that region used
   /// [keyAlgorithm] Key algorithm to use when generating the key pair. This key pair will be used to create
   /// [lifetime] Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
   /// [rotationWindowPercentage] Rotation window percentage indicating when certificate rotation should be initiated based
+  /// [useDefaultSharedCa] If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
   const GetWorkloadIdentityPoolInlineCertificateIssuanceConfig({
     required this.caPools,
     required this.keyAlgorithm,
     required this.lifetime,
     required this.rotationWindowPercentage,
+    required this.useDefaultSharedCa,
   });
 
   Map<String, dynamic> toMap() {
@@ -50,6 +60,7 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
       'keyAlgorithm': keyAlgorithm,
       'lifetime': lifetime,
       'rotationWindowPercentage': rotationWindowPercentage,
+      'useDefaultSharedCa': useDefaultSharedCa,
     };
   }
 
@@ -59,7 +70,7 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
       keyAlgorithm: pulumi.Input.fromValue(map['keyAlgorithm'] as String),
       lifetime: pulumi.Input.fromValue(map['lifetime'] as String),
       rotationWindowPercentage: pulumi.Input.fromValue(map['rotationWindowPercentage'] as int),
+      useDefaultSharedCa: pulumi.Input.fromValue(map['useDefaultSharedCa'] as bool),
     );
   }
 }
-

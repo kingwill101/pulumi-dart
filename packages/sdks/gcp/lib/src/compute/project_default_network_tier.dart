@@ -59,6 +59,19 @@ import 'project_default_network_tier_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_projectdefaultnetworktier" "default" {
+///   network_tier = "PREMIUM"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +80,8 @@ import 'project_default_network_tier_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ProjectDefaultNetworkTier;
 /// import com.pulumi.gcp.compute.ProjectDefaultNetworkTierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,6 +114,7 @@ import 'project_default_network_tier_state.dart';
 /// Compute Engine Default Network Tier can be imported using any of these accepted formats:
 ///
 /// * `{{project_id}}`
+///
 ///
 /// When using the `pulumi import` command, Compute Engine Default Network Tier can be imported using one of the formats above. For example:
 ///

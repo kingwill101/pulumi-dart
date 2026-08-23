@@ -12,7 +12,7 @@ class AppHostingBackendArgs {
   /// store and arbitrary metadata. They are not queryable and should be
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The [ID of a Web
   /// App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
@@ -25,6 +25,13 @@ class AppHostingBackendArgs {
   /// updates to the backend.
   /// Structure is documented below.
   final pulumi.Input<AppHostingBackendCodebase>? codebase;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable name. 63 character limit.
   final pulumi.Input<String>? displayName;
   /// The environment name of the backend, used to load environment variables
@@ -33,7 +40,7 @@ class AppHostingBackendArgs {
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The canonical IDs of a Google Cloud location such as "us-east1".
   final pulumi.Input<String> location;
@@ -55,6 +62,7 @@ class AppHostingBackendArgs {
   /// [appId] The [ID of a Web
   /// [backendId] Id of the backend. Also used as the service ID for Cloud Run, and as part
   /// [codebase] The connection to an external source repository to watch for event-driven
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Human-readable name. 63 character limit.
   /// [environment] The environment name of the backend, used to load environment variables
   /// [labels] Unstructured key value map that can be used to organize and categorize
@@ -67,6 +75,7 @@ class AppHostingBackendArgs {
     required this.appId,
     required this.backendId,
     this.codebase,
+    this.deletionPolicy,
     this.displayName,
     this.environment,
     this.labels,
@@ -82,6 +91,7 @@ class AppHostingBackendArgs {
       'appId': appId,
       'backendId': backendId,
       'codebase': ?pulumi.Input.mapOptionalInputValue<AppHostingBackendCodebase, Map<String, dynamic>>(codebase, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'environment': ?environment,
       'labels': ?labels,
@@ -98,6 +108,7 @@ class AppHostingBackendArgs {
       appId: pulumi.Input.fromValue(map['appId'] as String),
       backendId: pulumi.Input.fromValue(map['backendId'] as String),
       codebase: (() { final guardedValue = map['codebase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppHostingBackendCodebase.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -108,4 +119,3 @@ class AppHostingBackendArgs {
     );
   }
 }
-

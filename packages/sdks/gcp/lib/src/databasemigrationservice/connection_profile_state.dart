@@ -22,6 +22,13 @@ class ConnectionProfileState {
   final pulumi.Input<String>? createTime;
   /// The database provider.
   final pulumi.Input<String>? dbprovider;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The connection profile display name.
   final pulumi.Input<String>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -32,7 +39,7 @@ class ConnectionProfileState {
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the connection profile should reside.
   final pulumi.Input<String>? location;
@@ -53,6 +60,9 @@ class ConnectionProfileState {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+  /// The connection profile role.
+  /// Possible values are: `SOURCE`, `DESTINATION`.
+  final pulumi.Input<String>? role;
   /// The current connection profile state.
   final pulumi.Input<String>? state;
 
@@ -62,6 +72,7 @@ class ConnectionProfileState {
   /// [connectionProfileId] The ID of the connection profile.
   /// [createTime] Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
   /// [dbprovider] The database provider.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The connection profile display name.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [errors] Output only. The error details in case of state FAILED.
@@ -73,6 +84,7 @@ class ConnectionProfileState {
   /// [postgresql] Specifies connection parameters required specifically for PostgreSQL databases.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
+  /// [role] The connection profile role.
   /// [state] The current connection profile state.
   const ConnectionProfileState({
     this.alloydb,
@@ -80,6 +92,7 @@ class ConnectionProfileState {
     this.connectionProfileId,
     this.createTime,
     this.dbprovider,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveLabels,
     this.errors,
@@ -91,6 +104,7 @@ class ConnectionProfileState {
     this.postgresql,
     this.project,
     this.pulumiLabels,
+    this.role,
     this.state,
   });
 
@@ -101,6 +115,7 @@ class ConnectionProfileState {
       'connectionProfileId': ?connectionProfileId,
       'createTime': ?createTime,
       'dbprovider': ?dbprovider,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
       'errors': ?pulumi.Input.mapOptionalInputValue<List<ConnectionProfileError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ConnectionProfileError, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -112,6 +127,7 @@ class ConnectionProfileState {
       'postgresql': ?pulumi.Input.mapOptionalInputValue<ConnectionProfilePostgresql, Map<String, dynamic>>(postgresql, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
+      'role': ?role,
       'state': ?state,
     };
   }
@@ -123,6 +139,7 @@ class ConnectionProfileState {
       connectionProfileId: (() { final guardedValue = map['connectionProfileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbprovider: (() { final guardedValue = map['dbprovider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionProfileError>(guardedValue, (value) => ConnectionProfileError.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -134,8 +151,8 @@ class ConnectionProfileState {
       postgresql: (() { final guardedValue = map['postgresql']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfilePostgresql.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

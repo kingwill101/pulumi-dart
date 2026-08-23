@@ -155,6 +155,34 @@ import 'router_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_router" "foobar" {
+///   name    = "my-router"
+///   network = gcp_compute_network.foobar.name
+///   bgp = {
+///     asn               = 64514
+///     advertise_mode    = "CUSTOM"
+///     advertised_groups = ["ALL_SUBNETS"]
+///     advertised_ip_ranges = [{
+///       "range" = "1.2.3.4"
+///       }, {
+///       "range" = "6.7.0.0/16"
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_network" "foobar" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +194,9 @@ import 'router_state.dart';
 /// import com.pulumi.gcp.compute.Router;
 /// import com.pulumi.gcp.compute.RouterArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RouterBgpAdvertisedIpRangeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -322,6 +351,28 @@ import 'router_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_router" "encrypted-interconnect-router" {
+///   name                          = "test-router"
+///   network                       = gcp_compute_network.network.name
+///   encrypted_interconnect_router = true
+///   bgp = {
+///     asn = 64514
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -333,8 +384,8 @@ import 'router_state.dart';
 /// import com.pulumi.gcp.compute.Router;
 /// import com.pulumi.gcp.compute.RouterArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,7 +444,7 @@ import 'router_state.dart';
 ///     autoCreateSubnetworks: false,
 /// });
 /// const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
-///     name: "tf-test-subnet_52865",
+///     name: "tf-test-subnet_37118",
 ///     ipCidrRange: "10.0.0.0/28",
 ///     region: "us-central1",
 ///     network: network.selfLink,
@@ -448,7 +499,7 @@ import 'router_state.dart';
 ///     name="net-spoke",
 ///     auto_create_subnetworks=False)
 /// subnetwork = gcp.compute.Subnetwork("subnetwork",
-///     name="tf-test-subnet_52865",
+///     name="tf-test-subnet_37118",
 ///     ip_cidr_range="10.0.0.0/28",
 ///     region="us-central1",
 ///     network=network.self_link)
@@ -507,7 +558,7 @@ import 'router_state.dart';
 ///
 ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
 ///     {
-///         Name = "tf-test-subnet_52865",
+///         Name = "tf-test-subnet_37118",
 ///         IpCidrRange = "10.0.0.0/28",
 ///         Region = "us-central1",
 ///         Network = network.SelfLink,
@@ -595,7 +646,7 @@ import 'router_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-subnet_52865"),
+/// 			Name:        pulumi.String("tf-test-subnet_37118"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Network:     network.SelfLink,
@@ -621,7 +672,7 @@ import 'router_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Gateway: &networkconnectivity.SpokeGatewayArgs{
 /// 				IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
 /// 					&networkconnectivity.SpokeGatewayIpRangeReservationArgs{
@@ -652,13 +703,71 @@ import 'router_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			NccGateway: primary.ID(),
+/// 			NccGateway: primary.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "net-spoke"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "tf-test-subnet_37118"
+///   ip_cidr_range = "10.0.0.0/28"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.self_link
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "hub"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+///   preset_topology = "HYBRID_INSPECTION"
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "my-ncc-gw"
+///   location    = "us-central1"
+///   description = "A sample spoke of type Gateway"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   gateway = {
+///     ip_range_reservations = [{
+///       "ipRange" = "10.0.0.0/23"
+///     }]
+///     capacity = "CAPACITY_1_GBPS"
+///   }
+///   group = "gateways"
+/// }
+/// resource "gcp_compute_router" "foobar" {
+///   name = "my-router"
+///   bgp = {
+///     asn               = 64514
+///     advertise_mode    = "CUSTOM"
+///     advertised_groups = ["ALL_SUBNETS"]
+///     advertised_ip_ranges = [{
+///       "range" = "1.2.3.4"
+///       }, {
+///       "range" = "6.7.0.0/16"
+///     }]
+///   }
+///   ncc_gateway = gcp_networkconnectivity_spoke.primary.id
 /// }
 /// ```
 /// ```java
@@ -676,11 +785,13 @@ import 'router_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayArgs;
+/// import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayIpRangeReservationArgs;
 /// import com.pulumi.gcp.compute.Router;
 /// import com.pulumi.gcp.compute.RouterArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RouterBgpAdvertisedIpRangeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -698,7 +809,7 @@ import 'router_state.dart';
 ///             .build());
 ///
 ///         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-subnet_52865")
+///             .name("tf-test-subnet_37118")
 ///             .ipCidrRange("10.0.0.0/28")
 ///             .region("us-central1")
 ///             .network(network.selfLink())
@@ -756,7 +867,7 @@ import 'router_state.dart';
 ///   subnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     properties:
-///       name: tf-test-subnet_52865
+///       name: tf-test-subnet_37118
 ///       ipCidrRange: 10.0.0.0/28
 ///       region: us-central1
 ///       network: ${network.selfLink}
@@ -804,28 +915,17 @@ import 'router_state.dart';
 /// Router can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/router:Router default {{name}}
 /// ```
 class Router extends pulumi.CustomResource {
@@ -834,6 +934,13 @@ class Router extends pulumi.CustomResource {
   late final pulumi.Output<RouterBgp?> bgp;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Indicates if a router is dedicated for use with encrypted VLAN
@@ -880,6 +987,7 @@ class Router extends pulumi.CustomResource {
         ) {
     bgp = registerOutput<RouterBgp?>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     encryptedInterconnectRouter = registerOutput<bool?>('encryptedInterconnectRouter');
     md5AuthenticationKeys = registerOutput<RouterMd5AuthenticationKeys?>('md5AuthenticationKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterMd5AuthenticationKeys.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -917,6 +1025,7 @@ class Router extends pulumi.CustomResource {
         ) {
     bgp = registerOutput<RouterBgp?>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     encryptedInterconnectRouter = registerOutput<bool?>('encryptedInterconnectRouter');
     md5AuthenticationKeys = registerOutput<RouterMd5AuthenticationKeys?>('md5AuthenticationKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterMd5AuthenticationKeys.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -80,6 +80,22 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_rule" "example" {
+///   location        = "us"
+///   instance        = "00000000-0000-0000-0000-000000000000"
+///   deletion_policy = "DEFAULT"
+///   text            = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +104,8 @@ import 'rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.chronicle.Rule;
 /// import com.pulumi.gcp.chronicle.RuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +208,22 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_rule" "example" {
+///   location        = "us"
+///   instance        = "00000000-0000-0000-0000-000000000000"
+///   deletion_policy = "FORCE"
+///   text            = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +232,8 @@ import 'rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.chronicle.Rule;
 /// import com.pulumi.gcp.chronicle.RuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -350,6 +382,31 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccessscope" "data_access_scope_test" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_scope_id = "scope-name"
+///   description          = "scope-description"
+///   allowed_data_access_labels {
+///     log_type = "GCP_CLOUDAUDIT"
+///   }
+/// }
+/// resource "gcp_chronicle_rule" "example" {
+///   location = "us"
+///   instance = "00000000-0000-0000-0000-000000000000"
+///   scope    = googleChronicleDataAccessScope.dataAccessScopeTest.name
+///   text     = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -361,8 +418,8 @@ import 'rule_state.dart';
 /// import com.pulumi.gcp.chronicle.inputs.DataAccessScopeAllowedDataAccessLabelArgs;
 /// import com.pulumi.gcp.chronicle.Rule;
 /// import com.pulumi.gcp.chronicle.RuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,7 +444,7 @@ import 'rule_state.dart';
 ///         var example = new Rule("example", RuleArgs.builder()
 ///             .location("us")
 ///             .instance("00000000-0000-0000-0000-000000000000")
-///             .scope(googleChronicleDataAccessScope.dataAccessScopeTest().name())
+///             .scope(googleChronicleDataAccessScope.get("dataAccessScopeTest").get("name"))
 ///             .text("""
 /// rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
 ///             """)
@@ -424,22 +481,15 @@ import 'rule_state.dart';
 /// Rule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{rule_id}}`
-///
 /// * `{{location}}/{{instance}}/{{rule_id}}`
+///
 ///
 /// When using the `pulumi import` command, Rule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:chronicle/rule:Rule default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/rule:Rule default {{project}}/{{location}}/{{instance}}/{{rule_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/rule:Rule default {{location}}/{{instance}}/{{rule_id}}
 /// ```
 class Rule extends pulumi.CustomResource {
@@ -467,13 +517,20 @@ class Rule extends pulumi.CustomResource {
   /// Output only. Resource names of the data tables used in this rule.
   late final pulumi.Output<List<String>> dataTables;
   /// Policy to determine if the rule should be deleted forcefully.
-  /// If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
-  /// will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
+  /// If deletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
+  /// will also be deleted. If deletionPolicy = "DEFAULT", the call will only succeed if the
   /// rule has no associated retrohunts, including completed retrohunts, and no
-  /// associated detections. Regardless of this field's value, the rule
-  /// deployment associated with this rule will also be deleted.
-  /// Possible values: DEFAULT, FORCE
-  late final pulumi.Output<String?> deletionPolicy;
+  /// associated detections. Regardless of being set to "FORCE" the rule
+  /// deployment associated with this rule will also be deleted if deletion is successful.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the severity level. Extracted from the meta section of
   /// the rule text.
   late final pulumi.Output<String> displayName;
@@ -558,7 +615,7 @@ class Rule extends pulumi.CustomResource {
     compilationState = registerOutput<String>('compilationState');
     createTime = registerOutput<String>('createTime');
     dataTables = registerOutput<List<String>>('dataTables');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
@@ -606,7 +663,7 @@ class Rule extends pulumi.CustomResource {
     compilationState = registerOutput<String>('compilationState');
     createTime = registerOutput<String>('createTime');
     dataTables = registerOutput<List<String>>('dataTables');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');

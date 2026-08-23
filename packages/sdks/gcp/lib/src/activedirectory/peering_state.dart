@@ -6,13 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PeeringState {
   /// The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
   final pulumi.Input<String>? authorizedNetwork;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
   final pulumi.Input<String>? domainResource;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Resource labels that can contain user-provided metadata
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
   final pulumi.Input<String>? name;
@@ -31,6 +38,7 @@ class PeeringState {
 
   /// Creates a new [PeeringState].
   /// [authorizedNetwork] The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [domainResource] Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [labels] Resource labels that can contain user-provided metadata
@@ -42,6 +50,7 @@ class PeeringState {
   /// [statusMessage] Additional information about the current status of this peering, if available.
   const PeeringState({
     this.authorizedNetwork,
+    this.deletionPolicy,
     this.domainResource,
     this.effectiveLabels,
     this.labels,
@@ -56,6 +65,7 @@ class PeeringState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorizedNetwork': ?authorizedNetwork,
+      'deletionPolicy': ?deletionPolicy,
       'domainResource': ?domainResource,
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
@@ -71,6 +81,7 @@ class PeeringState {
   factory PeeringState.fromMap(Map<String, dynamic> map) {
     return PeeringState(
       authorizedNetwork: (() { final guardedValue = map['authorizedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainResource: (() { final guardedValue = map['domainResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -83,4 +94,3 @@ class PeeringState {
     );
   }
 }
-

@@ -177,6 +177,41 @@ import 'security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_securitypolicy" "policy" {
+///   name = "my-policy"
+///   rules {
+///     action   = "deny(403)"
+///     priority = "1000"
+///     match = {
+///       versioned_expr = "SRC_IPS_V1"
+///       config = {
+///         src_ip_ranges = ["9.9.9.0/24"]
+///       }
+///     }
+///     description = "Deny access to IPs in 9.9.9.0/24"
+///   }
+///   rules {
+///     action   = "allow"
+///     priority = "2147483647"
+///     match = {
+///       versioned_expr = "SRC_IPS_V1"
+///       config = {
+///         src_ip_ranges = ["*"]
+///       }
+///     }
+///     description = "default rule"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -188,8 +223,8 @@ import 'security_policy_state.dart';
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -391,6 +426,36 @@ import 'security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprisekey" "primary" {
+///   display_name = "display-name"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   project = "my-project-name"
+///   web_settings = {
+///     integration_type  = "INVISIBLE"
+///     allow_all_domains = true
+///     allowed_domains   = ["localhost"]
+///   }
+/// }
+/// resource "gcp_compute_securitypolicy" "policy" {
+///   name        = "my-policy"
+///   description = "basic security policy"
+///   type        = "CLOUD_ARMOR"
+///   recaptcha_options_config = {
+///     redirect_site_key = gcp_recaptcha_enterprisekey.primary.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -403,8 +468,8 @@ import 'security_policy_state.dart';
 /// import com.pulumi.gcp.compute.SecurityPolicy;
 /// import com.pulumi.gcp.compute.SecurityPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRecaptchaOptionsConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -669,6 +734,48 @@ import 'security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_securitypolicy" "policy" {
+///   name = "my-policy"
+///   rules {
+///     action   = "allow"
+///     priority = "2147483647"
+///     match = {
+///       versioned_expr = "SRC_IPS_V1"
+///       config = {
+///         src_ip_ranges = ["*"]
+///       }
+///     }
+///     description = "default rule"
+///   }
+///   rules {
+///     action   = "allow"
+///     priority = "1000"
+///     match = {
+///       expr = {
+///         expression = "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2"
+///       }
+///     }
+///     header_action = {
+///       request_headers_to_adds = [{
+///         "headerName"  = "reCAPTCHA-Warning"
+///         "headerValue" = "high"
+///         }, {
+///         "headerName"  = "X-Resource"
+///         "headerValue" = "test"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -682,8 +789,9 @@ import 'security_policy_state.dart';
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -764,7 +872,7 @@ import 'security_policy_state.dart';
 ///
 ///
 /// ### With EnforceOnKey Value As Empty String
-/// A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
+/// A scenario example that won't cause any conflict between `enforceOnKey` and `enforceOnKeyConfigs`, because `enforceOnKey` was specified as an empty string:
 ///
 ///
 /// ```typescript
@@ -951,6 +1059,47 @@ import 'security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_securitypolicy" "policy" {
+///   name        = "%s"
+///   description = "throttle rule with enforce_on_key_configs"
+///   rules {
+///     action   = "throttle"
+///     priority = "2147483647"
+///     match = {
+///       versioned_expr = "SRC_IPS_V1"
+///       config = {
+///         src_ip_ranges = ["*"]
+///       }
+///     }
+///     description = "default rule"
+///     rate_limit_options = {
+///       conform_action = "allow"
+///       exceed_action  = "redirect"
+///       enforce_on_key = ""
+///       enforce_on_key_configs = [{
+///         "enforceOnKeyType" = "IP"
+///       }]
+///       exceed_redirect_options = {
+///         type   = "EXTERNAL_302"
+///         target = "<https://www.example.com>"
+///       }
+///       rate_limit_threshold = {
+///         count        = 10
+///         interval_sec = 60
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -963,10 +1112,11 @@ import 'security_policy_state.dart';
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs;
 /// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1044,27 +1194,227 @@ import 'security_policy_state.dart';
 /// ```
 ///
 ///
+/// ### With Advanced Options Config
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = new gcp.compute.SecurityPolicy("policy", {
+///     name: "my-policy",
+///     advancedOptionsConfig: {
+///         jsonParsing: "STANDARD",
+///         jsonCustomConfig: {
+///             contentTypes: [
+///                 "application/json",
+///                 "application/vnd.api+json",
+///                 "application/vnd.collection+json",
+///                 "application/vnd.hyper+json",
+///             ],
+///         },
+///         logLevel: "VERBOSE",
+///         userIpRequestHeaders: [
+///             "True-Client-IP",
+///             "x-custom-ip",
+///         ],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.compute.SecurityPolicy("policy",
+///     name="my-policy",
+///     advanced_options_config={
+///         "json_parsing": "STANDARD",
+///         "json_custom_config": {
+///             "content_types": [
+///                 "application/json",
+///                 "application/vnd.api+json",
+///                 "application/vnd.collection+json",
+///                 "application/vnd.hyper+json",
+///             ],
+///         },
+///         "log_level": "VERBOSE",
+///         "user_ip_request_headers": [
+///             "True-Client-IP",
+///             "x-custom-ip",
+///         ],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+///     {
+///         Name = "my-policy",
+///         AdvancedOptionsConfig = new Gcp.Compute.Inputs.SecurityPolicyAdvancedOptionsConfigArgs
+///         {
+///             JsonParsing = "STANDARD",
+///             JsonCustomConfig = new Gcp.Compute.Inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs
+///             {
+///                 ContentTypes = new[]
+///                 {
+///                     "application/json",
+///                     "application/vnd.api+json",
+///                     "application/vnd.collection+json",
+///                     "application/vnd.hyper+json",
+///                 },
+///             },
+///             LogLevel = "VERBOSE",
+///             UserIpRequestHeaders = new[]
+///             {
+///                 "True-Client-IP",
+///                 "x-custom-ip",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+/// 			Name: pulumi.String("my-policy"),
+/// 			AdvancedOptionsConfig: &compute.SecurityPolicyAdvancedOptionsConfigArgs{
+/// 				JsonParsing: pulumi.String("STANDARD"),
+/// 				JsonCustomConfig: &compute.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{
+/// 					ContentTypes: pulumi.StringArray{
+/// 						pulumi.String("application/json"),
+/// 						pulumi.String("application/vnd.api+json"),
+/// 						pulumi.String("application/vnd.collection+json"),
+/// 						pulumi.String("application/vnd.hyper+json"),
+/// 					},
+/// 				},
+/// 				LogLevel: pulumi.String("VERBOSE"),
+/// 				UserIpRequestHeaders: pulumi.StringArray{
+/// 					pulumi.String("True-Client-IP"),
+/// 					pulumi.String("x-custom-ip"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_securitypolicy" "policy" {
+///   name = "my-policy"
+///   advanced_options_config = {
+///     json_parsing = "STANDARD"
+///     json_custom_config = {
+///       content_types = ["application/json", "application/vnd.api+json", "application/vnd.collection+json", "application/vnd.hyper+json"]
+///     }
+///     log_level               = "VERBOSE"
+///     user_ip_request_headers = ["True-Client-IP", "x-custom-ip"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.SecurityPolicy;
+/// import com.pulumi.gcp.compute.SecurityPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
+///             .name("my-policy")
+///             .advancedOptionsConfig(SecurityPolicyAdvancedOptionsConfigArgs.builder()
+///                 .jsonParsing("STANDARD")
+///                 .jsonCustomConfig(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs.builder()
+///                     .contentTypes(
+///                         "application/json",
+///                         "application/vnd.api+json",
+///                         "application/vnd.collection+json",
+///                         "application/vnd.hyper+json")
+///                     .build())
+///                 .logLevel("VERBOSE")
+///                 .userIpRequestHeaders(
+///                     "True-Client-IP",
+///                     "x-custom-ip")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:compute:SecurityPolicy
+///     properties:
+///       name: my-policy
+///       advancedOptionsConfig:
+///         jsonParsing: STANDARD
+///         jsonCustomConfig:
+///           contentTypes:
+///             - application/json
+///             - application/vnd.api+json
+///             - application/vnd.collection+json
+///             - application/vnd.hyper+json
+///         logLevel: VERBOSE
+///         userIpRequestHeaders:
+///           - True-Client-IP
+///           - x-custom-ip
+/// ```
+///
+///
 /// ## Import
 ///
 /// Security policies can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/securityPolicies/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
 /// ```
 class SecurityPolicy extends pulumi.CustomResource {
@@ -1073,6 +1423,13 @@ class SecurityPolicy extends pulumi.CustomResource {
   /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
   /// Structure is documented below.
   late final pulumi.Output<SecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this security policy. Max size is 2048.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1083,7 +1440,7 @@ class SecurityPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> labelFingerprint;
   /// Labels to apply to this address. A list of key-&gt;value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the security policy.
   ///
@@ -1128,6 +1485,7 @@ class SecurityPolicy extends pulumi.CustomResource {
         ) {
     adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfig?>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     fingerprint = registerOutput<String>('fingerprint');
@@ -1167,6 +1525,7 @@ class SecurityPolicy extends pulumi.CustomResource {
         ) {
     adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfig?>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     fingerprint = registerOutput<String>('fingerprint');

@@ -96,6 +96,27 @@ import 'document_ai_warehouse_location_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_essentialcontacts_documentaiwarehouselocation" "example" {
+///   location                      = "us"
+///   project_number                = data.gcp_organizations_getproject.project.number
+///   access_control_mode           = "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"
+///   database_type                 = "DB_INFRA_SPANNER"
+///   kms_key                       = "dummy_key"
+///   document_creator_default_role = "DOCUMENT_ADMIN"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +127,8 @@ import 'document_ai_warehouse_location_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiWarehouseLocation;
 /// import com.pulumi.gcp.essentialcontacts.DocumentAiWarehouseLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

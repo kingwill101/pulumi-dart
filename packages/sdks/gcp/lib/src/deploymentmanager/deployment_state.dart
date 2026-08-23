@@ -23,6 +23,13 @@ class DeploymentState {
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
   final pulumi.Input<String>? deletePolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Unique identifier for deployment. Output only.
   final pulumi.Input<String>? deploymentId;
   /// Optional user-provided description of deployment.
@@ -57,6 +64,7 @@ class DeploymentState {
   /// Creates a new [DeploymentState].
   /// [createPolicy] Set the policy to use for creating new resources. Only used on
   /// [deletePolicy] Set the policy to use for deleting new resources on update/delete.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deploymentId] Unique identifier for deployment. Output only.
   /// [description] Optional user-provided description of deployment.
   /// [labels] Key-value pairs to apply to this labels.
@@ -69,6 +77,7 @@ class DeploymentState {
   const DeploymentState({
     this.createPolicy,
     this.deletePolicy,
+    this.deletionPolicy,
     this.deploymentId,
     this.description,
     this.labels,
@@ -84,6 +93,7 @@ class DeploymentState {
     return <String, dynamic>{
       'createPolicy': ?createPolicy,
       'deletePolicy': ?deletePolicy,
+      'deletionPolicy': ?deletionPolicy,
       'deploymentId': ?deploymentId,
       'description': ?description,
       'labels': ?pulumi.Input.mapOptionalInputValue<List<DeploymentLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<DeploymentLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -100,6 +110,7 @@ class DeploymentState {
     return DeploymentState(
       createPolicy: (() { final guardedValue = map['createPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletePolicy: (() { final guardedValue = map['deletePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentLabel>(guardedValue, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -112,4 +123,3 @@ class DeploymentState {
     );
   }
 }
-

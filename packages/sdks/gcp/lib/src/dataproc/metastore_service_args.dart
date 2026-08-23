@@ -19,6 +19,13 @@ class MetastoreServiceArgs {
   /// Default value is `MYSQL`.
   /// Possible values are: `MYSQL`, `SPANNER`.
   final pulumi.Input<String>? databaseType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Indicates if the dataproc metastore should be protected against accidental deletions.
   final pulumi.Input<bool>? deletionProtection;
   /// Information used to configure the Dataproc Metastore service to encrypt
@@ -30,7 +37,7 @@ class MetastoreServiceArgs {
   final pulumi.Input<MetastoreServiceHiveMetastoreConfig>? hiveMetastoreConfig;
   /// User-defined labels for the metastore service.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the metastore service should reside.
   /// The default value is `global`.
@@ -81,6 +88,7 @@ class MetastoreServiceArgs {
 
   /// Creates a new [MetastoreServiceArgs].
   /// [databaseType] The database type that the Metastore service stores its data.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deletionProtection] Indicates if the dataproc metastore should be protected against accidental deletions.
   /// [encryptionConfig] Information used to configure the Dataproc Metastore service to encrypt
   /// [hiveMetastoreConfig] Configuration information specific to running Hive metastore software as the metastore service.
@@ -101,6 +109,7 @@ class MetastoreServiceArgs {
   /// [tier] The tier of the service.
   const MetastoreServiceArgs({
     this.databaseType,
+    this.deletionPolicy,
     this.deletionProtection,
     this.encryptionConfig,
     this.hiveMetastoreConfig,
@@ -124,6 +133,7 @@ class MetastoreServiceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseType': ?databaseType,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<MetastoreServiceEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'hiveMetastoreConfig': ?pulumi.Input.mapOptionalInputValue<MetastoreServiceHiveMetastoreConfig, Map<String, dynamic>>(hiveMetastoreConfig, (value) => value.toMap()),
@@ -148,6 +158,7 @@ class MetastoreServiceArgs {
   factory MetastoreServiceArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceArgs(
       databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hiveMetastoreConfig: (() { final guardedValue = map['hiveMetastoreConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceHiveMetastoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -169,4 +180,3 @@ class MetastoreServiceArgs {
     );
   }
 }
-

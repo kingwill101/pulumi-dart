@@ -165,6 +165,41 @@ import 'lite_topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_litereservation" "example" {
+///   name                = "example-reservation"
+///   project             = data.gcp_organizations_getproject.project.number
+///   throughput_capacity = 2
+/// }
+/// resource "gcp_pubsub_litetopic" "example" {
+///   name    = "example-topic"
+///   project = data.gcp_organizations_getproject.project.number
+///   partition_config = {
+///     count = 1
+///     capacity = {
+///       publish_mib_per_sec   = 4
+///       subscribe_mib_per_sec = 8
+///     }
+///   }
+///   retention_config = {
+///     per_partition_bytes = 32212254720
+///   }
+///   reservation_config = {
+///     throughput_reservation = gcp_pubsub_litereservation.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +216,8 @@ import 'lite_topic_state.dart';
 /// import com.pulumi.gcp.pubsub.inputs.LiteTopicPartitionConfigCapacityArgs;
 /// import com.pulumi.gcp.pubsub.inputs.LiteTopicRetentionConfigArgs;
 /// import com.pulumi.gcp.pubsub.inputs.LiteTopicReservationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,31 +295,27 @@ import 'lite_topic_state.dart';
 /// Topic can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{zone}}/topics/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default projects/{{project}}/locations/{{zone}}/topics/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
 /// ```
 class LiteTopic extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name of the topic.
   late final pulumi.Output<String> name;
   /// The settings for this topic's partitions.
@@ -318,6 +349,7 @@ class LiteTopic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
@@ -350,6 +382,7 @@ class LiteTopic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

@@ -8,15 +8,15 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   /// The attribute type to be used to determine the boost amount. The
   /// attribute value can be derived from the field value of the specified
   /// field_name. In the case of numerical it is straightforward i.e.
-  /// attribute_value = numerical_field_value. In the case of freshness
-  /// however, attribute_value = (time.now() - datetime_field_value).
+  /// attributeValue = numerical_field_value. In the case of freshness
+  /// however, attributeValue = (time.now() - datetime_field_value).
   /// Possible values:
   /// NUMERICAL
   /// FRESHNESS
   final pulumi.Input<String>? attributeType;
   /// (Output)
   /// The control points used to define the curve. The monotonic function
-  /// (defined through the interpolation_type above) passes through the
+  /// (defined through the interpolationType above) passes through the
   /// control points listed here.
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>>? controlPoints;
@@ -61,4 +61,3 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
     );
   }
 }
-

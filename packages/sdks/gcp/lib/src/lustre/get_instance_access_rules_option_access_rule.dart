@@ -3,18 +3,24 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceAccessRulesOptionAccessRule {
-  /// An array of IP address strings or CIDR ranges that this rule applies to.
+  /// The IP address ranges to which to apply this access rule. Accepts
+  /// non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP addresses
+  /// (e.g., '192.168.1.0').
   final pulumi.Input<List<String>> ipAddressRanges;
-  /// A unique identifier for the access rule.
+  /// The name of the access rule policy group.
+  /// Must be 16 characters or less and include only alphanumeric characters
+  /// or '_'.
   final pulumi.Input<String> name;
-  /// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-  /// is supported for exceptions. Possible values: ["NO_SQUASH"]
+  /// Squash mode for the access rule.
+  /// Possible values:
+  /// NO_SQUASH
+  /// ROOT_SQUASH
   final pulumi.Input<String> squashMode;
 
   /// Creates a new [GetInstanceAccessRulesOptionAccessRule].
-  /// [ipAddressRanges] An array of IP address strings or CIDR ranges that this rule applies to.
-  /// [name] A unique identifier for the access rule.
-  /// [squashMode] The squash mode for this specific rule. Currently, only "NO_SQUASH"
+  /// [ipAddressRanges] The IP address ranges to which to apply this access rule. Accepts
+  /// [name] The name of the access rule policy group.
+  /// [squashMode] Squash mode for the access rule.
   const GetInstanceAccessRulesOptionAccessRule({
     required this.ipAddressRanges,
     required this.name,
@@ -37,4 +43,3 @@ class GetInstanceAccessRulesOptionAccessRule {
     );
   }
 }
-

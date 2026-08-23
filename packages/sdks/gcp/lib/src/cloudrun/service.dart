@@ -21,7 +21,6 @@ import 'service_template.dart';
 /// ### Cloud Run Service Pubsub
 ///
 ///
-///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
@@ -60,7 +59,7 @@ import 'service_template.dart';
 ///     name: "pubsub_subscription",
 ///     topic: topic.name,
 ///     pushConfig: {
-///         pushEndpoint: _default.statuses.apply(statuses => statuses[0].url),
+///         pushEndpoint: _default.statuses[0].url,
 ///         oidcToken: {
 ///             serviceAccountEmail: sa.email,
 ///         },
@@ -278,7 +277,7 @@ import 'service_template.dart';
 /// 			Topic: topic.Name,
 /// 			PushConfig: &pubsub.SubscriptionPushConfigArgs{
 /// 				PushEndpoint: _default.Statuses.ApplyT(func(statuses []cloudrun.ServiceStatus) (*string, error) {
-/// 					return &statuses[0].Url, nil
+/// 					return statuses[0].Url, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				OidcToken: &pubsub.SubscriptionPushConfigOidcTokenArgs{
 /// 					ServiceAccountEmail: sa.Email,
@@ -295,6 +294,61 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloud_run_service_name"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "gcr.io/cloudrun/hello"
+///       }]
+///     }
+///   }
+///   traffics {
+///     percent         = 100
+///     latest_revision = true
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "sa" {
+///   account_id   = "cloud-run-pubsub-invoker"
+///   display_name = "Cloud Run Pub/Sub Invoker"
+/// }
+/// resource "gcp_cloudrun_iambinding" "binding" {
+///   location = gcp_cloudrun_service.default.location
+///   service  = gcp_cloudrun_service.default.name
+///   role     = "roles/run.invoker"
+///   members  = ["serviceAccount:${gcp_serviceaccount_account.sa.email}"]
+/// }
+/// resource "gcp_projects_iambinding" "project" {
+///   role    = "roles/iam.serviceAccountTokenCreator"
+///   members = ["serviceAccount:${gcp_serviceaccount_account.sa.email}"]
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "pubsub_topic"
+/// }
+/// resource "gcp_pubsub_subscription" "subscription" {
+///   name  = "pubsub_subscription"
+///   topic = gcp_pubsub_topic.topic.name
+///   push_config = {
+///     push_endpoint = gcp_cloudrun_service.default.statuses[0].url
+///     oidc_token = {
+///       service_account_email = gcp_serviceaccount_account.sa.email
+///     }
+///     attributes = {
+///       "x-goog-version" = "v1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -305,6 +359,7 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
 /// import com.pulumi.gcp.serviceaccount.Account;
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
@@ -318,8 +373,8 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.pubsub.SubscriptionArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
 /// import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigOidcTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,7 +427,7 @@ import 'service_template.dart';
 ///             .name("pubsub_subscription")
 ///             .topic(topic.name())
 ///             .pushConfig(SubscriptionPushConfigArgs.builder()
-///                 .pushEndpoint(default_.statuses().applyValue(_statuses -> _statuses[0].url()))
+///                 .pushEndpoint(default_.statuses().applyValue(_statuses -> _statuses.get(0).url()))
 ///                 .oidcToken(SubscriptionPushConfigOidcTokenArgs.builder()
 ///                     .serviceAccountEmail(sa.email())
 ///                     .build())
@@ -435,6 +490,7 @@ import 'service_template.dart';
 ///
 ///
 /// ### Cloud Run Service Basic
+///
 ///
 ///
 /// ```typescript
@@ -549,6 +605,31 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       }]
+///     }
+///   }
+///   traffics {
+///     percent         = 100
+///     latest_revision = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -559,9 +640,10 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -619,16 +701,12 @@ import 'service_template.dart';
 /// const _default = new gcp.cloudrun.Service("default", {
 ///     name: "cloudrun-srv",
 ///     location: "us-central1",
-///     metadata: {
-///         annotations: {
-///             "run.googleapis.com/launch-stage": "BETA",
-///         },
-///     },
 ///     template: {
 ///         metadata: {
 ///             annotations: {
 ///                 "autoscaling.knative.dev/maxScale": "1",
 ///                 "run.googleapis.com/cpu-throttling": "false",
+///                 "run.googleapis.com/gpu-zonal-redundancy-disabled": "true",
 ///             },
 ///         },
 ///         spec: {
@@ -656,16 +734,12 @@ import 'service_template.dart';
 /// default = gcp.cloudrun.Service("default",
 ///     name="cloudrun-srv",
 ///     location="us-central1",
-///     metadata={
-///         "annotations": {
-///             "run.googleapis.com/launch-stage": "BETA",
-///         },
-///     },
 ///     template={
 ///         "metadata": {
 ///             "annotations": {
 ///                 "autoscaling.knative.dev/maxScale": "1",
 ///                 "run.googleapis.com/cpu-throttling": "false",
+///                 "run.googleapis.com/gpu-zonal-redundancy-disabled": "true",
 ///             },
 ///         },
 ///         "spec": {
@@ -697,13 +771,6 @@ import 'service_template.dart';
 ///     {
 ///         Name = "cloudrun-srv",
 ///         Location = "us-central1",
-///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-///         {
-///             Annotations =
-///             {
-///                 { "run.googleapis.com/launch-stage", "BETA" },
-///             },
-///         },
 ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
 ///         {
 ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
@@ -712,6 +779,7 @@ import 'service_template.dart';
 ///                 {
 ///                     { "autoscaling.knative.dev/maxScale", "1" },
 ///                     { "run.googleapis.com/cpu-throttling", "false" },
+///                     { "run.googleapis.com/gpu-zonal-redundancy-disabled", "true" },
 ///                 },
 ///             },
 ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
@@ -755,16 +823,12 @@ import 'service_template.dart';
 /// 		_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 /// 			Name:     pulumi.String("cloudrun-srv"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			Metadata: &cloudrun.ServiceMetadataArgs{
-/// 				Annotations: pulumi.StringMap{
-/// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-/// 				},
-/// 			},
 /// 			Template: &cloudrun.ServiceTemplateArgs{
 /// 				Metadata: &cloudrun.ServiceTemplateMetadataArgs{
 /// 					Annotations: pulumi.StringMap{
-/// 						"autoscaling.knative.dev/maxScale":  pulumi.String("1"),
-/// 						"run.googleapis.com/cpu-throttling": pulumi.String("false"),
+/// 						"autoscaling.knative.dev/maxScale":                 pulumi.String("1"),
+/// 						"run.googleapis.com/cpu-throttling":                pulumi.String("false"),
+/// 						"run.googleapis.com/gpu-zonal-redundancy-disabled": pulumi.String("true"),
 /// 					},
 /// 				},
 /// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -793,6 +857,44 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   template = {
+///     metadata = {
+///       annotations = {
+///         "autoscaling.knative.dev/maxScale"                 = "1"
+///         "run.googleapis.com/cpu-throttling"                = "false"
+///         "run.googleapis.com/gpu-zonal-redundancy-disabled" = "true"
+///       }
+///     }
+///     spec = {
+///       containers = [{
+///         "image" = "gcr.io/cloudrun/hello"
+///         "resources" = {
+///           "limits" = {
+///             "cpu"            = "4"
+///             "memory"         = "16Gi"
+///             "nvidia.com/gpu" = "1"
+///           }
+///         }
+///       }]
+///       node_selector = {
+///         "run.googleapis.com/accelerator" = "nvidia-l4"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -801,12 +903,13 @@ import 'service_template.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrun.Service;
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
-/// import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerResourcesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -821,14 +924,12 @@ import 'service_template.dart';
 ///         var default_ = new Service("default", ServiceArgs.builder()
 ///             .name("cloudrun-srv")
 ///             .location("us-central1")
-///             .metadata(ServiceMetadataArgs.builder()
-///                 .annotations(Map.of("run.googleapis.com/launch-stage", "BETA"))
-///                 .build())
 ///             .template(ServiceTemplateArgs.builder()
 ///                 .metadata(ServiceTemplateMetadataArgs.builder()
 ///                     .annotations(Map.ofEntries(
 ///                         Map.entry("autoscaling.knative.dev/maxScale", "1"),
-///                         Map.entry("run.googleapis.com/cpu-throttling", "false")
+///                         Map.entry("run.googleapis.com/cpu-throttling", "false"),
+///                         Map.entry("run.googleapis.com/gpu-zonal-redundancy-disabled", "true")
 ///                     ))
 ///                     .build())
 ///                 .spec(ServiceTemplateSpecArgs.builder()
@@ -857,14 +958,12 @@ import 'service_template.dart';
 ///     properties:
 ///       name: cloudrun-srv
 ///       location: us-central1
-///       metadata:
-///         annotations:
-///           run.googleapis.com/launch-stage: BETA
 ///       template:
 ///         metadata:
 ///           annotations:
 ///             autoscaling.knative.dev/maxScale: '1'
 ///             run.googleapis.com/cpu-throttling: 'false'
+///             run.googleapis.com/gpu-zonal-redundancy-disabled: 'true'
 ///         spec:
 ///           containers:
 ///             - image: gcr.io/cloudrun/hello
@@ -1047,6 +1146,44 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       }]
+///     }
+///     metadata = {
+///       annotations = {
+///         "autoscaling.knative.dev/maxScale"      = "1000"
+///         "run.googleapis.com/cloudsql-instances" = gcp_sql_databaseinstance.instance.connection_name
+///         "run.googleapis.com/client-name"        = "demo"
+///       }
+///     }
+///   }
+///   autogenerate_revision_name = true
+/// }
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "cloudrun-sql"
+///   region           = "us-east1"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+///   deletion_protection = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1060,9 +1197,10 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1296,6 +1434,40 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "noauth" {
+///   bindings {
+///     role    = "roles/run.invoker"
+///     members = ["allUsers"]
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_cloudrun_iampolicy" "noauth" {
+///   location    = gcp_cloudrun_service.default.location
+///   project     = gcp_cloudrun_service.default.project
+///   service     = gcp_cloudrun_service.default.name
+///   policy_data = data.gcp_organizations_getiampolicy.noauth.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1306,12 +1478,14 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.cloudrun.IamPolicy;
 /// import com.pulumi.gcp.cloudrun.IamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1558,6 +1732,45 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         "startupProbe" = {
+///           "initialDelaySeconds" = 0
+///           "timeoutSeconds"      = 1
+///           "periodSeconds"       = 3
+///           "failureThreshold"    = 1
+///           "tcpSocket" = {
+///             "port" = 8080
+///           }
+///         }
+///         "livenessProbe" = {
+///           "httpGet" = {
+///             "path" = "/"
+///           }
+///         }
+///       }]
+///     }
+///   }
+///   traffics {
+///     percent         = 100
+///     latest_revision = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1568,9 +1781,14 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerLivenessProbeArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1652,11 +1870,6 @@ import 'service_template.dart';
 /// const _default = new gcp.cloudrun.Service("default", {
 ///     name: "cloudrun-srv-rp",
 ///     location: "us-central1",
-///     metadata: {
-///         annotations: {
-///             "run.googleapis.com/launch-stage": "BETA",
-///         },
-///     },
 ///     template: {
 ///         spec: {
 ///             containers: [{
@@ -1686,11 +1899,6 @@ import 'service_template.dart';
 /// default = gcp.cloudrun.Service("default",
 ///     name="cloudrun-srv-rp",
 ///     location="us-central1",
-///     metadata={
-///         "annotations": {
-///             "run.googleapis.com/launch-stage": "BETA",
-///         },
-///     },
 ///     template={
 ///         "spec": {
 ///             "containers": [{
@@ -1724,13 +1932,6 @@ import 'service_template.dart';
 ///     {
 ///         Name = "cloudrun-srv-rp",
 ///         Location = "us-central1",
-///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-///         {
-///             Annotations =
-///             {
-///                 { "run.googleapis.com/launch-stage", "BETA" },
-///             },
-///         },
 ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
 ///         {
 ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
@@ -1780,11 +1981,6 @@ import 'service_template.dart';
 /// 		_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 /// 			Name:     pulumi.String("cloudrun-srv-rp"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			Metadata: &cloudrun.ServiceMetadataArgs{
-/// 				Annotations: pulumi.StringMap{
-/// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-/// 				},
-/// 			},
 /// 			Template: &cloudrun.ServiceTemplateArgs{
 /// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 /// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
@@ -1817,6 +2013,40 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv-rp"
+///   location = "us-central1"
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         "readinessProbe" = {
+///           "timeoutSeconds"   = 20
+///           "periodSeconds"    = 30
+///           "successThreshold" = 3
+///           "failureThreshold" = 2
+///           "grpc" = {
+///             "port" = 8080
+///           }
+///         }
+///       }]
+///     }
+///   }
+///   traffics {
+///     percent         = 100
+///     latest_revision = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1825,12 +2055,14 @@ import 'service_template.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrun.Service;
 /// import com.pulumi.gcp.cloudrun.ServiceArgs;
-/// import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerReadinessProbeArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerReadinessProbeGrpcArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1845,9 +2077,6 @@ import 'service_template.dart';
 ///         var default_ = new Service("default", ServiceArgs.builder()
 ///             .name("cloudrun-srv-rp")
 ///             .location("us-central1")
-///             .metadata(ServiceMetadataArgs.builder()
-///                 .annotations(Map.of("run.googleapis.com/launch-stage", "BETA"))
-///                 .build())
 ///             .template(ServiceTemplateArgs.builder()
 ///                 .spec(ServiceTemplateSpecArgs.builder()
 ///                     .containers(ServiceTemplateSpecContainerArgs.builder()
@@ -1880,9 +2109,6 @@ import 'service_template.dart';
 ///     properties:
 ///       name: cloudrun-srv-rp
 ///       location: us-central1
-///       metadata:
-///         annotations:
-///           run.googleapis.com/launch-stage: BETA
 ///       template:
 ///         spec:
 ///           containers:
@@ -2128,7 +2354,7 @@ import 'service_template.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]string{
 /// 			"hello-1": []string{
 /// 				"hello-2",
 /// 			},
@@ -2204,6 +2430,65 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   template = {
+///     metadata = {
+///       annotations = {
+///         "run.googleapis.com/container-dependencies" = jsonencode({
+///           "hello-1" = ["hello-2"]
+///         })
+///       }
+///     }
+///     spec = {
+///       containers = [{
+///         "name" = "hello-1"
+///         "ports" = [{
+///           "containerPort" = 8080
+///         }]
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         "volumeMounts" = [{
+///           "name"      = "shared-volume"
+///           "mountPath" = "/mnt/shared"
+///         }]
+///         }, {
+///         "name"  = "hello-2"
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         "envs" = [{
+///           "name"  = "PORT"
+///           "value" = "8081"
+///         }]
+///         "startupProbe" = {
+///           "httpGet" = {
+///             "port" = 8081
+///           }
+///         }
+///         "volumeMounts" = [{
+///           "name"      = "shared-volume"
+///           "mountPath" = "/mnt/shared"
+///         }]
+///       }]
+///       volumes = [{
+///         "name" = "shared-volume"
+///         "emptyDir" = {
+///           "medium"    = "Memory"
+///           "sizeLimit" = "128Mi"
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2215,9 +2500,17 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerPortArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerVolumeMountArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeHttpGetArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeEmptyDirArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2337,7 +2630,6 @@ import 'service_template.dart';
 ///     location: "us-central1",
 ///     metadata: {
 ///         annotations: {
-///             "run.googleapis.com/launch-stage": "BETA",
 ///             "run.googleapis.com/iap-enabled": "true",
 ///         },
 ///     },
@@ -2359,7 +2651,6 @@ import 'service_template.dart';
 ///     location="us-central1",
 ///     metadata={
 ///         "annotations": {
-///             "run.googleapis.com/launch-stage": "BETA",
 ///             "run.googleapis.com/iap-enabled": "true",
 ///         },
 ///     },
@@ -2387,7 +2678,6 @@ import 'service_template.dart';
 ///         {
 ///             Annotations =
 ///             {
-///                 { "run.googleapis.com/launch-stage", "BETA" },
 ///                 { "run.googleapis.com/iap-enabled", "true" },
 ///             },
 ///         },
@@ -2423,8 +2713,7 @@ import 'service_template.dart';
 /// 			Location: pulumi.String("us-central1"),
 /// 			Metadata: &cloudrun.ServiceMetadataArgs{
 /// 				Annotations: pulumi.StringMap{
-/// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-/// 					"run.googleapis.com/iap-enabled":  pulumi.String("true"),
+/// 					"run.googleapis.com/iap-enabled": pulumi.String("true"),
 /// 				},
 /// 			},
 /// 			Template: &cloudrun.ServiceTemplateArgs{
@@ -2444,6 +2733,32 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   metadata = {
+///     annotations = {
+///       "run.googleapis.com/iap-enabled" = true
+///     }
+///   }
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "gcr.io/cloudrun/hello"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2455,8 +2770,9 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2472,10 +2788,7 @@ import 'service_template.dart';
 ///             .name("cloudrun-srv")
 ///             .location("us-central1")
 ///             .metadata(ServiceMetadataArgs.builder()
-///                 .annotations(Map.ofEntries(
-///                     Map.entry("run.googleapis.com/launch-stage", "BETA"),
-///                     Map.entry("run.googleapis.com/iap-enabled", "true")
-///                 ))
+///                 .annotations(Map.of("run.googleapis.com/iap-enabled", "true"))
 ///                 .build())
 ///             .template(ServiceTemplateArgs.builder()
 ///                 .spec(ServiceTemplateSpecArgs.builder()
@@ -2498,12 +2811,219 @@ import 'service_template.dart';
 ///       location: us-central1
 ///       metadata:
 ///         annotations:
-///           run.googleapis.com/launch-stage: BETA
 ///           run.googleapis.com/iap-enabled: true
 ///       template:
 ///         spec:
 ///           containers:
 ///             - image: gcr.io/cloudrun/hello
+/// ```
+///
+/// ### Cloud Run Service Sandbox
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrun.Service("default", {
+///     name: "cloudrun-srv",
+///     location: "us-central1",
+///     metadata: {
+///         annotations: {
+///             "run.googleapis.com/launch-stage": "BETA",
+///         },
+///     },
+///     template: {
+///         spec: {
+///             containers: [{
+///                 image: "gcr.io/cloudrun/hello",
+///                 sandboxLauncher: true,
+///             }],
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrun.Service("default",
+///     name="cloudrun-srv",
+///     location="us-central1",
+///     metadata={
+///         "annotations": {
+///             "run.googleapis.com/launch-stage": "BETA",
+///         },
+///     },
+///     template={
+///         "spec": {
+///             "containers": [{
+///                 "image": "gcr.io/cloudrun/hello",
+///                 "sandbox_launcher": True,
+///             }],
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRun.Service("default", new()
+///     {
+///         Name = "cloudrun-srv",
+///         Location = "us-central1",
+///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+///         {
+///             Annotations =
+///             {
+///                 { "run.googleapis.com/launch-stage", "BETA" },
+///             },
+///         },
+///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+///         {
+///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+///             {
+///                 Containers = new[]
+///                 {
+///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+///                     {
+///                         Image = "gcr.io/cloudrun/hello",
+///                         SandboxLauncher = true,
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+/// 			Name:     pulumi.String("cloudrun-srv"),
+/// 			Location: pulumi.String("us-central1"),
+/// 			Metadata: &cloudrun.ServiceMetadataArgs{
+/// 				Annotations: pulumi.StringMap{
+/// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
+/// 				},
+/// 			},
+/// 			Template: &cloudrun.ServiceTemplateArgs{
+/// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+/// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+/// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+/// 							Image:           pulumi.String("gcr.io/cloudrun/hello"),
+/// 							SandboxLauncher: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   metadata = {
+///     annotations = {
+///       "run.googleapis.com/launch-stage" = "BETA"
+///     }
+///   }
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image"           = "gcr.io/cloudrun/hello"
+///         "sandboxLauncher" = true
+///       }]
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrun.Service;
+/// import com.pulumi.gcp.cloudrun.ServiceArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Service("default", ServiceArgs.builder()
+///             .name("cloudrun-srv")
+///             .location("us-central1")
+///             .metadata(ServiceMetadataArgs.builder()
+///                 .annotations(Map.of("run.googleapis.com/launch-stage", "BETA"))
+///                 .build())
+///             .template(ServiceTemplateArgs.builder()
+///                 .spec(ServiceTemplateSpecArgs.builder()
+///                     .containers(ServiceTemplateSpecContainerArgs.builder()
+///                         .image("gcr.io/cloudrun/hello")
+///                         .sandboxLauncher(true)
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrun:Service
+///     properties:
+///       name: cloudrun-srv
+///       location: us-central1
+///       metadata:
+///         annotations:
+///           run.googleapis.com/launch-stage: BETA
+///       template:
+///         spec:
+///           containers:
+///             - image: gcr.io/cloudrun/hello
+///               sandboxLauncher: true
 /// ```
 ///
 ///
@@ -2512,22 +3032,15 @@ import 'service_template.dart';
 /// Service can be imported using any of these accepted formats:
 ///
 /// * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
-///
 /// * `{{location}}/{{project}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{name}}
 /// ```
 class Service extends pulumi.CustomResource {
@@ -2537,6 +3050,13 @@ class Service extends pulumi.CustomResource {
   /// (For legacy support, if `template.metadata.name` is unset in state while
   /// this field is set to false, the revision name will still autogenerate.)
   late final pulumi.Output<bool?> autogenerateRevisionName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The location of the cloud run instance. eg us-central1
   late final pulumi.Output<String> location;
   /// Metadata associated with this Service, including name, namespace, labels,
@@ -2585,6 +3105,7 @@ class Service extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     metadata = registerOutput<ServiceMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -2618,6 +3139,7 @@ class Service extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     metadata = registerOutput<ServiceMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

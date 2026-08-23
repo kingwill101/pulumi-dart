@@ -5,8 +5,8 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
 ///
 /// * `gcp.dns.DnsManagedZoneIamPolicy`: Authoritative. Sets the IAM policy for the managedzone and replaces any existing policy already attached.
-/// * `gcp.dns.DnsManagedZoneIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the managedzone are preserved.
-/// * `gcp.dns.DnsManagedZoneIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the managedzone are preserved.
+/// * `gcp.dns.DnsManagedZoneIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the managedzone are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dns.DnsManagedZoneIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the managedzone are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -14,8 +14,9 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.dns.DnsManagedZoneIamPolicy` **cannot** be used in conjunction with `gcp.dns.DnsManagedZoneIamBinding` and `gcp.dns.DnsManagedZoneIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.dns.DnsManagedZoneIamPolicy
@@ -27,7 +28,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 /// const admin = gcp.organizations.getIAMPolicy({
 ///     bindings: [{
-///         role: "roles/viewer",
+///         role: "roles/dns.admin",
 ///         members: ["user:jane@example.com"],
 ///     }],
 /// });
@@ -42,7 +43,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// admin = gcp.organizations.get_iam_policy(bindings=[{
-///     "role": "roles/viewer",
+///     "role": "roles/dns.admin",
 ///     "members": ["user:jane@example.com"],
 /// }])
 /// policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
@@ -64,7 +65,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///         {
 ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
 ///             {
-///                 Role = "roles/viewer",
+///                 Role = "roles/dns.admin",
 ///                 Members = new[]
 ///                 {
 ///                     "user:jane@example.com",
@@ -96,7 +97,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 /// 			Bindings: []organizations.GetIAMPolicyBinding{
 /// 				{
-/// 					Role: "roles/viewer",
+/// 					Role: "roles/dns.admin",
 /// 					Members: []string{
 /// 						"user:jane@example.com",
 /// 					},
@@ -118,6 +119,28 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/dns.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiampolicy" "policy" {
+///   project      = default.project
+///   managed_zone = default.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,10 +149,11 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicy;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,14 +167,14 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
 ///             .bindings(GetIAMPolicyBindingArgs.builder()
-///                 .role("roles/viewer")
+///                 .role("roles/dns.admin")
 ///                 .members("user:jane@example.com")
 ///                 .build())
 ///             .build());
 ///
 ///         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .managedZone(default_.name())
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -171,11 +195,228 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///       function: gcp:organizations:getIAMPolicy
 ///       arguments:
 ///         bindings:
-///           - role: roles/viewer
+///           - role: roles/dns.admin
 ///             members:
 ///               - user:jane@example.com
 /// ```
 ///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+///     bindings: [{
+///         role: "roles/dns.admin",
+///         members: ["user:jane@example.com"],
+///         condition: {
+///             title: "expires_after_2019_12_31",
+///             description: "Expiring at midnight of 2019-12-31",
+///             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     }],
+/// });
+/// const policy = new gcp.dns.DnsManagedZoneIamPolicy("policy", {
+///     project: _default.project,
+///     managedZone: _default.name,
+///     policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+///     "role": "roles/dns.admin",
+///     "members": ["user:jane@example.com"],
+///     "condition": {
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// }])
+/// policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
+///     project=default["project"],
+///     managed_zone=default["name"],
+///     policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+///     {
+///         Bindings = new[]
+///         {
+///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+///             {
+///                 Role = "roles/dns.admin",
+///                 Members = new[]
+///                 {
+///                     "user:jane@example.com",
+///                 },
+///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+///                 {
+///                     Title = "expires_after_2019_12_31",
+///                     Description = "Expiring at midnight of 2019-12-31",
+///                     Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var policy = new Gcp.Dns.DnsManagedZoneIamPolicy("policy", new()
+///     {
+///         Project = @default.Project,
+///         ManagedZone = @default.Name,
+///         PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// 			Bindings: []organizations.GetIAMPolicyBinding{
+/// 				{
+/// 					Role: "roles/dns.admin",
+/// 					Members: []string{
+/// 						"user:jane@example.com",
+/// 					},
+/// 					Condition: {
+/// 						Title:       "expires_after_2019_12_31",
+/// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+/// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = dns.NewDnsManagedZoneIamPolicy(ctx, "policy", &dns.DnsManagedZoneIamPolicyArgs{
+/// 			Project:     pulumi.Any(_default.Project),
+/// 			ManagedZone: pulumi.Any(_default.Name),
+/// 			PolicyData:  pulumi.String(admin.PolicyData),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/dns.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiampolicy" "policy" {
+///   project      = default.project
+///   managed_zone = default.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicy;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+///             .bindings(GetIAMPolicyBindingArgs.builder()
+///                 .role("roles/dns.admin")
+///                 .members("user:jane@example.com")
+///                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+///                     .title("expires_after_2019_12_31")
+///                     .description("Expiring at midnight of 2019-12-31")
+///                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .policyData(admin.policyData())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:dns:DnsManagedZoneIamPolicy
+///     properties:
+///       project: ${default.project}
+///       managedZone: ${default.name}
+///       policyData: ${admin.policyData}
+/// variables:
+///   admin:
+///     fn::invoke:
+///       function: gcp:organizations:getIAMPolicy
+///       arguments:
+///         bindings:
+///           - role: roles/dns.admin
+///             members:
+///               - user:jane@example.com
+///             condition:
+///               title: expires_after_2019_12_31
+///               description: Expiring at midnight of 2019-12-31
+///               expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
 ///
 /// ## gcp.dns.DnsManagedZoneIamBinding
 ///
@@ -187,7 +428,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
 ///     project: _default.project,
 ///     managedZone: _default.name,
-///     role: "roles/viewer",
+///     role: "roles/dns.admin",
 ///     members: ["user:jane@example.com"],
 /// });
 /// ```
@@ -198,7 +439,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// binding = gcp.dns.DnsManagedZoneIamBinding("binding",
 ///     project=default["project"],
 ///     managed_zone=default["name"],
-///     role="roles/viewer",
+///     role="roles/dns.admin",
 ///     members=["user:jane@example.com"])
 /// ```
 /// ```csharp
@@ -213,7 +454,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     {
 ///         Project = @default.Project,
 ///         ManagedZone = @default.Name,
-///         Role = "roles/viewer",
+///         Role = "roles/dns.admin",
 ///         Members = new[]
 ///         {
 ///             "user:jane@example.com",
@@ -235,7 +476,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
 /// 			Project:     pulumi.Any(_default.Project),
 /// 			ManagedZone: pulumi.Any(_default.Name),
-/// 			Role:        pulumi.String("roles/viewer"),
+/// 			Role:        pulumi.String("roles/dns.admin"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.String("user:jane@example.com"),
 /// 			},
@@ -247,6 +488,22 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiambinding" "binding" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +512,8 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamBinding;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,9 +526,9 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
-///             .project(default_.project())
-///             .managedZone(default_.name())
-///             .role("roles/viewer")
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
 ///
@@ -285,11 +542,176 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     properties:
 ///       project: ${default.project}
 ///       managedZone: ${default.name}
-///       role: roles/viewer
+///       role: roles/dns.admin
 ///       members:
 ///         - user:jane@example.com
 /// ```
 ///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
+///     project: _default.project,
+///     managedZone: _default.name,
+///     role: "roles/dns.admin",
+///     members: ["user:jane@example.com"],
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.dns.DnsManagedZoneIamBinding("binding",
+///     project=default["project"],
+///     managed_zone=default["name"],
+///     role="roles/dns.admin",
+///     members=["user:jane@example.com"],
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var binding = new Gcp.Dns.DnsManagedZoneIamBinding("binding", new()
+///     {
+///         Project = @default.Project,
+///         ManagedZone = @default.Name,
+///         Role = "roles/dns.admin",
+///         Members = new[]
+///         {
+///             "user:jane@example.com",
+///         },
+///         Condition = new Gcp.Dns.Inputs.DnsManagedZoneIamBindingConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
+/// 			Project:     pulumi.Any(_default.Project),
+/// 			ManagedZone: pulumi.Any(_default.Name),
+/// 			Role:        pulumi.String("roles/dns.admin"),
+/// 			Members: pulumi.StringArray{
+/// 				pulumi.String("user:jane@example.com"),
+/// 			},
+/// 			Condition: &dns.DnsManagedZoneIamBindingConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiambinding" "binding" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   members      = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamBinding;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamBindingArgs;
+/// import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamBindingConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
+///             .members("user:jane@example.com")
+///             .condition(DnsManagedZoneIamBindingConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   binding:
+///     type: gcp:dns:DnsManagedZoneIamBinding
+///     properties:
+///       project: ${default.project}
+///       managedZone: ${default.name}
+///       role: roles/dns.admin
+///       members:
+///         - user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
 ///
 /// ## gcp.dns.DnsManagedZoneIamMember
 ///
@@ -301,7 +723,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// const member = new gcp.dns.DnsManagedZoneIamMember("member", {
 ///     project: _default.project,
 ///     managedZone: _default.name,
-///     role: "roles/viewer",
+///     role: "roles/dns.admin",
 ///     member: "user:jane@example.com",
 /// });
 /// ```
@@ -312,7 +734,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// member = gcp.dns.DnsManagedZoneIamMember("member",
 ///     project=default["project"],
 ///     managed_zone=default["name"],
-///     role="roles/viewer",
+///     role="roles/dns.admin",
 ///     member="user:jane@example.com")
 /// ```
 /// ```csharp
@@ -327,7 +749,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     {
 ///         Project = @default.Project,
 ///         ManagedZone = @default.Name,
-///         Role = "roles/viewer",
+///         Role = "roles/dns.admin",
 ///         Member = "user:jane@example.com",
 ///     });
 ///
@@ -346,7 +768,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
 /// 			Project:     pulumi.Any(_default.Project),
 /// 			ManagedZone: pulumi.Any(_default.Name),
-/// 			Role:        pulumi.String("roles/viewer"),
+/// 			Role:        pulumi.String("roles/dns.admin"),
 /// 			Member:      pulumi.String("user:jane@example.com"),
 /// 		})
 /// 		if err != nil {
@@ -354,6 +776,22 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiammember" "member" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   member       = "user:jane@example.com"
 /// }
 /// ```
 /// ```java
@@ -364,8 +802,8 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamMember;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,9 +816,9 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
-///             .project(default_.project())
-///             .managedZone(default_.name())
-///             .role("roles/viewer")
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
 ///
@@ -394,10 +832,169 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     properties:
 ///       project: ${default.project}
 ///       managedZone: ${default.name}
-///       role: roles/viewer
+///       role: roles/dns.admin
 ///       member: user:jane@example.com
 /// ```
 ///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.dns.DnsManagedZoneIamMember("member", {
+///     project: _default.project,
+///     managedZone: _default.name,
+///     role: "roles/dns.admin",
+///     member: "user:jane@example.com",
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.dns.DnsManagedZoneIamMember("member",
+///     project=default["project"],
+///     managed_zone=default["name"],
+///     role="roles/dns.admin",
+///     member="user:jane@example.com",
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var member = new Gcp.Dns.DnsManagedZoneIamMember("member", new()
+///     {
+///         Project = @default.Project,
+///         ManagedZone = @default.Name,
+///         Role = "roles/dns.admin",
+///         Member = "user:jane@example.com",
+///         Condition = new Gcp.Dns.Inputs.DnsManagedZoneIamMemberConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
+/// 			Project:     pulumi.Any(_default.Project),
+/// 			ManagedZone: pulumi.Any(_default.Name),
+/// 			Role:        pulumi.String("roles/dns.admin"),
+/// 			Member:      pulumi.String("user:jane@example.com"),
+/// 			Condition: &dns.DnsManagedZoneIamMemberConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiammember" "member" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   member       = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamMember;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamMemberArgs;
+/// import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamMemberConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
+///             .member("user:jane@example.com")
+///             .condition(DnsManagedZoneIamMemberConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   member:
+///     type: gcp:dns:DnsManagedZoneIamMember
+///     properties:
+///       project: ${default.project}
+///       managedZone: ${default.name}
+///       role: roles/dns.admin
+///       member: user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
 ///
 ///
 /// ## This resource supports User Project Overrides.
@@ -409,8 +1006,8 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
 ///
 /// * `gcp.dns.DnsManagedZoneIamPolicy`: Authoritative. Sets the IAM policy for the managedzone and replaces any existing policy already attached.
-/// * `gcp.dns.DnsManagedZoneIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the managedzone are preserved.
-/// * `gcp.dns.DnsManagedZoneIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the managedzone are preserved.
+/// * `gcp.dns.DnsManagedZoneIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the managedzone are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dns.DnsManagedZoneIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the managedzone are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -418,8 +1015,9 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.dns.DnsManagedZoneIamPolicy` **cannot** be used in conjunction with `gcp.dns.DnsManagedZoneIamBinding` and `gcp.dns.DnsManagedZoneIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.dns.DnsManagedZoneIamPolicy
@@ -431,7 +1029,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 /// const admin = gcp.organizations.getIAMPolicy({
 ///     bindings: [{
-///         role: "roles/viewer",
+///         role: "roles/dns.admin",
 ///         members: ["user:jane@example.com"],
 ///     }],
 /// });
@@ -446,7 +1044,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// admin = gcp.organizations.get_iam_policy(bindings=[{
-///     "role": "roles/viewer",
+///     "role": "roles/dns.admin",
 ///     "members": ["user:jane@example.com"],
 /// }])
 /// policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
@@ -468,7 +1066,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///         {
 ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
 ///             {
-///                 Role = "roles/viewer",
+///                 Role = "roles/dns.admin",
 ///                 Members = new[]
 ///                 {
 ///                     "user:jane@example.com",
@@ -500,7 +1098,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 /// 			Bindings: []organizations.GetIAMPolicyBinding{
 /// 				{
-/// 					Role: "roles/viewer",
+/// 					Role: "roles/dns.admin",
 /// 					Members: []string{
 /// 						"user:jane@example.com",
 /// 					},
@@ -522,6 +1120,28 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/dns.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiampolicy" "policy" {
+///   project      = default.project
+///   managed_zone = default.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -530,10 +1150,11 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicy;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -547,14 +1168,14 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
 ///             .bindings(GetIAMPolicyBindingArgs.builder()
-///                 .role("roles/viewer")
+///                 .role("roles/dns.admin")
 ///                 .members("user:jane@example.com")
 ///                 .build())
 ///             .build());
 ///
 ///         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .managedZone(default_.name())
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -575,11 +1196,228 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///       function: gcp:organizations:getIAMPolicy
 ///       arguments:
 ///         bindings:
-///           - role: roles/viewer
+///           - role: roles/dns.admin
 ///             members:
 ///               - user:jane@example.com
 /// ```
 ///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+///     bindings: [{
+///         role: "roles/dns.admin",
+///         members: ["user:jane@example.com"],
+///         condition: {
+///             title: "expires_after_2019_12_31",
+///             description: "Expiring at midnight of 2019-12-31",
+///             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     }],
+/// });
+/// const policy = new gcp.dns.DnsManagedZoneIamPolicy("policy", {
+///     project: _default.project,
+///     managedZone: _default.name,
+///     policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+///     "role": "roles/dns.admin",
+///     "members": ["user:jane@example.com"],
+///     "condition": {
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// }])
+/// policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
+///     project=default["project"],
+///     managed_zone=default["name"],
+///     policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+///     {
+///         Bindings = new[]
+///         {
+///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+///             {
+///                 Role = "roles/dns.admin",
+///                 Members = new[]
+///                 {
+///                     "user:jane@example.com",
+///                 },
+///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+///                 {
+///                     Title = "expires_after_2019_12_31",
+///                     Description = "Expiring at midnight of 2019-12-31",
+///                     Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var policy = new Gcp.Dns.DnsManagedZoneIamPolicy("policy", new()
+///     {
+///         Project = @default.Project,
+///         ManagedZone = @default.Name,
+///         PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// 			Bindings: []organizations.GetIAMPolicyBinding{
+/// 				{
+/// 					Role: "roles/dns.admin",
+/// 					Members: []string{
+/// 						"user:jane@example.com",
+/// 					},
+/// 					Condition: {
+/// 						Title:       "expires_after_2019_12_31",
+/// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+/// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = dns.NewDnsManagedZoneIamPolicy(ctx, "policy", &dns.DnsManagedZoneIamPolicyArgs{
+/// 			Project:     pulumi.Any(_default.Project),
+/// 			ManagedZone: pulumi.Any(_default.Name),
+/// 			PolicyData:  pulumi.String(admin.PolicyData),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/dns.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiampolicy" "policy" {
+///   project      = default.project
+///   managed_zone = default.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicy;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+///             .bindings(GetIAMPolicyBindingArgs.builder()
+///                 .role("roles/dns.admin")
+///                 .members("user:jane@example.com")
+///                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+///                     .title("expires_after_2019_12_31")
+///                     .description("Expiring at midnight of 2019-12-31")
+///                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .policyData(admin.policyData())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:dns:DnsManagedZoneIamPolicy
+///     properties:
+///       project: ${default.project}
+///       managedZone: ${default.name}
+///       policyData: ${admin.policyData}
+/// variables:
+///   admin:
+///     fn::invoke:
+///       function: gcp:organizations:getIAMPolicy
+///       arguments:
+///         bindings:
+///           - role: roles/dns.admin
+///             members:
+///               - user:jane@example.com
+///             condition:
+///               title: expires_after_2019_12_31
+///               description: Expiring at midnight of 2019-12-31
+///               expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
 ///
 /// ## gcp.dns.DnsManagedZoneIamBinding
 ///
@@ -591,7 +1429,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
 ///     project: _default.project,
 ///     managedZone: _default.name,
-///     role: "roles/viewer",
+///     role: "roles/dns.admin",
 ///     members: ["user:jane@example.com"],
 /// });
 /// ```
@@ -602,7 +1440,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// binding = gcp.dns.DnsManagedZoneIamBinding("binding",
 ///     project=default["project"],
 ///     managed_zone=default["name"],
-///     role="roles/viewer",
+///     role="roles/dns.admin",
 ///     members=["user:jane@example.com"])
 /// ```
 /// ```csharp
@@ -617,7 +1455,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     {
 ///         Project = @default.Project,
 ///         ManagedZone = @default.Name,
-///         Role = "roles/viewer",
+///         Role = "roles/dns.admin",
 ///         Members = new[]
 ///         {
 ///             "user:jane@example.com",
@@ -639,7 +1477,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
 /// 			Project:     pulumi.Any(_default.Project),
 /// 			ManagedZone: pulumi.Any(_default.Name),
-/// 			Role:        pulumi.String("roles/viewer"),
+/// 			Role:        pulumi.String("roles/dns.admin"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.String("user:jane@example.com"),
 /// 			},
@@ -651,6 +1489,22 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiambinding" "binding" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -659,8 +1513,8 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamBinding;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -673,9 +1527,9 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
-///             .project(default_.project())
-///             .managedZone(default_.name())
-///             .role("roles/viewer")
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
 ///
@@ -689,11 +1543,176 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     properties:
 ///       project: ${default.project}
 ///       managedZone: ${default.name}
-///       role: roles/viewer
+///       role: roles/dns.admin
 ///       members:
 ///         - user:jane@example.com
 /// ```
 ///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
+///     project: _default.project,
+///     managedZone: _default.name,
+///     role: "roles/dns.admin",
+///     members: ["user:jane@example.com"],
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.dns.DnsManagedZoneIamBinding("binding",
+///     project=default["project"],
+///     managed_zone=default["name"],
+///     role="roles/dns.admin",
+///     members=["user:jane@example.com"],
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var binding = new Gcp.Dns.DnsManagedZoneIamBinding("binding", new()
+///     {
+///         Project = @default.Project,
+///         ManagedZone = @default.Name,
+///         Role = "roles/dns.admin",
+///         Members = new[]
+///         {
+///             "user:jane@example.com",
+///         },
+///         Condition = new Gcp.Dns.Inputs.DnsManagedZoneIamBindingConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
+/// 			Project:     pulumi.Any(_default.Project),
+/// 			ManagedZone: pulumi.Any(_default.Name),
+/// 			Role:        pulumi.String("roles/dns.admin"),
+/// 			Members: pulumi.StringArray{
+/// 				pulumi.String("user:jane@example.com"),
+/// 			},
+/// 			Condition: &dns.DnsManagedZoneIamBindingConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiambinding" "binding" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   members      = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamBinding;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamBindingArgs;
+/// import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamBindingConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
+///             .members("user:jane@example.com")
+///             .condition(DnsManagedZoneIamBindingConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   binding:
+///     type: gcp:dns:DnsManagedZoneIamBinding
+///     properties:
+///       project: ${default.project}
+///       managedZone: ${default.name}
+///       role: roles/dns.admin
+///       members:
+///         - user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
 ///
 /// ## gcp.dns.DnsManagedZoneIamMember
 ///
@@ -705,7 +1724,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// const member = new gcp.dns.DnsManagedZoneIamMember("member", {
 ///     project: _default.project,
 ///     managedZone: _default.name,
-///     role: "roles/viewer",
+///     role: "roles/dns.admin",
 ///     member: "user:jane@example.com",
 /// });
 /// ```
@@ -716,7 +1735,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// member = gcp.dns.DnsManagedZoneIamMember("member",
 ///     project=default["project"],
 ///     managed_zone=default["name"],
-///     role="roles/viewer",
+///     role="roles/dns.admin",
 ///     member="user:jane@example.com")
 /// ```
 /// ```csharp
@@ -731,7 +1750,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     {
 ///         Project = @default.Project,
 ///         ManagedZone = @default.Name,
-///         Role = "roles/viewer",
+///         Role = "roles/dns.admin",
 ///         Member = "user:jane@example.com",
 ///     });
 ///
@@ -750,7 +1769,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
 /// 			Project:     pulumi.Any(_default.Project),
 /// 			ManagedZone: pulumi.Any(_default.Name),
-/// 			Role:        pulumi.String("roles/viewer"),
+/// 			Role:        pulumi.String("roles/dns.admin"),
 /// 			Member:      pulumi.String("user:jane@example.com"),
 /// 		})
 /// 		if err != nil {
@@ -758,6 +1777,22 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiammember" "member" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   member       = "user:jane@example.com"
 /// }
 /// ```
 /// ```java
@@ -768,8 +1803,8 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamMember;
 /// import com.pulumi.gcp.dns.DnsManagedZoneIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -782,9 +1817,9 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
-///             .project(default_.project())
-///             .managedZone(default_.name())
-///             .role("roles/viewer")
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
 ///
@@ -798,8 +1833,168 @@ import 'dns_managed_zone_iam_policy_state.dart';
 ///     properties:
 ///       project: ${default.project}
 ///       managedZone: ${default.name}
-///       role: roles/viewer
+///       role: roles/dns.admin
 ///       member: user:jane@example.com
+/// ```
+///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.dns.DnsManagedZoneIamMember("member", {
+///     project: _default.project,
+///     managedZone: _default.name,
+///     role: "roles/dns.admin",
+///     member: "user:jane@example.com",
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.dns.DnsManagedZoneIamMember("member",
+///     project=default["project"],
+///     managed_zone=default["name"],
+///     role="roles/dns.admin",
+///     member="user:jane@example.com",
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var member = new Gcp.Dns.DnsManagedZoneIamMember("member", new()
+///     {
+///         Project = @default.Project,
+///         ManagedZone = @default.Name,
+///         Role = "roles/dns.admin",
+///         Member = "user:jane@example.com",
+///         Condition = new Gcp.Dns.Inputs.DnsManagedZoneIamMemberConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
+/// 			Project:     pulumi.Any(_default.Project),
+/// 			ManagedZone: pulumi.Any(_default.Name),
+/// 			Role:        pulumi.String("roles/dns.admin"),
+/// 			Member:      pulumi.String("user:jane@example.com"),
+/// 			Condition: &dns.DnsManagedZoneIamMemberConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dns_dnsmanagedzoneiammember" "member" {
+///   project      = default.project
+///   managed_zone = default.name
+///   role         = "roles/dns.admin"
+///   member       = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamMember;
+/// import com.pulumi.gcp.dns.DnsManagedZoneIamMemberArgs;
+/// import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamMemberConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
+///             .project(default_.get("project"))
+///             .managedZone(default_.get("name"))
+///             .role("roles/dns.admin")
+///             .member("user:jane@example.com")
+///             .condition(DnsManagedZoneIamMemberConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   member:
+///     type: gcp:dns:DnsManagedZoneIamMember
+///     properties:
+///       project: ${default.project}
+///       managedZone: ${default.name}
+///       role: roles/dns.admin
+///       member: user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
 /// ```
 ///
 ///
@@ -808,9 +2003,7 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/managedZones/{{managed_zone}}
-///
 /// * {{project}}/{{managed_zone}}
-///
 /// * {{managed_zone}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -818,25 +2011,21 @@ import 'dns_managed_zone_iam_policy_state.dart';
 /// Cloud DNS managedzone IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane@example.com"
+/// $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer"
+/// $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy editor projects/{{project}}/managedZones/{{managed_zone}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class DnsManagedZoneIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

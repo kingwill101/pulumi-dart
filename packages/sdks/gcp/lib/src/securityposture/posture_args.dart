@@ -8,6 +8,13 @@ import 'posture_policy_set.dart';
 /// {@endtemplate}
 /// {@macro pulumi_securityposture_posture_posture_args_doc}
 class PostureArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the posture.
   final pulumi.Input<String>? description;
   /// Location of the resource, eg: global.
@@ -25,6 +32,7 @@ class PostureArgs {
   final pulumi.Input<String> state;
 
   /// Creates a new [PostureArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the posture.
   /// [location] Location of the resource, eg: global.
   /// [parent] The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
@@ -32,6 +40,7 @@ class PostureArgs {
   /// [postureId] Id of the posture. It is an immutable field.
   /// [state] State of the posture. Update to state field should not be triggered along with
   const PostureArgs({
+    this.deletionPolicy,
     this.description,
     required this.location,
     required this.parent,
@@ -42,6 +51,7 @@ class PostureArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'location': location,
       'parent': parent,
@@ -53,6 +63,7 @@ class PostureArgs {
 
   factory PostureArgs.fromMap(Map<String, dynamic> map) {
     return PostureArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       parent: pulumi.Input.fromValue(map['parent'] as String),
@@ -62,4 +73,3 @@ class PostureArgs {
     );
   }
 }
-

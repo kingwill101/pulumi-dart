@@ -1,14 +1,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'tool_agent_tool.dart';
 import 'tool_args.dart';
 import 'tool_client_function.dart';
 import 'tool_data_store_tool.dart';
+import 'tool_file_search_tool.dart';
 import 'tool_google_search_tool.dart';
 import 'tool_python_function.dart';
 import 'tool_state.dart';
+import 'tool_tool_fake_config.dart';
+import 'tool_widget_tool.dart';
 
 /// Description
 ///
 ///
+///
+/// &gt; **Note:** **Direct Management Restriction for Certain Tool Types:**
+///
+/// Individual tools of type `openApiTool`, `mcpTool`, `connectorTool`, and `remoteAgentTool` **cannot** be created, updated, or managed directly using the `gcp.ces.Tool` resource.
+///
+/// `openApiTool`, `mcpTool`, and `connectorTool` are dynamically generated at runtime based on their corresponding **toolsets** (configured via the `gcp.ces.Toolset` resource). `remoteAgentTool` represents A2A connections configured externally, and `systemTool` represents pre-defined platform tools managed entirely by Google Cloud.
+///
+/// Consequently, blocks like `openApiTool`, `mcpTool`, `connectorTool`, `remoteAgentTool`, and `systemTool` are marked as **read-only (output-only)** in this resource. They are populated by the server for reference purposes only (e.g., after importing an existing tool into your state) and **cannot** be configured in your Terraform HCL configuration.
 ///
 /// ## Example Usage
 ///
@@ -174,9 +186,9 @@ import 'tool_state.dart';
 ///                 "description": "An array",
 ///             }),
 ///             "max_items": 32,
-///             "maximum": 64,
+///             "maximum": float(64),
 ///             "min_items": 1,
-///             "minimum": 2,
+///             "minimum": float(2),
 ///             "nullable": True,
 ///             "prefix_items": json.dumps([{
 ///                 "type": "ARRAY",
@@ -219,9 +231,9 @@ import 'tool_state.dart';
 ///                 "description": "An array",
 ///             }),
 ///             "max_items": 32,
-///             "maximum": 64,
+///             "maximum": float(64),
 ///             "min_items": 1,
-///             "minimum": 2,
+///             "minimum": float(2),
 ///             "nullable": True,
 ///             "prefix_items": json.dumps([{
 ///                 "type": "ARRAY",
@@ -306,9 +318,9 @@ import 'tool_state.dart';
 ///                     ["description"] = "An array",
 ///                 }),
 ///                 MaxItems = 32,
-///                 Maximum = 64,
+///                 Maximum = 64.0,
 ///                 MinItems = 1,
-///                 Minimum = 2,
+///                 Minimum = 2.0,
 ///                 Nullable = true,
 ///                 PrefixItems = JsonSerializer.Serialize(new[]
 ///                 {
@@ -370,9 +382,9 @@ import 'tool_state.dart';
 ///                     ["description"] = "An array",
 ///                 }),
 ///                 MaxItems = 32,
-///                 Maximum = 64,
+///                 Maximum = 64.0,
 ///                 MinItems = 1,
-///                 Minimum = 2,
+///                 Minimum = 2.0,
 ///                 Nullable = true,
 ///                 PrefixItems = JsonSerializer.Serialize(new[]
 ///                 {
@@ -427,15 +439,15 @@ import 'tool_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"type": "BOOLEAN",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "STRING",
 /// 				"description": "any_of option 1: string",
 /// 			},
@@ -449,8 +461,8 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json2 := string(tmpJSON2)
-/// 		tmpJSON3, err := json.Marshal(map[string]interface{}{
-/// 			"SimpleString": map[string]interface{}{
+/// 		tmpJSON3, err := json.Marshal(map[string]map[string]string{
+/// 			"SimpleString": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A simple string definition",
 /// 			},
@@ -459,7 +471,7 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json3 := string(tmpJSON3)
-/// 		tmpJSON4, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON4, err := json.Marshal(map[string]string{
 /// 			"type":        "ARRAY",
 /// 			"description": "An array",
 /// 		})
@@ -467,8 +479,8 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json4 := string(tmpJSON4)
-/// 		tmpJSON5, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON5, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "ARRAY",
 /// 				"description": "prefix item 1",
 /// 			},
@@ -477,8 +489,8 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json5 := string(tmpJSON5)
-/// 		tmpJSON6, err := json.Marshal(map[string]interface{}{
-/// 			"name": map[string]interface{}{
+/// 		tmpJSON6, err := json.Marshal(map[string]map[string]string{
+/// 			"name": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A name",
 /// 			},
@@ -487,15 +499,15 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json6 := string(tmpJSON6)
-/// 		tmpJSON7, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON7, err := json.Marshal(map[string]string{
 /// 			"type": "BOOLEAN",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json7 := string(tmpJSON7)
-/// 		tmpJSON8, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON8, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "STRING",
 /// 				"description": "any_of option 1: string",
 /// 			},
@@ -509,8 +521,8 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json9 := string(tmpJSON9)
-/// 		tmpJSON10, err := json.Marshal(map[string]interface{}{
-/// 			"SimpleString": map[string]interface{}{
+/// 		tmpJSON10, err := json.Marshal(map[string]map[string]string{
+/// 			"SimpleString": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A simple string definition",
 /// 			},
@@ -519,7 +531,7 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json10 := string(tmpJSON10)
-/// 		tmpJSON11, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON11, err := json.Marshal(map[string]string{
 /// 			"type":        "ARRAY",
 /// 			"description": "An array",
 /// 		})
@@ -527,8 +539,8 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json11 := string(tmpJSON11)
-/// 		tmpJSON12, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON12, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "ARRAY",
 /// 				"description": "prefix item 1",
 /// 			},
@@ -537,8 +549,8 @@ import 'tool_state.dart';
 /// 			return err
 /// 		}
 /// 		json12 := string(tmpJSON12)
-/// 		tmpJSON13, err := json.Marshal(map[string]interface{}{
-/// 			"name": map[string]interface{}{
+/// 		tmpJSON13, err := json.Marshal(map[string]map[string]string{
+/// 			"name": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A name",
 /// 			},
@@ -616,6 +628,118 @@ import 'tool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool_client_function_basic" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.name
+///   tool_id        = "ces_tool_basic1"
+///   execution_type = "SYNCHRONOUS"
+///   client_function = {
+///     name        = "ces_tool_client_function_basic"
+///     description = "example-description"
+///     parameters = {
+///       additional_properties = jsonencode({
+///         "type" = "BOOLEAN"
+///       })
+///       any_of = jsonencode([{
+///         "type"        = "STRING"
+///         "description" = "any_of option 1: string"
+///       }])
+///       default = jsonencode(false)
+///       defs = jsonencode({
+///         "SimpleString" = {
+///           "type"        = "STRING"
+///           "description" = "A simple string definition"
+///         }
+///       })
+///       description = "schema description"
+///       enums       = ["VALUE_A", "VALUE_B"]
+///       items = jsonencode({
+///         "type"        = "ARRAY"
+///         "description" = "An array"
+///       })
+///       max_items = 32
+///       maximum   = 64
+///       min_items = 1
+///       minimum   = 2
+///       nullable  = true
+///       prefix_items = jsonencode([{
+///         "type"        = "ARRAY"
+///         "description" = "prefix item 1"
+///       }])
+///       properties = jsonencode({
+///         "name" = {
+///           "type"        = "STRING"
+///           "description" = "A name"
+///         }
+///       })
+///       ref          = "#/defs/MyDefinition"
+///       requireds    = ["some_property"]
+///       title        = "Title"
+///       type         = "ARRAY"
+///       unique_items = true
+///     }
+///     response = {
+///       additional_properties = jsonencode({
+///         "type" = "BOOLEAN"
+///       })
+///       any_of = jsonencode([{
+///         "type"        = "STRING"
+///         "description" = "any_of option 1: string"
+///       }])
+///       default = jsonencode(false)
+///       defs = jsonencode({
+///         "SimpleString" = {
+///           "type"        = "STRING"
+///           "description" = "A simple string definition"
+///         }
+///       })
+///       description = "schema description"
+///       enums       = ["VALUE_A", "VALUE_B"]
+///       items = jsonencode({
+///         "type"        = "ARRAY"
+///         "description" = "An array"
+///       })
+///       max_items = 32
+///       maximum   = 64
+///       min_items = 1
+///       minimum   = 2
+///       nullable  = true
+///       prefix_items = jsonencode([{
+///         "type"        = "ARRAY"
+///         "description" = "prefix item 1"
+///       }])
+///       properties = jsonencode({
+///         "name" = {
+///           "type"        = "STRING"
+///           "description" = "A name"
+///         }
+///       })
+///       ref          = "#/defs/MyDefinition"
+///       requireds    = ["some_property"]
+///       title        = "Title"
+///       type         = "ARRAY"
+///       unique_items = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -631,8 +755,8 @@ import 'tool_state.dart';
 /// import com.pulumi.gcp.ces.inputs.ToolClientFunctionParametersArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolClientFunctionResponseArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -941,7 +1065,7 @@ import 'tool_state.dart';
 ///             modalityType: "TEXT",
 ///             rewriterConfig: {
 ///                 modelSettings: {
-///                     model: "gemini-2.5-flash",
+///                     model: "gemini-3.0-flash-001",
 ///                     temperature: 1,
 ///                 },
 ///                 prompt: "example-prompt",
@@ -949,7 +1073,7 @@ import 'tool_state.dart';
 ///             },
 ///             summarizationConfig: {
 ///                 modelSettings: {
-///                     model: "gemini-2.5-flash",
+///                     model: "gemini-3.0-flash-001",
 ///                     temperature: 1,
 ///                 },
 ///                 prompt: "example-prompt",
@@ -970,7 +1094,6 @@ import 'tool_state.dart';
 ///             }],
 ///             filter: "example_field: ANY(\"specific_example\")",
 ///         },
-///         maxResults: 5,
 ///     },
 /// });
 /// ```
@@ -1013,14 +1136,14 @@ import 'tool_state.dart';
 ///             "specs": [{
 ///                 "condition_boost_specs": [{
 ///                     "condition": "(lang_code: ANY(\"en\", \"fr\"))",
-///                     "boost": 1,
+///                     "boost": float(1),
 ///                     "boost_control_spec": {
 ///                         "field_name": "example-field",
 ///                         "attribute_type": "NUMERICAL",
 ///                         "interpolation_type": "LINEAR",
 ///                         "control_points": [{
 ///                             "attribute_value": "1",
-///                             "boost_amount": 1,
+///                             "boost_amount": float(1),
 ///                         }],
 ///                     },
 ///                 }],
@@ -1030,22 +1153,22 @@ import 'tool_state.dart';
 ///             "modality_type": "TEXT",
 ///             "rewriter_config": {
 ///                 "model_settings": {
-///                     "model": "gemini-2.5-flash",
-///                     "temperature": 1,
+///                     "model": "gemini-3.0-flash-001",
+///                     "temperature": float(1),
 ///                 },
 ///                 "prompt": "example-prompt",
 ///                 "disabled": False,
 ///             },
 ///             "summarization_config": {
 ///                 "model_settings": {
-///                     "model": "gemini-2.5-flash",
-///                     "temperature": 1,
+///                     "model": "gemini-3.0-flash-001",
+///                     "temperature": float(1),
 ///                 },
 ///                 "prompt": "example-prompt",
 ///                 "disabled": False,
 ///             },
 ///             "grounding_config": {
-///                 "grounding_level": 3,
+///                 "grounding_level": float(3),
 ///                 "disabled": False,
 ///             },
 ///         }],
@@ -1059,7 +1182,6 @@ import 'tool_state.dart';
 ///             }],
 ///             "filter": "example_field: ANY(\"specific_example\")",
 ///         },
-///         "max_results": 5,
 ///     })
 /// ```
 /// ```csharp
@@ -1135,7 +1257,7 @@ import 'tool_state.dart';
 ///                                 new Gcp.Ces.Inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs
 ///                                 {
 ///                                     Condition = "(lang_code: ANY(\"en\", \"fr\"))",
-///                                     Boost = 1,
+///                                     Boost = 1.0,
 ///                                     BoostControlSpec = new Gcp.Ces.Inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs
 ///                                     {
 ///                                         FieldName = "example-field",
@@ -1146,7 +1268,7 @@ import 'tool_state.dart';
 ///                                             new Gcp.Ces.Inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs
 ///                                             {
 ///                                                 AttributeValue = "1",
-///                                                 BoostAmount = 1,
+///                                                 BoostAmount = 1.0,
 ///                                             },
 ///                                         },
 ///                                     },
@@ -1165,8 +1287,8 @@ import 'tool_state.dart';
 ///                     {
 ///                         ModelSettings = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs
 ///                         {
-///                             Model = "gemini-2.5-flash",
-///                             Temperature = 1,
+///                             Model = "gemini-3.0-flash-001",
+///                             Temperature = 1.0,
 ///                         },
 ///                         Prompt = "example-prompt",
 ///                         Disabled = false,
@@ -1175,15 +1297,15 @@ import 'tool_state.dart';
 ///                     {
 ///                         ModelSettings = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs
 ///                         {
-///                             Model = "gemini-2.5-flash",
-///                             Temperature = 1,
+///                             Model = "gemini-3.0-flash-001",
+///                             Temperature = 1.0,
 ///                         },
 ///                         Prompt = "example-prompt",
 ///                         Disabled = false,
 ///                     },
 ///                     GroundingConfig = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigGroundingConfigArgs
 ///                     {
-///                         GroundingLevel = 3,
+///                         GroundingLevel = 3.0,
 ///                         Disabled = false,
 ///                     },
 ///                 },
@@ -1204,7 +1326,6 @@ import 'tool_state.dart';
 ///                 },
 ///                 Filter = "example_field: ANY(\"specific_example\")",
 ///             },
-///             MaxResults = 5,
 ///         },
 ///     });
 ///
@@ -1300,7 +1421,7 @@ import 'tool_state.dart';
 /// 						ModalityType: pulumi.String("TEXT"),
 /// 						RewriterConfig: &ces.ToolDataStoreToolModalityConfigRewriterConfigArgs{
 /// 							ModelSettings: &ces.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{
-/// 								Model:       pulumi.String("gemini-2.5-flash"),
+/// 								Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 								Temperature: pulumi.Float64(1),
 /// 							},
 /// 							Prompt:   pulumi.String("example-prompt"),
@@ -1308,7 +1429,7 @@ import 'tool_state.dart';
 /// 						},
 /// 						SummarizationConfig: &ces.ToolDataStoreToolModalityConfigSummarizationConfigArgs{
 /// 							ModelSettings: &ces.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{
-/// 								Model:       pulumi.String("gemini-2.5-flash"),
+/// 								Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 								Temperature: pulumi.Float64(1),
 /// 							},
 /// 							Prompt:   pulumi.String("example-prompt"),
@@ -1332,7 +1453,6 @@ import 'tool_state.dart';
 /// 					},
 /// 					Filter: pulumi.String("example_field: ANY(\"specific_example\")"),
 /// 				},
-/// 				MaxResults: pulumi.Int(5),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1340,6 +1460,102 @@ import 'tool_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                    = "global"
+///   data_store_id               = "tool_data_store_id"
+///   display_name                = "tf-test-structured-datastore"
+///   industry_vertical           = "GENERIC"
+///   content_config              = "NO_CONTENT"
+///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search = false
+/// }
+/// resource "gcp_discoveryengine_searchengine" "basic" {
+///   engine_id            = "tool_engine_id"
+///   collection_id        = "default_collection"
+///   location             = gcp_discoveryengine_datastore.basic.location
+///   display_name         = "Example Display Name"
+///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   search_engine_config = {}
+/// }
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool_data_store_tool_engine_source_basic" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.name
+///   tool_id        = "ces_tool_basic2"
+///   execution_type = "SYNCHRONOUS"
+///   data_store_tool = {
+///     name        = "example-tool"
+///     description = "example-description"
+///     boost_specs = [{
+///       "dataStores" = [gcp_discoveryengine_datastore.basic.name]
+///       "specs" = [{
+///         "conditionBoostSpecs" = [{
+///           "condition" = "(lang_code: ANY(\"en\", \"fr\"))"
+///           "boost"     = 1
+///           "boostControlSpec" = {
+///             "fieldName"         = "example-field"
+///             "attributeType"     = "NUMERICAL"
+///             "interpolationType" = "LINEAR"
+///             "controlPoints" = [{
+///               "attributeValue" = 1
+///               "boostAmount"    = 1
+///             }]
+///           }
+///         }]
+///       }]
+///     }]
+///     modality_configs = [{
+///       "modalityType" = "TEXT"
+///       "rewriterConfig" = {
+///         "modelSettings" = {
+///           "model"       = "gemini-3.0-flash-001"
+///           "temperature" = 1
+///         }
+///         "prompt"   = "example-prompt"
+///         "disabled" = false
+///       }
+///       "summarizationConfig" = {
+///         "modelSettings" = {
+///           "model"       = "gemini-3.0-flash-001"
+///           "temperature" = 1
+///         }
+///         "prompt"   = "example-prompt"
+///         "disabled" = false
+///       }
+///       "groundingConfig" = {
+///         "groundingLevel" = 3
+///         "disabled"       = false
+///       }
+///     }]
+///     engine_source = {
+///       engine = gcp_discoveryengine_searchengine.basic.name
+///       data_store_sources = [{
+///         "filter" = "example_field: ANY(\"specific_example\")"
+///         "dataStore" = {
+///           "name" = gcp_discoveryengine_datastore.basic.name
+///         }
+///       }]
+///       filter = "example_field: ANY(\"specific_example\")"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1359,9 +1575,22 @@ import 'tool_state.dart';
 /// import com.pulumi.gcp.ces.Tool;
 /// import com.pulumi.gcp.ces.ToolArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigRewriterConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSummarizationConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigGroundingConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceDataStoreSourceArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1432,7 +1661,7 @@ import 'tool_state.dart';
 ///                     .modalityType("TEXT")
 ///                     .rewriterConfig(ToolDataStoreToolModalityConfigRewriterConfigArgs.builder()
 ///                         .modelSettings(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs.builder()
-///                             .model("gemini-2.5-flash")
+///                             .model("gemini-3.0-flash-001")
 ///                             .temperature(1.0)
 ///                             .build())
 ///                         .prompt("example-prompt")
@@ -1440,7 +1669,7 @@ import 'tool_state.dart';
 ///                         .build())
 ///                     .summarizationConfig(ToolDataStoreToolModalityConfigSummarizationConfigArgs.builder()
 ///                         .modelSettings(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs.builder()
-///                             .model("gemini-2.5-flash")
+///                             .model("gemini-3.0-flash-001")
 ///                             .temperature(1.0)
 ///                             .build())
 ///                         .prompt("example-prompt")
@@ -1461,7 +1690,6 @@ import 'tool_state.dart';
 ///                         .build())
 ///                     .filter("example_field: ANY(\"specific_example\")")
 ///                     .build())
-///                 .maxResults(5)
 ///                 .build())
 ///             .build());
 ///
@@ -1529,13 +1757,13 @@ import 'tool_state.dart';
 ///           - modalityType: TEXT
 ///             rewriterConfig:
 ///               modelSettings:
-///                 model: gemini-2.5-flash
+///                 model: gemini-3.0-flash-001
 ///                 temperature: 1
 ///               prompt: example-prompt
 ///               disabled: false
 ///             summarizationConfig:
 ///               modelSettings:
-///                 model: gemini-2.5-flash
+///                 model: gemini-3.0-flash-001
 ///                 temperature: 1
 ///               prompt: example-prompt
 ///               disabled: false
@@ -1549,7 +1777,6 @@ import 'tool_state.dart';
 ///               dataStore:
 ///                 name: ${basic.name}
 ///           filter: 'example_field: ANY("specific_example")'
-///         maxResults: 5
 /// ```
 ///
 /// ### Ces Tool Google Search Tool Basic
@@ -1723,6 +1950,37 @@ import 'tool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool_google_search_tool_basic" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.name
+///   tool_id        = "ces_tool_basic3"
+///   execution_type = "SYNCHRONOUS"
+///   google_search_tool = {
+///     name              = "example-tool"
+///     context_urls      = ["example.com", "example2.com"]
+///     description       = "example-description"
+///     exclude_domains   = ["example.com", "example2.com"]
+///     preferred_domains = ["example3.com", "example4.com"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1735,8 +1993,8 @@ import 'tool_state.dart';
 /// import com.pulumi.gcp.ces.Tool;
 /// import com.pulumi.gcp.ces.ToolArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolGoogleSearchToolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1932,6 +2190,34 @@ import 'tool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool_python_function_basic" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.name
+///   tool_id        = "ces_tool_basic4"
+///   execution_type = "SYNCHRONOUS"
+///   python_function = {
+///     name        = "example_function"
+///     python_code = "def example_function() -> int: return 0"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1944,8 +2230,8 @@ import 'tool_state.dart';
 /// import com.pulumi.gcp.ces.Tool;
 /// import com.pulumi.gcp.ces.ToolArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolPythonFunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2003,31 +2289,996 @@ import 'tool_state.dart';
 ///         pythonCode: 'def example_function() -> int: return 0'
 /// ```
 ///
+/// ### Ces Tool Agent Basic
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_app = new gcp.ces.App("my-app", {
+///     location: "us",
+///     displayName: "my-app",
+///     appId: "app-id",
+///     timeZoneSettings: {
+///         timeZone: "America/Los_Angeles",
+///     },
+/// });
+/// const targetAgent = new gcp.ces.Agent("target_agent", {
+///     agentId: "target-agent",
+///     location: "us",
+///     app: my_app.appId,
+///     displayName: "Target Agent",
+///     instruction: "Target agent instruction",
+///     llmAgent: {},
+/// });
+/// const cesToolAgentBasic = new gcp.ces.Tool("ces_tool_agent_basic", {
+///     location: "us",
+///     app: my_app.name,
+///     toolId: "ces_tool_basic5",
+///     executionType: "SYNCHRONOUS",
+///     agentTool: {
+///         name: "ces_tool_agent_basic",
+///         description: "example-description",
+///         agent: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/agents/${targetAgent.agentId}`,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_app = gcp.ces.App("my-app",
+///     location="us",
+///     display_name="my-app",
+///     app_id="app-id",
+///     time_zone_settings={
+///         "time_zone": "America/Los_Angeles",
+///     })
+/// target_agent = gcp.ces.Agent("target_agent",
+///     agent_id="target-agent",
+///     location="us",
+///     app=my_app.app_id,
+///     display_name="Target Agent",
+///     instruction="Target agent instruction",
+///     llm_agent={})
+/// ces_tool_agent_basic = gcp.ces.Tool("ces_tool_agent_basic",
+///     location="us",
+///     app=my_app.name,
+///     tool_id="ces_tool_basic5",
+///     execution_type="SYNCHRONOUS",
+///     agent_tool={
+///         "name": "ces_tool_agent_basic",
+///         "description": "example-description",
+///         "agent": pulumi.Output.all(
+///             project=my_app.project,
+///             app_id=my_app.app_id,
+///             agent_id=target_agent.agent_id
+/// ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+/// ,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_app = new Gcp.Ces.App("my-app", new()
+///     {
+///         Location = "us",
+///         DisplayName = "my-app",
+///         AppId = "app-id",
+///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+///         {
+///             TimeZone = "America/Los_Angeles",
+///         },
+///     });
+///
+///     var targetAgent = new Gcp.Ces.Agent("target_agent", new()
+///     {
+///         AgentId = "target-agent",
+///         Location = "us",
+///         App = my_app.AppId,
+///         DisplayName = "Target Agent",
+///         Instruction = "Target agent instruction",
+///         LlmAgent = null,
+///     });
+///
+///     var cesToolAgentBasic = new Gcp.Ces.Tool("ces_tool_agent_basic", new()
+///     {
+///         Location = "us",
+///         App = my_app.Name,
+///         ToolId = "ces_tool_basic5",
+///         ExecutionType = "SYNCHRONOUS",
+///         AgentTool = new Gcp.Ces.Inputs.ToolAgentToolArgs
+///         {
+///             Name = "ces_tool_agent_basic",
+///             Description = "example-description",
+///             Agent = Output.Tuple(my_app.Project, my_app.AppId, targetAgent.AgentId).Apply(values =>
+///             {
+///                 var project = values.Item1;
+///                 var appId = values.Item2;
+///                 var agentId = values.Item3;
+///                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
+///             }),
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+/// 			Location:    pulumi.String("us"),
+/// 			DisplayName: pulumi.String("my-app"),
+/// 			AppId:       pulumi.String("app-id"),
+/// 			TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+/// 				TimeZone: pulumi.String("America/Los_Angeles"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		targetAgent, err := ces.NewAgent(ctx, "target_agent", &ces.AgentArgs{
+/// 			AgentId:     pulumi.String("target-agent"),
+/// 			Location:    pulumi.String("us"),
+/// 			App:         my_app.AppId,
+/// 			DisplayName: pulumi.String("Target Agent"),
+/// 			Instruction: pulumi.String("Target agent instruction"),
+/// 			LlmAgent:    &ces.AgentLlmAgentArgs{},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ces.NewTool(ctx, "ces_tool_agent_basic", &ces.ToolArgs{
+/// 			Location:      pulumi.String("us"),
+/// 			App:           my_app.Name,
+/// 			ToolId:        pulumi.String("ces_tool_basic5"),
+/// 			ExecutionType: pulumi.String("SYNCHRONOUS"),
+/// 			AgentTool: &ces.ToolAgentToolArgs{
+/// 				Name:        pulumi.String("ces_tool_agent_basic"),
+/// 				Description: pulumi.String("example-description"),
+/// 				Agent: pulumi.All(my_app.Project, my_app.AppId, targetAgent.AgentId).ApplyT(func(_args []interface{}) (string, error) {
+/// 					project := _args[0].(string)
+/// 					appId := _args[1].(string)
+/// 					agentId := _args[2].(*string)
+/// 					return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
+/// 				}).(pulumi.StringOutput),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_agent" "target_agent" {
+///   agent_id     = "target-agent"
+///   location     = "us"
+///   app          = gcp_ces_app.my-app.app_id
+///   display_name = "Target Agent"
+///   instruction  = "Target agent instruction"
+///   llm_agent    = {}
+/// }
+/// resource "gcp_ces_tool" "ces_tool_agent_basic" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.name
+///   tool_id        = "ces_tool_basic5"
+///   execution_type = "SYNCHRONOUS"
+///   agent_tool = {
+///     name        = "ces_tool_agent_basic"
+///     description = "example-description"
+///     agent       ="projects/${gcp_ces_app.my-app.project}/locations/us/apps/${gcp_ces_app.my-app.app_id}/agents/${gcp_ces_agent.target_agent.agent_id}"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.ces.App;
+/// import com.pulumi.gcp.ces.AppArgs;
+/// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+/// import com.pulumi.gcp.ces.Agent;
+/// import com.pulumi.gcp.ces.AgentArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentLlmAgentArgs;
+/// import com.pulumi.gcp.ces.Tool;
+/// import com.pulumi.gcp.ces.ToolArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolAgentToolArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var my_app = new App("my-app", AppArgs.builder()
+///             .location("us")
+///             .displayName("my-app")
+///             .appId("app-id")
+///             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+///                 .timeZone("America/Los_Angeles")
+///                 .build())
+///             .build());
+///
+///         var targetAgent = new Agent("targetAgent", AgentArgs.builder()
+///             .agentId("target-agent")
+///             .location("us")
+///             .app(my_app.appId())
+///             .displayName("Target Agent")
+///             .instruction("Target agent instruction")
+///             .llmAgent(AgentLlmAgentArgs.builder()
+///                 .build())
+///             .build());
+///
+///         var cesToolAgentBasic = new Tool("cesToolAgentBasic", ToolArgs.builder()
+///             .location("us")
+///             .app(my_app.name())
+///             .toolId("ces_tool_basic5")
+///             .executionType("SYNCHRONOUS")
+///             .agentTool(ToolAgentToolArgs.builder()
+///                 .name("ces_tool_agent_basic")
+///                 .description("example-description")
+///                 .agent(Output.tuple(my_app.project(), my_app.appId(), targetAgent.agentId()).applyValue(values -> {
+///                     var project = values.t1;
+///                     var appId = values.t2;
+///                     var agentId = values.t3;
+///                     return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
+///                 }))
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   my-app:
+///     type: gcp:ces:App
+///     properties:
+///       location: us
+///       displayName: my-app
+///       appId: app-id
+///       timeZoneSettings:
+///         timeZone: America/Los_Angeles
+///   targetAgent:
+///     type: gcp:ces:Agent
+///     name: target_agent
+///     properties:
+///       agentId: target-agent
+///       location: us
+///       app: ${["my-app"].appId}
+///       displayName: Target Agent
+///       instruction: Target agent instruction
+///       llmAgent: {}
+///   cesToolAgentBasic:
+///     type: gcp:ces:Tool
+///     name: ces_tool_agent_basic
+///     properties:
+///       location: us
+///       app: ${["my-app"].name}
+///       toolId: ces_tool_basic5
+///       executionType: SYNCHRONOUS
+///       agentTool:
+///         name: ces_tool_agent_basic
+///         description: example-description
+///         agent: projects/${["my-app"].project}/locations/us/apps/${["my-app"].appId}/agents/${targetAgent.agentId}
+/// ```
+///
+/// ### Ces Tool File Search Basic
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_app = new gcp.ces.App("my-app", {
+///     location: "us",
+///     displayName: "my-app",
+///     appId: "app-id",
+///     timeZoneSettings: {
+///         timeZone: "America/Los_Angeles",
+///     },
+/// });
+/// const cesToolFileSearchBasic = new gcp.ces.Tool("ces_tool_file_search_basic", {
+///     location: "us",
+///     app: my_app.name,
+///     toolId: "ces_tool_basic6",
+///     executionType: "SYNCHRONOUS",
+///     fileSearchTool: {
+///         name: "ces_tool_file_search_basic",
+///         description: "example-description",
+///         corpusType: "FULLY_MANAGED",
+///         fileCorpus: pulumi.interpolate`projects/${my_app.project}/locations/us/ragCorpora/tf-test-mock-corpus`,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_app = gcp.ces.App("my-app",
+///     location="us",
+///     display_name="my-app",
+///     app_id="app-id",
+///     time_zone_settings={
+///         "time_zone": "America/Los_Angeles",
+///     })
+/// ces_tool_file_search_basic = gcp.ces.Tool("ces_tool_file_search_basic",
+///     location="us",
+///     app=my_app.name,
+///     tool_id="ces_tool_basic6",
+///     execution_type="SYNCHRONOUS",
+///     file_search_tool={
+///         "name": "ces_tool_file_search_basic",
+///         "description": "example-description",
+///         "corpus_type": "FULLY_MANAGED",
+///         "file_corpus": my_app.project.apply(lambda project: f"projects/{project}/locations/us/ragCorpora/tf-test-mock-corpus"),
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_app = new Gcp.Ces.App("my-app", new()
+///     {
+///         Location = "us",
+///         DisplayName = "my-app",
+///         AppId = "app-id",
+///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+///         {
+///             TimeZone = "America/Los_Angeles",
+///         },
+///     });
+///
+///     var cesToolFileSearchBasic = new Gcp.Ces.Tool("ces_tool_file_search_basic", new()
+///     {
+///         Location = "us",
+///         App = my_app.Name,
+///         ToolId = "ces_tool_basic6",
+///         ExecutionType = "SYNCHRONOUS",
+///         FileSearchTool = new Gcp.Ces.Inputs.ToolFileSearchToolArgs
+///         {
+///             Name = "ces_tool_file_search_basic",
+///             Description = "example-description",
+///             CorpusType = "FULLY_MANAGED",
+///             FileCorpus = my_app.Project.Apply(project => $"projects/{project}/locations/us/ragCorpora/tf-test-mock-corpus"),
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+/// 			Location:    pulumi.String("us"),
+/// 			DisplayName: pulumi.String("my-app"),
+/// 			AppId:       pulumi.String("app-id"),
+/// 			TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+/// 				TimeZone: pulumi.String("America/Los_Angeles"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ces.NewTool(ctx, "ces_tool_file_search_basic", &ces.ToolArgs{
+/// 			Location:      pulumi.String("us"),
+/// 			App:           my_app.Name,
+/// 			ToolId:        pulumi.String("ces_tool_basic6"),
+/// 			ExecutionType: pulumi.String("SYNCHRONOUS"),
+/// 			FileSearchTool: &ces.ToolFileSearchToolArgs{
+/// 				Name:        pulumi.String("ces_tool_file_search_basic"),
+/// 				Description: pulumi.String("example-description"),
+/// 				CorpusType:  pulumi.String("FULLY_MANAGED"),
+/// 				FileCorpus: my_app.Project.ApplyT(func(project string) (string, error) {
+/// 					return fmt.Sprintf("projects/%v/locations/us/ragCorpora/tf-test-mock-corpus", project), nil
+/// 				}).(pulumi.StringOutput),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool_file_search_basic" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.name
+///   tool_id        = "ces_tool_basic6"
+///   execution_type = "SYNCHRONOUS"
+///   file_search_tool = {
+///     name        = "ces_tool_file_search_basic"
+///     description = "example-description"
+///     corpus_type = "FULLY_MANAGED"
+///     file_corpus ="projects/${gcp_ces_app.my-app.project}/locations/us/ragCorpora/tf-test-mock-corpus"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.ces.App;
+/// import com.pulumi.gcp.ces.AppArgs;
+/// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+/// import com.pulumi.gcp.ces.Tool;
+/// import com.pulumi.gcp.ces.ToolArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolFileSearchToolArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var my_app = new App("my-app", AppArgs.builder()
+///             .location("us")
+///             .displayName("my-app")
+///             .appId("app-id")
+///             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+///                 .timeZone("America/Los_Angeles")
+///                 .build())
+///             .build());
+///
+///         var cesToolFileSearchBasic = new Tool("cesToolFileSearchBasic", ToolArgs.builder()
+///             .location("us")
+///             .app(my_app.name())
+///             .toolId("ces_tool_basic6")
+///             .executionType("SYNCHRONOUS")
+///             .fileSearchTool(ToolFileSearchToolArgs.builder()
+///                 .name("ces_tool_file_search_basic")
+///                 .description("example-description")
+///                 .corpusType("FULLY_MANAGED")
+///                 .fileCorpus(my_app.project().applyValue(_project -> String.format("projects/%s/locations/us/ragCorpora/tf-test-mock-corpus", _project)))
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   my-app:
+///     type: gcp:ces:App
+///     properties:
+///       location: us
+///       displayName: my-app
+///       appId: app-id
+///       timeZoneSettings:
+///         timeZone: America/Los_Angeles
+///   cesToolFileSearchBasic:
+///     type: gcp:ces:Tool
+///     name: ces_tool_file_search_basic
+///     properties:
+///       location: us
+///       app: ${["my-app"].name}
+///       toolId: ces_tool_basic6
+///       executionType: SYNCHRONOUS
+///       fileSearchTool:
+///         name: ces_tool_file_search_basic
+///         description: example-description
+///         corpusType: FULLY_MANAGED
+///         fileCorpus: projects/${["my-app"].project}/locations/us/ragCorpora/tf-test-mock-corpus
+/// ```
+///
+/// ### Ces Tool Widget Basic
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_app = new gcp.ces.App("my-app", {
+///     location: "us",
+///     displayName: "my-app",
+///     appId: "app-id",
+///     timeZoneSettings: {
+///         timeZone: "America/Los_Angeles",
+///     },
+/// });
+/// const cesToolWidgetBasic = new gcp.ces.Tool("ces_tool_widget_basic", {
+///     location: "us",
+///     app: my_app.name,
+///     toolId: "ces_tool_basic7",
+///     executionType: "SYNCHRONOUS",
+///     widgetTool: {
+///         name: "ces_tool_widget_basic",
+///         description: "example-description",
+///         widgetType: "PRODUCT_CAROUSEL",
+///         uiConfig: JSON.stringify({
+///             displaySettings: {
+///                 showHeader: true,
+///             },
+///         }),
+///         dataMapping: {
+///             mode: "FIELD_MAPPING",
+///             fieldMappings: {
+///                 key1: "value1",
+///                 key2: "value2",
+///             },
+///         },
+///         textResponseConfig: {
+///             type: "STATIC",
+///             staticText: "example-static-text",
+///         },
+///         parameters: {
+///             type: "OBJECT",
+///             properties: JSON.stringify({
+///                 param1: {
+///                     type: "STRING",
+///                 },
+///             }),
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_gcp as gcp
+///
+/// my_app = gcp.ces.App("my-app",
+///     location="us",
+///     display_name="my-app",
+///     app_id="app-id",
+///     time_zone_settings={
+///         "time_zone": "America/Los_Angeles",
+///     })
+/// ces_tool_widget_basic = gcp.ces.Tool("ces_tool_widget_basic",
+///     location="us",
+///     app=my_app.name,
+///     tool_id="ces_tool_basic7",
+///     execution_type="SYNCHRONOUS",
+///     widget_tool={
+///         "name": "ces_tool_widget_basic",
+///         "description": "example-description",
+///         "widget_type": "PRODUCT_CAROUSEL",
+///         "ui_config": json.dumps({
+///             "displaySettings": {
+///                 "showHeader": True,
+///             },
+///         }),
+///         "data_mapping": {
+///             "mode": "FIELD_MAPPING",
+///             "field_mappings": {
+///                 "key1": "value1",
+///                 "key2": "value2",
+///             },
+///         },
+///         "text_response_config": {
+///             "type": "STATIC",
+///             "static_text": "example-static-text",
+///         },
+///         "parameters": {
+///             "type": "OBJECT",
+///             "properties": json.dumps({
+///                 "param1": {
+///                     "type": "STRING",
+///                 },
+///             }),
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_app = new Gcp.Ces.App("my-app", new()
+///     {
+///         Location = "us",
+///         DisplayName = "my-app",
+///         AppId = "app-id",
+///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+///         {
+///             TimeZone = "America/Los_Angeles",
+///         },
+///     });
+///
+///     var cesToolWidgetBasic = new Gcp.Ces.Tool("ces_tool_widget_basic", new()
+///     {
+///         Location = "us",
+///         App = my_app.Name,
+///         ToolId = "ces_tool_basic7",
+///         ExecutionType = "SYNCHRONOUS",
+///         WidgetTool = new Gcp.Ces.Inputs.ToolWidgetToolArgs
+///         {
+///             Name = "ces_tool_widget_basic",
+///             Description = "example-description",
+///             WidgetType = "PRODUCT_CAROUSEL",
+///             UiConfig = JsonSerializer.Serialize(new Dictionary<string, object?>
+///             {
+///                 ["displaySettings"] = new Dictionary<string, object?>
+///                 {
+///                     ["showHeader"] = true,
+///                 },
+///             }),
+///             DataMapping = new Gcp.Ces.Inputs.ToolWidgetToolDataMappingArgs
+///             {
+///                 Mode = "FIELD_MAPPING",
+///                 FieldMappings =
+///                 {
+///                     { "key1", "value1" },
+///                     { "key2", "value2" },
+///                 },
+///             },
+///             TextResponseConfig = new Gcp.Ces.Inputs.ToolWidgetToolTextResponseConfigArgs
+///             {
+///                 Type = "STATIC",
+///                 StaticText = "example-static-text",
+///             },
+///             Parameters = new Gcp.Ces.Inputs.ToolWidgetToolParametersArgs
+///             {
+///                 Type = "OBJECT",
+///                 Properties = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                 {
+///                     ["param1"] = new Dictionary<string, object?>
+///                     {
+///                         ["type"] = "STRING",
+///                     },
+///                 }),
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+/// 			Location:    pulumi.String("us"),
+/// 			DisplayName: pulumi.String("my-app"),
+/// 			AppId:       pulumi.String("app-id"),
+/// 			TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+/// 				TimeZone: pulumi.String("America/Los_Angeles"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]bool{
+/// 			"displaySettings": map[string]bool{
+/// 				"showHeader": true,
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		tmpJSON1, err := json.Marshal(map[string]map[string]string{
+/// 			"param1": map[string]string{
+/// 				"type": "STRING",
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json1 := string(tmpJSON1)
+/// 		_, err = ces.NewTool(ctx, "ces_tool_widget_basic", &ces.ToolArgs{
+/// 			Location:      pulumi.String("us"),
+/// 			App:           my_app.Name,
+/// 			ToolId:        pulumi.String("ces_tool_basic7"),
+/// 			ExecutionType: pulumi.String("SYNCHRONOUS"),
+/// 			WidgetTool: &ces.ToolWidgetToolArgs{
+/// 				Name:        pulumi.String("ces_tool_widget_basic"),
+/// 				Description: pulumi.String("example-description"),
+/// 				WidgetType:  pulumi.String("PRODUCT_CAROUSEL"),
+/// 				UiConfig:    pulumi.String(json0),
+/// 				DataMapping: &ces.ToolWidgetToolDataMappingArgs{
+/// 					Mode: pulumi.String("FIELD_MAPPING"),
+/// 					FieldMappings: pulumi.StringMap{
+/// 						"key1": pulumi.String("value1"),
+/// 						"key2": pulumi.String("value2"),
+/// 					},
+/// 				},
+/// 				TextResponseConfig: &ces.ToolWidgetToolTextResponseConfigArgs{
+/// 					Type:       pulumi.String("STATIC"),
+/// 					StaticText: pulumi.String("example-static-text"),
+/// 				},
+/// 				Parameters: &ces.ToolWidgetToolParametersArgs{
+/// 					Type:       pulumi.String("OBJECT"),
+/// 					Properties: pulumi.String(json1),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool_widget_basic" {
+///   location       = "us"
+///   app            = gcp_ces_app.my-app.name
+///   tool_id        = "ces_tool_basic7"
+///   execution_type = "SYNCHRONOUS"
+///   widget_tool = {
+///     name        = "ces_tool_widget_basic"
+///     description = "example-description"
+///     widget_type = "PRODUCT_CAROUSEL"
+///     ui_config = jsonencode({
+///       "displaySettings" = {
+///         "showHeader" = true
+///       }
+///     })
+///     data_mapping = {
+///       mode = "FIELD_MAPPING"
+///       field_mappings = {
+///         "key1" = "value1"
+///         "key2" = "value2"
+///       }
+///     }
+///     text_response_config = {
+///       type        = "STATIC"
+///       static_text = "example-static-text"
+///     }
+///     parameters = {
+///       type = "OBJECT"
+///       properties = jsonencode({
+///         "param1" = {
+///           "type" = "STRING"
+///         }
+///       })
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.ces.App;
+/// import com.pulumi.gcp.ces.AppArgs;
+/// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+/// import com.pulumi.gcp.ces.Tool;
+/// import com.pulumi.gcp.ces.ToolArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolWidgetToolArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolWidgetToolDataMappingArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolWidgetToolTextResponseConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolWidgetToolParametersArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var my_app = new App("my-app", AppArgs.builder()
+///             .location("us")
+///             .displayName("my-app")
+///             .appId("app-id")
+///             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+///                 .timeZone("America/Los_Angeles")
+///                 .build())
+///             .build());
+///
+///         var cesToolWidgetBasic = new Tool("cesToolWidgetBasic", ToolArgs.builder()
+///             .location("us")
+///             .app(my_app.name())
+///             .toolId("ces_tool_basic7")
+///             .executionType("SYNCHRONOUS")
+///             .widgetTool(ToolWidgetToolArgs.builder()
+///                 .name("ces_tool_widget_basic")
+///                 .description("example-description")
+///                 .widgetType("PRODUCT_CAROUSEL")
+///                 .uiConfig(serializeJson(
+///                     jsonObject(
+///                         jsonProperty("displaySettings", jsonObject(
+///                             jsonProperty("showHeader", true)
+///                         ))
+///                     )))
+///                 .dataMapping(ToolWidgetToolDataMappingArgs.builder()
+///                     .mode("FIELD_MAPPING")
+///                     .fieldMappings(Map.ofEntries(
+///                         Map.entry("key1", "value1"),
+///                         Map.entry("key2", "value2")
+///                     ))
+///                     .build())
+///                 .textResponseConfig(ToolWidgetToolTextResponseConfigArgs.builder()
+///                     .type("STATIC")
+///                     .staticText("example-static-text")
+///                     .build())
+///                 .parameters(ToolWidgetToolParametersArgs.builder()
+///                     .type("OBJECT")
+///                     .properties(serializeJson(
+///                         jsonObject(
+///                             jsonProperty("param1", jsonObject(
+///                                 jsonProperty("type", "STRING")
+///                             ))
+///                         )))
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   my-app:
+///     type: gcp:ces:App
+///     properties:
+///       location: us
+///       displayName: my-app
+///       appId: app-id
+///       timeZoneSettings:
+///         timeZone: America/Los_Angeles
+///   cesToolWidgetBasic:
+///     type: gcp:ces:Tool
+///     name: ces_tool_widget_basic
+///     properties:
+///       location: us
+///       app: ${["my-app"].name}
+///       toolId: ces_tool_basic7
+///       executionType: SYNCHRONOUS
+///       widgetTool:
+///         name: ces_tool_widget_basic
+///         description: example-description
+///         widgetType: PRODUCT_CAROUSEL
+///         uiConfig:
+///           fn::toJSON:
+///             displaySettings:
+///               showHeader: true
+///         dataMapping:
+///           mode: FIELD_MAPPING
+///           fieldMappings:
+///             key1: value1
+///             key2: value2
+///         textResponseConfig:
+///           type: STATIC
+///           staticText: example-static-text
+///         parameters:
+///           type: OBJECT
+///           properties:
+///             fn::toJSON:
+///               param1:
+///                 type: STRING
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Tool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/apps/{{app}}/tools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{app}}/{{name}}`
-///
 /// * `{{location}}/{{app}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Tool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:ces/tool:Tool default projects/{{project}}/locations/{{location}}/apps/{{app}}/tools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/tool:Tool default {{project}}/{{location}}/{{app}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/tool:Tool default {{location}}/{{app}}/{{name}}
 /// ```
 class Tool extends pulumi.CustomResource {
+  /// Represents a tool that allows the agent to call another agent.
+  /// Structure is documented below.
+  late final pulumi.Output<ToolAgentTool?> agentTool;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> app;
   /// Represents a client-side function that the agent can invoke. When the
@@ -2036,6 +3287,9 @@ class Tool extends pulumi.CustomResource {
   /// as a ToolResponse to continue the interaction with the agent.
   /// Structure is documented below.
   late final pulumi.Output<ToolClientFunction?> clientFunction;
+  /// A ConnectorTool allows connections to different integrations.
+  /// Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>> connectorTools;
   /// Timestamp when the tool was created.
   late final pulumi.Output<String> createTime;
   /// Tool to retrieve from Vertex AI Search datastore or engine for grounding.
@@ -2044,6 +3298,13 @@ class Tool extends pulumi.CustomResource {
   /// https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
   /// Structure is documented below.
   late final pulumi.Output<ToolDataStoreTool?> dataStoreTool;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// (Output)
   /// The name of the allowed custom CA certificates. This
   /// can be used to disambiguate the custom CA certificates.
@@ -2056,6 +3317,10 @@ class Tool extends pulumi.CustomResource {
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
   late final pulumi.Output<String?> executionType;
+  /// The file search tool allows the agent to search across the files uploaded by the
+  /// app/agent developer.
+  /// Structure is documented below.
+  late final pulumi.Output<ToolFileSearchTool?> fileSearchTool;
   /// If the tool is generated by the LLM assistant, this field contains a
   /// descriptive summary of the generation.
   late final pulumi.Output<String> generatedSummary;
@@ -2066,6 +3331,9 @@ class Tool extends pulumi.CustomResource {
   late final pulumi.Output<ToolGoogleSearchTool?> googleSearchTool;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+  /// An MCP tool.
+  /// Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>> mcpTools;
   /// (Output)
   /// The name of the system tool.
   late final pulumi.Output<String> name;
@@ -2078,15 +3346,27 @@ class Tool extends pulumi.CustomResource {
   /// A Python function tool.
   /// Structure is documented below.
   late final pulumi.Output<ToolPythonFunction?> pythonFunction;
+  /// Represents a tool that allows the agent to call another remote agent.
+  /// Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>> remoteAgentTools;
   /// The system tool.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> systemTools;
+  /// The timeout for the tool execution. If not set, the default timeout is 30
+  /// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+  late final pulumi.Output<String?> timeout;
+  /// Configuration for tool behavior in fake mode.
+  /// Structure is documented below.
+  late final pulumi.Output<ToolToolFakeConfig?> toolFakeConfig;
   /// The ID to use for the tool, which will become the final component of
   /// the tool's resource name. If not provided, a unique ID will be
   /// automatically assigned for the tool.
   late final pulumi.Output<String> toolId;
   /// Timestamp when the tool was last updated.
   late final pulumi.Output<String> updateTime;
+  /// Represents a widget tool that the agent can invoke.
+  /// Structure is documented below.
+  late final pulumi.Output<ToolWidgetTool?> widgetTool;
 
   /// Creates a new [Tool].
   /// [name] The Pulumi resource name.
@@ -2102,23 +3382,32 @@ class Tool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentTool = registerOutput<ToolAgentTool?>('agentTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolAgentTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
     clientFunction = registerOutput<ToolClientFunction?>('clientFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolClientFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorTools = registerOutput<List<Map<String, dynamic>>>('connectorTools');
     createTime = registerOutput<String>('createTime');
     dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolDataStoreTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     executionType = registerOutput<String?>('executionType');
+    fileSearchTool = registerOutput<ToolFileSearchTool?>('fileSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolFileSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generatedSummary = registerOutput<String>('generatedSummary');
     googleSearchTool = registerOutput<ToolGoogleSearchTool?>('googleSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolGoogleSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    mcpTools = registerOutput<List<Map<String, dynamic>>>('mcpTools');
     this.name = registerOutput<String>('name');
     openApiTools = registerOutput<List<Map<String, dynamic>>>('openApiTools');
     project = registerOutput<String>('project');
     pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolPythonFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteAgentTools = registerOutput<List<Map<String, dynamic>>>('remoteAgentTools');
     systemTools = registerOutput<List<Map<String, dynamic>>>('systemTools');
+    timeout = registerOutput<String?>('timeout');
+    toolFakeConfig = registerOutput<ToolToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolId = registerOutput<String>('toolId');
     updateTime = registerOutput<String>('updateTime');
+    widgetTool = registerOutput<ToolWidgetTool?>('widgetTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolWidgetTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Tool] resource's state with the given [name] and [id].
@@ -2144,22 +3433,31 @@ class Tool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentTool = registerOutput<ToolAgentTool?>('agentTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolAgentTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
     clientFunction = registerOutput<ToolClientFunction?>('clientFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolClientFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorTools = registerOutput<List<Map<String, dynamic>>>('connectorTools');
     createTime = registerOutput<String>('createTime');
     dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolDataStoreTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     executionType = registerOutput<String?>('executionType');
+    fileSearchTool = registerOutput<ToolFileSearchTool?>('fileSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolFileSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generatedSummary = registerOutput<String>('generatedSummary');
     googleSearchTool = registerOutput<ToolGoogleSearchTool?>('googleSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolGoogleSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    mcpTools = registerOutput<List<Map<String, dynamic>>>('mcpTools');
     this.name = registerOutput<String>('name');
     openApiTools = registerOutput<List<Map<String, dynamic>>>('openApiTools');
     project = registerOutput<String>('project');
     pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolPythonFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteAgentTools = registerOutput<List<Map<String, dynamic>>>('remoteAgentTools');
     systemTools = registerOutput<List<Map<String, dynamic>>>('systemTools');
+    timeout = registerOutput<String?>('timeout');
+    toolFakeConfig = registerOutput<ToolToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolId = registerOutput<String>('toolId');
     updateTime = registerOutput<String>('updateTime');
+    widgetTool = registerOutput<ToolWidgetTool?>('widgetTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolWidgetTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,6 +5,7 @@
 class GetNetworkEndpointGroupResult {
   /// The NEG default port.
   final int defaultPort;
+  final String deletionPolicy;
   /// The NEG description.
   final String description;
   final int generatedId;
@@ -25,6 +26,7 @@ class GetNetworkEndpointGroupResult {
 
   /// Creates a new [GetNetworkEndpointGroupResult].
   /// [defaultPort] The NEG default port.
+  /// [deletionPolicy] Required.
   /// [description] The NEG description.
   /// [generatedId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -38,6 +40,7 @@ class GetNetworkEndpointGroupResult {
   /// [zone] Optional.
   const GetNetworkEndpointGroupResult({
     required this.defaultPort,
+    required this.deletionPolicy,
     required this.description,
     required this.generatedId,
     required this.id,
@@ -54,6 +57,7 @@ class GetNetworkEndpointGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultPort': defaultPort,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'generatedId': generatedId,
       'id': id,
@@ -71,6 +75,7 @@ class GetNetworkEndpointGroupResult {
   factory GetNetworkEndpointGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkEndpointGroupResult(
       defaultPort: map['defaultPort'] as int,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       generatedId: map['generatedId'] as int,
       id: map['id'] as String,
@@ -85,4 +90,3 @@ class GetNetworkEndpointGroupResult {
     );
   }
 }
-

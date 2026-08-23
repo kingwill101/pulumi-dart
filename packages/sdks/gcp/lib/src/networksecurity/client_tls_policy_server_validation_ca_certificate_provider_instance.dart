@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClientTlsPolicyServerValidationCaCertificateProviderInstance {
-  /// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+  /// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
   final pulumi.Input<String> pluginInstance;
 
   /// Creates a new [ClientTlsPolicyServerValidationCaCertificateProviderInstance].
-  /// [pluginInstance] Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+  /// [pluginInstance] Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
   const ClientTlsPolicyServerValidationCaCertificateProviderInstance({
     required this.pluginInstance,
   });
@@ -24,4 +24,3 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstance {
     );
   }
 }
-

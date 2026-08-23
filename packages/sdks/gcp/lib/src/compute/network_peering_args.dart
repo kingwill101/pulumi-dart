@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_network_peering_network_peering_args_doc}
 class NetworkPeeringArgs {
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Whether to export the custom routes to the peer network. Defaults to `false`.
   final pulumi.Input<bool>? exportCustomRoutes;
   /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
@@ -28,6 +35,7 @@ class NetworkPeeringArgs {
   final pulumi.Input<String>? updateStrategy;
 
   /// Creates a new [NetworkPeeringArgs].
+  /// [deletionPolicy] (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [exportCustomRoutes] Whether to export the custom routes to the peer network. Defaults to `false`.
   /// [exportSubnetRoutesWithPublicIp] Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
   /// [importCustomRoutes] Whether to import the custom routes from the peer network. Defaults to `false`.
@@ -38,6 +46,7 @@ class NetworkPeeringArgs {
   /// [stackType] Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
   /// [updateStrategy] The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
   const NetworkPeeringArgs({
+    this.deletionPolicy,
     this.exportCustomRoutes,
     this.exportSubnetRoutesWithPublicIp,
     this.importCustomRoutes,
@@ -51,6 +60,7 @@ class NetworkPeeringArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'exportCustomRoutes': ?exportCustomRoutes,
       'exportSubnetRoutesWithPublicIp': ?exportSubnetRoutesWithPublicIp,
       'importCustomRoutes': ?importCustomRoutes,
@@ -65,6 +75,7 @@ class NetworkPeeringArgs {
 
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportCustomRoutes: (() { final guardedValue = map['exportCustomRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exportSubnetRoutesWithPublicIp: (() { final guardedValue = map['exportSubnetRoutesWithPublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       importCustomRoutes: (() { final guardedValue = map['importCustomRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -77,4 +88,3 @@ class NetworkPeeringArgs {
     );
   }
 }
-

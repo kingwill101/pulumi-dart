@@ -135,6 +135,34 @@ import 'metric_descriptor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_metricdescriptor" "basic" {
+///   description  = "Daily sales records from all branch stores."
+///   display_name = "metric-descriptor"
+///   type         = "custom.googleapis.com/stores/daily_sales"
+///   metric_kind  = "GAUGE"
+///   value_type   = "DOUBLE"
+///   unit         = "{USD}"
+///   labels {
+///     key         = "store_id"
+///     value_type  = "STRING"
+///     description = "The ID of the store."
+///   }
+///   launch_stage = "BETA"
+///   metadata = {
+///     sample_period = "60s"
+///     ingest_delay  = "30s"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +173,8 @@ import 'metric_descriptor_state.dart';
 /// import com.pulumi.gcp.monitoring.MetricDescriptorArgs;
 /// import com.pulumi.gcp.monitoring.inputs.MetricDescriptorLabelArgs;
 /// import com.pulumi.gcp.monitoring.inputs.MetricDescriptorMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -338,6 +366,36 @@ import 'metric_descriptor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_metricdescriptor" "with_alert" {
+///   description  = "Daily sales records from all branch stores."
+///   display_name = "metric-descriptor"
+///   type         = "custom.googleapis.com/stores/daily_sales"
+///   metric_kind  = "GAUGE"
+///   value_type   = "DOUBLE"
+///   unit         = "{USD}"
+/// }
+/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+///   display_name = "metric-descriptor"
+///   combiner     = "OR"
+///   conditions {
+///     display_name = "test condition"
+///     condition_threshold = {
+///       filter     ="metric.type="${gcp_monitoring_metricdescriptor.with_alert.type}" AND resource.type="gce_instance""
+///       duration   = "60s"
+///       comparison = "COMPARISON_GT"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -350,8 +408,8 @@ import 'metric_descriptor_state.dart';
 /// import com.pulumi.gcp.monitoring.AlertPolicyArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -420,25 +478,25 @@ import 'metric_descriptor_state.dart';
 /// MetricDescriptor can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_monitoring_metric_descriptor.default "{{project}} {{name}}"
 /// $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
 /// ```
 class MetricDescriptor extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A detailed description of the metric, which can be used in documentation.
   late final pulumi.Output<String?> description;
   /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
@@ -462,7 +520,7 @@ class MetricDescriptor extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
+  /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relativeMetricName is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
   late final pulumi.Output<String> type;
   /// The units in which the metric value is reported. It is only applicable if the
   /// valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
@@ -500,6 +558,7 @@ class MetricDescriptor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
@@ -537,6 +596,7 @@ class MetricDescriptor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');

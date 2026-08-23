@@ -64,6 +64,13 @@ class AgentState {
   final pulumi.Input<List<String>>? childAgents;
   /// Timestamp when the agent was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable description of the agent.
   final pulumi.Input<String>? description;
   /// Display name of the agent.
@@ -122,6 +129,7 @@ class AgentState {
   /// [beforeToolCallbacks] The callbacks to execute before the tool is invoked. If there are multiple
   /// [childAgents] List of child agents in the agent tree.
   /// [createTime] Timestamp when the agent was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human-readable description of the agent.
   /// [displayName] Display name of the agent.
   /// [etag] Etag used to ensure the object hasn't changed during a read-modify-write
@@ -148,6 +156,7 @@ class AgentState {
     this.beforeToolCallbacks,
     this.childAgents,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.etag,
@@ -177,6 +186,7 @@ class AgentState {
       'beforeToolCallbacks': ?pulumi.Input.mapOptionalInputValue<List<AgentBeforeToolCallback>, List<Map<String, dynamic>>>(beforeToolCallbacks, (value) => pulumi.Input.encodeList<AgentBeforeToolCallback, Map<String, dynamic>>(value, (value) => value.toMap())),
       'childAgents': ?childAgents,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'etag': ?etag,
@@ -207,6 +217,7 @@ class AgentState {
       beforeToolCallbacks: (() { final guardedValue = map['beforeToolCallbacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentBeforeToolCallback>(guardedValue, (value) => AgentBeforeToolCallback.fromMap((value as Map).cast<String, dynamic>()))); })(),
       childAgents: (() { final guardedValue = map['childAgents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -225,4 +236,3 @@ class AgentState {
     );
   }
 }
-

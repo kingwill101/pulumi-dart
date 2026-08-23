@@ -92,6 +92,24 @@ import 'note_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_containeranalysis_note" "note" {
+///   name = "attestor-note"
+///   attestation_authority = {
+///     hint = {
+///       human_readable_name = "Attestor Note"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +120,8 @@ import 'note_state.dart';
 /// import com.pulumi.gcp.containeranalysis.NoteArgs;
 /// import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
 /// import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,6 +283,34 @@ import 'note_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_containeranalysis_note" "note" {
+///   name              = "attestor-note"
+///   short_description = "test note"
+///   long_description  = "a longer description of test note"
+///   expiration_time   = "2120-10-02T15:01:23.045123456Z"
+///   related_urls {
+///     url   = "some.url"
+///     label = "foo"
+///   }
+///   related_urls {
+///     url = "google.com"
+///   }
+///   attestation_authority = {
+///     hint = {
+///       human_readable_name = "Attestor Note"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +322,8 @@ import 'note_state.dart';
 /// import com.pulumi.gcp.containeranalysis.inputs.NoteRelatedUrlArgs;
 /// import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
 /// import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,22 +382,15 @@ import 'note_state.dart';
 /// Note can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/notes/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:containeranalysis/note:Note default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:containeranalysis/note:Note default {{name}}
 /// ```
 class Note extends pulumi.CustomResource {
@@ -368,6 +407,13 @@ class Note extends pulumi.CustomResource {
   late final pulumi.Output<NoteAttestationAuthority> attestationAuthority;
   /// The time this note was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Time of expiration for this note. Leave empty if note does not expire.
   late final pulumi.Output<String?> expirationTime;
   /// The type of analysis this note describes
@@ -405,6 +451,7 @@ class Note extends pulumi.CustomResource {
         ) {
     attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTime = registerOutput<String?>('expirationTime');
     kind = registerOutput<String>('kind');
     longDescription = registerOutput<String?>('longDescription');
@@ -441,6 +488,7 @@ class Note extends pulumi.CustomResource {
         ) {
     attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTime = registerOutput<String?>('expirationTime');
     kind = registerOutput<String>('kind');
     longDescription = registerOutput<String?>('longDescription');

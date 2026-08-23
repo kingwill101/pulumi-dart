@@ -124,6 +124,30 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   scaling = {
+///     max_instance_count = 100
+///   }
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +158,9 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +202,222 @@ import 'service_template.dart';
 ///       scaling:
 ///         maxInstanceCount: 100
 ///       template:
+///         containers:
+///           - image: us-docker.pkg.dev/cloudrun/container/hello
+/// ```
+///
+/// ### Cloudrunv2 Service Scaling Controls
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Service("default", {
+///     name: "cloudrun-service",
+///     location: "us-central1",
+///     deletionProtection: false,
+///     ingress: "INGRESS_TRAFFIC_ALL",
+///     launchStage: "BETA",
+///     template: {
+///         scaling: {
+///             minInstanceCount: 1,
+///             maxInstanceCount: 5,
+///             cpuUtilization: 0.75,
+///             concurrencyUtilization: 0.5,
+///         },
+///         containers: [{
+///             image: "us-docker.pkg.dev/cloudrun/container/hello",
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Service("default",
+///     name="cloudrun-service",
+///     location="us-central1",
+///     deletion_protection=False,
+///     ingress="INGRESS_TRAFFIC_ALL",
+///     launch_stage="BETA",
+///     template={
+///         "scaling": {
+///             "min_instance_count": 1,
+///             "max_instance_count": 5,
+///             "cpu_utilization": 0.75,
+///             "concurrency_utilization": 0.5,
+///         },
+///         "containers": [{
+///             "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Service("default", new()
+///     {
+///         Name = "cloudrun-service",
+///         Location = "us-central1",
+///         DeletionProtection = false,
+///         Ingress = "INGRESS_TRAFFIC_ALL",
+///         LaunchStage = "BETA",
+///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+///         {
+///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
+///             {
+///                 MinInstanceCount = 1,
+///                 MaxInstanceCount = 5,
+///                 CpuUtilization = 0.75,
+///                 ConcurrencyUtilization = 0.5,
+///             },
+///             Containers = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+///                 {
+///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+/// 			Name:               pulumi.String("cloudrun-service"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+/// 			LaunchStage:        pulumi.String("BETA"),
+/// 			Template: &cloudrunv2.ServiceTemplateArgs{
+/// 				Scaling: &cloudrunv2.ServiceTemplateScalingArgs{
+/// 					MinInstanceCount:       pulumi.Int(1),
+/// 					MaxInstanceCount:       pulumi.Int(5),
+/// 					CpuUtilization:         pulumi.Float64(0.75),
+/// 					ConcurrencyUtilization: pulumi.Float64(0.5),
+/// 				},
+/// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
+/// 					&cloudrunv2.ServiceTemplateContainerArgs{
+/// 						Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   launch_stage        = "BETA"
+///   template = {
+///     scaling = {
+///       min_instance_count      = 1
+///       max_instance_count      = 5
+///       cpu_utilization         = 0.75
+///       concurrency_utilization = 0.5
+///     }
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Service;
+/// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Service("default", ServiceArgs.builder()
+///             .name("cloudrun-service")
+///             .location("us-central1")
+///             .deletionProtection(false)
+///             .ingress("INGRESS_TRAFFIC_ALL")
+///             .launchStage("BETA")
+///             .template(ServiceTemplateArgs.builder()
+///                 .scaling(ServiceTemplateScalingArgs.builder()
+///                     .minInstanceCount(1)
+///                     .maxInstanceCount(5)
+///                     .cpuUtilization(0.75)
+///                     .concurrencyUtilization(0.5)
+///                     .build())
+///                 .containers(ServiceTemplateContainerArgs.builder()
+///                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Service
+///     properties:
+///       name: cloudrun-service
+///       location: us-central1
+///       deletionProtection: false
+///       ingress: INGRESS_TRAFFIC_ALL
+///       launchStage: BETA
+///       template:
+///         scaling:
+///           minInstanceCount: 1
+///           maxInstanceCount: 5
+///           cpuUtilization: 0.75
+///           concurrencyUtilization: 0.5
 ///         containers:
 ///           - image: us-docker.pkg.dev/cloudrun/container/hello
 /// ```
@@ -304,6 +545,34 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     health_check_disabled = true
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "resources" = {
+///         "limits" = {
+///           "cpu"    = "2"
+///           "memory" = "1024Mi"
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -313,8 +582,10 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -652,8 +923,6 @@ import 'service_template.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -754,7 +1023,7 @@ import 'service_template.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret.ID(),
+/// 			SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -765,6 +1034,85 @@ import 'service_template.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   depends_on          = [gcp_secretmanager_secretversion.secret-version-data]
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   scaling = {
+///     max_instance_count = 2
+///   }
+///   template = {
+///     volumes = [{
+///       "name" = "cloudsql"
+///       "cloudSqlInstance" = {
+///         "instances" = [gcp_sql_databaseinstance.instance.connection_name]
+///       }
+///     }]
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "envs" = [{
+///         "name"  = "FOO"
+///         "value" = "bar"
+///         }, {
+///         "name" = "SECRET_ENV_VAR"
+///         "valueSource" = {
+///           "secretKeyRef" = {
+///             "secret"  = gcp_secretmanager_secret.secret.secret_id
+///             "version" = "1"
+///           }
+///         }
+///       }]
+///       "volumeMounts" = [{
+///         "name"      = "cloudsql"
+///         "mountPath" = "/cloudsql"
+///       }]
+///     }]
+///   }
+///   traffics {
+///     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+///     percent = 100
+///   }
+/// }
+/// resource "gcp_secretmanager_secret" "secret" {
+///   secret_id = "secret-1"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-data" {
+///   secret      = gcp_secretmanager_secret.secret.name
+///   secret_data = "secret-data"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   depends_on = [gcp_secretmanager_secret.secret]
+///   secret_id  = gcp_secretmanager_secret.secret.id
+///   role       = "roles/secretmanager.secretAccessor"
+///   member     ="serviceAccount:${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+/// }
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "cloudrun-sql"
+///   region           = "us-central1"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+///   deletion_protection = true
 /// }
 /// ```
 /// ```java
@@ -786,14 +1134,21 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeCloudSqlInstanceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvValueSourceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTrafficArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamMember;
 /// import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1119,7 +1474,7 @@ import 'service_template.dart';
 /// 			Name:        pulumi.String("run-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     customTestNetwork.ID(),
+/// 			Network:     customTestNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1148,7 +1503,7 @@ import 'service_template.dart';
 /// 					},
 /// 				},
 /// 				VpcAccess: &cloudrunv2.ServiceTemplateVpcAccessArgs{
-/// 					Connector: connector.ID(),
+/// 					Connector: connector.ID().ToIDOutput().ToStringOutput(),
 /// 					Egress:    pulumi.String("ALL_TRAFFIC"),
 /// 				},
 /// 			},
@@ -1158,6 +1513,50 @@ import 'service_template.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///     vpc_access = {
+///       connector = gcp_vpcaccess_connector.connector.id
+///       egress    = "ALL_TRAFFIC"
+///     }
+///   }
+/// }
+/// resource "gcp_vpcaccess_connector" "connector" {
+///   name = "run-vpc"
+///   subnet = {
+///     name = gcp_compute_subnetwork.custom_test.name
+///   }
+///   machine_type  = "e2-standard-4"
+///   min_instances = 2
+///   max_instances = 3
+///   region        = "us-central1"
+/// }
+/// resource "gcp_compute_subnetwork" "custom_test" {
+///   name          = "run-subnetwork"
+///   ip_cidr_range = "10.2.0.0/28"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.custom_test.id
+/// }
+/// resource "gcp_compute_network" "custom_test" {
+///   name                    = "run-network"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -1176,9 +1575,10 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1416,6 +1816,34 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   launch_stage        = "GA"
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///     vpc_access = {
+///       network_interfaces = [{
+///         "network"    = "default"
+///         "subnetwork" = "default"
+///         "tags"       = ["tag1", "tag2", "tag3"]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1425,9 +1853,11 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessNetworkInterfaceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1643,6 +2073,42 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   scaling = {
+///     max_instance_count = 1
+///   }
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "resources" = {
+///         "limits" = {
+///           "cpu"            = "4"
+///           "memory"         = "16Gi"
+///           "nvidia.com/gpu" = "1"
+///         }
+///         "startupCpuBoost" = true
+///       }
+///     }]
+///     node_selector = {
+///       accelerator = "nvidia-l4"
+///     }
+///     gpu_zonal_redundancy_disabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1653,9 +2119,11 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateNodeSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1871,6 +2339,40 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "startupProbe" = {
+///         "initialDelaySeconds" = 0
+///         "timeoutSeconds"      = 1
+///         "periodSeconds"       = 3
+///         "failureThreshold"    = 1
+///         "tcpSocket" = {
+///           "port" = 8080
+///         }
+///       }
+///       "livenessProbe" = {
+///         "httpGet" = {
+///           "path" = "/"
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1880,8 +2382,13 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeTcpSocketArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeHttpGetArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1942,6 +2449,230 @@ import 'service_template.dart';
 ///             livenessProbe:
 ///               httpGet:
 ///                 path: /
+/// ```
+///
+/// ### Cloudrunv2 Service Readiness Probes
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Service("default", {
+///     name: "cloudrun-service",
+///     location: "us-central1",
+///     deletionProtection: false,
+///     template: {
+///         containers: [{
+///             image: "us-docker.pkg.dev/cloudrun/container/hello",
+///             readinessProbe: {
+///                 timeoutSeconds: 20,
+///                 periodSeconds: 30,
+///                 successThreshold: 3,
+///                 failureThreshold: 2,
+///                 grpc: {
+///                     port: 8080,
+///                 },
+///             },
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Service("default",
+///     name="cloudrun-service",
+///     location="us-central1",
+///     deletion_protection=False,
+///     template={
+///         "containers": [{
+///             "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///             "readiness_probe": {
+///                 "timeout_seconds": 20,
+///                 "period_seconds": 30,
+///                 "success_threshold": 3,
+///                 "failure_threshold": 2,
+///                 "grpc": {
+///                     "port": 8080,
+///                 },
+///             },
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Service("default", new()
+///     {
+///         Name = "cloudrun-service",
+///         Location = "us-central1",
+///         DeletionProtection = false,
+///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+///         {
+///             Containers = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+///                 {
+///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                     ReadinessProbe = new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerReadinessProbeArgs
+///                     {
+///                         TimeoutSeconds = 20,
+///                         PeriodSeconds = 30,
+///                         SuccessThreshold = 3,
+///                         FailureThreshold = 2,
+///                         Grpc = new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerReadinessProbeGrpcArgs
+///                         {
+///                             Port = 8080,
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+/// 			Name:               pulumi.String("cloudrun-service"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			Template: &cloudrunv2.ServiceTemplateArgs{
+/// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
+/// 					&cloudrunv2.ServiceTemplateContainerArgs{
+/// 						Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 						ReadinessProbe: &cloudrunv2.ServiceTemplateContainerReadinessProbeArgs{
+/// 							TimeoutSeconds:   pulumi.Int(20),
+/// 							PeriodSeconds:    pulumi.Int(30),
+/// 							SuccessThreshold: pulumi.Int(3),
+/// 							FailureThreshold: pulumi.Int(2),
+/// 							Grpc: &cloudrunv2.ServiceTemplateContainerReadinessProbeGrpcArgs{
+/// 								Port: pulumi.Int(8080),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "readinessProbe" = {
+///         "timeoutSeconds"   = 20
+///         "periodSeconds"    = 30
+///         "successThreshold" = 3
+///         "failureThreshold" = 2
+///         "grpc" = {
+///           "port" = 8080
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Service;
+/// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerReadinessProbeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerReadinessProbeGrpcArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Service("default", ServiceArgs.builder()
+///             .name("cloudrun-service")
+///             .location("us-central1")
+///             .deletionProtection(false)
+///             .template(ServiceTemplateArgs.builder()
+///                 .containers(ServiceTemplateContainerArgs.builder()
+///                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                     .readinessProbe(ServiceTemplateContainerReadinessProbeArgs.builder()
+///                         .timeoutSeconds(20)
+///                         .periodSeconds(30)
+///                         .successThreshold(3)
+///                         .failureThreshold(2)
+///                         .grpc(ServiceTemplateContainerReadinessProbeGrpcArgs.builder()
+///                             .port(8080)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Service
+///     properties:
+///       name: cloudrun-service
+///       location: us-central1
+///       deletionProtection: false
+///       template:
+///         containers:
+///           - image: us-docker.pkg.dev/cloudrun/container/hello
+///             readinessProbe:
+///               timeoutSeconds: 20
+///               periodSeconds: 30
+///               successThreshold: 3
+///               failureThreshold: 2
+///               grpc:
+///                 port: 8080
 /// ```
 ///
 /// ### Cloudrunv2 Service Secret
@@ -2140,8 +2871,6 @@ import 'service_template.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -2210,7 +2939,7 @@ import 'service_template.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret.ID(),
+/// 			SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -2221,6 +2950,62 @@ import 'service_template.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   depends_on          = [gcp_secretmanager_secretversion.secret-version-data]
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     volumes = [{
+///       "name" = "a-volume"
+///       "secret" = {
+///         "secret"      = gcp_secretmanager_secret.secret.secret_id
+///         "defaultMode" = 292
+///         "items" = [{
+///           "version" = "1"
+///           "path"    = "my-secret"
+///         }]
+///       }
+///     }]
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "volumeMounts" = [{
+///         "name"      = "a-volume"
+///         "mountPath" = "/secrets"
+///       }]
+///     }]
+///   }
+/// }
+/// resource "gcp_secretmanager_secret" "secret" {
+///   secret_id = "secret-1"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-data" {
+///   secret      = gcp_secretmanager_secret.secret.name
+///   secret_data = "secret-data"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+///   depends_on = [gcp_secretmanager_secret.secret]
+///   secret_id  = gcp_secretmanager_secret.secret.id
+///   role       = "roles/secretmanager.secretAccessor"
+///   member     ="serviceAccount:${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2238,13 +3023,18 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeSecretArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeSecretItemArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamMember;
 /// import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2606,6 +3396,55 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     containers = [{
+///       "name" = "hello-1"
+///       "ports" = {
+///         "containerPort" = 8080
+///       }
+///       "image"      = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "dependsOns" = ["hello-2"]
+///       "volumeMounts" = [{
+///         "name"      = "empty-dir-volume"
+///         "mountPath" = "/mnt"
+///       }]
+///       }, {
+///       "name"  = "hello-2"
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "envs" = [{
+///         "name"  = "PORT"
+///         "value" = "8081"
+///       }]
+///       "startupProbe" = {
+///         "httpGet" = {
+///           "port" = 8081
+///         }
+///       }
+///     }]
+///     volumes = [{
+///       "name" = "empty-dir-volume"
+///       "emptyDir" = {
+///         "medium"    = "MEMORY"
+///         "sizeLimit" = "256Mi"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2615,8 +3454,16 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerPortsArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeHttpGetArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeEmptyDirArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2879,6 +3726,42 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   template = {
+///     execution_environment = "EXECUTION_ENVIRONMENT_GEN2"
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "volumeMounts" = [{
+///         "name"      = "bucket"
+///         "mountPath" = "/var/www"
+///       }]
+///     }]
+///     volumes = [{
+///       "name" = "bucket"
+///       "gcs" = {
+///         "bucket"   = gcp_storage_bucket.default.name
+///         "readOnly" = false
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_storage_bucket" "default" {
+///   name     = "cloudrun-service"
+///   location = "US"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2890,8 +3773,12 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeGcsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3222,6 +4109,59 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     execution_environment = "EXECUTION_ENVIRONMENT_GEN2"
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello:latest"
+///       "volumeMounts" = [{
+///         "name"      = "nfs"
+///         "mountPath" = "/mnt/nfs/filestore"
+///       }]
+///     }]
+///     vpc_access = {
+///       network_interfaces = [{
+///         "network"    = "default"
+///         "subnetwork" = "default"
+///       }]
+///     }
+///     volumes = [{
+///       "name" = "nfs"
+///       "nfs" = {
+///         "server"   = gcp_filestore_instance.default.networks[0].ip_addresses[0]
+///         "path"     = "/share1"
+///         "readOnly" = false
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_filestore_instance" "default" {
+///   name     = "cloudrun-service"
+///   location = "us-central1-b"
+///   tier     = "BASIC_HDD"
+///   file_shares = {
+///     capacity_gb = 1024
+///     name        = "share1"
+///   }
+///   networks {
+///     network = "default"
+///     modes   = ["MODE_IPV4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3235,9 +4175,14 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessNetworkInterfaceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeNfsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3286,7 +4231,7 @@ import 'service_template.dart';
 ///                 .volumes(ServiceTemplateVolumeArgs.builder()
 ///                     .name("nfs")
 ///                     .nfs(ServiceTemplateVolumeNfsArgs.builder()
-///                         .server(defaultInstance.networks().applyValue(_networks -> _networks[0].ipAddresses()[0]))
+///                         .server(defaultInstance.networks().applyValue(_networks -> _networks.get(0).ipAddresses().get(0)))
 ///                         .path("/share1")
 ///                         .readOnly(false)
 ///                         .build())
@@ -3485,7 +4430,7 @@ import 'service_template.dart';
 /// 					},
 /// 				},
 /// 				ServiceMesh: &cloudrunv2.ServiceTemplateServiceMeshArgs{
-/// 					Mesh: mesh.ID(),
+/// 					Mesh: mesh.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -3496,6 +4441,41 @@ import 'service_template.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   depends_on          = [time_sleep.wait_for_mesh]
+///   name                = "cloudrun-service"
+///   deletion_protection = false
+///   location            = "us-central1"
+///   launch_stage        = "BETA"
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///     service_mesh = {
+///       mesh = gcp_networkservices_mesh.mesh.id
+///     }
+///   }
+/// }
+/// resource "time_sleep" "wait_for_mesh" {
+///   depends_on      = [gcp_networkservices_mesh.mesh]
+///   create_duration = "1m"
+/// }
+/// resource "gcp_networkservices_mesh" "mesh" {
+///   name = "network-services-mesh"
 /// }
 /// ```
 /// ```java
@@ -3511,10 +4491,11 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateServiceMeshArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3688,6 +4669,29 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                 = "cloudrun-service"
+///   location             = "us-central1"
+///   deletion_protection  = false
+///   invoker_iam_disabled = true
+///   description          = "The serving URL of this service will not perform any IAM check when invoked"
+///   ingress              = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3697,8 +4701,9 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3756,7 +4761,6 @@ import 'service_template.dart';
 ///     location: "us-central1",
 ///     deletionProtection: false,
 ///     ingress: "INGRESS_TRAFFIC_ALL",
-///     launchStage: "BETA",
 ///     iapEnabled: true,
 ///     template: {
 ///         containers: [{
@@ -3774,7 +4778,6 @@ import 'service_template.dart';
 ///     location="us-central1",
 ///     deletion_protection=False,
 ///     ingress="INGRESS_TRAFFIC_ALL",
-///     launch_stage="BETA",
 ///     iap_enabled=True,
 ///     template={
 ///         "containers": [{
@@ -3796,7 +4799,6 @@ import 'service_template.dart';
 ///         Location = "us-central1",
 ///         DeletionProtection = false,
 ///         Ingress = "INGRESS_TRAFFIC_ALL",
-///         LaunchStage = "BETA",
 ///         IapEnabled = true,
 ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
 ///         {
@@ -3827,7 +4829,6 @@ import 'service_template.dart';
 /// 			Location:           pulumi.String("us-central1"),
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 			Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
-/// 			LaunchStage:        pulumi.String("BETA"),
 /// 			IapEnabled:         pulumi.Bool(true),
 /// 			Template: &cloudrunv2.ServiceTemplateArgs{
 /// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
@@ -3844,6 +4845,28 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-iap-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   iap_enabled         = true
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3853,8 +4876,9 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3871,7 +4895,6 @@ import 'service_template.dart';
 ///             .location("us-central1")
 ///             .deletionProtection(false)
 ///             .ingress("INGRESS_TRAFFIC_ALL")
-///             .launchStage("BETA")
 ///             .iapEnabled(true)
 ///             .template(ServiceTemplateArgs.builder()
 ///                 .containers(ServiceTemplateContainerArgs.builder()
@@ -3892,7 +4915,6 @@ import 'service_template.dart';
 ///       location: us-central1
 ///       deletionProtection: false
 ///       ingress: INGRESS_TRAFFIC_ALL
-///       launchStage: BETA
 ///       iapEnabled: true
 ///       template:
 ///         containers:
@@ -3909,7 +4931,7 @@ import 'service_template.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const sourcebucket = new gcp.storage.Bucket("sourcebucket", {
-///     name: project.then(project => `${project.projectId}-tf-test-gcf-source_21197`),
+///     name: project.then(project => `${project.projectId}-tf-test-gcf-source_75125`),
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -3932,7 +4954,7 @@ import 'service_template.dart';
 ///                 cloudStorageSource: {
 ///                     bucket: sourcebucket.name,
 ///                     object: sourceTar.name,
-///                     generation: sourceTar.generation,
+///                     generation: sourceTar.generation.apply(x =>String(x)),
 ///                 },
 ///             },
 ///         }],
@@ -3945,7 +4967,7 @@ import 'service_template.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// sourcebucket = gcp.storage.Bucket("sourcebucket",
-///     name=f"{project.project_id}-tf-test-gcf-source_21197",
+///     name=f"{project.project_id}-tf-test-gcf-source_75125",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// source_tar = gcp.storage.BucketObject("source_tar",
@@ -3966,7 +4988,7 @@ import 'service_template.dart';
 ///                 "cloud_storage_source": {
 ///                     "bucket": sourcebucket.name,
 ///                     "object": source_tar.name,
-///                     "generation": source_tar.generation,
+///                     "generation": source_tar.generation.apply(lambda x: str(x)),
 ///                 },
 ///             },
 ///         }],
@@ -3984,7 +5006,7 @@ import 'service_template.dart';
 ///
 ///     var sourcebucket = new Gcp.Storage.Bucket("sourcebucket", new()
 ///     {
-///         Name = $"{project.Apply(getProjectResult => getProjectResult.ProjectId)}-tf-test-gcf-source_21197",
+///         Name = $"{project.Apply(getProjectResult => getProjectResult.ProjectId)}-tf-test-gcf-source_75125",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -4023,7 +5045,7 @@ import 'service_template.dart';
 ///                         {
 ///                             Bucket = sourcebucket.Name,
 ///                             Object = sourceTar.Name,
-///                             Generation = sourceTar.Generation,
+///                             Generation = sourceTar.Generation.Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///                         },
 ///                     },
 ///                 },
@@ -4037,8 +5059,6 @@ import 'service_template.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -4052,7 +5072,7 @@ import 'service_template.dart';
 /// 			return err
 /// 		}
 /// 		sourcebucket, err := storage.NewBucket(ctx, "sourcebucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_21197", project.ProjectId),
+/// 			Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_75125", project.ProjectId),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -4100,6 +5120,49 @@ import 'service_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_storage_bucket" "sourcebucket" {
+///   name                        ="${data.gcp_organizations_getproject.project.project_id}-tf-test-gcf-source_75125"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "source_tar" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.sourcebucket.name
+///   source = fileAsset("./test-fixtures/cr-zip-nodejs-hello.tar.gz")
+/// }
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-zip-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   template = {
+///     containers = [{
+///       "image"        = "scratch"
+///       "baseImageUri" = "us-central1-docker.pkg.dev/serverless-runtimes/google-24-full/runtimes/nodejs24"
+///       "commands"     = ["node"]
+///       "args"         = ["index.js"]
+///       "sourceCode" = {
+///         "cloudStorageSource" = {
+///           "bucket"     = gcp_storage_bucket.sourcebucket.name
+///           "object"     = gcp_storage_bucketobject.source_tar.name
+///           "generation" = gcp_storage_bucketobject.source_tar.generation
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4115,9 +5178,12 @@ import 'service_template.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerSourceCodeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerSourceCodeCloudStorageSourceArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4133,7 +5199,7 @@ import 'service_template.dart';
 ///             .build());
 ///
 ///         var sourcebucket = new Bucket("sourcebucket", BucketArgs.builder()
-///             .name(String.format("%s-tf-test-gcf-source_21197", project.projectId()))
+///             .name(String.format("%s-tf-test-gcf-source_75125", project.projectId()))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -4173,7 +5239,7 @@ import 'service_template.dart';
 ///   sourcebucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project.projectId}-tf-test-gcf-source_21197
+///       name: ${project.projectId}-tf-test-gcf-source_75125
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   sourceTar:
@@ -4183,7 +5249,7 @@ import 'service_template.dart';
 ///       name: function-source.zip
 ///       bucket: ${sourcebucket.name}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/cr-zip-nodejs-hello.tar.gz
+///         fn::fileAsset: ./test-fixtures/cr-zip-nodejs-hello.tar.gz
 ///   default:
 ///     type: gcp:cloudrunv2:Service
 ///     properties:
@@ -4210,28 +5276,1066 @@ import 'service_template.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Cloudrunv2 Service Emptydir Disk
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Service("default", {
+///     name: "cloudrun-service",
+///     location: "us-central1",
+///     launchStage: "ALPHA",
+///     deletionProtection: true,
+///     ingress: "INGRESS_TRAFFIC_ALL",
+///     template: {
+///         containers: [{
+///             image: "us-docker.pkg.dev/cloudrun/container/hello",
+///             volumeMounts: [{
+///                 name: "empty-dir-volume",
+///                 mountPath: "/mnt",
+///             }],
+///         }],
+///         volumes: [{
+///             name: "empty-dir-volume",
+///             emptyDir: {
+///                 medium: "DISK",
+///                 sizeLimit: "10Gi",
+///             },
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Service("default",
+///     name="cloudrun-service",
+///     location="us-central1",
+///     launch_stage="ALPHA",
+///     deletion_protection=True,
+///     ingress="INGRESS_TRAFFIC_ALL",
+///     template={
+///         "containers": [{
+///             "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///             "volume_mounts": [{
+///                 "name": "empty-dir-volume",
+///                 "mount_path": "/mnt",
+///             }],
+///         }],
+///         "volumes": [{
+///             "name": "empty-dir-volume",
+///             "empty_dir": {
+///                 "medium": "DISK",
+///                 "size_limit": "10Gi",
+///             },
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Service("default", new()
+///     {
+///         Name = "cloudrun-service",
+///         Location = "us-central1",
+///         LaunchStage = "ALPHA",
+///         DeletionProtection = true,
+///         Ingress = "INGRESS_TRAFFIC_ALL",
+///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+///         {
+///             Containers = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+///                 {
+///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                     VolumeMounts = new[]
+///                     {
+///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerVolumeMountArgs
+///                         {
+///                             Name = "empty-dir-volume",
+///                             MountPath = "/mnt",
+///                         },
+///                     },
+///                 },
+///             },
+///             Volumes = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
+///                 {
+///                     Name = "empty-dir-volume",
+///                     EmptyDir = new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeEmptyDirArgs
+///                     {
+///                         Medium = "DISK",
+///                         SizeLimit = "10Gi",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+/// 			Name:               pulumi.String("cloudrun-service"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			LaunchStage:        pulumi.String("ALPHA"),
+/// 			DeletionProtection: pulumi.Bool(true),
+/// 			Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+/// 			Template: &cloudrunv2.ServiceTemplateArgs{
+/// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
+/// 					&cloudrunv2.ServiceTemplateContainerArgs{
+/// 						Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 						VolumeMounts: cloudrunv2.ServiceTemplateContainerVolumeMountArray{
+/// 							&cloudrunv2.ServiceTemplateContainerVolumeMountArgs{
+/// 								Name:      pulumi.String("empty-dir-volume"),
+/// 								MountPath: pulumi.String("/mnt"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 				Volumes: cloudrunv2.ServiceTemplateVolumeArray{
+/// 					&cloudrunv2.ServiceTemplateVolumeArgs{
+/// 						Name: pulumi.String("empty-dir-volume"),
+/// 						EmptyDir: &cloudrunv2.ServiceTemplateVolumeEmptyDirArgs{
+/// 							Medium:    pulumi.String("DISK"),
+/// 							SizeLimit: pulumi.String("10Gi"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   launch_stage        = "ALPHA"
+///   deletion_protection = "true"
+///   ingress             = "INGRESS_TRAFFIC_ALL"
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "volumeMounts" = [{
+///         "name"      = "empty-dir-volume"
+///         "mountPath" = "/mnt"
+///       }]
+///     }]
+///     volumes = [{
+///       "name" = "empty-dir-volume"
+///       "emptyDir" = {
+///         "medium"    = "DISK"
+///         "sizeLimit" = "10Gi"
+///       }
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Service;
+/// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeEmptyDirArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Service("default", ServiceArgs.builder()
+///             .name("cloudrun-service")
+///             .location("us-central1")
+///             .launchStage("ALPHA")
+///             .deletionProtection(true)
+///             .ingress("INGRESS_TRAFFIC_ALL")
+///             .template(ServiceTemplateArgs.builder()
+///                 .containers(ServiceTemplateContainerArgs.builder()
+///                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
+///                         .name("empty-dir-volume")
+///                         .mountPath("/mnt")
+///                         .build())
+///                     .build())
+///                 .volumes(ServiceTemplateVolumeArgs.builder()
+///                     .name("empty-dir-volume")
+///                     .emptyDir(ServiceTemplateVolumeEmptyDirArgs.builder()
+///                         .medium("DISK")
+///                         .sizeLimit("10Gi")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Service
+///     properties:
+///       name: cloudrun-service
+///       location: us-central1
+///       launchStage: ALPHA
+///       deletionProtection: 'true'
+///       ingress: INGRESS_TRAFFIC_ALL
+///       template:
+///         containers:
+///           - image: us-docker.pkg.dev/cloudrun/container/hello
+///             volumeMounts:
+///               - name: empty-dir-volume
+///                 mountPath: /mnt
+///         volumes:
+///           - name: empty-dir-volume
+///             emptyDir:
+///               medium: DISK
+///               sizeLimit: 10Gi
+/// ```
+///
+/// ### Cloudrunv2 Service Tags
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Service("default", {
+///     name: "cloudrun-service",
+///     location: "us-central1",
+///     deletionProtection: false,
+///     tags: {
+///         "tagKeys/1234": "tagValues/5678",
+///     },
+///     template: {
+///         containers: [{
+///             image: "us-docker.pkg.dev/cloudrun/container/hello",
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Service("default",
+///     name="cloudrun-service",
+///     location="us-central1",
+///     deletion_protection=False,
+///     tags={
+///         "tagKeys/1234": "tagValues/5678",
+///     },
+///     template={
+///         "containers": [{
+///             "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Service("default", new()
+///     {
+///         Name = "cloudrun-service",
+///         Location = "us-central1",
+///         DeletionProtection = false,
+///         Tags =
+///         {
+///             { "tagKeys/1234", "tagValues/5678" },
+///         },
+///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+///         {
+///             Containers = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+///                 {
+///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+/// 			Name:               pulumi.String("cloudrun-service"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			Tags: pulumi.StringMap{
+/// 				"tagKeys/1234": pulumi.String("tagValues/5678"),
+/// 			},
+/// 			Template: &cloudrunv2.ServiceTemplateArgs{
+/// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
+/// 					&cloudrunv2.ServiceTemplateContainerArgs{
+/// 						Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   tags = {
+///     "tagKeys/1234" = "tagValues/5678"
+///   }
+///   template = {
+///     containers = [{
+///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Service;
+/// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Service("default", ServiceArgs.builder()
+///             .name("cloudrun-service")
+///             .location("us-central1")
+///             .deletionProtection(false)
+///             .tags(Map.of("tagKeys/1234", "tagValues/5678"))
+///             .template(ServiceTemplateArgs.builder()
+///                 .containers(ServiceTemplateContainerArgs.builder()
+///                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Service
+///     properties:
+///       name: cloudrun-service
+///       location: us-central1
+///       deletionProtection: false
+///       tags:
+///         tagKeys/1234: tagValues/5678
+///       template:
+///         containers:
+///           - image: us-docker.pkg.dev/cloudrun/container/hello
+/// ```
+///
+/// ### Cloudrunv2 Service Sandbox
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Service("default", {
+///     name: "cloudrun-service",
+///     location: "us-central1",
+///     deletionProtection: false,
+///     launchStage: "BETA",
+///     template: {
+///         containers: [{
+///             image: "us-docker.pkg.dev/cloudrun/container/hello",
+///             sandboxLauncher: true,
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Service("default",
+///     name="cloudrun-service",
+///     location="us-central1",
+///     deletion_protection=False,
+///     launch_stage="BETA",
+///     template={
+///         "containers": [{
+///             "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///             "sandbox_launcher": True,
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Service("default", new()
+///     {
+///         Name = "cloudrun-service",
+///         Location = "us-central1",
+///         DeletionProtection = false,
+///         LaunchStage = "BETA",
+///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+///         {
+///             Containers = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+///                 {
+///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                     SandboxLauncher = true,
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+/// 			Name:               pulumi.String("cloudrun-service"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			LaunchStage:        pulumi.String("BETA"),
+/// 			Template: &cloudrunv2.ServiceTemplateArgs{
+/// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
+/// 					&cloudrunv2.ServiceTemplateContainerArgs{
+/// 						Image:           pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 						SandboxLauncher: pulumi.Bool(true),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   launch_stage        = "BETA"
+///   template = {
+///     containers = [{
+///       "image"           = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "sandboxLauncher" = true
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Service;
+/// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Service("default", ServiceArgs.builder()
+///             .name("cloudrun-service")
+///             .location("us-central1")
+///             .deletionProtection(false)
+///             .launchStage("BETA")
+///             .template(ServiceTemplateArgs.builder()
+///                 .containers(ServiceTemplateContainerArgs.builder()
+///                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                     .sandboxLauncher(true)
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Service
+///     properties:
+///       name: cloudrun-service
+///       location: us-central1
+///       deletionProtection: false
+///       launchStage: BETA
+///       template:
+///         containers:
+///           - image: us-docker.pkg.dev/cloudrun/container/hello
+///             sandboxLauncher: true
+/// ```
+///
+/// ### Cloudrunv2 Service Sandbox Templates
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Service("default", {
+///     name: "cloudrun-service",
+///     location: "us-central1",
+///     deletionProtection: false,
+///     launchStage: "ALPHA",
+///     template: {
+///         containers: [{
+///             image: "us-docker.pkg.dev/cloudrun/container/hello",
+///             sandboxLauncher: true,
+///             volumeMounts: [{
+///                 name: "empty-dir-volume",
+///                 mountPath: "/mnt",
+///             }],
+///         }],
+///         sandboxes: {
+///             templates: [{
+///                 name: "hello",
+///                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+///                 commands: ["/bin/sh"],
+///                 args: [
+///                     "-c",
+///                     "echo hello",
+///                 ],
+///                 envs: [{
+///                     name: "PORT",
+///                     value: "9000",
+///                 }],
+///                 volumeMounts: [{
+///                     name: "empty-dir-volume",
+///                     mountPath: "/mnt",
+///                     subPath: "/home/user",
+///                 }],
+///                 workingDir: "/mnt/app",
+///             }],
+///         },
+///         volumes: [{
+///             name: "empty-dir-volume",
+///             emptyDir: {
+///                 medium: "MEMORY",
+///                 sizeLimit: "256Mi",
+///             },
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Service("default",
+///     name="cloudrun-service",
+///     location="us-central1",
+///     deletion_protection=False,
+///     launch_stage="ALPHA",
+///     template={
+///         "containers": [{
+///             "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///             "sandbox_launcher": True,
+///             "volume_mounts": [{
+///                 "name": "empty-dir-volume",
+///                 "mount_path": "/mnt",
+///             }],
+///         }],
+///         "sandboxes": {
+///             "templates": [{
+///                 "name": "hello",
+///                 "image": "us-docker.pkg.dev/cloudrun/container/hello",
+///                 "commands": ["/bin/sh"],
+///                 "args": [
+///                     "-c",
+///                     "echo hello",
+///                 ],
+///                 "envs": [{
+///                     "name": "PORT",
+///                     "value": "9000",
+///                 }],
+///                 "volume_mounts": [{
+///                     "name": "empty-dir-volume",
+///                     "mount_path": "/mnt",
+///                     "sub_path": "/home/user",
+///                 }],
+///                 "working_dir": "/mnt/app",
+///             }],
+///         },
+///         "volumes": [{
+///             "name": "empty-dir-volume",
+///             "empty_dir": {
+///                 "medium": "MEMORY",
+///                 "size_limit": "256Mi",
+///             },
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Service("default", new()
+///     {
+///         Name = "cloudrun-service",
+///         Location = "us-central1",
+///         DeletionProtection = false,
+///         LaunchStage = "ALPHA",
+///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+///         {
+///             Containers = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+///                 {
+///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                     SandboxLauncher = true,
+///                     VolumeMounts = new[]
+///                     {
+///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerVolumeMountArgs
+///                         {
+///                             Name = "empty-dir-volume",
+///                             MountPath = "/mnt",
+///                         },
+///                     },
+///                 },
+///             },
+///             Sandboxes = new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesArgs
+///             {
+///                 Templates = new[]
+///                 {
+///                     new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesTemplateArgs
+///                     {
+///                         Name = "hello",
+///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+///                         Commands = new[]
+///                         {
+///                             "/bin/sh",
+///                         },
+///                         Args = new[]
+///                         {
+///                             "-c",
+///                             "echo hello",
+///                         },
+///                         Envs = new[]
+///                         {
+///                             new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesTemplateEnvArgs
+///                             {
+///                                 Name = "PORT",
+///                                 Value = "9000",
+///                             },
+///                         },
+///                         VolumeMounts = new[]
+///                         {
+///                             new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesTemplateVolumeMountArgs
+///                             {
+///                                 Name = "empty-dir-volume",
+///                                 MountPath = "/mnt",
+///                                 SubPath = "/home/user",
+///                             },
+///                         },
+///                         WorkingDir = "/mnt/app",
+///                     },
+///                 },
+///             },
+///             Volumes = new[]
+///             {
+///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
+///                 {
+///                     Name = "empty-dir-volume",
+///                     EmptyDir = new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeEmptyDirArgs
+///                     {
+///                         Medium = "MEMORY",
+///                         SizeLimit = "256Mi",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+/// 			Name:               pulumi.String("cloudrun-service"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			LaunchStage:        pulumi.String("ALPHA"),
+/// 			Template: &cloudrunv2.ServiceTemplateArgs{
+/// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
+/// 					&cloudrunv2.ServiceTemplateContainerArgs{
+/// 						Image:           pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 						SandboxLauncher: pulumi.Bool(true),
+/// 						VolumeMounts: cloudrunv2.ServiceTemplateContainerVolumeMountArray{
+/// 							&cloudrunv2.ServiceTemplateContainerVolumeMountArgs{
+/// 								Name:      pulumi.String("empty-dir-volume"),
+/// 								MountPath: pulumi.String("/mnt"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 				Sandboxes: &cloudrunv2.ServiceTemplateSandboxesArgs{
+/// 					Templates: cloudrunv2.ServiceTemplateSandboxesTemplateArray{
+/// 						&cloudrunv2.ServiceTemplateSandboxesTemplateArgs{
+/// 							Name:  pulumi.String("hello"),
+/// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+/// 							Commands: pulumi.StringArray{
+/// 								pulumi.String("/bin/sh"),
+/// 							},
+/// 							Args: pulumi.StringArray{
+/// 								pulumi.String("-c"),
+/// 								pulumi.String("echo hello"),
+/// 							},
+/// 							Envs: cloudrunv2.ServiceTemplateSandboxesTemplateEnvArray{
+/// 								&cloudrunv2.ServiceTemplateSandboxesTemplateEnvArgs{
+/// 									Name:  pulumi.String("PORT"),
+/// 									Value: pulumi.String("9000"),
+/// 								},
+/// 							},
+/// 							VolumeMounts: cloudrunv2.ServiceTemplateSandboxesTemplateVolumeMountArray{
+/// 								&cloudrunv2.ServiceTemplateSandboxesTemplateVolumeMountArgs{
+/// 									Name:      pulumi.String("empty-dir-volume"),
+/// 									MountPath: pulumi.String("/mnt"),
+/// 									SubPath:   pulumi.String("/home/user"),
+/// 								},
+/// 							},
+/// 							WorkingDir: pulumi.String("/mnt/app"),
+/// 						},
+/// 					},
+/// 				},
+/// 				Volumes: cloudrunv2.ServiceTemplateVolumeArray{
+/// 					&cloudrunv2.ServiceTemplateVolumeArgs{
+/// 						Name: pulumi.String("empty-dir-volume"),
+/// 						EmptyDir: &cloudrunv2.ServiceTemplateVolumeEmptyDirArgs{
+/// 							Medium:    pulumi.String("MEMORY"),
+/// 							SizeLimit: pulumi.String("256Mi"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_service" "default" {
+///   name                = "cloudrun-service"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   launch_stage        = "ALPHA"
+///   template = {
+///     containers = [{
+///       "image"           = "us-docker.pkg.dev/cloudrun/container/hello"
+///       "sandboxLauncher" = true
+///       "volumeMounts" = [{
+///         "name"      = "empty-dir-volume"
+///         "mountPath" = "/mnt"
+///       }]
+///     }]
+///     sandboxes = {
+///       templates = [{
+///         "name"     = "hello"
+///         "image"    = "us-docker.pkg.dev/cloudrun/container/hello"
+///         "commands" = ["/bin/sh"]
+///         "args"     = ["-c", "echo hello"]
+///         "envs" = [{
+///           "name"  = "PORT"
+///           "value" = "9000"
+///         }]
+///         "volumeMounts" = [{
+///           "name"      = "empty-dir-volume"
+///           "mountPath" = "/mnt"
+///           "subPath"   = "/home/user"
+///         }]
+///         "workingDir" = "/mnt/app"
+///       }]
+///     }
+///     volumes = [{
+///       "name" = "empty-dir-volume"
+///       "emptyDir" = {
+///         "medium"    = "MEMORY"
+///         "sizeLimit" = "256Mi"
+///       }
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Service;
+/// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesTemplateEnvArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesTemplateVolumeMountArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeEmptyDirArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Service("default", ServiceArgs.builder()
+///             .name("cloudrun-service")
+///             .location("us-central1")
+///             .deletionProtection(false)
+///             .launchStage("ALPHA")
+///             .template(ServiceTemplateArgs.builder()
+///                 .containers(ServiceTemplateContainerArgs.builder()
+///                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                     .sandboxLauncher(true)
+///                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
+///                         .name("empty-dir-volume")
+///                         .mountPath("/mnt")
+///                         .build())
+///                     .build())
+///                 .sandboxes(ServiceTemplateSandboxesArgs.builder()
+///                     .templates(ServiceTemplateSandboxesTemplateArgs.builder()
+///                         .name("hello")
+///                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+///                         .commands("/bin/sh")
+///                         .args(
+///                             "-c",
+///                             "echo hello")
+///                         .envs(ServiceTemplateSandboxesTemplateEnvArgs.builder()
+///                             .name("PORT")
+///                             .value("9000")
+///                             .build())
+///                         .volumeMounts(ServiceTemplateSandboxesTemplateVolumeMountArgs.builder()
+///                             .name("empty-dir-volume")
+///                             .mountPath("/mnt")
+///                             .subPath("/home/user")
+///                             .build())
+///                         .workingDir("/mnt/app")
+///                         .build())
+///                     .build())
+///                 .volumes(ServiceTemplateVolumeArgs.builder()
+///                     .name("empty-dir-volume")
+///                     .emptyDir(ServiceTemplateVolumeEmptyDirArgs.builder()
+///                         .medium("MEMORY")
+///                         .sizeLimit("256Mi")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Service
+///     properties:
+///       name: cloudrun-service
+///       location: us-central1
+///       deletionProtection: false
+///       launchStage: ALPHA
+///       template:
+///         containers:
+///           - image: us-docker.pkg.dev/cloudrun/container/hello
+///             sandboxLauncher: true
+///             volumeMounts:
+///               - name: empty-dir-volume
+///                 mountPath: /mnt
+///         sandboxes:
+///           templates:
+///             - name: hello
+///               image: us-docker.pkg.dev/cloudrun/container/hello
+///               commands:
+///                 - /bin/sh
+///               args:
+///                 - -c
+///                 - echo hello
+///               envs:
+///                 - name: PORT
+///                   value: '9000'
+///               volumeMounts:
+///                 - name: empty-dir-volume
+///                   mountPath: /mnt
+///                   subPath: /home/user
+///               workingDir: /mnt/app
+///         volumes:
+///           - name: empty-dir-volume
+///             emptyDir:
+///               medium: MEMORY
+///               sizeLimit: 256Mi
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Service can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/services/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
 /// ```
 class Service extends pulumi.CustomResource {
@@ -4240,7 +6344,7 @@ class Service extends pulumi.CustomResource {
   /// All system annotations in v1 now have a corresponding field in v2 Service.
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Settings for the Binary Authorization feature.
   /// Structure is documented below.
@@ -4266,9 +6370,23 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<bool?> defaultUriDisabled;
   /// The deletion time.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the service. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the service,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the service will fail.
+  /// When the field is set to false, deleting the service is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// User-provided description of the Service. This field currently has a 512-character limit.
   late final pulumi.Output<String?> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -4278,7 +6396,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> expireTime;
   /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
   late final pulumi.Output<String> generation;
-  /// Used to enable/disable IAP for the service.
+  /// Used to enable/disable IAP for the cloud-run service.
   late final pulumi.Output<bool?> iapEnabled;
   /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
   /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -4290,7 +6408,7 @@ class Service extends pulumi.CustomResource {
   /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
   /// All system labels in v1 now have a corresponding field in v2 Service.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Email address of the last authenticated modifier.
   late final pulumi.Output<String> lastModifier;
@@ -4326,6 +6444,10 @@ class Service extends pulumi.CustomResource {
   /// Scaling settings that apply to the whole service
   /// Structure is documented below.
   late final pulumi.Output<ServiceScaling> scaling;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  late final pulumi.Output<Map<String, String>?> tags;
   /// The template used to create revisions for this Service.
   /// Structure is documented below.
   late final pulumi.Output<ServiceTemplate> template;
@@ -4373,6 +6495,7 @@ class Service extends pulumi.CustomResource {
     customAudiences = registerOutput<List<String>?>('customAudiences');
     defaultUriDisabled = registerOutput<bool?>('defaultUriDisabled');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -4396,6 +6519,7 @@ class Service extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags');
     template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
     trafficStatuses = registerOutput<List<Map<String, dynamic>>>('trafficStatuses');
@@ -4440,6 +6564,7 @@ class Service extends pulumi.CustomResource {
     customAudiences = registerOutput<List<String>?>('customAudiences');
     defaultUriDisabled = registerOutput<bool?>('defaultUriDisabled');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -4463,6 +6588,7 @@ class Service extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags');
     template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
     trafficStatuses = registerOutput<List<Map<String, dynamic>>>('trafficStatuses');

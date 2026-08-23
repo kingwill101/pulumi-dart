@@ -9,6 +9,13 @@ class HostingSiteState {
   final pulumi.Input<String>? appId;
   /// The default URL for the site in the form of https://{name}.web.app
   final pulumi.Input<String>? defaultUrl;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Output only. The fully-qualified resource name of the Hosting site, in
   /// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
   /// Firebase project's
@@ -30,6 +37,7 @@ class HostingSiteState {
   /// Creates a new [HostingSiteState].
   /// [appId] Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
   /// [defaultUrl] The default URL for the site in the form of https://{name}.web.app
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] Output only. The fully-qualified resource name of the Hosting site, in
   /// [project] The ID of the project in which the resource belongs.
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
@@ -37,6 +45,7 @@ class HostingSiteState {
   const HostingSiteState({
     this.appId,
     this.defaultUrl,
+    this.deletionPolicy,
     this.name,
     this.project,
     this.siteId,
@@ -47,6 +56,7 @@ class HostingSiteState {
     return <String, dynamic>{
       'appId': ?appId,
       'defaultUrl': ?defaultUrl,
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'project': ?project,
       'siteId': ?siteId,
@@ -58,6 +68,7 @@ class HostingSiteState {
     return HostingSiteState(
       appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultUrl: (() { final guardedValue = map['defaultUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -65,4 +76,3 @@ class HostingSiteState {
     );
   }
 }
-

@@ -20,6 +20,7 @@ class GetWorkerPoolResult {
   final String creator;
   final List<String> customAudiences;
   final String deleteTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String description;
   final Map<String, String> effectiveAnnotations;
@@ -58,6 +59,7 @@ class GetWorkerPoolResult {
   /// [creator] Required.
   /// [customAudiences] Required.
   /// [deleteTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [description] Required.
   /// [effectiveAnnotations] Required.
@@ -94,6 +96,7 @@ class GetWorkerPoolResult {
     required this.creator,
     required this.customAudiences,
     required this.deleteTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.description,
     required this.effectiveAnnotations,
@@ -133,6 +136,7 @@ class GetWorkerPoolResult {
       'creator': creator,
       'customAudiences': customAudiences,
       'deleteTime': deleteTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'description': description,
       'effectiveAnnotations': effectiveAnnotations,
@@ -173,6 +177,7 @@ class GetWorkerPoolResult {
       creator: map['creator'] as String,
       customAudiences: (map['customAudiences'] as List).cast<String>(),
       deleteTime: map['deleteTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
       effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
@@ -202,4 +207,3 @@ class GetWorkerPoolResult {
     );
   }
 }
-

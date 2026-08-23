@@ -68,6 +68,21 @@ import 'get_trigger_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudbuild_gettrigger" "name" {
+///   project    = "your-project-id"
+///   trigger_id = filename-trigger.triggerId
+///   location   = "location of trigger build"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'get_trigger_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
 /// import com.pulumi.gcp.cloudbuild.inputs.GetTriggerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -91,7 +106,7 @@ import 'get_trigger_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
 ///             .project("your-project-id")
-///             .triggerId(filename_trigger.triggerId())
+///             .triggerId(filename_trigger.get("triggerId"))
 ///             .location("location of trigger build")
 ///             .build());
 ///

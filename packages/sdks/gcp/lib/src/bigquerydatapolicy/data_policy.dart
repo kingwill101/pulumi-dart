@@ -118,7 +118,7 @@ import 'data_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    taxonomy.ID(),
+/// 			Taxonomy:    taxonomy.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Low security"),
 /// 			Description: pulumi.String("A policy tag normally associated with low security items"),
 /// 		})
@@ -138,6 +138,33 @@ import 'data_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquerydatapolicy_datapolicy" "data_policy" {
+///   location         = "us-central1"
+///   data_policy_id   = "data_policy"
+///   policy_tag       = gcp_datacatalog_policytag.policy_tag.name
+///   data_policy_type = "COLUMN_LEVEL_SECURITY_POLICY"
+/// }
+/// resource "gcp_datacatalog_policytag" "policy_tag" {
+///   taxonomy     = gcp_datacatalog_taxonomy.taxonomy.id
+///   display_name = "Low security"
+///   description  = "A policy tag normally associated with low security items"
+/// }
+/// resource "gcp_datacatalog_taxonomy" "taxonomy" {
+///   region                 = "us-central1"
+///   display_name           = "taxonomy"
+///   description            = "A collection of policy tags"
+///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +177,8 @@ import 'data_policy_state.dart';
 /// import com.pulumi.gcp.datacatalog.PolicyTagArgs;
 /// import com.pulumi.gcp.bigquerydatapolicy.DataPolicy;
 /// import com.pulumi.gcp.bigquerydatapolicy.DataPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,7 +412,7 @@ import 'data_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    taxonomy.ID(),
+/// 			Taxonomy:    taxonomy.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Low security"),
 /// 			Description: pulumi.String("A policy tag normally associated with low security items"),
 /// 		})
@@ -423,7 +450,7 @@ import 'data_policy_state.dart';
 /// 			PolicyTag:      policyTag.Name,
 /// 			DataPolicyType: pulumi.String("DATA_MASKING_POLICY"),
 /// 			DataMaskingPolicy: &bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs{
-/// 				Routine: customMaskingRoutine.ID(),
+/// 				Routine: customMaskingRoutine.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -431,6 +458,53 @@ import 'data_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquerydatapolicy_datapolicy" "data_policy" {
+///   location         = "us-central1"
+///   data_policy_id   = "data_policy"
+///   policy_tag       = gcp_datacatalog_policytag.policy_tag.name
+///   data_policy_type = "DATA_MASKING_POLICY"
+///   data_masking_policy = {
+///     routine = gcp_bigquery_routine.custom_masking_routine.id
+///   }
+/// }
+/// resource "gcp_datacatalog_policytag" "policy_tag" {
+///   taxonomy     = gcp_datacatalog_taxonomy.taxonomy.id
+///   display_name = "Low security"
+///   description  = "A policy tag normally associated with low security items"
+/// }
+/// resource "gcp_datacatalog_taxonomy" "taxonomy" {
+///   region                 = "us-central1"
+///   display_name           = "taxonomy"
+///   description            = "A collection of policy tags"
+///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
+/// }
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id = "dataset_id"
+///   location   = "us-central1"
+/// }
+/// resource "gcp_bigquery_routine" "custom_masking_routine" {
+///   dataset_id           = gcp_bigquery_dataset.test.dataset_id
+///   routine_id           = "custom_masking_routine"
+///   routine_type         = "SCALAR_FUNCTION"
+///   language             = "SQL"
+///   data_governance_type = "DATA_MASKING"
+///   definition_body      = "SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')"
+///   return_type          = "{\"typeKind\" :  \"STRING\"}"
+///   arguments {
+///     name      = "ssn"
+///     data_type = "{\"typeKind\" :  \"STRING\"}"
+///   }
 /// }
 /// ```
 /// ```java
@@ -451,8 +525,8 @@ import 'data_policy_state.dart';
 /// import com.pulumi.gcp.bigquerydatapolicy.DataPolicy;
 /// import com.pulumi.gcp.bigquerydatapolicy.DataPolicyArgs;
 /// import com.pulumi.gcp.bigquerydatapolicy.inputs.DataPolicyDataMaskingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -563,22 +637,15 @@ import 'data_policy_state.dart';
 /// DataPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
-///
 /// * `{{project}}/{{location}}/{{data_policy_id}}`
-///
 /// * `{{location}}/{{data_policy_id}}`
+///
 ///
 /// When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default {{project}}/{{location}}/{{data_policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default {{location}}/{{data_policy_id}}
 /// ```
 class DataPolicy extends pulumi.CustomResource {
@@ -590,6 +657,13 @@ class DataPolicy extends pulumi.CustomResource {
   /// The enrollment level of the service.
   /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
   late final pulumi.Output<String> dataPolicyType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the location of the data policy.
   late final pulumi.Output<String> location;
   /// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
@@ -617,6 +691,7 @@ class DataPolicy extends pulumi.CustomResource {
     dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     policyTag = registerOutput<String>('policyTag');
@@ -649,6 +724,7 @@ class DataPolicy extends pulumi.CustomResource {
     dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     policyTag = registerOutput<String>('policyTag');

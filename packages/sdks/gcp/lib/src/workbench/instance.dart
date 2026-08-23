@@ -72,6 +72,20 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workbench_instance" "instance" {
+///   name     = "workbench-instance"
+///   location = "us-west1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +94,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workbench.Instance;
 /// import com.pulumi.gcp.workbench.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +208,26 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workbench_instance" "instance" {
+///   name     = "workbench-instance"
+///   location = "us-west1-a"
+///   gce_setup = {
+///     container_image = {
+///       repository = "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310"
+///       tag        = "latest"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +238,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupContainerImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -451,6 +485,50 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_reservation" "gpu_reservation" {
+///   name = "wbi-reservation"
+///   zone = "us-central1-a"
+///   specific_reservation = {
+///     count = 1
+///     instance_properties = {
+///       machine_type = "n1-standard-1"
+///       guest_accelerators = [{
+///         "acceleratorType"  = "nvidia-tesla-t4"
+///         "acceleratorCount" = 1
+///       }]
+///     }
+///   }
+///   specific_reservation_required = false
+/// }
+/// resource "gcp_workbench_instance" "instance" {
+///   depends_on = [gcp_compute_reservation.gpu_reservation]
+///   name       = "workbench-instance"
+///   location   = "us-central1-a"
+///   gce_setup = {
+///     machine_type = "n1-standard-1"
+///     accelerator_configs = [{
+///       "type"      = "NVIDIA_TESLA_T4"
+///       "coreCount" = 1
+///     }]
+///     vm_image = {
+///       project = "cloud-notebooks-managed"
+///       family  = "workbench-instances"
+///     }
+///     reservation_affinity = {
+///       consume_reservation_type = "RESERVATION_ANY"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -461,14 +539,16 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.compute.ReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
+/// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs;
 /// import com.pulumi.gcp.workbench.Instance;
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupVmImageArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,6 +776,38 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workbench_instance" "instance" {
+///   name     = "workbench-instance"
+///   location = "us-central1-a"
+///   gce_setup = {
+///     machine_type = "e2-standard-4"
+///     shielded_instance_config = {
+///       enable_secure_boot          = false
+///       enable_vtpm                 = false
+///       enable_integrity_monitoring = false
+///     }
+///     service_accounts = [{
+///       "email" = "my@service-account.com"
+///     }]
+///     metadata = {
+///       "terraform" = "true"
+///     }
+///   }
+///   labels = {
+///     "k" = "val"
+///   }
+///   desired_state = "STOPPED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -706,8 +818,9 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -782,10 +895,10 @@ import 'instance_state.dart';
 ///     ipCidrRange: "10.0.1.0/24",
 /// });
 /// const static = new gcp.compute.Address("static", {name: "wbi-test-default"});
-/// const actAsPermission = new gcp.serviceaccount.IAMBinding("act_as_permission", {
+/// const actAsPermission = new gcp.serviceaccount.IAMMember("act_as_permission", {
 ///     serviceAccountId: "projects/my-project-name/serviceAccounts/my@service-account.com",
 ///     role: "roles/iam.serviceAccountUser",
-///     members: ["user:example@example.com"],
+///     member: "user:example@example.com",
 /// });
 /// const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
 ///     name: "wbi-reservation",
@@ -794,6 +907,7 @@ import 'instance_state.dart';
 ///         count: 1,
 ///         instanceProperties: {
 ///             machineType: "n1-standard-4",
+///             minCpuPlatform: "Intel Broadwell",
 ///             guestAccelerators: [{
 ///                 acceleratorType: "nvidia-tesla-t4",
 ///                 acceleratorCount: 1,
@@ -802,11 +916,25 @@ import 'instance_state.dart';
 ///     },
 ///     specificReservationRequired: true,
 /// });
+/// const myPolicy = new gcp.compute.ResourcePolicy("my_policy", {
+///     name: "wbi-policy",
+///     region: "us-central1",
+///     snapshotSchedulePolicy: {
+///         schedule: {
+///             dailySchedule: {
+///                 daysInCycle: 1,
+///                 startTime: "04:00",
+///             },
+///         },
+///     },
+/// });
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
 ///     location: "us-central1-a",
+///     enableDeletionProtection: false,
 ///     gceSetup: {
 ///         machineType: "n1-standard-4",
+///         minCpuPlatform: "Intel Broadwell",
 ///         acceleratorConfigs: [{
 ///             type: "NVIDIA_TESLA_T4",
 ///             coreCount: "1",
@@ -831,6 +959,7 @@ import 'instance_state.dart';
 ///             diskType: "PD_SSD",
 ///             diskEncryption: "CMEK",
 ///             kmsKey: "my-crypto-key",
+///             resourcePolicies: [myPolicy.id],
 ///         },
 ///         networkInterfaces: [{
 ///             network: myNetwork.id,
@@ -870,6 +999,7 @@ import 'instance_state.dart';
 ///         static,
 ///         actAsPermission,
 ///         gpuReservation,
+///         myPolicy,
 ///     ],
 /// });
 /// ```
@@ -886,10 +1016,10 @@ import 'instance_state.dart';
 ///     region="us-central1",
 ///     ip_cidr_range="10.0.1.0/24")
 /// static = gcp.compute.Address("static", name="wbi-test-default")
-/// act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+/// act_as_permission = gcp.serviceaccount.IAMMember("act_as_permission",
 ///     service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
 ///     role="roles/iam.serviceAccountUser",
-///     members=["user:example@example.com"])
+///     member="user:example@example.com")
 /// gpu_reservation = gcp.compute.Reservation("gpu_reservation",
 ///     name="wbi-reservation",
 ///     zone="us-central1-a",
@@ -897,6 +1027,7 @@ import 'instance_state.dart';
 ///         "count": 1,
 ///         "instance_properties": {
 ///             "machine_type": "n1-standard-4",
+///             "min_cpu_platform": "Intel Broadwell",
 ///             "guest_accelerators": [{
 ///                 "accelerator_type": "nvidia-tesla-t4",
 ///                 "accelerator_count": 1,
@@ -904,11 +1035,24 @@ import 'instance_state.dart';
 ///         },
 ///     },
 ///     specific_reservation_required=True)
+/// my_policy = gcp.compute.ResourcePolicy("my_policy",
+///     name="wbi-policy",
+///     region="us-central1",
+///     snapshot_schedule_policy={
+///         "schedule": {
+///             "daily_schedule": {
+///                 "days_in_cycle": 1,
+///                 "start_time": "04:00",
+///             },
+///         },
+///     })
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
 ///     location="us-central1-a",
+///     enable_deletion_protection=False,
 ///     gce_setup={
 ///         "machine_type": "n1-standard-4",
+///         "min_cpu_platform": "Intel Broadwell",
 ///         "accelerator_configs": [{
 ///             "type": "NVIDIA_TESLA_T4",
 ///             "core_count": "1",
@@ -933,6 +1077,7 @@ import 'instance_state.dart';
 ///             "disk_type": "PD_SSD",
 ///             "disk_encryption": "CMEK",
 ///             "kms_key": "my-crypto-key",
+///             "resource_policies": [my_policy.id],
 ///         },
 ///         "network_interfaces": [{
 ///             "network": my_network.id,
@@ -971,6 +1116,7 @@ import 'instance_state.dart';
 ///             static,
 ///             act_as_permission,
 ///             gpu_reservation,
+///             my_policy,
 ///         ]))
 /// ```
 /// ```csharp
@@ -1000,14 +1146,11 @@ import 'instance_state.dart';
 ///         Name = "wbi-test-default",
 ///     });
 ///
-///     var actAsPermission = new Gcp.ServiceAccount.IAMBinding("act_as_permission", new()
+///     var actAsPermission = new Gcp.ServiceAccount.IAMMember("act_as_permission", new()
 ///     {
 ///         ServiceAccountId = "projects/my-project-name/serviceAccounts/my@service-account.com",
 ///         Role = "roles/iam.serviceAccountUser",
-///         Members = new[]
-///         {
-///             "user:example@example.com",
-///         },
+///         Member = "user:example@example.com",
 ///     });
 ///
 ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
@@ -1020,6 +1163,7 @@ import 'instance_state.dart';
 ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
 ///             {
 ///                 MachineType = "n1-standard-4",
+///                 MinCpuPlatform = "Intel Broadwell",
 ///                 GuestAccelerators = new[]
 ///                 {
 ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
@@ -1033,13 +1177,32 @@ import 'instance_state.dart';
 ///         SpecificReservationRequired = true,
 ///     });
 ///
+///     var myPolicy = new Gcp.Compute.ResourcePolicy("my_policy", new()
+///     {
+///         Name = "wbi-policy",
+///         Region = "us-central1",
+///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+///         {
+///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+///             {
+///                 DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+///                 {
+///                     DaysInCycle = 1,
+///                     StartTime = "04:00",
+///                 },
+///             },
+///         },
+///     });
+///
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
 ///         Location = "us-central1-a",
+///         EnableDeletionProtection = false,
 ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
 ///         {
 ///             MachineType = "n1-standard-4",
+///             MinCpuPlatform = "Intel Broadwell",
 ///             AcceleratorConfigs = new[]
 ///             {
 ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
@@ -1075,6 +1238,10 @@ import 'instance_state.dart';
 ///                 DiskType = "PD_SSD",
 ///                 DiskEncryption = "CMEK",
 ///                 KmsKey = "my-crypto-key",
+///                 ResourcePolicies = new[]
+///                 {
+///                     myPolicy.Id,
+///                 },
 ///             },
 ///             NetworkInterfaces = new[]
 ///             {
@@ -1134,6 +1301,7 @@ import 'instance_state.dart';
 ///             @static,
 ///             actAsPermission,
 ///             gpuReservation,
+///             myPolicy,
 ///         },
 ///     });
 ///
@@ -1160,7 +1328,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("wbi-test-default"),
-/// 			Network:     myNetwork.ID(),
+/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -1173,12 +1341,10 @@ import 'instance_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		actAsPermission, err := serviceaccount.NewIAMBinding(ctx, "act_as_permission", &serviceaccount.IAMBindingArgs{
+/// 		actAsPermission, err := serviceaccount.NewIAMMember(ctx, "act_as_permission", &serviceaccount.IAMMemberArgs{
 /// 			ServiceAccountId: pulumi.String("projects/my-project-name/serviceAccounts/my@service-account.com"),
 /// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
-/// 			Members: pulumi.StringArray{
-/// 				pulumi.String("user:example@example.com"),
-/// 			},
+/// 			Member:           pulumi.String("user:example@example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1189,7 +1355,8 @@ import 'instance_state.dart';
 /// 			SpecificReservation: &compute.ReservationSpecificReservationArgs{
 /// 				Count: pulumi.Int(1),
 /// 				InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-/// 					MachineType: pulumi.String("n1-standard-4"),
+/// 					MachineType:    pulumi.String("n1-standard-4"),
+/// 					MinCpuPlatform: pulumi.String("Intel Broadwell"),
 /// 					GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
 /// 						&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
 /// 							AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
@@ -1203,11 +1370,28 @@ import 'instance_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		myPolicy, err := compute.NewResourcePolicy(ctx, "my_policy", &compute.ResourcePolicyArgs{
+/// 			Name:   pulumi.String("wbi-policy"),
+/// 			Region: pulumi.String("us-central1"),
+/// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+/// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+/// 					DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
+/// 						DaysInCycle: pulumi.Int(1),
+/// 						StartTime:   pulumi.String("04:00"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
-/// 			Name:     pulumi.String("workbench-instance"),
-/// 			Location: pulumi.String("us-central1-a"),
+/// 			Name:                     pulumi.String("workbench-instance"),
+/// 			Location:                 pulumi.String("us-central1-a"),
+/// 			EnableDeletionProtection: pulumi.Bool(false),
 /// 			GceSetup: &workbench.InstanceGceSetupArgs{
-/// 				MachineType: pulumi.String("n1-standard-4"),
+/// 				MachineType:    pulumi.String("n1-standard-4"),
+/// 				MinCpuPlatform: pulumi.String("Intel Broadwell"),
 /// 				AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 /// 					&workbench.InstanceGceSetupAcceleratorConfigArgs{
 /// 						Type:      pulumi.String("NVIDIA_TESLA_T4"),
@@ -1236,11 +1420,14 @@ import 'instance_state.dart';
 /// 					DiskType:       pulumi.String("PD_SSD"),
 /// 					DiskEncryption: pulumi.String("CMEK"),
 /// 					KmsKey:         pulumi.String("my-crypto-key"),
+/// 					ResourcePolicies: pulumi.StringArray{
+/// 						myPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 					},
 /// 				},
 /// 				NetworkInterfaces: workbench.InstanceGceSetupNetworkInterfaceArray{
 /// 					&workbench.InstanceGceSetupNetworkInterfaceArgs{
-/// 						Network: myNetwork.ID(),
-/// 						Subnet:  mySubnetwork.ID(),
+/// 						Network: myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 						Subnet:  mySubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 						NicType: pulumi.String("GVNIC"),
 /// 						AccessConfigs: workbench.InstanceGceSetupNetworkInterfaceAccessConfigArray{
 /// 							&workbench.InstanceGceSetupNetworkInterfaceAccessConfigArgs{
@@ -1282,12 +1469,133 @@ import 'instance_state.dart';
 /// 			static,
 /// 			actAsPermission,
 /// 			gpuReservation,
+/// 			myPolicy,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "my_network" {
+///   name                    = "wbi-test-default"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   name          = "wbi-test-default"
+///   network       = gcp_compute_network.my_network.id
+///   region        = "us-central1"
+///   ip_cidr_range = "10.0.1.0/24"
+/// }
+/// resource "gcp_compute_address" "static" {
+///   name = "wbi-test-default"
+/// }
+/// resource "gcp_serviceaccount_iammember" "act_as_permission" {
+///   service_account_id = "projects/my-project-name/serviceAccounts/my@service-account.com"
+///   role               = "roles/iam.serviceAccountUser"
+///   member             = "user:example@example.com"
+/// }
+/// resource "gcp_compute_reservation" "gpu_reservation" {
+///   name = "wbi-reservation"
+///   zone = "us-central1-a"
+///   specific_reservation = {
+///     count = 1
+///     instance_properties = {
+///       machine_type     = "n1-standard-4"
+///       min_cpu_platform = "Intel Broadwell"
+///       guest_accelerators = [{
+///         "acceleratorType"  = "nvidia-tesla-t4"
+///         "acceleratorCount" = 1
+///       }]
+///     }
+///   }
+///   specific_reservation_required = true
+/// }
+/// resource "gcp_compute_resourcepolicy" "my_policy" {
+///   name   = "wbi-policy"
+///   region = "us-central1"
+///   snapshot_schedule_policy = {
+///     schedule = {
+///       daily_schedule = {
+///         days_in_cycle = 1
+///         start_time    = "04:00"
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_workbench_instance" "instance" {
+///   depends_on                 = [gcp_compute_network.my_network, gcp_compute_subnetwork.my_subnetwork, gcp_compute_address.static, gcp_serviceaccount_iammember.act_as_permission, gcp_compute_reservation.gpu_reservation, gcp_compute_resourcepolicy.my_policy]
+///   name                       = "workbench-instance"
+///   location                   = "us-central1-a"
+///   enable_deletion_protection = false
+///   gce_setup = {
+///     machine_type     = "n1-standard-4"
+///     min_cpu_platform = "Intel Broadwell"
+///     accelerator_configs = [{
+///       "type"      = "NVIDIA_TESLA_T4"
+///       "coreCount" = 1
+///     }]
+///     shielded_instance_config = {
+///       enable_secure_boot          = true
+///       enable_vtpm                 = true
+///       enable_integrity_monitoring = true
+///     }
+///     disable_public_ip = false
+///     service_accounts = [{
+///       "email" = "my@service-account.com"
+///     }]
+///     boot_disk = {
+///       disk_size_gb    = 310
+///       disk_type       = "PD_SSD"
+///       disk_encryption = "CMEK"
+///       kms_key         = "my-crypto-key"
+///     }
+///     data_disks = {
+///       disk_size_gb      = 330
+///       disk_type         = "PD_SSD"
+///       disk_encryption   = "CMEK"
+///       kms_key           = "my-crypto-key"
+///       resource_policies = [gcp_compute_resourcepolicy.my_policy.id]
+///     }
+///     network_interfaces = [{
+///       "network" = gcp_compute_network.my_network.id
+///       "subnet"  = gcp_compute_subnetwork.my_subnetwork.id
+///       "nicType" = "GVNIC"
+///       "accessConfigs" = [{
+///         "externalIp" = gcp_compute_address.static.address
+///       }]
+///     }]
+///     metadata = {
+///       "terraform"                  = "true"
+///       "serial-port-logging-enable" = "false"
+///       "enable-jupyterlab4"         = "false"
+///     }
+///     reservation_affinity = {
+///       consume_reservation_type = "RESERVATION_SPECIFIC"
+///       key                      = "compute.googleapis.com/reservation-name"
+///       values                   = [gcp_compute_reservation.gpu_reservation.name]
+///     }
+///     enable_ip_forwarding = true
+///     tags                 = ["abc", "def"]
+///   }
+///   // cant be e2 because of accelerator
+///   disable_proxy_access = "true"
+///   instance_owners      = ["example@example.com"]
+///   labels = {
+///     "k" = "val"
+///   }
+///   desired_state               = "ACTIVE"
+///   enable_third_party_identity = "true"
 /// }
 /// ```
 /// ```java
@@ -1302,22 +1610,32 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import com.pulumi.gcp.serviceaccount.IAMBinding;
-/// import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
+/// import com.pulumi.gcp.serviceaccount.IAMMember;
+/// import com.pulumi.gcp.serviceaccount.IAMMemberArgs;
 /// import com.pulumi.gcp.compute.Reservation;
 /// import com.pulumi.gcp.compute.ReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
+/// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs;
+/// import com.pulumi.gcp.compute.ResourcePolicy;
+/// import com.pulumi.gcp.compute.ResourcePolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
+/// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
 /// import com.pulumi.gcp.workbench.Instance;
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1345,10 +1663,10 @@ import 'instance_state.dart';
 ///             .name("wbi-test-default")
 ///             .build());
 ///
-///         var actAsPermission = new IAMBinding("actAsPermission", IAMBindingArgs.builder()
+///         var actAsPermission = new IAMMember("actAsPermission", IAMMemberArgs.builder()
 ///             .serviceAccountId("projects/my-project-name/serviceAccounts/my@service-account.com")
 ///             .role("roles/iam.serviceAccountUser")
-///             .members("user:example@example.com")
+///             .member("user:example@example.com")
 ///             .build());
 ///
 ///         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
@@ -1358,6 +1676,7 @@ import 'instance_state.dart';
 ///                 .count(1)
 ///                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
 ///                     .machineType("n1-standard-4")
+///                     .minCpuPlatform("Intel Broadwell")
 ///                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
 ///                         .acceleratorType("nvidia-tesla-t4")
 ///                         .acceleratorCount(1)
@@ -1367,11 +1686,26 @@ import 'instance_state.dart';
 ///             .specificReservationRequired(true)
 ///             .build());
 ///
+///         var myPolicy = new ResourcePolicy("myPolicy", ResourcePolicyArgs.builder()
+///             .name("wbi-policy")
+///             .region("us-central1")
+///             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
+///                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
+///                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
+///                         .daysInCycle(1)
+///                         .startTime("04:00")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
 ///             .location("us-central1-a")
+///             .enableDeletionProtection(false)
 ///             .gceSetup(InstanceGceSetupArgs.builder()
 ///                 .machineType("n1-standard-4")
+///                 .minCpuPlatform("Intel Broadwell")
 ///                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
 ///                     .type("NVIDIA_TESLA_T4")
 ///                     .coreCount("1")
@@ -1396,6 +1730,7 @@ import 'instance_state.dart';
 ///                     .diskType("PD_SSD")
 ///                     .diskEncryption("CMEK")
 ///                     .kmsKey("my-crypto-key")
+///                     .resourcePolicies(myPolicy.id())
 ///                     .build())
 ///                 .networkInterfaces(InstanceGceSetupNetworkInterfaceArgs.builder()
 ///                     .network(myNetwork.id())
@@ -1431,7 +1766,8 @@ import 'instance_state.dart';
 ///                     mySubnetwork,
 ///                     static_,
 ///                     actAsPermission,
-///                     gpuReservation)
+///                     gpuReservation,
+///                     myPolicy)
 ///                 .build());
 ///
 ///     }
@@ -1458,13 +1794,12 @@ import 'instance_state.dart';
 ///     properties:
 ///       name: wbi-test-default
 ///   actAsPermission:
-///     type: gcp:serviceaccount:IAMBinding
+///     type: gcp:serviceaccount:IAMMember
 ///     name: act_as_permission
 ///     properties:
 ///       serviceAccountId: projects/my-project-name/serviceAccounts/my@service-account.com
 ///       role: roles/iam.serviceAccountUser
-///       members:
-///         - user:example@example.com
+///       member: user:example@example.com
 ///   gpuReservation:
 ///     type: gcp:compute:Reservation
 ///     name: gpu_reservation
@@ -1475,17 +1810,31 @@ import 'instance_state.dart';
 ///         count: 1
 ///         instanceProperties:
 ///           machineType: n1-standard-4
+///           minCpuPlatform: Intel Broadwell
 ///           guestAccelerators:
 ///             - acceleratorType: nvidia-tesla-t4
 ///               acceleratorCount: 1
 ///       specificReservationRequired: true
+///   myPolicy:
+///     type: gcp:compute:ResourcePolicy
+///     name: my_policy
+///     properties:
+///       name: wbi-policy
+///       region: us-central1
+///       snapshotSchedulePolicy:
+///         schedule:
+///           dailySchedule:
+///             daysInCycle: 1
+///             startTime: 04:00
 ///   instance:
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
 ///       location: us-central1-a
+///       enableDeletionProtection: false
 ///       gceSetup:
 ///         machineType: n1-standard-4
+///         minCpuPlatform: Intel Broadwell
 ///         acceleratorConfigs:
 ///           - type: NVIDIA_TESLA_T4
 ///             coreCount: 1
@@ -1506,6 +1855,8 @@ import 'instance_state.dart';
 ///           diskType: PD_SSD
 ///           diskEncryption: CMEK
 ///           kmsKey: my-crypto-key
+///           resourcePolicies:
+///             - ${myPolicy.id}
 ///         networkInterfaces:
 ///           - network: ${myNetwork.id}
 ///             subnet: ${mySubnetwork.id}
@@ -1539,6 +1890,7 @@ import 'instance_state.dart';
 ///         - ${static}
 ///         - ${actAsPermission}
 ///         - ${gpuReservation}
+///         - ${myPolicy}
 /// ```
 ///
 /// ### Workbench Instance Confidential Compute
@@ -1659,6 +2011,34 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_workbench_instance" "instance" {
+///   name     = "workbench-instance"
+///   location = "us-central1-a"
+///   gce_setup = {
+///     machine_type = "n2d-standard-2"
+///     shielded_instance_config = {
+///       enable_secure_boot          = true
+///       enable_vtpm                 = true
+///       enable_integrity_monitoring = true
+///     }
+///     metadata = {
+///       "terraform" = "true"
+///     }
+///     confidential_instance_config = {
+///       confidential_instance_type = "SEV"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1670,8 +2050,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupConfidentialInstanceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1860,6 +2240,34 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_iambinding" "act_as_permission" {
+///   service_account_id = "projects/my-project-name/serviceAccounts/1111111111111-compute@developer.gserviceaccount.com"
+///   role               = "roles/iam.serviceAccountUser"
+///   members            = ["user:example@example.com"]
+/// }
+/// resource "gcp_workbench_instance" "instance" {
+///   depends_on = [gcp_serviceaccount_iambinding.act_as_permission]
+///   name       = "workbench-instance"
+///   location   = "us-central1-a"
+///   gce_setup = {
+///     machine_type = "e2-standard-4"
+///     metadata = {
+///       "terraform" = "true"
+///     }
+///   }
+///   instance_owners    = ["example@example.com"]
+///   enable_managed_euc = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1872,8 +2280,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1940,22 +2348,15 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:workbench/instance:Instance default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:workbench/instance:Instance default {{location}}/{{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -1964,12 +2365,21 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Output only. Email address of entity that sent original CreateInstance request.
   late final pulumi.Output<String> creator;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
   late final pulumi.Output<String?> desiredState;
   /// Optional. If true, the workbench instance will not register with the proxy.
   late final pulumi.Output<bool?> disableProxyAccess;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Optional. If true, deletion protection will be enabled for this Workbench Instance.
+  late final pulumi.Output<bool> enableDeletionProtection;
   /// Flag to enable managed end user credentials for the instance.
   late final pulumi.Output<bool?> enableManagedEuc;
   /// Flag that specifies that a notebook can be accessed with third party
@@ -1979,8 +2389,8 @@ class Instance extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<InstanceGceSetup> gceSetup;
   /// 'Output only. Additional information about instance health. Example:
-  /// healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status":
-  /// "-1", "jupyterlab_status": "-1", "updated": "2020-10-18 09:40:03.573409" }'
+  /// healthInfo": { "dockerProxyAgentStatus": "1", "dockerStatus": "1", "jupyterlabApiStatus":
+  /// "-1", "jupyterlabStatus": "-1", "updated": "2020-10-18 09:40:03.573409" }'
   late final pulumi.Output<List<Map<String, dynamic>>> healthInfos;
   /// Output only. Instance health_state.
   late final pulumi.Output<String> healthState;
@@ -1996,7 +2406,7 @@ class Instance extends pulumi.CustomResource {
   /// by the UpdateInstance method.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Part of `parent`. See documentation of `projectsId`.
   late final pulumi.Output<String> location;
@@ -2036,9 +2446,11 @@ class Instance extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     disableProxyAccess = registerOutput<bool?>('disableProxyAccess');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    enableDeletionProtection = registerOutput<bool>('enableDeletionProtection');
     enableManagedEuc = registerOutput<bool?>('enableManagedEuc');
     enableThirdPartyIdentity = registerOutput<bool?>('enableThirdPartyIdentity');
     gceSetup = registerOutput<InstanceGceSetup>('gceSetup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGceSetup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2082,9 +2494,11 @@ class Instance extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     disableProxyAccess = registerOutput<bool?>('disableProxyAccess');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    enableDeletionProtection = registerOutput<bool>('enableDeletionProtection');
     enableManagedEuc = registerOutput<bool?>('enableManagedEuc');
     enableThirdPartyIdentity = registerOutput<bool?>('enableThirdPartyIdentity');
     gceSetup = registerOutput<InstanceGceSetup>('gceSetup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGceSetup.fromMap((guardedValue as Map).cast<String, dynamic>()); });

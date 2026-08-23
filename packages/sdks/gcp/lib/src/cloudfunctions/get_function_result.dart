@@ -15,6 +15,7 @@ class GetFunctionResult {
   final Map<String, String> buildEnvironmentVariables;
   final String buildServiceAccount;
   final String buildWorkerPool;
+  final String deletionPolicy;
   /// Description of the function.
   final String description;
   final String dockerRegistry;
@@ -73,6 +74,7 @@ class GetFunctionResult {
   /// [buildEnvironmentVariables] Required.
   /// [buildServiceAccount] Required.
   /// [buildWorkerPool] Required.
+  /// [deletionPolicy] Required.
   /// [description] Description of the function.
   /// [dockerRegistry] Required.
   /// [dockerRepository] Required.
@@ -112,6 +114,7 @@ class GetFunctionResult {
     required this.buildEnvironmentVariables,
     required this.buildServiceAccount,
     required this.buildWorkerPool,
+    required this.deletionPolicy,
     required this.description,
     required this.dockerRegistry,
     required this.dockerRepository,
@@ -154,6 +157,7 @@ class GetFunctionResult {
       'buildEnvironmentVariables': buildEnvironmentVariables,
       'buildServiceAccount': buildServiceAccount,
       'buildWorkerPool': buildWorkerPool,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'dockerRegistry': dockerRegistry,
       'dockerRepository': dockerRepository,
@@ -197,6 +201,7 @@ class GetFunctionResult {
       buildEnvironmentVariables: (map['buildEnvironmentVariables'] as Map).cast<String, String>(),
       buildServiceAccount: map['buildServiceAccount'] as String,
       buildWorkerPool: map['buildWorkerPool'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       dockerRegistry: map['dockerRegistry'] as String,
       dockerRepository: map['dockerRepository'] as String,
@@ -233,4 +238,3 @@ class GetFunctionResult {
     );
   }
 }
-

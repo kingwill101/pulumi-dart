@@ -18,6 +18,7 @@ class JobQuery {
   /// correspond to properties in the connection string.
   /// Structure is documented below.
   final pulumi.Input<List<JobQueryConnectionProperty>>? connectionProperties;
+  /// (Optional, Beta)
   /// Whether to run the query as continuous or a regular query.
   final pulumi.Input<bool>? continuous;
   /// Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -55,7 +56,7 @@ class JobQuery {
   final pulumi.Input<String>? priority;
   /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
   /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-  /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+  /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
   final pulumi.Input<String> query;
   /// Allows the schema of the destination table to be updated as a side effect of the query job.
   /// Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -91,7 +92,7 @@ class JobQuery {
   /// Creates a new [JobQuery].
   /// [allowLargeResults] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
   /// [connectionProperties] Connection properties to customize query behavior. Under JDBC, these correspond
-  /// [continuous] Whether to run the query as continuous or a regular query.
+  /// [continuous] (Optional, Beta)
   /// [createDisposition] Specifies whether the job is allowed to create new tables. The following values are supported:
   /// [defaultDataset] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
   /// [destinationEncryptionConfiguration] Custom encryption configuration (e.g., Cloud KMS keys)
@@ -178,4 +179,3 @@ class JobQuery {
     );
   }
 }
-

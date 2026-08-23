@@ -9,12 +9,19 @@ import 'v2_policy_orchestrator_for_folder_orchestration_state.dart';
 class V2PolicyOrchestratorForFolderState {
   /// Action to be done by the orchestrator in
   /// `projects/{project_id}/zones/{zone_id}` locations defined by the
-  /// `orchestration_scope`. Allowed values:
+  /// `orchestrationScope`. Allowed values:
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   final pulumi.Input<String>? action;
   /// Timestamp when the policy orchestrator resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Freeform text describing the purpose of the resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -27,7 +34,7 @@ class V2PolicyOrchestratorForFolderState {
   final pulumi.Input<String>? folderId;
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Identifier. In form of
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -72,6 +79,7 @@ class V2PolicyOrchestratorForFolderState {
   /// Creates a new [V2PolicyOrchestratorForFolderState].
   /// [action] Action to be done by the orchestrator in
   /// [createTime] Timestamp when the policy orchestrator resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Freeform text describing the purpose of the resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] This checksum is computed by the server based on the value of other
@@ -89,6 +97,7 @@ class V2PolicyOrchestratorForFolderState {
   const V2PolicyOrchestratorForFolderState({
     this.action,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.etag,
@@ -109,6 +118,7 @@ class V2PolicyOrchestratorForFolderState {
     return <String, dynamic>{
       'action': ?action,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
@@ -130,6 +140,7 @@ class V2PolicyOrchestratorForFolderState {
     return V2PolicyOrchestratorForFolderState(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -147,4 +158,3 @@ class V2PolicyOrchestratorForFolderState {
     );
   }
 }
-

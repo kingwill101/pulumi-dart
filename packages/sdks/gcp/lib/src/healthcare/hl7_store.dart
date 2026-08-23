@@ -125,11 +125,11 @@ import 'hl7_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 /// 			Name:                   pulumi.String("example-hl7-v2-store"),
-/// 			Dataset:                dataset.ID(),
+/// 			Dataset:                dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			RejectDuplicateMessage: pulumi.Bool(true),
 /// 			NotificationConfigs: healthcare.Hl7StoreNotificationConfigsArray{
 /// 				&healthcare.Hl7StoreNotificationConfigsArgs{
-/// 					PubsubTopic: topic.ID(),
+/// 					PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -141,6 +141,34 @@ import 'hl7_store_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7store" "store" {
+///   name                     = "example-hl7-v2-store"
+///   dataset                  = gcp_healthcare_dataset.dataset.id
+///   reject_duplicate_message = true
+///   notification_configs {
+///     pubsub_topic = gcp_pubsub_topic.topic.id
+///   }
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "hl7-v2-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -156,8 +184,8 @@ import 'hl7_store_state.dart';
 /// import com.pulumi.gcp.healthcare.Hl7Store;
 /// import com.pulumi.gcp.healthcare.Hl7StoreArgs;
 /// import com.pulumi.gcp.healthcare.inputs.Hl7StoreNotificationConfigsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -533,7 +561,7 @@ import 'hl7_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 /// 			Name:    pulumi.String("example-hl7-v2-store"),
-/// 			Dataset: dataset.ID(),
+/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 /// 				AllowNullHeader:   pulumi.Bool(false),
 /// 				SegmentTerminator: pulumi.String("Jw=="),
@@ -625,6 +653,29 @@ import 'hl7_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7store" "store" {
+///   name    = "example-hl7-v2-store"
+///   dataset = gcp_healthcare_dataset.dataset.id
+///   parser_config = {
+///     allow_null_header  = false
+///     segment_terminator = "Jw=="
+///     schema             = "{\n  \\\"schemas\\\": [{\n    \\\"messageSchemaConfigs\\\": {\n      \\\"ADT_A01\\\": {\n        \\\"name\\\": \\\"ADT_A01\\\",\n        \\\"minOccurs\\\": 1,\n        \\\"maxOccurs\\\": 1,\n        \\\"members\\\": [{\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"MSH\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"EVN\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"PID\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"ZPD\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"OBX\\\"\n            }\n          },\n          {\n            \\\"group\\\": {\n              \\\"name\\\": \\\"PROCEDURE\\\",\n              \\\"members\\\": [{\n                  \\\"segment\\\": {\n                    \\\"type\\\": \\\"PR1\\\",\n                    \\\"minOccurs\\\": 1,\n                    \\\"maxOccurs\\\": 1\n                  }\n                },\n                {\n                  \\\"segment\\\": {\n                    \\\"type\\\": \\\"ROL\\\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"PDA\\\",\n              \\\"maxOccurs\\\": 1\n            }\n          }\n        ]\n      }\n    }\n  }],\n  \\\"types\\\": [{\n    \\\"type\\\": [{\n        \\\"name\\\": \\\"ZPD\\\",\n        \\\"primitive\\\": \\\"VARIES\\\"\n      }\n\n    ]\n  }],\n  \\\"ignoreMinOccurs\\\": true\n}\n"
+///   }
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -636,8 +687,8 @@ import 'hl7_store_state.dart';
 /// import com.pulumi.gcp.healthcare.Hl7Store;
 /// import com.pulumi.gcp.healthcare.Hl7StoreArgs;
 /// import com.pulumi.gcp.healthcare.inputs.Hl7StoreParserConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -927,7 +978,7 @@ import 'hl7_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 /// 			Name:    pulumi.String("example-hl7-v2-store"),
-/// 			Dataset: dataset.ID(),
+/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 /// 				AllowNullHeader:   pulumi.Bool(false),
 /// 				SegmentTerminator: pulumi.String("Jw=="),
@@ -941,6 +992,29 @@ import 'hl7_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7store" "store" {
+///   name    = "example-hl7-v2-store"
+///   dataset = gcp_healthcare_dataset.dataset.id
+///   parser_config = {
+///     allow_null_header  = false
+///     segment_terminator = "Jw=="
+///     version            = "V2"
+///   }
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -952,8 +1026,8 @@ import 'hl7_store_state.dart';
 /// import com.pulumi.gcp.healthcare.Hl7Store;
 /// import com.pulumi.gcp.healthcare.Hl7StoreArgs;
 /// import com.pulumi.gcp.healthcare.inputs.Hl7StoreParserConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1007,22 +1081,26 @@ import 'hl7_store_state.dart';
 /// Hl7V2Store can be imported using any of these accepted formats:
 ///
 /// * `{{dataset}}/hl7V2Stores/{{name}}`
-///
 /// * `{{dataset}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Hl7V2Store can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/{{name}}
 /// ```
 class Hl7Store extends pulumi.CustomResource {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   late final pulumi.Output<String> dataset;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// User-supplied key-value pairs used to organize HL7v2 stores.
@@ -1035,7 +1113,7 @@ class Hl7Store extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name for the Hl7V2Store.
   /// ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -1044,7 +1122,7 @@ class Hl7Store extends pulumi.CustomResource {
   /// A nested object resource.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+  /// &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
   late final pulumi.Output<Hl7StoreNotificationConfig?> notificationConfig;
   /// A list of notification configs. Each configuration uses a filter to determine whether to publish a
   /// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -1077,6 +1155,7 @@ class Hl7Store extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -1112,6 +1191,7 @@ class Hl7Store extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

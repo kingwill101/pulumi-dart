@@ -10,6 +10,13 @@ class DeveloperState {
   final pulumi.Input<List<DeveloperAttribute>>? attributes;
   /// Time at which the developer was created in milliseconds since epoch.
   final pulumi.Input<String>? createdAt;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
   final pulumi.Input<String>? email;
   /// First name of the developer.
@@ -31,6 +38,7 @@ class DeveloperState {
   /// Creates a new [DeveloperState].
   /// [attributes] Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// [createdAt] Time at which the developer was created in milliseconds since epoch.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [email] Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
   /// [firstName] First name of the developer.
   /// [lastModifiedAt] Time at which the developer was last modified in milliseconds since epoch.
@@ -42,6 +50,7 @@ class DeveloperState {
   const DeveloperState({
     this.attributes,
     this.createdAt,
+    this.deletionPolicy,
     this.email,
     this.firstName,
     this.lastModifiedAt,
@@ -56,6 +65,7 @@ class DeveloperState {
     return <String, dynamic>{
       'attributes': ?pulumi.Input.mapOptionalInputValue<List<DeveloperAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<DeveloperAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createdAt': ?createdAt,
+      'deletionPolicy': ?deletionPolicy,
       'email': ?email,
       'firstName': ?firstName,
       'lastModifiedAt': ?lastModifiedAt,
@@ -71,6 +81,7 @@ class DeveloperState {
     return DeveloperState(
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeveloperAttribute>(guardedValue, (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firstName: (() { final guardedValue = map['firstName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastModifiedAt: (() { final guardedValue = map['lastModifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -82,4 +93,3 @@ class DeveloperState {
     );
   }
 }
-

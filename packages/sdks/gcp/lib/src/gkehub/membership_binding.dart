@@ -30,7 +30,7 @@ import 'membership_binding_gkehub_state.dart';
 ///     subnetwork: "default",
 /// });
 /// const membership = new gcp.gkehub.Membership("membership", {
-///     membershipId: "tf-test-membership_33052",
+///     membershipId: "tf-test-membership_44154",
 ///     endpoint: {
 ///         gkeCluster: {
 ///             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
@@ -39,9 +39,9 @@ import 'membership_binding_gkehub_state.dart';
 /// }, {
 ///     dependsOn: [primary],
 /// });
-/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_3684"});
+/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_90221"});
 /// const membershipBinding = new gcp.gkehub.MembershipBinding("membership_binding", {
-///     membershipBindingId: "tf-test-membership-binding_10719",
+///     membershipBindingId: "tf-test-membership-binding_88987",
 ///     scope: scope.name,
 ///     membershipId: membership.membershipId,
 ///     location: "global",
@@ -69,16 +69,16 @@ import 'membership_binding_gkehub_state.dart';
 ///     network="default",
 ///     subnetwork="default")
 /// membership = gcp.gkehub.Membership("membership",
-///     membership_id="tf-test-membership_33052",
+///     membership_id="tf-test-membership_44154",
 ///     endpoint={
 ///         "gke_cluster": {
 ///             "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
 ///         },
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[primary]))
-/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_3684")
+/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_90221")
 /// membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
-///     membership_binding_id="tf-test-membership-binding_10719",
+///     membership_binding_id="tf-test-membership-binding_88987",
 ///     scope=scope.name,
 ///     membership_id=membership.membership_id,
 ///     location="global",
@@ -112,7 +112,7 @@ import 'membership_binding_gkehub_state.dart';
 ///
 ///     var membership = new Gcp.GkeHub.Membership("membership", new()
 ///     {
-///         MembershipId = "tf-test-membership_33052",
+///         MembershipId = "tf-test-membership_44154",
 ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
 ///         {
 ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -130,12 +130,12 @@ import 'membership_binding_gkehub_state.dart';
 ///
 ///     var scope = new Gcp.GkeHub.Scope("scope", new()
 ///     {
-///         ScopeId = "tf-test-scope_3684",
+///         ScopeId = "tf-test-scope_90221",
 ///     });
 ///
 ///     var membershipBinding = new Gcp.GkeHub.MembershipBinding("membership_binding", new()
 ///     {
-///         MembershipBindingId = "tf-test-membership-binding_10719",
+///         MembershipBindingId = "tf-test-membership-binding_88987",
 ///         Scope = scope.Name,
 ///         MembershipId = membership.MembershipId,
 ///         Location = "global",
@@ -181,10 +181,10 @@ import 'membership_binding_gkehub_state.dart';
 /// 			return err
 /// 		}
 /// 		membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-/// 			MembershipId: pulumi.String("tf-test-membership_33052"),
+/// 			MembershipId: pulumi.String("tf-test-membership_44154"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -196,13 +196,13 @@ import 'membership_binding_gkehub_state.dart';
 /// 			return err
 /// 		}
 /// 		scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-/// 			ScopeId: pulumi.String("tf-test-scope_3684"),
+/// 			ScopeId: pulumi.String("tf-test-scope_90221"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = gkehub.NewMembershipBinding(ctx, "membership_binding", &gkehub.MembershipBindingArgs{
-/// 			MembershipBindingId: pulumi.String("tf-test-membership-binding_10719"),
+/// 			MembershipBindingId: pulumi.String("tf-test-membership-binding_88987"),
 /// 			Scope:               scope.Name,
 /// 			MembershipId:        membership.MembershipId,
 /// 			Location:            pulumi.String("global"),
@@ -222,6 +222,48 @@ import 'membership_binding_gkehub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name                = "basic-cluster"
+///   location            = "us-central1-a"
+///   initial_node_count  = 1
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   depends_on    = [gcp_container_cluster.primary]
+///   membership_id = "tf-test-membership_44154"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.primary.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_scope" "scope" {
+///   scope_id = "tf-test-scope_90221"
+/// }
+/// resource "gcp_gkehub_membershipbinding" "membership_binding" {
+///   depends_on            = [gcp_gkehub_membership.membership, gcp_gkehub_scope.scope]
+///   membership_binding_id = "tf-test-membership-binding_88987"
+///   scope                 = gcp_gkehub_scope.scope.name
+///   membership_id         = gcp_gkehub_membership.membership.membership_id
+///   location              = "global"
+///   labels = {
+///     "keyb" = "valueb"
+///     "keya" = "valuea"
+///     "keyc" = "valuec"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +281,8 @@ import 'membership_binding_gkehub_state.dart';
 /// import com.pulumi.gcp.gkehub.MembershipBinding;
 /// import com.pulumi.gcp.gkehub.MembershipBindingArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,7 +304,7 @@ import 'membership_binding_gkehub_state.dart';
 ///             .build());
 ///
 ///         var membership = new Membership("membership", MembershipArgs.builder()
-///             .membershipId("tf-test-membership_33052")
+///             .membershipId("tf-test-membership_44154")
 ///             .endpoint(MembershipEndpointArgs.builder()
 ///                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
 ///                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
@@ -273,11 +315,11 @@ import 'membership_binding_gkehub_state.dart';
 ///                 .build());
 ///
 ///         var scope = new Scope("scope", ScopeArgs.builder()
-///             .scopeId("tf-test-scope_3684")
+///             .scopeId("tf-test-scope_90221")
 ///             .build());
 ///
 ///         var membershipBinding = new MembershipBinding("membershipBinding", MembershipBindingArgs.builder()
-///             .membershipBindingId("tf-test-membership-binding_10719")
+///             .membershipBindingId("tf-test-membership-binding_88987")
 ///             .scope(scope.name())
 ///             .membershipId(membership.membershipId())
 ///             .location("global")
@@ -309,7 +351,7 @@ import 'membership_binding_gkehub_state.dart';
 ///   membership:
 ///     type: gcp:gkehub:Membership
 ///     properties:
-///       membershipId: tf-test-membership_33052
+///       membershipId: tf-test-membership_44154
 ///       endpoint:
 ///         gkeCluster:
 ///           resourceLink: //container.googleapis.com/${primary.id}
@@ -319,12 +361,12 @@ import 'membership_binding_gkehub_state.dart';
 ///   scope:
 ///     type: gcp:gkehub:Scope
 ///     properties:
-///       scopeId: tf-test-scope_3684
+///       scopeId: tf-test-scope_90221
 ///   membershipBinding:
 ///     type: gcp:gkehub:MembershipBinding
 ///     name: membership_binding
 ///     properties:
-///       membershipBindingId: tf-test-membership-binding_10719
+///       membershipBindingId: tf-test-membership-binding_88987
 ///       scope: ${scope.name}
 ///       membershipId: ${membership.membershipId}
 ///       location: global
@@ -344,22 +386,15 @@ import 'membership_binding_gkehub_state.dart';
 /// MembershipBinding can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}`
-///
 /// * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}`
-///
 /// * `{{location}}/{{membership_id}}/{{membership_binding_id}}`
+///
 ///
 /// When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
 /// ```
 class MembershipBinding extends pulumi.CustomResource {
@@ -367,12 +402,19 @@ class MembershipBinding extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Time the MembershipBinding was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels for this Membership binding.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location of the membership
   late final pulumi.Output<String> location;
@@ -415,6 +457,7 @@ class MembershipBinding extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -454,6 +497,7 @@ class MembershipBinding extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

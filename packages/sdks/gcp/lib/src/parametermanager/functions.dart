@@ -70,6 +70,19 @@ import 'get_regional_parameters_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getparameter" "parameterDatasource" {
+///   parameter_id = "foobar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +91,8 @@ import 'get_regional_parameters_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,6 +192,20 @@ Future<GetParameterResult> getParameter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getparameterversion" "basic" {
+///   parameter            = "test-parameter"
+///   parameter_version_id = "test-parameter-version"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +214,8 @@ Future<GetParameterResult> getParameter(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,6 +318,20 @@ Future<GetParameterVersionResult> getParameterVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getparameterversionrender" "basic" {
+///   parameter            = "test-parameter"
+///   parameter_version_id = "test-parameter-version"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -299,8 +340,8 @@ Future<GetParameterVersionResult> getParameterVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -391,6 +432,18 @@ Future<GetParameterVersionRenderResult> getParameterVersionRender(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getparameters" "parameters" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -399,8 +452,8 @@ Future<GetParameterVersionRenderResult> getParameterVersionRender(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -498,6 +551,20 @@ Future<GetParametersResult> getParameters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getregionalparameter" "regParameterDatasource" {
+///   parameter_id = "foobar"
+///   location     = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -506,8 +573,8 @@ Future<GetParametersResult> getParameters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,6 +680,21 @@ Future<GetRegionalParameterResult> getRegionalParameter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getregionalparameterversion" "basic" {
+///   parameter            = "test-regional-parameter"
+///   parameter_version_id = "test-regional-parameter-version"
+///   location             = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +703,8 @@ Future<GetRegionalParameterResult> getRegionalParameter(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -732,6 +814,21 @@ Future<GetRegionalParameterVersionResult> getRegionalParameterVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getregionalparameterversionrender" "basic" {
+///   parameter            = "test-regional-parameter"
+///   parameter_version_id = "test-regional-parameter-version"
+///   location             = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -740,8 +837,8 @@ Future<GetRegionalParameterVersionResult> getRegionalParameterVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -841,6 +938,19 @@ Future<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRende
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_parametermanager_getregionalparameters" "regional-parameters" {
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -849,8 +959,8 @@ Future<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRende
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
 /// import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

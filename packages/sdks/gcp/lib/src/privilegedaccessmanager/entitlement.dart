@@ -262,6 +262,54 @@ import 'entitlement_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_privilegedaccessmanager_entitlement" "tfentitlement" {
+///   entitlement_id       = "example-entitlement"
+///   location             = "global"
+///   max_request_duration = "43200s"
+///   parent               = "projects/my-project-name"
+///   requester_justification_config = {
+///     unstructured = {}
+///   }
+///   eligible_users {
+///     principals = ["group:test@google.com"]
+///   }
+///   privileged_access = {
+///     gcp_iam_access = {
+///       role_bindings = [{
+///         "role"                = "roles/storage.admin"
+///         "conditionExpression" = "request.time < timestamp(\"2024-04-23T18:30:00.000Z\")"
+///       }]
+///       resource      = "//cloudresourcemanager.googleapis.com/projects/my-project-name"
+///       resource_type = "cloudresourcemanager.googleapis.com/Project"
+///     }
+///   }
+///   additional_notification_targets = {
+///     admin_email_recipients     = ["user@example.com"]
+///     requester_email_recipients = ["user@example.com"]
+///   }
+///   approval_workflow = {
+///     manual_approvals = {
+///       require_approver_justification = true
+///       steps = [{
+///         "approvalsNeeded"         = 1
+///         "approverEmailRecipients" = ["user@example.com"]
+///         "approvers" = {
+///           "principals" = ["group:test@google.com"]
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,11 +323,14 @@ import 'entitlement_state.dart';
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementEligibleUserArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementPrivilegedAccessArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementPrivilegedAccessGcpIamAccessArgs;
+/// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementAdditionalNotificationTargetsArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementApprovalWorkflowArgs;
 /// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementApprovalWorkflowManualApprovalsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementApprovalWorkflowManualApprovalsStepArgs;
+/// import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementApprovalWorkflowManualApprovalsStepApproversArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -379,6 +430,7 @@ import 'entitlement_state.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}`
 ///
+///
 /// When using the `pulumi import` command, Entitlement can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -395,6 +447,13 @@ class Entitlement extends pulumi.CustomResource {
   /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Who can create Grants using Entitlement. This list should contain at most one entry
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> eligibleUsers;
@@ -444,6 +503,7 @@ class Entitlement extends pulumi.CustomResource {
     additionalNotificationTargets = registerOutput<EntitlementAdditionalNotificationTargets?>('additionalNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     eligibleUsers = registerOutput<List<Map<String, dynamic>>>('eligibleUsers');
     entitlementId = registerOutput<String>('entitlementId');
     etag = registerOutput<String>('etag');
@@ -483,6 +543,7 @@ class Entitlement extends pulumi.CustomResource {
     additionalNotificationTargets = registerOutput<EntitlementAdditionalNotificationTargets?>('additionalNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     eligibleUsers = registerOutput<List<Map<String, dynamic>>>('eligibleUsers');
     entitlementId = registerOutput<String>('entitlementId');
     etag = registerOutput<String>('etag');

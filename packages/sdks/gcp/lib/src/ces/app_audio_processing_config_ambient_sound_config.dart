@@ -10,10 +10,10 @@ class AppAudioProcessingConfigAmbientSoundConfig {
   /// `storage.objects.get` permission to the Cloud Storage object.
   final pulumi.Input<String>? gcsUri;
   /// Name of the prebuilt ambient sound.
-  /// Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum"
-  /// -"office_1" - "office_2" - "office_3"
-  /// -"room_1" - "room_2" - "room_3"
-  /// -"room_4" - "room_5" - "air_conditioner"
+  /// Valid values are: - "coffeeShop" - "keyboard" - "keypad" - "hum"
+  /// -"office1" - "office2" - "office3"
+  /// -"room1" - "room2" - "room3"
+  /// -"room4" - "room5" - "airConditioner"
   final pulumi.Input<String>? prebuiltAmbientSound;
   /// Volume gain (in dB) of the normal native volume supported by
   /// ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
@@ -51,4 +51,3 @@ class AppAudioProcessingConfigAmbientSoundConfig {
     );
   }
 }
-

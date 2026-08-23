@@ -7,7 +7,7 @@ class ClusterClusterConfigEndpointConfig {
   /// on the cluster from external sources (aka Component Gateway). Defaults to false.
   final pulumi.Input<bool> enableHttpPortAccess;
   /// The map of port descriptions to URLs. Will only be populated if
-  /// `enable_http_port_access` is true.
+  /// `enableHttpPortAccess` is true.
   final pulumi.Input<Map<String, String>>? httpPorts;
 
   /// Creates a new [ClusterClusterConfigEndpointConfig].
@@ -32,4 +32,3 @@ class ClusterClusterConfigEndpointConfig {
     );
   }
 }
-

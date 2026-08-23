@@ -3,6 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReleaseBlueprint {
+  /// (Output)
+  /// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
   final pulumi.Input<String>? engine;
   /// URI to a blueprint used by the Unit (required unless unitKind or release is
   /// set).
@@ -12,7 +14,7 @@ class ReleaseBlueprint {
   final pulumi.Input<String>? version;
 
   /// Creates a new [ReleaseBlueprint].
-  /// [engine] Optional.
+  /// [engine] (Output)
   /// [package] URI to a blueprint used by the Unit (required unless unitKind or release is
   /// [version] (Output)
   const ReleaseBlueprint({
@@ -37,4 +39,3 @@ class ReleaseBlueprint {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_membership_configmanagement_policy_controller_monitoring.dart';
 
 class FeatureMembershipConfigmanagementPolicyController {
-  /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+  /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
   final pulumi.Input<String>? auditIntervalSeconds;
   /// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
   final pulumi.Input<bool>? enabled;
@@ -22,7 +22,7 @@ class FeatureMembershipConfigmanagementPolicyController {
   final pulumi.Input<bool>? templateLibraryInstalled;
 
   /// Creates a new [FeatureMembershipConfigmanagementPolicyController].
-  /// [auditIntervalSeconds] Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+  /// [auditIntervalSeconds] Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
   /// [enabled] Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
   /// [exemptableNamespaces] The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
   /// [logDeniesEnabled] Logs all denies and dry run failures.
@@ -67,4 +67,3 @@ class FeatureMembershipConfigmanagementPolicyController {
     );
   }
 }
-

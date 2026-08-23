@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'urlmap_path_matcher_path_rule_route_action_cache_policy.dart';
 import 'urlmap_path_matcher_path_rule_route_action_cors_policy.dart';
 import 'urlmap_path_matcher_path_rule_route_action_fault_injection_policy.dart';
 import 'urlmap_path_matcher_path_rule_route_action_max_stream_duration.dart';
@@ -11,6 +12,12 @@ import 'urlmap_path_matcher_path_rule_route_action_url_rewrite.dart';
 import 'urlmap_path_matcher_path_rule_route_action_weighted_backend_service.dart';
 
 class URLMapPathMatcherPathRuleRouteAction {
+  /// Specifies the cache policy configuration for matched traffic. Available
+  /// only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+  /// property must be specified. This policy cannot be specified if any target
+  /// backend has Identity-Aware Proxy enabled.
+  /// Structure is documented below.
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionCachePolicy>? cachePolicy;
   /// The specification for allowing client side cross-origin requests. Please see W3C
   /// Recommendation for Cross Origin Resource Sharing
   /// Structure is documented below.
@@ -20,7 +27,7 @@ class URLMapPathMatcherPathRuleRouteAction {
   /// when clients send requests to a backend service, delays can be introduced by
   /// Loadbalancer on a percentage of requests before sending those request to the
   /// backend service. Similarly requests from clients can be aborted by the
-  /// Loadbalancer for a percentage of requests. timeout and retry_policy will be
+  /// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
   /// ignored by clients that are configured with a fault_injection_policy.
   /// Structure is documented below.
   final pulumi.Input<URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy>? faultInjectionPolicy;
@@ -62,6 +69,7 @@ class URLMapPathMatcherPathRuleRouteAction {
   final pulumi.Input<List<URLMapPathMatcherPathRuleRouteActionWeightedBackendService>>? weightedBackendServices;
 
   /// Creates a new [URLMapPathMatcherPathRuleRouteAction].
+  /// [cachePolicy] Specifies the cache policy configuration for matched traffic. Available
   /// [corsPolicy] The specification for allowing client side cross-origin requests. Please see W3C
   /// [faultInjectionPolicy] The specification for fault injection introduced into traffic to test the
   /// [maxStreamDuration] Specifies the maximum duration (timeout) for streams on the selected route.
@@ -71,6 +79,7 @@ class URLMapPathMatcherPathRuleRouteAction {
   /// [urlRewrite] The spec to modify the URL of the request, prior to forwarding the request to
   /// [weightedBackendServices] A list of weighted backend services to send traffic to when a route match
   const URLMapPathMatcherPathRuleRouteAction({
+    this.cachePolicy,
     this.corsPolicy,
     this.faultInjectionPolicy,
     this.maxStreamDuration,
@@ -83,6 +92,7 @@ class URLMapPathMatcherPathRuleRouteAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'cachePolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionCachePolicy, Map<String, dynamic>>(cachePolicy, (value) => value.toMap()),
       'corsPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionCorsPolicy, Map<String, dynamic>>(corsPolicy, (value) => value.toMap()),
       'faultInjectionPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy, Map<String, dynamic>>(faultInjectionPolicy, (value) => value.toMap()),
       'maxStreamDuration': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionMaxStreamDuration, Map<String, dynamic>>(maxStreamDuration, (value) => value.toMap()),
@@ -96,6 +106,7 @@ class URLMapPathMatcherPathRuleRouteAction {
 
   factory URLMapPathMatcherPathRuleRouteAction.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleRouteAction(
+      cachePolicy: (() { final guardedValue = map['cachePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherPathRuleRouteActionCachePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       corsPolicy: (() { final guardedValue = map['corsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherPathRuleRouteActionCorsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       faultInjectionPolicy: (() { final guardedValue = map['faultInjectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxStreamDuration: (() { final guardedValue = map['maxStreamDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherPathRuleRouteActionMaxStreamDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -107,4 +118,3 @@ class URLMapPathMatcherPathRuleRouteAction {
     );
   }
 }
-

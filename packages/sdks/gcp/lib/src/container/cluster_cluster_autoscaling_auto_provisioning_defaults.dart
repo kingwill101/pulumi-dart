@@ -16,13 +16,14 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults {
   final pulumi.Input<String>? imageType;
   /// NodeManagement configuration for this NodePool. Structure is documented below.
   final pulumi.Input<ClusterClusterAutoscalingAutoProvisioningDefaultsManagement>? management;
+  /// )
   /// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
   /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
   /// as "Intel Haswell" or "Intel Sandy Bridge".
   final pulumi.Input<String>? minCpuPlatform;
-  /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+  /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
   ///
-  /// &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
+  /// &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
   final pulumi.Input<List<String>>? oauthScopes;
   /// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
   final pulumi.Input<String>? serviceAccount;
@@ -37,8 +38,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults {
   /// [diskType] Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
   /// [imageType] The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
   /// [management] NodeManagement configuration for this NodePool. Structure is documented below.
-  /// [minCpuPlatform] Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
-  /// [oauthScopes] Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+  /// [minCpuPlatform] )
+  /// [oauthScopes] Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
   /// [serviceAccount] The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
   /// [shieldedInstanceConfig] Shielded Instance options. Structure is documented below.
   /// [upgradeSettings] Specifies the upgrade settings for NAP created node pools
@@ -85,4 +86,3 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults {
     );
   }
 }
-

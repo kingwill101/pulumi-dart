@@ -30,6 +30,7 @@ class GetRegionBackendServiceResult {
   final List<GetRegionBackendServiceConsistentHash> consistentHashes;
   final String creationTimestamp;
   final List<GetRegionBackendServiceCustomMetric> customMetrics;
+  final String deletionPolicy;
   final String description;
   final List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings;
   final bool enableCdn;
@@ -72,6 +73,7 @@ class GetRegionBackendServiceResult {
   /// [consistentHashes] Required.
   /// [creationTimestamp] Required.
   /// [customMetrics] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [dynamicForwardings] Required.
   /// [enableCdn] Required.
@@ -112,6 +114,7 @@ class GetRegionBackendServiceResult {
     required this.consistentHashes,
     required this.creationTimestamp,
     required this.customMetrics,
+    required this.deletionPolicy,
     required this.description,
     required this.dynamicForwardings,
     required this.enableCdn,
@@ -155,6 +158,7 @@ class GetRegionBackendServiceResult {
       'consistentHashes': pulumi.Input.encodeList<GetRegionBackendServiceConsistentHash, Map<String, dynamic>>(consistentHashes, (value) => value.toMap()),
       'creationTimestamp': creationTimestamp,
       'customMetrics': pulumi.Input.encodeList<GetRegionBackendServiceCustomMetric, Map<String, dynamic>>(customMetrics, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'dynamicForwardings': pulumi.Input.encodeList<GetRegionBackendServiceDynamicForwarding, Map<String, dynamic>>(dynamicForwardings, (value) => value.toMap()),
       'enableCdn': enableCdn,
@@ -199,6 +203,7 @@ class GetRegionBackendServiceResult {
       consistentHashes: pulumi.Input.decodeList<GetRegionBackendServiceConsistentHash>(map['consistentHashes']!, (value) => GetRegionBackendServiceConsistentHash.fromMap((value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
       customMetrics: pulumi.Input.decodeList<GetRegionBackendServiceCustomMetric>(map['customMetrics']!, (value) => GetRegionBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       dynamicForwardings: pulumi.Input.decodeList<GetRegionBackendServiceDynamicForwarding>(map['dynamicForwardings']!, (value) => GetRegionBackendServiceDynamicForwarding.fromMap((value as Map).cast<String, dynamic>())),
       enableCdn: map['enableCdn'] as bool,
@@ -232,4 +237,3 @@ class GetRegionBackendServiceResult {
     );
   }
 }
-

@@ -23,11 +23,19 @@ class RoutineArgs {
   /// The body of the routine. For functions, this is the expression in the AS clause.
   /// If language=SQL, it is the substring inside (but excluding) the parentheses.
   final pulumi.Input<String> definitionBody;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the routine if defined.
   final pulumi.Input<String>? description;
   /// The determinism level of the JavaScript UDF if defined.
   /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
   final pulumi.Input<String>? determinismLevel;
+  /// (Optional, Beta)
   /// Options for the runtime of the external system.
   /// This field is only applicable for Python UDFs.
   /// Structure is documented below.
@@ -41,6 +49,7 @@ class RoutineArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// (Optional, Beta)
   /// Options for a user-defined Python function.
   /// Structure is documented below.
   final pulumi.Input<RoutinePythonOptions>? pythonOptions;
@@ -79,13 +88,14 @@ class RoutineArgs {
   /// [dataGovernanceType] If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
   /// [datasetId] The ID of the dataset containing this routine
   /// [definitionBody] The body of the routine. For functions, this is the expression in the AS clause.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the routine if defined.
   /// [determinismLevel] The determinism level of the JavaScript UDF if defined.
-  /// [externalRuntimeOptions] Options for the runtime of the external system.
+  /// [externalRuntimeOptions] (Optional, Beta)
   /// [importedLibraries] Optional. If language = "JAVASCRIPT", this field stores the path of the
   /// [language] The language of the routine.
   /// [project] The ID of the project in which the resource belongs.
-  /// [pythonOptions] Options for a user-defined Python function.
+  /// [pythonOptions] (Optional, Beta)
   /// [remoteFunctionOptions] Remote function specific options.
   /// [returnTableType] Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
   /// [returnType] A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
@@ -98,6 +108,7 @@ class RoutineArgs {
     this.dataGovernanceType,
     required this.datasetId,
     required this.definitionBody,
+    this.deletionPolicy,
     this.description,
     this.determinismLevel,
     this.externalRuntimeOptions,
@@ -120,6 +131,7 @@ class RoutineArgs {
       'dataGovernanceType': ?dataGovernanceType,
       'datasetId': datasetId,
       'definitionBody': definitionBody,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'determinismLevel': ?determinismLevel,
       'externalRuntimeOptions': ?pulumi.Input.mapOptionalInputValue<RoutineExternalRuntimeOptions, Map<String, dynamic>>(externalRuntimeOptions, (value) => value.toMap()),
@@ -143,6 +155,7 @@ class RoutineArgs {
       dataGovernanceType: (() { final guardedValue = map['dataGovernanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       definitionBody: pulumi.Input.fromValue(map['definitionBody'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       determinismLevel: (() { final guardedValue = map['determinismLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalRuntimeOptions: (() { final guardedValue = map['externalRuntimeOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -160,4 +173,3 @@ class RoutineArgs {
     );
   }
 }
-

@@ -23,7 +23,7 @@ class VmwareAdminClusterPlatformConfig {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_platform_config_bundles_status"&gt;&lt;/a&gt;The `status` block contains:
+  /// &lt;a name="nestedPlatformConfigBundlesStatus"&gt;&lt;/a&gt;The `status` block contains:
   final pulumi.Input<List<VmwareAdminClusterPlatformConfigStatus>>? statuses;
 
   /// Creates a new [VmwareAdminClusterPlatformConfig].
@@ -56,4 +56,3 @@ class VmwareAdminClusterPlatformConfig {
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionEventTriggerEventFilter {
   /// 'Required. The name of a CloudEvents attribute.
   /// Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
-  /// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `event_type` attribute.
+  /// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `eventType` attribute.
   final pulumi.Input<String> attribute;
   /// Optional. The operator used for matching the events with the value of
   /// the filter. If not specified, only events that have an exact key-value
@@ -43,4 +43,3 @@ class FunctionEventTriggerEventFilter {
     );
   }
 }
-

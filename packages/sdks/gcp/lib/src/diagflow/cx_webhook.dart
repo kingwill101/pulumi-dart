@@ -231,7 +231,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				AllowedCaCerts: pulumi.StringArray{
@@ -271,6 +271,57 @@ import 'cx_webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["it", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxwebhook" "standard_webhook" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyFlow"
+///   generic_web_service = {
+///     allowed_ca_certs = ["BQA="]
+///     uri              = "https://example.com"
+///     request_headers = {
+///       "example-key" = "example-value"
+///     }
+///     webhook_type = "STANDARD"
+///     oauth_config = {
+///       client_id                        = "example-client-id"
+///       secret_version_for_client_secret = "projects/example-proj/secrets/example-secret/versions/example-version"
+///       token_endpoint                   = "https://example.com"
+///       scopes                           = ["example-scope"]
+///     }
+///     service_agent_auth                   = "NONE"
+///     secret_version_for_username_password = "projects/example-proj/secrets/example-secret/versions/example-version"
+///     secret_versions_for_request_headers = [{
+///       "key"           = "example-key-1"
+///       "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version"
+///       }, {
+///       "key"           = "example-key-2"
+///       "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version-2"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +335,9 @@ import 'cx_webhook_state.dart';
 /// import com.pulumi.gcp.diagflow.CxWebhookArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceOauthConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -577,7 +629,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				Uri: pulumi.String("https://example.com"),
@@ -605,6 +657,52 @@ import 'cx_webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["it", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxwebhook" "flexible_webhook" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyFlow"
+///   generic_web_service = {
+///     uri = "https://example.com"
+///     request_headers = {
+///       "example-key" = "example-value"
+///     }
+///     webhook_type = "FLEXIBLE"
+///     oauth_config = {
+///       client_id      = "example-client-id"
+///       client_secret  = "projects/example-proj/secrets/example-secret/versions/example-version"
+///       token_endpoint = "https://example.com"
+///     }
+///     service_agent_auth = "NONE"
+///     http_method        = "POST"
+///     request_body       = "{\"example-key\": \"example-value\"}"
+///     parameter_mapping = {
+///       "example-parameter" = "examplePath"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -618,8 +716,8 @@ import 'cx_webhook_state.dart';
 /// import com.pulumi.gcp.diagflow.CxWebhookArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceOauthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -938,7 +1036,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 /// 				Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -981,6 +1079,60 @@ import 'cx_webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "us-central1"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["it", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxwebhook" "standard_webhook" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyFlow"
+///   service_directory = {
+///     service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"
+///     generic_web_service = {
+///       allowed_ca_certs = ["BQA="]
+///       uri              = "https://example.com"
+///       request_headers = {
+///         "example-key" = "example-value"
+///       }
+///       webhook_type = "STANDARD"
+///       oauth_config = {
+///         client_id                        = "example-client-id"
+///         secret_version_for_client_secret = "projects/example-proj/secrets/example-secret/versions/example-version"
+///         token_endpoint                   = "https://example.com"
+///         scopes                           = ["example-scope"]
+///       }
+///       service_agent_auth                   = "NONE"
+///       secret_version_for_username_password = "projects/example-proj/secrets/example-secret/versions/example-version"
+///       secret_versions_for_request_headers = [{
+///         "key"           = "example-key-1"
+///         "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version"
+///         }, {
+///         "key"           = "example-key-2"
+///         "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version-2"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -995,8 +1147,9 @@ import 'cx_webhook_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1303,7 +1456,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 /// 				Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -1334,6 +1487,55 @@ import 'cx_webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "us-central1"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["it", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxwebhook" "flexible_webhook" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyFlow"
+///   service_directory = {
+///     service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"
+///     generic_web_service = {
+///       uri = "https://example.com"
+///       request_headers = {
+///         "example-key" = "example-value"
+///       }
+///       webhook_type = "FLEXIBLE"
+///       oauth_config = {
+///         client_id      = "example-client-id"
+///         client_secret  = "projects/example-proj/secrets/example-secret/versions/example-version"
+///         token_endpoint = "https://example.com"
+///       }
+///       service_agent_auth = "NONE"
+///       http_method        = "POST"
+///       request_body       = "{\"example-key\": \"example-value\"}"
+///       parameter_mapping = {
+///         "example-parameter" = "examplePath"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1348,8 +1550,8 @@ import 'cx_webhook_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1596,7 +1798,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyWebhook"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				Uri:         pulumi.String("https://example.googleapis.com"),
@@ -1613,6 +1815,41 @@ import 'cx_webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["it", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxwebhook" "webhook_use_service_account" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyWebhook"
+///   generic_web_service = {
+///     uri          = "https://example.googleapis.com"
+///     webhook_type = "STANDARD"
+///     service_account_auth_config = {
+///       service_account = "my@service-account.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1626,8 +1863,8 @@ import 'cx_webhook_state.dart';
 /// import com.pulumi.gcp.diagflow.CxWebhookArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceServiceAccountAuthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1863,7 +2100,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyWebhook"),
 /// 			ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 /// 				Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -1883,6 +2120,44 @@ import 'cx_webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "us-central1"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["it", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxwebhook" "webhook_use_service_account" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyWebhook"
+///   service_directory = {
+///     service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"
+///     generic_web_service = {
+///       uri          = "https://example.googleapis.com"
+///       webhook_type = "STANDARD"
+///       service_account_auth_config = {
+///         service_account = "my@service-account.com"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1897,8 +2172,8 @@ import 'cx_webhook_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1986,19 +2261,23 @@ import 'cx_webhook_state.dart';
 /// Webhook can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/webhooks/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Webhook can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/webhooks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/{{name}}
 /// ```
 class CxWebhook extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Indicates whether the webhook is disabled.
   late final pulumi.Output<bool?> disabled;
   /// The human-readable name of the webhook, unique within the agent.
@@ -2040,6 +2319,7 @@ class CxWebhook extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');
     enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');
@@ -2076,6 +2356,7 @@ class CxWebhook extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');
     enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');

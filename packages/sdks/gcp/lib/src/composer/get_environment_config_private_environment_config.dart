@@ -17,7 +17,7 @@ class GetEnvironmentConfigPrivateEnvironmentConfig {
   final pulumi.Input<bool> enablePrivatelyUsedPublicIps;
   /// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
   final pulumi.Input<String> masterIpv4CidrBlock;
-  /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+  /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   final pulumi.Input<String> webServerIpv4CidrBlock;
 
   /// Creates a new [GetEnvironmentConfigPrivateEnvironmentConfig].
@@ -28,7 +28,7 @@ class GetEnvironmentConfigPrivateEnvironmentConfig {
   /// [enablePrivateEndpoint] If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   /// [enablePrivatelyUsedPublicIps] When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
   /// [masterIpv4CidrBlock] The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
-  /// [webServerIpv4CidrBlock] The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+  /// [webServerIpv4CidrBlock] The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   const GetEnvironmentConfigPrivateEnvironmentConfig({
     required this.cloudComposerConnectionSubnetwork,
     required this.cloudComposerNetworkIpv4CidrBlock,
@@ -66,4 +66,3 @@ class GetEnvironmentConfigPrivateEnvironmentConfig {
     );
   }
 }
-

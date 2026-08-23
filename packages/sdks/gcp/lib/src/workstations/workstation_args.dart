@@ -9,15 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkstationArgs {
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable name for this resource.
   final pulumi.Input<String>? displayName;
   /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
   final pulumi.Input<Map<String, String>>? env;
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the workstation parent resources reside.
   final pulumi.Input<String> location;
@@ -36,6 +43,7 @@ class WorkstationArgs {
 
   /// Creates a new [WorkstationArgs].
   /// [annotations] Client-specified annotations. This is distinct from labels.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Human-readable name for this resource.
   /// [env] 'Client-specified environment variables passed to the workstation container's entrypoint.'
   /// [labels] Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -47,6 +55,7 @@ class WorkstationArgs {
   /// [workstationId] ID to use for the workstation.
   const WorkstationArgs({
     this.annotations,
+    this.deletionPolicy,
     this.displayName,
     this.env,
     this.labels,
@@ -61,6 +70,7 @@ class WorkstationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'env': ?env,
       'labels': ?labels,
@@ -76,6 +86,7 @@ class WorkstationArgs {
   factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       env: (() { final guardedValue = map['env']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -88,4 +99,3 @@ class WorkstationArgs {
     );
   }
 }
-

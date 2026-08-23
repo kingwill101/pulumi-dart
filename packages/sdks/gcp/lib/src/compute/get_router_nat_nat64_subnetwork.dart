@@ -25,4 +25,3 @@ class GetRouterNatNat64Subnetwork {
     );
   }
 }
-

@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource {
+  /// ## - Points to an f1 table to use.
+  ///
+  /// - Expected Format:
+  /// - {group}.{table_name}
+  final pulumi.Input<String>? f1Table;
+
+  /// Creates a new [AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource].
+  /// [f1Table] ## - Points to an f1 table to use.
+  const AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource({
+    this.f1Table,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'f1Table': ?f1Table,
+    };
+  }
+
+  factory AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource.fromMap(Map<String, dynamic> map) {
+    return AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource(
+      f1Table: (() { final guardedValue = map['f1Table']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+    );
+  }
+}

@@ -73,6 +73,21 @@ import 'view_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_contactcenterinsights_view" "basic_view" {
+///   location     = "us-central1"
+///   display_name = "view-display-name"
+///   value        = "medium=\"CHAT\""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'view_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.contactcenterinsights.View;
 /// import com.pulumi.gcp.contactcenterinsights.ViewArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,6 +191,21 @@ import 'view_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_contactcenterinsights_view" "full_view" {
+///   location     = "us-central1"
+///   display_name = "view-display-name"
+///   value        = "medium=\"PHONE_CALL\""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +214,8 @@ import 'view_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.contactcenterinsights.View;
 /// import com.pulumi.gcp.contactcenterinsights.ViewArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,27 +253,27 @@ import 'view_state.dart';
 /// View can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/views/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, View can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:contactcenterinsights/view:View default projects/{{project}}/locations/{{location}}/views/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:contactcenterinsights/view:View default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:contactcenterinsights/view:View default {{location}}/{{name}}
 /// ```
 class View extends pulumi.CustomResource {
   /// Output only. The time at which this view was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human-readable display name of the view.
   late final pulumi.Output<String?> displayName;
   /// Location of the resource.
@@ -275,6 +305,7 @@ class View extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -307,6 +338,7 @@ class View extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

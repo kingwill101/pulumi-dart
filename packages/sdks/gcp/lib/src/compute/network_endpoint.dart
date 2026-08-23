@@ -10,7 +10,7 @@ import 'network_endpoint_state.dart';
 ///
 /// &gt; **NOTE** In case the Endpoint's Instance is recreated, it's needed to
 /// perform `apply` twice. To avoid situations like this, please use this resource
-/// with the lifecycle `replace_triggered_by` method, with the passed Instance's ID.
+/// with the lifecycle `replaceTriggeredBy` method, with the passed Instance's ID.
 ///
 ///
 /// To get more information about NetworkEndpoint, see:
@@ -59,8 +59,8 @@ import 'network_endpoint_state.dart';
 /// const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
 ///     networkEndpointGroup: neg.name,
 ///     instance: endpoint_instance.name,
-///     port: neg.defaultPort,
-///     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+///     port: Number(neg.defaultPort),
+///     ipAddress: endpoint_instance.networkInterfaces[0].networkIp,
 /// });
 /// const group = new gcp.compute.NetworkEndpointGroup("group", {
 ///     name: "my-lb-neg",
@@ -99,7 +99,7 @@ import 'network_endpoint_state.dart';
 /// default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
 ///     network_endpoint_group=neg["name"],
 ///     instance=endpoint_instance.name,
-///     port=neg["defaultPort"],
+///     port=int(neg["defaultPort"]),
 ///     ip_address=endpoint_instance.network_interfaces[0].network_ip)
 /// group = gcp.compute.NetworkEndpointGroup("group",
 ///     name="my-lb-neg",
@@ -164,7 +164,7 @@ import 'network_endpoint_state.dart';
 ///     {
 ///         NetworkEndpointGroup = neg.Name,
 ///         Instance = endpoint_instance.Name,
-///         Port = neg.DefaultPort,
+///         Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
 ///         IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///     });
 ///
@@ -207,7 +207,7 @@ import 'network_endpoint_state.dart';
 /// 			Name:        pulumi.String("neg-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.1/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -218,7 +218,7 @@ import 'network_endpoint_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("endpoint-instance"),
@@ -236,17 +236,17 @@ import 'network_endpoint_state.dart';
 /// 			NetworkEndpointGroup: pulumi.Any(neg.Name),
 /// 			Instance:             endpoint_instance.Name,
 /// 			Port:                 pulumi.Any(neg.DefaultPort),
-/// 			IpAddress: pulumi.String(endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-/// 				return &networkInterfaces[0].NetworkIp, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+/// 				return networkInterfaces[0].NetworkIp, nil
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
 /// 			Name:        pulumi.String("my-lb-neg"),
-/// 			Network:     _default.ID(),
-/// 			Subnetwork:  defaultSubnetwork.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultPort: pulumi.Int(90),
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 		})
@@ -255,6 +255,58 @@ import 'network_endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_networkendpoint" "default-endpoint" {
+///   network_endpoint_group = neg.name
+///   instance               = gcp_compute_instance.endpoint-instance.name
+///   port                   = neg.defaultPort
+///   ip_address             = gcp_compute_instance.endpoint-instance.network_interfaces[0].network_ip
+/// }
+/// resource "gcp_compute_instance" "endpoint-instance" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   name         = "endpoint-instance"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+/// }
+/// resource "gcp_compute_networkendpointgroup" "group" {
+///   name         = "my-lb-neg"
+///   network      = gcp_compute_network.default.id
+///   subnetwork   = gcp_compute_subnetwork.default.id
+///   default_port = "90"
+///   zone         = "us-central1-a"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "neg-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "neg-subnetwork"
+///   ip_cidr_range = "10.0.0.1/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -272,14 +324,15 @@ import 'network_endpoint_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpoint;
 /// import com.pulumi.gcp.compute.NetworkEndpointArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -324,10 +377,10 @@ import 'network_endpoint_state.dart';
 ///             .build());
 ///
 ///         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()
-///             .networkEndpointGroup(neg.name())
+///             .networkEndpointGroup(neg.get("name"))
 ///             .instance(endpoint_instance.name())
-///             .port(neg.defaultPort())
-///             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+///             .port(((Number) neg.get("defaultPort")).intValue())
+///             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///             .build());
 ///
 ///         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()
@@ -398,31 +451,27 @@ import 'network_endpoint_state.dart';
 /// NetworkEndpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-///
 /// * `{{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-///
 /// * `{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-///
 /// * `{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkEndpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
 /// ```
 class NetworkEndpoint extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORT.
   /// The instance must be in the same zone of network endpoint group.
@@ -457,6 +506,7 @@ class NetworkEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String?>('instance');
     ipAddress = registerOutput<String>('ipAddress');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
@@ -488,6 +538,7 @@ class NetworkEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String?>('instance');
     ipAddress = registerOutput<String>('ipAddress');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');

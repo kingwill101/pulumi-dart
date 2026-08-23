@@ -134,6 +134,31 @@ import 'deployment_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_deploymentmanager_deployment" "deployment" {
+///   name = "my-deployment"
+///   target = {
+///     config = {
+///       content = file("path/to/config.yml")
+///     }
+///   }
+///   labels {
+///     key   = "foo"
+///     value = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +172,8 @@ import 'deployment_target.dart';
 /// import com.pulumi.gcp.deploymentmanager.inputs.DeploymentLabelArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,22 +227,15 @@ import 'deployment_target.dart';
 /// Deployment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/deployments/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
 /// ```
 class DeploymentType extends pulumi.CustomResource {
@@ -238,6 +256,13 @@ class DeploymentType extends pulumi.CustomResource {
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
   late final pulumi.Output<String?> deletePolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Unique identifier for deployment. Output only.
   late final pulumi.Output<String> deploymentId;
   /// Optional user-provided description of deployment.
@@ -285,6 +310,7 @@ class DeploymentType extends pulumi.CustomResource {
         ) {
     createPolicy = registerOutput<String?>('createPolicy');
     deletePolicy = registerOutput<String?>('deletePolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentId = registerOutput<String>('deploymentId');
     description = registerOutput<String?>('description');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
@@ -321,6 +347,7 @@ class DeploymentType extends pulumi.CustomResource {
         ) {
     createPolicy = registerOutput<String?>('createPolicy');
     deletePolicy = registerOutput<String?>('deletePolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentId = registerOutput<String>('deploymentId');
     description = registerOutput<String?>('description');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');

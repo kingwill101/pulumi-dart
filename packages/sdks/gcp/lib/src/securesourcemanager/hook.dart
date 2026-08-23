@@ -19,33 +19,29 @@ import 'hook_state.dart';
 /// Hook can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/hooks/{{hook_id}}`
-///
 /// * `{{project}}/{{location}}/{{repository_id}}/{{hook_id}}`
-///
 /// * `{{location}}/{{repository_id}}/{{hook_id}}`
-///
 /// * `{{hook_id}}`
+///
 ///
 /// When using the `pulumi import` command, Hook can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securesourcemanager/hook:Hook default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/hooks/{{hook_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/hook:Hook default {{project}}/{{location}}/{{repository_id}}/{{hook_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/hook:Hook default {{location}}/{{repository_id}}/{{hook_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securesourcemanager/hook:Hook default {{hook_id}}
 /// ```
 class Hook extends pulumi.CustomResource {
   /// Create timestamp.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Determines if the hook disabled or not.
   /// Set to true to stop sending traffic.
   late final pulumi.Output<bool?> disabled;
@@ -92,6 +88,7 @@ class Hook extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     events = registerOutput<List<String>>('events');
     hookId = registerOutput<String>('hookId');
@@ -130,6 +127,7 @@ class Hook extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     events = registerOutput<List<String>>('events');
     hookId = registerOutput<String>('hookId');

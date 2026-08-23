@@ -16,13 +16,20 @@ class ControlArgs {
   /// Changes the returned order of results.
   /// Structure is documented below.
   final pulumi.Input<ControlBoostAction>? boostAction;
-  /// The collection ID. Currently only accepts "default_collection".
+  /// The collection ID. Currently only accepts "defaultCollection".
   final pulumi.Input<String>? collectionId;
   /// The conditions under which the control is active.
   /// Structure is documented below.
   final pulumi.Input<List<ControlCondition>>? conditions;
   /// The unique id of the control.
   final pulumi.Input<String> controlId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name of the control. This field must be a UTF-8 encoded
   /// string with a length limit of 128 characters.
   final pulumi.Input<String> displayName;
@@ -55,9 +62,10 @@ class ControlArgs {
 
   /// Creates a new [ControlArgs].
   /// [boostAction] Changes the returned order of results.
-  /// [collectionId] The collection ID. Currently only accepts "default_collection".
+  /// [collectionId] The collection ID. Currently only accepts "defaultCollection".
   /// [conditions] The conditions under which the control is active.
   /// [controlId] The unique id of the control.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name of the control. This field must be a UTF-8 encoded
   /// [engineId] The engine to add the control to.
   /// [filterAction] Removes entries from returned results.
@@ -73,6 +81,7 @@ class ControlArgs {
     this.collectionId,
     this.conditions,
     required this.controlId,
+    this.deletionPolicy,
     required this.displayName,
     required this.engineId,
     this.filterAction,
@@ -91,6 +100,7 @@ class ControlArgs {
       'collectionId': ?collectionId,
       'conditions': ?pulumi.Input.mapOptionalInputValue<List<ControlCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ControlCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'controlId': controlId,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'engineId': engineId,
       'filterAction': ?pulumi.Input.mapOptionalInputValue<ControlFilterAction, Map<String, dynamic>>(filterAction, (value) => value.toMap()),
@@ -110,6 +120,7 @@ class ControlArgs {
       collectionId: (() { final guardedValue = map['collectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ControlCondition>(guardedValue, (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       controlId: pulumi.Input.fromValue(map['controlId'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       engineId: pulumi.Input.fromValue(map['engineId'] as String),
       filterAction: (() { final guardedValue = map['filterAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControlFilterAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -123,4 +134,3 @@ class ControlArgs {
     );
   }
 }
-

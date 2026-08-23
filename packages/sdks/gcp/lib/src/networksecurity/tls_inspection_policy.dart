@@ -290,8 +290,6 @@ import 'tls_inspection_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -369,7 +367,7 @@ import 'tls_inspection_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
-/// 			CaPool: _default.ID(),
+/// 			CaPool: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/privateca.certificateManager"),
 /// 			Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -379,7 +377,7 @@ import 'tls_inspection_policy_state.dart';
 /// 		_, err = networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
 /// 			Name:               pulumi.String("my-tls-inspection-policy"),
 /// 			Location:           pulumi.String("us-central1"),
-/// 			CaPool:             _default.ID(),
+/// 			CaPool:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			ExcludePublicCaSet: pulumi.Bool(false),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			_default,
@@ -391,6 +389,89 @@ import 'tls_inspection_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   name     = "my-basic-ca-pool"
+///   location = "us-central1"
+///   tier     = "DEVOPS"
+///   publishing_options = {
+///     publish_ca_cert = false
+///     publish_crl     = false
+///   }
+///   issuance_policy = {
+///     maximum_lifetime = "1209600s"
+///     baseline_values = {
+///       ca_options = {
+///         is_ca = false
+///       }
+///       key_usage = {
+///         base_key_usage = {}
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                                   = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id               = "my-basic-certificate-authority"
+///   location                               = "us-central1"
+///   lifetime                               = "86400s"
+///   type                                   = "SELF_SIGNED"
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "Test LLC"
+///         common_name  = "my-ca"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = false
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+/// }
+/// resource "gcp_certificateauthority_capooliammember" "tls_inspection_permission" {
+///   ca_pool = gcp_certificateauthority_capool.default.id
+///   role    = "roles/privateca.certificateManager"
+///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_networksecurity_tlsinspectionpolicy" "default" {
+///   depends_on            = [gcp_certificateauthority_capool.default, gcp_certificateauthority_authority.default, gcp_certificateauthority_capooliammember.tls_inspection_permission]
+///   name                  = "my-tls-inspection-policy"
+///   location              = "us-central1"
+///   ca_pool               = gcp_certificateauthority_capool.default.id
+///   exclude_public_ca_set = false
 /// }
 /// ```
 /// ```java
@@ -426,8 +507,8 @@ import 'tls_inspection_policy_state.dart';
 /// import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
 /// import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1083,7 +1164,7 @@ import 'tls_inspection_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultCaPoolIamMember, err := certificateauthority.NewCaPoolIamMember(ctx, "default", &certificateauthority.CaPoolIamMemberArgs{
-/// 			CaPool: _default.ID(),
+/// 			CaPool: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/privateca.certificateManager"),
 /// 			Member: nsSa.Member,
 /// 		})
@@ -1127,10 +1208,10 @@ import 'tls_inspection_policy_state.dart';
 /// 		_, err = networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
 /// 			Name:               pulumi.String("my-tls-inspection-policy"),
 /// 			Location:           pulumi.String("us-central1"),
-/// 			CaPool:             _default.ID(),
+/// 			CaPool:             _default.ID().ToIDOutput().ToStringOutput(),
 /// 			ExcludePublicCaSet: pulumi.Bool(false),
 /// 			MinTlsVersion:      pulumi.String("TLS_1_0"),
-/// 			TrustConfig:        defaultTrustConfig.ID(),
+/// 			TrustConfig:        defaultTrustConfig.ID().ToIDOutput().ToStringOutput(),
 /// 			TlsFeatureProfile:  pulumi.String("PROFILE_CUSTOM"),
 /// 			CustomTlsFeatures: pulumi.StringArray{
 /// 				pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA"),
@@ -1158,6 +1239,109 @@ import 'tls_inspection_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   name     = "my-basic-ca-pool"
+///   location = "us-central1"
+///   tier     = "DEVOPS"
+///   publishing_options = {
+///     publish_ca_cert = false
+///     publish_crl     = false
+///   }
+///   issuance_policy = {
+///     maximum_lifetime = "1209600s"
+///     baseline_values = {
+///       ca_options = {
+///         is_ca = false
+///       }
+///       key_usage = {
+///         base_key_usage = {}
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                                   = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id               = "my-basic-certificate-authority"
+///   location                               = "us-central1"
+///   lifetime                               = "86400s"
+///   type                                   = "SELF_SIGNED"
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "Test LLC"
+///         common_name  = "my-ca"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = false
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+/// }
+/// resource "gcp_projects_serviceidentity" "ns_sa" {
+///   service = "networksecurity.googleapis.com"
+/// }
+/// resource "gcp_certificateauthority_capooliammember" "default" {
+///   ca_pool = gcp_certificateauthority_capool.default.id
+///   role    = "roles/privateca.certificateManager"
+///   member  = gcp_projects_serviceidentity.ns_sa.member
+/// }
+/// resource "gcp_certificatemanager_trustconfig" "default" {
+///   name        = "my-trust-config"
+///   description = "sample trust config description"
+///   location    = "us-central1"
+///   trust_stores {
+///     trust_anchors {
+///       pem_certificate = file("test-fixtures/ca_cert.pem")
+///     }
+///     intermediate_cas {
+///       pem_certificate = file("test-fixtures/ca_cert.pem")
+///     }
+///   }
+/// }
+/// resource "gcp_networksecurity_tlsinspectionpolicy" "default" {
+///   depends_on            = [gcp_certificateauthority_authority.default, gcp_certificateauthority_capooliammember.default]
+///   name                  = "my-tls-inspection-policy"
+///   location              = "us-central1"
+///   ca_pool               = gcp_certificateauthority_capool.default.id
+///   exclude_public_ca_set = false
+///   min_tls_version       = "TLS_1_0"
+///   trust_config          = gcp_certificatemanager_trustconfig.default.id
+///   tls_feature_profile   = "PROFILE_CUSTOM"
+///   custom_tls_features   = ["TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256", "TLS_RSA_WITH_3DES_EDE_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384"]
 /// }
 /// ```
 /// ```java
@@ -1193,13 +1377,15 @@ import 'tls_inspection_policy_state.dart';
 /// import com.pulumi.gcp.certificatemanager.TrustConfig;
 /// import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreTrustAnchorArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreIntermediateCaArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
 /// import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1454,22 +1640,15 @@ import 'tls_inspection_policy_state.dart';
 /// TlsInspectionPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TlsInspectionPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default {{location}}/{{name}}
 /// ```
 class TlsInspectionPolicy extends pulumi.CustomResource {
@@ -1477,8 +1656,15 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> caPool;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
-  /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+  /// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
   late final pulumi.Output<List<String>?> customTlsFeatures;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Free-text description of the resource.
   late final pulumi.Output<String?> description;
   /// If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
@@ -1520,6 +1706,7 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
     caPool = registerOutput<String>('caPool');
     createTime = registerOutput<String>('createTime');
     customTlsFeatures = registerOutput<List<String>?>('customTlsFeatures');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     excludePublicCaSet = registerOutput<bool?>('excludePublicCaSet');
     location = registerOutput<String?>('location');
@@ -1557,6 +1744,7 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
     caPool = registerOutput<String>('caPool');
     createTime = registerOutput<String>('createTime');
     customTlsFeatures = registerOutput<List<String>?>('customTlsFeatures');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     excludePublicCaSet = registerOutput<bool?>('excludePublicCaSet');
     location = registerOutput<String?>('location');

@@ -106,6 +106,24 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "tcp-region-health-check" {
+///   name               = "tcp-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +133,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,6 +273,31 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "tcp-region-health-check" {
+///   name                = "tcp-region-health-check"
+///   description         = "Health check via tcp"
+///   timeout_sec         = 1
+///   check_interval_sec  = 1
+///   healthy_threshold   = 4
+///   unhealthy_threshold = 5
+///   tcp_health_check = {
+///     port_name          = "health-check-port"
+///     port_specification = "USE_NAMED_PORT"
+///     request            = "ARE YOU HEALTHY?"
+///     proxy_header       = "NONE"
+///     response           = "I AM HEALTHY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +307,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -390,6 +433,24 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "ssl-region-health-check" {
+///   name               = "ssl-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   ssl_health_check = {
+///     port = "443"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -399,8 +460,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckSslHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -539,6 +600,31 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "ssl-region-health-check" {
+///   name                = "ssl-region-health-check"
+///   description         = "Health check via ssl"
+///   timeout_sec         = 1
+///   check_interval_sec  = 1
+///   healthy_threshold   = 4
+///   unhealthy_threshold = 5
+///   ssl_health_check = {
+///     port_name          = "health-check-port"
+///     port_specification = "USE_NAMED_PORT"
+///     request            = "ARE YOU HEALTHY?"
+///     proxy_header       = "NONE"
+///     response           = "I AM HEALTHY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -548,8 +634,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckSslHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -674,6 +760,24 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "http-region-health-check" {
+///   name               = "http-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   http_health_check = {
+///     port = "80"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -683,8 +787,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -808,6 +912,27 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "http-region-health-check" {
+///   name               = "http-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   http_health_check = {
+///     port = "80"
+///   }
+///   log_config = {
+///     enable = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -818,8 +943,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -967,6 +1092,32 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "http-region-health-check" {
+///   name                = "http-region-health-check"
+///   description         = "Health check via http"
+///   timeout_sec         = 1
+///   check_interval_sec  = 1
+///   healthy_threshold   = 4
+///   unhealthy_threshold = 5
+///   http_health_check = {
+///     port_name          = "health-check-port"
+///     port_specification = "USE_NAMED_PORT"
+///     host               = "1.2.3.4"
+///     request_path       = "/mypath"
+///     proxy_header       = "NONE"
+///     response           = "I AM HEALTHY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -976,8 +1127,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1104,6 +1255,24 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "https-region-health-check" {
+///   name               = "https-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   https_health_check = {
+///     port = "443"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1113,8 +1282,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpsHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1257,6 +1426,32 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "https-region-health-check" {
+///   name                = "https-region-health-check"
+///   description         = "Health check via https"
+///   timeout_sec         = 1
+///   check_interval_sec  = 1
+///   healthy_threshold   = 4
+///   unhealthy_threshold = 5
+///   https_health_check = {
+///     port_name          = "health-check-port"
+///     port_specification = "USE_NAMED_PORT"
+///     host               = "1.2.3.4"
+///     request_path       = "/mypath"
+///     proxy_header       = "NONE"
+///     response           = "I AM HEALTHY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1266,8 +1461,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpsHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1394,6 +1589,24 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "http2-region-health-check" {
+///   name               = "http2-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   http2_health_check = {
+///     port = "443"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1403,8 +1616,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttp2HealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1547,6 +1760,32 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "http2-region-health-check" {
+///   name                = "http2-region-health-check"
+///   description         = "Health check via http2"
+///   timeout_sec         = 1
+///   check_interval_sec  = 1
+///   healthy_threshold   = 4
+///   unhealthy_threshold = 5
+///   http2_health_check = {
+///     port_name          = "health-check-port"
+///     port_specification = "USE_NAMED_PORT"
+///     host               = "1.2.3.4"
+///     request_path       = "/mypath"
+///     proxy_header       = "NONE"
+///     response           = "I AM HEALTHY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1556,8 +1795,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttp2HealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1684,6 +1923,24 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "grpc-region-health-check" {
+///   name               = "grpc-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   grpc_health_check = {
+///     port = "443"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1693,8 +1950,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckGrpcHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1813,6 +2070,26 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "grpc-region-health-check" {
+///   name               = "grpc-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   grpc_health_check = {
+///     port_name          = "health-check-port"
+///     port_specification = "USE_NAMED_PORT"
+///     grpc_service_name  = "testservice"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1822,8 +2099,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckGrpcHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1938,6 +2215,24 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "grpc-with-tls-region-health-check" {
+///   name               = "grpc-with-tls-region-health-check"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   grpc_tls_health_check = {
+///     port = "443"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1947,8 +2242,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckGrpcTlsHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2079,6 +2374,29 @@ import 'region_health_check_tcp_health_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionhealthcheck" "grpc-with-tls-region-health-check" {
+///   name                = "grpc-with-tls-region-health-check"
+///   description         = "regional health check via GRPC with TLS"
+///   timeout_sec         = 1
+///   check_interval_sec  = 1
+///   healthy_threshold   = 4
+///   unhealthy_threshold = 5
+///   grpc_tls_health_check = {
+///     port_specification = "USE_FIXED_PORT"
+///     port               = "443"
+///     grpc_service_name  = "testservice"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2088,8 +2406,8 @@ import 'region_health_check_tcp_health_check.dart';
 /// import com.pulumi.gcp.compute.RegionHealthCheck;
 /// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionHealthCheckGrpcTlsHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2141,28 +2459,17 @@ import 'region_health_check_tcp_health_check.dart';
 /// RegionHealthCheck can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/healthChecks/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionHealthCheck can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default projects/{{project}}/regions/{{region}}/healthChecks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default {{name}}
 /// ```
 class RegionHealthCheck extends pulumi.CustomResource {
@@ -2171,6 +2478,13 @@ class RegionHealthCheck extends pulumi.CustomResource {
   late final pulumi.Output<int?> checkIntervalSec;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -2245,6 +2559,7 @@ class RegionHealthCheck extends pulumi.CustomResource {
         ) {
     checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     grpcHealthCheck = registerOutput<RegionHealthCheckGrpcHealthCheck?>('grpcHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionHealthCheckGrpcHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grpcTlsHealthCheck = registerOutput<RegionHealthCheckGrpcTlsHealthCheck?>('grpcTlsHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionHealthCheckGrpcTlsHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2290,6 +2605,7 @@ class RegionHealthCheck extends pulumi.CustomResource {
         ) {
     checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     grpcHealthCheck = registerOutput<RegionHealthCheckGrpcHealthCheck?>('grpcHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionHealthCheckGrpcHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grpcTlsHealthCheck = registerOutput<RegionHealthCheckGrpcTlsHealthCheck?>('grpcTlsHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionHealthCheckGrpcTlsHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -32,4 +32,3 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config {
     );
   }
 }
-

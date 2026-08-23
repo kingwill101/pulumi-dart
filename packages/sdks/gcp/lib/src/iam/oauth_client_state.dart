@@ -26,6 +26,13 @@ class OauthClientState {
   /// PUBLIC_CLIENT
   /// CONFIDENTIAL_CLIENT
   final pulumi.Input<String>? clientType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-specified description of the OauthClient.
   /// Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
@@ -65,6 +72,7 @@ class OauthClientState {
   /// [allowedScopes] Required. The list of scopes that the OauthClient is allowed to request during
   /// [clientId] Output only. The system-generated OauthClient id.
   /// [clientType] Immutable. The type of OauthClient. Either public or private.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A user-specified description of the OauthClient.
   /// [disabled] Whether the OauthClient is disabled. You cannot use a disabled OAuth
   /// [displayName] A user-specified display name of the OauthClient.
@@ -80,6 +88,7 @@ class OauthClientState {
     this.allowedScopes,
     this.clientId,
     this.clientType,
+    this.deletionPolicy,
     this.description,
     this.disabled,
     this.displayName,
@@ -98,6 +107,7 @@ class OauthClientState {
       'allowedScopes': ?allowedScopes,
       'clientId': ?clientId,
       'clientType': ?clientType,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disabled': ?disabled,
       'displayName': ?displayName,
@@ -117,6 +127,7 @@ class OauthClientState {
       allowedScopes: (() { final guardedValue = map['allowedScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientType: (() { final guardedValue = map['clientType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -129,4 +140,3 @@ class OauthClientState {
     );
   }
 }
-

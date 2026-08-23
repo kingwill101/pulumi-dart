@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'multicast_domain_args.dart';
 import 'multicast_domain_connection_config.dart';
 import 'multicast_domain_networkservices_state.dart';
+import 'multicast_domain_ull_multicast_domain.dart';
 
 /// Create a multicast domain in the current project.
 ///
@@ -130,7 +131,7 @@ import 'multicast_domain_networkservices_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			AdminNetwork: network.ID(),
+/// 			AdminNetwork: network.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 				NccHub:         pulumi.String(""),
@@ -146,6 +147,35 @@ import 'multicast_domain_networkservices_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-md-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkservices_multicastdomain" "md_test" {
+///   depends_on          = [gcp_compute_network.network]
+///   multicast_domain_id = "test-md-domain"
+///   location            = "global"
+///   description         = "A sample domain"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   admin_network = gcp_compute_network.network.id
+///   connection_config = {
+///     connection_type = "SAME_VPC"
+///     ncc_hub         = ""
+///   }
+///   multicast_domain_group = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +188,8 @@ import 'multicast_domain_networkservices_state.dart';
 /// import com.pulumi.gcp.networkservices.MulticastDomainArgs;
 /// import com.pulumi.gcp.networkservices.inputs.MulticastDomainConnectionConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -226,22 +256,15 @@ import 'multicast_domain_networkservices_state.dart';
 /// MulticastDomain can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
-///
 /// * `{{project}}/{{location}}/{{multicast_domain_id}}`
-///
 /// * `{{location}}/{{multicast_domain_id}}`
+///
 ///
 /// When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
 /// ```
 class MulticastDomain extends pulumi.CustomResource {
@@ -254,13 +277,20 @@ class MulticastDomain extends pulumi.CustomResource {
   late final pulumi.Output<MulticastDomainConnectionConfig> connectionConfig;
   /// The timestamp when the multicast domain was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional text description of the multicast domain.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -294,6 +324,9 @@ class MulticastDomain extends pulumi.CustomResource {
   /// UPDATE_FAILED
   /// INACTIVE
   late final pulumi.Output<List<Map<String, dynamic>>> states;
+  /// Information for an Ultra-Low-Latency multicast domain.
+  /// Structure is documented below.
+  late final pulumi.Output<MulticastDomainUllMulticastDomain?> ullMulticastDomain;
   /// The Google-generated UUID for the resource. This value is
   /// unique across all multicast domain resources. If a domain is deleted and
   /// another with the same name is created, the new domain is assigned a
@@ -320,6 +353,7 @@ class MulticastDomain extends pulumi.CustomResource {
     adminNetwork = registerOutput<String>('adminNetwork');
     connectionConfig = registerOutput<MulticastDomainConnectionConfig>('connectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -330,6 +364,7 @@ class MulticastDomain extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     states = registerOutput<List<Map<String, dynamic>>>('states');
+    ullMulticastDomain = registerOutput<MulticastDomainUllMulticastDomain?>('ullMulticastDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainUllMulticastDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -360,6 +395,7 @@ class MulticastDomain extends pulumi.CustomResource {
     adminNetwork = registerOutput<String>('adminNetwork');
     connectionConfig = registerOutput<MulticastDomainConnectionConfig>('connectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -370,6 +406,7 @@ class MulticastDomain extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     states = registerOutput<List<Map<String, dynamic>>>('states');
+    ullMulticastDomain = registerOutput<MulticastDomainUllMulticastDomain?>('ullMulticastDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainUllMulticastDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }

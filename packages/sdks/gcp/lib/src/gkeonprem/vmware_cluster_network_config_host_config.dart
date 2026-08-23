@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareClusterNetworkConfigHostConfig {
   /// DNS search domains.
   ///
-  /// &lt;a name="nested_network_config_control_plane_v2_config"&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
+  /// &lt;a name="nestedNetworkConfigControlPlaneV2Config"&gt;&lt;/a&gt;The `controlPlaneV2Config` block supports:
   final pulumi.Input<List<String>>? dnsSearchDomains;
   /// DNS servers.
   final pulumi.Input<List<String>>? dnsServers;
@@ -38,4 +38,3 @@ class VMwareClusterNetworkConfigHostConfig {
     );
   }
 }
-

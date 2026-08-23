@@ -15,6 +15,13 @@ class ListingSubscriptionState {
   final pulumi.Input<String>? creationTime;
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   final pulumi.Input<String>? dataExchangeId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The destination dataset for this subscription.
   /// Structure is documented below.
   final pulumi.Input<ListingSubscriptionDestinationDataset>? destinationDataset;
@@ -55,6 +62,7 @@ class ListingSubscriptionState {
   /// [commercialInfos] Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
   /// [creationTime] Timestamp when the subscription was created.
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destinationDataset] The destination dataset for this subscription.
   /// [lastModifyTime] Timestamp when the subscription was last modified.
   /// [linkedDatasetMaps] Output only. Map of listing resource names to associated linked resource,
@@ -74,6 +82,7 @@ class ListingSubscriptionState {
     this.commercialInfos,
     this.creationTime,
     this.dataExchangeId,
+    this.deletionPolicy,
     this.destinationDataset,
     this.lastModifyTime,
     this.linkedDatasetMaps,
@@ -96,6 +105,7 @@ class ListingSubscriptionState {
       'commercialInfos': ?pulumi.Input.mapOptionalInputValue<List<ListingSubscriptionCommercialInfo>, List<Map<String, dynamic>>>(commercialInfos, (value) => pulumi.Input.encodeList<ListingSubscriptionCommercialInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTime': ?creationTime,
       'dataExchangeId': ?dataExchangeId,
+      'deletionPolicy': ?deletionPolicy,
       'destinationDataset': ?pulumi.Input.mapOptionalInputValue<ListingSubscriptionDestinationDataset, Map<String, dynamic>>(destinationDataset, (value) => value.toMap()),
       'lastModifyTime': ?lastModifyTime,
       'linkedDatasetMaps': ?pulumi.Input.mapOptionalInputValue<List<ListingSubscriptionLinkedDatasetMap>, List<Map<String, dynamic>>>(linkedDatasetMaps, (value) => pulumi.Input.encodeList<ListingSubscriptionLinkedDatasetMap, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -119,6 +129,7 @@ class ListingSubscriptionState {
       commercialInfos: (() { final guardedValue = map['commercialInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ListingSubscriptionCommercialInfo>(guardedValue, (value) => ListingSubscriptionCommercialInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataExchangeId: (() { final guardedValue = map['dataExchangeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDataset: (() { final guardedValue = map['destinationDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lastModifyTime: (() { final guardedValue = map['lastModifyTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linkedDatasetMaps: (() { final guardedValue = map['linkedDatasetMaps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -137,4 +148,3 @@ class ListingSubscriptionState {
     );
   }
 }
-

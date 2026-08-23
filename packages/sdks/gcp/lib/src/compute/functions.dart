@@ -19,6 +19,8 @@ import 'get_disk_args.dart';
 import 'get_disk_iam_policy_args.dart';
 import 'get_disk_iam_policy_result.dart';
 import 'get_disk_result.dart';
+import 'get_firewall_policy_iam_policy_args.dart';
+import 'get_firewall_policy_iam_policy_result.dart';
 import 'get_forwarding_rule_args.dart';
 import 'get_forwarding_rule_result.dart';
 import 'get_forwarding_rules_args.dart';
@@ -42,6 +44,8 @@ import 'get_instance_group_args.dart';
 import 'get_instance_group_manager_args.dart';
 import 'get_instance_group_manager_result.dart';
 import 'get_instance_group_result.dart';
+import 'get_instance_groups_args.dart';
+import 'get_instance_groups_result.dart';
 import 'get_instance_guest_attributes_args.dart';
 import 'get_instance_guest_attributes_result.dart';
 import 'get_instance_iam_policy_args.dart';
@@ -71,6 +75,10 @@ import 'get_network_attachment_args.dart';
 import 'get_network_attachment_result.dart';
 import 'get_network_endpoint_group_args.dart';
 import 'get_network_endpoint_group_result.dart';
+import 'get_network_endpoint_groups_args.dart';
+import 'get_network_endpoint_groups_result.dart';
+import 'get_network_firewall_policy_iam_policy_args.dart';
+import 'get_network_firewall_policy_iam_policy_result.dart';
 import 'get_network_peering_args.dart';
 import 'get_network_peering_result.dart';
 import 'get_network_result.dart';
@@ -78,6 +86,8 @@ import 'get_networks_args.dart';
 import 'get_networks_result.dart';
 import 'get_node_types_args.dart';
 import 'get_node_types_result.dart';
+import 'get_region_backend_bucket_iam_policy_args.dart';
+import 'get_region_backend_bucket_iam_policy_result.dart';
 import 'get_region_backend_service_args.dart';
 import 'get_region_backend_service_iam_policy_args.dart';
 import 'get_region_backend_service_iam_policy_result.dart';
@@ -92,14 +102,22 @@ import 'get_region_instance_group_manager_result.dart';
 import 'get_region_instance_group_result.dart';
 import 'get_region_instance_template_args.dart';
 import 'get_region_instance_template_result.dart';
+import 'get_region_instant_snapshot_iam_policy_args.dart';
+import 'get_region_instant_snapshot_iam_policy_result.dart';
 import 'get_region_network_endpoint_group_args.dart';
 import 'get_region_network_endpoint_group_result.dart';
+import 'get_region_network_firewall_policy_iam_policy_args.dart';
+import 'get_region_network_firewall_policy_iam_policy_result.dart';
 import 'get_region_security_policy_args.dart';
 import 'get_region_security_policy_result.dart';
 import 'get_region_ssl_certificate_args.dart';
 import 'get_region_ssl_certificate_result.dart';
 import 'get_region_sslpolicy_args.dart';
 import 'get_region_sslpolicy_result.dart';
+import 'get_region_target_http_proxy_args.dart';
+import 'get_region_target_http_proxy_result.dart';
+import 'get_region_target_https_proxy_args.dart';
+import 'get_region_target_https_proxy_result.dart';
 import 'get_regions_args.dart';
 import 'get_regions_result.dart';
 import 'get_reservation_args.dart';
@@ -120,6 +138,8 @@ import 'get_routers_args.dart';
 import 'get_routers_result.dart';
 import 'get_security_policy_args.dart';
 import 'get_security_policy_result.dart';
+import 'get_service_attachment_args.dart';
+import 'get_service_attachment_result.dart';
 import 'get_snapshot_args.dart';
 import 'get_snapshot_iam_policy_args.dart';
 import 'get_snapshot_iam_policy_result.dart';
@@ -138,6 +158,10 @@ import 'get_subnetwork_iam_policy_result.dart';
 import 'get_subnetwork_result.dart';
 import 'get_subnetworks_args.dart';
 import 'get_subnetworks_result.dart';
+import 'get_target_http_proxy_args.dart';
+import 'get_target_http_proxy_result.dart';
+import 'get_target_https_proxy_args.dart';
+import 'get_target_https_proxy_result.dart';
 import 'get_vpngateway_args.dart';
 import 'get_vpngateway_result.dart';
 import 'get_zones_args.dart';
@@ -262,6 +286,31 @@ import 'router_status_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getaddress" "myAddress" {
+///   name = "foobar"
+/// }
+///
+/// resource "gcp_dns_recordset" "frontend" {
+///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   rrdatas      = [data.gcp_compute_getaddress.myAddress.address]
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -274,8 +323,8 @@ import 'router_status_result.dart';
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -462,6 +511,31 @@ Future<GetAddressResult> getAddress(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getaddresses" "test" {
+///   filter = "name:test-*"
+/// }
+///
+/// resource "gcp_dns_recordset" "frontend" {
+///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   rrdatas      = data.gcp_compute_getaddresses.test.addresses[*].address
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -474,8 +548,8 @@ Future<GetAddressResult> getAddress(
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,6 +650,19 @@ Future<GetAddressesResult> getAddresses(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getbackendbucket" "my-backend-bucket" {
+///   name = "my-backend"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -584,8 +671,8 @@ Future<GetAddressesResult> getAddresses(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -627,6 +714,11 @@ Future<GetBackendBucketResult> getBackendBucket(
   return GetBackendBucketResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for backendbucket
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -683,6 +775,20 @@ Future<GetBackendBucketResult> getBackendBucket(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getbackendbucketiampolicy" "policy" {
+///   project = imageBackend.project
+///   name    = imageBackend.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -691,8 +797,8 @@ Future<GetBackendBucketResult> getBackendBucket(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -705,8 +811,8 @@ Future<GetBackendBucketResult> getBackendBucket(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs.builder()
-///             .project(imageBackend.project())
-///             .name(imageBackend.name())
+///             .project(imageBackend.get("project"))
+///             .name(imageBackend.get("name"))
 ///             .build());
 ///
 ///     }
@@ -812,6 +918,24 @@ Future<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getbackendservice" "baz" {
+///   name = "foobar"
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   health_checks = data.gcp_compute_getbackendservice.baz.health_checks[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -822,8 +946,8 @@ Future<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicy(
 /// import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -876,6 +1000,11 @@ Future<GetBackendServiceResult> getBackendService(
   return GetBackendServiceResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for backendservice
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -932,6 +1061,20 @@ Future<GetBackendServiceResult> getBackendService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getbackendserviceiampolicy" "policy" {
+///   project = default.project
+///   name    = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -940,8 +1083,8 @@ Future<GetBackendServiceResult> getBackendService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -954,8 +1097,8 @@ Future<GetBackendServiceResult> getBackendService(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1054,6 +1197,29 @@ Future<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getcertificate" "myCert" {
+///   name = "my-cert"
+/// }
+///
+/// output "certificate" {
+///   value = data.gcp_compute_getcertificate.myCert.certificate
+/// }
+/// output "certificateId" {
+///   value = data.gcp_compute_getcertificate.myCert.certificate_id
+/// }
+/// output "selfLink" {
+///   value = data.gcp_compute_getcertificate.myCert.self_link
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1062,8 +1228,8 @@ Future<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1166,6 +1332,22 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// }
+///
+/// output "defaultAccount" {
+///   value = data.gcp_compute_getdefaultserviceaccount.default.email
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1174,8 +1356,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1304,6 +1486,27 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getdisk" "persistent-boot-disk" {
+///   name    = "persistent-boot-disk"
+///   project = "example"
+/// }
+///
+/// resource "gcp_compute_instance" "default" {
+///   boot_disk = {
+///     source      = data.gcp_compute_getdisk.persistent-boot-disk.self_link
+///     auto_delete = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1315,8 +1518,8 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1437,6 +1640,21 @@ Future<GetDiskResult> getDisk(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getdiskiampolicy" "policy" {
+///   project = default.project
+///   zone    = default.zone
+///   name    = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1445,8 +1663,8 @@ Future<GetDiskResult> getDisk(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1459,9 +1677,9 @@ Future<GetDiskResult> getDisk(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1490,6 +1708,125 @@ Future<GetDiskIamPolicyResult> getDiskIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiskIamPolicyResult.fromMap(result);
+}
+
+/// Retrieves the current IAM policy data for firewallpolicy
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.compute.getFirewallPolicyIamPolicy({
+///     name: _default.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.compute.get_firewall_policy_iam_policy(name=default["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.Compute.GetFirewallPolicyIamPolicy.Invoke(new()
+///     {
+///         Name = @default.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupFirewallPolicyIamPolicy(ctx, &compute.LookupFirewallPolicyIamPolicyArgs{
+/// 			Name: _default.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getfirewallpolicyiampolicy" "policy" {
+///   name = default.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
+///             .name(default_.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:compute:getFirewallPolicyIamPolicy
+///       arguments:
+///         name: ${default.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_firewall_policy_iam_policy_get_firewall_policy_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicy(
+  GetFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getFirewallPolicyIamPolicy:getFirewallPolicyIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFirewallPolicyIamPolicyResult.fromMap(result);
 }
 
 /// Get a forwarding rule within GCE from its name.
@@ -1546,6 +1883,19 @@ Future<GetDiskIamPolicyResult> getDiskIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getforwardingrule" "my-forwarding-rule" {
+///   name = "forwarding-rule-us-east1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1554,8 +1904,8 @@ Future<GetDiskIamPolicyResult> getDiskIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1655,6 +2005,20 @@ Future<GetForwardingRuleResult> getForwardingRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getforwardingrules" "my-forwarding-rules" {
+///   project = "my-cloud-project"
+///   region  = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1663,8 +2027,8 @@ Future<GetForwardingRuleResult> getForwardingRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1825,6 +2189,31 @@ Future<GetForwardingRulesResult> getForwardingRules(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getglobaladdress" "myAddress" {
+///   name = "foobar"
+/// }
+///
+/// resource "gcp_dns_recordset" "frontend" {
+///   name         ="lb.${gcp_dns_managedzone.prod.dns_name}"
+///   type         = "A"
+///   ttl          = 300
+///   managed_zone = gcp_dns_managedzone.prod.name
+///   rrdatas      = [data.gcp_compute_getglobaladdress.myAddress.address]
+/// }
+/// resource "gcp_dns_managedzone" "prod" {
+///   name     = "prod-zone"
+///   dns_name = "prod.mydomain.com."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1837,8 +2226,8 @@ Future<GetForwardingRulesResult> getForwardingRules(
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.RecordSet;
 /// import com.pulumi.gcp.dns.RecordSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1962,6 +2351,19 @@ Future<GetGlobalAddressResult> getGlobalAddress(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getglobalforwardingrule" "my-forwarding-rule" {
+///   name = "forwarding-rule-global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1970,8 +2372,8 @@ Future<GetGlobalAddressResult> getGlobalAddress(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2067,6 +2469,19 @@ Future<GetGlobalForwardingRuleResult> getGlobalForwardingRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_gethcvpngateway" "gateway" {
+///   name = "foobar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2075,8 +2490,8 @@ Future<GetGlobalForwardingRuleResult> getGlobalForwardingRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2172,6 +2587,19 @@ Future<GetHcVpnGatewayResult> getHcVpnGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_gethealthcheck" "healthCheck" {
+///   name = "my-hc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2180,8 +2608,8 @@ Future<GetHcVpnGatewayResult> getHcVpnGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2313,6 +2741,28 @@ Future<GetHealthCheckResult> getHealthCheck(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instance" "default" {
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2325,8 +2775,8 @@ Future<GetHealthCheckResult> getHealthCheck(
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2444,6 +2894,20 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimageiampolicy" "policy" {
+///   project = example.project
+///   image   = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2452,8 +2916,8 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2466,8 +2930,8 @@ Future<GetImageResult> getImage(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-///             .project(example.project())
-///             .image(example.name())
+///             .project(example.get("project"))
+///             .image(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -2616,6 +3080,33 @@ Future<GetImageIamPolicyResult> getImageIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimages" "debian" {
+///   filter = "name eq my-image.*"
+/// }
+///
+/// resource "gcp_compute_instance" "default" {
+///   name         = "test"
+///   machine_type = "f1-micro"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimages.debian.images[0].self_link
+///     }
+///   }
+///   network_interfaces {
+///     network = defaultGoogleComputeNetwork.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2629,8 +3120,8 @@ Future<GetImageIamPolicyResult> getImageIamPolicy(
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2656,7 +3147,7 @@ Future<GetImageIamPolicyResult> getImageIamPolicy(
 ///                     .build())
 ///                 .build())
 ///             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-///                 .network(defaultGoogleComputeNetwork.name())
+///                 .network(defaultGoogleComputeNetwork.get("name"))
 ///                 .build())
 ///             .build());
 ///
@@ -2702,6 +3193,7 @@ Future<GetImagesResult> getImages(
 /// [the official documentation](https://cloud.google.com/compute/docs/instances)
 /// and
 /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+///
 ///
 /// ## Example Usage
 ///
@@ -2759,6 +3251,20 @@ Future<GetImagesResult> getImages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstance" "appserver" {
+///   name = "primary-application-server"
+///   zone = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2767,8 +3273,8 @@ Future<GetImagesResult> getImages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2870,6 +3376,20 @@ Future<GetInstanceResult> getInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstancegroup" "all" {
+///   name = "instance-group-name"
+///   zone = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2878,8 +3398,8 @@ Future<GetInstanceResult> getInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2998,6 +3518,23 @@ Future<GetInstanceGroupResult> getInstanceGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstancegroupmanager" "igm1" {
+///   name = "my-igm"
+///   zone = "us-central1-a"
+/// }
+/// data "gcp_compute_getinstancegroupmanager" "igm2" {
+///   self_link = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3006,8 +3543,8 @@ Future<GetInstanceGroupResult> getInstanceGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3058,6 +3595,125 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGroupManagerResult.fromMap(result);
+}
+
+/// Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+/// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const all = gcp.compute.getInstanceGroups({
+///     zone: "us-central1-a",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// all = gcp.compute.get_instance_groups(zone="us-central1-a")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var all = Gcp.Compute.GetInstanceGroups.Invoke(new()
+///     {
+///         Zone = "us-central1-a",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.GetInstanceGroups(ctx, &compute.GetInstanceGroupsArgs{
+/// 			Zone: pulumi.StringRef("us-central1-a"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstancegroups" "all" {
+///   zone = "us-central1-a"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+///             .zone("us-central1-a")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   all:
+///     fn::invoke:
+///       function: gcp:compute:getInstanceGroups
+///       arguments:
+///         zone: us-central1-a
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_instance_groups_get_instance_groups_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetInstanceGroupsResult> getInstanceGroups(
+  GetInstanceGroupsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getInstanceGroups:getInstanceGroups',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetInstanceGroupsResult.fromMap(result);
 }
 
 /// Get information about a VM instance resource within GCE. For more information see
@@ -3131,6 +3787,21 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstanceguestattributes" "appserverGa" {
+///   name       = "primary-application-server"
+///   zone       = "us-central1-a"
+///   query_path = "variables/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3139,8 +3810,8 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3233,6 +3904,21 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstanceguestattributes" "appserverGa" {
+///   name         = "primary-application-server"
+///   zone         = "us-central1-a"
+///   variable_key = "variables/key1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3241,8 +3927,8 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3351,6 +4037,21 @@ Future<GetInstanceGuestAttributesResult> getInstanceGuestAttributes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstanceiampolicy" "policy" {
+///   project       = default.project
+///   zone          = default.zone
+///   instance_name = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3359,8 +4060,8 @@ Future<GetInstanceGuestAttributesResult> getInstanceGuestAttributes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3373,9 +4074,9 @@ Future<GetInstanceGuestAttributesResult> getInstanceGuestAttributes(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .instanceName(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .instanceName(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -3476,6 +4177,25 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstanceserialport" "serial" {
+///   instance = "my-instance"
+///   zone     = "us-central1-a"
+///   port     = 1
+/// }
+///
+/// output "serialOut" {
+///   value = data.gcp_compute_getinstanceserialport.serial.contents
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3484,8 +4204,8 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3559,12 +4279,12 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 ///         ],
 ///     },
 /// });
-/// const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
-///     instance: name,
-///     zone: zone,
+/// const serial = gcp.compute.getInstanceSerialPortOutput({
+///     instance: windows.name,
+///     zone: windows.zone,
 ///     port: 4,
-/// }));
-/// export const serialOut = serial.apply(serial => serial.contents);
+/// });
+/// export const serialOut = serial.contents;
 /// ```
 /// ```python
 /// import pulumi
@@ -3601,13 +4321,9 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 ///             "storage-ro",
 ///         ],
 ///     })
-/// serial = pulumi.Output.all(
-///     name=windows.name,
-///     zone=windows.zone
-/// ).apply(lambda resolved_outputs: gcp.compute.get_instance_serial_port_output(instance=resolved_outputs['name'],
-///     zone=resolved_outputs['zone'],
-///     port=4))
-///
+/// serial = gcp.compute.get_instance_serial_port_output(instance=windows.name,
+///     zone=windows.zone,
+///     port=4)
 /// pulumi.export("serialOut", serial.contents)
 /// ```
 /// ```csharp
@@ -3690,7 +4406,7 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"email":    "example.user@example.com",
 /// 			"expireOn": "2020-04-14T01:37:19Z",
 /// 			"exponent": "AQAB",
@@ -3733,20 +4449,61 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		serial := pulumi.All(windows.Name, windows.Zone).ApplyT(func(_args []interface{}) (compute.GetInstanceSerialPortResult, error) {
-/// 			name := _args[0].(string)
-/// 			zone := _args[1].(string)
-/// 			return compute.GetInstanceSerialPortResult(interface{}(compute.GetInstanceSerialPort(ctx, &compute.GetInstanceSerialPortArgs{
-/// 				Instance: name,
-/// 				Zone:     pulumi.StringRef(pulumi.StringRef(zone)),
-/// 				Port:     4,
-/// 			}, nil))), nil
-/// 		}).(compute.GetInstanceSerialPortResultOutput)
-/// 		ctx.Export("serialOut", serial.ApplyT(func(serial compute.GetInstanceSerialPortResult) (*string, error) {
-/// 			return &serial.Contents, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		serial := compute.GetInstanceSerialPortOutput(ctx, compute.GetInstanceSerialPortOutputArgs{
+/// 			Instance: windows.Name,
+/// 			Zone:     windows.Zone,
+/// 			Port:     pulumi.Int(4),
+/// 		}, nil)
+/// 		ctx.Export("serialOut", serial.Contents())
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstanceserialport" "serial" {
+///   instance = gcp_compute_instance.windows.name
+///   zone     = gcp_compute_instance.windows.zone
+///   port     = 4
+/// }
+///
+/// resource "gcp_compute_instance" "windows" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = "default"
+///   }
+///   name         = "windows-instance"
+///   machine_type = "e2-medium"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "windows-cloud/windows-2019"
+///     }
+///   }
+///   metadata = {
+///     "serial-port-logging-enable" = "TRUE"
+///     "windows-keys" = jsonencode({
+///       "email"    = "example.user@example.com"
+///       "expireOn" = "2020-04-14T01:37:19Z"
+///       "exponent" = "AQAB"
+///       "modulus"  = "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="
+///       "userName" = "example-user"
+///     })
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+/// }
+/// output "serialOut" {
+///   value = data.gcp_compute_getinstanceserialport.serial.contents
 /// }
 /// ```
 /// ```java
@@ -3758,14 +4515,15 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3810,15 +4568,11 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 ///                 .build())
 ///             .build());
 ///
-///         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> {
-///             var name = values.t1;
-///             var zone = values.t2;
-///             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-///                 .instance(name)
-///                 .zone(zone)
-///                 .port(4)
-///                 .build());
-///         });
+///         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+///             .instance(windows.name())
+///             .zone(windows.zone())
+///             .port(4)
+///             .build());
 ///
 ///         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
 ///     }
@@ -3959,6 +4713,20 @@ Future<GetInstanceTemplateResult> getInstanceTemplate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstancetemplateiampolicy" "policy" {
+///   project = default.project
+///   name    = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3967,8 +4735,8 @@ Future<GetInstanceTemplateResult> getInstanceTemplate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3981,8 +4749,8 @@ Future<GetInstanceTemplateResult> getInstanceTemplate(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -4075,6 +4843,21 @@ Future<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinstantsnapshotiampolicy" "policy" {
+///   project = default.project
+///   zone    = default.zone
+///   name    = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4083,8 +4866,8 @@ Future<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4097,9 +4880,9 @@ Future<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -4209,6 +4992,25 @@ Future<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinterconnectlocation" "this" {
+///   name = "iad-zone1-1"
+/// }
+///
+/// resource "gcp_compute_interconnect" "this" {
+///   project  = data.gcp_compute_getinterconnectlocation.this.project
+///   location = data.gcp_compute_getinterconnectlocation.this.self_link
+///   name     = "my-dedicated-connection-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4219,8 +5021,8 @@ Future<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicy(
 /// import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
 /// import com.pulumi.gcp.compute.Interconnect;
 /// import com.pulumi.gcp.compute.InterconnectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4331,6 +5133,22 @@ Future<GetInterconnectLocationResult> getInterconnectLocation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getinterconnectlocations" "all" {
+/// }
+///
+/// output "interconnectLocations" {
+///   value = data.gcp_compute_getinterconnectlocations.all.locations
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4339,8 +5157,8 @@ Future<GetInterconnectLocationResult> getInterconnectLocation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4480,7 +5298,7 @@ Future<GetInterconnectLocationsResult> getInterconnectLocations(
 /// 					},
 /// 				},
 /// 			},
-/// 			SourceRanges: interface{}(ranges.Networks),
+/// 			SourceRanges: toPulumiStringArray(ranges.Networks),
 /// 			TargetTags: pulumi.StringArray{
 /// 				pulumi.String("InstanceBehindLoadBalancer"),
 /// 			},
@@ -4490,6 +5308,36 @@ Future<GetInterconnectLocationsResult> getInterconnectLocations(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getlbipranges" "ranges" {
+/// }
+///
+/// resource "gcp_compute_firewall" "lb" {
+///   name    = "lb-firewall"
+///   network = main.name
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["80"]
+///   }
+///   source_ranges = data.gcp_compute_getlbipranges.ranges.networks
+///   target_tags   = ["InstanceBehindLoadBalancer"]
 /// }
 /// ```
 /// ```java
@@ -4502,8 +5350,8 @@ Future<GetInterconnectLocationsResult> getInterconnectLocations(
 /// import com.pulumi.gcp.compute.Firewall;
 /// import com.pulumi.gcp.compute.FirewallArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4519,7 +5367,7 @@ Future<GetInterconnectLocationsResult> getInterconnectLocations(
 ///
 ///         var lb = new Firewall("lb", FirewallArgs.builder()
 ///             .name("lb-firewall")
-///             .network(main.name())
+///             .network(main.get("name"))
 ///             .allows(FirewallAllowArgs.builder()
 ///                 .protocol("tcp")
 ///                 .ports("80")
@@ -4565,6 +5413,11 @@ Future<GetLBIPRangesResult> getLBIPRanges(
   return GetLBIPRangesResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for machineimage
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -4621,6 +5474,20 @@ Future<GetLBIPRangesResult> getLBIPRanges(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getmachineimageiampolicy" "policy" {
+///   project       = image.project
+///   machine_image = image.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4629,8 +5496,8 @@ Future<GetLBIPRangesResult> getLBIPRanges(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4643,8 +5510,8 @@ Future<GetLBIPRangesResult> getLBIPRanges(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getMachineImageIamPolicy(GetMachineImageIamPolicyArgs.builder()
-///             .project(image.project())
-///             .machineImage(image.name())
+///             .project(image.get("project"))
+///             .machineImage(image.get("name"))
 ///             .build());
 ///
 ///     }
@@ -4716,15 +5583,16 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_gcp as gcp
 /// import pulumi_std as std
 ///
 /// example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
 ///     zone=zone)
-/// example_instance_template = []
-/// for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
-///     example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['key']}",
-///         machine_type=range["value"],
+/// example_instance_template: list[gcp.compute.InstanceTemplate] = []
+/// for example_instance_template_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
+///     example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{example_instance_template_range['key']}",
+///         machine_type=example_instance_template_range["value"],
 ///         disks=[{
 ///             "source_image": "debian-cloud/debian-11",
 ///             "auto_delete": True,
@@ -4770,6 +5638,8 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 /// package main
 ///
 /// import (
+/// 	"fmt"
+///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -4784,7 +5654,7 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 /// return err
 /// }
 /// var exampleInstanceTemplate []*compute.InstanceTemplate
-/// for key0, val0 := range interface{}(std.Toset(ctx, &std.TosetArgs{
+/// for key0, val0 := range []interface{}(std.Toset(ctx, &std.TosetArgs{
 /// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,15-43),
 /// }, nil).Result) {
 /// __res, err := compute.NewInstanceTemplate(ctx, fmt.Sprintf("example-%v", key0), &compute.InstanceTemplateArgs{
@@ -4806,6 +5676,33 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getmachinetypes" "example" {
+///   filter = "memoryMb = 16384 AND guestCpus = 8"
+///   zone   = zone
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "example" {
+///   for_each     = toset(data.gcp_compute_getmachinetypes.example.machine_types[*].name)
+///   machine_type = each.value
+///   disks {
+///     source_image = "debian-cloud/debian-11"
+///     auto_delete  = true
+///     boot         = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4818,8 +5715,8 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 /// import com.pulumi.gcp.compute.InstanceTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4836,7 +5733,7 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 ///             .zone(zone)
 ///             .build());
 ///
-///         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+///         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
 ///             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
 ///             .build()).result())) {
 ///             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -4889,22 +5786,22 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 ///     zone: zone,
 /// });
 /// const exampleInstanceTemplate = new gcp.compute.InstanceTemplate("example", {
-///     machineType: Promise.all([example, std.startswith({
+///     machineType: output(Promise.all([example, std.startswith({
 ///         input: mt.name,
 ///         prefix: "c3-",
-///     }), example, std.startswith({
+///     }), std.startswith({
 ///         input: mt.name,
 ///         prefix: "c2-",
-///     }), example, std.startswith({
+///     }), std.startswith({
 ///         input: mt.name,
 ///         prefix: "n2-",
-///     })]).then(([example, invoke, example1, invoke1, example2, invoke2]) => std.coalescelist({
+///     })]).then(([example, invoke, invoke1, invoke2]) => std.coalescelist({
 ///         input: [
 ///             .filter(mt => invoke.result).map(mt => (mt.name)),
 ///             .filter(mt => invoke1.result).map(mt => (mt.name)),
 ///             .filter(mt => invoke2.result).map(mt => (mt.name)),
 ///         ],
-///     })).then(invoke => invoke.result?.[0]),
+///     })).then(invoke => invoke.result?.[0])).apply(x =>String(x)),
 ///     disks: [{
 ///         sourceImage: "debian-cloud/debian-11",
 ///         autoDelete: true,
@@ -4920,14 +5817,14 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 /// example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 4",
 ///     zone=zone)
 /// example_instance_template = gcp.compute.InstanceTemplate("example",
-///     machine_type=std.coalescelist(input=[
+///     machine_type=output(std.coalescelist(input=[
 ///         [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
 ///             prefix="c3-").result],
 ///         [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
 ///             prefix="c2-").result],
 ///         [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
 ///             prefix="n2-").result],
-///     ]).result[0],
+///     ]).result[0]).apply(lambda x: str(x)),
 ///     disks=[{
 ///         "source_image": "debian-cloud/debian-11",
 ///         "auto_delete": True,
@@ -4951,15 +5848,15 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 ///
 ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
 ///     {
-///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
+///         MachineType = Output.Create(Output.Tuple(example, Std.Startswith.Invoke(new()
 ///         {
 ///             Input = mt.Name,
 ///             Prefix = "c3-",
-///         }), example, Std.Startswith.Invoke(new()
+///         }), Std.Startswith.Invoke(new()
 ///         {
 ///             Input = mt.Name,
 ///             Prefix = "c2-",
-///         }), example, Std.Startswith.Invoke(new()
+///         }), Std.Startswith.Invoke(new()
 ///         {
 ///             Input = mt.Name,
 ///             Prefix = "n2-",
@@ -4967,10 +5864,8 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 ///         {
 ///             var example = values.Item1;
 ///             var invoke = values.Item2;
-///             var example1 = values.Item3;
-///             var invoke1 = values.Item4;
-///             var example2 = values.Item5;
-///             var invoke2 = values.Item6;
+///             var invoke1 = values.Item3;
+///             var invoke2 = values.Item4;
 ///             return Std.Coalescelist.Invoke(new()
 ///             {
 ///                 Input = new[]
@@ -4989,7 +5884,7 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 ///                     }).ToList(),
 ///                 },
 ///             });
-///         }).Apply(invoke => invoke.Result[0]),
+///         }).Apply(invoke => invoke.Result[0])).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         Disks = new[]
 ///         {
 ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
@@ -5002,6 +5897,35 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_coalescelist" "invoke_0" {
+///   input = [[for mt in data.gcp_compute_getmachinetypes.example.machine_types : mt.name if startswith(mt.name, "c3-")], [for mt in data.gcp_compute_getmachinetypes.example.machine_types : mt.name if startswith(mt.name, "c2-")], [for mt in data.gcp_compute_getmachinetypes.example.machine_types : mt.name if startswith(mt.name, "n2-")]]
+/// }
+/// data "gcp_compute_getmachinetypes" "example" {
+///   filter = "memoryMb = 16384 AND guestCpus = 4"
+///   zone   = zone
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "example" {
+///   machine_type = data.std_coalescelist.invoke_0.result[0]
+///   disks {
+///     source_image = "debian-cloud/debian-11"
+///     auto_delete  = true
+///     boot         = true
+///   }
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_machine_types_get_machine_types_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5082,6 +6006,28 @@ Future<GetMachineTypesResult> getMachineTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetblockipranges" "netblock" {
+/// }
+///
+/// output "cidrBlocks" {
+///   value = data.gcp_compute_getnetblockipranges.netblock.cidr_blocks
+/// }
+/// output "cidrBlocksIpv4" {
+///   value = data.gcp_compute_getnetblockipranges.netblock.cidr_blocks_ipv4s
+/// }
+/// output "cidrBlocksIpv6" {
+///   value = data.gcp_compute_getnetblockipranges.netblock.cidr_blocks_ipv6s
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5090,8 +6036,8 @@ Future<GetMachineTypesResult> getMachineTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5232,13 +6178,46 @@ Future<GetMachineTypesResult> getMachineTypes(
 /// 					},
 /// 				},
 /// 			},
-/// 			SourceRanges: interface{}(legacy_hcs.CidrBlocksIpv4s),
+/// 			SourceRanges: toPulumiStringArray(legacy_hcs.CidrBlocksIpv4s),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetblockipranges" "legacy-hcs" {
+///   range_type = "legacy-health-checkers"
+/// }
+///
+/// resource "gcp_compute_firewall" "allow-hcs" {
+///   name    = "allow-hcs"
+///   network = gcp_compute_network.default.name
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["80"]
+///   }
+///   source_ranges = data.gcp_compute_getnetblockipranges.legacy-hcs.cidr_blocks_ipv4s
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "test-network"
 /// }
 /// ```
 /// ```java
@@ -5254,8 +6233,8 @@ Future<GetMachineTypesResult> getMachineTypes(
 /// import com.pulumi.gcp.compute.Firewall;
 /// import com.pulumi.gcp.compute.FirewallArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5371,13 +6350,26 @@ Future<GetNetblockIPRangesResult> getNetblockIPRanges(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "default-us-east1",
+/// 			Name: pulumi.StringRef("default-us-east1"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "my-network" {
+///   name = "default-us-east1"
 /// }
 /// ```
 /// ```java
@@ -5388,8 +6380,8 @@ Future<GetNetblockIPRangesResult> getNetblockIPRanges(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5495,6 +6487,21 @@ Future<GetNetworkResult> getNetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetworkattachment" "default" {
+///   project = "my-project"
+///   name    = "my-network-attachment"
+///   region  = "europe-west1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5503,8 +6510,8 @@ Future<GetNetworkResult> getNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5552,7 +6559,7 @@ Future<GetNetworkAttachmentResult> getNetworkAttachment(
 
 /// Use this data source to access a Network Endpoint Group's attributes.
 ///
-/// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+/// The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
 ///
 /// ## Example Usage
 ///
@@ -5625,6 +6632,23 @@ Future<GetNetworkAttachmentResult> getNetworkAttachment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetworkendpointgroup" "neg1" {
+///   name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
+///   zone = "us-central1-a"
+/// }
+/// data "gcp_compute_getnetworkendpointgroup" "neg2" {
+///   self_link = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5633,8 +6657,8 @@ Future<GetNetworkAttachmentResult> getNetworkAttachment(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5685,6 +6709,258 @@ Future<GetNetworkEndpointGroupResult> getNetworkEndpointGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkEndpointGroupResult.fromMap(result);
+}
+
+/// Use this data source to fetch a list of Network Endpoint Groups available in a
+/// project and zone.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const negs = gcp.compute.getNetworkEndpointGroups({
+///     zone: "us-central1-a",
+///     filter: "networkEdpointType=GCE_VM_IP_PORT",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// negs = gcp.compute.get_network_endpoint_groups(zone="us-central1-a",
+///     filter="networkEdpointType=GCE_VM_IP_PORT")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var negs = Gcp.Compute.GetNetworkEndpointGroups.Invoke(new()
+///     {
+///         Zone = "us-central1-a",
+///         Filter = "networkEdpointType=GCE_VM_IP_PORT",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.GetNetworkEndpointGroups(ctx, &compute.GetNetworkEndpointGroupsArgs{
+/// 			Zone:   pulumi.StringRef("us-central1-a"),
+/// 			Filter: pulumi.StringRef("networkEdpointType=GCE_VM_IP_PORT"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetworkendpointgroups" "negs" {
+///   zone   = "us-central1-a"
+///   filter = "networkEdpointType=GCE_VM_IP_PORT"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+///             .zone("us-central1-a")
+///             .filter("networkEdpointType=GCE_VM_IP_PORT")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   negs:
+///     fn::invoke:
+///       function: gcp:compute:getNetworkEndpointGroups
+///       arguments:
+///         zone: us-central1-a
+///         filter: networkEdpointType=GCE_VM_IP_PORT
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_network_endpoint_groups_get_network_endpoint_groups_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetNetworkEndpointGroupsResult> getNetworkEndpointGroups(
+  GetNetworkEndpointGroupsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetNetworkEndpointGroupsResult.fromMap(result);
+}
+
+/// Retrieves the current IAM policy data for networkfirewallpolicy
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.compute.getNetworkFirewallPolicyIamPolicy({
+///     project: policyGoogleComputeNetworkFirewallPolicy.project,
+///     name: policyGoogleComputeNetworkFirewallPolicy.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.compute.get_network_firewall_policy_iam_policy(project=policy_google_compute_network_firewall_policy["project"],
+///     name=policy_google_compute_network_firewall_policy["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.Compute.GetNetworkFirewallPolicyIamPolicy.Invoke(new()
+///     {
+///         Project = policyGoogleComputeNetworkFirewallPolicy.Project,
+///         Name = policyGoogleComputeNetworkFirewallPolicy.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupNetworkFirewallPolicyIamPolicy(ctx, &compute.LookupNetworkFirewallPolicyIamPolicyArgs{
+/// 			Project: pulumi.StringRef(policyGoogleComputeNetworkFirewallPolicy.Project),
+/// 			Name:    policyGoogleComputeNetworkFirewallPolicy.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetworkfirewallpolicyiampolicy" "policy" {
+///   project = policyGoogleComputeNetworkFirewallPolicy.project
+///   name    = policyGoogleComputeNetworkFirewallPolicy.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
+///             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+///             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:compute:getNetworkFirewallPolicyIamPolicy
+///       arguments:
+///         project: ${policyGoogleComputeNetworkFirewallPolicy.project}
+///         name: ${policyGoogleComputeNetworkFirewallPolicy.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_network_firewall_policy_iam_policy_get_network_firewall_policy_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicy(
+  GetNetworkFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getNetworkFirewallPolicyIamPolicy:getNetworkFirewallPolicyIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetNetworkFirewallPolicyIamPolicyResult.fromMap(result);
 }
 
 /// Get information of a specified compute network peering. For more information see
@@ -5833,6 +7109,39 @@ Future<GetNetworkEndpointGroupResult> getNetworkEndpointGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetworkpeering" "peering1Ds" {
+///   name    = gcp_compute_networkpeering.peering1.name
+///   network = gcp_compute_networkpeering.peering1.network
+/// }
+///
+/// resource "gcp_compute_networkpeering" "peering1" {
+///   name         = "peering1"
+///   network      = gcp_compute_network.default.self_link
+///   peer_network = gcp_compute_network.other.self_link
+/// }
+/// resource "gcp_compute_networkpeering" "peering2" {
+///   name         = "peering2"
+///   network      = gcp_compute_network.other.self_link
+///   peer_network = gcp_compute_network.default.self_link
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "foobar"
+///   auto_create_subnetworks = "false"
+/// }
+/// resource "gcp_compute_network" "other" {
+///   name                    = "other"
+///   auto_create_subnetworks = "false"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5845,8 +7154,8 @@ Future<GetNetworkEndpointGroupResult> getNetworkEndpointGroup(
 /// import com.pulumi.gcp.compute.NetworkPeeringArgs;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5989,6 +7298,19 @@ Future<GetNetworkPeeringResult> getNetworkPeering(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetworks" "my-networks" {
+///   project = "my-cloud-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5997,8 +7319,8 @@ Future<GetNetworkPeeringResult> getNetworkPeering(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6119,6 +7441,25 @@ Future<GetNetworksResult> getNetworks(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnodetypes" "central1b" {
+///   zone = "us-central1-b"
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "tmpl" {
+///   name      = "test-tmpl"
+///   region    = "us-central1"
+///   node_type = types.names[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6129,8 +7470,8 @@ Future<GetNetworksResult> getNetworks(
 /// import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 /// import com.pulumi.gcp.compute.NodeTemplate;
 /// import com.pulumi.gcp.compute.NodeTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6149,7 +7490,7 @@ Future<GetNetworksResult> getNetworks(
 ///         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
 ///             .name("test-tmpl")
 ///             .region("us-central1")
-///             .nodeType(types.names()[0])
+///             .nodeType(types.get("names")[0])
 ///             .build());
 ///
 ///     }
@@ -6185,8 +7526,143 @@ Future<GetNodeTypesResult> getNodeTypes(
   return GetNodeTypesResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for regionbackendbucket
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.compute.getRegionBackendBucketIamPolicy({
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.compute.get_region_backend_bucket_iam_policy(project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.Compute.GetRegionBackendBucketIamPolicy.Invoke(new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupRegionBackendBucketIamPolicy(ctx, &compute.LookupRegionBackendBucketIamPolicyArgs{
+/// 			Project: pulumi.StringRef(imageBackend.Project),
+/// 			Region:  pulumi.StringRef(imageBackend.Region),
+/// 			Name:    imageBackend.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionbackendbucketiampolicy" "policy" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:compute:getRegionBackendBucketIamPolicy
+///       arguments:
+///         project: ${imageBackend.project}
+///         region: ${imageBackend.region}
+///         name: ${imageBackend.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_region_backend_bucket_iam_policy_get_region_backend_bucket_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicy(
+  GetRegionBackendBucketIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getRegionBackendBucketIamPolicy:getRegionBackendBucketIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRegionBackendBucketIamPolicyResult.fromMap(result);
+}
+
 /// Get information about a Regional Backend Service. For more information see
-/// [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+/// [the official documentation](https://docs.cloud.google.com/load-balancing/docs/internal) and
 /// [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
 ///
 /// ## Example Usage
@@ -6245,6 +7721,20 @@ Future<GetNodeTypesResult> getNodeTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionbackendservice" "myBackend" {
+///   name   = "my-backend-service"
+///   region = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6253,8 +7743,8 @@ Future<GetNodeTypesResult> getNodeTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6298,6 +7788,11 @@ Future<GetRegionBackendServiceResult> getRegionBackendService(
   return GetRegionBackendServiceResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for regionbackendservice
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -6358,6 +7853,21 @@ Future<GetRegionBackendServiceResult> getRegionBackendService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionbackendserviceiampolicy" "policy" {
+///   project = default.project
+///   region  = default.region
+///   name    = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6366,8 +7876,8 @@ Future<GetRegionBackendServiceResult> getRegionBackendService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6380,9 +7890,9 @@ Future<GetRegionBackendServiceResult> getRegionBackendService(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .region(default_.region())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .region(default_.get("region"))
+///             .name(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -6420,6 +7930,30 @@ Future<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicy(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregiondisk" "disk" {
+///   name                      = "persistent-regional-disk"
+///   project                   = "example"
+///   region                    = "us-central1"
+///   type                      = "pd-ssd"
+///   physical_block_size_bytes = 4096
+///   replica_zones             = ["us-central1-a", "us-central1-f"]
+/// }
+///
+/// resource "gcp_compute_instance" "default" {
+///   attached_disks {
+///     source = diskGoogleComputeDisk.selfLink
+///   }
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   default:
@@ -6519,6 +8053,21 @@ Future<GetRegionDiskResult> getRegionDisk(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregiondiskiampolicy" "policy" {
+///   project = regiondisk.project
+///   region  = regiondisk.region
+///   name    = regiondisk.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6527,8 +8076,8 @@ Future<GetRegionDiskResult> getRegionDisk(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6541,9 +8090,9 @@ Future<GetRegionDiskResult> getRegionDisk(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-///             .project(regiondisk.project())
-///             .region(regiondisk.region())
-///             .name(regiondisk.name())
+///             .project(regiondisk.get("project"))
+///             .region(regiondisk.get("region"))
+///             .name(regiondisk.get("name"))
 ///             .build());
 ///
 ///     }
@@ -6627,6 +8176,19 @@ Future<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregioninstancegroup" "group" {
+///   name = "instance-group-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6635,8 +8197,8 @@ Future<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6741,6 +8303,20 @@ Future<GetRegionInstanceGroupResult> getRegionInstanceGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregioninstancegroupmanager" "rigm" {
+///   name   = "my-igm"
+///   region = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6749,8 +8325,8 @@ Future<GetRegionInstanceGroupResult> getRegionInstanceGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6878,6 +8454,26 @@ Future<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregioninstancetemplate" "generic" {
+///   name = "generic-tpl-20200107"
+/// }
+/// data "gcp_compute_getregioninstancetemplate" "generic-regex" {
+///   filter      = "name != generic-tpl-20200107"
+///   most_recent = true
+/// }
+///
+/// # by name
+/// # using a filter
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6886,8 +8482,8 @@ Future<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6944,9 +8540,142 @@ Future<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(
   return GetRegionInstanceTemplateResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for regioninstantsnapshot
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.compute.getRegionInstantSnapshotIamPolicy({
+///     project: _default.project,
+///     region: _default.region,
+///     name: _default.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.compute.get_region_instant_snapshot_iam_policy(project=default["project"],
+///     region=default["region"],
+///     name=default["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.Compute.GetRegionInstantSnapshotIamPolicy.Invoke(new()
+///     {
+///         Project = @default.Project,
+///         Region = @default.Region,
+///         Name = @default.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupRegionInstantSnapshotIamPolicy(ctx, &compute.LookupRegionInstantSnapshotIamPolicyArgs{
+/// 			Project: pulumi.StringRef(_default.Project),
+/// 			Region:  pulumi.StringRef(_default.Region),
+/// 			Name:    _default.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregioninstantsnapshotiampolicy" "policy" {
+///   project = default.project
+///   region  = default.region
+///   name    = default.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
+///             .project(default_.get("project"))
+///             .region(default_.get("region"))
+///             .name(default_.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:compute:getRegionInstantSnapshotIamPolicy
+///       arguments:
+///         project: ${default.project}
+///         region: ${default.region}
+///         name: ${default.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_region_instant_snapshot_iam_policy_get_region_instant_snapshot_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicy(
+  GetRegionInstantSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRegionInstantSnapshotIamPolicyResult.fromMap(result);
+}
+
 /// Use this data source to access a Region Network Endpoint Group's attributes.
 ///
-/// The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+/// The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
 ///
 /// ## Example Usage
 ///
@@ -7019,6 +8748,23 @@ Future<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionnetworkendpointgroup" "rneg1" {
+///   name   = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
+///   region = "us-central1"
+/// }
+/// data "gcp_compute_getregionnetworkendpointgroup" "rneg2" {
+///   self_link = "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7027,8 +8773,8 @@ Future<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7081,6 +8827,243 @@ Future<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup(
   return GetRegionNetworkEndpointGroupResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for regionnetworkfirewallpolicy
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.compute.getRegionNetworkFirewallPolicyIamPolicy({
+///     project: policyGoogleComputeRegionNetworkFirewallPolicy.project,
+///     region: policyGoogleComputeRegionNetworkFirewallPolicy.region,
+///     name: policyGoogleComputeRegionNetworkFirewallPolicy.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.compute.get_region_network_firewall_policy_iam_policy(project=policy_google_compute_region_network_firewall_policy["project"],
+///     region=policy_google_compute_region_network_firewall_policy["region"],
+///     name=policy_google_compute_region_network_firewall_policy["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.Compute.GetRegionNetworkFirewallPolicyIamPolicy.Invoke(new()
+///     {
+///         Project = policyGoogleComputeRegionNetworkFirewallPolicy.Project,
+///         Region = policyGoogleComputeRegionNetworkFirewallPolicy.Region,
+///         Name = policyGoogleComputeRegionNetworkFirewallPolicy.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupRegionNetworkFirewallPolicyIamPolicy(ctx, &compute.LookupRegionNetworkFirewallPolicyIamPolicyArgs{
+/// 			Project: pulumi.StringRef(policyGoogleComputeRegionNetworkFirewallPolicy.Project),
+/// 			Region:  pulumi.StringRef(policyGoogleComputeRegionNetworkFirewallPolicy.Region),
+/// 			Name:    policyGoogleComputeRegionNetworkFirewallPolicy.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionnetworkfirewallpolicyiampolicy" "policy" {
+///   project = policyGoogleComputeRegionNetworkFirewallPolicy.project
+///   region  = policyGoogleComputeRegionNetworkFirewallPolicy.region
+///   name    = policyGoogleComputeRegionNetworkFirewallPolicy.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
+///             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+///             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+///             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:compute:getRegionNetworkFirewallPolicyIamPolicy
+///       arguments:
+///         project: ${policyGoogleComputeRegionNetworkFirewallPolicy.project}
+///         region: ${policyGoogleComputeRegionNetworkFirewallPolicy.region}
+///         name: ${policyGoogleComputeRegionNetworkFirewallPolicy.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_region_network_firewall_policy_iam_policy_get_region_network_firewall_policy_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicy(
+  GetRegionNetworkFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRegionNetworkFirewallPolicyIamPolicyResult.fromMap(result);
+}
+
+/// Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+/// For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_ssl_policy = gcp.compute.getRegionSSLPolicy({
+///     name: "production-ssl-policy",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_ssl_policy = gcp.compute.get_region_ssl_policy(name="production-ssl-policy")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_ssl_policy = Gcp.Compute.GetRegionSSLPolicy.Invoke(new()
+///     {
+///         Name = "production-ssl-policy",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.GetRegionSSLPolicy(ctx, &compute.GetRegionSSLPolicyArgs{
+/// 			Name: "production-ssl-policy",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionsslpolicy" "my-ssl-policy" {
+///   name = "production-ssl-policy"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var my-ssl-policy = ComputeFunctions.getRegionSSLPolicy(GetRegionSSLPolicyArgs.builder()
+///             .name("production-ssl-policy")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   my-ssl-policy:
+///     fn::invoke:
+///       function: gcp:compute:getRegionSSLPolicy
+///       arguments:
+///         name: production-ssl-policy
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_region_sslpolicy_get_region_sslpolicy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRegionSSLPolicyResult> getRegionSSLPolicy(
@@ -7154,6 +9137,20 @@ Future<GetRegionSSLPolicyResult> getRegionSSLPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionsecuritypolicy" "default" {
+///   name   = "my-region-security-policy"
+///   region = "us-west2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7162,8 +9159,8 @@ Future<GetRegionSSLPolicyResult> getRegionSSLPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7276,6 +9273,29 @@ Future<GetRegionSecurityPolicyResult> getRegionSecurityPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregionsslcertificate" "myCert" {
+///   name = "my-cert"
+/// }
+///
+/// output "certificate" {
+///   value = data.gcp_compute_getregionsslcertificate.myCert.certificate
+/// }
+/// output "certificateId" {
+///   value = data.gcp_compute_getregionsslcertificate.myCert.certificate_id
+/// }
+/// output "selfLink" {
+///   value = data.gcp_compute_getregionsslcertificate.myCert.self_link
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7284,8 +9304,8 @@ Future<GetRegionSecurityPolicyResult> getRegionSecurityPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7334,6 +9354,250 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
   return GetRegionSslCertificateResult.fromMap(result);
 }
 
+/// Get information about a Compute Engine RegionTargetHttpProxy.
+///
+///
+/// For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+/// the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.compute.getRegionTargetHttpProxy({
+///     name: defaultGoogleComputeRegionTargetHttpProxy.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.get_region_target_http_proxy(name=default_google_compute_region_target_http_proxy["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Compute.GetRegionTargetHttpProxy.Invoke(new()
+///     {
+///         Name = defaultGoogleComputeRegionTargetHttpProxy.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupRegionTargetHttpProxy(ctx, &compute.LookupRegionTargetHttpProxyArgs{
+/// 			Name: defaultGoogleComputeRegionTargetHttpProxy.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregiontargethttpproxy" "default" {
+///   name = defaultGoogleComputeRegionTargetHttpProxy.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
+///             .name(defaultGoogleComputeRegionTargetHttpProxy.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:compute:getRegionTargetHttpProxy
+///       arguments:
+///         name: ${defaultGoogleComputeRegionTargetHttpProxy.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_region_target_http_proxy_get_region_target_http_proxy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxy(
+  GetRegionTargetHttpProxyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getRegionTargetHttpProxy:getRegionTargetHttpProxy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRegionTargetHttpProxyResult.fromMap(result);
+}
+
+/// Get information about a Compute Engine RegionTargetHttpsProxy.
+///
+///
+/// For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+/// the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.compute.getRegionTargetHttpsProxy({
+///     name: defaultGoogleComputeRegionTargetHttpsProxy.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.get_region_target_https_proxy(name=default_google_compute_region_target_https_proxy["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Compute.GetRegionTargetHttpsProxy.Invoke(new()
+///     {
+///         Name = defaultGoogleComputeRegionTargetHttpsProxy.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupRegionTargetHttpsProxy(ctx, &compute.LookupRegionTargetHttpsProxyArgs{
+/// 			Name: defaultGoogleComputeRegionTargetHttpsProxy.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregiontargethttpsproxy" "default" {
+///   name = defaultGoogleComputeRegionTargetHttpsProxy.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
+///             .name(defaultGoogleComputeRegionTargetHttpsProxy.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:compute:getRegionTargetHttpsProxy
+///       arguments:
+///         name: ${defaultGoogleComputeRegionTargetHttpsProxy.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_region_target_https_proxy_get_region_target_https_proxy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxy(
+  GetRegionTargetHttpsProxyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getRegionTargetHttpsProxy:getRegionTargetHttpsProxy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRegionTargetHttpsProxyResult.fromMap(result);
+}
+
 /// Provides access to available Google Compute regions for a given project.
 /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
 ///
@@ -7345,29 +9609,30 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
 /// const available = gcp.compute.getRegions({});
 /// const cluster: gcp.compute.Subnetwork[] = [];
 /// available.then(available => available.names).length.apply(rangeBody => {
-///     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
-///         cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
+///     for (let range = 0; range < rangeBody; range++) {
+///         cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
 ///             name: "my-network",
-///             ipCidrRange: `10.36.${range.value}.0/24`,
+///             ipCidrRange: `10.36.${range}.0/24`,
 ///             network: "my-network",
-///             region: available.then(available => available.names[range.value]),
+///             region: available.then(available => available.names[range]),
 ///         }));
 ///     }
 /// });
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_gcp as gcp
 ///
 /// available = gcp.compute.get_regions()
-/// cluster = []
+/// cluster: list[gcp.compute.Subnetwork] = []
 /// def create_cluster(range_body):
-///     for range in [{"value": i} for i in range(0, range_body)]:
-///         cluster.append(gcp.compute.Subnetwork(f"cluster-{range['value']}",
+///     for cluster_range in [{"value": i} for i in range(0, range_body)]:
+///         cluster.append(gcp.compute.Subnetwork(f"cluster-{cluster_range['value']}",
 ///             name="my-network",
-///             ip_cidr_range=f"10.36.{range['value']}.0/24",
+///             ip_cidr_range=f"10.36.{cluster_range['value']}.0/24",
 ///             network="my-network",
-///             region=available.names[range["value"]]))
+///             region=available.names[cluster_range["value"]]))
 ///
 /// (len(available.names)).apply(create_cluster)
 /// ```
@@ -7382,17 +9647,21 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
 ///     var available = Gcp.Compute.GetRegions.Invoke();
 ///
 ///     var cluster = new List<Gcp.Compute.Subnetwork>();
-///     for (var rangeIndex = 0; rangeIndex < available.Apply(getRegionsResult => getRegionsResult.Names).Length; rangeIndex++)
+///     available.Apply(getRegionsResult => getRegionsResult.Names).Length().Apply(rangeBody =>
 ///     {
-///         var range = new { Value = rangeIndex };
-///         cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
-///             Name = "my-network",
-///             IpCidrRange = $"10.36.{range.Value}.0/24",
-///             Network = "my-network",
-///             Region = available.Apply(getRegionsResult => getRegionsResult.Names)[range.Value],
-///         }));
-///     }
+///             var range = new { Value = rangeIndex };
+///             cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+///             {
+///                 Name = "my-network",
+///                 IpCidrRange = $"10.36.{range.Value}.0/24",
+///                 Network = "my-network",
+///                 Region = available.Apply(getRegionsResult => getRegionsResult.Names)[range.Value],
+///             }));
+///         }
+///         return 0;
+///     });
 /// });
 /// ```
 /// ```go
@@ -7430,6 +9699,26 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getregions" "available" {
+/// }
+///
+/// resource "gcp_compute_subnetwork" "cluster" {
+///   count         = length(data.gcp_compute_getregions.available.names)
+///   name          = "my-network"
+///   ip_cidr_range ="10.36.${count.index}.0/24"
+///   network       = "my-network"
+///   region        = data.gcp_compute_getregions.available.names[count.index]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7441,8 +9730,8 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
 /// import com.pulumi.gcp.compute.Subnetwork;
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7457,7 +9746,7 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
 ///         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
 ///             .build());
 ///
-///         for (var i = 0; i < available.names().length(); i++) {
+///         for (var i = 0; i < available.names().size(); i++) {
 ///             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
 ///                 .name("my-network")
 ///                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -7542,6 +9831,20 @@ Future<GetRegionsResult> getRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getreservation" "reservation" {
+///   name = "gce-reservation"
+///   zone = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7550,8 +9853,8 @@ Future<GetRegionsResult> getRegions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetReservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7671,6 +9974,28 @@ Future<GetReservationResult> getReservation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getreservationblock" "block" {
+///   name        = "my-reservation-block"
+///   reservation = "my-reservation"
+///   zone        = "us-central1-a"
+/// }
+///
+/// output "blockStatus" {
+///   value = data.gcp_compute_getreservationblock.block.status
+/// }
+/// output "blockInUseCount" {
+///   value = data.gcp_compute_getreservationblock.block.in_use_count
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7679,8 +10004,8 @@ Future<GetReservationResult> getReservation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7811,6 +10136,29 @@ Future<GetReservationBlockResult> getReservationBlock(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getreservationsubblock" "subBlock" {
+///   name              = "my-reservation-sub-block"
+///   reservation_block = "my-reservation-block"
+///   reservation       = "my-reservation"
+///   zone              = "us-central1-a"
+/// }
+///
+/// output "subBlockStatus" {
+///   value = data.gcp_compute_getreservationsubblock.subBlock.status
+/// }
+/// output "subBlockHealth" {
+///   value = data.gcp_compute_getreservationsubblock.subBlock.health_infos
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7819,8 +10167,8 @@ Future<GetReservationBlockResult> getReservationBlock(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7873,6 +10221,117 @@ Future<GetReservationSubBlockResult> getReservationSubBlock(
   return GetReservationSubBlockResult.fromMap(result);
 }
 
+/// Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+///
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const daily = gcp.compute.getResourcePolicy({
+///     name: "daily",
+///     region: "us-central1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// daily = gcp.compute.get_resource_policy(name="daily",
+///     region="us-central1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var daily = Gcp.Compute.GetResourcePolicy.Invoke(new()
+///     {
+///         Name = "daily",
+///         Region = "us-central1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupResourcePolicy(ctx, &compute.LookupResourcePolicyArgs{
+/// 			Name:   "daily",
+/// 			Region: pulumi.StringRef("us-central1"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getresourcepolicy" "daily" {
+///   name   = "daily"
+///   region = "us-central1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+///             .name("daily")
+///             .region("us-central1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   daily:
+///     fn::invoke:
+///       function: gcp:compute:getResourcePolicy
+///       arguments:
+///         name: daily
+///         region: us-central1
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_resource_policy_get_resource_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetResourcePolicyResult> getResourcePolicy(
@@ -7946,6 +10405,20 @@ Future<GetResourcePolicyResult> getResourcePolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getrouter" "my-router" {
+///   name    = "myrouter-us-east1"
+///   network = "my-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7954,8 +10427,8 @@ Future<GetResourcePolicyResult> getResourcePolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRouterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8061,6 +10534,20 @@ Future<GetRouterResult> getRouter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getrouternat" "foo" {
+///   name   = "my-nat"
+///   router = "my-router"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8069,8 +10556,8 @@ Future<GetRouterResult> getRouter(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8173,6 +10660,19 @@ Future<GetRouterNatResult> getRouterNat(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getrouterstatus" "my-router" {
+///   name = "myrouter"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8181,8 +10681,8 @@ Future<GetRouterNatResult> getRouterNat(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8283,6 +10783,20 @@ Future<GetRouterStatusResult> getRouterStatus(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getrouters" "all" {
+///   project = foobar.project
+///   region  = foobar.region
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8291,8 +10805,8 @@ Future<GetRouterStatusResult> getRouterStatus(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8305,8 +10819,8 @@ Future<GetRouterStatusResult> getRouterStatus(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-///             .project(foobar.project())
-///             .region(foobar.region())
+///             .project(foobar.get("project"))
+///             .region(foobar.get("region"))
 ///             .build());
 ///
 ///     }
@@ -8391,6 +10905,19 @@ Future<GetRoutersResult> getRouters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getsslpolicy" "my-ssl-policy" {
+///   name = "production-ssl-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8399,8 +10926,8 @@ Future<GetRoutersResult> getRouters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8519,6 +11046,23 @@ Future<GetSSLPolicyResult> getSSLPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getsecuritypolicy" "sp1" {
+///   name    = "my-policy"
+///   project = "my-project"
+/// }
+/// data "gcp_compute_getsecuritypolicy" "sp2" {
+///   self_link = "https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8527,8 +11071,8 @@ Future<GetSSLPolicyResult> getSSLPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8579,6 +11123,140 @@ Future<GetSecurityPolicyResult> getSecurityPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityPolicyResult.fromMap(result);
+}
+
+/// Get a specific [service attachment](https://cloud.google.com/vpc/docs/configure-private-service-connect-services) within a region. For more information see the
+/// [official documentation](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+/// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/get).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.compute.getServiceAttachment({
+///     project: "my-project",
+///     name: "my-service-attachment",
+///     region: "us-west2",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.get_service_attachment(project="my-project",
+///     name="my-service-attachment",
+///     region="us-west2")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Compute.GetServiceAttachment.Invoke(new()
+///     {
+///         Project = "my-project",
+///         Name = "my-service-attachment",
+///         Region = "us-west2",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupServiceAttachment(ctx, &compute.LookupServiceAttachmentArgs{
+/// 			Project: pulumi.StringRef("my-project"),
+/// 			Name:    "my-service-attachment",
+/// 			Region:  pulumi.StringRef("us-west2"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getserviceattachment" "default" {
+///   project = "my-project"
+///   name    = "my-service-attachment"
+///   region  = "us-west2"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = ComputeFunctions.getServiceAttachment(GetServiceAttachmentArgs.builder()
+///             .project("my-project")
+///             .name("my-service-attachment")
+///             .region("us-west2")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:compute:getServiceAttachment
+///       arguments:
+///         project: my-project
+///         name: my-service-attachment
+///         region: us-west2
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_service_attachment_get_service_attachment_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceAttachmentResult> getServiceAttachment(
+  GetServiceAttachmentArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getServiceAttachment:getServiceAttachment',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceAttachmentResult.fromMap(result);
 }
 
 /// To get more information about Snapshot, see:
@@ -8666,6 +11344,26 @@ Future<GetSecurityPolicyResult> getSecurityPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getsnapshot" "snapshot" {
+///   name = "my-snapshot"
+/// }
+/// data "gcp_compute_getsnapshot" "latest-snapshot" {
+///   filter      = "name != my-snapshot"
+///   most_recent = true
+/// }
+///
+/// #by name
+/// # using a filter
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8674,8 +11372,8 @@ Future<GetSecurityPolicyResult> getSecurityPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8791,6 +11489,20 @@ Future<GetSnapshotResult> getSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getsnapshotiampolicy" "policy" {
+///   project = snapshot.project
+///   name    = snapshot.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8799,8 +11511,8 @@ Future<GetSnapshotResult> getSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8813,8 +11525,8 @@ Future<GetSnapshotResult> getSnapshot(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-///             .project(snapshot.project())
-///             .name(snapshot.name())
+///             .project(snapshot.get("project"))
+///             .name(snapshot.get("name"))
 ///             .build());
 ///
 ///     }
@@ -8914,6 +11626,27 @@ Future<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getstoragepool" "myPool" {
+///   name = "my-storage-pool"
+///   zone = "us-central1-a"
+/// }
+///
+/// output "poolCapacity" {
+///   value = data.gcp_compute_getstoragepool.myPool.pool_provisioned_capacity_gb
+/// }
+/// output "poolType" {
+///   value = data.gcp_compute_getstoragepool.myPool.storage_pool_type
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8922,8 +11655,8 @@ Future<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8961,7 +11694,7 @@ Future<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(
 ///
 /// ## Note
 ///
-/// * `deletion_protection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
+/// * `deletionProtection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_storage_pool_get_storage_pool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStoragePoolResult> getStoragePool(
@@ -9040,6 +11773,21 @@ Future<GetStoragePoolResult> getStoragePool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getstoragepooliampolicy" "policy" {
+///   project = test-storage-pool-basic.project
+///   zone    = test-storage-pool-basic.zone
+///   name    = test-storage-pool-basic.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9048,8 +11796,8 @@ Future<GetStoragePoolResult> getStoragePool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9062,9 +11810,9 @@ Future<GetStoragePoolResult> getStoragePool(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
-///             .project(test_storage_pool_basic.project())
-///             .zone(test_storage_pool_basic.zone())
-///             .name(test_storage_pool_basic.name())
+///             .project(test_storage_pool_basic.get("project"))
+///             .zone(test_storage_pool_basic.get("zone"))
+///             .name(test_storage_pool_basic.get("name"))
 ///             .build());
 ///
 ///     }
@@ -9168,6 +11916,20 @@ Future<GetStoragePoolTypesResult> getStoragePoolTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getsubnetwork" "my-subnetwork" {
+///   name   = "default-us-east1"
+///   region = "us-east1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9176,8 +11938,8 @@ Future<GetStoragePoolTypesResult> getStoragePoolTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9284,6 +12046,21 @@ Future<GetSubnetworkResult> getSubnetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getsubnetworkiampolicy" "policy" {
+///   project    = network-with-private-secondary-ip-ranges.project
+///   region     = network-with-private-secondary-ip-ranges.region
+///   subnetwork = network-with-private-secondary-ip-ranges.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9292,8 +12069,8 @@ Future<GetSubnetworkResult> getSubnetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9306,9 +12083,9 @@ Future<GetSubnetworkResult> getSubnetwork(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-///             .project(network_with_private_secondary_ip_ranges.project())
-///             .region(network_with_private_secondary_ip_ranges.region())
-///             .subnetwork(network_with_private_secondary_ip_ranges.name())
+///             .project(network_with_private_secondary_ip_ranges.get("project"))
+///             .region(network_with_private_secondary_ip_ranges.get("region"))
+///             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
 ///             .build());
 ///
 ///     }
@@ -9403,6 +12180,21 @@ Future<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getsubnetworks" "my-subnetworks" {
+///   filter  = "ipCidrRange eq 192.168.178.0/24"
+///   project = "my-project"
+///   region  = "us-east1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9411,8 +12203,8 @@ Future<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9456,6 +12248,250 @@ Future<GetSubnetworksResult> getSubnetworks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetworksResult.fromMap(result);
+}
+
+/// Get information about a Compute Engine TargetHttpProxy.
+///
+///
+/// For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+/// the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.compute.getTargetHttpProxy({
+///     name: defaultGoogleComputeTargetHttpProxy.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.get_target_http_proxy(name=default_google_compute_target_http_proxy["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Compute.GetTargetHttpProxy.Invoke(new()
+///     {
+///         Name = defaultGoogleComputeTargetHttpProxy.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupTargetHttpProxy(ctx, &compute.LookupTargetHttpProxyArgs{
+/// 			Name: defaultGoogleComputeTargetHttpProxy.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_gettargethttpproxy" "default" {
+///   name = defaultGoogleComputeTargetHttpProxy.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
+///             .name(defaultGoogleComputeTargetHttpProxy.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:compute:getTargetHttpProxy
+///       arguments:
+///         name: ${defaultGoogleComputeTargetHttpProxy.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_target_http_proxy_get_target_http_proxy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetTargetHttpProxyResult> getTargetHttpProxy(
+  GetTargetHttpProxyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getTargetHttpProxy:getTargetHttpProxy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetTargetHttpProxyResult.fromMap(result);
+}
+
+/// Get information about a Compute Engine TargetHttpsProxy.
+///
+///
+/// For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+/// the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.compute.getTargetHttpsProxy({
+///     name: defaultGoogleComputeTargetHttpsProxy.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.get_target_https_proxy(name=default_google_compute_target_https_proxy["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Compute.GetTargetHttpsProxy.Invoke(new()
+///     {
+///         Name = defaultGoogleComputeTargetHttpsProxy.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupTargetHttpsProxy(ctx, &compute.LookupTargetHttpsProxyArgs{
+/// 			Name: defaultGoogleComputeTargetHttpsProxy.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_gettargethttpsproxy" "default" {
+///   name = defaultGoogleComputeTargetHttpsProxy.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
+///             .name(defaultGoogleComputeTargetHttpsProxy.get("name"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:compute:getTargetHttpsProxy
+///       arguments:
+///         name: ${defaultGoogleComputeTargetHttpsProxy.name}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_target_https_proxy_get_target_https_proxy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetTargetHttpsProxyResult> getTargetHttpsProxy(
+  GetTargetHttpsProxyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getTargetHttpsProxy:getTargetHttpsProxy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetTargetHttpsProxyResult.fromMap(result);
 }
 
 /// Get a VPN gateway within GCE from its name.
@@ -9512,6 +12548,19 @@ Future<GetSubnetworksResult> getSubnetworks(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getvpngateway" "my-vpn-gateway" {
+///   name = "vpn-gateway-us-east1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9520,8 +12569,8 @@ Future<GetSubnetworksResult> getSubnetworks(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9574,12 +12623,12 @@ Future<GetVPNGatewayResult> getVPNGateway(
 /// const available = gcp.compute.getZones({});
 /// const foo: gcp.compute.InstanceGroupManager[] = [];
 /// available.then(available => available.names).length.apply(rangeBody => {
-///     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
-///         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
-///             name: `test-${range.value}`,
+///     for (let range = 0; range < rangeBody; range++) {
+///         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
+///             name: `test-${range}`,
 ///             instanceTemplate: foobar.selfLink,
-///             baseInstanceName: `foobar-${range.value}`,
-///             zone: available.then(available => available.names[range.value]),
+///             baseInstanceName: `foobar-${range}`,
+///             zone: available.then(available => available.names[range]),
 ///             targetSize: 1,
 ///         }));
 ///     }
@@ -9587,17 +12636,18 @@ Future<GetVPNGatewayResult> getVPNGateway(
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_gcp as gcp
 ///
 /// available = gcp.compute.get_zones()
-/// foo = []
+/// foo: list[gcp.compute.InstanceGroupManager] = []
 /// def create_foo(range_body):
-///     for range in [{"value": i} for i in range(0, range_body)]:
-///         foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
-///             name=f"test-{range['value']}",
+///     for foo_range in [{"value": i} for i in range(0, range_body)]:
+///         foo.append(gcp.compute.InstanceGroupManager(f"foo-{foo_range['value']}",
+///             name=f"test-{foo_range['value']}",
 ///             instance_template=foobar["selfLink"],
-///             base_instance_name=f"foobar-{range['value']}",
-///             zone=available.names[range["value"]],
+///             base_instance_name=f"foobar-{foo_range['value']}",
+///             zone=available.names[foo_range["value"]],
 ///             target_size=1))
 ///
 /// (len(available.names)).apply(create_foo)
@@ -9613,18 +12663,22 @@ Future<GetVPNGatewayResult> getVPNGateway(
 ///     var available = Gcp.Compute.GetZones.Invoke();
 ///
 ///     var foo = new List<Gcp.Compute.InstanceGroupManager>();
-///     for (var rangeIndex = 0; rangeIndex < available.Apply(getZonesResult => getZonesResult.Names).Length; rangeIndex++)
+///     available.Apply(getZonesResult => getZonesResult.Names).Length().Apply(rangeBody =>
 ///     {
-///         var range = new { Value = rangeIndex };
-///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
-///             Name = $"test-{range.Value}",
-///             InstanceTemplate = foobar.SelfLink,
-///             BaseInstanceName = $"foobar-{range.Value}",
-///             Zone = available.Apply(getZonesResult => getZonesResult.Names)[range.Value],
-///             TargetSize = 1,
-///         }));
-///     }
+///             var range = new { Value = rangeIndex };
+///             foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+///             {
+///                 Name = $"test-{range.Value}",
+///                 InstanceTemplate = foobar.SelfLink,
+///                 BaseInstanceName = $"foobar-{range.Value}",
+///                 Zone = available.Apply(getZonesResult => getZonesResult.Names)[range.Value],
+///                 TargetSize = 1,
+///             }));
+///         }
+///         return 0;
+///     });
 /// });
 /// ```
 /// ```go
@@ -9663,6 +12717,27 @@ Future<GetVPNGatewayResult> getVPNGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getzones" "available" {
+/// }
+///
+/// resource "gcp_compute_instancegroupmanager" "foo" {
+///   count              = length(data.gcp_compute_getzones.available.names)
+///   name               ="test-${count.index}"
+///   instance_template  = foobar.selfLink
+///   base_instance_name ="foobar-${count.index}"
+///   zone               = data.gcp_compute_getzones.available.names[count.index]
+///   target_size        = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9674,8 +12749,8 @@ Future<GetVPNGatewayResult> getVPNGateway(
 /// import com.pulumi.gcp.compute.InstanceGroupManager;
 /// import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9690,10 +12765,10 @@ Future<GetVPNGatewayResult> getVPNGateway(
 ///         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
 ///             .build());
 ///
-///         for (var i = 0; i < available.names().length(); i++) {
+///         for (var i = 0; i < available.names().size(); i++) {
 ///             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
 ///                 .name(String.format("test-%s", range.value()))
-///                 .instanceTemplate(foobar.selfLink())
+///                 .instanceTemplate(foobar.get("selfLink"))
 ///                 .baseInstanceName(String.format("foobar-%s", range.value()))
 ///                 .zone(available.names()[range.value()])
 ///                 .targetSize(1)
@@ -9778,6 +12853,19 @@ Future<GetZonesResult> getZones(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getrouterstatus" "my-router" {
+///   name = "myrouter"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9786,8 +12874,8 @@ Future<GetZonesResult> getZones(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

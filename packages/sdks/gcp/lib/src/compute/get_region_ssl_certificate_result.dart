@@ -6,6 +6,7 @@ class GetRegionSslCertificateResult {
   final String certificate;
   final int certificateId;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final String expireTime;
   /// The provider-assigned unique ID for this managed resource.
@@ -13,6 +14,8 @@ class GetRegionSslCertificateResult {
   final String name;
   final String namePrefix;
   final String privateKey;
+  final String privateKeyWo;
+  final String privateKeyWoVersion;
   final String? project;
   final String? region;
   final String selfLink;
@@ -21,12 +24,15 @@ class GetRegionSslCertificateResult {
   /// [certificate] Required.
   /// [certificateId] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [expireTime] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [namePrefix] Required.
   /// [privateKey] Required.
+  /// [privateKeyWo] Required.
+  /// [privateKeyWoVersion] Required.
   /// [project] Optional.
   /// [region] Optional.
   /// [selfLink] Required.
@@ -34,12 +40,15 @@ class GetRegionSslCertificateResult {
     required this.certificate,
     required this.certificateId,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.expireTime,
     required this.id,
     required this.name,
     required this.namePrefix,
     required this.privateKey,
+    required this.privateKeyWo,
+    required this.privateKeyWoVersion,
     this.project,
     this.region,
     required this.selfLink,
@@ -50,12 +59,15 @@ class GetRegionSslCertificateResult {
       'certificate': certificate,
       'certificateId': certificateId,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'expireTime': expireTime,
       'id': id,
       'name': name,
       'namePrefix': namePrefix,
       'privateKey': privateKey,
+      'privateKeyWo': privateKeyWo,
+      'privateKeyWoVersion': privateKeyWoVersion,
       'project': ?project,
       'region': ?region,
       'selfLink': selfLink,
@@ -67,16 +79,18 @@ class GetRegionSslCertificateResult {
       certificate: map['certificate'] as String,
       certificateId: map['certificateId'] as int,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       expireTime: map['expireTime'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       namePrefix: map['namePrefix'] as String,
       privateKey: map['privateKey'] as String,
+      privateKeyWo: map['privateKeyWo'] as String,
+      privateKeyWoVersion: map['privateKeyWoVersion'] as String,
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: map['selfLink'] as String,
     );
   }
 }
-

@@ -4,6 +4,8 @@ import 'get_instance_iam_policy_result.dart';
 import 'get_runtime_iam_policy_args.dart';
 import 'get_runtime_iam_policy_result.dart';
 
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+///
 /// Retrieves the current IAM policy data for instance
 ///
 ///
@@ -67,6 +69,21 @@ import 'get_runtime_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_notebooks_getinstanceiampolicy" "policy" {
+///   project       = instance.project
+///   location      = instance.location
+///   instance_name = instance.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +92,8 @@ import 'get_runtime_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.NotebooksFunctions;
 /// import com.pulumi.gcp.notebooks.inputs.GetInstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -89,9 +106,9 @@ import 'get_runtime_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-///             .project(instance.project())
-///             .location(instance.location())
-///             .instanceName(instance.name())
+///             .project(instance.get("project"))
+///             .location(instance.get("location"))
+///             .instanceName(instance.get("name"))
 ///             .build());
 ///
 ///     }
@@ -122,6 +139,8 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
   return GetInstanceIamPolicyResult.fromMap(result);
 }
 
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+///
 /// Retrieves the current IAM policy data for runtime
 ///
 ///
@@ -185,6 +204,21 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_notebooks_getruntimeiampolicy" "policy" {
+///   project      = runtime.project
+///   location     = runtime.location
+///   runtime_name = runtime.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +227,8 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.NotebooksFunctions;
 /// import com.pulumi.gcp.notebooks.inputs.GetRuntimeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,9 +241,9 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-///             .project(runtime.project())
-///             .location(runtime.location())
-///             .runtimeName(runtime.name())
+///             .project(runtime.get("project"))
+///             .location(runtime.get("location"))
+///             .runtimeName(runtime.get("name"))
 ///             .build());
 ///
 ///     }

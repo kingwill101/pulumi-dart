@@ -8,6 +8,7 @@ import 'instance_template_scheduling.dart';
 import 'instance_template_service_account.dart';
 import 'instance_template_shielded_instance_config.dart';
 import 'instance_template_state.dart';
+import 'instance_template_workload_identity_config.dart';
 
 /// &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
 ///
@@ -338,7 +339,7 @@ import 'instance_template_state.dart';
 /// 					SourceImage:      pulumi.String("debian-cloud/debian-11"),
 /// 					AutoDelete:       pulumi.Bool(true),
 /// 					Boot:             pulumi.Bool(true),
-/// 					ResourcePolicies: dailyBackup.ID(),
+/// 					ResourcePolicies: dailyBackup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				&compute.InstanceTemplateDiskArgs{
 /// 					Source:     foobar.Name,
@@ -368,6 +369,83 @@ import 'instance_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_serviceaccount_account" "default" {
+///   account_id   = "service-account-id"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_compute_instancetemplate" "default" {
+///   name        = "appserver-template"
+///   description = "This template is used to create app server instances."
+///   tags        = ["foo", "bar"]
+///   labels = {
+///     "environment" = "dev"
+///   }
+///   instance_description = "description assigned to instances"
+///   machine_type         = "e2-medium"
+///   can_ip_forward       = false
+///   scheduling = {
+///     automatic_restart   = true
+///     on_host_maintenance = "MIGRATE"
+///   }
+///   disks {
+///     source_image      = "debian-cloud/debian-11"
+///     auto_delete       = true
+///     boot              = true
+///     resource_policies = gcp_compute_resourcepolicy.daily_backup.id
+///   }
+///   disks {
+///     source      = gcp_compute_disk.foobar.name
+///     auto_delete = false
+///     boot        = false
+///   }
+///   // backup the disk every day
+///   // backup the disk every day
+///   // Instance Templates reference disks by name, not self link
+///   network_interfaces {
+///     network = "default"
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+///   service_account = {
+///     email  = gcp_serviceaccount_account.default.email
+///     scopes = ["cloud-platform"]
+///   }
+/// }
+/// resource "gcp_compute_disk" "foobar" {
+///   name  = "existing-disk"
+///   image = data.gcp_compute_getimage.myImage.self_link
+///   size  = 10
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// resource "gcp_compute_resourcepolicy" "daily_backup" {
+///   name   = "every-day-4am"
+///   region = "us-central1"
+///   snapshot_schedule_policy = {
+///     schedule = {
+///       daily_schedule = {
+///         days_in_cycle = 1
+///         start_time    = "04:00"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +469,8 @@ import 'instance_template_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -897,6 +975,54 @@ import 'instance_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// }
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "foobar" {
+///   name           = "appserver-template"
+///   machine_type   = "e2-medium"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   scheduling = {
+///     preemptible       = false
+///     automatic_restart = true
+///   }
+///   metadata = {
+///     "gce-software-declaration" = "{\n  \\\"softwareRecipes\\\": [{\n    \\\"name\\\": \\\"install-gce-service-proxy-agent\\\",\n    \\\"desired_state\\\": \\\"INSTALLED\\\",\n    \\\"installSteps\\\": [{\n      \\\"scriptRun\\\": {\n        \\\"script\\\": \\\"#! /bin/bash\\\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\\\nsudo gsutil cp   gs://gce-service-proxy-\\\"$ZONE\\\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"\\\nsudo tar -xzf \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"/service-proxy-agent-0.2.tgz -C \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"\\\n\\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\\\"\n      }\n    }]\n  }]\n}\n"
+///     "gce-service-proxy"        = "{\n  \\\"api-version\\\": \\\"0.2\\\",\n  \\\"proxy-spec\\\": {\n    \\\"proxy-port\\\": 15001,\n    \\\"network\\\": \\\"my-network\\\",\n    \\\"tracing\\\": \\\"ON\\\",\n    \\\"access-log\\\": \\\"/var/log/envoy/access.log\\\"\n  }\n  \\\"service\\\": {\n    \\\"serving-ports\\\": [80, 81]\n  },\n \\\"labels\\\": {\n   \\\"app_name\\\": \\\"bookserver_app\\\",\n   \\\"app_version\\\": \\\"STABLE\\\"\n  }\n}\n"
+///     "enable-guest-attributes"  = "true"
+///     "enable-osconfig"          = "true"
+///   }
+///   service_account = {
+///     email  = data.gcp_compute_getdefaultserviceaccount.default.email
+///     scopes = ["cloud-platform"]
+///   }
+///   labels = {
+///     "gce-service-proxy" = "on"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -912,8 +1038,8 @@ import 'instance_template_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1252,6 +1378,42 @@ import 'instance_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "default" {
+///   account_id   = "my-custom-sa"
+///   display_name = "Custom SA for VM Instance"
+/// }
+/// resource "gcp_compute_instancetemplate" "confidential_instance_template" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = "default"
+///   }
+///   name             = "my-confidential-instance-template"
+///   region           = "us-central1"
+///   machine_type     = "n2d-standard-2"
+///   min_cpu_platform = "AMD Milan"
+///   confidential_instance_config = {
+///     enable_confidential_compute = true
+///     confidential_instance_type  = "SEV"
+///   }
+///   disks {
+///     source_image = "ubuntu-os-cloud/ubuntu-2204-lts"
+///   }
+///   service_account = {
+///     email  = gcp_serviceaccount_account.default.email
+///     scopes = ["cloud-platform"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1263,11 +1425,12 @@ import 'instance_template_state.dart';
 /// import com.pulumi.gcp.compute.InstanceTemplate;
 /// import com.pulumi.gcp.compute.InstanceTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateConfidentialInstanceConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1454,6 +1617,29 @@ import 'instance_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "instance_template" {
+///   name_prefix  = "instance-template-"
+///   machine_type = "e2-medium"
+///   region       = "us-central1"
+///   disks {
+///     source_image = data.gcp_compute_getimage.myImage.self_link
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1465,8 +1651,8 @@ import 'instance_template_state.dart';
 /// import com.pulumi.gcp.compute.InstanceTemplate;
 /// import com.pulumi.gcp.compute.InstanceTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1597,6 +1783,24 @@ import 'instance_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "instance_template" {
+///   name_prefix  = "instance-template-"
+///   machine_type = "e2-medium"
+///   region       = "us-central1"
+///   disks {
+///     source_image = "debian-cloud/debian-11"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1606,8 +1810,8 @@ import 'instance_template_state.dart';
 /// import com.pulumi.gcp.compute.InstanceTemplate;
 /// import com.pulumi.gcp.compute.InstanceTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1650,22 +1854,15 @@ import 'instance_template_state.dart';
 /// Instance templates can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/instanceTemplates/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
 /// ```
 class InstanceTemplate extends pulumi.CustomResource {
@@ -1686,8 +1883,8 @@ class InstanceTemplate extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> disks;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-  /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+  /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+  /// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
   late final pulumi.Output<bool?> enableDisplay;
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> guestAccelerators;
@@ -1702,7 +1899,14 @@ class InstanceTemplate extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-  /// The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+  /// The machine type to create.
+  ///
+  /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+  ///
+  /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+  /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+  ///
+  /// - - -
   late final pulumi.Output<String> machineType;
   /// Metadata key/value pairs to make available from
   /// within instances created from this template.
@@ -1710,7 +1914,7 @@ class InstanceTemplate extends pulumi.CustomResource {
   /// The unique fingerprint of the metadata.
   late final pulumi.Output<String> metadataFingerprint;
   /// An alternative to using the
-  /// startup-script metadata key, mostly to match the compute_instance resource.
+  /// startup-script metadata key, mostly to match the computeInstance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
   late final pulumi.Output<String?> metadataStartupScript;
@@ -1725,17 +1929,17 @@ class InstanceTemplate extends pulumi.CustomResource {
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
   ///
-  /// Resulting name for a `name_prefix` &lt;= 37 characters:
-  /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-  /// Resulting name for a `name_prefix` 38 - 54 characters:
-  /// `name_prefix` + YYmmdd + 3 digit incremental counter
+  /// Resulting name for a `namePrefix` &lt;= 37 characters:
+  /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `namePrefix` 38 - 54 characters:
+  /// `namePrefix` + YYmmdd + 3 digit incremental counter
   late final pulumi.Output<String> namePrefix;
   /// Networks to attach to instances created from
   /// this template. This can be specified multiple times for multiple networks.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
   /// (Optional, Configures network performance settings for the instance created from the
-  /// template. Structure is documented below. **Note**: `machine_type`
+  /// template. Structure is documented below. **Note**: `machineType`
   /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
   /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
   /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -1762,7 +1966,7 @@ class InstanceTemplate extends pulumi.CustomResource {
   late final pulumi.Output<InstanceTemplateReservationAffinity?> reservationAffinity;
   /// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
   late final pulumi.Output<Map<String, String>?> resourceManagerTags;
-  /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   late final pulumi.Output<String?> resourcePolicies;
   /// The scheduling strategy to use. More details about
   /// this configuration option are detailed below.
@@ -1775,12 +1979,15 @@ class InstanceTemplate extends pulumi.CustomResource {
   /// Service account to attach to the instance. Structure is documented below.
   late final pulumi.Output<InstanceTemplateServiceAccount?> serviceAccount;
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
   late final pulumi.Output<InstanceTemplateShieldedInstanceConfig> shieldedInstanceConfig;
   /// Tags to attach to the instance.
   late final pulumi.Output<List<String>?> tags;
   /// The unique fingerprint of the tags.
   late final pulumi.Output<String> tagsFingerprint;
+  /// Workload Identity Config. More details about
+  /// this configuration option are detailed below.
+  late final pulumi.Output<InstanceTemplateWorkloadIdentityConfig?> workloadIdentityConfig;
 
   /// Creates a new [InstanceTemplate].
   /// [name] The Pulumi resource name.
@@ -1832,6 +2039,7 @@ class InstanceTemplate extends pulumi.CustomResource {
     shieldedInstanceConfig = registerOutput<InstanceTemplateShieldedInstanceConfig>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<String>?>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    workloadIdentityConfig = registerOutput<InstanceTemplateWorkloadIdentityConfig?>('workloadIdentityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [InstanceTemplate] resource's state with the given [name] and [id].
@@ -1893,5 +2101,6 @@ class InstanceTemplate extends pulumi.CustomResource {
     shieldedInstanceConfig = registerOutput<InstanceTemplateShieldedInstanceConfig>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<String>?>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    workloadIdentityConfig = registerOutput<InstanceTemplateWorkloadIdentityConfig?>('workloadIdentityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

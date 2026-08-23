@@ -70,7 +70,7 @@ class PipelineMediationTransformation {
   /// message data. It also sets the corresponding datacontenttype of
   /// the CloudEvent, as indicated by
   /// Pipeline.Destination.output_payload_format. If no
-  /// output_payload_format is set it will use the existing
+  /// outputPayloadFormat is set it will use the existing
   /// datacontenttype on the CloudEvent if present, else leave
   /// datacontenttype absent.
   /// - This function expects that the content of the message will
@@ -99,4 +99,3 @@ class PipelineMediationTransformation {
     );
   }
 }
-

@@ -176,14 +176,14 @@ import 'vpc_service_controls_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Create a private connection
 /// 		defaultConnection, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				defaultGlobalAddress.Name,
@@ -207,6 +207,41 @@ import 'vpc_service_controls_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Create a VPC
+/// resource "gcp_compute_network" "default" {
+///   name = "example-network"
+/// }
+/// # Create an IP address
+/// resource "gcp_compute_globaladdress" "default" {
+///   name          = "psa-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// # Create a private connection
+/// resource "gcp_servicenetworking_connection" "default" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.default.name]
+/// }
+/// # Enable VPC-SC on the producer network
+/// resource "gcp_servicenetworking_vpcservicecontrols" "default" {
+///   depends_on = [gcp_servicenetworking_connection.default]
+///   network    = gcp_compute_network.default.name
+///   service    = "servicenetworking.googleapis.com"
+///   enabled    = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +257,8 @@ import 'vpc_service_controls_state.dart';
 /// import com.pulumi.gcp.servicenetworking.VpcServiceControls;
 /// import com.pulumi.gcp.servicenetworking.VpcServiceControlsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,22 +348,15 @@ import 'vpc_service_controls_state.dart';
 /// VPCServiceControls can be imported using any of these accepted formats:
 ///
 /// * `services/{{service}}/projects/{{project}}/networks/{{network}}`
-///
 /// * `{{service}}/{{project}}/{{network}}`
-///
 /// * `{{service}}/{{network}}`
+///
 ///
 /// When using the `pulumi import` command, VPCServiceControls can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default services/{{service}}/projects/{{project}}/networks/{{network}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{project}}/{{network}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{network}}
 /// ```
 class VpcServiceControls extends pulumi.CustomResource {

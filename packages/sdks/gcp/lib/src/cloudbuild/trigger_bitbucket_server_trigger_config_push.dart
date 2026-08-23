@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerBitbucketServerTriggerConfigPush {
   /// Regex of branches to match.
   final pulumi.Input<String>? branch;
-  /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+  /// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
   final pulumi.Input<bool>? invertRegex;
   /// Regex of tags to match.
   final pulumi.Input<String>? tag;
 
   /// Creates a new [TriggerBitbucketServerTriggerConfigPush].
   /// [branch] Regex of branches to match.
-  /// [invertRegex] If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+  /// [invertRegex] If true, only trigger a build if the revision regex does NOT match the gitRef regex.
   /// [tag] Regex of tags to match.
   const TriggerBitbucketServerTriggerConfigPush({
     this.branch,
@@ -36,4 +36,3 @@ class TriggerBitbucketServerTriggerConfigPush {
     );
   }
 }
-

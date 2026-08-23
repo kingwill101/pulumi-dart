@@ -9,7 +9,7 @@ class InstanceAutomatedBackupConfig {
   final pulumi.Input<InstanceAutomatedBackupConfigFixedFrequencySchedule> fixedFrequencySchedule;
   /// How long to keep automated backups before the backups are deleted.
   /// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
-  /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+  /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
   final pulumi.Input<String> retention;
 
   /// Creates a new [InstanceAutomatedBackupConfig].
@@ -34,4 +34,3 @@ class InstanceAutomatedBackupConfig {
     );
   }
 }
-

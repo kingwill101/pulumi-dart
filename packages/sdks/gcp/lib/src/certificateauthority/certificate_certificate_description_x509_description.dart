@@ -71,4 +71,3 @@ class CertificateCertificateDescriptionX509Description {
     );
   }
 }
-

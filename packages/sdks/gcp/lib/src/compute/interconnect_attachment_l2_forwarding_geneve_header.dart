@@ -24,4 +24,3 @@ class InterconnectAttachmentL2ForwardingGeneveHeader {
     );
   }
 }
-

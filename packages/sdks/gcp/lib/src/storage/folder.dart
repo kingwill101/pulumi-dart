@@ -134,6 +134,32 @@ import 'folder_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "my-bucket"
+///   location                    = "EU"
+///   uniform_bucket_level_access = true
+///   hierarchical_namespace = {
+///     enabled = true
+///   }
+/// }
+/// resource "gcp_storage_folder" "folder" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   name   = "parent-folder/"
+/// }
+/// resource "gcp_storage_folder" "subfolder" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   name   ="${gcp_storage_folder.folder.name}subfolder/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +171,8 @@ import 'folder_state.dart';
 /// import com.pulumi.gcp.storage.inputs.BucketHierarchicalNamespaceArgs;
 /// import com.pulumi.gcp.storage.Folder;
 /// import com.pulumi.gcp.storage.FolderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,16 +234,13 @@ import 'folder_state.dart';
 /// Folder can be imported using any of these accepted formats:
 ///
 /// * `{{bucket}}/folders/{{name}}`
-///
 /// * `{{bucket}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Folder can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/folder:Folder default {{bucket}}/folders/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/folder:Folder default {{bucket}}/{{name}}
 /// ```
 class Folder extends pulumi.CustomResource {
@@ -225,6 +248,13 @@ class Folder extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// The timestamp at which this folder was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If set to true, items within folder if any will be force destroyed.
   late final pulumi.Output<bool?> forceDestroy;
   /// The metadata generation of the folder.
@@ -253,6 +283,7 @@ class Folder extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
@@ -285,6 +316,7 @@ class Folder extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');

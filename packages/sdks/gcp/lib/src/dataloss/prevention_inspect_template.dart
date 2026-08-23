@@ -556,6 +556,104 @@ import 'prevention_inspect_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventioninspecttemplate" "basic" {
+///   parent       = "projects/my-project-name"
+///   description  = "My description"
+///   display_name = "display_name"
+///   inspect_config = {
+///     info_types = [{
+///       "name" = "EMAIL_ADDRESS"
+///       }, {
+///       "name" = "PERSON_NAME"
+///       }, {
+///       "name" = "LAST_NAME"
+///       }, {
+///       "name" = "DOMAIN_NAME"
+///       }, {
+///       "name" = "PHONE_NUMBER"
+///       }, {
+///       "name" = "FIRST_NAME"
+///     }]
+///     min_likelihood = "UNLIKELY"
+///     rule_sets = [{
+///       "infoTypes" = [{
+///         "name" = "EMAIL_ADDRESS"
+///       }]
+///       "rules" = [{
+///         "exclusionRule" = {
+///           "regex" = {
+///             "pattern" = ".+@example.com"
+///           }
+///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///         }
+///       }]
+///       }, {
+///       "infoTypes" = [{
+///         "name" = "EMAIL_ADDRESS"
+///         }, {
+///         "name" = "DOMAIN_NAME"
+///         }, {
+///         "name" = "PHONE_NUMBER"
+///         }, {
+///         "name" = "PERSON_NAME"
+///         }, {
+///         "name" = "FIRST_NAME"
+///       }]
+///       "rules" = [{
+///         "exclusionRule" = {
+///           "dictionary" = {
+///             "wordList" = {
+///               "words" = ["TEST"]
+///             }
+///           }
+///           "matchingType" = "MATCHING_TYPE_PARTIAL_MATCH"
+///         }
+///       }]
+///       }, {
+///       "infoTypes" = [{
+///         "name" = "PERSON_NAME"
+///       }]
+///       "rules" = [{
+///         "hotwordRule" = {
+///           "hotwordRegex" = {
+///             "pattern" = "patient"
+///           }
+///           "proximity" = {
+///             "windowBefore" = 50
+///           }
+///           "likelihoodAdjustment" = {
+///             "fixedLikelihood" = "VERY_LIKELY"
+///           }
+///         }
+///       }]
+///     }]
+///     limits = {
+///       max_findings_per_item    = 10
+///       max_findings_per_request = 50
+///       max_findings_per_info_types = [{
+///         "maxFindings" = "75"
+///         "infoType" = {
+///           "name" = "PERSON_NAME"
+///         }
+///         }, {
+///         "maxFindings" = "80"
+///         "infoType" = {
+///           "name" = "LAST_NAME"
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -565,9 +663,23 @@ import 'prevention_inspect_template_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1066,6 +1178,70 @@ import 'prevention_inspect_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventioninspecttemplate" "custom" {
+///   parent       = "projects/my-project-name"
+///   description  = "My description"
+///   display_name = "display_name"
+///   inspect_config = {
+///     custom_info_types = [{
+///       "infoType" = {
+///         "name" = "MY_CUSTOM_TYPE"
+///       }
+///       "likelihood" = "UNLIKELY"
+///       "regex" = {
+///         "pattern" = "test*"
+///       }
+///     }]
+///     info_types = [{
+///       "name" = "EMAIL_ADDRESS"
+///     }]
+///     min_likelihood = "UNLIKELY"
+///     rule_sets = [{
+///       "infoTypes" = [{
+///         "name" = "EMAIL_ADDRESS"
+///       }]
+///       "rules" = [{
+///         "exclusionRule" = {
+///           "regex" = {
+///             "pattern" = ".+@example.com"
+///           }
+///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///         }
+///       }]
+///       }, {
+///       "infoTypes" = [{
+///         "name" = "MY_CUSTOM_TYPE"
+///       }]
+///       "rules" = [{
+///         "hotwordRule" = {
+///           "hotwordRegex" = {
+///             "pattern" = "example*"
+///           }
+///           "proximity" = {
+///             "windowBefore" = 50
+///           }
+///           "likelihoodAdjustment" = {
+///             "fixedLikelihood" = "VERY_LIKELY"
+///           }
+///         }
+///       }]
+///     }]
+///     limits = {
+///       max_findings_per_item    = 10
+///       max_findings_per_request = 50
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1075,9 +1251,22 @@ import 'prevention_inspect_template_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1500,6 +1689,68 @@ import 'prevention_inspect_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventioninspecttemplate" "custom_type_surrogate" {
+///   parent       = "projects/my-project-name"
+///   description  = "My description"
+///   display_name = "display_name"
+///   inspect_config = {
+///     custom_info_types = [{
+///       "infoType" = {
+///         "name" = "MY_CUSTOM_TYPE"
+///       }
+///       "likelihood"    = "UNLIKELY"
+///       "surrogateType" = {}
+///     }]
+///     info_types = [{
+///       "name" = "EMAIL_ADDRESS"
+///     }]
+///     min_likelihood = "UNLIKELY"
+///     rule_sets = [{
+///       "infoTypes" = [{
+///         "name" = "EMAIL_ADDRESS"
+///       }]
+///       "rules" = [{
+///         "exclusionRule" = {
+///           "regex" = {
+///             "pattern" = ".+@example.com"
+///           }
+///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///         }
+///       }]
+///       }, {
+///       "infoTypes" = [{
+///         "name" = "MY_CUSTOM_TYPE"
+///       }]
+///       "rules" = [{
+///         "hotwordRule" = {
+///           "hotwordRegex" = {
+///             "pattern" = "example*"
+///           }
+///           "proximity" = {
+///             "windowBefore" = 50
+///           }
+///           "likelihoodAdjustment" = {
+///             "fixedLikelihood" = "VERY_LIKELY"
+///           }
+///         }
+///       }]
+///     }]
+///     limits = {
+///       max_findings_per_item    = 10
+///       max_findings_per_request = 50
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1509,9 +1760,22 @@ import 'prevention_inspect_template_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1760,6 +2024,34 @@ import 'prevention_inspect_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventioninspecttemplate" "max_infotype_per_finding_default" {
+///   parent = "projects/my-project-name"
+///   inspect_config = {
+///     info_types = [{
+///       "name" = "EMAIL_ADDRESS"
+///       }, {
+///       "name" = "PERSON_NAME"
+///     }]
+///     min_likelihood = "UNLIKELY"
+///     limits = {
+///       max_findings_per_request = 333
+///       max_findings_per_item    = 222
+///       max_findings_per_info_types = [{
+///         "maxFindings" = 111
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1769,9 +2061,11 @@ import 'prevention_inspect_template_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
 /// import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1832,19 +2126,26 @@ import 'prevention_inspect_template_state.dart';
 /// InspectTemplate can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/inspectTemplates/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
 /// ```
 class PreventionInspectTemplate extends pulumi.CustomResource {
+  /// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+  /// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+  late final pulumi.Output<bool?> allowLimitedAvailabilityInfoTypes;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the inspect template.
   late final pulumi.Output<String?> description;
   /// User set display name of the inspect template.
@@ -1879,6 +2180,8 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     inspectConfig = registerOutput<PreventionInspectTemplateInspectConfig?>('inspectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionInspectTemplateInspectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1910,6 +2213,8 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     inspectConfig = registerOutput<PreventionInspectTemplateInspectConfig?>('inspectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionInspectTemplateInspectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

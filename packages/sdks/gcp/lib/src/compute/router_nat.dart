@@ -146,7 +146,7 @@ import 'router_nat_state.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID(),
+/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -156,7 +156,7 @@ import 'router_nat_state.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID(),
+/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
 /// 			Bgp: &compute.RouterBgpArgs{
 /// 				Asn: pulumi.Int(64514),
 /// 			},
@@ -182,6 +182,44 @@ import 'router_nat_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name = "my-network"
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "my-subnetwork"
+///   network       = gcp_compute_network.net.id
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "my-router"
+///   region  = gcp_compute_subnetwork.subnet.region
+///   network = gcp_compute_network.net.id
+///   bgp = {
+///     asn = 64514
+///   }
+/// }
+/// resource "gcp_compute_routernat" "nat" {
+///   name                               = "my-router-nat"
+///   router                             = gcp_compute_router.router.name
+///   region                             = gcp_compute_router.router.region
+///   nat_ip_allocate_option             = "AUTO_ONLY"
+///   source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+///   log_config = {
+///     enable = true
+///     filter = "ERRORS_ONLY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +236,8 @@ import 'router_nat_state.dart';
 /// import com.pulumi.gcp.compute.RouterNat;
 /// import com.pulumi.gcp.compute.RouterNatArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterNatLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -499,7 +537,7 @@ import 'router_nat_state.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID(),
+/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -509,7 +547,7 @@ import 'router_nat_state.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID(),
+/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -546,7 +584,7 @@ import 'router_nat_state.dart';
 /// 			SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
 /// 			Subnetworks: compute.RouterNatSubnetworkArray{
 /// 				&compute.RouterNatSubnetworkArgs{
-/// 					Name: subnet.ID(),
+/// 					Name: subnet.ID().ToIDOutput().ToStringOutput(),
 /// 					SourceIpRangesToNats: pulumi.StringArray{
 /// 						pulumi.String("ALL_IP_RANGES"),
 /// 					},
@@ -574,6 +612,64 @@ import 'router_nat_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "my-subnetwork"
+///   network       = gcp_compute_network.net.id
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "my-router"
+///   region  = gcp_compute_subnetwork.subnet.region
+///   network = gcp_compute_network.net.id
+/// }
+/// resource "gcp_compute_address" "addr1" {
+///   name   = "nat-address1"
+///   region = gcp_compute_subnetwork.subnet.region
+/// }
+/// resource "gcp_compute_address" "addr2" {
+///   name   = "nat-address2"
+///   region = gcp_compute_subnetwork.subnet.region
+/// }
+/// resource "gcp_compute_address" "addr3" {
+///   name   = "nat-address3"
+///   region = gcp_compute_subnetwork.subnet.region
+/// }
+/// resource "gcp_compute_routernat" "nat_rules" {
+///   name                               = "my-router-nat"
+///   router                             = gcp_compute_router.router.name
+///   region                             = gcp_compute_router.router.region
+///   nat_ip_allocate_option             = "MANUAL_ONLY"
+///   nat_ips                            = [gcp_compute_address.addr1.self_link]
+///   source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
+///   subnetworks {
+///     name                     = gcp_compute_subnetwork.subnet.id
+///     source_ip_ranges_to_nats = ["ALL_IP_RANGES"]
+///   }
+///   rules {
+///     rule_number = 100
+///     description = "nat rules example"
+///     match       = "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+///     action = {
+///       source_nat_active_ips = [gcp_compute_address.addr2.self_link, gcp_compute_address.addr3.self_link]
+///     }
+///   }
+///   enable_endpoint_independent_mapping = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -593,8 +689,8 @@ import 'router_nat_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterNatRuleActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -952,7 +1048,7 @@ import 'router_nat_state.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID(),
+/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Purpose:     pulumi.String("PRIVATE_NAT"),
@@ -963,7 +1059,7 @@ import 'router_nat_state.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID(),
+/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -979,7 +1075,7 @@ import 'router_nat_state.dart';
 /// 			Name:        pulumi.String("my-spoke"),
 /// 			Location:    pulumi.String("global"),
 /// 			Description: pulumi.String("vpc spoke for inter vpc nat"),
-/// 			Hub:         hub.ID(),
+/// 			Hub:         hub.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 /// 				ExcludeExportRanges: pulumi.StringArray{
 /// 					pulumi.String("198.51.100.0/24"),
@@ -1002,7 +1098,7 @@ import 'router_nat_state.dart';
 /// 			Type:                             pulumi.String("PRIVATE"),
 /// 			Subnetworks: compute.RouterNatSubnetworkArray{
 /// 				&compute.RouterNatSubnetworkArgs{
-/// 					Name: subnet.ID(),
+/// 					Name: subnet.ID().ToIDOutput().ToStringOutput(),
 /// 					SourceIpRangesToNats: pulumi.StringArray{
 /// 						pulumi.String("ALL_IP_RANGES"),
 /// 					},
@@ -1028,6 +1124,67 @@ import 'router_nat_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name = "my-network"
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "my-subnetwork"
+///   network       = gcp_compute_network.net.id
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   purpose       = "PRIVATE_NAT"
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "my-router"
+///   region  = gcp_compute_subnetwork.subnet.region
+///   network = gcp_compute_network.net.id
+/// }
+/// resource "gcp_networkconnectivity_hub" "hub" {
+///   name        = "my-hub"
+///   description = "vpc hub for inter vpc nat"
+/// }
+/// resource "gcp_networkconnectivity_spoke" "spoke" {
+///   name        = "my-spoke"
+///   location    = "global"
+///   description = "vpc spoke for inter vpc nat"
+///   hub         = gcp_networkconnectivity_hub.hub.id
+///   linked_vpc_network = {
+///     exclude_export_ranges = ["198.51.100.0/24", "10.10.0.0/16"]
+///     uri                   = gcp_compute_network.net.self_link
+///   }
+/// }
+/// resource "gcp_compute_routernat" "nat_type" {
+///   name                                = "my-router-nat"
+///   router                              = gcp_compute_router.router.name
+///   region                              = gcp_compute_router.router.region
+///   source_subnetwork_ip_ranges_to_nat  = "LIST_OF_SUBNETWORKS"
+///   enable_dynamic_port_allocation      = false
+///   enable_endpoint_independent_mapping = false
+///   min_ports_per_vm                    = 32
+///   type                                = "PRIVATE"
+///   subnetworks {
+///     name                     = gcp_compute_subnetwork.subnet.id
+///     source_ip_ranges_to_nats = ["ALL_IP_RANGES"]
+///   }
+///   rules {
+///     rule_number = 100
+///     description = "rule for private nat"
+///     match       = "nexthop.hub == \"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\""
+///     action = {
+///       source_nat_active_ranges = [gcp_compute_subnetwork.subnet.self_link]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1050,8 +1207,8 @@ import 'router_nat_state.dart';
 /// import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterNatRuleActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1193,28 +1350,17 @@ import 'router_nat_state.dart';
 /// RouterNat can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{router}}/{{name}}`
-///
 /// * `{{region}}/{{router}}/{{name}}`
-///
 /// * `{{router}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerNat:RouterNat default {{project}}/{{region}}/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerNat:RouterNat default {{region}}/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerNat:RouterNat default {{router}}/{{name}}
 /// ```
 class RouterNat extends pulumi.CustomResource {
@@ -1223,6 +1369,13 @@ class RouterNat extends pulumi.CustomResource {
   /// project-level default tier is used.
   /// Possible values are: `PREMIUM`, `STANDARD`.
   late final pulumi.Output<String> autoNetworkTier;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A list of URLs of the IP resources to be drained. These IPs must be
   /// valid static external IPs that have been assigned to the NAT.
   late final pulumi.Output<List<String>> drainNatIps;
@@ -1258,7 +1411,7 @@ class RouterNat extends pulumi.CustomResource {
   /// comply with RFC1035.
   late final pulumi.Output<String> name;
   /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-  /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+  /// Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nat64Subnetworks;
   /// How external IPs should be allocated for this NAT. Valid values are
@@ -1269,7 +1422,7 @@ class RouterNat extends pulumi.CustomResource {
   /// Self-links of NAT IPs. Only valid if natIpAllocateOption
   /// is set to MANUAL_ONLY.
   /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-  /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+  /// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
   /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
   late final pulumi.Output<List<String>> natIps;
   /// The ID of the project in which the resource belongs.
@@ -1302,7 +1455,7 @@ class RouterNat extends pulumi.CustomResource {
   /// Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
   late final pulumi.Output<String?> sourceSubnetworkIpRangesToNat64;
   /// One or more subnetwork NAT configurations. Only used if
-  /// `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+  /// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> subnetworks;
   /// Timeout (in seconds) for TCP established connections.
@@ -1339,6 +1492,7 @@ class RouterNat extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoNetworkTier = registerOutput<String>('autoNetworkTier');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     drainNatIps = registerOutput<List<String>>('drainNatIps');
     enableDynamicPortAllocation = registerOutput<bool>('enableDynamicPortAllocation');
     enableEndpointIndependentMapping = registerOutput<bool>('enableEndpointIndependentMapping');
@@ -1390,6 +1544,7 @@ class RouterNat extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoNetworkTier = registerOutput<String>('autoNetworkTier');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     drainNatIps = registerOutput<List<String>>('drainNatIps');
     enableDynamicPortAllocation = registerOutput<bool>('enableDynamicPortAllocation');
     enableEndpointIndependentMapping = registerOutput<bool>('enableEndpointIndependentMapping');

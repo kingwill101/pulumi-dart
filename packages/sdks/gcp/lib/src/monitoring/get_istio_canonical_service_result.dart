@@ -7,6 +7,7 @@ import 'get_istio_canonical_service_telemetry.dart';
 class GetIstioCanonicalServiceResult {
   final String canonicalService;
   final String canonicalServiceNamespace;
+  final String deletionPolicy;
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
   /// The provider-assigned unique ID for this managed resource.
@@ -24,6 +25,7 @@ class GetIstioCanonicalServiceResult {
   /// Creates a new [GetIstioCanonicalServiceResult].
   /// [canonicalService] Required.
   /// [canonicalServiceNamespace] Required.
+  /// [deletionPolicy] Required.
   /// [displayName] Name used for UI elements listing this (Monitoring) Service.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [meshUid] Required.
@@ -35,6 +37,7 @@ class GetIstioCanonicalServiceResult {
   const GetIstioCanonicalServiceResult({
     required this.canonicalService,
     required this.canonicalServiceNamespace,
+    required this.deletionPolicy,
     required this.displayName,
     required this.id,
     required this.meshUid,
@@ -49,6 +52,7 @@ class GetIstioCanonicalServiceResult {
     return <String, dynamic>{
       'canonicalService': canonicalService,
       'canonicalServiceNamespace': canonicalServiceNamespace,
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'id': id,
       'meshUid': meshUid,
@@ -64,6 +68,7 @@ class GetIstioCanonicalServiceResult {
     return GetIstioCanonicalServiceResult(
       canonicalService: map['canonicalService'] as String,
       canonicalServiceNamespace: map['canonicalServiceNamespace'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       meshUid: map['meshUid'] as String,
@@ -75,4 +80,3 @@ class GetIstioCanonicalServiceResult {
     );
   }
 }
-

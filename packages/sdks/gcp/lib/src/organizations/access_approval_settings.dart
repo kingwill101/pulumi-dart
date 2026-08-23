@@ -121,6 +121,27 @@ import 'access_approval_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_accessapprovalsettings" "organization_access_approval" {
+///   organization_id     = "123456789"
+///   notification_emails = ["testuser@example.com", "example.user@example.com"]
+///   enrolled_services {
+///     cloud_product = "appengine.googleapis.com"
+///   }
+///   enrolled_services {
+///     cloud_product    = "dataflow.googleapis.com"
+///     enrollment_level = "BLOCK_ALL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +151,8 @@ import 'access_approval_settings_state.dart';
 /// import com.pulumi.gcp.organizations.AccessApprovalSettings;
 /// import com.pulumi.gcp.organizations.AccessApprovalSettingsArgs;
 /// import com.pulumi.gcp.organizations.inputs.AccessApprovalSettingsEnrolledServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,7 +238,7 @@ import 'access_approval_settings_state.dart';
 /// });
 /// const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organization_access_approval", {
 ///     organizationId: "123456789",
-///     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+///     activeKeyVersion: cryptoKeyVersion.name,
 ///     enrolledServices: [{
 ///         cloudProduct: "all",
 ///     }],
@@ -335,8 +356,6 @@ import 'access_approval_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -364,7 +383,7 @@ import 'access_approval_settings_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("crypto-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -380,7 +399,7 @@ import 'access_approval_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 /// 			Member:      pulumi.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail),
 /// 		})
@@ -388,13 +407,11 @@ import 'access_approval_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-/// 			CryptoKey: cryptoKey.ID(),
+/// 			CryptoKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		_, err = organizations.NewAccessApprovalSettings(ctx, "organization_access_approval", &organizations.AccessApprovalSettingsArgs{
-/// 			OrganizationId: pulumi.String("123456789"),
-/// 			ActiveKeyVersion: pulumi.String(cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-/// 				return &cryptoKeyVersion.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			OrganizationId:   pulumi.String("123456789"),
+/// 			ActiveKeyVersion: cryptoKeyVersion.Name(),
 /// 			EnrolledServices: organizations.AccessApprovalSettingsEnrolledServiceArray{
 /// 				&organizations.AccessApprovalSettingsEnrolledServiceArgs{
 /// 					CloudProduct: pulumi.String("all"),
@@ -408,6 +425,55 @@ import 'access_approval_settings_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_accessapproval_getorganizationserviceaccount" "serviceAccount" {
+///   organization_id = "123456789"
+/// }
+/// data "gcp_kms_getkmscryptokeyversion" "cryptoKeyVersion" {
+///   crypto_key = gcp_kms_cryptokey.crypto_key.id
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name            = "My Project"
+///   project_id      = "your-project-id"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "key-ring"
+///   location = "global"
+///   project  = gcp_organizations_project.my_project.project_id
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "crypto-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+///   purpose  = "ASYMMETRIC_SIGN"
+///   version_template = {
+///     algorithm = "EC_SIGN_P384_SHA384"
+///   }
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+///   role          = "roles/cloudkms.signerVerifier"
+///   member        ="serviceAccount:${data.gcp_accessapproval_getorganizationserviceaccount.serviceAccount.account_email}"
+/// }
+/// resource "gcp_organizations_accessapprovalsettings" "organization_access_approval" {
+///   depends_on         = [gcp_kms_cryptokeyiammember.iam]
+///   organization_id    = "123456789"
+///   active_key_version = data.gcp_kms_getkmscryptokeyversion.cryptoKeyVersion.name
+///   enrolled_services {
+///     cloud_product = "all"
+///   }
 /// }
 /// ```
 /// ```java
@@ -433,8 +499,8 @@ import 'access_approval_settings_state.dart';
 /// import com.pulumi.gcp.organizations.AccessApprovalSettingsArgs;
 /// import com.pulumi.gcp.organizations.inputs.AccessApprovalSettingsEnrolledServiceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -557,24 +623,28 @@ import 'access_approval_settings_state.dart';
 /// OrganizationSettings can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization_id}}/accessApprovalSettings`
-///
 /// * `{{organization_id}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default organizations/{{organization_id}}/accessApprovalSettings
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default {{organization_id}}
 /// ```
 class AccessApprovalSettings extends pulumi.CustomResource {
   /// The asymmetric crypto key version to use for signing approval requests.
-  /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+  /// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
   late final pulumi.Output<String?> activeKeyVersion;
   /// This field will always be unset for the organization since organizations do not have ancestors.
   late final pulumi.Output<bool> ancestorHasActiveKeyVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// This field will always be unset for the organization since organizations do not have ancestors.
   late final pulumi.Output<bool> enrolledAncestor;
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -583,7 +653,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
   /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> enrolledServices;
-  /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+  /// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
   /// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
   /// correct permissions on it, etc.).
   late final pulumi.Output<bool> invalidKeyVersion;
@@ -612,6 +682,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
     enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
     invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');
@@ -645,6 +716,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
     enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
     invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');

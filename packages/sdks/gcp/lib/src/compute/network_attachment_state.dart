@@ -13,6 +13,13 @@ class NetworkAttachmentState {
   final pulumi.Input<String>? connectionPreference;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Fingerprint of this resource. A hash of the contents stored in this object. This
@@ -45,6 +52,7 @@ class NetworkAttachmentState {
   /// [connectionEndpoints] An array of connections for all the producers connected to this network attachment.
   /// [connectionPreference] The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [fingerprint] Fingerprint of this resource. A hash of the contents stored in this object. This
   /// [kind] Type of the resource.
@@ -61,6 +69,7 @@ class NetworkAttachmentState {
     this.connectionEndpoints,
     this.connectionPreference,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.kind,
@@ -80,6 +89,7 @@ class NetworkAttachmentState {
       'connectionEndpoints': ?pulumi.Input.mapOptionalInputValue<List<NetworkAttachmentConnectionEndpoint>, List<Map<String, dynamic>>>(connectionEndpoints, (value) => pulumi.Input.encodeList<NetworkAttachmentConnectionEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectionPreference': ?connectionPreference,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'kind': ?kind,
@@ -100,6 +110,7 @@ class NetworkAttachmentState {
       connectionEndpoints: (() { final guardedValue = map['connectionEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(guardedValue, (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectionPreference: (() { final guardedValue = map['connectionPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -115,4 +126,3 @@ class NetworkAttachmentState {
     );
   }
 }
-

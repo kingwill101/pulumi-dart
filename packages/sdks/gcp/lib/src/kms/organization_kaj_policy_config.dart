@@ -3,6 +3,22 @@ import 'organization_kaj_policy_config_args.dart';
 import 'organization_kaj_policy_config_default_key_access_justification_policy.dart';
 import 'organization_kaj_policy_config_state.dart';
 
+/// `OrganizationKajPolicyConfig` is a organization-level singleton resource
+/// used to configure the default KAJ policy of newly created key.
+///
+/// &gt; **Note:** OrganizationKajPolicyConfig cannot be deleted from Google Cloud Platform.
+/// Destroying a Terraform-managed OrganizationKajPolicyConfig will remove it from state but
+/// *will not delete the resource from Google Cloud Platform.*
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+/// To get more information about OrganizationKajPolicyConfig, see:
+///
+/// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+/// * How-to Guides
+/// * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+///
 /// ## Example Usage
 ///
 /// ### Kms Organization Kaj Policy Config Basic
@@ -85,6 +101,22 @@ import 'organization_kaj_policy_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_organizationkajpolicyconfig" "example" {
+///   organization = "123456789"
+///   default_key_access_justification_policy = {
+///     allowed_access_reasons = ["CUSTOMER_INITIATED_ACCESS", "GOOGLE_INITIATED_SYSTEM_OPERATION"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +126,8 @@ import 'organization_kaj_policy_config_state.dart';
 /// import com.pulumi.gcp.kms.OrganizationKajPolicyConfig;
 /// import com.pulumi.gcp.kms.OrganizationKajPolicyConfigArgs;
 /// import com.pulumi.gcp.kms.inputs.OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -137,16 +169,13 @@ import 'organization_kaj_policy_config_state.dart';
 /// OrganizationKajPolicyConfig can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/kajPolicyConfig`
-///
 /// * `{{organization}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationKajPolicyConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default organizations/{{organization}}/kajPolicyConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default {{organization}}
 /// ```
 class OrganizationKajPolicyConfig extends pulumi.CustomResource {

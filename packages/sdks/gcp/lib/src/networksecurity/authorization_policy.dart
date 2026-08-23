@@ -4,6 +4,9 @@ import 'authorization_policy_state.dart';
 
 /// AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about AuthorizationPolicy, see:
 ///
 /// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.authorizationPolicies)
@@ -131,6 +134,30 @@ import 'authorization_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_authorizationpolicy" "default" {
+///   name = "my-authorization-policy"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   action      = "ALLOW"
+///   rules {
+///     sources {
+///       principals = ["namespace/*"]
+///       ip_blocks  = ["1.2.3.0/24"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +167,9 @@ import 'authorization_policy_state.dart';
 /// import com.pulumi.gcp.networksecurity.AuthorizationPolicy;
 /// import com.pulumi.gcp.networksecurity.AuthorizationPolicyArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleSourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -366,6 +394,39 @@ import 'authorization_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_authorizationpolicy" "default" {
+///   name = "my-authorization-policy"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   action      = "ALLOW"
+///   rules {
+///     sources {
+///       principals = ["namespace/*"]
+///       ip_blocks  = ["1.2.3.0/24"]
+///     }
+///     destinations {
+///       hosts   = ["mydomain.*"]
+///       ports   = [8080]
+///       methods = ["GET"]
+///       http_header_match = {
+///         header_name = ":method"
+///         regex_match = "GET"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -375,8 +436,11 @@ import 'authorization_policy_state.dart';
 /// import com.pulumi.gcp.networksecurity.AuthorizationPolicy;
 /// import com.pulumi.gcp.networksecurity.AuthorizationPolicyArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleSourceArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleDestinationArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,22 +511,15 @@ import 'authorization_policy_state.dart';
 /// AuthorizationPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
 /// ```
 class AuthorizationPolicy extends pulumi.CustomResource {
@@ -471,13 +528,20 @@ class AuthorizationPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> action;
   /// Time the AuthorizationPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Set of label tags associated with the AuthorizationPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the authorization policy.
   /// The default value is `global`.
@@ -513,6 +577,7 @@ class AuthorizationPolicy extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -549,6 +614,7 @@ class AuthorizationPolicy extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

@@ -98,6 +98,26 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_spanner_instance" "example" {
+///   config                       = "regional-us-central1"
+///   display_name                 = "Test Spanner Instance"
+///   num_nodes                    = 2
+///   edition                      = "STANDARD"
+///   default_backup_schedule_type = "AUTOMATIC"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.spanner.Instance;
 /// import com.pulumi.gcp.spanner.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +240,24 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_spanner_instance" "example" {
+///   config           = "regional-us-central1"
+///   display_name     = "Test Spanner Instance"
+///   processing_units = 200
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +266,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.spanner.Instance;
 /// import com.pulumi.gcp.spanner.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -338,6 +376,24 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_spanner_instance" "example" {
+///   config       = "nam-eur-asia1"
+///   display_name = "Multi Regional Instance"
+///   num_nodes    = 2
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -346,8 +402,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.spanner.Instance;
 /// import com.pulumi.gcp.spanner.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,25 +443,25 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/instance:Instance default {{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
+  /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+  /// Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+  /// present in terraform except when instanceType = FREE_INSTANCE.
+  /// When autoscaling is enabled, numNodes and processingUnits are treated as,
+  /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+  /// the instance.
+  /// Structure is documented below.
   late final pulumi.Output<InstanceAutoscalingConfig?> autoscalingConfig;
   /// The name of the instance's configuration (similar but not
   /// quite the same as a region) which defines the geographic placement and
@@ -419,6 +475,13 @@ class Instance extends pulumi.CustomResource {
   /// if unset or NONE, no default backup schedule will be created for new databases within the instance.
   /// Possible values are: `NONE`, `AUTOMATIC`.
   late final pulumi.Output<String> defaultBackupScheduleType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The descriptive name for this instance as it appears in UIs. Must be
   /// unique per project and between 4 and 30 characters in length.
   late final pulumi.Output<String> displayName;
@@ -439,14 +502,18 @@ class Instance extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A unique identifier for the instance, which cannot be changed after
   /// the instance is created. The name must be between 6 and 30 characters
   /// in length.
   /// If not provided, a random string starting with `tf-` will be selected.
   late final pulumi.Output<String> name;
+  /// The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+  /// autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
   late final pulumi.Output<int> numNodes;
+  /// The number of processing units allocated to this instance. Exactly one of either num_nodes,
+  /// processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
   late final pulumi.Output<int> processingUnits;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -474,6 +541,7 @@ class Instance extends pulumi.CustomResource {
     autoscalingConfig = registerOutput<InstanceAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');
     defaultBackupScheduleType = registerOutput<String>('defaultBackupScheduleType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     edition = registerOutput<String>('edition');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -514,6 +582,7 @@ class Instance extends pulumi.CustomResource {
     autoscalingConfig = registerOutput<InstanceAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');
     defaultBackupScheduleType = registerOutput<String>('defaultBackupScheduleType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     edition = registerOutput<String>('edition');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

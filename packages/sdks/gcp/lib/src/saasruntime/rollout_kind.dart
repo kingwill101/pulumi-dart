@@ -5,6 +5,9 @@ import 'rollout_kind_state.dart';
 
 /// A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 ///
 /// ## Example Usage
 ///
@@ -131,7 +134,7 @@ import 'rollout_kind_state.dart';
 /// 		exampleUnitkind, err := saasruntime.NewUnitKind(ctx, "example_unitkind", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("global"),
 /// 			UnitKindId: pulumi.String("example-unitkind"),
-/// 			Saas:       exampleSaas.ID(),
+/// 			Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -139,7 +142,7 @@ import 'rollout_kind_state.dart';
 /// 		_, err = saasruntime.NewRolloutKind(ctx, "example", &saasruntime.RolloutKindArgs{
 /// 			Location:                     pulumi.String("global"),
 /// 			RolloutKindId:                pulumi.String("example-rolloutkind"),
-/// 			UnitKind:                     exampleUnitkind.ID(),
+/// 			UnitKind:                     exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
 /// 			RolloutOrchestrationStrategy: pulumi.String("Google.Cloud.Simple.OneLocationAtATime"),
 /// 			ErrorBudget: &saasruntime.RolloutKindErrorBudgetArgs{
 /// 				AllowedCount: pulumi.Int(1),
@@ -151,6 +154,38 @@ import 'rollout_kind_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_saasruntime_saas" "example_saas" {
+///   saas_id  = "example-saas"
+///   location = "global"
+///   locations {
+///     name = "us-central1"
+///   }
+/// }
+/// resource "gcp_saasruntime_unitkind" "example_unitkind" {
+///   location     = "global"
+///   unit_kind_id = "example-unitkind"
+///   saas         = gcp_saasruntime_saas.example_saas.id
+/// }
+/// resource "gcp_saasruntime_rolloutkind" "example" {
+///   location                       = "global"
+///   rollout_kind_id                = "example-rolloutkind"
+///   unit_kind                      = gcp_saasruntime_unitkind.example_unitkind.id
+///   rollout_orchestration_strategy = "Google.Cloud.Simple.OneLocationAtATime"
+///   error_budget = {
+///     allowed_count = 1
+///   }
+///   unit_filter = "unit.labels['key1'] == 'value1'"
 /// }
 /// ```
 /// ```java
@@ -167,8 +202,8 @@ import 'rollout_kind_state.dart';
 /// import com.pulumi.gcp.saasruntime.RolloutKind;
 /// import com.pulumi.gcp.saasruntime.RolloutKindArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.RolloutKindErrorBudgetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,22 +278,15 @@ import 'rollout_kind_state.dart';
 /// RolloutKind can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}`
-///
 /// * `{{project}}/{{location}}/{{rollout_kind_id}}`
-///
 /// * `{{location}}/{{rollout_kind_id}}`
+///
 ///
 /// When using the `pulumi import` command, RolloutKind can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{project}}/{{location}}/{{rollout_kind_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{location}}/{{rollout_kind_id}}
 /// ```
 class RolloutKind extends pulumi.CustomResource {
@@ -267,21 +295,29 @@ class RolloutKind extends pulumi.CustomResource {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The configuration for error budget. If the number of failed units exceeds
-  /// max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+  /// max(allowed_count, allowedRatio * total_units), the rollout will be paused.
   /// Structure is documented below.
   late final pulumi.Output<RolloutKindErrorBudget?> errorBudget;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -346,6 +382,7 @@ class RolloutKind extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     errorBudget = registerOutput<RolloutKindErrorBudget?>('errorBudget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutKindErrorBudget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -388,6 +425,7 @@ class RolloutKind extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     errorBudget = registerOutput<RolloutKindErrorBudget?>('errorBudget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutKindErrorBudget.fromMap((guardedValue as Map).cast<String, dynamic>()); });

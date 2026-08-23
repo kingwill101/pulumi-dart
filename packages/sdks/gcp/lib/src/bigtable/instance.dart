@@ -2,14 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
 import 'instance_state.dart';
 
-/// ## subcategory: "Cloud Bigtable"
-///
-/// description: |-
-/// Creates a Google Bigtable instance.
-/// ---
-///
-/// # gcp.bigtable.Instance
-///
 /// Creates a Google Bigtable instance. For more information see:
 ///
 /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
@@ -110,6 +102,27 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "production-instance" {
+///   name = "tf-instance"
+///   clusters {
+///     cluster_id   = "tf-instance-cluster"
+///     num_nodes    = 1
+///     storage_type = "HDD"
+///   }
+///   labels = {
+///     "my-label" = "prod-label"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +132,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.bigtable.Instance;
 /// import com.pulumi.gcp.bigtable.InstanceArgs;
 /// import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -302,6 +315,38 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "production-instance" {
+///   name = "tf-instance"
+///   clusters {
+///     cluster_id   = "tf-instance-cluster1"
+///     num_nodes    = 1
+///     storage_type = "HDD"
+///     zone         = "us-central1-c"
+///   }
+///   clusters {
+///     cluster_id   = "tf-instance-cluster2"
+///     storage_type = "HDD"
+///     zone         = "us-central1-b"
+///     autoscaling_config = {
+///       min_nodes  = 1
+///       max_nodes  = 3
+///       cpu_target = 50
+///     }
+///   }
+///   labels = {
+///     "my-label" = "prod-label"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -312,8 +357,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.bigtable.InstanceArgs;
 /// import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
 /// import com.pulumi.gcp.bigtable.inputs.InstanceClusterAutoscalingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,22 +423,15 @@ import 'instance_state.dart';
 /// Bigtable Instances can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Bigtable Instances can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigtable/instance:Instance default projects/{{project}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/instance:Instance default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/instance:Instance default {{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -403,16 +441,25 @@ class Instance extends pulumi.CustomResource {
   ///
   /// -----
   late final pulumi.Output<List<Map<String, dynamic>>> clusters;
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
   /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
   late final pulumi.Output<bool?> deletionProtection;
   /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
   late final pulumi.Output<String> displayName;
-  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
   ///
   /// -----
+  late final pulumi.Output<String?> edition;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-  /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+  /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
   late final pulumi.Output<bool?> forceDestroy;
   /// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
   /// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -432,6 +479,8 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -448,8 +497,10 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusters = registerOutput<List<Map<String, dynamic>>>('clusters');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String>('displayName');
+    edition = registerOutput<String?>('edition');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     instanceType = registerOutput<String?>('instanceType');
@@ -457,6 +508,7 @@ class Instance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -483,8 +535,10 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusters = registerOutput<List<Map<String, dynamic>>>('clusters');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String>('displayName');
+    edition = registerOutput<String?>('edition');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     instanceType = registerOutput<String?>('instanceType');
@@ -492,5 +546,6 @@ class Instance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

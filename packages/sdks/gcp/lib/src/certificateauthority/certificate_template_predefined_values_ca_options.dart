@@ -9,11 +9,11 @@ class CertificateTemplatePredefinedValuesCaOptions {
   /// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
   final pulumi.Input<int>? maxIssuerPathLength;
   /// Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
-  /// If both `is_ca` and `null_ca` are unset, the "CA" in Basic Constraints extension will be set to false.
-  /// Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+  /// If both `isCa` and `nullCa` are unset, the "CA" in Basic Constraints extension will be set to false.
+  /// Note that the behavior when `isCa = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
   final pulumi.Input<bool>? nullCa;
   /// Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-  /// if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+  /// if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
   /// the max path length will be omitted from the CA certificate.
   final pulumi.Input<bool>? zeroMaxIssuerPathLength;
 
@@ -47,4 +47,3 @@ class CertificateTemplatePredefinedValuesCaOptions {
     );
   }
 }
-

@@ -4,6 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering InstanceGroupMembership resources.
 class InstanceGroupMembershipState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An instance being added to the InstanceGroup
   final pulumi.Input<String>? instance;
   /// Represents an Instance Group resource name that the instance belongs to.
@@ -15,11 +22,13 @@ class InstanceGroupMembershipState {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [InstanceGroupMembershipState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [instance] An instance being added to the InstanceGroup
   /// [instanceGroup] Represents an Instance Group resource name that the instance belongs to.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the instance group resides.
   const InstanceGroupMembershipState({
+    this.deletionPolicy,
     this.instance,
     this.instanceGroup,
     this.project,
@@ -28,6 +37,7 @@ class InstanceGroupMembershipState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'instance': ?instance,
       'instanceGroup': ?instanceGroup,
       'project': ?project,
@@ -37,6 +47,7 @@ class InstanceGroupMembershipState {
 
   factory InstanceGroupMembershipState.fromMap(Map<String, dynamic> map) {
     return InstanceGroupMembershipState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceGroup: (() { final guardedValue = map['instanceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -44,4 +55,3 @@ class InstanceGroupMembershipState {
     );
   }
 }
-

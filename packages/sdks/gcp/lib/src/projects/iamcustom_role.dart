@@ -98,6 +98,22 @@ import 'iamcustom_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_iamcustomrole" "my-custom-role" {
+///   role_id     = "myCustomRole"
+///   title       = "My Custom Role"
+///   description = "A description"
+///   permissions = ["iam.roles.list", "iam.roles.create", "iam.roles.delete"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +122,8 @@ import 'iamcustom_role_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.IAMCustomRole;
 /// import com.pulumi.gcp.projects.IAMCustomRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,34 +161,16 @@ import 'iamcustom_role_state.dart';
 ///         - iam.roles.create
 ///         - iam.roles.delete
 /// ```
-///
-///
-/// ## Import
-///
-/// Custom Roles can be imported using any of these accepted formats:
-///
-/// * `projects/{{project}}/roles/{{role_id}}`
-///
-/// * `{{project}}/{{role_id}}`
-///
-/// * `{{role_id}}`
-///
-/// When using the `pulumi import` command, Custom Roles can be imported using one of the formats above. For example:
-///
-/// ```sh
-/// $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default projects/{{project}}/roles/{{role_id}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default {{project}}/{{role_id}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default {{role_id}}
-/// ```
 class IAMCustomRole extends pulumi.CustomResource {
   /// (Optional) The current deleted state of the role.
   late final pulumi.Output<bool> deleted;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description for the role.
   late final pulumi.Output<String?> description;
   /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
@@ -206,6 +204,7 @@ class IAMCustomRole extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deleted = registerOutput<bool>('deleted');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     permissions = registerOutput<List<String>>('permissions');
@@ -239,6 +238,7 @@ class IAMCustomRole extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deleted = registerOutput<bool>('deleted');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     permissions = registerOutput<List<String>>('permissions');

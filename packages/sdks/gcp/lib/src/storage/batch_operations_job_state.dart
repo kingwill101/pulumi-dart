@@ -21,6 +21,15 @@ class BatchOperationsJobState {
   final pulumi.Input<BatchOperationsJobDeleteObject>? deleteObject;
   /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
   final pulumi.Input<bool>? deleteProtection;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+  final pulumi.Input<String>? description;
   /// The ID of the job.
   final pulumi.Input<String>? jobId;
   /// The ID of the project in which the resource belongs.
@@ -48,6 +57,8 @@ class BatchOperationsJobState {
   /// [createTime] The timestamp at which this storage batch operation was created.
   /// [deleteObject] allows batch operations to delete objects in bucket
   /// [deleteProtection] If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [description] A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
   /// [jobId] The ID of the job.
   /// [project] The ID of the project in which the resource belongs.
   /// [putMetadata] allows batch operations to update metadata for objects in bucket
@@ -62,6 +73,8 @@ class BatchOperationsJobState {
     this.createTime,
     this.deleteObject,
     this.deleteProtection,
+    this.deletionPolicy,
+    this.description,
     this.jobId,
     this.project,
     this.putMetadata,
@@ -79,6 +92,8 @@ class BatchOperationsJobState {
       'createTime': ?createTime,
       'deleteObject': ?pulumi.Input.mapOptionalInputValue<BatchOperationsJobDeleteObject, Map<String, dynamic>>(deleteObject, (value) => value.toMap()),
       'deleteProtection': ?deleteProtection,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
       'jobId': ?jobId,
       'project': ?project,
       'putMetadata': ?pulumi.Input.mapOptionalInputValue<BatchOperationsJobPutMetadata, Map<String, dynamic>>(putMetadata, (value) => value.toMap()),
@@ -97,6 +112,8 @@ class BatchOperationsJobState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteObject: (() { final guardedValue = map['deleteObject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchOperationsJobDeleteObject.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deleteProtection: (() { final guardedValue = map['deleteProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobId: (() { final guardedValue = map['jobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       putMetadata: (() { final guardedValue = map['putMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchOperationsJobPutMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -108,4 +125,3 @@ class BatchOperationsJobState {
     );
   }
 }
-

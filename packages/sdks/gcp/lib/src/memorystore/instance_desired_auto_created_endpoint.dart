@@ -8,7 +8,7 @@ class InstanceDesiredAutoCreatedEndpoint {
   /// projects/{project_id}/global/networks/{network_id}.
   final pulumi.Input<String> network;
   /// (Output)
-  /// Output only. The consumer project_id where the forwarding rule is created from.
+  /// Output only. The consumer projectId where the forwarding rule is created from.
   final pulumi.Input<String> projectId;
 
   /// Creates a new [InstanceDesiredAutoCreatedEndpoint].
@@ -33,4 +33,3 @@ class InstanceDesiredAutoCreatedEndpoint {
     );
   }
 }
-

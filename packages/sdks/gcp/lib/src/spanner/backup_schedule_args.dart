@@ -11,6 +11,13 @@ import 'backup_schedule_spec.dart';
 class BackupScheduleArgs {
   /// The database to create the backup schedule on.
   final pulumi.Input<String> database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Configuration for the encryption of the backup schedule.
   /// Structure is documented below.
   final pulumi.Input<BackupScheduleEncryptionConfig>? encryptionConfig;
@@ -36,6 +43,7 @@ class BackupScheduleArgs {
 
   /// Creates a new [BackupScheduleArgs].
   /// [database] The database to create the backup schedule on.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [encryptionConfig] Configuration for the encryption of the backup schedule.
   /// [fullBackupSpec] The schedule creates only full backups..
   /// [incrementalBackupSpec] The schedule creates incremental backup chains.
@@ -46,6 +54,7 @@ class BackupScheduleArgs {
   /// [spec] Defines specifications of the backup schedule.
   const BackupScheduleArgs({
     required this.database,
+    this.deletionPolicy,
     this.encryptionConfig,
     this.fullBackupSpec,
     this.incrementalBackupSpec,
@@ -59,6 +68,7 @@ class BackupScheduleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'database': database,
+      'deletionPolicy': ?deletionPolicy,
       'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<BackupScheduleEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'fullBackupSpec': ?fullBackupSpec,
       'incrementalBackupSpec': ?incrementalBackupSpec,
@@ -73,6 +83,7 @@ class BackupScheduleArgs {
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
       database: pulumi.Input.fromValue(map['database'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupScheduleEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fullBackupSpec: (() { final guardedValue = map['fullBackupSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       incrementalBackupSpec: (() { final guardedValue = map['incrementalBackupSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -84,4 +95,3 @@ class BackupScheduleArgs {
     );
   }
 }
-

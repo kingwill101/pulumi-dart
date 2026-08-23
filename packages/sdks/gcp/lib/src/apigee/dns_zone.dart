@@ -138,7 +138,7 @@ import 'dns_zone_state.dart';
 /// 			Description: pulumi.String("test"),
 /// 			PeeringConfig: &apigee.DnsZonePeeringConfigArgs{
 /// 				TargetProjectId: pulumi.String(current.Project),
-/// 				TargetNetworkId: apigeeNetwork.ID(),
+/// 				TargetNetworkId: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -146,6 +146,38 @@ import 'dns_zone_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_compute_network" "apigee_network" {
+///   name = "apigee-network"
+/// }
+/// resource "gcp_apigee_organization" "org" {
+///   description         = "Terraform-provisioned basic Apigee Org without VPC Peering."
+///   analytics_region    = "us-central1"
+///   project_id          = data.gcp_organizations_getclientconfig.current.project
+///   disable_vpc_peering = true
+/// }
+/// resource "gcp_apigee_dnszone" "apigee_dns_zone" {
+///   org_id      = apigeeOrg.id
+///   dns_zone_id = "test1"
+///   domain      = "foo.com"
+///   description = "test"
+///   peering_config = {
+///     target_project_id = data.gcp_organizations_getclientconfig.current.project
+///     target_network_id = gcp_compute_network.apigee_network.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -162,8 +194,8 @@ import 'dns_zone_state.dart';
 /// import com.pulumi.gcp.apigee.DnsZone;
 /// import com.pulumi.gcp.apigee.DnsZoneArgs;
 /// import com.pulumi.gcp.apigee.inputs.DnsZonePeeringConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,7 +221,7 @@ import 'dns_zone_state.dart';
 ///             .build());
 ///
 ///         var apigeeDnsZone = new DnsZone("apigeeDnsZone", DnsZoneArgs.builder()
-///             .orgId(apigeeOrg.id())
+///             .orgId(apigeeOrg.get("id"))
 ///             .dnsZoneId("test1")
 ///             .domain("foo.com")
 ///             .description("test")
@@ -240,19 +272,23 @@ import 'dns_zone_state.dart';
 /// DnsZone can be imported using any of these accepted formats:
 ///
 /// * `{{org_id}}/dnsZones/{{dns_zone_id}}`
-///
 /// * `{{org_id}}/{{dns_zone_id}}`
+///
 ///
 /// When using the `pulumi import` command, DnsZone can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/dnsZones/{{dns_zone_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/{{dns_zone_id}}
 /// ```
 class DnsZone extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description for the zone.
   late final pulumi.Output<String> description;
   /// ID of the dns zone.
@@ -283,6 +319,7 @@ class DnsZone extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     dnsZoneId = registerOutput<String>('dnsZoneId');
     domain = registerOutput<String>('domain');
@@ -314,6 +351,7 @@ class DnsZone extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     dnsZoneId = registerOutput<String>('dnsZoneId');
     domain = registerOutput<String>('domain');

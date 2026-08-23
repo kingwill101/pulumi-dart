@@ -6,6 +6,13 @@ import 'generator_summarization_context.dart';
 
 /// Input properties used for looking up and filtering Generator resources.
 class GeneratorState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Human readable description of the generator.
   final pulumi.Input<String>? description;
   /// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -30,6 +37,7 @@ class GeneratorState {
   final pulumi.Input<String>? triggerEvent;
 
   /// Creates a new [GeneratorState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. Human readable description of the generator.
   /// [generatorId] Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
   /// [inferenceParameter] Optional. Inference parameters for this generator.
@@ -40,6 +48,7 @@ class GeneratorState {
   /// [summarizationContext] Input of prebuilt Summarization feature.
   /// [triggerEvent] Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
   const GeneratorState({
+    this.deletionPolicy,
     this.description,
     this.generatorId,
     this.inferenceParameter,
@@ -53,6 +62,7 @@ class GeneratorState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'generatorId': ?generatorId,
       'inferenceParameter': ?pulumi.Input.mapOptionalInputValue<GeneratorInferenceParameter, Map<String, dynamic>>(inferenceParameter, (value) => value.toMap()),
@@ -67,6 +77,7 @@ class GeneratorState {
 
   factory GeneratorState.fromMap(Map<String, dynamic> map) {
     return GeneratorState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       generatorId: (() { final guardedValue = map['generatorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inferenceParameter: (() { final guardedValue = map['inferenceParameter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GeneratorInferenceParameter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -79,4 +90,3 @@ class GeneratorState {
     );
   }
 }
-

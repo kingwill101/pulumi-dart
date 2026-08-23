@@ -7,7 +7,7 @@ class RepositoryUri {
   /// API is the URI for API access.
   final pulumi.Input<String>? api;
   /// (Output)
-  /// git_https is the git HTTPS URI for git operations.
+  /// gitHttps is the git HTTPS URI for git operations.
   final pulumi.Input<String>? gitHttps;
   /// (Output)
   /// HTML is the URI for the user to view the repository in a browser.
@@ -39,4 +39,3 @@ class RepositoryUri {
     );
   }
 }
-

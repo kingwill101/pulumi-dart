@@ -3,6 +3,19 @@ import 'principal_access_boundary_policy_args.dart';
 import 'principal_access_boundary_policy_details.dart';
 import 'principal_access_boundary_policy_state.dart';
 
+/// An IAM Principal Access Boundary Policy resource. This resource has no effect on accesses until is bound to a target through policy bindings.
+/// You can see further documentation on policy bindings in:
+/// - [Organizations](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_organizations_policy_binding)
+/// - [Folders](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_folders_policy_binding)
+/// - [Projects](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_projects_policy_binding)
+///
+///
+/// To get more information about PrincipalAccessBoundaryPolicy, see:
+///
+/// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+/// * How-to Guides
+/// * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+///
 /// ## Example Usage
 ///
 /// ### Iam Principal Access Boundary Policy
@@ -71,6 +84,22 @@ import 'principal_access_boundary_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_principalaccessboundarypolicy" "pab-policy-for-org" {
+///   organization                        = "123456789"
+///   location                            = "global"
+///   display_name                        = "PAB policy for Organization"
+///   principal_access_boundary_policy_id = "pab-policy-for-org"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +108,8 @@ import 'principal_access_boundary_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicy;
 /// import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,6 +300,41 @@ import 'principal_access_boundary_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_principalaccessboundarypolicy" "pab_policy" {
+///   organization                        = "123456789"
+///   location                            = "global"
+///   display_name                        = "Binding for all principals in the Organization"
+///   principal_access_boundary_policy_id = "my-pab-policy"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_iam_principalaccessboundarypolicy.pab_policy]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_iam_organizationspolicybinding" "my-pab-policy" {
+///   depends_on        = [time_sleep.wait_60_seconds]
+///   organization      = "123456789"
+///   location          = "global"
+///   display_name      = "Binding for all principals in the Organization"
+///   policy_kind       = "PRINCIPAL_ACCESS_BOUNDARY"
+///   policy_binding_id = "binding-for-all-org-principals"
+///   policy            ="organizations/123456789/locations/global/principalAccessBoundaryPolicies/${gcp_iam_principalaccessboundarypolicy.pab_policy.principal_access_boundary_policy_id}"
+///   target = {
+///     principal_set = "//cloudresourcemanager.googleapis.com/organizations/123456789"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +349,8 @@ import 'principal_access_boundary_policy_state.dart';
 /// import com.pulumi.gcp.iam.OrganizationsPolicyBindingArgs;
 /// import com.pulumi.gcp.iam.inputs.OrganizationsPolicyBindingTargetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -368,16 +432,13 @@ import 'principal_access_boundary_policy_state.dart';
 /// PrincipalAccessBoundaryPolicy can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}`
-///
 /// * `{{organization}}/{{location}}/{{principal_access_boundary_policy_id}}`
+///
 ///
 /// When using the `pulumi import` command, PrincipalAccessBoundaryPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
 /// ```
 class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
@@ -385,15 +446,23 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
   /// for more details such as format and size limitations
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Output only. The time when the principal access boundary policy was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Principal access boundary policy details
   /// Structure is documented below.
   late final pulumi.Output<PrincipalAccessBoundaryPolicyDetails> details;
   /// The description of the principal access boundary policy. Must be less than or equal to 63 characters.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
   late final pulumi.Output<String> etag;
@@ -428,6 +497,7 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     details = registerOutput<PrincipalAccessBoundaryPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalAccessBoundaryPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -465,6 +535,7 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     details = registerOutput<PrincipalAccessBoundaryPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalAccessBoundaryPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

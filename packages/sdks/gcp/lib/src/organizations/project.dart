@@ -14,7 +14,7 @@ import 'project_state.dart';
 ///
 /// &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
 ///
-/// &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
+/// &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
 ///
 /// &gt; It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
 ///
@@ -85,6 +85,21 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name       = "My Project"
+///   project_id = "your-project-id"
+///   org_id     = "1234567"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +108,8 @@ import 'project_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.Project;
 /// import com.pulumi.gcp.organizations.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,6 +223,25 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project-in-a-folder" {
+///   name       = "My Project"
+///   project_id = "your-project-id"
+///   folder_id  = gcp_organizations_folder.department1.name
+/// }
+/// resource "gcp_organizations_folder" "department1" {
+///   display_name = "Department 1"
+///   parent       = "organizations/1234567"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +252,8 @@ import 'project_state.dart';
 /// import com.pulumi.gcp.organizations.FolderArgs;
 /// import com.pulumi.gcp.organizations.Project;
 /// import com.pulumi.gcp.organizations.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,6 +370,24 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "my_project" {
+///   name       = "My Project"
+///   project_id = "your-project-id"
+///   org_id     = "1234567"
+///   tags = {
+///     "1234567/env" = "staging"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +396,8 @@ import 'project_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.Project;
 /// import com.pulumi.gcp.organizations.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,9 +435,10 @@ import 'project_state.dart';
 ///
 /// ## Import
 ///
-/// Projects can be imported using the `project_id`, e.g.
+/// Projects can be imported using the `projectId`, e.g.
 ///
 /// * `{{project_id}}`
+///
 ///
 /// When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
 ///
@@ -393,20 +446,29 @@ import 'project_state.dart';
 /// $ pulumi import gcp:organizations/project:Project default {{project_id}}
 /// ```
 class Project extends pulumi.CustomResource {
-  /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+  /// Controls whether the 'default' network exists on the project. Defaults
+  /// to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+  /// will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+  /// network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+  /// `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+  /// with the GCE API and currently leaves it enabled.
   late final pulumi.Output<bool?> autoCreateNetwork;
   /// The alphanumeric ID of the billing account this project
   /// belongs to. The user or service account performing this operation with the provider
-  /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+  /// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
   /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
   /// for more details.
   late final pulumi.Output<String?> billingAccount;
-  late final pulumi.Output<String?> deletionPolicy;
+  /// The deletion policy for the Project. Setting PREVENT will protect the project
+  /// against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+  /// to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+  /// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The numeric ID of the folder this project should be
-  /// created under. Only one of `org_id` or `folder_id` may be
-  /// specified. If the `folder_id` is specified, then the project is
+  /// created under. Only one of `orgId` or `folderId` may be
+  /// specified. If the `folderId` is specified, then the project is
   /// created under the specified folder. Changing this forces the
   /// project to be migrated to the newly specified folder.
   late final pulumi.Output<String?> folderId;
@@ -420,14 +482,14 @@ class Project extends pulumi.CustomResource {
   late final pulumi.Output<String> number;
   /// The numeric ID of the organization this project belongs to.
   /// Changing this forces a new project to be created.  Only one of
-  /// `org_id` or `folder_id` may be specified. If the `org_id` is
+  /// `orgId` or `folderId` may be specified. If the `orgId` is
   /// specified then the project is created at the top level. Changing
   /// this forces the project to be migrated to the newly specified
   /// organization.
   late final pulumi.Output<String?> orgId;
   /// The project ID. Changing this forces a new project to be created.
   late final pulumi.Output<String> projectId;
-  /// The combination of labels configured directly on the resource and default labels configured on the provider.
+  /// (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -448,7 +510,7 @@ class Project extends pulumi.CustomResource {
         ) {
     autoCreateNetwork = registerOutput<bool?>('autoCreateNetwork');
     billingAccount = registerOutput<String?>('billingAccount');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     folderId = registerOutput<String?>('folderId');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -485,7 +547,7 @@ class Project extends pulumi.CustomResource {
         ) {
     autoCreateNetwork = registerOutput<bool?>('autoCreateNetwork');
     billingAccount = registerOutput<String?>('billingAccount');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     folderId = registerOutput<String?>('folderId');
     labels = registerOutput<Map<String, String>?>('labels');

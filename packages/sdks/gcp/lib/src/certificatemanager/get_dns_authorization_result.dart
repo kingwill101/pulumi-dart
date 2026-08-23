@@ -5,6 +5,7 @@ import 'get_dns_authorization_dns_resource_record.dart';
 
 /// Result data returned by getDnsAuthorization.
 class GetDnsAuthorizationResult {
+  final String deletionPolicy;
   final String description;
   final List<GetDnsAuthorizationDnsResourceRecord> dnsResourceRecords;
   final String domain;
@@ -19,6 +20,7 @@ class GetDnsAuthorizationResult {
   final String type;
 
   /// Creates a new [GetDnsAuthorizationResult].
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [dnsResourceRecords] Required.
   /// [domain] Required.
@@ -31,6 +33,7 @@ class GetDnsAuthorizationResult {
   /// [pulumiLabels] Required.
   /// [type] Required.
   const GetDnsAuthorizationResult({
+    required this.deletionPolicy,
     required this.description,
     required this.dnsResourceRecords,
     required this.domain,
@@ -46,6 +49,7 @@ class GetDnsAuthorizationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'dnsResourceRecords': pulumi.Input.encodeList<GetDnsAuthorizationDnsResourceRecord, Map<String, dynamic>>(dnsResourceRecords, (value) => value.toMap()),
       'domain': domain,
@@ -62,6 +66,7 @@ class GetDnsAuthorizationResult {
 
   factory GetDnsAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       dnsResourceRecords: pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(map['dnsResourceRecords']!, (value) => GetDnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())),
       domain: map['domain'] as String,
@@ -76,4 +81,3 @@ class GetDnsAuthorizationResult {
     );
   }
 }
-

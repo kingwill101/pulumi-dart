@@ -10,6 +10,13 @@ import 'policy_based_route_virtual_machine.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkconnectivity_policy_based_route_policy_based_route_args_doc}
 class PolicyBasedRouteArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// The filter to match L4 traffic.
@@ -21,7 +28,7 @@ class PolicyBasedRouteArgs {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the policy based route.
   final pulumi.Input<String>? name;
@@ -42,6 +49,7 @@ class PolicyBasedRouteArgs {
   final pulumi.Input<PolicyBasedRouteVirtualMachine>? virtualMachine;
 
   /// Creates a new [PolicyBasedRouteArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [filter] The filter to match L4 traffic.
   /// [interconnectAttachment] The interconnect attachments that this policy-based route applies to.
@@ -54,6 +62,7 @@ class PolicyBasedRouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [virtualMachine] VM instances to which this policy-based route applies to.
   const PolicyBasedRouteArgs({
+    this.deletionPolicy,
     this.description,
     required this.filter,
     this.interconnectAttachment,
@@ -69,6 +78,7 @@ class PolicyBasedRouteArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'filter': pulumi.Input.mapInputValue<PolicyBasedRouteFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'interconnectAttachment': ?pulumi.Input.mapOptionalInputValue<PolicyBasedRouteInterconnectAttachment, Map<String, dynamic>>(interconnectAttachment, (value) => value.toMap()),
@@ -85,6 +95,7 @@ class PolicyBasedRouteArgs {
 
   factory PolicyBasedRouteArgs.fromMap(Map<String, dynamic> map) {
     return PolicyBasedRouteArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: pulumi.Input.fromValue(PolicyBasedRouteFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())),
       interconnectAttachment: (() { final guardedValue = map['interconnectAttachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyBasedRouteInterconnectAttachment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -99,4 +110,3 @@ class PolicyBasedRouteArgs {
     );
   }
 }
-

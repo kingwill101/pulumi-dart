@@ -13,7 +13,7 @@ import 'network_endpoint_list_state.dart';
 ///
 /// &gt; **NOTE** In case the Endpoint's Instance is recreated, it's needed to
 /// perform `apply` twice. To avoid situations like this, please use this resource
-/// with the lifecycle `replace_triggered_by` method, with the passed Instance's ID.
+/// with the lifecycle `replaceTriggeredBy` method, with the passed Instance's ID.
 ///
 ///
 /// To get more information about NetworkEndpoints, see:
@@ -77,13 +77,13 @@ import 'network_endpoint_list_state.dart';
 ///     networkEndpoints: [
 ///         {
 ///             instance: endpoint_instance1.name,
-///             port: neg.defaultPort,
-///             ipAddress: endpoint_instance1.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+///             port: Number(neg.defaultPort),
+///             ipAddress: endpoint_instance1.networkInterfaces[0].networkIp,
 ///         },
 ///         {
 ///             instance: endpoint_instance2.name,
-///             port: neg.defaultPort,
-///             ipAddress: endpoint_instance2.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+///             port: Number(neg.defaultPort),
+///             ipAddress: endpoint_instance2.networkInterfaces[0].networkIp,
 ///         },
 ///     ],
 /// });
@@ -138,12 +138,12 @@ import 'network_endpoint_list_state.dart';
 ///     network_endpoints=[
 ///         {
 ///             "instance": endpoint_instance1.name,
-///             "port": neg["defaultPort"],
+///             "port": int(neg["defaultPort"]),
 ///             "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
 ///         },
 ///         {
 ///             "instance": endpoint_instance2.name,
-///             "port": neg["defaultPort"],
+///             "port": int(neg["defaultPort"]),
 ///             "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
 ///         },
 ///     ])
@@ -238,13 +238,13 @@ import 'network_endpoint_list_state.dart';
 ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
 ///             {
 ///                 Instance = endpoint_instance1.Name,
-///                 Port = neg.DefaultPort,
+///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
 ///                 IpAddress = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///             },
 ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
 ///             {
 ///                 Instance = endpoint_instance2.Name,
-///                 Port = neg.DefaultPort,
+///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
 ///                 IpAddress = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///             },
 ///         },
@@ -289,7 +289,7 @@ import 'network_endpoint_list_state.dart';
 /// 			Name:        pulumi.String("neg-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.1/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -300,7 +300,7 @@ import 'network_endpoint_list_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("endpoint-instance1"),
@@ -320,7 +320,7 @@ import 'network_endpoint_list_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID(),
+/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("endpoint-instance2"),
@@ -341,14 +341,14 @@ import 'network_endpoint_list_state.dart';
 /// 					Instance: endpoint_instance1.Name,
 /// 					Port:     pulumi.Any(neg.DefaultPort),
 /// 					IpAddress: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-/// 						return &networkInterfaces[0].NetworkIp, nil
+/// 						return networkInterfaces[0].NetworkIp, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 				},
 /// 				&compute.NetworkEndpointListNetworkEndpointArgs{
 /// 					Instance: endpoint_instance2.Name,
 /// 					Port:     pulumi.Any(neg.DefaultPort),
 /// 					IpAddress: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-/// 						return &networkInterfaces[0].NetworkIp, nil
+/// 						return networkInterfaces[0].NetworkIp, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 				},
 /// 			},
@@ -358,8 +358,8 @@ import 'network_endpoint_list_state.dart';
 /// 		}
 /// 		_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
 /// 			Name:        pulumi.String("my-lb-neg"),
-/// 			Network:     _default.ID(),
-/// 			Subnetwork:  defaultSubnetwork.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultPort: pulumi.Int(90),
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 		})
@@ -368,6 +368,79 @@ import 'network_endpoint_list_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_networkendpointlist" "default-endpoints" {
+///   network_endpoint_group = neg.name
+///   network_endpoints {
+///     instance   = gcp_compute_instance.endpoint-instance1.name
+///     port       = neg.defaultPort
+///     ip_address = gcp_compute_instance.endpoint-instance1.network_interfaces[0].network_ip
+///   }
+///   network_endpoints {
+///     instance   = gcp_compute_instance.endpoint-instance2.name
+///     port       = neg.defaultPort
+///     ip_address = gcp_compute_instance.endpoint-instance2.network_interfaces[0].network_ip
+///   }
+/// }
+/// resource "gcp_compute_instance" "endpoint-instance1" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   name         = "endpoint-instance1"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+/// }
+/// resource "gcp_compute_instance" "endpoint-instance2" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   name         = "endpoint-instance2"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+/// }
+/// resource "gcp_compute_networkendpointgroup" "group" {
+///   name         = "my-lb-neg"
+///   network      = gcp_compute_network.default.id
+///   subnetwork   = gcp_compute_subnetwork.default.id
+///   default_port = "90"
+///   zone         = "us-central1-a"
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "neg-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "neg-subnetwork"
+///   ip_cidr_range = "10.0.0.1/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -385,6 +458,7 @@ import 'network_endpoint_list_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpointList;
@@ -392,8 +466,8 @@ import 'network_endpoint_list_state.dart';
 /// import com.pulumi.gcp.compute.inputs.NetworkEndpointListNetworkEndpointArgs;
 /// import com.pulumi.gcp.compute.NetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -453,17 +527,17 @@ import 'network_endpoint_list_state.dart';
 ///             .build());
 ///
 ///         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()
-///             .networkEndpointGroup(neg.name())
+///             .networkEndpointGroup(neg.get("name"))
 ///             .networkEndpoints(
 ///                 NetworkEndpointListNetworkEndpointArgs.builder()
 ///                     .instance(endpoint_instance1.name())
-///                     .port(neg.defaultPort())
-///                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+///                     .port(((Number) neg.get("defaultPort")).intValue())
+///                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///                     .build(),
 ///                 NetworkEndpointListNetworkEndpointArgs.builder()
 ///                     .instance(endpoint_instance2.name())
-///                     .port(neg.defaultPort())
-///                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+///                     .port(((Number) neg.get("defaultPort")).intValue())
+///                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///                     .build())
 ///             .build());
 ///
@@ -551,31 +625,27 @@ import 'network_endpoint_list_state.dart';
 /// NetworkEndpoints can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
-///
 /// * `{{project}}/{{zone}}/{{network_endpoint_group}}`
-///
 /// * `{{zone}}/{{network_endpoint_group}}`
-///
 /// * `{{network_endpoint_group}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{project}}/{{zone}}/{{network_endpoint_group}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
 /// ```
 class NetworkEndpointList extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The network endpoint group these endpoints are part of.
   late final pulumi.Output<String> networkEndpointGroup;
   /// The network endpoints to be added to the enclosing network endpoint group
@@ -603,6 +673,7 @@ class NetworkEndpointList extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
     networkEndpoints = registerOutput<List<Map<String, dynamic>>?>('networkEndpoints');
     project = registerOutput<String>('project');
@@ -632,6 +703,7 @@ class NetworkEndpointList extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
     networkEndpoints = registerOutput<List<Map<String, dynamic>>?>('networkEndpoints');
     project = registerOutput<String>('project');

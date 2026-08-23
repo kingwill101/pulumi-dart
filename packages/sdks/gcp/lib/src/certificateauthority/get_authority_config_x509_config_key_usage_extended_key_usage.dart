@@ -54,4 +54,3 @@ class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
     );
   }
 }
-

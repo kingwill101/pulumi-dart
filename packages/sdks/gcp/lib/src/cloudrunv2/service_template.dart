@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_template_container.dart';
 import 'service_template_node_selector.dart';
+import 'service_template_sandboxes.dart';
 import 'service_template_scaling.dart';
 import 'service_template_service_mesh.dart';
 import 'service_template_volume.dart';
@@ -39,11 +40,15 @@ class ServiceTemplate {
   final pulumi.Input<ServiceTemplateNodeSelector>? nodeSelector;
   /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
   final pulumi.Input<String>? revision;
+  /// Configuration for sandboxes.
+  /// Structure is documented below.
+  final pulumi.Input<ServiceTemplateSandboxes>? sandboxes;
   /// Scaling settings for this Revision.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateScaling>? scaling;
   /// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   final pulumi.Input<String>? serviceAccount;
+  /// (Optional, Beta)
   /// Enables Cloud Service Mesh for this Revision.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateServiceMesh>? serviceMesh;
@@ -70,9 +75,10 @@ class ServiceTemplate {
   /// [maxInstanceRequestConcurrency] Sets the maximum number of requests that each serving instance can receive.
   /// [nodeSelector] Node Selector describes the hardware requirements of the resources.
   /// [revision] The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+  /// [sandboxes] Configuration for sandboxes.
   /// [scaling] Scaling settings for this Revision.
   /// [serviceAccount] Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-  /// [serviceMesh] Enables Cloud Service Mesh for this Revision.
+  /// [serviceMesh] (Optional, Beta)
   /// [sessionAffinity] Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
   /// [timeout] Max allowed time for an instance to respond to a request.
   /// [volumes] A list of Volumes to make available to containers.
@@ -88,6 +94,7 @@ class ServiceTemplate {
     this.maxInstanceRequestConcurrency,
     this.nodeSelector,
     this.revision,
+    this.sandboxes,
     this.scaling,
     this.serviceAccount,
     this.serviceMesh,
@@ -109,6 +116,7 @@ class ServiceTemplate {
       'maxInstanceRequestConcurrency': ?maxInstanceRequestConcurrency,
       'nodeSelector': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateNodeSelector, Map<String, dynamic>>(nodeSelector, (value) => value.toMap()),
       'revision': ?revision,
+      'sandboxes': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSandboxes, Map<String, dynamic>>(sandboxes, (value) => value.toMap()),
       'scaling': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateScaling, Map<String, dynamic>>(scaling, (value) => value.toMap()),
       'serviceAccount': ?serviceAccount,
       'serviceMesh': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateServiceMesh, Map<String, dynamic>>(serviceMesh, (value) => value.toMap()),
@@ -131,6 +139,7 @@ class ServiceTemplate {
       maxInstanceRequestConcurrency: (() { final guardedValue = map['maxInstanceRequestConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       nodeSelector: (() { final guardedValue = map['nodeSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateNodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sandboxes: (() { final guardedValue = map['sandboxes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSandboxes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scaling: (() { final guardedValue = map['scaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceMesh: (() { final guardedValue = map['serviceMesh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateServiceMesh.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -141,4 +150,3 @@ class ServiceTemplate {
     );
   }
 }
-

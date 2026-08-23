@@ -260,7 +260,7 @@ import 'manged_ssl_certificate_state.dart';
 /// 			PortName:     pulumi.String("http"),
 /// 			Protocol:     pulumi.String("HTTP"),
 /// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -268,7 +268,7 @@ import 'manged_ssl_certificate_state.dart';
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("url-map"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: defaultBackendService.ID(),
+/// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
 /// 				&compute.URLMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -280,13 +280,13 @@ import 'manged_ssl_certificate_state.dart';
 /// 			PathMatchers: compute.URLMapPathMatcherArray{
 /// 				&compute.URLMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: defaultBackendService.ID(),
+/// 					DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
 /// 						&compute.URLMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/*"),
 /// 							},
-/// 							Service: defaultBackendService.ID(),
+/// 							Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -297,9 +297,9 @@ import 'manged_ssl_certificate_state.dart';
 /// 		}
 /// 		defaultTargetHttpsProxy, err := compute.NewTargetHttpsProxy(ctx, "default", &compute.TargetHttpsProxyArgs{
 /// 			Name:   pulumi.String("test-proxy"),
-/// 			UrlMap: defaultURLMap.ID(),
+/// 			UrlMap: defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 /// 			SslCertificates: pulumi.StringArray{
-/// 				_default.ID(),
+/// 				_default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -307,7 +307,7 @@ import 'manged_ssl_certificate_state.dart';
 /// 		}
 /// 		_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 /// 			Name:      pulumi.String("forwarding-rule"),
-/// 			Target:    defaultTargetHttpsProxy.ID(),
+/// 			Target:    defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
 /// 			PortRange: pulumi.String("443"),
 /// 		})
 /// 		if err != nil {
@@ -315,6 +315,62 @@ import 'manged_ssl_certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_managedsslcertificate" "default" {
+///   name = "test-cert"
+///   managed = {
+///     domains = ["sslcert.tf-test.club."]
+///   }
+/// }
+/// resource "gcp_compute_targethttpsproxy" "default" {
+///   name             = "test-proxy"
+///   url_map          = gcp_compute_urlmap.default.id
+///   ssl_certificates = [gcp_compute_managedsslcertificate.default.id]
+/// }
+/// resource "gcp_compute_urlmap" "default" {
+///   name            = "url-map"
+///   description     = "a description"
+///   default_service = gcp_compute_backendservice.default.id
+///   host_rules {
+///     hosts        = ["sslcert.tf-test.club"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_backendservice.default.id
+///     path_rules {
+///       paths   = ["/*"]
+///       service = gcp_compute_backendservice.default.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   port_name     = "http"
+///   protocol      = "HTTP"
+///   timeout_sec   = 10
+///   health_checks = gcp_compute_httphealthcheck.default.id
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "http-health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+/// }
+/// resource "gcp_compute_globalforwardingrule" "default" {
+///   name       = "forwarding-rule"
+///   target     = gcp_compute_targethttpsproxy.default.id
+///   port_range = 443
 /// }
 /// ```
 /// ```java
@@ -334,12 +390,13 @@ import 'manged_ssl_certificate_state.dart';
 /// import com.pulumi.gcp.compute.URLMapArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.TargetHttpsProxy;
 /// import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
 /// import com.pulumi.gcp.compute.GlobalForwardingRule;
 /// import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -472,22 +529,15 @@ import 'manged_ssl_certificate_state.dart';
 /// ManagedSslCertificate can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/sslCertificates/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{name}}
 /// ```
 class MangedSslCertificate extends pulumi.CustomResource {
@@ -495,6 +545,13 @@ class MangedSslCertificate extends pulumi.CustomResource {
   late final pulumi.Output<int> certificateId;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Expire time of the certificate in RFC3339 text format.
@@ -541,6 +598,7 @@ class MangedSslCertificate extends pulumi.CustomResource {
         ) {
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
     managed = registerOutput<MangedSslCertificateManaged?>('managed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MangedSslCertificateManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -576,6 +634,7 @@ class MangedSslCertificate extends pulumi.CustomResource {
         ) {
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
     managed = registerOutput<MangedSslCertificateManaged?>('managed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MangedSslCertificateManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });

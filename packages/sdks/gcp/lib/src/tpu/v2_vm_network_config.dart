@@ -52,4 +52,3 @@ class V2VmNetworkConfig {
     );
   }
 }
-

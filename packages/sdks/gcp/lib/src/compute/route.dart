@@ -17,7 +17,7 @@ import 'route_state.dart';
 /// the route with the smallest priority value. If there is still a tie, it
 /// uses the layer three and four packet headers to select just one of the
 /// remaining matching routes. The packet is then forwarded as specified by
-/// the next_hop field of the winning route -- either to another virtual
+/// the nextHop field of the winning route -- either to another virtual
 /// machine destination, a virtual machine gateway or a Compute
 /// Engine-operated gateway. Packets that do not match any route in the
 /// sending virtual machine's routing table will be dropped.
@@ -118,6 +118,26 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_route" "default" {
+///   name        = "network-route"
+///   dest_range  = "15.0.0.0/24"
+///   network     = gcp_compute_network.default.name
+///   next_hop_ip = "10.132.1.5"
+///   priority    = 100
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "compute-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +148,8 @@ import 'route_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.compute.Route;
 /// import com.pulumi.gcp.compute.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -342,7 +362,7 @@ import 'route_state.dart';
 /// 			Name:        pulumi.String("compute-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -361,7 +381,7 @@ import 'route_state.dart';
 /// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("compute-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: hc.ID(),
+/// 			HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -370,7 +390,7 @@ import 'route_state.dart';
 /// 			Name:                pulumi.String("compute-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      backend.ID(),
+/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             _default.Name,
 /// 			Subnetwork:          defaultSubnetwork.Name,
@@ -382,7 +402,7 @@ import 'route_state.dart';
 /// 			Name:       pulumi.String("route-ilb"),
 /// 			DestRange:  pulumi.String("0.0.0.0/0"),
 /// 			Network:    _default.Name,
-/// 			NextHopIlb: defaultForwardingRule.ID(),
+/// 			NextHopIlb: defaultForwardingRule.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:   pulumi.Int(2000),
 /// 		})
 /// 		if err != nil {
@@ -390,6 +410,55 @@ import 'route_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "compute-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "compute-subnet"
+///   ip_cidr_range = "10.0.1.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_healthcheck" "hc" {
+///   name               = "proxy-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name          = "compute-backend"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.hc.id
+/// }
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                  = "compute-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.default.name
+///   subnetwork            = gcp_compute_subnetwork.default.name
+/// }
+/// resource "gcp_compute_route" "route-ilb" {
+///   name         = "route-ilb"
+///   dest_range   = "0.0.0.0/0"
+///   network      = gcp_compute_network.default.name
+///   next_hop_ilb = gcp_compute_forwardingrule.default.id
+///   priority     = 2000
 /// }
 /// ```
 /// ```java
@@ -411,8 +480,8 @@ import 'route_state.dart';
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
 /// import com.pulumi.gcp.compute.Route;
 /// import com.pulumi.gcp.compute.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -784,7 +853,7 @@ import 'route_state.dart';
 /// 			Name:        pulumi.String("producer-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producer.ID(),
+/// 			Network:     producer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -800,23 +869,23 @@ import 'route_state.dart';
 /// 			Name:        pulumi.String("consumer-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumer.ID(),
+/// 			Network:     consumer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		peering1, err := compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
 /// 			Name:        pulumi.String("peering-producer-to-consumer"),
-/// 			Network:     consumer.ID(),
-/// 			PeerNetwork: producer.ID(),
+/// 			Network:     consumer.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerNetwork: producer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		peering2, err := compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
 /// 			Name:        pulumi.String("peering-consumer-to-producer"),
-/// 			Network:     producer.ID(),
-/// 			PeerNetwork: consumer.ID(),
+/// 			Network:     producer.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerNetwork: consumer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -835,7 +904,7 @@ import 'route_state.dart';
 /// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("compute-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: hc.ID(),
+/// 			HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -844,7 +913,7 @@ import 'route_state.dart';
 /// 			Name:                pulumi.String("compute-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      backend.ID(),
+/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             producer.Name,
 /// 			Subnetwork:          producerSubnetwork.Name,
@@ -873,6 +942,77 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "producer" {
+///   name                    = "producer-vpc"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "producer" {
+///   name          = "producer-subnet"
+///   ip_cidr_range = "10.0.1.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.producer.id
+/// }
+/// resource "gcp_compute_network" "consumer" {
+///   name                    = "consumer-vpc"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "consumer" {
+///   name          = "consumer-subnet"
+///   ip_cidr_range = "10.0.2.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer.id
+/// }
+/// resource "gcp_compute_networkpeering" "peering1" {
+///   name         = "peering-producer-to-consumer"
+///   network      = gcp_compute_network.consumer.id
+///   peer_network = gcp_compute_network.producer.id
+/// }
+/// resource "gcp_compute_networkpeering" "peering2" {
+///   name         = "peering-consumer-to-producer"
+///   network      = gcp_compute_network.producer.id
+///   peer_network = gcp_compute_network.consumer.id
+/// }
+/// resource "gcp_compute_healthcheck" "hc" {
+///   name               = "proxy-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend" {
+///   name          = "compute-backend"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.hc.id
+/// }
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                  = "compute-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.producer.name
+///   subnetwork            = gcp_compute_subnetwork.producer.name
+/// }
+/// resource "gcp_compute_route" "route-ilb" {
+///   depends_on   = [gcp_compute_networkpeering.peering1, gcp_compute_networkpeering.peering2]
+///   name         = "route-ilb"
+///   dest_range   = "0.0.0.0/0"
+///   network      = gcp_compute_network.consumer.name
+///   next_hop_ilb = gcp_compute_forwardingrule.default.ip_address
+///   priority     = 2000
+///   tags         = ["tag1", "tag2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -895,8 +1035,8 @@ import 'route_state.dart';
 /// import com.pulumi.gcp.compute.Route;
 /// import com.pulumi.gcp.compute.RouteArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1074,22 +1214,15 @@ import 'route_state.dart';
 /// Route can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/routes/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/route:Route default {{name}}
 /// ```
 class Route extends pulumi.CustomResource {
@@ -1097,6 +1230,13 @@ class Route extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> asPaths;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
   late final pulumi.Output<String?> description;
@@ -1142,11 +1282,11 @@ class Route extends pulumi.CustomResource {
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
   /// * `projects/project/zones/zone/instances/instance`
   /// * `zones/zone/instances/instance`
-  /// * Just the instance name, with the zone in `next_hop_instance_zone`.
+  /// * Just the instance name, with the zone in `nextHopInstanceZone`.
   late final pulumi.Output<String?> nextHopInstance;
-  /// (Optional when `next_hop_instance` is
+  /// (Optional when `nextHopInstance` is
   /// specified)  The zone of the instance specified in
-  /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+  /// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
   /// a URL.
   late final pulumi.Output<String> nextHopInstanceZone;
   /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
@@ -1209,6 +1349,7 @@ class Route extends pulumi.CustomResource {
         ) {
     asPaths = registerOutput<List<Map<String, dynamic>>>('asPaths');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destRange = registerOutput<String>('destRange');
     this.name = registerOutput<String>('name');
@@ -1260,6 +1401,7 @@ class Route extends pulumi.CustomResource {
         ) {
     asPaths = registerOutput<List<Map<String, dynamic>>>('asPaths');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destRange = registerOutput<String>('destRange');
     this.name = registerOutput<String>('name');

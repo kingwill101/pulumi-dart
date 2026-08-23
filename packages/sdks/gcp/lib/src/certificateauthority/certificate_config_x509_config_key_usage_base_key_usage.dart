@@ -72,4 +72,3 @@ class CertificateConfigX509ConfigKeyUsageBaseKeyUsage {
     );
   }
 }
-

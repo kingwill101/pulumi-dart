@@ -6,6 +6,7 @@ class GetDocumentResult {
   final String collection;
   final String createTime;
   final String database;
+  final String deletionPolicy;
   final String documentId;
   final String fields;
   /// The provider-assigned unique ID for this managed resource.
@@ -19,6 +20,7 @@ class GetDocumentResult {
   /// [collection] Required.
   /// [createTime] Required.
   /// [database] Required.
+  /// [deletionPolicy] Required.
   /// [documentId] Required.
   /// [fields] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -30,6 +32,7 @@ class GetDocumentResult {
     required this.collection,
     required this.createTime,
     required this.database,
+    required this.deletionPolicy,
     required this.documentId,
     required this.fields,
     required this.id,
@@ -44,6 +47,7 @@ class GetDocumentResult {
       'collection': collection,
       'createTime': createTime,
       'database': database,
+      'deletionPolicy': deletionPolicy,
       'documentId': documentId,
       'fields': fields,
       'id': id,
@@ -59,6 +63,7 @@ class GetDocumentResult {
       collection: map['collection'] as String,
       createTime: map['createTime'] as String,
       database: map['database'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       documentId: map['documentId'] as String,
       fields: map['fields'] as String,
       id: map['id'] as String,
@@ -69,4 +74,3 @@ class GetDocumentResult {
     );
   }
 }
-

@@ -147,6 +147,33 @@ import 'http_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_httproute" "default" {
+///   name = "my-http-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   hostnames   = ["example"]
+///   rules {
+///     matches {
+///       query_parameters {
+///         query_parameter = "key"
+///         exact_match     = "value"
+///       }
+///       full_path_match = "example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +183,10 @@ import 'http_route_state.dart';
 /// import com.pulumi.gcp.networkservices.HttpRoute;
 /// import com.pulumi.gcp.networkservices.HttpRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleMatchArgs;
+/// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleMatchQueryParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -697,6 +726,99 @@ import 'http_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_httproute" "default" {
+///   name = "my-http-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   hostnames   = ["example"]
+///   rules {
+///     matches {
+///       headers {
+///         header       = "header"
+///         invert_match = false
+///         regex_match  = "header-value"
+///       }
+///       query_parameters {
+///         query_parameter = "key"
+///         exact_match     = "value"
+///       }
+///       prefix_match = "example"
+///       ignore_case  = false
+///     }
+///     matches {
+///       headers {
+///         header        = "header"
+///         invert_match  = false
+///         present_match = true
+///       }
+///       query_parameters {
+///         query_parameter = "key"
+///         regex_match     = "value"
+///       }
+///       regex_match = "example"
+///       ignore_case = false
+///     }
+///     matches {
+///       headers {
+///         header        = "header"
+///         invert_match  = false
+///         present_match = true
+///       }
+///       query_parameters {
+///         query_parameter = "key"
+///         present_match   = true
+///       }
+///       full_path_match = "example"
+///       ignore_case     = false
+///     }
+///     action = {
+///       redirect = {
+///         host_redirect  = "new-host"
+///         path_redirect  = "new-path"
+///         prefix_rewrite = "new-prefix"
+///         https_redirect = true
+///         strip_query    = true
+///         port_redirect  = 8081
+///       }
+///       url_rewrite = {
+///         path_prefix_rewrite = "new-prefix"
+///         host_rewrite        = "new-host"
+///       }
+///       retry_policy = {
+///         retry_conditions = ["server_error"]
+///         num_retries      = 1
+///         per_try_timeout  = "1s"
+///       }
+///       request_mirror_policy = {
+///         destination = {
+///           service_name = "new"
+///           weight       = 1
+///         }
+///       }
+///       cors_policy = {
+///         allow_origins     = ["example"]
+///         allow_methods     = ["GET", "PUT"]
+///         allow_headers     = ["version", "type"]
+///         expose_headers    = ["version", "type"]
+///         max_age           = "1s"
+///         allow_credentials = true
+///         disabled          = false
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -706,6 +828,9 @@ import 'http_route_state.dart';
 /// import com.pulumi.gcp.networkservices.HttpRoute;
 /// import com.pulumi.gcp.networkservices.HttpRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleArgs;
+/// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleMatchArgs;
+/// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleMatchHeaderArgs;
+/// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleMatchQueryParameterArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRedirectArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionUrlRewriteArgs;
@@ -713,8 +838,8 @@ import 'http_route_state.dart';
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestMirrorPolicyArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionCorsPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1287,6 +1412,82 @@ import 'http_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_httproute" "default" {
+///   name = "my-http-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   hostnames   = ["example"]
+///   rules {
+///     action = {
+///       fault_injection_policy = {
+///         delay = {
+///           fixed_delay = "1s"
+///           percentage  = 1
+///         }
+///         abort = {
+///           http_status = 500
+///           percentage  = 1
+///         }
+///       }
+///       url_rewrite = {
+///         path_prefix_rewrite = "new-prefix"
+///         host_rewrite        = "new-host"
+///       }
+///       retry_policy = {
+///         retry_conditions = ["server_error"]
+///         num_retries      = 1
+///         per_try_timeout  = "1s"
+///       }
+///       request_mirror_policy = {
+///         destination = {
+///           service_name = "new"
+///           weight       = 1
+///         }
+///       }
+///       cors_policy = {
+///         allow_origins     = ["example"]
+///         allow_methods     = ["GET", "PUT"]
+///         allow_headers     = ["version", "type"]
+///         expose_headers    = ["version", "type"]
+///         max_age           = "1s"
+///         allow_credentials = true
+///         disabled          = false
+///       }
+///       request_header_modifier = {
+///         set = {
+///           "version" = "1"
+///           "type"    = "json"
+///         }
+///         add = {
+///           "minor-version" = "1"
+///         }
+///         removes = ["arg"]
+///       }
+///       response_header_modifier = {
+///         set = {
+///           "version" = "1"
+///           "type"    = "json"
+///         }
+///         add = {
+///           "minor-version" = "1"
+///         }
+///         removes = ["removearg"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1307,8 +1508,8 @@ import 'http_route_state.dart';
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionCorsPolicyArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestHeaderModifierArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionResponseHeaderModifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1606,7 +1807,7 @@ import 'http_route_state.dart';
 /// 				pulumi.String("example"),
 /// 			},
 /// 			Meshes: pulumi.StringArray{
-/// 				_default.ID(),
+/// 				_default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Rules: networkservices.HttpRouteRuleArray{
 /// 				&networkservices.HttpRouteRuleArgs{
@@ -1631,6 +1832,41 @@ import 'http_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_mesh" "default" {
+///   name = "my-http-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+/// }
+/// resource "gcp_networkservices_httproute" "default" {
+///   name = "my-http-route"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   hostnames   = ["example"]
+///   meshes      = [gcp_networkservices_mesh.default.id]
+///   rules {
+///     matches {
+///       query_parameters {
+///         query_parameter = "key"
+///         exact_match     = "value"
+///       }
+///       full_path_match = "example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1642,8 +1878,10 @@ import 'http_route_state.dart';
 /// import com.pulumi.gcp.networkservices.HttpRoute;
 /// import com.pulumi.gcp.networkservices.HttpRouteArgs;
 /// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleMatchArgs;
+/// import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleMatchQueryParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1716,27 +1954,27 @@ import 'http_route_state.dart';
 /// HttpRoute can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{name}}
 /// ```
 class HttpRoute extends pulumi.CustomResource {
   /// Time the HttpRoute was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1748,7 +1986,7 @@ class HttpRoute extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> hostnames;
   /// Set of label tags associated with the HttpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;.
@@ -1785,6 +2023,7 @@ class HttpRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateways = registerOutput<List<String>?>('gateways');
@@ -1823,6 +2062,7 @@ class HttpRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gateways = registerOutput<List<String>?>('gateways');

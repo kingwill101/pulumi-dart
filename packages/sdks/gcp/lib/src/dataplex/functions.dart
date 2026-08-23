@@ -3,6 +3,8 @@ import 'get_aspect_type_iam_policy_args.dart';
 import 'get_aspect_type_iam_policy_result.dart';
 import 'get_asset_iam_policy_args.dart';
 import 'get_asset_iam_policy_result.dart';
+import 'get_data_product_iam_policy_args.dart';
+import 'get_data_product_iam_policy_result.dart';
 import 'get_data_quality_rules_args.dart';
 import 'get_data_quality_rules_result.dart';
 import 'get_datascan_iam_policy_args.dart';
@@ -83,6 +85,21 @@ import 'get_zone_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getaspecttypeiampolicy" "policy" {
+///   project        = testAspectTypeBasic.project
+///   location       = testAspectTypeBasic.location
+///   aspect_type_id = testAspectTypeBasic.aspectTypeId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +108,8 @@ import 'get_zone_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -105,9 +122,9 @@ import 'get_zone_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
-///             .project(testAspectTypeBasic.project())
-///             .location(testAspectTypeBasic.location())
-///             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+///             .project(testAspectTypeBasic.get("project"))
+///             .location(testAspectTypeBasic.get("location"))
+///             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
 ///             .build());
 ///
 ///     }
@@ -209,6 +226,23 @@ Future<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getassetiampolicy" "policy" {
+///   project       = example.project
+///   location      = example.location
+///   lake          = example.lake
+///   dataplex_zone = example.dataplexZone
+///   asset         = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +251,8 @@ Future<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,11 +265,11 @@ Future<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .dataplexZone(example.dataplexZone())
-///             .asset(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .dataplexZone(example.get("dataplexZone"))
+///             .asset(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -266,6 +300,139 @@ Future<GetAssetIamPolicyResult> getAssetIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAssetIamPolicyResult.fromMap(result);
+}
+
+/// Retrieves the current IAM policy data for dataproduct
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.dataplex.getDataProductIamPolicy({
+///     project: example.project,
+///     location: example.location,
+///     dataProductId: example.dataProductId,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.dataplex.get_data_product_iam_policy(project=example["project"],
+///     location=example["location"],
+///     data_product_id=example["dataProductId"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.DataPlex.GetDataProductIamPolicy.Invoke(new()
+///     {
+///         Project = example.Project,
+///         Location = example.Location,
+///         DataProductId = example.DataProductId,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dataplex.LookupDataProductIamPolicy(ctx, &dataplex.LookupDataProductIamPolicyArgs{
+/// 			Project:       pulumi.StringRef(example.Project),
+/// 			Location:      pulumi.StringRef(example.Location),
+/// 			DataProductId: example.DataProductId,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getdataproductiampolicy" "policy" {
+///   project         = example.project
+///   location        = example.location
+///   data_product_id = example.dataProductId
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dataplex.DataplexFunctions;
+/// import com.pulumi.gcp.dataplex.inputs.GetDataProductIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = DataplexFunctions.getDataProductIamPolicy(GetDataProductIamPolicyArgs.builder()
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .dataProductId(example.get("dataProductId"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:dataplex:getDataProductIamPolicy
+///       arguments:
+///         project: ${example.project}
+///         location: ${example.location}
+///         dataProductId: ${example.dataProductId}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_dataplex_get_data_product_iam_policy_get_data_product_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDataProductIamPolicyResult> getDataProductIamPolicy(
+  GetDataProductIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:dataplex/getDataProductIamPolicy:getDataProductIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDataProductIamPolicyResult.fromMap(result);
 }
 
 /// Retrieves the generated data quality rules for the creating a new data quality scan.
@@ -333,6 +500,21 @@ Future<GetAssetIamPolicyResult> getAssetIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getdataqualityrules" "dqrs" {
+///   project      = "my-project"
+///   location     = "use-central1"
+///   data_scan_id = "my-datascan-profile"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -341,8 +523,8 @@ Future<GetAssetIamPolicyResult> getAssetIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -451,6 +633,21 @@ Future<GetDataQualityRulesResult> getDataQualityRules(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getdatascaniampolicy" "policy" {
+///   project      = basicProfile.project
+///   location     = basicProfile.location
+///   data_scan_id = basicProfile.dataScanId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -459,8 +656,8 @@ Future<GetDataQualityRulesResult> getDataQualityRules(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -473,9 +670,9 @@ Future<GetDataQualityRulesResult> getDataQualityRules(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-///             .project(basicProfile.project())
-///             .location(basicProfile.location())
-///             .dataScanId(basicProfile.dataScanId())
+///             .project(basicProfile.get("project"))
+///             .location(basicProfile.get("location"))
+///             .dataScanId(basicProfile.get("dataScanId"))
 ///             .build());
 ///
 ///     }
@@ -569,6 +766,21 @@ Future<GetDatascanIamPolicyResult> getDatascanIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getentrygroupiampolicy" "policy" {
+///   project        = testEntryGroupBasic.project
+///   location       = testEntryGroupBasic.location
+///   entry_group_id = testEntryGroupBasic.entryGroupId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -577,8 +789,8 @@ Future<GetDatascanIamPolicyResult> getDatascanIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -591,9 +803,9 @@ Future<GetDatascanIamPolicyResult> getDatascanIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-///             .project(testEntryGroupBasic.project())
-///             .location(testEntryGroupBasic.location())
-///             .entryGroupId(testEntryGroupBasic.entryGroupId())
+///             .project(testEntryGroupBasic.get("project"))
+///             .location(testEntryGroupBasic.get("location"))
+///             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
 ///             .build());
 ///
 ///     }
@@ -687,6 +899,21 @@ Future<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getentrytypeiampolicy" "policy" {
+///   project       = testEntryTypeBasic.project
+///   location      = testEntryTypeBasic.location
+///   entry_type_id = testEntryTypeBasic.entryTypeId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -695,8 +922,8 @@ Future<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -709,9 +936,9 @@ Future<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getEntryTypeIamPolicy(GetEntryTypeIamPolicyArgs.builder()
-///             .project(testEntryTypeBasic.project())
-///             .location(testEntryTypeBasic.location())
-///             .entryTypeId(testEntryTypeBasic.entryTypeId())
+///             .project(testEntryTypeBasic.get("project"))
+///             .location(testEntryTypeBasic.get("location"))
+///             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
 ///             .build());
 ///
 ///     }
@@ -805,6 +1032,21 @@ Future<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getglossaryiampolicy" "policy" {
+///   project     = glossaryTestId.project
+///   location    = glossaryTestId.location
+///   glossary_id = glossaryTestId.glossaryId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -813,8 +1055,8 @@ Future<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -827,9 +1069,9 @@ Future<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
-///             .project(glossaryTestId.project())
-///             .location(glossaryTestId.location())
-///             .glossaryId(glossaryTestId.glossaryId())
+///             .project(glossaryTestId.get("project"))
+///             .location(glossaryTestId.get("location"))
+///             .glossaryId(glossaryTestId.get("glossaryId"))
 ///             .build());
 ///
 ///     }
@@ -923,6 +1165,21 @@ Future<GetGlossaryIamPolicyResult> getGlossaryIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getlakeiampolicy" "policy" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -931,8 +1188,8 @@ Future<GetGlossaryIamPolicyResult> getGlossaryIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -945,9 +1202,9 @@ Future<GetGlossaryIamPolicyResult> getGlossaryIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1045,6 +1302,22 @@ Future<GetLakeIamPolicyResult> getLakeIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_gettaskiampolicy" "policy" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.lake
+///   task_id  = example.taskId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1053,8 +1326,8 @@ Future<GetLakeIamPolicyResult> getLakeIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1067,10 +1340,10 @@ Future<GetLakeIamPolicyResult> getLakeIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .taskId(example.taskId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .taskId(example.get("taskId"))
 ///             .build());
 ///
 ///     }
@@ -1169,6 +1442,22 @@ Future<GetTaskIamPolicyResult> getTaskIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataplex_getzoneiampolicy" "policy" {
+///   project       = example.project
+///   location      = example.location
+///   lake          = example.lake
+///   dataplex_zone = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1177,8 +1466,8 @@ Future<GetTaskIamPolicyResult> getTaskIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DataplexFunctions;
 /// import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1191,10 +1480,10 @@ Future<GetTaskIamPolicyResult> getTaskIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .dataplexZone(example.name())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .dataplexZone(example.get("name"))
 ///             .build());
 ///
 ///     }

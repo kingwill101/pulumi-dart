@@ -11,6 +11,13 @@ import 'connectivity_test_source.dart';
 class ConnectivityTestArgs {
   /// Whether the analysis should skip firewall checking. Default value is false.
   final pulumi.Input<bool>? bypassFirewallChecks;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The user-supplied description of the Connectivity Test.
   /// Maximum of 512 characters.
   final pulumi.Input<String>? description;
@@ -25,7 +32,7 @@ class ConnectivityTestArgs {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Unique name for the connectivity test.
   final pulumi.Input<String>? name;
@@ -52,6 +59,7 @@ class ConnectivityTestArgs {
 
   /// Creates a new [ConnectivityTestArgs].
   /// [bypassFirewallChecks] Whether the analysis should skip firewall checking. Default value is false.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The user-supplied description of the Connectivity Test.
   /// [destination] Required. Destination specification of the Connectivity Test.
   /// [labels] Resource labels to represent user-provided metadata.
@@ -63,6 +71,7 @@ class ConnectivityTestArgs {
   /// [source] Required. Source specification of the Connectivity Test.
   const ConnectivityTestArgs({
     this.bypassFirewallChecks,
+    this.deletionPolicy,
     this.description,
     required this.destination,
     this.labels,
@@ -77,6 +86,7 @@ class ConnectivityTestArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bypassFirewallChecks': ?bypassFirewallChecks,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destination': pulumi.Input.mapInputValue<ConnectivityTestDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'labels': ?labels,
@@ -92,6 +102,7 @@ class ConnectivityTestArgs {
   factory ConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestArgs(
       bypassFirewallChecks: (() { final guardedValue = map['bypassFirewallChecks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: pulumi.Input.fromValue(ConnectivityTestDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -104,4 +115,3 @@ class ConnectivityTestArgs {
     );
   }
 }
-

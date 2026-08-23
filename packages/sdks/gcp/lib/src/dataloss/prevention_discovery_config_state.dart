@@ -14,6 +14,13 @@ class PreventionDiscoveryConfigState {
   final pulumi.Input<List<PreventionDiscoveryConfigAction>>? actions;
   /// Output only. The creation timestamp of a DiscoveryConfig.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Display Name (max 1000 Chars)
   final pulumi.Input<String>? displayName;
   /// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
@@ -49,6 +56,7 @@ class PreventionDiscoveryConfigState {
   /// Creates a new [PreventionDiscoveryConfigState].
   /// [actions] Actions to execute at the completion of scanning
   /// [createTime] Output only. The creation timestamp of a DiscoveryConfig.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Display Name (max 1000 Chars)
   /// [errors] Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
   /// [inspectTemplates] Detection logic for profile generation
@@ -64,6 +72,7 @@ class PreventionDiscoveryConfigState {
   const PreventionDiscoveryConfigState({
     this.actions,
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.errors,
     this.inspectTemplates,
@@ -82,6 +91,7 @@ class PreventionDiscoveryConfigState {
     return <String, dynamic>{
       'actions': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'errors': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigError, Map<String, dynamic>>(value, (value) => value.toMap())),
       'inspectTemplates': ?inspectTemplates,
@@ -101,6 +111,7 @@ class PreventionDiscoveryConfigState {
     return PreventionDiscoveryConfigState(
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(guardedValue, (value) => PreventionDiscoveryConfigAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDiscoveryConfigError>(guardedValue, (value) => PreventionDiscoveryConfigError.fromMap((value as Map).cast<String, dynamic>()))); })(),
       inspectTemplates: (() { final guardedValue = map['inspectTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -116,4 +127,3 @@ class PreventionDiscoveryConfigState {
     );
   }
 }
-

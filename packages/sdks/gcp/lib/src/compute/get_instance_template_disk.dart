@@ -56,15 +56,15 @@ class GetInstanceTemplateDisk {
   final pulumi.Input<List<String>> resourcePolicies;
   /// The name (**not self_link**)
   /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-  /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+  /// &gt; **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
   final pulumi.Input<String> source;
   /// The image from which to
-  /// initialize this disk. This can be one of: the image's `self_link`,
+  /// initialize this disk. This can be one of: the image's `selfLink`,
   /// `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`.
-  /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+  /// &gt; **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
   final pulumi.Input<String> sourceImage;
   /// The customer-supplied encryption key of the source
   /// image. Required if the source image is protected by a
@@ -82,6 +82,8 @@ class GetInstanceTemplateDisk {
   final pulumi.Input<String> sourceSnapshot;
   /// The customer-supplied encryption key of the source snapshot.
   final pulumi.Input<List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey>> sourceSnapshotEncryptionKeys;
+  /// The selfLink or ID of the Storage Pool to create this disk in.
+  final pulumi.Input<String> storagePool;
   /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
   final pulumi.Input<String> type;
 
@@ -107,6 +109,7 @@ class GetInstanceTemplateDisk {
   /// [sourceImageEncryptionKeys] The customer-supplied encryption key of the source
   /// [sourceSnapshot] The source snapshot to create this disk. When creating
   /// [sourceSnapshotEncryptionKeys] The customer-supplied encryption key of the source snapshot.
+  /// [storagePool] The selfLink or ID of the Storage Pool to create this disk in.
   /// [type] The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
   const GetInstanceTemplateDisk({
     required this.architecture,
@@ -130,6 +133,7 @@ class GetInstanceTemplateDisk {
     required this.sourceImageEncryptionKeys,
     required this.sourceSnapshot,
     required this.sourceSnapshotEncryptionKeys,
+    required this.storagePool,
     required this.type,
   });
 
@@ -156,6 +160,7 @@ class GetInstanceTemplateDisk {
       'sourceImageEncryptionKeys': pulumi.Input.mapInputValue<List<GetInstanceTemplateDiskSourceImageEncryptionKey>, List<Map<String, dynamic>>>(sourceImageEncryptionKeys, (value) => pulumi.Input.encodeList<GetInstanceTemplateDiskSourceImageEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceSnapshot': sourceSnapshot,
       'sourceSnapshotEncryptionKeys': pulumi.Input.mapInputValue<List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey>, List<Map<String, dynamic>>>(sourceSnapshotEncryptionKeys, (value) => pulumi.Input.encodeList<GetInstanceTemplateDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'storagePool': storagePool,
       'type': type,
     };
   }
@@ -183,8 +188,8 @@ class GetInstanceTemplateDisk {
       sourceImageEncryptionKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateDiskSourceImageEncryptionKey>(map['sourceImageEncryptionKeys']!, (value) => GetInstanceTemplateDiskSourceImageEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))),
       sourceSnapshot: pulumi.Input.fromValue(map['sourceSnapshot'] as String),
       sourceSnapshotEncryptionKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateDiskSourceSnapshotEncryptionKey>(map['sourceSnapshotEncryptionKeys']!, (value) => GetInstanceTemplateDiskSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))),
+      storagePool: pulumi.Input.fromValue(map['storagePool'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

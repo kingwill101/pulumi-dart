@@ -4,6 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering AttachedDisk resources.
 class AttachedDiskState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Specifies a unique device name of your choice that is
   /// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
   /// system running within the instance. This name can be used to
@@ -14,13 +21,13 @@ class AttachedDiskState {
   /// to this disk, in the form persistent-disks-x, where x is a number
   /// assigned by Google Compute Engine.
   final pulumi.Input<String>? deviceName;
-  /// `name` or `self_link` of the disk that will be attached.
+  /// `name` or `selfLink` of the disk that will be attached.
   ///
   ///
   /// - - -
   final pulumi.Input<String>? disk;
-  /// `name` or `self_link` of the compute instance that the disk will be attached to.
-  /// If the `self_link` is provided then `zone` and `project` are extracted from the
+  /// `name` or `selfLink` of the compute instance that the disk will be attached to.
+  /// If the `selfLink` is provided then `zone` and `project` are extracted from the
   /// self link. If only the name is used then `zone` and `project` must be defined
   /// as properties on the resource or provider.
   final pulumi.Input<String>? instance;
@@ -43,21 +50,23 @@ class AttachedDiskState {
   /// "READ_WRITE"
   final pulumi.Input<String>? mode;
   /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
-  /// `self_link` the project defined in the link will take precedence.
+  /// `selfLink` the project defined in the link will take precedence.
   final pulumi.Input<String>? project;
   /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
-  /// `self_link` the zone defined in the link will take precedence.
+  /// `selfLink` the zone defined in the link will take precedence.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [AttachedDiskState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [deviceName] Specifies a unique device name of your choice that is
-  /// [disk] `name` or `self_link` of the disk that will be attached.
-  /// [instance] `name` or `self_link` of the compute instance that the disk will be attached to.
+  /// [disk] `name` or `selfLink` of the disk that will be attached.
+  /// [instance] `name` or `selfLink` of the compute instance that the disk will be attached to.
   /// [interface] The disk interface used for attaching this disk.
   /// [mode] The mode in which to attach this disk, either READ_WRITE or
   /// [project] The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// [zone] The zone that the referenced compute instance is located within. If `instance` is referenced by its
   const AttachedDiskState({
+    this.deletionPolicy,
     this.deviceName,
     this.disk,
     this.instance,
@@ -69,6 +78,7 @@ class AttachedDiskState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'deviceName': ?deviceName,
       'disk': ?disk,
       'instance': ?instance,
@@ -81,6 +91,7 @@ class AttachedDiskState {
 
   factory AttachedDiskState.fromMap(Map<String, dynamic> map) {
     return AttachedDiskState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disk: (() { final guardedValue = map['disk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -91,4 +102,3 @@ class AttachedDiskState {
     );
   }
 }
-

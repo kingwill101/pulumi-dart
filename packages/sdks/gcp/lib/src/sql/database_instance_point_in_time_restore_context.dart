@@ -13,6 +13,8 @@ class DatabaseInstancePointInTimeRestoreContext {
   final pulumi.Input<String>? pointInTime;
   /// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
   final pulumi.Input<String>? preferredZone;
+  /// The region of the target instance where the datasource will be restored. For example: "us-central1".
+  final pulumi.Input<String>? region;
   /// The name of the target instance.
   final pulumi.Input<String>? targetInstance;
 
@@ -21,12 +23,14 @@ class DatabaseInstancePointInTimeRestoreContext {
   /// [datasource] The Google Cloud Backup and Disaster Recovery Datasource URI.
   /// [pointInTime] The timestamp of the point in time that should be restored.
   /// [preferredZone] Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+  /// [region] The region of the target instance where the datasource will be restored. For example: "us-central1".
   /// [targetInstance] The name of the target instance.
   const DatabaseInstancePointInTimeRestoreContext({
     this.allocatedIpRange,
     required this.datasource,
     this.pointInTime,
     this.preferredZone,
+    this.region,
     this.targetInstance,
   });
 
@@ -36,6 +40,7 @@ class DatabaseInstancePointInTimeRestoreContext {
       'datasource': datasource,
       'pointInTime': ?pointInTime,
       'preferredZone': ?preferredZone,
+      'region': ?region,
       'targetInstance': ?targetInstance,
     };
   }
@@ -46,8 +51,8 @@ class DatabaseInstancePointInTimeRestoreContext {
       datasource: pulumi.Input.fromValue(map['datasource'] as String),
       pointInTime: (() { final guardedValue = map['pointInTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preferredZone: (() { final guardedValue = map['preferredZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetInstance: (() { final guardedValue = map['targetInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

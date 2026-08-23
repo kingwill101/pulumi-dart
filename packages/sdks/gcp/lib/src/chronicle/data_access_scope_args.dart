@@ -9,19 +9,19 @@ import 'data_access_scope_denied_data_access_label.dart';
 /// {@endtemplate}
 /// {@macro pulumi_chronicle_data_access_scope_data_access_scope_args_doc}
 class DataAccessScopeArgs {
-  /// Optional. Whether or not the scope allows all labels, allow_all and
-  /// allowed_data_access_labels are mutually exclusive and one of them must be
-  /// present. denied_data_access_labels can still be used along with allow_all.
+  /// Optional. Whether or not the scope allows all labels, allowAll and
+  /// allowedDataAccessLabels are mutually exclusive and one of them must be
+  /// present. deniedDataAccessLabels can still be used along with allow_all.
   /// When combined with denied_data_access_labels, access will be granted to all
   /// data that doesn't have labels mentioned in denied_data_access_labels. E.g.:
-  /// A customer with scope with denied labels A and B and allow_all will be able
+  /// A customer with scope with denied labels A and B and allowAll will be able
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
   final pulumi.Input<bool>? allowAll;
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
   /// The logical operator for evaluation of the allowed labels is OR.
-  /// Either allow_all or allowed_data_access_labels needs to be provided.
+  /// Either allowAll or allowedDataAccessLabels needs to be provided.
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
@@ -30,6 +30,13 @@ class DataAccessScopeArgs {
   /// of the scope resource.
   /// Needs to be compliant with https://google.aip.dev/122
   final pulumi.Input<String> dataAccessScopeId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. The denied labels for the scope.
   /// The logical operator for evaluation of the denied labels is AND.
   /// E.g.: A customer with scope with denied labels A and B won't be able
@@ -48,9 +55,10 @@ class DataAccessScopeArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [DataAccessScopeArgs].
-  /// [allowAll] Optional. Whether or not the scope allows all labels, allow_all and
+  /// [allowAll] Optional. Whether or not the scope allows all labels, allowAll and
   /// [allowedDataAccessLabels] The allowed labels for the scope. There has to be at
   /// [dataAccessScopeId] Required. The user provided scope id which will become the last part of the name
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deniedDataAccessLabels] Optional. The denied labels for the scope.
   /// [description] Optional. A description of the data access scope for a human reader.
   /// [instance] The unique identifier for the Chronicle instance, which is the same as the customer ID.
@@ -60,6 +68,7 @@ class DataAccessScopeArgs {
     this.allowAll,
     this.allowedDataAccessLabels,
     required this.dataAccessScopeId,
+    this.deletionPolicy,
     this.deniedDataAccessLabels,
     this.description,
     required this.instance,
@@ -72,6 +81,7 @@ class DataAccessScopeArgs {
       'allowAll': ?allowAll,
       'allowedDataAccessLabels': ?pulumi.Input.mapOptionalInputValue<List<DataAccessScopeAllowedDataAccessLabel>, List<Map<String, dynamic>>>(allowedDataAccessLabels, (value) => pulumi.Input.encodeList<DataAccessScopeAllowedDataAccessLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataAccessScopeId': dataAccessScopeId,
+      'deletionPolicy': ?deletionPolicy,
       'deniedDataAccessLabels': ?pulumi.Input.mapOptionalInputValue<List<DataAccessScopeDeniedDataAccessLabel>, List<Map<String, dynamic>>>(deniedDataAccessLabels, (value) => pulumi.Input.encodeList<DataAccessScopeDeniedDataAccessLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'instance': instance,
@@ -85,6 +95,7 @@ class DataAccessScopeArgs {
       allowAll: (() { final guardedValue = map['allowAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       allowedDataAccessLabels: (() { final guardedValue = map['allowedDataAccessLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(guardedValue, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dataAccessScopeId: pulumi.Input.fromValue(map['dataAccessScopeId'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deniedDataAccessLabels: (() { final guardedValue = map['deniedDataAccessLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(guardedValue, (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: pulumi.Input.fromValue(map['instance'] as String),
@@ -93,4 +104,3 @@ class DataAccessScopeArgs {
     );
   }
 }
-

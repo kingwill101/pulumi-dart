@@ -22,6 +22,13 @@ import 'row_access_policy_state.dart';
 /// });
 /// const exampleTable = new gcp.bigquery.Table("example", {
 ///     deletionProtection: false,
+///     schema: `[
+///   {
+///     \\"name\\": \\"nullable_field\\",
+///     \\"type\\": \\"STRING\\"
+///   }
+/// ]
+/// `,
 ///     datasetId: example.datasetId,
 ///     tableId: "table_id",
 /// });
@@ -42,6 +49,13 @@ import 'row_access_policy_state.dart';
 ///     location="US")
 /// example_table = gcp.bigquery.Table("example",
 ///     deletion_protection=False,
+///     schema="""[
+///   {
+///     \"name\": \"nullable_field\",
+///     \"type\": \"STRING\"
+///   }
+/// ]
+/// """,
 ///     dataset_id=example.dataset_id,
 ///     table_id="table_id")
 /// example_row_access_policy = gcp.bigquery.RowAccessPolicy("example",
@@ -68,6 +82,13 @@ import 'row_access_policy_state.dart';
 ///     var exampleTable = new Gcp.BigQuery.Table("example", new()
 ///     {
 ///         DeletionProtection = false,
+///         Schema = @"[
+///   {
+///     \""name\"": \""nullable_field\"",
+///     \""type\"": \""STRING\""
+///   }
+/// ]
+/// ",
 ///         DatasetId = example.DatasetId,
 ///         TableId = "table_id",
 ///     });
@@ -105,8 +126,15 @@ import 'row_access_policy_state.dart';
 /// 		}
 /// 		exampleTable, err := bigquery.NewTable(ctx, "example", &bigquery.TableArgs{
 /// 			DeletionProtection: pulumi.Bool(false),
-/// 			DatasetId:          example.DatasetId,
-/// 			TableId:            pulumi.String("table_id"),
+/// 			Schema: pulumi.String(`[
+///   {
+///     \"name\": \"nullable_field\",
+///     \"type\": \"STRING\"
+///   }
+/// ]
+/// `),
+/// 			DatasetId: example.DatasetId,
+/// 			TableId:   pulumi.String("table_id"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -127,6 +155,33 @@ import 'row_access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "example" {
+///   dataset_id = "dataset_id"
+///   location   = "US"
+/// }
+/// resource "gcp_bigquery_table" "example" {
+///   deletion_protection = false
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"nullable_field\\\",\n    \\\"type\\\": \\\"STRING\\\"\n  }\n]\n"
+///   dataset_id          = gcp_bigquery_dataset.example.dataset_id
+///   table_id            = "table_id"
+/// }
+/// resource "gcp_bigquery_rowaccesspolicy" "example" {
+///   dataset_id       = gcp_bigquery_dataset.example.dataset_id
+///   table_id         = gcp_bigquery_table.example.table_id
+///   policy_id        = "policy_id"
+///   filter_predicate = "nullable_field is not NULL"
+///   grantees         = ["domain:google.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +194,8 @@ import 'row_access_policy_state.dart';
 /// import com.pulumi.gcp.bigquery.TableArgs;
 /// import com.pulumi.gcp.bigquery.RowAccessPolicy;
 /// import com.pulumi.gcp.bigquery.RowAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,6 +214,14 @@ import 'row_access_policy_state.dart';
 ///
 ///         var exampleTable = new Table("exampleTable", TableArgs.builder()
 ///             .deletionProtection(false)
+///             .schema("""
+/// [
+///   {
+///     \"name\": \"nullable_field\",
+///     \"type\": \"STRING\"
+///   }
+/// ]
+///             """)
 ///             .datasetId(example.datasetId())
 ///             .tableId("table_id")
 ///             .build());
@@ -186,6 +249,13 @@ import 'row_access_policy_state.dart';
 ///     name: example
 ///     properties:
 ///       deletionProtection: false
+///       schema: |
+///         [
+///           {
+///             \"name\": \"nullable_field\",
+///             \"type\": \"STRING\"
+///           }
+///         ]
 ///       datasetId: ${example.datasetId}
 ///       tableId: table_id
 ///   exampleRowAccessPolicy:
@@ -206,22 +276,15 @@ import 'row_access_policy_state.dart';
 /// RowAccessPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}`
-///
 /// * `{{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}`
-///
 /// * `{{dataset_id}}/{{table_id}}/{{policy_id}}`
+///
 ///
 /// When using the `pulumi import` command, RowAccessPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{dataset_id}}/{{table_id}}/{{policy_id}}
 /// ```
 class RowAccessPolicy extends pulumi.CustomResource {
@@ -230,17 +293,24 @@ class RowAccessPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> creationTime;
   /// The ID of the dataset containing this row access policy.
   late final pulumi.Output<String> datasetId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
   /// SELECT query on a table.
   /// References to other tables, routines, and temporary functions are not
   /// supported.
   /// Examples: region="EU"
-  /// date_field = CAST('2019-9-27' as DATE)
-  /// nullable_field is not NULL
-  /// numeric_field BETWEEN 1.0 AND 5.0
+  /// dateField = CAST('2019-9-27' as DATE)
+  /// nullableField is not NULL
+  /// numericField BETWEEN 1.0 AND 5.0
   late final pulumi.Output<String> filterPredicate;
-  /// Input only. The optional list of iam_member users or groups that specifies the initial
+  /// Input only. The optional list of iamMember users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
   /// grantees types:
   /// - "user:alice@example.com": An email address that represents a specific
@@ -291,6 +361,7 @@ class RowAccessPolicy extends pulumi.CustomResource {
         ) {
     creationTime = registerOutput<String>('creationTime');
     datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     filterPredicate = registerOutput<String>('filterPredicate');
     grantees = registerOutput<List<String>?>('grantees');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
@@ -324,6 +395,7 @@ class RowAccessPolicy extends pulumi.CustomResource {
         ) {
     creationTime = registerOutput<String>('creationTime');
     datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     filterPredicate = registerOutput<String>('filterPredicate');
     grantees = registerOutput<List<String>?>('grantees');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');

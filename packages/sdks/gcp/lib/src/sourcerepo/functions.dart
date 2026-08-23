@@ -62,6 +62,19 @@ import 'get_repository_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sourcerepo_getrepository" "my-repo" {
+///   name = "my-repository"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_repository_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
 /// import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,6 +185,20 @@ Future<GetRepositoryResult> getRepository(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sourcerepo_getrepositoryiampolicy" "policy" {
+///   project    = my-repo.project
+///   repository = my-repo.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +207,8 @@ Future<GetRepositoryResult> getRepository(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
 /// import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,8 +221,8 @@ Future<GetRepositoryResult> getRepository(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-///             .project(my_repo.project())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .repository(my_repo.get("name"))
 ///             .build());
 ///
 ///     }

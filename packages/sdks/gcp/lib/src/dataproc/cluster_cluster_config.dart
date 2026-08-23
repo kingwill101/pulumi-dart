@@ -18,19 +18,21 @@ import 'cluster_cluster_config_worker_config.dart';
 
 class ClusterClusterConfig {
   /// The autoscaling policy config associated with the cluster.
-  /// Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
-  /// only be removed by setting `policy_uri = ""`, rather than removing the whole block.
+  /// Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+  /// only be removed by setting `policyUri = ""`, rather than removing the whole block.
   /// Structure defined below.
   final pulumi.Input<ClusterClusterConfigAutoscalingConfig>? autoscalingConfig;
   /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
   /// Structure defined below.
   final pulumi.Input<List<ClusterClusterConfigAuxiliaryNodeGroup>>? auxiliaryNodeGroups;
   /// The name of the cloud storage bucket ultimately used to house the staging data
-  /// for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+  /// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
   /// it will be the auto generated name.
   final pulumi.Input<String>? bucket;
   /// The tier of the cluster.
   final pulumi.Input<String>? clusterTier;
+  /// The type of the cluster.
+  final pulumi.Input<String>? clusterType;
   /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
   /// Structure defined below.
   final pulumi.Input<ClusterClusterConfigDataprocMetricConfig>? dataprocMetricConfig;
@@ -40,6 +42,8 @@ class ClusterClusterConfig {
   /// The config settings for port access on the cluster.
   /// Structure defined below.
   final pulumi.Input<ClusterClusterConfigEndpointConfig>? endpointConfig;
+  /// The cluster engine.
+  final pulumi.Input<String>? engine;
   /// Common config settings for resources of Google Compute Engine cluster
   /// instances, applicable to all instances in the cluster. Structure defined below.
   final pulumi.Input<ClusterClusterConfigGceClusterConfig>? gceClusterConfig;
@@ -58,7 +62,7 @@ class ClusterClusterConfig {
   final pulumi.Input<ClusterClusterConfigMetastoreConfig>? metastoreConfig;
   /// The Google Compute Engine config settings for the additional
   /// instances in a cluster. Structure defined below.
-  /// * **NOTE** : `preemptible_worker_config` is
+  /// * **NOTE** : `preemptibleWorkerConfig` is
   /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
   /// such for legacy/compatibility reasons.
   final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfig>? preemptibleWorkerConfig;
@@ -69,7 +73,7 @@ class ClusterClusterConfig {
   final pulumi.Input<ClusterClusterConfigSoftwareConfig>? softwareConfig;
   /// The Cloud Storage staging bucket used to stage files,
   /// such as Hadoop jars, between client machines and the cluster.
-  /// Note: If you don't explicitly specify a `staging_bucket`
+  /// Note: If you don't explicitly specify a `stagingBucket`
   /// then GCP will auto create / assign one for you. However, you are not guaranteed
   /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
   /// with other clusters in the same region/zone also choosing to use the auto generation
@@ -77,7 +81,7 @@ class ClusterClusterConfig {
   final pulumi.Input<String>? stagingBucket;
   /// The Cloud Storage temp bucket used to store ephemeral cluster
   /// and jobs data, such as Spark and MapReduce history files.
-  /// Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+  /// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
   final pulumi.Input<String>? tempBucket;
   /// The Google Compute Engine config settings for the worker instances
   /// in a cluster. Structure defined below.
@@ -88,9 +92,11 @@ class ClusterClusterConfig {
   /// [auxiliaryNodeGroups] A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
   /// [bucket] The name of the cloud storage bucket ultimately used to house the staging data
   /// [clusterTier] The tier of the cluster.
+  /// [clusterType] The type of the cluster.
   /// [dataprocMetricConfig] The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
   /// [encryptionConfig] The Customer managed encryption keys settings for the cluster.
   /// [endpointConfig] The config settings for port access on the cluster.
+  /// [engine] The cluster engine.
   /// [gceClusterConfig] Common config settings for resources of Google Compute Engine cluster
   /// [initializationActions] Commands to execute on each node after config is completed.
   /// [lifecycleConfig] The settings for auto deletion cluster schedule.
@@ -107,9 +113,11 @@ class ClusterClusterConfig {
     this.auxiliaryNodeGroups,
     this.bucket,
     this.clusterTier,
+    this.clusterType,
     this.dataprocMetricConfig,
     this.encryptionConfig,
     this.endpointConfig,
+    this.engine,
     this.gceClusterConfig,
     this.initializationActions,
     this.lifecycleConfig,
@@ -129,9 +137,11 @@ class ClusterClusterConfig {
       'auxiliaryNodeGroups': ?pulumi.Input.mapOptionalInputValue<List<ClusterClusterConfigAuxiliaryNodeGroup>, List<Map<String, dynamic>>>(auxiliaryNodeGroups, (value) => pulumi.Input.encodeList<ClusterClusterConfigAuxiliaryNodeGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bucket': ?bucket,
       'clusterTier': ?clusterTier,
+      'clusterType': ?clusterType,
       'dataprocMetricConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigDataprocMetricConfig, Map<String, dynamic>>(dataprocMetricConfig, (value) => value.toMap()),
       'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'endpointConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigEndpointConfig, Map<String, dynamic>>(endpointConfig, (value) => value.toMap()),
+      'engine': ?engine,
       'gceClusterConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigGceClusterConfig, Map<String, dynamic>>(gceClusterConfig, (value) => value.toMap()),
       'initializationActions': ?pulumi.Input.mapOptionalInputValue<List<ClusterClusterConfigInitializationAction>, List<Map<String, dynamic>>>(initializationActions, (value) => pulumi.Input.encodeList<ClusterClusterConfigInitializationAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lifecycleConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigLifecycleConfig, Map<String, dynamic>>(lifecycleConfig, (value) => value.toMap()),
@@ -152,9 +162,11 @@ class ClusterClusterConfig {
       auxiliaryNodeGroups: (() { final guardedValue = map['auxiliaryNodeGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroup>(guardedValue, (value) => ClusterClusterConfigAuxiliaryNodeGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterTier: (() { final guardedValue = map['clusterTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterType: (() { final guardedValue = map['clusterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataprocMetricConfig: (() { final guardedValue = map['dataprocMetricConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigDataprocMetricConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       endpointConfig: (() { final guardedValue = map['endpointConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gceClusterConfig: (() { final guardedValue = map['gceClusterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigGceClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       initializationActions: (() { final guardedValue = map['initializationActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterClusterConfigInitializationAction>(guardedValue, (value) => ClusterClusterConfigInitializationAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       lifecycleConfig: (() { final guardedValue = map['lifecycleConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigLifecycleConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -169,4 +181,3 @@ class ClusterClusterConfig {
     );
   }
 }
-

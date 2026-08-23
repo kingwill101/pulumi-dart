@@ -37,6 +37,13 @@ class URLMapState {
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
   final pulumi.Input<URLMapDefaultUrlRedirect>? defaultUrlRedirect;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create
   /// the resource.
   final pulumi.Input<String>? description;
@@ -80,6 +87,7 @@ class URLMapState {
   /// [defaultRouteAction] defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
   /// [defaultService] The backend service or backend bucket to use when none of the given rules match.
   /// [defaultUrlRedirect] When none of the specified hostRules match, the request is redirected to a URL specified
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create
   /// [fingerprint] Fingerprint of this resource. A hash of the contents stored in this object. This
   /// [headerAction] Specifies changes to request and response headers that need to take effect for
@@ -96,6 +104,7 @@ class URLMapState {
     this.defaultRouteAction,
     this.defaultService,
     this.defaultUrlRedirect,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.headerAction,
@@ -115,6 +124,7 @@ class URLMapState {
       'defaultRouteAction': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteAction, Map<String, dynamic>>(defaultRouteAction, (value) => value.toMap()),
       'defaultService': ?defaultService,
       'defaultUrlRedirect': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultUrlRedirect, Map<String, dynamic>>(defaultUrlRedirect, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'headerAction': ?pulumi.Input.mapOptionalInputValue<URLMapHeaderAction, Map<String, dynamic>>(headerAction, (value) => value.toMap()),
@@ -135,6 +145,7 @@ class URLMapState {
       defaultRouteAction: (() { final guardedValue = map['defaultRouteAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultService: (() { final guardedValue = map['defaultService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultUrlRedirect: (() { final guardedValue = map['defaultUrlRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -148,4 +159,3 @@ class URLMapState {
     );
   }
 }
-

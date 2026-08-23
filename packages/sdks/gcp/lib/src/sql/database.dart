@@ -112,6 +112,30 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_database" "database" {
+///   name     = "my-database"
+///   instance = gcp_sql_databaseinstance.instance.name
+/// }
+/// # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-database-instance"
+///   region           = "us-central1"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+///   deletion_protection = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +147,8 @@ import 'database_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +305,31 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_database" "database_deletion_policy" {
+///   name            = "my-database"
+///   instance        = gcp_sql_databaseinstance.instance.name
+///   deletion_policy = "ABANDON"
+/// }
+/// # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-database-instance"
+///   region           = "us-central1"
+///   database_version = "POSTGRES_14"
+///   settings = {
+///     tier = "db-g1-small"
+///   }
+///   deletion_protection = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +341,8 @@ import 'database_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,28 +401,17 @@ import 'database_state.dart';
 /// Database can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
-///
 /// * `instances/{{instance}}/databases/{{name}}`
-///
 /// * `{{project}}/{{instance}}/{{name}}`
-///
 /// * `{{instance}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
 /// ```
 class Database extends pulumi.CustomResource {
@@ -389,11 +427,13 @@ class Database extends pulumi.CustomResource {
   /// for more details and supported values. Postgres databases only support
   /// a value of `en_US.UTF8` at creation time.
   late final pulumi.Output<String> collation;
-  /// The deletion policy for the database. Setting ABANDON allows the resource
-  /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-  /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-  /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the Cloud SQL instance. This does not include the project
   /// ID.
   late final pulumi.Output<String> instance;
@@ -422,7 +462,7 @@ class Database extends pulumi.CustomResource {
         ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -454,7 +494,7 @@ class Database extends pulumi.CustomResource {
         ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

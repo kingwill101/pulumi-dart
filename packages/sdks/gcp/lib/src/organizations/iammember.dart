@@ -17,7 +17,7 @@ import 'iammember_state.dart';
 ///
 /// ## gcp.organizations.IAMPolicy
 ///
-/// !&gt; **Warning:** New organizations have several default policies which will,
+/// &gt; **Warning:** New organizations have several default policies which will,
 /// without extreme caution, be **overwritten** by use of this resource.
 /// The safest alternative is to use multiple `gcp.organizations.IAMBinding`
 /// resources. This resource makes it easy to remove your own access to
@@ -26,7 +26,7 @@ import 'iammember_state.dart';
 ///
 ///
 /// In general, this resource should only be used with organizations
-/// fully managed by this provider.I f you do use this resource,
+/// fully managed by this provider. If you do use this resource,
 /// the best way to be sure that you are not making dangerous changes is to start
 /// by **importing** your existing policy, and examining the diff very closely.
 ///
@@ -123,6 +123,27 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_organizations_iampolicy" "organization" {
+///   org_id      = "1234567890"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,10 +152,11 @@ import 'iammember_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.organizations.IAMPolicy;
 /// import com.pulumi.gcp.organizations.IAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +318,32 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iampolicy" "organization" {
+///   org_id      = "1234567890"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,10 +352,12 @@ import 'iammember_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.organizations.IAMPolicy;
 /// import com.pulumi.gcp.organizations.IAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -430,6 +480,21 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iambinding" "organization" {
+///   org_id  = "1234567890"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -438,8 +503,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.IAMBinding;
 /// import com.pulumi.gcp.organizations.IAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -559,6 +624,26 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iambinding" "organization" {
+///   org_id  = "1234567890"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -568,8 +653,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.gcp.organizations.IAMBinding;
 /// import com.pulumi.gcp.organizations.IAMBindingArgs;
 /// import com.pulumi.gcp.organizations.inputs.IAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -672,6 +757,21 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iammember" "organization" {
+///   org_id = "1234567890"
+///   role   = "roles/editor"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -680,8 +780,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.IAMMember;
 /// import com.pulumi.gcp.organizations.IAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -795,6 +895,26 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iammember" "organization" {
+///   org_id = "1234567890"
+///   role   = "roles/editor"
+///   member = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -804,8 +924,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.gcp.organizations.IAMMember;
 /// import com.pulumi.gcp.organizations.IAMMemberArgs;
 /// import com.pulumi.gcp.organizations.inputs.IAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -947,6 +1067,27 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iamauditconfig" "organization" {
+///   org_id  = "1234567890"
+///   service = "allServices"
+///   audit_log_configs {
+///     log_type = "ADMIN_READ"
+///   }
+///   audit_log_configs {
+///     log_type         = "DATA_READ"
+///     exempted_members = ["user:joebloggs@example.com"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -956,8 +1097,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.gcp.organizations.IamAuditConfig;
 /// import com.pulumi.gcp.organizations.IamAuditConfigArgs;
 /// import com.pulumi.gcp.organizations.inputs.IamAuditConfigAuditLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1068,6 +1209,21 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iambinding" "organization" {
+///   org_id  = "1234567890"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1076,8 +1232,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.IAMBinding;
 /// import com.pulumi.gcp.organizations.IAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1197,6 +1353,26 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iambinding" "organization" {
+///   org_id  = "1234567890"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1206,8 +1382,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.gcp.organizations.IAMBinding;
 /// import com.pulumi.gcp.organizations.IAMBindingArgs;
 /// import com.pulumi.gcp.organizations.inputs.IAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1310,6 +1486,21 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iammember" "organization" {
+///   org_id = "1234567890"
+///   role   = "roles/editor"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1318,8 +1509,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.IAMMember;
 /// import com.pulumi.gcp.organizations.IAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1433,6 +1624,26 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iammember" "organization" {
+///   org_id = "1234567890"
+///   role   = "roles/editor"
+///   member = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1442,8 +1653,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.gcp.organizations.IAMMember;
 /// import com.pulumi.gcp.organizations.IAMMemberArgs;
 /// import com.pulumi.gcp.organizations.inputs.IAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1585,6 +1796,27 @@ import 'iammember_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_iamauditconfig" "organization" {
+///   org_id  = "1234567890"
+///   service = "allServices"
+///   audit_log_configs {
+///     log_type = "ADMIN_READ"
+///   }
+///   audit_log_configs {
+///     log_type         = "DATA_READ"
+///     exempted_members = ["user:joebloggs@example.com"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1594,8 +1826,8 @@ import 'iammember_state.dart';
 /// import com.pulumi.gcp.organizations.IamAuditConfig;
 /// import com.pulumi.gcp.organizations.IamAuditConfigArgs;
 /// import com.pulumi.gcp.organizations.inputs.IamAuditConfigAuditLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1640,29 +1872,11 @@ import 'iammember_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing Audit Configs
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
 ///
-/// An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g:
-///
-/// * `"{{org_id}} foo.googleapis.com"`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
-///
-/// tf
-///
-/// import {
-///
-/// id = "{{org_id}} foo.googleapis.com"
-///
-/// to = google_organization_iam_audit_config.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:organizations/iAMMember:IAMMember default "{{org_id}} foo.googleapis.com"
-/// ```
+/// &gt; **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+/// to include the title of condition, e.g. `terraform import google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
 class IAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.

@@ -311,6 +311,67 @@ import 'automation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_automation" "b-automation" {
+///   name              = "cd-automation"
+///   project           = gcp_clouddeploy_deliverypipeline.pipeline.project
+///   location          = gcp_clouddeploy_deliverypipeline.pipeline.location
+///   delivery_pipeline = gcp_clouddeploy_deliverypipeline.pipeline.name
+///   service_account   = "my@service-account.com"
+///   selector = {
+///     targets = [{
+///       "id" = "*"
+///     }]
+///   }
+///   rules {
+///     promote_release_rule = {
+///       id = "promote-release"
+///     }
+///   }
+///   rules {
+///     advance_rollout_rule = {
+///       id = "advance-rollout"
+///     }
+///   }
+///   rules {
+///     repair_rollout_rule = {
+///       id = "repair-rollout"
+///       repair_phases = [{
+///         "retry" = {
+///           "attempts" = "1"
+///         }
+///         }, {
+///         "rollback" = {}
+///       }]
+///     }
+///   }
+///   rules {
+///     timed_promote_release_rule = {
+///       id        = "timed-promote-release"
+///       schedule  = "0 9 * * 1"
+///       time_zone = "America/New_York"
+///     }
+///   }
+/// }
+/// resource "gcp_clouddeploy_deliverypipeline" "pipeline" {
+///   name     = "cd-pipeline"
+///   location = "us-central1"
+///   serial_pipeline = {
+///     stages = [{
+///       "targetId" = "test"
+///       "profiles" = []
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -320,16 +381,21 @@ import 'automation_state.dart';
 /// import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
 /// import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageArgs;
 /// import com.pulumi.gcp.clouddeploy.Automation;
 /// import com.pulumi.gcp.clouddeploy.AutomationArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorTargetArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleTimedPromoteReleaseRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -865,6 +931,93 @@ import 'automation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_automation" "f-automation" {
+///   name              = "cd-automation"
+///   location          = "us-central1"
+///   delivery_pipeline = gcp_clouddeploy_deliverypipeline.pipeline.name
+///   service_account   = "my@service-account.com"
+///   annotations = {
+///     "my_first_annotation"  = "example-annotation-1"
+///     "my_second_annotation" = "example-annotation-2"
+///   }
+///   labels = {
+///     "my_first_label"  = "example-label-1"
+///     "my_second_label" = "example-label-2"
+///   }
+///   description = "automation resource"
+///   selector = {
+///     targets = [{
+///       "id" = "test"
+///       "labels" = {
+///         "foo" = "bar"
+///       }
+///     }]
+///   }
+///   suspended = true
+///   rules {
+///     promote_release_rule = {
+///       id                    = "promote-release"
+///       wait                  = "200s"
+///       destination_target_id = "@next"
+///       destination_phase     = "stable"
+///     }
+///   }
+///   rules {
+///     advance_rollout_rule = {
+///       id            = "advance-rollout"
+///       source_phases = ["canary"]
+///       wait          = "200s"
+///     }
+///   }
+///   rules {
+///     repair_rollout_rule = {
+///       id     = "repair-rollout"
+///       phases = ["stable"]
+///       jobs   = ["deploy"]
+///       repair_phases = [{
+///         "retry" = {
+///           "attempts"    = "1"
+///           "wait"        = "200s"
+///           "backoffMode" = "BACKOFF_MODE_LINEAR"
+///         }
+///         }, {
+///         "rollback" = {
+///           "destinationPhase"                = "stable"
+///           "disableRollbackIfRolloutPending" = true
+///         }
+///       }]
+///     }
+///   }
+///   rules {
+///     timed_promote_release_rule = {
+///       id                    = "timed-promote-release"
+///       destination_target_id = "@next"
+///       schedule              = "0 9 * * 1"
+///       time_zone             = "America/New_York"
+///       destination_phase     = "stable"
+///     }
+///   }
+/// }
+/// resource "gcp_clouddeploy_deliverypipeline" "pipeline" {
+///   name     = "cd-pipeline"
+///   location = "us-central1"
+///   serial_pipeline = {
+///     stages = [{
+///       "targetId" = "test"
+///       "profiles" = ["test-profile"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -874,16 +1027,21 @@ import 'automation_state.dart';
 /// import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
 /// import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageArgs;
 /// import com.pulumi.gcp.clouddeploy.Automation;
 /// import com.pulumi.gcp.clouddeploy.AutomationArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorTargetArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleTimedPromoteReleaseRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1049,35 +1207,36 @@ import 'automation_state.dart';
 /// Automation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
-///
 /// * `{{location}}/{{delivery_pipeline}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/automation:Automation default {{project}}/{{location}}/{{delivery_pipeline}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/automation:Automation default {{location}}/{{delivery_pipeline}}/{{name}}
 /// ```
 class Automation extends pulumi.CustomResource {
   /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Output only. Time at which the automation was created.
   late final pulumi.Output<String> createTime;
-  /// The delivery_pipeline for the resource
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// The deliveryPipeline for the resource
   late final pulumi.Output<String> deliveryPipeline;
   /// Optional. Description of the `Automation`. Max length is 255 characters.
   late final pulumi.Output<String?> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -1085,7 +1244,7 @@ class Automation extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -1128,6 +1287,7 @@ class Automation extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deliveryPipeline = registerOutput<String>('deliveryPipeline');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -1171,6 +1331,7 @@ class Automation extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deliveryPipeline = registerOutput<String>('deliveryPipeline');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

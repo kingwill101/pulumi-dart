@@ -74,6 +74,21 @@ import 'get_token_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_siteverification_gettoken" "example" {
+///   type                = "SITE"
+///   identifier          = "https://www.example.com"
+///   verification_method = "META"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +97,8 @@ import 'get_token_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.siteverification.SiteverificationFunctions;
 /// import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,6 +191,21 @@ import 'get_token_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_siteverification_gettoken" "example" {
+///   type                = "INET_DOMAIN"
+///   identifier          = "www.example.com"
+///   verification_method = "DNS_TXT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +214,8 @@ import 'get_token_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.siteverification.SiteverificationFunctions;
 /// import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

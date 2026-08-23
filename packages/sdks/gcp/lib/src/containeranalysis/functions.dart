@@ -61,6 +61,20 @@ import 'get_note_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_containeranalysis_getnoteiampolicy" "policy" {
+///   project = note.project
+///   note    = note.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'get_note_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.containeranalysis.ContaineranalysisFunctions;
 /// import com.pulumi.gcp.containeranalysis.inputs.GetNoteIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -83,8 +97,8 @@ import 'get_note_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-///             .project(note.project())
-///             .note(note.name())
+///             .project(note.get("project"))
+///             .note(note.get("name"))
 ///             .build());
 ///
 ///     }

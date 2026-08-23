@@ -62,8 +62,8 @@ import 'response_policy_state.dart';
 ///     },
 ///     masterAuthorizedNetworksConfig: {},
 ///     ipAllocationPolicy: {
-///         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
-///         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
+///         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges[0].rangeName,
+///         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges[1].rangeName,
 ///     },
 ///     deletionProtection: true,
 /// });
@@ -311,10 +311,10 @@ import 'response_policy_state.dart';
 /// 			MasterAuthorizedNetworksConfig: &container.ClusterMasterAuthorizedNetworksConfigArgs{},
 /// 			IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
 /// 				ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
-/// 					return &secondaryIpRanges[0].RangeName, nil
+/// 					return secondaryIpRanges[0].RangeName, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
-/// 					return &secondaryIpRanges[1].RangeName, nil
+/// 					return secondaryIpRanges[1].RangeName, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(true),
@@ -326,15 +326,15 @@ import 'response_policy_state.dart';
 /// 			ResponsePolicyName: pulumi.String("example-response-policy"),
 /// 			Networks: dns.ResponsePolicyNetworkArray{
 /// 				&dns.ResponsePolicyNetworkArgs{
-/// 					NetworkUrl: network_1.ID(),
+/// 					NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				&dns.ResponsePolicyNetworkArgs{
-/// 					NetworkUrl: network_2.ID(),
+/// 					NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			GkeClusters: dns.ResponsePolicyGkeClusterArray{
 /// 				&dns.ResponsePolicyGkeClusterArgs{
-/// 					GkeClusterName: cluster_1.ID(),
+/// 					GkeClusterName: cluster_1.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -343,6 +343,76 @@ import 'response_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network-1" {
+///   name                    = "network-1"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_network" "network-2" {
+///   name                    = "network-2"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork-1" {
+///   name                     = gcp_compute_network.network-1.name
+///   network                  = gcp_compute_network.network-1.name
+///   ip_cidr_range            = "10.0.36.0/24"
+///   region                   = "us-central1"
+///   private_ip_google_access = true
+///   secondary_ip_ranges {
+///     range_name    = "pod"
+///     ip_cidr_range = "10.0.0.0/19"
+///   }
+///   secondary_ip_ranges {
+///     range_name    = "svc"
+///     ip_cidr_range = "10.0.32.0/22"
+///   }
+/// }
+/// resource "gcp_container_cluster" "cluster-1" {
+///   name               = "cluster-1"
+///   location           = "us-central1-c"
+///   initial_node_count = 1
+///   networking_mode    = "VPC_NATIVE"
+///   default_snat_status = {
+///     disabled = true
+///   }
+///   network    = gcp_compute_network.network-1.name
+///   subnetwork = gcp_compute_subnetwork.subnetwork-1.name
+///   private_cluster_config = {
+///     enable_private_endpoint = true
+///     enable_private_nodes    = true
+///     master_ipv4_cidr_block  = "10.42.0.0/28"
+///     master_global_access_config = {
+///       enabled = true
+///     }
+///   }
+///   master_authorized_networks_config = {}
+///   ip_allocation_policy = {
+///     cluster_secondary_range_name  = gcp_compute_subnetwork.subnetwork-1.secondary_ip_ranges[0].range_name
+///     services_secondary_range_name = gcp_compute_subnetwork.subnetwork-1.secondary_ip_ranges[1].range_name
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_dns_responsepolicy" "example-response-policy" {
+///   response_policy_name = "example-response-policy"
+///   networks {
+///     network_url = gcp_compute_network.network-1.id
+///   }
+///   networks {
+///     network_url = gcp_compute_network.network-2.id
+///   }
+///   gke_clusters {
+///     gke_cluster_name = gcp_container_cluster.cluster-1.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -367,8 +437,8 @@ import 'response_policy_state.dart';
 /// import com.pulumi.gcp.dns.ResponsePolicyArgs;
 /// import com.pulumi.gcp.dns.inputs.ResponsePolicyNetworkArgs;
 /// import com.pulumi.gcp.dns.inputs.ResponsePolicyGkeClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -428,8 +498,8 @@ import 'response_policy_state.dart';
 ///             .masterAuthorizedNetworksConfig(ClusterMasterAuthorizedNetworksConfigArgs.builder()
 ///                 .build())
 ///             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
-///                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[0].rangeName()))
-///                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[1].rangeName()))
+///                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges.get(0).rangeName()))
+///                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges.get(1).rangeName()))
 ///                 .build())
 ///             .deletionProtection(true)
 ///             .build());
@@ -515,25 +585,25 @@ import 'response_policy_state.dart';
 /// ResponsePolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
-///
 /// * `{{project}}/{{response_policy_name}}`
-///
 /// * `{{response_policy_name}}`
+///
 ///
 /// When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{project}}/{{response_policy_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{response_policy_name}}
 /// ```
 class ResponsePolicy extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the response policy, such as `My new response policy`.
   late final pulumi.Output<String?> description;
   /// The list of Google Kubernetes Engine clusters that can see this zone.
@@ -562,6 +632,7 @@ class ResponsePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');
@@ -592,6 +663,7 @@ class ResponsePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');

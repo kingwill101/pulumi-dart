@@ -13,6 +13,13 @@ import 'trigger_transport.dart';
 class TriggerArgs {
   /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
   final pulumi.Input<String>? channel;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Required. Destination specifies where the events should be sent to.
   /// Structure is documented below.
   final pulumi.Input<TriggerDestination> destination;
@@ -20,7 +27,7 @@ class TriggerArgs {
   final pulumi.Input<String>? eventDataContentType;
   /// Optional. User labels attached to the triggers that can be used to group resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String> location;
@@ -44,6 +51,7 @@ class TriggerArgs {
 
   /// Creates a new [TriggerArgs].
   /// [channel] Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destination] Required. Destination specifies where the events should be sent to.
   /// [eventDataContentType] Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
   /// [labels] Optional. User labels attached to the triggers that can be used to group resources.
@@ -56,6 +64,7 @@ class TriggerArgs {
   /// [transport] Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
   const TriggerArgs({
     this.channel,
+    this.deletionPolicy,
     required this.destination,
     this.eventDataContentType,
     this.labels,
@@ -71,6 +80,7 @@ class TriggerArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channel': ?channel,
+      'deletionPolicy': ?deletionPolicy,
       'destination': pulumi.Input.mapInputValue<TriggerDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'eventDataContentType': ?eventDataContentType,
       'labels': ?labels,
@@ -87,6 +97,7 @@ class TriggerArgs {
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
       channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: pulumi.Input.fromValue(TriggerDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       eventDataContentType: (() { final guardedValue = map['eventDataContentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -100,4 +111,3 @@ class TriggerArgs {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReservationAutoscale {
   /// (Output)
-  /// The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+  /// The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
   final pulumi.Input<int>? currentSlots;
   /// Number of slots to be scaled when needed.
   final pulumi.Input<int>? maxSlots;
@@ -31,4 +31,3 @@ class ReservationAutoscale {
     );
   }
 }
-

@@ -5,6 +5,9 @@ import 'sac_attachment_symantec_options.dart';
 
 /// Represents a Secure Access Connect (SAC) attachment resource
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about SacAttachment, see:
 ///
 /// * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
@@ -92,6 +95,25 @@ import 'sac_attachment_symantec_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_sacattachment" "default" {
+///   name     = "sac-attachment-name"
+///   location = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   ncc_gateway = "ncc_gateway_spoke_name"
+///   sac_realm   = "sac_realm_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +122,8 @@ import 'sac_attachment_symantec_options.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networksecurity.SacAttachment;
 /// import com.pulumi.gcp.networksecurity.SacAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,22 +165,15 @@ import 'sac_attachment_symantec_options.dart';
 /// SacAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, SacAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
 /// ```
 class SacAttachment extends pulumi.CustomResource {
@@ -166,12 +181,19 @@ class SacAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String?> country;
   /// Timestamp when the realm was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the SACAttachment resource. eg us-central1
   late final pulumi.Output<String> location;
@@ -213,6 +235,7 @@ class SacAttachment extends pulumi.CustomResource {
         ) {
     country = registerOutput<String?>('country');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -252,6 +275,7 @@ class SacAttachment extends pulumi.CustomResource {
         ) {
     country = registerOutput<String?>('country');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

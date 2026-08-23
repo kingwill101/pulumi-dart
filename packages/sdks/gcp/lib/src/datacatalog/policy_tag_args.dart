@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_datacatalog_policy_tag_policy_tag_args_doc}
 class PolicyTagArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of this policy tag. It must: contain only unicode characters, tabs,
   /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
   /// encoded in UTF-8. If not set, defaults to an empty description.
@@ -24,11 +31,13 @@ class PolicyTagArgs {
   final pulumi.Input<String> taxonomy;
 
   /// Creates a new [PolicyTagArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of this policy tag. It must: contain only unicode characters, tabs,
   /// [displayName] User defined name of this policy tag. It must: be unique within the parent
   /// [parentPolicyTag] Resource name of this policy tag's parent policy tag.
   /// [taxonomy] Taxonomy the policy tag is associated with
   const PolicyTagArgs({
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.parentPolicyTag,
@@ -37,6 +46,7 @@ class PolicyTagArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'parentPolicyTag': ?parentPolicyTag,
@@ -46,6 +56,7 @@ class PolicyTagArgs {
 
   factory PolicyTagArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       parentPolicyTag: (() { final guardedValue = map['parentPolicyTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -53,4 +64,3 @@ class PolicyTagArgs {
     );
   }
 }
-

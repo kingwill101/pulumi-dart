@@ -12,6 +12,13 @@ class ExtensionsInstanceState {
   final pulumi.Input<ExtensionsInstanceConfig>? config;
   /// The time at which the Extension Instance was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
@@ -47,6 +54,7 @@ class ExtensionsInstanceState {
   /// Creates a new [ExtensionsInstanceState].
   /// [config] The current Config of the Extension Instance.
   /// [createTime] The time at which the Extension Instance was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [errorStatuses] If this Instance has `state: ERRORED`, the error messages
   /// [etag] A weak etag that is computed by the server based on other configuration
   /// [instanceId] The ID to use for the Extension Instance, which will become the final
@@ -61,6 +69,7 @@ class ExtensionsInstanceState {
   const ExtensionsInstanceState({
     this.config,
     this.createTime,
+    this.deletionPolicy,
     this.errorStatuses,
     this.etag,
     this.instanceId,
@@ -78,6 +87,7 @@ class ExtensionsInstanceState {
     return <String, dynamic>{
       'config': ?pulumi.Input.mapOptionalInputValue<ExtensionsInstanceConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'errorStatuses': ?pulumi.Input.mapOptionalInputValue<List<ExtensionsInstanceErrorStatus>, List<Map<String, dynamic>>>(errorStatuses, (value) => pulumi.Input.encodeList<ExtensionsInstanceErrorStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'etag': ?etag,
       'instanceId': ?instanceId,
@@ -96,6 +106,7 @@ class ExtensionsInstanceState {
     return ExtensionsInstanceState(
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorStatuses: (() { final guardedValue = map['errorStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(guardedValue, (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -110,4 +121,3 @@ class ExtensionsInstanceState {
     );
   }
 }
-

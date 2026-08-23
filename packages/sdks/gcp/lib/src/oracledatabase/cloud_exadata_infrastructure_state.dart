@@ -12,6 +12,14 @@ class CloudExadataInfrastructureState {
   final pulumi.Input<String>? cloudExadataInfrastructureId;
   /// The date and time that the Exadata Infrastructure was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   final pulumi.Input<bool>? deletionProtection;
   /// User friendly name for this resource.
   final pulumi.Input<String>? displayName;
@@ -24,7 +32,7 @@ class CloudExadataInfrastructureState {
   final pulumi.Input<String>? gcpOracleZone;
   /// Labels or tags associated with the resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
   final pulumi.Input<String>? location;
@@ -44,7 +52,8 @@ class CloudExadataInfrastructureState {
   /// Creates a new [CloudExadataInfrastructureState].
   /// [cloudExadataInfrastructureId] The ID of the Exadata Infrastructure to create. This value is restricted
   /// [createTime] The date and time that the Exadata Infrastructure was created.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   /// [displayName] User friendly name for this resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [entitlementId] Entitlement ID of the private offer against which this infrastructure
@@ -58,6 +67,7 @@ class CloudExadataInfrastructureState {
   const CloudExadataInfrastructureState({
     this.cloudExadataInfrastructureId,
     this.createTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.displayName,
     this.effectiveLabels,
@@ -75,6 +85,7 @@ class CloudExadataInfrastructureState {
     return <String, dynamic>{
       'cloudExadataInfrastructureId': ?cloudExadataInfrastructureId,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
@@ -93,6 +104,7 @@ class CloudExadataInfrastructureState {
     return CloudExadataInfrastructureState(
       cloudExadataInfrastructureId: (() { final guardedValue = map['cloudExadataInfrastructureId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -107,4 +119,3 @@ class CloudExadataInfrastructureState {
     );
   }
 }
-

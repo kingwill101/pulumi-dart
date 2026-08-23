@@ -8,19 +8,29 @@ class AddressState {
   /// The IP address must be inside the specified subnetwork,
   /// if any. Set by the API if undefined.
   final pulumi.Input<String>? address;
+  /// The unique numeric identifier for the resource. This identifier is defined by the server.
+  final pulumi.Input<String>? addressId;
   /// The type of address to reserve.
-  /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
+  /// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
   /// Default value is `EXTERNAL`.
   /// Possible values are: `INTERNAL`, `EXTERNAL`.
   final pulumi.Input<String>? addressType;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-  /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-  /// The PDP must support enhanced IPv4 allocations.
+  /// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+  /// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+  /// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
   /// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
   /// Full resource URL, as in:
   /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -42,7 +52,7 @@ class AddressState {
   /// Labels to apply to this address.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -97,11 +107,13 @@ class AddressState {
 
   /// Creates a new [AddressState].
   /// [address] The static external IP address represented by this resource.
+  /// [addressId] The unique numeric identifier for the resource. This identifier is defined by the server.
   /// [addressType] The type of address to reserve.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  /// [ipCollection] Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+  /// [ipCollection] Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
   /// [ipVersion] The IP Version that will be used by this address. The default value is `IPV4`.
   /// [ipv6EndpointType] The endpoint type of this address, which should be VM or NETLB. This is
   /// [labelFingerprint] The fingerprint used for optimistic locking of this resource.  Used
@@ -119,8 +131,10 @@ class AddressState {
   /// [users] The URLs of the resources that are using this address.
   const AddressState({
     this.address,
+    this.addressId,
     this.addressType,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.ipCollection,
@@ -144,8 +158,10 @@ class AddressState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
+      'addressId': ?addressId,
       'addressType': ?addressType,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'ipCollection': ?ipCollection,
@@ -170,8 +186,10 @@ class AddressState {
   factory AddressState.fromMap(Map<String, dynamic> map) {
     return AddressState(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressId: (() { final guardedValue = map['addressId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       addressType: (() { final guardedValue = map['addressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       ipCollection: (() { final guardedValue = map['ipCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -193,4 +211,3 @@ class AddressState {
     );
   }
 }
-

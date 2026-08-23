@@ -22,6 +22,13 @@ class WorkloadState {
   final pulumi.Input<List<String>>? compliantButDisallowedServices;
   /// Output only. Immutable. The Workload creation timestamp.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
   final pulumi.Input<String>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -37,7 +44,7 @@ class WorkloadState {
   /// Optional. Labels applied to the workload.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String>? location;
@@ -49,7 +56,7 @@ class WorkloadState {
   ///
   /// - - -
   final pulumi.Input<String>? organization;
-  /// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
+  /// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
   final pulumi.Input<String>? partner;
   /// Optional. Permissions granted to the AW Partner SA account for the customer workload
   final pulumi.Input<WorkloadPartnerPermissions>? partnerPermissions;
@@ -76,6 +83,7 @@ class WorkloadState {
   /// [complianceStatuses] Output only. Count of active Violations in the Workload.
   /// [compliantButDisallowedServices] Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
   /// [createTime] Output only. Immutable. The Workload creation timestamp.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [displayName] Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [ekmProvisioningResponses] Optional. Represents the Ekm Provisioning State of the given workload.
@@ -86,7 +94,7 @@ class WorkloadState {
   /// [location] The location for the resource
   /// [name] Output only. The resource name of the workload.
   /// [organization] The organization for the resource
-  /// [partner] Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
+  /// [partner] Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
   /// [partnerPermissions] Optional. Permissions granted to the AW Partner SA account for the customer workload
   /// [partnerServicesBillingAccount] Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
   /// [provisionedResourcesParent] Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
@@ -102,6 +110,7 @@ class WorkloadState {
     this.complianceStatuses,
     this.compliantButDisallowedServices,
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveLabels,
     this.ekmProvisioningResponses,
@@ -131,6 +140,7 @@ class WorkloadState {
       'complianceStatuses': ?pulumi.Input.mapOptionalInputValue<List<WorkloadComplianceStatus>, List<Map<String, dynamic>>>(complianceStatuses, (value) => pulumi.Input.encodeList<WorkloadComplianceStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'compliantButDisallowedServices': ?compliantButDisallowedServices,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
       'ekmProvisioningResponses': ?pulumi.Input.mapOptionalInputValue<List<WorkloadEkmProvisioningResponse>, List<Map<String, dynamic>>>(ekmProvisioningResponses, (value) => pulumi.Input.encodeList<WorkloadEkmProvisioningResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -161,6 +171,7 @@ class WorkloadState {
       complianceStatuses: (() { final guardedValue = map['complianceStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkloadComplianceStatus>(guardedValue, (value) => WorkloadComplianceStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       compliantButDisallowedServices: (() { final guardedValue = map['compliantButDisallowedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       ekmProvisioningResponses: (() { final guardedValue = map['ekmProvisioningResponses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkloadEkmProvisioningResponse>(guardedValue, (value) => WorkloadEkmProvisioningResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -184,4 +195,3 @@ class WorkloadState {
     );
   }
 }
-

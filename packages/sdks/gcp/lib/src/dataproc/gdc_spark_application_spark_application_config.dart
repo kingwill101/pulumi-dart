@@ -11,7 +11,7 @@ class GdcSparkApplicationSparkApplicationConfig {
   final pulumi.Input<List<String>>? fileUris;
   /// HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   final pulumi.Input<List<String>>? jarFileUris;
-  /// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+  /// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
   final pulumi.Input<String>? mainClass;
   /// The HCFS URI of the jar file that contains the main class.
   final pulumi.Input<String>? mainJarFileUri;
@@ -21,7 +21,7 @@ class GdcSparkApplicationSparkApplicationConfig {
   /// [args] The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
   /// [fileUris] HCFS URIs of files to be placed in the working directory of each executor.
   /// [jarFileUris] HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
-  /// [mainClass] The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+  /// [mainClass] The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
   /// [mainJarFileUri] The HCFS URI of the jar file that contains the main class.
   const GdcSparkApplicationSparkApplicationConfig({
     this.archiveUris,
@@ -54,4 +54,3 @@ class GdcSparkApplicationSparkApplicationConfig {
     );
   }
 }
-

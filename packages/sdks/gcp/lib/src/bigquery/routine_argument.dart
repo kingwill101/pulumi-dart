@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'routine_argument_table_type.dart';
 
 class RoutineArgument {
   /// Defaults to FIXED_TYPE.
   /// Default value is `FIXED_TYPE`.
-  /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+  /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
   final pulumi.Input<String>? argumentKind;
   /// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
   /// ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -20,17 +21,22 @@ class RoutineArgument {
   final pulumi.Input<String>? mode;
   /// The name of this argument. Can be absent for function return argument.
   final pulumi.Input<String>? name;
+  /// If argumentKind is FIXED_TABLE, a schema for the table type.
+  /// Structure is documented below.
+  final pulumi.Input<RoutineArgumentTableType>? tableType;
 
   /// Creates a new [RoutineArgument].
   /// [argumentKind] Defaults to FIXED_TYPE.
   /// [dataType] A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
   /// [mode] Specifies whether the argument is input or output. Can be set for procedures only.
   /// [name] The name of this argument. Can be absent for function return argument.
+  /// [tableType] If argumentKind is FIXED_TABLE, a schema for the table type.
   const RoutineArgument({
     this.argumentKind,
     this.dataType,
     this.mode,
     this.name,
+    this.tableType,
   });
 
   Map<String, dynamic> toMap() {
@@ -39,6 +45,7 @@ class RoutineArgument {
       'dataType': ?dataType,
       'mode': ?mode,
       'name': ?name,
+      'tableType': ?pulumi.Input.mapOptionalInputValue<RoutineArgumentTableType, Map<String, dynamic>>(tableType, (value) => value.toMap()),
     };
   }
 
@@ -48,7 +55,7 @@ class RoutineArgument {
       dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableType: (() { final guardedValue = map['tableType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutineArgumentTableType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

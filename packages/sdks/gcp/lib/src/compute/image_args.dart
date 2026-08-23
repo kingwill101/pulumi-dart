@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_guest_os_feature.dart';
 import 'image_image_encryption_key.dart';
+import 'image_params.dart';
 import 'image_raw_disk.dart';
 import 'image_shielded_instance_initial_state.dart';
 import 'image_source_disk_encryption_key.dart';
@@ -14,6 +15,13 @@ import 'image_source_snapshot_encryption_key.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_image_image_args_doc}
 class ImageArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -37,7 +45,7 @@ class ImageArgs {
   final pulumi.Input<ImageImageEncryptionKey>? imageEncryptionKey;
   /// Labels to apply to this Image.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Any applicable license URI.
   final pulumi.Input<List<String>>? licenses;
@@ -49,6 +57,9 @@ class ImageArgs {
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload.
+  /// Structure is documented below.
+  final pulumi.Input<ImageParams>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -95,6 +106,7 @@ class ImageArgs {
   final pulumi.Input<List<String>>? storageLocations;
 
   /// Creates a new [ImageArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [diskSizeGb] Size of the image when restored onto a persistent disk (in GB).
   /// [family] The name of the image family to which this image belongs. You can
@@ -103,6 +115,7 @@ class ImageArgs {
   /// [labels] Labels to apply to this Image.
   /// [licenses] Any applicable license URI.
   /// [name] Name of the resource; provided by the client when the resource is
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload.
   /// [project] The ID of the project in which the resource belongs.
   /// [rawDisk] The parameters of the raw disk image.
   /// [shieldedInstanceInitialState] Set the secure boot keys of shielded instance.
@@ -114,6 +127,7 @@ class ImageArgs {
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption key of the source snapshot. Required if
   /// [storageLocations] Cloud Storage bucket storage location of the image
   const ImageArgs({
+    this.deletionPolicy,
     this.description,
     this.diskSizeGb,
     this.family,
@@ -122,6 +136,7 @@ class ImageArgs {
     this.labels,
     this.licenses,
     this.name,
+    this.params,
     this.project,
     this.rawDisk,
     this.shieldedInstanceInitialState,
@@ -136,6 +151,7 @@ class ImageArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskSizeGb': ?diskSizeGb,
       'family': ?family,
@@ -144,6 +160,7 @@ class ImageArgs {
       'labels': ?labels,
       'licenses': ?licenses,
       'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<ImageParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'rawDisk': ?pulumi.Input.mapOptionalInputValue<ImageRawDisk, Map<String, dynamic>>(rawDisk, (value) => value.toMap()),
       'shieldedInstanceInitialState': ?pulumi.Input.mapOptionalInputValue<ImageShieldedInstanceInitialState, Map<String, dynamic>>(shieldedInstanceInitialState, (value) => value.toMap()),
@@ -159,6 +176,7 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -167,6 +185,7 @@ class ImageArgs {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       licenses: (() { final guardedValue = map['licenses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rawDisk: (() { final guardedValue = map['rawDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageRawDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       shieldedInstanceInitialState: (() { final guardedValue = map['shieldedInstanceInitialState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageShieldedInstanceInitialState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -180,4 +199,3 @@ class ImageArgs {
     );
   }
 }
-

@@ -4,6 +4,7 @@ import 'volume_backup_config.dart';
 import 'volume_cache_parameters.dart';
 import 'volume_export_policy.dart';
 import 'volume_hybrid_replication_parameters.dart';
+import 'volume_large_capacity_config.dart';
 import 'volume_restore_parameters.dart';
 import 'volume_snapshot_policy.dart';
 import 'volume_state.dart';
@@ -123,7 +124,7 @@ import 'volume_tiering_policy.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "test-network",
+/// 			Name: pulumi.StringRef("test-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -156,6 +157,36 @@ import 'volume_tiering_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "test-network"
+/// }
+///
+/// resource "gcp_netapp_storagepool" "default" {
+///   name          = "test-pool"
+///   location      = "us-west2"
+///   service_level = "PREMIUM"
+///   capacity_gib  = "2048"
+///   network       = data.gcp_compute_getnetwork.default.id
+/// }
+/// resource "gcp_netapp_volume" "test_volume" {
+///   location        = "us-west2"
+///   name            = "test-volume"
+///   capacity_gib    = "100"
+///   share_name      = "test-volume"
+///   storage_pool    = gcp_netapp_storagepool.default.name
+///   protocols       = ["NFSV3"]
+///   deletion_policy = "DEFAULT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +199,8 @@ import 'volume_tiering_policy.dart';
 /// import com.pulumi.gcp.netapp.StoragePoolArgs;
 /// import com.pulumi.gcp.netapp.Volume;
 /// import com.pulumi.gcp.netapp.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,22 +274,15 @@ import 'volume_tiering_policy.dart';
 /// Volume can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/volumes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Volume can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/volume:Volume default projects/{{project}}/locations/{{location}}/volumes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volume:Volume default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volume:Volume default {{location}}/{{name}}
 /// ```
 class Volume extends pulumi.CustomResource {
@@ -283,8 +307,15 @@ class Volume extends pulumi.CustomResource {
   /// Policy to determine if the volume should be deleted forcefully.
   /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
   /// Setting this parameter to FORCE will delete volumes including nested snapshots.
-  /// Possible values: DEFAULT, FORCE.
-  late final pulumi.Output<String?> deletionPolicy;
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -310,10 +341,15 @@ class Volume extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
   late final pulumi.Output<bool?> largeCapacity;
+  /// Configuration for a Large Capacity Volume. A Large Capacity Volume
+  /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+  /// internal constituents, and must be created in a large capacity pool.
+  /// Structure is documented below.
+  late final pulumi.Output<VolumeLargeCapacityConfig?> largeCapacityConfig;
   /// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
   late final pulumi.Output<bool> ldapEnabled;
   /// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -361,7 +397,7 @@ class Volume extends pulumi.CustomResource {
   /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
   late final pulumi.Output<bool?> snapshotDirectory;
   /// Snapshot policy defines the schedule for automatic snapshot creation.
-  /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+  /// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
   /// Structure is documented below.
   late final pulumi.Output<VolumeSnapshotPolicy?> snapshotPolicy;
   /// State of the volume.
@@ -403,7 +439,7 @@ class Volume extends pulumi.CustomResource {
     capacityGib = registerOutput<String>('capacityGib');
     coldTierSizeGib = registerOutput<String>('coldTierSizeGib');
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionType = registerOutput<String>('encryptionType');
@@ -415,6 +451,7 @@ class Volume extends pulumi.CustomResource {
     kmsConfig = registerOutput<String>('kmsConfig');
     labels = registerOutput<Map<String, String>?>('labels');
     largeCapacity = registerOutput<bool?>('largeCapacity');
+    largeCapacityConfig = registerOutput<VolumeLargeCapacityConfig?>('largeCapacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeLargeCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ldapEnabled = registerOutput<bool>('ldapEnabled');
     location = registerOutput<String>('location');
     mountOptions = registerOutput<List<Map<String, dynamic>>>('mountOptions');
@@ -474,7 +511,7 @@ class Volume extends pulumi.CustomResource {
     capacityGib = registerOutput<String>('capacityGib');
     coldTierSizeGib = registerOutput<String>('coldTierSizeGib');
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionType = registerOutput<String>('encryptionType');
@@ -486,6 +523,7 @@ class Volume extends pulumi.CustomResource {
     kmsConfig = registerOutput<String>('kmsConfig');
     labels = registerOutput<Map<String, String>?>('labels');
     largeCapacity = registerOutput<bool?>('largeCapacity');
+    largeCapacityConfig = registerOutput<VolumeLargeCapacityConfig?>('largeCapacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeLargeCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ldapEnabled = registerOutput<bool>('ldapEnabled');
     location = registerOutput<String>('location');
     mountOptions = registerOutput<List<Map<String, dynamic>>>('mountOptions');

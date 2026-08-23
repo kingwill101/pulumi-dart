@@ -12,13 +12,13 @@ class IamAuditConfigArgs {
   final pulumi.Input<List<IamAuditConfigAuditLogConfig>> auditLogConfigs;
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   final pulumi.Input<String> folder;
-  /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
   final pulumi.Input<String> service;
 
   /// Creates a new [IamAuditConfigArgs].
   /// [auditLogConfigs] The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-  /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
   const IamAuditConfigArgs({
     required this.auditLogConfigs,
     required this.folder,
@@ -41,4 +41,3 @@ class IamAuditConfigArgs {
     );
   }
 }
-

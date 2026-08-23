@@ -30,6 +30,9 @@ import 'notification_channel_state.dart';
 ///
 ///
 ///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sensitive_labels.auth_token_wo`, `sensitive_labels.password_wo`, `sensitive_labels.service_key_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Notification Channel Basic
@@ -107,6 +110,24 @@ import 'notification_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_notificationchannel" "basic" {
+///   display_name = "Test Notification Channel"
+///   type         = "email"
+///   labels = {
+///     "email_address" = "fake_email@blahblah.com"
+///   }
+///   force_delete = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +136,8 @@ import 'notification_channel_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.monitoring.NotificationChannel;
 /// import com.pulumi.gcp.monitoring.NotificationChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,6 +255,26 @@ import 'notification_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_notificationchannel" "default" {
+///   display_name = "Test Slack Channel"
+///   type         = "slack"
+///   labels = {
+///     "channel_name" = "#foobar"
+///   }
+///   sensitive_labels = {
+///     auth_token = "one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +284,8 @@ import 'notification_channel_state.dart';
 /// import com.pulumi.gcp.monitoring.NotificationChannel;
 /// import com.pulumi.gcp.monitoring.NotificationChannelArgs;
 /// import com.pulumi.gcp.monitoring.inputs.NotificationChannelSensitiveLabelsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,12 +329,20 @@ import 'notification_channel_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
 /// ```
 class NotificationChannel extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
   late final pulumi.Output<String?> description;
   /// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
@@ -311,7 +360,7 @@ class NotificationChannel extends pulumi.CustomResource {
   /// NotificationChannelDescriptor corresponding to the type field.
   /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
   /// determine if there are upstream changes to these fields. They can also be configured via
-  /// the sensitive_labels block, but cannot be configured in both places.
+  /// the sensitiveLabels block, but cannot be configured in both places.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The full REST resource name for this channel. The syntax is:
   /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
@@ -349,6 +398,7 @@ class NotificationChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
@@ -385,6 +435,7 @@ class NotificationChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');

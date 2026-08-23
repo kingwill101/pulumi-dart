@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_filestore_snapshot_snapshot_args_doc}
 class SnapshotArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
   final pulumi.Input<String>? description;
   /// The resource name of the filestore instance.
@@ -14,7 +21,7 @@ class SnapshotArgs {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   final pulumi.Input<String> location;
@@ -31,6 +38,7 @@ class SnapshotArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [SnapshotArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
   /// [instance] The resource name of the filestore instance.
   /// [labels] Resource labels to represent user-provided metadata.
@@ -38,6 +46,7 @@ class SnapshotArgs {
   /// [name] The resource name of the snapshot. The name must be unique within the specified instance.
   /// [project] The ID of the project in which the resource belongs.
   const SnapshotArgs({
+    this.deletionPolicy,
     this.description,
     required this.instance,
     this.labels,
@@ -48,6 +57,7 @@ class SnapshotArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'instance': instance,
       'labels': ?labels,
@@ -59,6 +69,7 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: pulumi.Input.fromValue(map['instance'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -68,4 +79,3 @@ class SnapshotArgs {
     );
   }
 }
-

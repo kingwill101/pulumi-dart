@@ -179,6 +179,40 @@ import 'reference_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_dataaccessscope" "test_scope" {
+///   location             = "us"
+///   instance             = "00000000-0000-0000-0000-000000000000"
+///   data_access_scope_id = "scope-id"
+///   description          = "test scope description"
+///   allowed_data_access_labels {
+///     log_type = "GCP_CLOUDAUDIT"
+///   }
+/// }
+/// resource "gcp_chronicle_referencelist" "example" {
+///   location          = "us"
+///   instance          = "00000000-0000-0000-0000-000000000000"
+///   reference_list_id = "reference_list_id"
+///   description       = "referencelist-description"
+///   entries {
+///     value = "referencelist-entry-value"
+///   }
+///   syntax_type = "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING"
+///   scope_infos {
+///     reference_list_scope = {
+///       scope_names = [gcp_chronicle_dataaccessscope.test_scope.name]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +227,8 @@ import 'reference_list_state.dart';
 /// import com.pulumi.gcp.chronicle.inputs.ReferenceListEntryArgs;
 /// import com.pulumi.gcp.chronicle.inputs.ReferenceListScopeInfoArgs;
 /// import com.pulumi.gcp.chronicle.inputs.ReferenceListScopeInfoReferenceListScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,22 +303,15 @@ import 'reference_list_state.dart';
 /// ReferenceList can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{reference_list_id}}`
-///
 /// * `{{location}}/{{instance}}/{{reference_list_id}}`
+///
 ///
 /// When using the `pulumi import` command, ReferenceList can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:chronicle/referenceList:ReferenceList default projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{project}}/{{location}}/{{instance}}/{{reference_list_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{location}}/{{instance}}/{{reference_list_id}}
 /// ```
 class ReferenceList extends pulumi.CustomResource {

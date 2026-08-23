@@ -16,6 +16,13 @@ class ManagedZoneState {
   /// The time that this resource was created on the server.
   /// This is in RFC3339 text format.
   final pulumi.Input<String>? creationTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A textual description field. Defaults to 'Managed by Pulumi'.
   final pulumi.Input<String>? description;
   /// The DNS name of this managed zone, for instance "example.com.".
@@ -35,14 +42,14 @@ class ManagedZoneState {
   /// A set of key/value label pairs to assign to this ManagedZone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Unique identifier for the resource; defined by the server.
   final pulumi.Input<String>? managedZoneId;
   /// User assigned name for this resource.
   /// Must be unique within the project.
   final pulumi.Input<String>? name;
-  /// Delegate your managed_zone to these virtual name servers;
+  /// Delegate your managedZone to these virtual name servers;
   /// defined by the server
   final pulumi.Input<List<String>>? nameServers;
   /// The presence of this field indicates that DNS Peering is enabled for this
@@ -50,7 +57,7 @@ class ManagedZoneState {
   /// Structure is documented below.
   final pulumi.Input<ManagedZonePeeringConfig>? peeringConfig;
   /// For privately visible zones, the set of Virtual Private Cloud
-  /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
+  /// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
   /// Structure is documented below.
   final pulumi.Input<ManagedZonePrivateVisibilityConfig>? privateVisibilityConfig;
   /// The ID of the project in which the resource belongs.
@@ -59,10 +66,12 @@ class ManagedZoneState {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+  /// (Optional, Beta)
   /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
   /// lookup queries using automatically configured records for VPC resources. This only applies
-  /// to networks listed under `private_visibility_config`.
+  /// to networks listed under `privateVisibilityConfig`.
   final pulumi.Input<bool>? reverseLookup;
+  /// (Optional, Beta)
   /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
   /// Structure is documented below.
   final pulumi.Input<ManagedZoneServiceDirectoryConfig>? serviceDirectoryConfig;
@@ -75,6 +84,7 @@ class ManagedZoneState {
   /// Creates a new [ManagedZoneState].
   /// [cloudLoggingConfig] Cloud logging configuration
   /// [creationTime] The time that this resource was created on the server.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A textual description field. Defaults to 'Managed by Pulumi'.
   /// [dnsName] The DNS name of this managed zone, for instance "example.com.".
   /// [dnssecConfig] DNSSEC configuration
@@ -84,17 +94,18 @@ class ManagedZoneState {
   /// [labels] A set of key/value label pairs to assign to this ManagedZone.
   /// [managedZoneId] Unique identifier for the resource; defined by the server.
   /// [name] User assigned name for this resource.
-  /// [nameServers] Delegate your managed_zone to these virtual name servers;
+  /// [nameServers] Delegate your managedZone to these virtual name servers;
   /// [peeringConfig] The presence of this field indicates that DNS Peering is enabled for this
   /// [privateVisibilityConfig] For privately visible zones, the set of Virtual Private Cloud
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  /// [reverseLookup] Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-  /// [serviceDirectoryConfig] The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+  /// [reverseLookup] (Optional, Beta)
+  /// [serviceDirectoryConfig] (Optional, Beta)
   /// [visibility] The zone's visibility: public zones are exposed to the Internet,
   const ManagedZoneState({
     this.cloudLoggingConfig,
     this.creationTime,
+    this.deletionPolicy,
     this.description,
     this.dnsName,
     this.dnssecConfig,
@@ -118,6 +129,7 @@ class ManagedZoneState {
     return <String, dynamic>{
       'cloudLoggingConfig': ?pulumi.Input.mapOptionalInputValue<ManagedZoneCloudLoggingConfig, Map<String, dynamic>>(cloudLoggingConfig, (value) => value.toMap()),
       'creationTime': ?creationTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dnsName': ?dnsName,
       'dnssecConfig': ?pulumi.Input.mapOptionalInputValue<ManagedZoneDnssecConfig, Map<String, dynamic>>(dnssecConfig, (value) => value.toMap()),
@@ -142,6 +154,7 @@ class ManagedZoneState {
     return ManagedZoneState(
       cloudLoggingConfig: (() { final guardedValue = map['cloudLoggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedZoneCloudLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnssecConfig: (() { final guardedValue = map['dnssecConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedZoneDnssecConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -162,4 +175,3 @@ class ManagedZoneState {
     );
   }
 }
-

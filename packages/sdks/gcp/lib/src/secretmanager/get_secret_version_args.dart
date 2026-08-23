@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_secretmanager_get_secret_version_get_secret_version_args_doc}
 class GetSecretVersionArgs {
-  /// If set to `false`, the `secret_data`
+  /// If set to `false`, the `secretData`
   /// will not be fetched. Default is `true`.
   final pulumi.Input<bool>? fetchSecretData;
   /// If set to `true`, the secret data is
@@ -23,7 +23,7 @@ class GetSecretVersionArgs {
   final pulumi.Input<String>? version;
 
   /// Creates a new [GetSecretVersionArgs].
-  /// [fetchSecretData] If set to `false`, the `secret_data`
+  /// [fetchSecretData] If set to `false`, the `secretData`
   /// [isSecretDataBase64] If set to `true`, the secret data is
   /// [project] The project to get the secret version for. If it
   /// [secret] The secret to get the secret version for.
@@ -56,4 +56,3 @@ class GetSecretVersionArgs {
     );
   }
 }
-

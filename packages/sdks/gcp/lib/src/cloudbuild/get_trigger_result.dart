@@ -19,6 +19,7 @@ class GetTriggerResult {
   final List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs;
   final List<GetTriggerBuild> builds;
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs;
   final bool disabled;
@@ -49,6 +50,7 @@ class GetTriggerResult {
   /// [bitbucketServerTriggerConfigs] Required.
   /// [builds] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [developerConnectEventConfigs] Required.
   /// [disabled] Required.
@@ -77,6 +79,7 @@ class GetTriggerResult {
     required this.bitbucketServerTriggerConfigs,
     required this.builds,
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.developerConnectEventConfigs,
     required this.disabled,
@@ -108,6 +111,7 @@ class GetTriggerResult {
       'bitbucketServerTriggerConfigs': pulumi.Input.encodeList<GetTriggerBitbucketServerTriggerConfig, Map<String, dynamic>>(bitbucketServerTriggerConfigs, (value) => value.toMap()),
       'builds': pulumi.Input.encodeList<GetTriggerBuild, Map<String, dynamic>>(builds, (value) => value.toMap()),
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'developerConnectEventConfigs': pulumi.Input.encodeList<GetTriggerDeveloperConnectEventConfig, Map<String, dynamic>>(developerConnectEventConfigs, (value) => value.toMap()),
       'disabled': disabled,
@@ -140,6 +144,7 @@ class GetTriggerResult {
       bitbucketServerTriggerConfigs: pulumi.Input.decodeList<GetTriggerBitbucketServerTriggerConfig>(map['bitbucketServerTriggerConfigs']!, (value) => GetTriggerBitbucketServerTriggerConfig.fromMap((value as Map).cast<String, dynamic>())),
       builds: pulumi.Input.decodeList<GetTriggerBuild>(map['builds']!, (value) => GetTriggerBuild.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       developerConnectEventConfigs: pulumi.Input.decodeList<GetTriggerDeveloperConnectEventConfig>(map['developerConnectEventConfigs']!, (value) => GetTriggerDeveloperConnectEventConfig.fromMap((value as Map).cast<String, dynamic>())),
       disabled: map['disabled'] as bool,
@@ -166,4 +171,3 @@ class GetTriggerResult {
     );
   }
 }
-

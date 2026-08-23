@@ -5,24 +5,24 @@ import 'slo_windows_based_sli_good_total_ratio_threshold_performance_distributio
 import 'slo_windows_based_sli_good_total_ratio_threshold_performance_good_total_ratio.dart';
 
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
-  /// Used when good_service is defined by a count of values aggregated in a
-  /// Distribution that fall into a good range. The total_service is the
+  /// Used when goodService is defined by a count of values aggregated in a
+  /// Distribution that fall into a good range. The totalService is the
   /// total count of all values aggregated in the Distribution.
   /// Defines a distribution TimeSeries filter and thresholds used for
   /// measuring good service and total service.
   /// Structure is documented below.
   final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut>? distributionCut;
-  /// A means to compute a ratio of `good_service` to `total_service`.
+  /// A means to compute a ratio of `goodService` to `totalService`.
   /// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
   /// Must specify exactly two of good, bad, and total service filters.
-  /// The relationship good_service + bad_service = total_service
+  /// The relationship goodService + badService = totalService
   /// will be assumed.
   /// Structure is documented below.
   final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio>? goodTotalRatio;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformance].
-  /// [distributionCut] Used when good_service is defined by a count of values aggregated in a
-  /// [goodTotalRatio] A means to compute a ratio of `good_service` to `total_service`.
+  /// [distributionCut] Used when goodService is defined by a count of values aggregated in a
+  /// [goodTotalRatio] A means to compute a ratio of `goodService` to `totalService`.
   const SloWindowsBasedSliGoodTotalRatioThresholdPerformance({
     this.distributionCut,
     this.goodTotalRatio,
@@ -42,4 +42,3 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
     );
   }
 }
-

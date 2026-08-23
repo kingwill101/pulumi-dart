@@ -6,7 +6,7 @@ import 'region_network_firewall_policy_with_rules_rule_target_secure_tag.dart';
 
 class RegionNetworkFirewallPolicyWithRulesRule {
   /// The Action to perform when the client connection triggers the rule. Can currently be either
-  /// "allow", "deny", "apply_security_profile_group" or "goto_next".
+  /// "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
   final pulumi.Input<String> action;
   /// A description of the rule.
   final pulumi.Input<String>? description;
@@ -37,10 +37,18 @@ class RegionNetworkFirewallPolicyWithRulesRule {
   /// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
   /// Must be specified if action is 'apply_security_profile_group'.
   final pulumi.Input<String>? securityProfileGroup;
+  /// A list of forwarding rules to which this rule applies.
+  /// This field allows you to control which load balancers get this rule.
+  /// For example, the following are valid values:
+  /// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+  /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+  /// - projects/project/global/forwardingRules/forwardingRule
+  /// - projects/project/regions/region/forwardingRules/forwardingRule
+  final pulumi.Input<List<String>>? targetForwardingRules;
   /// A list of secure tags that controls which instances the firewall rule
   /// applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
   /// firewall rule applies only to instances in the VPC network that have one
-  /// of those EFFECTIVE secure tags, if all the target_secure_tag are in
+  /// of those EFFECTIVE secure tags, if all the targetSecureTag are in
   /// INEFFECTIVE state, then this rule will be ignored.
   /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
   /// &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
@@ -53,6 +61,11 @@ class RegionNetworkFirewallPolicyWithRulesRule {
   /// A list of service accounts indicating the sets of
   /// instances that are applied with this rule.
   final pulumi.Input<List<String>>? targetServiceAccounts;
+  /// Target types of the firewall policy rule.
+  /// Default value is INSTANCES.
+  /// When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+  /// Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+  final pulumi.Input<String>? targetType;
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
   final pulumi.Input<bool>? tlsInspect;
@@ -67,8 +80,10 @@ class RegionNetworkFirewallPolicyWithRulesRule {
   /// [priority] An integer indicating the priority of a rule in the list. The priority must be a value
   /// [ruleName] An optional name for the rule. This field is not a unique identifier
   /// [securityProfileGroup] A fully-qualified URL of a SecurityProfile resource instance.
+  /// [targetForwardingRules] A list of forwarding rules to which this rule applies.
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule
   /// [targetServiceAccounts] A list of service accounts indicating the sets of
+  /// [targetType] Target types of the firewall policy rule.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
   const RegionNetworkFirewallPolicyWithRulesRule({
     required this.action,
@@ -80,8 +95,10 @@ class RegionNetworkFirewallPolicyWithRulesRule {
     required this.priority,
     this.ruleName,
     this.securityProfileGroup,
+    this.targetForwardingRules,
     this.targetSecureTags,
     this.targetServiceAccounts,
+    this.targetType,
     this.tlsInspect,
   });
 
@@ -96,8 +113,10 @@ class RegionNetworkFirewallPolicyWithRulesRule {
       'priority': priority,
       'ruleName': ?ruleName,
       'securityProfileGroup': ?securityProfileGroup,
+      'targetForwardingRules': ?targetForwardingRules,
       'targetSecureTags': ?pulumi.Input.mapOptionalInputValue<List<RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag>, List<Map<String, dynamic>>>(targetSecureTags, (value) => pulumi.Input.encodeList<RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetServiceAccounts': ?targetServiceAccounts,
+      'targetType': ?targetType,
       'tlsInspect': ?tlsInspect,
     };
   }
@@ -113,10 +132,11 @@ class RegionNetworkFirewallPolicyWithRulesRule {
       priority: pulumi.Input.fromValue(map['priority'] as int),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityProfileGroup: (() { final guardedValue = map['securityProfileGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetForwardingRules: (() { final guardedValue = map['targetForwardingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetSecureTags: (() { final guardedValue = map['targetSecureTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetServiceAccounts: (() { final guardedValue = map['targetServiceAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tlsInspect: (() { final guardedValue = map['tlsInspect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

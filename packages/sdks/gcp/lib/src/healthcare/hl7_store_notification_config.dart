@@ -29,4 +29,3 @@ class Hl7StoreNotificationConfig {
     );
   }
 }
-

@@ -5,7 +5,6 @@ import 'ekm_connection_state.dart';
 /// `Ekm Connections` are used to control the connection settings for an `EXTERNAL_VPC` CryptoKey.
 /// It is used to connect customer's external key manager to Google Cloud EKM.
 ///
-///
 /// &gt; **Note:** Ekm Connections cannot be deleted from Google Cloud Platform.
 ///
 ///
@@ -119,6 +118,28 @@ import 'ekm_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnection" "example-ekmconnection" {
+///   name                = "ekmconnection_example"
+///   location            = "us-central1"
+///   key_management_mode = "MANUAL"
+///   service_resolvers {
+///     service_directory_service = "projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name"
+///     hostname                  = "example-ekm.goog"
+///     server_certificates {
+///       raw_der = "==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY=="
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +149,9 @@ import 'ekm_connection_state.dart';
 /// import com.pulumi.gcp.kms.EkmConnection;
 /// import com.pulumi.gcp.kms.EkmConnectionArgs;
 /// import com.pulumi.gcp.kms.inputs.EkmConnectionServiceResolverArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.kms.inputs.EkmConnectionServiceResolverServerCertificateArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -178,22 +200,15 @@ import 'ekm_connection_state.dart';
 /// EkmConnection can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EkmConnection can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:kms/ekmConnection:EkmConnection default projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/ekmConnection:EkmConnection default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/ekmConnection:EkmConnection default {{location}}/{{name}}
 /// ```
 class EkmConnection extends pulumi.CustomResource {

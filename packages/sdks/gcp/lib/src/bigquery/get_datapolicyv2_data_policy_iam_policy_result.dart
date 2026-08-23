@@ -52,4 +52,3 @@ class GetDatapolicyv2DataPolicyIamPolicyResult {
     );
   }
 }
-

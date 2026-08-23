@@ -15,6 +15,13 @@ class AppHostingDomainState {
   final pulumi.Input<List<AppHostingDomainCustomDomainStatus>>? customDomainStatuses;
   /// Time at which the domain was deleted.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
   final pulumi.Input<String>? domainId;
@@ -46,6 +53,7 @@ class AppHostingDomainState {
   /// [createTime] Time at which the domain was created.
   /// [customDomainStatuses] The status of a custom domain's linkage to the Backend.
   /// [deleteTime] Time at which the domain was deleted.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [domainId] Id of the domain to create.
   /// [etag] Server-computed checksum based on other values; may be sent
   /// [location] The location of the Backend that this Domain is associated with
@@ -60,6 +68,7 @@ class AppHostingDomainState {
     this.createTime,
     this.customDomainStatuses,
     this.deleteTime,
+    this.deletionPolicy,
     this.domainId,
     this.etag,
     this.location,
@@ -77,6 +86,7 @@ class AppHostingDomainState {
       'createTime': ?createTime,
       'customDomainStatuses': ?pulumi.Input.mapOptionalInputValue<List<AppHostingDomainCustomDomainStatus>, List<Map<String, dynamic>>>(customDomainStatuses, (value) => pulumi.Input.encodeList<AppHostingDomainCustomDomainStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'domainId': ?domainId,
       'etag': ?etag,
       'location': ?location,
@@ -95,6 +105,7 @@ class AppHostingDomainState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customDomainStatuses: (() { final guardedValue = map['customDomainStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppHostingDomainCustomDomainStatus>(guardedValue, (value) => AppHostingDomainCustomDomainStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainId: (() { final guardedValue = map['domainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -107,4 +118,3 @@ class AppHostingDomainState {
     );
   }
 }
-

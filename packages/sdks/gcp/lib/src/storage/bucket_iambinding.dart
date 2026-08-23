@@ -116,6 +116,27 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiampolicy" "policy" {
+///   bucket      = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,10 +145,11 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.storage.BucketIAMPolicy;
 /// import com.pulumi.gcp.storage.BucketIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,7 +169,7 @@ import 'bucket_iambinding_state.dart';
 ///             .build());
 ///
 ///         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -290,6 +312,32 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiampolicy" "policy" {
+///   bucket      = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,10 +346,12 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.storage.BucketIAMPolicy;
 /// import com.pulumi.gcp.storage.BucketIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -326,7 +376,7 @@ import 'bucket_iambinding_state.dart';
 ///             .build());
 ///
 ///         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -421,6 +471,21 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiambinding" "binding" {
+///   bucket  = default.name
+///   role    = "roles/storage.admin"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -429,8 +494,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.BucketIAMBinding;
 /// import com.pulumi.gcp.storage.BucketIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,7 +508,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -550,6 +615,26 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiambinding" "binding" {
+///   bucket  = default.name
+///   role    = "roles/storage.admin"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -559,8 +644,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.gcp.storage.BucketIAMBinding;
 /// import com.pulumi.gcp.storage.BucketIAMBindingArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -573,7 +658,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .condition(BucketIAMBindingConditionArgs.builder()
@@ -662,6 +747,21 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiammember" "member" {
+///   bucket = default.name
+///   role   = "roles/storage.admin"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -670,8 +770,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.BucketIAMMember;
 /// import com.pulumi.gcp.storage.BucketIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -684,7 +784,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -785,6 +885,26 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiammember" "member" {
+///   bucket = default.name
+///   role   = "roles/storage.admin"
+///   member = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -794,8 +914,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.gcp.storage.BucketIAMMember;
 /// import com.pulumi.gcp.storage.BucketIAMMemberArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -808,7 +928,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .condition(BucketIAMMemberConditionArgs.builder()
@@ -954,6 +1074,27 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiampolicy" "policy" {
+///   bucket      = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -962,10 +1103,11 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.storage.BucketIAMPolicy;
 /// import com.pulumi.gcp.storage.BucketIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -985,7 +1127,7 @@ import 'bucket_iambinding_state.dart';
 ///             .build());
 ///
 ///         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1128,6 +1270,32 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiampolicy" "policy" {
+///   bucket      = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1136,10 +1304,12 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.storage.BucketIAMPolicy;
 /// import com.pulumi.gcp.storage.BucketIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1164,7 +1334,7 @@ import 'bucket_iambinding_state.dart';
 ///             .build());
 ///
 ///         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1259,6 +1429,21 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiambinding" "binding" {
+///   bucket  = default.name
+///   role    = "roles/storage.admin"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1267,8 +1452,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.BucketIAMBinding;
 /// import com.pulumi.gcp.storage.BucketIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1281,7 +1466,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1388,6 +1573,26 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiambinding" "binding" {
+///   bucket  = default.name
+///   role    = "roles/storage.admin"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1397,8 +1602,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.gcp.storage.BucketIAMBinding;
 /// import com.pulumi.gcp.storage.BucketIAMBindingArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1411,7 +1616,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .condition(BucketIAMBindingConditionArgs.builder()
@@ -1500,6 +1705,21 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiammember" "member" {
+///   bucket = default.name
+///   role   = "roles/storage.admin"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1508,8 +1728,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.BucketIAMMember;
 /// import com.pulumi.gcp.storage.BucketIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1522,7 +1742,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1623,6 +1843,26 @@ import 'bucket_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketiammember" "member" {
+///   bucket = default.name
+///   role   = "roles/storage.admin"
+///   member = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1632,8 +1872,8 @@ import 'bucket_iambinding_state.dart';
 /// import com.pulumi.gcp.storage.BucketIAMMember;
 /// import com.pulumi.gcp.storage.BucketIAMMemberArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1646,7 +1886,7 @@ import 'bucket_iambinding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .condition(BucketIAMMemberConditionArgs.builder()
@@ -1679,7 +1919,6 @@ import 'bucket_iambinding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * b/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1687,25 +1926,21 @@ import 'bucket_iambinding_state.dart';
 /// Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:storage/bucketIAMBinding:BucketIAMBinding editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+/// $ terraform import google_storage_bucket_iam_member.editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:storage/bucketIAMBinding:BucketIAMBinding editor "b/{{bucket}} roles/storage.objectViewer"
+/// $ terraform import google_storage_bucket_iam_binding.editor "b/{{bucket}} roles/storage.objectViewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:storage/bucketIAMBinding:BucketIAMBinding editor b/{{bucket}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class BucketIAMBinding extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to

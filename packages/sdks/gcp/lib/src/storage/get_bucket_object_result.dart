@@ -25,6 +25,7 @@ class GetBucketObjectResult {
   final String crc32c;
   final List<GetBucketObjectCustomerEncryption> customerEncryptions;
   final String deletionPolicy;
+  /// (Computed) Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
   final String detectMd5hash;
   /// (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
   final bool eventBasedHold;
@@ -66,7 +67,7 @@ class GetBucketObjectResult {
   /// [crc32c] (Computed) Base 64 CRC32 hash of the uploaded data.
   /// [customerEncryptions] Required.
   /// [deletionPolicy] Required.
-  /// [detectMd5hash] Required.
+  /// [detectMd5hash] (Computed) Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
   /// [eventBasedHold] (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
   /// [forceEmptyContentType] Required.
   /// [generation] (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -184,4 +185,3 @@ class GetBucketObjectResult {
     );
   }
 }
-

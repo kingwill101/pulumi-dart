@@ -150,7 +150,7 @@ import 'multicast_producer_association_networkservices_state.dart';
 /// 		multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-domain-mpa"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID(),
+/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
@@ -163,7 +163,7 @@ import 'multicast_producer_association_networkservices_state.dart';
 /// 		multicastDomainActivation, err := networkservices.NewMulticastDomainActivation(ctx, "multicast_domain_activation", &networkservices.MulticastDomainActivationArgs{
 /// 			MulticastDomainActivationId: pulumi.String("test-domain-activation-mpa"),
 /// 			Location:                    pulumi.String("us-central1-b"),
-/// 			MulticastDomain:             multicastDomain.ID(),
+/// 			MulticastDomain:             multicastDomain.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -171,8 +171,8 @@ import 'multicast_producer_association_networkservices_state.dart';
 /// 		_, err = networkservices.NewMulticastProducerAssociation(ctx, "mpa_test", &networkservices.MulticastProducerAssociationArgs{
 /// 			MulticastProducerAssociationId: pulumi.String("test-producer-association-mpa"),
 /// 			Location:                       pulumi.String("us-central1-b"),
-/// 			Network:                        network.ID(),
-/// 			MulticastDomainActivation:      multicastDomainActivation.ID(),
+/// 			Network:                        network.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomainActivation:      multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			network,
 /// 		}))
@@ -181,6 +181,41 @@ import 'multicast_producer_association_networkservices_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-network-mpa"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkservices_multicastdomain" "multicast_domain" {
+///   depends_on          = [gcp_compute_network.network]
+///   multicast_domain_id = "test-domain-mpa"
+///   location            = "global"
+///   admin_network       = gcp_compute_network.network.id
+///   connection_config = {
+///     connection_type = "SAME_VPC"
+///   }
+/// }
+/// resource "gcp_networkservices_multicastdomainactivation" "multicast_domain_activation" {
+///   multicast_domain_activation_id = "test-domain-activation-mpa"
+///   location                       = "us-central1-b"
+///   multicast_domain               = gcp_networkservices_multicastdomain.multicast_domain.id
+/// }
+/// resource "gcp_networkservices_multicastproducerassociation" "mpa_test" {
+///   depends_on                        = [gcp_compute_network.network]
+///   multicast_producer_association_id = "test-producer-association-mpa"
+///   location                          = "us-central1-b"
+///   network                           = gcp_compute_network.network.id
+///   multicast_domain_activation       = gcp_networkservices_multicastdomainactivation.multicast_domain_activation.id
 /// }
 /// ```
 /// ```java
@@ -199,8 +234,8 @@ import 'multicast_producer_association_networkservices_state.dart';
 /// import com.pulumi.gcp.networkservices.MulticastProducerAssociation;
 /// import com.pulumi.gcp.networkservices.MulticastProducerAssociationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,35 +326,35 @@ import 'multicast_producer_association_networkservices_state.dart';
 /// MulticastProducerAssociation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}`
-///
 /// * `{{project}}/{{location}}/{{multicast_producer_association_id}}`
-///
 /// * `{{location}}/{{multicast_producer_association_id}}`
+///
 ///
 /// When using the `pulumi import` command, MulticastProducerAssociation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{project}}/{{location}}/{{multicast_producer_association_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{location}}/{{multicast_producer_association_id}}
 /// ```
 class MulticastProducerAssociation extends pulumi.CustomResource {
   /// [Output only] The timestamp when the multicast producer association was
   /// created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional text description of the multicast producer association.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -382,6 +417,7 @@ class MulticastProducerAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -421,6 +457,7 @@ class MulticastProducerAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

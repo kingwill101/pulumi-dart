@@ -111,6 +111,27 @@ import 'target_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_targetpool" "default" {
+///   name          = "instance-pool"
+///   instances     = ["us-central1-a/myinstance1", "us-central1-b/myinstance2"]
+///   health_checks = gcp_compute_httphealthcheck.default.name
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "default"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +142,8 @@ import 'target_pool_state.dart';
 /// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.TargetPool;
 /// import com.pulumi.gcp.compute.TargetPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -178,34 +199,30 @@ import 'target_pool_state.dart';
 /// Target pools can be imported using any of the following formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/targetPools/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, target pools can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
 /// ```
 class TargetPool extends pulumi.CustomResource {
   /// URL to the backup target pool. Must also set
   /// failover_ratio.
   late final pulumi.Output<String?> backupPool;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Textual description field.
   late final pulumi.Output<String?> description;
   /// Ratio (0 to 1) of failed nodes before using the
@@ -231,7 +248,7 @@ class TargetPool extends pulumi.CustomResource {
   /// Where the target pool resides. Defaults to project
   /// region.
   late final pulumi.Output<String> region;
-  /// The resource URL for the security policy associated with this target pool.
+  /// ) The resource URL for the security policy associated with this target pool.
   late final pulumi.Output<String?> securityPolicy;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
@@ -255,6 +272,7 @@ class TargetPool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backupPool = registerOutput<String?>('backupPool');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     failoverRatio = registerOutput<double?>('failoverRatio');
     healthChecks = registerOutput<String?>('healthChecks');
@@ -291,6 +309,7 @@ class TargetPool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backupPool = registerOutput<String?>('backupPool');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     failoverRatio = registerOutput<double?>('failoverRatio');
     healthChecks = registerOutput<String?>('healthChecks');

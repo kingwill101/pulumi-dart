@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attached_disk_args.dart';
 import 'attached_disk_state.dart';
 
-/// Persistent disks can be attached to a compute instance using the `attached_disk`
+/// Persistent disks can be attached to a compute instance using the `attachedDisk`
 /// section within the compute instance configuration.
 /// However there may be situations where managing the attached disks via the compute
 /// instance config isn't preferable or possible, such as attaching dynamic
@@ -15,7 +15,7 @@ import 'attached_disk_state.dart';
 /// * How-to Guides
 /// * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 ///
-/// **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+/// **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 ///
 /// ## Example Usage
 ///
@@ -129,13 +129,40 @@ import 'attached_disk_state.dart';
 /// 		}
 /// 		_, err = compute.NewAttachedDisk(ctx, "default", &compute.AttachedDiskArgs{
 /// 			Disk:     pulumi.Any(defaultGoogleComputeDisk.Id),
-/// 			Instance: defaultInstance.ID(),
+/// 			Instance: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_attacheddisk" "default" {
+///   disk     = defaultGoogleComputeDisk.id
+///   instance = gcp_compute_instance.default.id
+/// }
+/// resource "gcp_compute_instance" "default" {
+///   name         = "attached-disk-instance"
+///   machine_type = "e2-medium"
+///   zone         = "us-west1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
 /// }
 /// ```
 /// ```java
@@ -151,8 +178,8 @@ import 'attached_disk_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
 /// import com.pulumi.gcp.compute.AttachedDisk;
 /// import com.pulumi.gcp.compute.AttachedDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,7 +206,7 @@ import 'attached_disk_state.dart';
 ///             .build());
 ///
 ///         var default_ = new AttachedDisk("default", AttachedDiskArgs.builder()
-///             .disk(defaultGoogleComputeDisk.id())
+///             .disk(defaultGoogleComputeDisk.get("id"))
 ///             .instance(defaultInstance.id())
 ///             .build());
 ///
@@ -213,19 +240,25 @@ import 'attached_disk_state.dart';
 /// Attached Disk can be imported the following ways:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}`
-///
 /// * `{{project}}/{{zone}}/{{instance.name}}/{{disk.name}}`
+///
 ///
 /// When using the `pulumi import` command, Attached Disk can be imported using one of the formats above. For example:
 ///
-/// ```sh
-/// $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
-/// ```
+///
 ///
 /// ```sh
+/// $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
 /// $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
 /// ```
 class AttachedDisk extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Specifies a unique device name of your choice that is
   /// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
   /// system running within the instance. This name can be used to
@@ -236,13 +269,13 @@ class AttachedDisk extends pulumi.CustomResource {
   /// to this disk, in the form persistent-disks-x, where x is a number
   /// assigned by Google Compute Engine.
   late final pulumi.Output<String> deviceName;
-  /// `name` or `self_link` of the disk that will be attached.
+  /// `name` or `selfLink` of the disk that will be attached.
   ///
   ///
   /// - - -
   late final pulumi.Output<String> disk;
-  /// `name` or `self_link` of the compute instance that the disk will be attached to.
-  /// If the `self_link` is provided then `zone` and `project` are extracted from the
+  /// `name` or `selfLink` of the compute instance that the disk will be attached to.
+  /// If the `selfLink` is provided then `zone` and `project` are extracted from the
   /// self link. If only the name is used then `zone` and `project` must be defined
   /// as properties on the resource or provider.
   late final pulumi.Output<String> instance;
@@ -265,10 +298,10 @@ class AttachedDisk extends pulumi.CustomResource {
   /// "READ_WRITE"
   late final pulumi.Output<String?> mode;
   /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
-  /// `self_link` the project defined in the link will take precedence.
+  /// `selfLink` the project defined in the link will take precedence.
   late final pulumi.Output<String> project;
   /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
-  /// `self_link` the zone defined in the link will take precedence.
+  /// `selfLink` the zone defined in the link will take precedence.
   late final pulumi.Output<String> zone;
 
   /// Creates a new [AttachedDisk].
@@ -285,6 +318,7 @@ class AttachedDisk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deviceName = registerOutput<String>('deviceName');
     disk = registerOutput<String>('disk');
     instance = registerOutput<String>('instance');
@@ -317,6 +351,7 @@ class AttachedDisk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deviceName = registerOutput<String>('deviceName');
     disk = registerOutput<String>('disk');
     instance = registerOutput<String>('instance');

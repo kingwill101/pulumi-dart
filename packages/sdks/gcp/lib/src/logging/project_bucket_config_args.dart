@@ -13,6 +13,13 @@ class ProjectBucketConfigArgs {
   final pulumi.Input<String> bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
   final pulumi.Input<ProjectBucketConfigCmekSettings>? cmekSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Describes this bucket.
   final pulumi.Input<String>? description;
   /// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
@@ -31,6 +38,7 @@ class ProjectBucketConfigArgs {
   /// Creates a new [ProjectBucketConfigArgs].
   /// [bucketId] The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
   /// [cmekSettings] The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] Describes this bucket.
   /// [enableAnalytics] Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
   /// [indexConfigs] A list of indexed fields and related configuration data. Structure is documented below.
@@ -41,6 +49,7 @@ class ProjectBucketConfigArgs {
   const ProjectBucketConfigArgs({
     required this.bucketId,
     this.cmekSettings,
+    this.deletionPolicy,
     this.description,
     this.enableAnalytics,
     this.indexConfigs,
@@ -54,6 +63,7 @@ class ProjectBucketConfigArgs {
     return <String, dynamic>{
       'bucketId': bucketId,
       'cmekSettings': ?pulumi.Input.mapOptionalInputValue<ProjectBucketConfigCmekSettings, Map<String, dynamic>>(cmekSettings, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'enableAnalytics': ?enableAnalytics,
       'indexConfigs': ?pulumi.Input.mapOptionalInputValue<List<ProjectBucketConfigIndexConfig>, List<Map<String, dynamic>>>(indexConfigs, (value) => pulumi.Input.encodeList<ProjectBucketConfigIndexConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -68,6 +78,7 @@ class ProjectBucketConfigArgs {
     return ProjectBucketConfigArgs(
       bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
       cmekSettings: (() { final guardedValue = map['cmekSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableAnalytics: (() { final guardedValue = map['enableAnalytics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       indexConfigs: (() { final guardedValue = map['indexConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(guardedValue, (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -78,4 +89,3 @@ class ProjectBucketConfigArgs {
     );
   }
 }
-

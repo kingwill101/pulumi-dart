@@ -5,7 +5,7 @@ import 'security_policy_advanced_options_config_json_custom_config.dart';
 
 class SecurityPolicyAdvancedOptionsConfig {
   /// Custom configuration to apply the JSON parsing. Only applicable when
-  /// `json_parsing` is set to `STANDARD`. Structure is documented below.
+  /// `jsonParsing` is set to `STANDARD`. Structure is documented below.
   final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonCustomConfig>? jsonCustomConfig;
   /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
   /// * `DISABLED` - Don't parse JSON payloads in POST bodies.
@@ -55,4 +55,3 @@ class SecurityPolicyAdvancedOptionsConfig {
     );
   }
 }
-

@@ -3,8 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'datascan_data.dart';
 import 'datascan_data_discovery_spec.dart';
+import 'datascan_data_documentation_spec.dart';
 import 'datascan_data_profile_spec.dart';
 import 'datascan_data_quality_spec.dart';
+import 'datascan_execution_identity.dart';
 import 'datascan_execution_spec.dart';
 import 'datascan_execution_status.dart';
 
@@ -19,7 +21,8 @@ class DatascanState {
   /// Structure is documented below.
   final pulumi.Input<DatascanDataDiscoverySpec>? dataDiscoverySpec;
   /// DataDocumentationScan related setting.
-  final pulumi.Input<Map<String, dynamic>>? dataDocumentationSpec;
+  /// Structure is documented below.
+  final pulumi.Input<DatascanDataDocumentationSpec>? dataDocumentationSpec;
   /// DataProfileScan related setting.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataProfileSpec>? dataProfileSpec;
@@ -28,12 +31,22 @@ class DatascanState {
   final pulumi.Input<DatascanDataQualitySpec>? dataQualitySpec;
   /// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
   final pulumi.Input<String>? dataScanId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the scan.
   final pulumi.Input<String>? description;
   /// User friendly display name.
   final pulumi.Input<String>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+  /// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+  /// Structure is documented below.
+  final pulumi.Input<DatascanExecutionIdentity>? executionIdentity;
   /// DataScan execution settings.
   /// Structure is documented below.
   final pulumi.Input<DatascanExecutionSpec>? executionSpec;
@@ -43,11 +56,11 @@ class DatascanState {
   /// User-defined labels for the scan. A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the data scan should reside.
   final pulumi.Input<String>? location;
-  /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+  /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
   final pulumi.Input<String>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -72,14 +85,16 @@ class DatascanState {
   /// [dataProfileSpec] DataProfileScan related setting.
   /// [dataQualitySpec] DataQualityScan related setting.
   /// [dataScanId] DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the scan.
   /// [displayName] User friendly display name.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// [executionIdentity] The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
   /// [executionSpec] DataScan execution settings.
   /// [executionStatuses] Status of the data scan execution.
   /// [labels] User-defined labels for the scan. A list of key-&gt;value pairs.
   /// [location] The location where the data scan should reside.
-  /// [name] The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+  /// [name] The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] Current state of the DataScan.
@@ -94,9 +109,11 @@ class DatascanState {
     this.dataProfileSpec,
     this.dataQualitySpec,
     this.dataScanId,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.effectiveLabels,
+    this.executionIdentity,
     this.executionSpec,
     this.executionStatuses,
     this.labels,
@@ -115,13 +132,15 @@ class DatascanState {
       'createTime': ?createTime,
       'data': ?pulumi.Input.mapOptionalInputValue<DatascanData, Map<String, dynamic>>(data, (value) => value.toMap()),
       'dataDiscoverySpec': ?pulumi.Input.mapOptionalInputValue<DatascanDataDiscoverySpec, Map<String, dynamic>>(dataDiscoverySpec, (value) => value.toMap()),
-      'dataDocumentationSpec': ?dataDocumentationSpec,
+      'dataDocumentationSpec': ?pulumi.Input.mapOptionalInputValue<DatascanDataDocumentationSpec, Map<String, dynamic>>(dataDocumentationSpec, (value) => value.toMap()),
       'dataProfileSpec': ?pulumi.Input.mapOptionalInputValue<DatascanDataProfileSpec, Map<String, dynamic>>(dataProfileSpec, (value) => value.toMap()),
       'dataQualitySpec': ?pulumi.Input.mapOptionalInputValue<DatascanDataQualitySpec, Map<String, dynamic>>(dataQualitySpec, (value) => value.toMap()),
       'dataScanId': ?dataScanId,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
+      'executionIdentity': ?pulumi.Input.mapOptionalInputValue<DatascanExecutionIdentity, Map<String, dynamic>>(executionIdentity, (value) => value.toMap()),
       'executionSpec': ?pulumi.Input.mapOptionalInputValue<DatascanExecutionSpec, Map<String, dynamic>>(executionSpec, (value) => value.toMap()),
       'executionStatuses': ?pulumi.Input.mapOptionalInputValue<List<DatascanExecutionStatus>, List<Map<String, dynamic>>>(executionStatuses, (value) => pulumi.Input.encodeList<DatascanExecutionStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'labels': ?labels,
@@ -141,13 +160,15 @@ class DatascanState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataDiscoverySpec: (() { final guardedValue = map['dataDiscoverySpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      dataDocumentationSpec: (() { final guardedValue = map['dataDocumentationSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      dataDocumentationSpec: (() { final guardedValue = map['dataDocumentationSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataDocumentationSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataProfileSpec: (() { final guardedValue = map['dataProfileSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataProfileSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataQualitySpec: (() { final guardedValue = map['dataQualitySpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataQualitySpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataScanId: (() { final guardedValue = map['dataScanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      executionIdentity: (() { final guardedValue = map['executionIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanExecutionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       executionSpec: (() { final guardedValue = map['executionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       executionStatuses: (() { final guardedValue = map['executionStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatascanExecutionStatus>(guardedValue, (value) => DatascanExecutionStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -162,4 +183,3 @@ class DatascanState {
     );
   }
 }
-

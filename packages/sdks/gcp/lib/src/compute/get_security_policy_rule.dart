@@ -22,7 +22,7 @@ class GetSecurityPolicyRule {
   final pulumi.Input<bool> preview;
   /// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
   final pulumi.Input<int> priority;
-  /// Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   final pulumi.Input<List<GetSecurityPolicyRuleRateLimitOption>> rateLimitOptions;
   /// Parameters defining the redirect action. Cannot be specified for any other actions.
   final pulumi.Input<List<GetSecurityPolicyRuleRedirectOption>> redirectOptions;
@@ -35,7 +35,7 @@ class GetSecurityPolicyRule {
   /// [preconfiguredWafConfigs] Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
   /// [preview] When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
   /// [priority] An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
-  /// [rateLimitOptions] Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// [rateLimitOptions] Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// [redirectOptions] Parameters defining the redirect action. Cannot be specified for any other actions.
   const GetSecurityPolicyRule({
     required this.action,
@@ -77,4 +77,3 @@ class GetSecurityPolicyRule {
     );
   }
 }
-

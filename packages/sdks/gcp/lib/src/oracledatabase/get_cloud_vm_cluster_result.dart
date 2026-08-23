@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_cloud_vm_cluster_identity_connector.dart';
 import 'get_cloud_vm_cluster_property.dart';
 
 /// Result data returned by getCloudVmCluster.
@@ -10,13 +11,16 @@ class GetCloudVmClusterResult {
   final String cidr;
   final String cloudVmClusterId;
   final String createTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String displayName;
   final Map<String, String> effectiveLabels;
   final String exadataInfrastructure;
+  final String exascaleDbStorageVault;
   final String gcpOracleZone;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  final List<GetCloudVmClusterIdentityConnector> identityConnectors;
   final Map<String, String> labels;
   final String location;
   final String name;
@@ -33,12 +37,15 @@ class GetCloudVmClusterResult {
   /// [cidr] Required.
   /// [cloudVmClusterId] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [displayName] Required.
   /// [effectiveLabels] Required.
   /// [exadataInfrastructure] Required.
+  /// [exascaleDbStorageVault] Required.
   /// [gcpOracleZone] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
+  /// [identityConnectors] Required.
   /// [labels] Required.
   /// [location] Required.
   /// [name] Required.
@@ -54,12 +61,15 @@ class GetCloudVmClusterResult {
     required this.cidr,
     required this.cloudVmClusterId,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.displayName,
     required this.effectiveLabels,
     required this.exadataInfrastructure,
+    required this.exascaleDbStorageVault,
     required this.gcpOracleZone,
     required this.id,
+    required this.identityConnectors,
     required this.labels,
     required this.location,
     required this.name,
@@ -78,12 +88,15 @@ class GetCloudVmClusterResult {
       'cidr': cidr,
       'cloudVmClusterId': cloudVmClusterId,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
       'exadataInfrastructure': exadataInfrastructure,
+      'exascaleDbStorageVault': exascaleDbStorageVault,
       'gcpOracleZone': gcpOracleZone,
       'id': id,
+      'identityConnectors': pulumi.Input.encodeList<GetCloudVmClusterIdentityConnector, Map<String, dynamic>>(identityConnectors, (value) => value.toMap()),
       'labels': labels,
       'location': location,
       'name': name,
@@ -103,12 +116,15 @@ class GetCloudVmClusterResult {
       cidr: map['cidr'] as String,
       cloudVmClusterId: map['cloudVmClusterId'] as String,
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       exadataInfrastructure: map['exadataInfrastructure'] as String,
+      exascaleDbStorageVault: map['exascaleDbStorageVault'] as String,
       gcpOracleZone: map['gcpOracleZone'] as String,
       id: map['id'] as String,
+      identityConnectors: pulumi.Input.decodeList<GetCloudVmClusterIdentityConnector>(map['identityConnectors']!, (value) => GetCloudVmClusterIdentityConnector.fromMap((value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
@@ -121,4 +137,3 @@ class GetCloudVmClusterResult {
     );
   }
 }
-

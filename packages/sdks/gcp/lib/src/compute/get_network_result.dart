@@ -16,9 +16,9 @@ class GetNetworkResult {
   final int networkId;
   /// A full or partial URL of the network profile to apply to this network.
   final String? networkProfile;
-  /// (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+  /// (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
   final String numericId;
-  final String? project;
+  final String project;
   /// The URI of the resource.
   final String selfLink;
   /// the list of subnetworks which belong to the network
@@ -32,8 +32,8 @@ class GetNetworkResult {
   /// [name] Required.
   /// [networkId] The numeric unique identifier for the resource.
   /// [networkProfile] A full or partial URL of the network profile to apply to this network.
-  /// [numericId] (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
-  /// [project] Optional.
+  /// [numericId] (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+  /// [project] Required.
   /// [selfLink] The URI of the resource.
   /// [subnetworksSelfLinks] the list of subnetworks which belong to the network
   const GetNetworkResult({
@@ -45,7 +45,7 @@ class GetNetworkResult {
     required this.networkId,
     this.networkProfile,
     required this.numericId,
-    this.project,
+    required this.project,
     required this.selfLink,
     required this.subnetworksSelfLinks,
   });
@@ -60,7 +60,7 @@ class GetNetworkResult {
       'networkId': networkId,
       'networkProfile': ?networkProfile,
       'numericId': numericId,
-      'project': ?project,
+      'project': project,
       'selfLink': selfLink,
       'subnetworksSelfLinks': subnetworksSelfLinks,
     };
@@ -76,10 +76,9 @@ class GetNetworkResult {
       networkId: map['networkId'] as int,
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       numericId: map['numericId'] as String,
-      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: map['project'] as String,
       selfLink: map['selfLink'] as String,
       subnetworksSelfLinks: (map['subnetworksSelfLinks'] as List).cast<String>(),
     );
   }
 }
-

@@ -11,6 +11,13 @@ class GroupState {
   final pulumi.Input<List<GroupAdditionalGroupKey>>? additionalGroupKeys;
   /// The time when the Group was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An extended description to help users determine the purpose of a Group.
   /// Must not be longer than 4,096 characters.
   final pulumi.Input<String>? description;
@@ -32,7 +39,7 @@ class GroupState {
   /// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
   /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
   final pulumi.Input<Map<String, String>>? labels;
-  /// Resource name of the Group in the format: groups/{group_id}, where group_id
+  /// Resource name of the Group in the format: groups/{group_id}, where groupId
   /// is the unique ID assigned to the Group.
   final pulumi.Input<String>? name;
   /// The resource name of the entity under which this Group resides in the
@@ -46,17 +53,19 @@ class GroupState {
   /// Creates a new [GroupState].
   /// [additionalGroupKeys] Additional group keys associated with the Group
   /// [createTime] The time when the Group was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An extended description to help users determine the purpose of a Group.
   /// [displayName] The display name of the Group.
   /// [groupKey] EntityKey of the Group.
   /// [initialGroupConfig] The initial configuration options for creating a Group.
   /// [labels] One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
-  /// [name] Resource name of the Group in the format: groups/{group_id}, where group_id
+  /// [name] Resource name of the Group in the format: groups/{group_id}, where groupId
   /// [parent] The resource name of the entity under which this Group resides in the
   /// [updateTime] The time when the Group was last updated.
   const GroupState({
     this.additionalGroupKeys,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.groupKey,
@@ -71,6 +80,7 @@ class GroupState {
     return <String, dynamic>{
       'additionalGroupKeys': ?pulumi.Input.mapOptionalInputValue<List<GroupAdditionalGroupKey>, List<Map<String, dynamic>>>(additionalGroupKeys, (value) => pulumi.Input.encodeList<GroupAdditionalGroupKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'groupKey': ?pulumi.Input.mapOptionalInputValue<GroupGroupKey, Map<String, dynamic>>(groupKey, (value) => value.toMap()),
@@ -86,6 +96,7 @@ class GroupState {
     return GroupState(
       additionalGroupKeys: (() { final guardedValue = map['additionalGroupKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GroupAdditionalGroupKey>(guardedValue, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupKey: (() { final guardedValue = map['groupKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -97,4 +108,3 @@ class GroupState {
     );
   }
 }
-

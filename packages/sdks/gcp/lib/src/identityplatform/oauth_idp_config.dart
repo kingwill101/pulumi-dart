@@ -104,6 +104,28 @@ import 'oauth_idp_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_identityplatform_oauthidpconfig" "oauth_idp_config" {
+///   name          = "oidc.oauth-idp-config"
+///   display_name  = "Display Name"
+///   client_id     = "client-id"
+///   issuer        = "issuer"
+///   enabled       = true
+///   client_secret = "secret"
+///   response_type = {
+///     id_token = true
+///     code     = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +135,8 @@ import 'oauth_idp_config_state.dart';
 /// import com.pulumi.gcp.identityplatform.OauthIdpConfig;
 /// import com.pulumi.gcp.identityplatform.OauthIdpConfigArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.OauthIdpConfigResponseTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,22 +187,15 @@ import 'oauth_idp_config_state.dart';
 /// OauthIdpConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/oauthIdpConfigs/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
 /// ```
 class OauthIdpConfig extends pulumi.CustomResource {
@@ -188,6 +203,13 @@ class OauthIdpConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> clientId;
   /// The client secret of the OAuth client, to enable OIDC code flow.
   late final pulumi.Output<String?> clientSecret;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human friendly display name.
   late final pulumi.Output<String?> displayName;
   /// If this config allows users to sign in with the provider.
@@ -221,6 +243,7 @@ class OauthIdpConfig extends pulumi.CustomResource {
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
     issuer = registerOutput<String>('issuer');
@@ -254,6 +277,7 @@ class OauthIdpConfig extends pulumi.CustomResource {
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
     issuer = registerOutput<String>('issuer');

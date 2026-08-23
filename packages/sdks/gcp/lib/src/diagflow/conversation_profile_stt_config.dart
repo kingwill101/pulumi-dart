@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileSttConfig {
   /// Audio encoding of the audio content to process.
-  /// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+  /// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
   final pulumi.Input<String>? audioEncoding;
   /// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
   final pulumi.Input<bool>? enableWordInfo;
@@ -18,7 +18,7 @@ class ConversationProfileSttConfig {
   /// The speech model used in speech to text.
   /// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
   final pulumi.Input<String>? speechModelVariant;
-  /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+  /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
   final pulumi.Input<bool>? useTimeoutBasedEndpointing;
 
   /// Creates a new [ConversationProfileSttConfig].
@@ -28,7 +28,7 @@ class ConversationProfileSttConfig {
   /// [model] Which Speech model to select.
   /// [sampleRateHertz] Sample rate (in Hertz) of the audio content sent in the query.
   /// [speechModelVariant] The speech model used in speech to text.
-  /// [useTimeoutBasedEndpointing] Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+  /// [useTimeoutBasedEndpointing] Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
   const ConversationProfileSttConfig({
     this.audioEncoding,
     this.enableWordInfo,
@@ -63,4 +63,3 @@ class ConversationProfileSttConfig {
     );
   }
 }
-

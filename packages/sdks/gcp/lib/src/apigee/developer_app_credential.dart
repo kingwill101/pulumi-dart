@@ -10,11 +10,20 @@ class DeveloperAppCredential {
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
   final pulumi.Input<List<DeveloperAppCredentialAttribute>>? attributes;
-  /// (Output)
-  /// Consumer key.
+  /// Optionally specify a static consumer key for the developer app's credential.
+  /// If not set, the API auto-generates a key. The consumer key must be unique
+  /// across all developer apps in an organization. Changing this field forces the
+  /// resource to be recreated.
+  /// This is a write-only input used at create time: the provider creates the
+  /// credential with this key via the keys API and removes the auto-generated
+  /// one. The effective key is exposed in the `credentials` output.
   final pulumi.Input<String>? consumerKey;
-  /// (Output)
-  /// Secret key.
+  /// Optionally specify a static consumer secret for the developer app's
+  /// credential. Required if `consumerKey` is specified. If not set, the API
+  /// auto-generates a secret. Changing this field forces the resource to be
+  /// recreated.
+  /// This is a write-only input used at create time; the effective secret is
+  /// exposed in the `credentials` output.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? consumerSecret;
   /// (Output)
@@ -33,8 +42,8 @@ class DeveloperAppCredential {
   /// Creates a new [DeveloperAppCredential].
   /// [apiProducts] List of API products associated with the developer app.
   /// [attributes] Developer attributes (name/value pairs). The custom attribute limit is 18.
-  /// [consumerKey] (Output)
-  /// [consumerSecret] (Output)
+  /// [consumerKey] Optionally specify a static consumer key for the developer app's credential.
+  /// [consumerSecret] Optionally specify a static consumer secret for the developer app's
   /// [expiresAt] (Output)
   /// [issuedAt] (Output)
   /// [scopes] Scopes to apply to the developer app.
@@ -76,4 +85,3 @@ class DeveloperAppCredential {
     );
   }
 }
-

@@ -528,6 +528,105 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "my_folder" {
+///   display_name        = "po-folder"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_folder_serviceidentity" "osconfig_sa" {
+///   folder  = gcp_organizations_folder.my_folder.folder_id
+///   service = "osconfig.googleapis.com"
+/// }
+/// resource "gcp_folder_serviceidentity" "ripple_sa" {
+///   folder  = gcp_organizations_folder.my_folder.folder_id
+///   service = "progressiverollout.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_30_sec" {
+///   depends_on      = [gcp_folder_serviceidentity.osconfig_sa, gcp_folder_serviceidentity.ripple_sa]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_folder_iammember" "iam_osconfig_service_agent" {
+///   depends_on = [time_sleep.wait_30_sec]
+///   folder     = gcp_organizations_folder.my_folder.folder_id
+///   role       = "roles/osconfig.serviceAgent"
+///   member     = gcp_folder_serviceidentity.osconfig_sa.member
+/// }
+/// resource "gcp_folder_iammember" "iam_osconfig_rollout_service_agent" {
+///   depends_on = [gcp_folder_iammember.iam_osconfig_service_agent]
+///   folder     = gcp_organizations_folder.my_folder.folder_id
+///   role       = "roles/osconfig.rolloutServiceAgent"
+///   member     ="serviceAccount:service-folder-${gcp_organizations_folder.my_folder.folder_id}@gcp-sa-osconfig-rollout.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_folder_iammember" "iam_progressiverollout_service_agent" {
+///   depends_on = [gcp_folder_iammember.iam_osconfig_rollout_service_agent]
+///   folder     = gcp_organizations_folder.my_folder.folder_id
+///   role       = "roles/progressiverollout.serviceAgent"
+///   member     = gcp_folder_serviceidentity.ripple_sa.member
+/// }
+/// resource "time_sleep" "wait_3_min" {
+///   depends_on      = [gcp_folder_iammember.iam_progressiverollout_service_agent]
+///   create_duration = "180s"
+/// }
+/// resource "gcp_osconfig_v2policyorchestratorforfolder" "policy_orchestrator_for_folder" {
+///   depends_on             = [time_sleep.wait_3_min]
+///   policy_orchestrator_id = "po-folder"
+///   folder_id              = gcp_organizations_folder.my_folder.folder_id
+///   state                  = "ACTIVE"
+///   action                 = "UPSERT"
+///   orchestrated_resource = {
+///     id = "test-orchestrated-resource-folder"
+///     os_policy_assignment_v1_payload = {
+///       os_policies = [{
+///         "id"   = "test-os-policy-folder"
+///         "mode" = "VALIDATION"
+///         "resourceGroups" = [{
+///           "resources" = [{
+///             "id" = "resource-tf"
+///             "file" = {
+///               "content" = "file-content-tf"
+///               "path"    = "file-path-tf-1"
+///               "state"   = "PRESENT"
+///             }
+///           }]
+///         }]
+///       }]
+///       instance_filter = {
+///         inventories = [{
+///           "osShortName" = "windows-10"
+///         }]
+///       }
+///       rollout = {
+///         disruption_budget = {
+///           percent = 100
+///         }
+///         min_wait_duration = "60s"
+///       }
+///     }
+///   }
+///   labels = {
+///     "state" = "active"
+///   }
+///   orchestration_scope = {
+///     selectors = [{
+///       "locationSelector" = {
+///         "includedLocations" = [""]
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -546,13 +645,20 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 /// import com.pulumi.gcp.osconfig.V2PolicyOrchestratorForFolderArgs;
 /// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceArgs;
 /// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs;
+/// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs;
+/// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs;
+/// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs;
+/// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs;
 /// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs;
+/// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs;
 /// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs;
 /// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs;
 /// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestrationScopeArgs;
+/// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs;
+/// import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -782,27 +888,31 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 /// PolicyOrchestratorForFolder can be imported using any of these accepted formats:
 ///
 /// * `folders/{{folder_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}`
-///
 /// * `{{folder_id}}/{{policy_orchestrator_id}}`
+///
 ///
 /// When using the `pulumi import` command, PolicyOrchestratorForFolder can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder default folders/{{folder_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder default {{folder_id}}/{{policy_orchestrator_id}}
 /// ```
 class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
   /// Action to be done by the orchestrator in
   /// `projects/{project_id}/zones/{zone_id}` locations defined by the
-  /// `orchestration_scope`. Allowed values:
+  /// `orchestrationScope`. Allowed values:
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   late final pulumi.Output<String> action;
   /// Timestamp when the policy orchestrator resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Freeform text describing the purpose of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -815,7 +925,7 @@ class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
   late final pulumi.Output<String> folderId;
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Identifier. In form of
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -873,6 +983,7 @@ class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -914,6 +1025,7 @@ class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');

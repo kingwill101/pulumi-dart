@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_reservation_delete_after_duration.dart';
+import 'get_reservation_param.dart';
 import 'get_reservation_reservation_sharing_policy.dart';
 import 'get_reservation_resource_status.dart';
 import 'get_reservation_share_setting.dart';
@@ -14,12 +15,14 @@ class GetReservationResult {
   final String creationTimestamp;
   final List<GetReservationDeleteAfterDuration> deleteAfterDurations;
   final String deleteAtTime;
+  final String deletionPolicy;
   final String description;
   final bool enableEmergentMaintenance;
   final String id;
   final String kind;
   final List<String> linkedCommitments;
   final String name;
+  final List<GetReservationParam> params;
   final String? project;
   final int reservationBlockCount;
   final List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
@@ -38,12 +41,14 @@ class GetReservationResult {
   /// [creationTimestamp] Required.
   /// [deleteAfterDurations] Required.
   /// [deleteAtTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [enableEmergentMaintenance] Required.
   /// [id] Required.
   /// [kind] Required.
   /// [linkedCommitments] Required.
   /// [name] Required.
+  /// [params] Required.
   /// [project] Optional.
   /// [reservationBlockCount] Required.
   /// [reservationSharingPolicies] Required.
@@ -61,12 +66,14 @@ class GetReservationResult {
     required this.creationTimestamp,
     required this.deleteAfterDurations,
     required this.deleteAtTime,
+    required this.deletionPolicy,
     required this.description,
     required this.enableEmergentMaintenance,
     required this.id,
     required this.kind,
     required this.linkedCommitments,
     required this.name,
+    required this.params,
     this.project,
     required this.reservationBlockCount,
     required this.reservationSharingPolicies,
@@ -87,12 +94,14 @@ class GetReservationResult {
       'creationTimestamp': creationTimestamp,
       'deleteAfterDurations': pulumi.Input.encodeList<GetReservationDeleteAfterDuration, Map<String, dynamic>>(deleteAfterDurations, (value) => value.toMap()),
       'deleteAtTime': deleteAtTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'enableEmergentMaintenance': enableEmergentMaintenance,
       'id': id,
       'kind': kind,
       'linkedCommitments': linkedCommitments,
       'name': name,
+      'params': pulumi.Input.encodeList<GetReservationParam, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'reservationBlockCount': reservationBlockCount,
       'reservationSharingPolicies': pulumi.Input.encodeList<GetReservationReservationSharingPolicy, Map<String, dynamic>>(reservationSharingPolicies, (value) => value.toMap()),
@@ -114,12 +123,14 @@ class GetReservationResult {
       creationTimestamp: map['creationTimestamp'] as String,
       deleteAfterDurations: pulumi.Input.decodeList<GetReservationDeleteAfterDuration>(map['deleteAfterDurations']!, (value) => GetReservationDeleteAfterDuration.fromMap((value as Map).cast<String, dynamic>())),
       deleteAtTime: map['deleteAtTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       enableEmergentMaintenance: map['enableEmergentMaintenance'] as bool,
       id: map['id'] as String,
       kind: map['kind'] as String,
       linkedCommitments: (map['linkedCommitments'] as List).cast<String>(),
       name: map['name'] as String,
+      params: pulumi.Input.decodeList<GetReservationParam>(map['params']!, (value) => GetReservationParam.fromMap((value as Map).cast<String, dynamic>())),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       reservationBlockCount: map['reservationBlockCount'] as int,
       reservationSharingPolicies: pulumi.Input.decodeList<GetReservationReservationSharingPolicy>(map['reservationSharingPolicies']!, (value) => GetReservationReservationSharingPolicy.fromMap((value as Map).cast<String, dynamic>())),
@@ -134,4 +145,3 @@ class GetReservationResult {
     );
   }
 }
-

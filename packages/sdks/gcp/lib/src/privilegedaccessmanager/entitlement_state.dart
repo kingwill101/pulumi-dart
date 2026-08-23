@@ -19,6 +19,13 @@ class EntitlementState {
   /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Who can create Grants using Entitlement. This list should contain at most one entry
   /// Structure is documented below.
   final pulumi.Input<List<EntitlementEligibleUser>>? eligibleUsers;
@@ -55,6 +62,7 @@ class EntitlementState {
   /// [additionalNotificationTargets] AdditionalNotificationTargets includes email addresses to be notified.
   /// [approvalWorkflow] The approvals needed before access will be granted to a requester.
   /// [createTime] Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [eligibleUsers] Who can create Grants using Entitlement. This list should contain at most one entry
   /// [entitlementId] The ID to use for this Entitlement. This will become the last part of the resource name.
   /// [etag] For Resource freshness validation (https://google.aip.dev/154)
@@ -70,6 +78,7 @@ class EntitlementState {
     this.additionalNotificationTargets,
     this.approvalWorkflow,
     this.createTime,
+    this.deletionPolicy,
     this.eligibleUsers,
     this.entitlementId,
     this.etag,
@@ -88,6 +97,7 @@ class EntitlementState {
       'additionalNotificationTargets': ?pulumi.Input.mapOptionalInputValue<EntitlementAdditionalNotificationTargets, Map<String, dynamic>>(additionalNotificationTargets, (value) => value.toMap()),
       'approvalWorkflow': ?pulumi.Input.mapOptionalInputValue<EntitlementApprovalWorkflow, Map<String, dynamic>>(approvalWorkflow, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'eligibleUsers': ?pulumi.Input.mapOptionalInputValue<List<EntitlementEligibleUser>, List<Map<String, dynamic>>>(eligibleUsers, (value) => pulumi.Input.encodeList<EntitlementEligibleUser, Map<String, dynamic>>(value, (value) => value.toMap())),
       'entitlementId': ?entitlementId,
       'etag': ?etag,
@@ -107,6 +117,7 @@ class EntitlementState {
       additionalNotificationTargets: (() { final guardedValue = map['additionalNotificationTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       approvalWorkflow: (() { final guardedValue = map['approvalWorkflow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eligibleUsers: (() { final guardedValue = map['eligibleUsers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EntitlementEligibleUser>(guardedValue, (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>()))); })(),
       entitlementId: (() { final guardedValue = map['entitlementId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -121,4 +132,3 @@ class EntitlementState {
     );
   }
 }
-

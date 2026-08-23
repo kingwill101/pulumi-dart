@@ -9,9 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CodeToolsSettingBindingArgs {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> codeToolsSettingId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -28,6 +35,7 @@ class CodeToolsSettingBindingArgs {
 
   /// Creates a new [CodeToolsSettingBindingArgs].
   /// [codeToolsSettingId] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [labels] Labels as key value pairs.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [product] Product type of the setting binding.
@@ -36,6 +44,7 @@ class CodeToolsSettingBindingArgs {
   /// [target] Target of the binding.
   const CodeToolsSettingBindingArgs({
     required this.codeToolsSettingId,
+    this.deletionPolicy,
     this.labels,
     this.location,
     this.product,
@@ -47,6 +56,7 @@ class CodeToolsSettingBindingArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'codeToolsSettingId': codeToolsSettingId,
+      'deletionPolicy': ?deletionPolicy,
       'labels': ?labels,
       'location': ?location,
       'product': ?product,
@@ -59,6 +69,7 @@ class CodeToolsSettingBindingArgs {
   factory CodeToolsSettingBindingArgs.fromMap(Map<String, dynamic> map) {
     return CodeToolsSettingBindingArgs(
       codeToolsSettingId: pulumi.Input.fromValue(map['codeToolsSettingId'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       product: (() { final guardedValue = map['product']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -68,4 +79,3 @@ class CodeToolsSettingBindingArgs {
     );
   }
 }
-

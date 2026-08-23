@@ -1,3 +1,9 @@
+export 'dataform/config.dart';
+export 'dataform/config_args.dart';
+export 'dataform/config_state.dart';
+export 'dataform/folder.dart';
+export 'dataform/folder_args.dart';
+export 'dataform/folder_state.dart';
 export 'dataform/functions.dart';
 export 'dataform/get_repository_iam_policy_args.dart';
 export 'dataform/get_repository_iam_policy_result.dart';
@@ -31,3 +37,6 @@ export 'dataform/repository_workflow_config_recent_scheduled_execution_record.da
 export 'dataform/repository_workflow_config_recent_scheduled_execution_record_error_status.dart';
 export 'dataform/repository_workflow_config_state.dart';
 export 'dataform/repository_workspace_compilation_overrides.dart';
+export 'dataform/team_folder.dart';
+export 'dataform/team_folder_args.dart';
+export 'dataform/team_folder_state.dart';

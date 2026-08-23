@@ -22,8 +22,8 @@ import 'project_info_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "tf-test_88717",
-///     name: "tf-test_85794",
+///     projectId: "tf-test_22811",
+///     name: "tf-test_91042",
 ///     orgId: "123456789",
 ///     deletionPolicy: "DELETE",
 /// });
@@ -37,8 +37,8 @@ import 'project_info_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// project = gcp.organizations.Project("project",
-///     project_id="tf-test_88717",
-///     name="tf-test_85794",
+///     project_id="tf-test_22811",
+///     name="tf-test_91042",
 ///     org_id="123456789",
 ///     deletion_policy="DELETE")
 /// default = gcp.billing.ProjectInfo("default",
@@ -55,8 +55,8 @@ import 'project_info_state.dart';
 /// {
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "tf-test_88717",
-///         Name = "tf-test_85794",
+///         ProjectId = "tf-test_22811",
+///         Name = "tf-test_91042",
 ///         OrgId = "123456789",
 ///         DeletionPolicy = "DELETE",
 ///     });
@@ -81,8 +81,8 @@ import 'project_info_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_88717"),
-/// 			Name:           pulumi.String("tf-test_85794"),
+/// 			ProjectId:      pulumi.String("tf-test_22811"),
+/// 			Name:           pulumi.String("tf-test_91042"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
 /// 		})
@@ -100,6 +100,26 @@ import 'project_info_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "tf-test_22811"
+///   name            = "tf-test_91042"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_billing_projectinfo" "default" {
+///   project         = gcp_organizations_project.project.project_id
+///   billing_account = "000000-0000000-0000000-000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +130,8 @@ import 'project_info_state.dart';
 /// import com.pulumi.gcp.organizations.ProjectArgs;
 /// import com.pulumi.gcp.billing.ProjectInfo;
 /// import com.pulumi.gcp.billing.ProjectInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,8 +144,8 @@ import 'project_info_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("tf-test_88717")
-///             .name("tf-test_85794")
+///             .projectId("tf-test_22811")
+///             .name("tf-test_91042")
 ///             .orgId("123456789")
 ///             .deletionPolicy("DELETE")
 ///             .build());
@@ -143,8 +163,8 @@ import 'project_info_state.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_88717
-///       name: tf-test_85794
+///       projectId: tf-test_22811
+///       name: tf-test_91042
 ///       orgId: '123456789'
 ///       deletionPolicy: DELETE
 ///   default:
@@ -160,16 +180,13 @@ import 'project_info_state.dart';
 /// ProjectInfo can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
 /// ```
 class ProjectInfo extends pulumi.CustomResource {
@@ -177,6 +194,13 @@ class ProjectInfo extends pulumi.CustomResource {
   /// any. Set to empty string to disable billing for the project.
   /// For example, `"012345-567890-ABCDEF"` or `""`.
   late final pulumi.Output<String> billingAccount;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -196,6 +220,7 @@ class ProjectInfo extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
   }
 
@@ -223,6 +248,7 @@ class ProjectInfo extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
   }
 }

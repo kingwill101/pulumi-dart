@@ -10,6 +10,13 @@ class BranchRuleState {
   final pulumi.Input<String>? branchRuleId;
   /// Time the BranchRule was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Determines if the branch rule is disabled or not.
   final pulumi.Input<bool>? disabled;
   /// The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
@@ -42,6 +49,7 @@ class BranchRuleState {
   /// [allowStaleReviews] Determines if allow stale reviews or approvals before merging to the branch.
   /// [branchRuleId] The ID for the BranchRule.
   /// [createTime] Time the BranchRule was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] Determines if the branch rule is disabled or not.
   /// [includePattern] The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
   /// [location] The location for the Repository.
@@ -59,6 +67,7 @@ class BranchRuleState {
     this.allowStaleReviews,
     this.branchRuleId,
     this.createTime,
+    this.deletionPolicy,
     this.disabled,
     this.includePattern,
     this.location,
@@ -79,6 +88,7 @@ class BranchRuleState {
       'allowStaleReviews': ?allowStaleReviews,
       'branchRuleId': ?branchRuleId,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'includePattern': ?includePattern,
       'location': ?location,
@@ -100,6 +110,7 @@ class BranchRuleState {
       allowStaleReviews: (() { final guardedValue = map['allowStaleReviews']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       branchRuleId: (() { final guardedValue = map['branchRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includePattern: (() { final guardedValue = map['includePattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -116,4 +127,3 @@ class BranchRuleState {
     );
   }
 }
-

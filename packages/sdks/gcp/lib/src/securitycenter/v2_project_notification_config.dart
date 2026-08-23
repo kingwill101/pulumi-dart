@@ -95,7 +95,7 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// 			ConfigId:    pulumi.String("my-config"),
 /// 			Project:     pulumi.String("my-project-name"),
 /// 			Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic: sccV2ProjectNotification.ID(),
+/// 			PubsubTopic: sccV2ProjectNotification.ID().ToIDOutput().ToStringOutput(),
 /// 			StreamingConfig: &securitycenter.V2ProjectNotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -105,6 +105,28 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "scc_v2_project_notification" {
+///   name = "my-topic"
+/// }
+/// resource "gcp_securitycenter_v2projectnotificationconfig" "custom_notification_config" {
+///   config_id    = "my-config"
+///   project      = "my-project-name"
+///   description  = "My custom Cloud Security Command Center Finding Notification Configuration"
+///   pubsub_topic = gcp_pubsub_topic.scc_v2_project_notification.id
+///   streaming_config = {
+///     filter = "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""
+///   }
 /// }
 /// ```
 /// ```java
@@ -118,8 +140,8 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// import com.pulumi.gcp.securitycenter.V2ProjectNotificationConfig;
 /// import com.pulumi.gcp.securitycenter.V2ProjectNotificationConfigArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.V2ProjectNotificationConfigStreamingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,27 +195,27 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// ProjectNotificationConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/notificationConfigs/{{config_id}}`
-///
 /// * `{{project}}/{{location}}/{{config_id}}`
-///
 /// * `{{location}}/{{config_id}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectNotificationConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default projects/{{project}}/locations/{{location}}/notificationConfigs/{{config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default {{project}}/{{location}}/{{config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default {{location}}/{{config_id}}
 /// ```
 class V2ProjectNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the project.
   late final pulumi.Output<String> configId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
   /// Location ID for the parent project. Defaults to `global` if location is not provided.
@@ -205,7 +227,7 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// The Pub/Sub topic to send notifications to. Its format is
-  /// "projects/[project_id]/topics/[topic]".
+  /// "projects/[projectId]/topics/[topic]".
   late final pulumi.Output<String?> pubsubTopic;
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
@@ -229,6 +251,7 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -262,6 +285,7 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

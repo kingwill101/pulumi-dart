@@ -11,9 +11,18 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   final pulumi.Input<String> cloudExadataInfrastructureId;
   /// The date and time that the Exadata Infrastructure was created.
   final pulumi.Input<String> createTime;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
   final pulumi.Input<bool> deletionProtection;
   /// User friendly name for this resource.
   final pulumi.Input<String> displayName;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveLabels;
   /// Entitlement ID of the private offer against which this infrastructure
   /// resource is provisioned.
@@ -44,9 +53,10 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   /// Creates a new [GetCloudExadataInfrastructuresCloudExadataInfrastructure].
   /// [cloudExadataInfrastructureId] The ID of the Exadata Infrastructure to create. This value is restricted
   /// [createTime] The date and time that the Exadata Infrastructure was created.
-  /// [deletionProtection] Required.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// [deletionProtection] Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
   /// [displayName] User friendly name for this resource.
-  /// [effectiveLabels] Required.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   /// [entitlementId] Entitlement ID of the private offer against which this infrastructure
   /// [gcpOracleZone] GCP location where Oracle Exadata is hosted.
   /// [labels] Labels or tags associated with the resource.
@@ -58,6 +68,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   const GetCloudExadataInfrastructuresCloudExadataInfrastructure({
     required this.cloudExadataInfrastructureId,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.displayName,
     required this.effectiveLabels,
@@ -75,6 +86,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     return <String, dynamic>{
       'cloudExadataInfrastructureId': cloudExadataInfrastructureId,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
@@ -93,6 +105,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     return GetCloudExadataInfrastructuresCloudExadataInfrastructure(
       cloudExadataInfrastructureId: pulumi.Input.fromValue(map['cloudExadataInfrastructureId'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
@@ -107,4 +120,3 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     );
   }
 }
-

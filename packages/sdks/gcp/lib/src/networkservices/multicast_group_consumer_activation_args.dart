@@ -8,11 +8,18 @@ import 'multicast_group_consumer_activation_log_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_multicast_group_consumer_activation_multicast_group_consumer_activation_args_doc}
 class MulticastGroupConsumerActivationArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional text description of the multicast group consumer activation.
   final pulumi.Input<String>? description;
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -39,6 +46,7 @@ class MulticastGroupConsumerActivationArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [MulticastGroupConsumerActivationArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional text description of the multicast group consumer activation.
   /// [labels] Labels as key-value pairs
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -48,6 +56,7 @@ class MulticastGroupConsumerActivationArgs {
   /// [multicastGroupRangeActivation] The resource name of the multicast group range activation created by the
   /// [project] The ID of the project in which the resource belongs.
   const MulticastGroupConsumerActivationArgs({
+    this.deletionPolicy,
     this.description,
     this.labels,
     required this.location,
@@ -60,6 +69,7 @@ class MulticastGroupConsumerActivationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'location': location,
@@ -73,6 +83,7 @@ class MulticastGroupConsumerActivationArgs {
 
   factory MulticastGroupConsumerActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupConsumerActivationArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -84,4 +95,3 @@ class MulticastGroupConsumerActivationArgs {
     );
   }
 }
-

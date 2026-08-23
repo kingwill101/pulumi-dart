@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_node_pool_autoscaling.dart';
+import 'cluster_node_pool_maintenance_policy.dart';
 import 'cluster_node_pool_management.dart';
 import 'cluster_node_pool_network_config.dart';
 import 'cluster_node_pool_node_config.dart';
@@ -13,15 +14,20 @@ import 'cluster_node_pool_upgrade_settings.dart';
 class ClusterNodePool {
   /// Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
   final pulumi.Input<ClusterNodePoolAutoscaling>? autoscaling;
+  /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+  final pulumi.Input<bool>? ignoreNodeCountChanges;
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-  /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+  /// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
   /// `gcp.container.NodePool` objects with no default node pool, you'll need to
   /// set this to a value of at least `1`, alongside setting
-  /// `remove_default_node_pool` to `true`.
+  /// `removeDefaultNodePool` to `true`.
   final pulumi.Input<int>? initialNodeCount;
   /// The resource URLs of the managed instance groups associated with this node pool.
   final pulumi.Input<List<String>>? instanceGroupUrls;
+  /// The maintenance policy to use for the cluster. Structure is
+  /// documented below.
+  final pulumi.Input<List<ClusterNodePoolMaintenancePolicy>>? maintenancePolicies;
   /// List of instance group URLs which have been assigned to this node pool.
   final pulumi.Input<List<String>>? managedInstanceGroupUrls;
   /// Node management configuration, wherein auto-repair and auto-upgrade is configured.
@@ -38,11 +44,7 @@ class ClusterNodePool {
   /// Configuration for
   /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
   final pulumi.Input<ClusterNodePoolNetworkConfig>? networkConfig;
-  /// Parameters used in creating the default node pool.
-  /// Generally, this field should not be used at the same time as a
-  /// `gcp.container.NodePool` or a `node_pool` block; this configuration
-  /// manages the default node pool, which isn't recommended to be used.
-  /// Structure is documented below.
+  /// The node configuration of the pool. Structure is documented below.
   final pulumi.Input<ClusterNodePoolNodeConfig>? nodeConfig;
   /// The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
   final pulumi.Input<int>? nodeCount;
@@ -64,32 +66,37 @@ class ClusterNodePool {
   final pulumi.Input<ClusterNodePoolPlacementPolicy>? placementPolicy;
   /// Specifies the configuration of queued provisioning
   final pulumi.Input<ClusterNodePoolQueuedProvisioning>? queuedProvisioning;
-  /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+  /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
   final pulumi.Input<ClusterNodePoolUpgradeSettings>? upgradeSettings;
+  /// The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source's versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
   final pulumi.Input<String>? version;
 
   /// Creates a new [ClusterNodePool].
   /// [autoscaling] Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+  /// [ignoreNodeCountChanges] Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
   /// [initialNodeCount] The number of nodes to create in this
   /// [instanceGroupUrls] The resource URLs of the managed instance groups associated with this node pool.
+  /// [maintenancePolicies] The maintenance policy to use for the cluster. Structure is
   /// [managedInstanceGroupUrls] List of instance group URLs which have been assigned to this node pool.
   /// [management] Node management configuration, wherein auto-repair and auto-upgrade is configured.
   /// [maxPodsPerNode] The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
   /// [name] The name of the cluster, unique within the project and
   /// [namePrefix] Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
   /// [networkConfig] Configuration for
-  /// [nodeConfig] Parameters used in creating the default node pool.
+  /// [nodeConfig] The node configuration of the pool. Structure is documented below.
   /// [nodeCount] The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
   /// [nodeDrainConfigs] Node drain configuration for this NodePool.
   /// [nodeLocations] The list of zones in which the cluster's nodes
   /// [placementPolicy] Specifies the node placement policy
   /// [queuedProvisioning] Specifies the configuration of queued provisioning
-  /// [upgradeSettings] Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
-  /// [version] Optional.
+  /// [upgradeSettings] Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+  /// [version] The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source's versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
   const ClusterNodePool({
     this.autoscaling,
+    this.ignoreNodeCountChanges,
     this.initialNodeCount,
     this.instanceGroupUrls,
+    this.maintenancePolicies,
     this.managedInstanceGroupUrls,
     this.management,
     this.maxPodsPerNode,
@@ -109,8 +116,10 @@ class ClusterNodePool {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscaling': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolAutoscaling, Map<String, dynamic>>(autoscaling, (value) => value.toMap()),
+      'ignoreNodeCountChanges': ?ignoreNodeCountChanges,
       'initialNodeCount': ?initialNodeCount,
       'instanceGroupUrls': ?instanceGroupUrls,
+      'maintenancePolicies': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodePoolMaintenancePolicy>, List<Map<String, dynamic>>>(maintenancePolicies, (value) => pulumi.Input.encodeList<ClusterNodePoolMaintenancePolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'managedInstanceGroupUrls': ?managedInstanceGroupUrls,
       'management': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolManagement, Map<String, dynamic>>(management, (value) => value.toMap()),
       'maxPodsPerNode': ?maxPodsPerNode,
@@ -131,8 +140,10 @@ class ClusterNodePool {
   factory ClusterNodePool.fromMap(Map<String, dynamic> map) {
     return ClusterNodePool(
       autoscaling: (() { final guardedValue = map['autoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       instanceGroupUrls: (() { final guardedValue = map['instanceGroupUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNodePoolMaintenancePolicy>(guardedValue, (value) => ClusterNodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       managedInstanceGroupUrls: (() { final guardedValue = map['managedInstanceGroupUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -150,4 +161,3 @@ class ClusterNodePool {
     );
   }
 }
-
