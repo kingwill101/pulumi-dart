@@ -14,12 +14,14 @@ class InvokeOptions {
   final ProviderResource? provider;
   final String? version;
   final String? pluginDownloadURL;
+  final Iterable<Resource>? dependsOn;
 
   InvokeOptions({
     this.parent,
     this.provider,
     this.version,
     this.pluginDownloadURL,
+    this.dependsOn,
   });
 }
 

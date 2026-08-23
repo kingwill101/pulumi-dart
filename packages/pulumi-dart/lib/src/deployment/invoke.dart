@@ -2,6 +2,7 @@ import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/src/deserializer.dart';
 import 'package:pulumi/src/monitor.dart';
 import 'package:pulumi/src/resource/provider_resource.dart';
+import 'package:pulumi/src/resource/resource.dart';
 import 'package:pulumi/src/source_position.dart';
 import 'package:pulumi/src/struct_converter.dart';
 
@@ -50,6 +51,14 @@ mixin InvokeMixin {
     final providerRef = options?.provider != null
         ? await ProviderResource.register(options!.provider) ?? ''
         : '';
+    final dependencyUrns = <String>{};
+    for (final dependency in options?.dependsOn ?? const <Resource>[]) {
+      final urnData = await dependency.urn.getData();
+      final urn = urnData.value;
+      if (urnData.isKnown && urn is String && urn.isNotEmpty) {
+        dependencyUrns.add(urn);
+      }
+    }
     final serializedArgs = await StructConverter.toStruct(args);
     final request = pb.ResourceInvokeRequest()
       ..tok = token
@@ -57,7 +66,8 @@ mixin InvokeMixin {
       ..provider = providerRef
       ..version = options?.version ?? ''
       ..pluginDownloadURL = options?.pluginDownloadURL ?? ''
-      ..acceptResources = true;
+      ..acceptResources = true
+      ..dependsOn.addAll(dependencyUrns.toList()..sort());
     applyRequestSourceMetadata(request, StackTrace.current);
 
     if (registerPackageRequest != null) {
@@ -72,6 +82,15 @@ mixin InvokeMixin {
     if (response.failures.isNotEmpty) {
       throw Exception(
         'Invoke failed: ${response.failures.map((f) => '${f.reason} (${f.property})').join(', ')}',
+      );
+    }
+
+    if (response.unknown) {
+      return OutputData<T>(
+        value: null,
+        isKnown: false,
+        isSecret: false,
+        resources: {},
       );
     }
 

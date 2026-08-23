@@ -177,6 +177,7 @@ var passingConformanceTests = []string{
 	"l2-invoke-options",
 	"l2-invoke-options-depends-on",
 	"l2-invoke-dependencies",
+	"l2-invoke-depends-on-component",
 	"l2-invoke-scalar",
 	"l2-invoke-scalars",
 	"l2-config-default-from-invoke",

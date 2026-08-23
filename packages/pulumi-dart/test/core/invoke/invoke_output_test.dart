@@ -27,6 +27,13 @@ class _InvokeDependencyMonitor extends CapturingRegisterMonitor {
   }
 }
 
+class _UnknownInvokeMonitor extends CapturingRegisterMonitor {
+  @override
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
+    return ResourceInvokeResponse()..unknown = true;
+  }
+}
+
 class _InvokeDependencyResource extends CustomResource {
   late final Output<String> value;
 
@@ -187,6 +194,9 @@ void main() {
         runtime.setMocks(mocks);
 
         final dependency = MockResource();
+        when(dependency.urn).thenReturn(
+          Output.create('urn:pulumi:stack::project::test:index:Component::dep'),
+        );
         final result = invokeOutput<Map<String, dynamic>>(
           'test:index:Echo',
           <String, Input<dynamic>>{'value': Input.fromValue(7)},
@@ -227,5 +237,19 @@ void main() {
         DeploymentImpl.clearInstance();
       },
     );
+
+    test('preserves a wholly unknown monitor invoke response', () async {
+      runtime.clearMocks();
+      configureCapturedDeployment(_UnknownInvokeMonitor());
+
+      final result = invokeOutput<Map<String, dynamic>>(
+        'test:index:echo',
+        <String, Input<dynamic>>{'value': 'hello'.input()},
+      );
+
+      final data = await result.getData();
+      expect(data.isKnown, isFalse);
+      expect(data.value, isNull);
+    });
   });
 }

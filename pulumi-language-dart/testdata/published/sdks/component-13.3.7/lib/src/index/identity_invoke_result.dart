@@ -3,23 +3,23 @@
 
 /// Result data returned by identity.
 class IdentityInvokeResult {
-  final String result;
+  final String? result;
 
   /// Creates a new [IdentityInvokeResult].
-  /// [result] Required.
+  /// [result] Optional.
   const IdentityInvokeResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory IdentityInvokeResult.fromMap(Map<String, dynamic> map) {
     return IdentityInvokeResult(
-      result: map['result'] as String,
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

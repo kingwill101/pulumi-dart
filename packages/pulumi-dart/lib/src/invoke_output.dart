@@ -89,20 +89,18 @@ Future<OutputData<T>> _invokeOutputData<T>(
     );
   }
 
-  final invokeOptions = options == null
-      ? null
-      : InvokeOptions(
-          parent: options.parent,
-          provider: options.provider,
-          version: options.version,
-          pluginDownloadURL: options.pluginDownloadURL,
-          async: options.async,
-        );
-
   final result = await Deployment.instance.invokeOutputData<T>(
     token,
     inputMetadata.values,
-    options: toDeploymentInvokeOptions(invokeOptions),
+    options: options == null
+        ? null
+        : deployment_models.InvokeOptions(
+            parent: options.parent,
+            provider: options.provider,
+            version: options.version,
+            pluginDownloadURL: options.pluginDownloadURL,
+            dependsOn: options.dependsOn,
+          ),
     registerPackageRequest: registerPackageRequest,
   );
   return OutputData<T>(
