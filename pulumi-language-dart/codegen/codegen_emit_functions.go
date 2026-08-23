@@ -4,7 +4,7 @@ import (
 	"sort"
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
 )
 
 func generatedFunctionsFile(
@@ -41,25 +41,18 @@ func generatedFunctionsFile(
 		})
 	}
 
-	declarations := make([]dartir.InvokeFunction, len(functions))
+	invokes := make([]lower.Invoke, len(functions))
 	for index, function := range functions {
 		argsDocsMacro := ""
 		if function.Function.ArgsClass != "" {
 			argsDocsMacro = argsClassDocMacroName(function.ModulePath, function.Function.ArgsClass)
 		}
-		declarations[index] = dartir.InvokeFunction{
-			Name:                   function.FuncName,
-			Docs:                   function.Function.Comment,
-			ArgsDocsMacro:          argsDocsMacro,
-			ArgsClass:              function.Function.ArgsClass,
-			HasArgs:                function.Function.HasArgs,
-			ResultClass:            function.Function.ResultClass,
-			TokenLiteral:           dartStringLiteral(function.Token),
-			HasPackageRegistration: hasPackageRegistration,
+		invokes[index] = lower.Invoke{
+			Token:         function.Token,
+			Name:          function.FuncName,
+			ArgsDocsMacro: argsDocsMacro,
+			Function:      function.Function,
 		}
 	}
-	return render.FunctionsLibrary(dartir.FunctionsLibrary{
-		Imports:   imports,
-		Functions: declarations,
-	})
+	return lower.FunctionsLibrary(invokes, imports, hasPackageRegistration)
 }
