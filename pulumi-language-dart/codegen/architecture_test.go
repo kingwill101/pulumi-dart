@@ -21,7 +21,6 @@ const (
 var legacyOversizedFiles = map[string]string{
 	"codegen/codegen_artifacts.go":         "package metadata and scaffolding are not split yet",
 	"codegen/codegen_emit_library.go":      "legacy combined-library renderer",
-	"codegen/codegen_naming.go":            "legacy naming and collision policies",
 	"codegen/codegen_raw_external.go":      "legacy raw-schema and external-reference resolver",
 	"codegen/codegen_schema_bind.go":       "legacy bound-schema lowering",
 	"codegen/codegen_schema_parse.go":      "legacy raw-schema lowering",
