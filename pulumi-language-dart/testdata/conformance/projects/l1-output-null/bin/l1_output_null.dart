@@ -5,6 +5,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     _outputProperties = [
+      pulumi.OutputProperty('array', pulumi.Output.create<Object?>([null])),
     ];
   }
 

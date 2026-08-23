@@ -93,10 +93,19 @@ func (host *dartLanguageHost) GenerateProject(
 	if err := os.MkdirAll(binDir, 0o700); err != nil {
 		return nil, fmt.Errorf("failed to create generated bin directory: %w", err)
 	}
+
+	generatedProgram, err := generateProjectProgram(req)
+	if err != nil {
+		return nil, err
+	}
+	if generatedProgram.hasErrors {
+		return &pulumirpc.GenerateProjectResponse{Diagnostics: generatedProgram.diagnostics}, nil
+	}
+
 	programFile := filepath.Join(binDir, projectName+".dart")
-	if err := os.WriteFile(programFile, codegen.GeneratedProgramStub(nil), 0o600); err != nil {
+	if err := os.WriteFile(programFile, generatedProgram.source, 0o600); err != nil {
 		return nil, fmt.Errorf("failed to write generated program file: %w", err)
 	}
 
-	return &pulumirpc.GenerateProjectResponse{}, nil
+	return &pulumirpc.GenerateProjectResponse{Diagnostics: generatedProgram.diagnostics}, nil
 }

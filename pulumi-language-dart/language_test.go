@@ -39,6 +39,12 @@ import (
 // Pulumi language-conformance engine, not a Dart-specific test double.
 var initialConformanceTests = []string{
 	"l1-empty",
+	"l1-output-array",
+	"l1-output-bool",
+	"l1-output-map",
+	"l1-output-null",
+	"l1-output-number",
+	"l1-output-string",
 }
 
 func runConformanceServer(t *testing.T) (string, testingrpc.LanguageTestClient) {
