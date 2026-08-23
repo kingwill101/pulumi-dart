@@ -146,6 +146,35 @@ dependencies:
 	assert.Equal(t, "v2.41.0", packagesByName["azure-native"].Version)
 }
 
+func TestGetRequiredPackagesUsesExactPluginMetadataNames(t *testing.T) {
+	t.Parallel()
+
+	tmp := t.TempDir()
+	for packageName, pluginName := range map[string]string{
+		"pulumi_fail_on_create": "fail_on_create",
+		"pulumi_azure_native":   "azure-native",
+	} {
+		root := filepath.Join(tmp, packageName)
+		require.NoError(t, os.MkdirAll(root, 0o700))
+		require.NoError(t, os.WriteFile(filepath.Join(root, "pulumi-plugin.json"), []byte(
+			`{"resource":true,"name":"`+pluginName+`"}`), 0o600))
+	}
+	require.NoError(t, os.WriteFile(filepath.Join(tmp, "pubspec.yaml"), []byte(`
+name: test_project
+dependencies:
+  pulumi_fail_on_create:
+    path: pulumi_fail_on_create
+  pulumi_azure_native:
+    path: pulumi_azure_native
+`), 0o600))
+
+	response, err := (&dartLanguageHost{}).GetRequiredPackages(context.Background(),
+		&pulumirpc.GetRequiredPackagesRequest{Info: &pulumirpc.ProgramInfo{ProgramDirectory: tmp}})
+	require.NoError(t, err)
+	names := []string{response.Packages[0].Name, response.Packages[1].Name}
+	assert.ElementsMatch(t, []string{"fail_on_create", "azure-native"}, names)
+}
+
 func TestGetRequiredPackagesResolvesLocalPathDependencyVersion(t *testing.T) {
 	t.Parallel()
 

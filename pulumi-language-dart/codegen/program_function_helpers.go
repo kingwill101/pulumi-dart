@@ -31,6 +31,13 @@ func oneArgumentBuiltin(name string, arguments []string, function string) (strin
 	return function + "(" + arguments[0] + ")", nil
 }
 
+func resourceMetadataBuiltin(name string, arguments []string, getter string) (string, error) {
+	if len(arguments) != 1 {
+		return "", fmt.Errorf("%s expects one resource argument", name)
+	}
+	return arguments[0] + "." + getter + "()", nil
+}
+
 func lowerMinMaxBuiltin(name string, arguments []string, expandFinal bool) (string, error) {
 	if len(arguments) == 0 {
 		return "", fmt.Errorf("%s expects at least one argument", name)

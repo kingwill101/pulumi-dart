@@ -1,9 +1,22 @@
 package codegen
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 )
+
+func generatedPulumiPluginJSON(spec *schemair.Package) []byte {
+	metadata := struct {
+		Resource bool   `json:"resource"`
+		Name     string `json:"name"`
+		Server   string `json:"server,omitempty"`
+	}{Resource: true, Name: spec.Name, Server: spec.PluginDownloadURL}
+	contents, _ := json.MarshalIndent(metadata, "", "  ")
+	return append(contents, '\n')
+}
 
 func generatedPackageExampleMain(packageName string) []byte {
 	return []byte(fmt.Sprintf(`// ignore_for_file: unused_import

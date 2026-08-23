@@ -1138,6 +1138,13 @@ func (host *dartLanguageHost) GetRequiredPackages(
 			}
 		}
 		server := ""
+		if metadata, ok := readDartPluginMetadata(pubspecPath, pkg[0], pubspec.Dependencies[pkg[0]]); ok {
+			providerName = metadata.Name
+			server = metadata.Server
+			if metadataVersion := normalizePackageDependencyVersion(metadata.Version); metadataVersion != "" {
+				version = metadataVersion
+			}
+		}
 		var parameterization *pulumirpc.PackageParameterization
 		if spec, ok := projectPackages[aliasName]; ok {
 			if sourceName := dependencyToPackageName(spec.Source); sourceName != "" {
