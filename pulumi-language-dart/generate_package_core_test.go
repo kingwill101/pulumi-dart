@@ -72,6 +72,12 @@ func TestGeneratePackageHandlesFunctionTokenSuffix(t *testing.T) {
 	schema := `{
 		"name": "sample",
 		"version": "1.2.3",
+		"types": {
+			"sample:index:Mode": {
+				"type": "string",
+				"enum": [{"name": "Active", "value": "active"}]
+			}
+		},
 		"functions": {
 			"sample:index:Echo/doEchoMethod": {}
 		}
@@ -97,16 +103,23 @@ func TestGeneratePackageEmitsMultiArgumentInvokeSignature(t *testing.T) {
 	schema := `{
 		"name": "sample",
 		"version": "1.2.3",
+		"types": {
+			"sample:index:Mode": {
+				"type": "string",
+				"enum": [{"name": "Active", "value": "active"}]
+			}
+		},
 		"functions": {
 			"sample:index:lookupWidget": {
 				"inputs": {
 					"properties": {
 						"count": { "type": "integer" },
+						"mode": { "$ref": "#/types/sample:index:Mode" },
 						"name": { "type": "string" }
 					},
-					"required": ["name"]
+					"required": ["name", "mode"]
 				},
-				"multiArgumentInputs": ["name", "count"]
+				"multiArgumentInputs": ["name", "mode", "count"]
 			}
 		}
 	}`
@@ -118,8 +131,9 @@ func TestGeneratePackageEmitsMultiArgumentInvokeSignature(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "pulumi.Input<String> name,\n  pulumi.Input<int>? count,")
-	assert.Contains(t, content, "LookupWidgetArgs(name: name, count: count, ).toMap()")
+	assert.Contains(t, content, "import 'mode.dart';")
+	assert.Contains(t, content, "pulumi.Input<String> name,\n  pulumi.Input<Mode> mode,\n  pulumi.Input<int>? count,")
+	assert.Contains(t, content, "LookupWidgetArgs(name: name, mode: mode, count: count, ).toMap()")
 	assert.Less(t, strings.Index(content, "pulumi.Input<String> name,"), strings.Index(content, "pulumi.Input<int>? count,"))
 }
 
