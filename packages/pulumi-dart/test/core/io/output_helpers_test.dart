@@ -1,10 +1,41 @@
 import 'package:pulumi/pulumi.dart';
+import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 
 void main() {
   group('output helper', () {
     test('stringLength counts user-perceived Unicode characters', () {
       expect(stringLength('👾-🕹️'), equals(3));
+    });
+
+    test('list builtins wrap indexes and enforce zero-or-one values', () {
+      expect(listElement(['a', 'b', 'c'], 4), equals('b'));
+      expect(listElement(['a', 'b', 'c'], -1), equals('c'));
+      expect(singleOrNone(<String>[]), isNull);
+      expect(singleOrNone(['only']), equals('only'));
+      expect(() => singleOrNone(['a', 'b']), throwsStateError);
+    });
+
+    test('directory builtins return absolute paths', () {
+      expect(path.isAbsolute(currentWorkingDirectory()), isTrue);
+      expect(path.isAbsolute(projectRootDirectory()), isTrue);
+    });
+
+    test('encoding builtins roundtrip base64 and hash UTF-8 strings', () {
+      final decoded = fromBase64('SGVsbG8h');
+      expect(decoded, equals('Hello!'));
+      expect(toBase64(decoded), equals('SGVsbG8h'));
+      expect(
+        sha1Hash('hello'),
+        equals('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d'),
+      );
+    });
+
+    test('file builtins read and hash bytes', () {
+      final path = 'test/core/io/output_helpers_test.dart';
+      expect(readTextFile(path), contains("group('output helper'"));
+      expect(fileBase64(path), isNotEmpty);
+      expect(fileBase64Sha256(path), hasLength(44));
     });
 
     test('output unwraps nested map/list input values', () async {

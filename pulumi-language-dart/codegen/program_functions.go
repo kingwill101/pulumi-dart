@@ -40,6 +40,48 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 			return "", fmt.Errorf("join expects two arguments")
 		}
 		return "(" + arguments[1] + ").join(" + arguments[0] + ")", nil
+	case "element":
+		if len(arguments) != 2 {
+			return "", fmt.Errorf("element expects two arguments")
+		}
+		return "pulumi.listElement(" + arguments[0] + ", (" + arguments[1] + ").toInt())", nil
+	case "singleOrNone":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("singleOrNone expects one argument")
+		}
+		return "pulumi.singleOrNone(" + arguments[0] + ")", nil
+	case "secret":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("secret expects one argument")
+		}
+		return "pulumi.secret(" + arguments[0] + ")", nil
+	case "unsecret":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("unsecret expects one argument")
+		}
+		return "pulumi.unsecret(" + arguments[0] + ")", nil
+	case "cwd":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.currentWorkingDirectory()")
+	case "rootDirectory":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.projectRootDirectory()")
+	case "project":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.Deployment.instance.projectName")
+	case "stack":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.Deployment.instance.stackName")
+	case "organization":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.Deployment.instance.organizationName")
+	case "fromBase64":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fromBase64")
+	case "toBase64":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.toBase64")
+	case "sha1":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.sha1Hash")
+	case "readFile":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.readTextFile")
+	case "filebase64":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64")
+	case "filebase64sha256":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64Sha256")
 	case "min", "max":
 		if len(arguments) == 0 {
 			return "", fmt.Errorf("%s expects at least one argument", expression.Name)
@@ -53,4 +95,18 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 	default:
 		return "", fmt.Errorf("unsupported function %q", expression.Name)
 	}
+}
+
+func noArgumentBuiltin(name string, arguments []string, result string) (string, error) {
+	if len(arguments) != 0 {
+		return "", fmt.Errorf("%s expects no arguments", name)
+	}
+	return result, nil
+}
+
+func oneArgumentBuiltin(name string, arguments []string, function string) (string, error) {
+	if len(arguments) != 1 {
+		return "", fmt.Errorf("%s expects one argument", name)
+	}
+	return function + "(" + arguments[0] + ")", nil
 }

@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:characters/characters.dart';
+import 'package:crypto/crypto.dart' as crypto;
 
 import 'input.dart';
 import 'input_args.dart';
@@ -47,6 +49,53 @@ Output<T> unsecret<T>(Output<T> value) => Output.unsecret(value);
 /// PCL's `length` builtin counts grapheme clusters rather than UTF-16 code
 /// units or Unicode scalar values.
 int stringLength(String value) => value.characters.length;
+
+/// Current program working directory as supplied by the language host.
+String currentWorkingDirectory() =>
+    Platform.environment['PULUMI_PWD'] ?? Directory.current.path;
+
+/// Root directory containing the active Pulumi project.
+String projectRootDirectory() =>
+    Platform.environment['PULUMI_ROOT_DIRECTORY'] ?? currentWorkingDirectory();
+
+/// Decodes a base64 string as UTF-8 text.
+String fromBase64(String value) => utf8.decode(base64Decode(value));
+
+/// UTF-8 encodes text as a base64 string.
+String toBase64(String value) => base64Encode(utf8.encode(value));
+
+/// Computes the lowercase SHA-1 digest of the UTF-8 encoded [value].
+String sha1Hash(String value) =>
+    crypto.sha1.convert(utf8.encode(value)).toString();
+
+/// Reads a UTF-8 text file relative to the program working directory.
+String readTextFile(String path) => File(path).readAsStringSync();
+
+/// Reads a file and returns its bytes encoded as base64.
+String fileBase64(String path) => base64Encode(File(path).readAsBytesSync());
+
+/// Returns a file's SHA-256 digest encoded as base64.
+String fileBase64Sha256(String path) =>
+    base64Encode(crypto.sha256.convert(File(path).readAsBytesSync()).bytes);
+
+/// Returns the item at [index], wrapping the index to the list's length.
+T listElement<T>(List<T> values, int index) {
+  if (values.isEmpty) {
+    throw StateError('element cannot select from an empty list');
+  }
+  return values[index % values.length];
+}
+
+/// Returns the only element in [values], `null` when empty, and throws when
+/// more than one value is present.
+T? singleOrNone<T>(List<T> values) {
+  if (values.length > 1) {
+    throw StateError(
+      'singleOrNone expected input list to have at most one element',
+    );
+  }
+  return values.firstOrNull;
+}
 
 /// Concatenates typed inputs after resolving their values.
 ///
