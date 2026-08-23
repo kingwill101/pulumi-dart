@@ -3,6 +3,7 @@ package codegen_test
 import (
 	"go/parser"
 	"go/token"
+	"os"
 	"strconv"
 	"strings"
 	"testing"
@@ -44,9 +45,19 @@ func TestCorePackagesDoNotImportSideEffectAPIs(t *testing.T) {
 	}
 }
 
+func TestCodegenPlanningDoesNotImportSideEffectAPIs(t *testing.T) {
+	for _, imported := range packageImports(t, ".") {
+		require.NotContains(t, []string{"net/http", "os", "os/exec"}, imported,
+			"codegen planning must receive host state as explicit inputs")
+	}
+}
+
 func packageImports(t *testing.T, packageName string) []string {
 	t.Helper()
-	packages, err := parser.ParseDir(token.NewFileSet(), packageName, nil, parser.ImportsOnly)
+	productionFile := func(info os.FileInfo) bool {
+		return !strings.HasSuffix(info.Name(), "_test.go")
+	}
+	packages, err := parser.ParseDir(token.NewFileSet(), packageName, productionFile, parser.ImportsOnly)
 	require.NoError(t, err)
 
 	var imports []string

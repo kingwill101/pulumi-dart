@@ -10,7 +10,7 @@ import (
 )
 
 func TestReadAndParsePubspec(t *testing.T) {
-	pubspec, err := codegen.ReadAndParsePubspec("testdata/pubspec.yaml")
+	pubspec, err := readAndParsePubspec("testdata/pubspec.yaml")
 	if err != nil {
 		t.Fatalf("ReadAndParsePubspec failed: %v", err)
 	}

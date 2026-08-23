@@ -53,6 +53,7 @@ func TestGeneratorFilesRemainFocused(t *testing.T) {
 
 func isGeneratorFile(relative string) bool {
 	return strings.HasPrefix(relative, "codegen/") ||
+		strings.HasPrefix(relative, "dartpub/") ||
 		strings.HasPrefix(relative, "generator/") ||
 		relative == "host_generate.go" ||
 		relative == "generate_pack_test.go"

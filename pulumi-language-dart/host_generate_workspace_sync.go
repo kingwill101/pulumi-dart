@@ -110,7 +110,7 @@ func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error 
 		return nil
 	}
 
-	packagePubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+	packagePubspec, err := readAndParsePubspec(pubspecPath)
 	if err != nil {
 		return nil
 	}
@@ -126,7 +126,7 @@ func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error 
 		return nil
 	}
 
-	generatedPubspec, err := codegen.ReadAndParsePubspec(generatedPubspecPath)
+	generatedPubspec, err := readAndParsePubspec(generatedPubspecPath)
 	if err != nil {
 		return nil
 	}

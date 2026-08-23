@@ -19,6 +19,7 @@ return typed values, generated files, and diagnostics.
 - `codegen/dartir`: Dart declarations and types needed by generated SDKs.
 - `codegen/lower`: pure schema-to-Dart IR conversion and expression lowering.
 - `codegen/render`: deterministic rendering of Dart IR.
+- `dartpub`: Dart pubspec data and filesystem discovery at the host boundary.
 - `codegen` source planning: naming, references, paths, and pure assembly of
   the complete in-memory package.
 - the language host: RPC translation, configuration and dependency discovery,

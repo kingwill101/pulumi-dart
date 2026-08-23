@@ -134,7 +134,7 @@ func (host *dartLanguageHost) GeneratePackage(
 		localDependencies[name] = path
 	}
 	if strings.TrimSpace(localDependencies["pulumi"]) == "" {
-		if inferredPulumiPath := codegen.InferLocalPulumiDependencyFromProject(req.GetDirectory()); inferredPulumiPath != "" {
+		if inferredPulumiPath := inferLocalPulumiDependencyFromProject(req.GetDirectory()); inferredPulumiPath != "" {
 			localDependencies["pulumi"] = inferredPulumiPath
 		}
 	}
@@ -171,7 +171,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	if _, err := os.Stat(pubspecPath); err == nil {
 		// Preserve user-managed package metadata when a pubspec already exists,
 		// but enforce required generator/runtime dependencies.
-		existingPubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+		existingPubspec, err := readAndParsePubspec(pubspecPath)
 		if err != nil {
 			return nil, fmt.Errorf("failed to parse existing pubspec.yaml: %w", err)
 		}

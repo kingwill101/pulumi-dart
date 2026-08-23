@@ -2,7 +2,6 @@ package codegen
 
 import (
 	"fmt"
-	"path/filepath"
 	"sort"
 	"strings"
 )
@@ -43,17 +42,6 @@ func generatedSDKPackageVersion(upstreamVersion, override, suffix string) string
 	}
 
 	return baseVersion
-}
-
-// dependencyPackageName reads a dependency pubspec name and falls back to a
-// sanitized identifier when unavailable.
-func dependencyPackageName(rootDirectory, dependencyPath, fallbackName string) string {
-	pubspecPath := filepath.Join(rootDirectory, dependencyPath, "pubspec.yaml")
-	pubspec, err := ReadAndParsePubspec(pubspecPath)
-	if err != nil || pubspec == nil || pubspec.Name == "" {
-		return sanitizeDartIdentifier(fallbackName)
-	}
-	return sanitizeDartIdentifier(pubspec.Name)
 }
 
 // generatedProgramStub returns a minimal Dart stack scaffold that annotates

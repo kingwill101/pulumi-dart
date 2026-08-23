@@ -185,6 +185,6 @@ dependency_overrides:
 	err := os.WriteFile(pubspecPath, []byte(pubspec), 0o600)
 	require.NoError(t, err)
 
-	inferred := codegen.InferLocalPulumiDependencyFromProject(projectDir)
+	inferred := inferLocalPulumiDependencyFromProject(projectDir)
 	assert.Equal(t, filepath.Clean(pulumiPath), inferred)
 }

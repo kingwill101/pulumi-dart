@@ -110,7 +110,7 @@ func inferWorkspacePulumiPackageVersion(outputDir string) string {
 			continue
 		}
 		memberDir := filepath.Clean(filepath.Join(workspaceRoot, memberPath))
-		memberPubspec, err := codegen.ReadAndParsePubspec(filepath.Join(memberDir, "pubspec.yaml"))
+		memberPubspec, err := readAndParsePubspec(filepath.Join(memberDir, "pubspec.yaml"))
 		if err != nil || memberPubspec == nil {
 			continue
 		}
