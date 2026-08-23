@@ -8,9 +8,9 @@ class ProviderProvider extends pulumi.ProviderResource {
     String name, {
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'simple-invoke',
+          'docs',
           name,
           const <String, pulumi.Input<dynamic>>{},
-          pulumi.CustomResourceOptions(version: '10.0.0').merge(options),
+          pulumi.CustomResourceOptions(version: '28.0.0').merge(options),
         );
 }

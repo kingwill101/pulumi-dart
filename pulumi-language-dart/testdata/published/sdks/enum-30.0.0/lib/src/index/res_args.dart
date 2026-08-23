@@ -9,8 +9,8 @@ import 'string_enum.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_res_args_doc}
 class ResArgs {
-  final pulumi.Input<IntEnum>? intEnum;
-  final pulumi.Input<StringEnum>? stringEnum;
+  final pulumi.Input<IntEnum?>? intEnum;
+  final pulumi.Input<StringEnum?>? stringEnum;
 
   /// Creates a new [ResArgs].
   /// [intEnum] Optional.

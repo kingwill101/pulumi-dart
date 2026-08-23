@@ -7,6 +7,10 @@ import (
 )
 
 func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
+	return packageSchemaFromPackageWithDocs(pkg, false)
+}
+
+func packageSchemaFromPackageWithDocs(pkg *schema.Package, resolveDocs bool) *packageSchema {
 	spec := newBoundPackageSchema(pkg)
 	usedNames := map[string]map[string]int{}
 	namedTypes, typeTokens, typesByToken := reserveBoundNamedTypes(pkg, usedNames)
@@ -16,6 +20,9 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 	resourceTokens, resourcesByToken := collectBoundResources(pkg)
 	lowerBoundResources(spec, pkg, usedNames, namedTypes, resourceTokens, resourcesByToken)
 	lowerBoundFunctions(spec, pkg, usedNames, namedTypes)
+	if resolveDocs {
+		resolveBoundPackageDocs(pkg, spec)
+	}
 	sort.Slice(spec.Enums, func(i, j int) bool { return spec.Enums[i].EnumName < spec.Enums[j].EnumName })
 	sort.Slice(spec.ObjectClasses, func(i, j int) bool { return spec.ObjectClasses[i].ClassName < spec.ObjectClasses[j].ClassName })
 	return spec

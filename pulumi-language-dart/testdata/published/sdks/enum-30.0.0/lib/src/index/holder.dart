@@ -5,8 +5,8 @@ import 'int_enum.dart';
 import 'string_enum.dart';
 
 class Holder {
-  final pulumi.Input<StringEnum>? color;
-  final pulumi.Input<IntEnum>? size;
+  final pulumi.Input<StringEnum?>? color;
+  final pulumi.Input<IntEnum?>? size;
 
   /// Creates a new [Holder].
   /// [color] Optional.

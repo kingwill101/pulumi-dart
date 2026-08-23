@@ -17,7 +17,7 @@ func ParsePackageSchema(schemaJSON string, loadExternalSchema ExternalSchemaLoad
 	return parsePackageSchema(schemaJSON, loadExternalSchema)
 }
 func PackageSchemaFromPackage(pkg *schema.Package) *PackageSchema {
-	return packageSchemaFromPackage(pkg)
+	return packageSchemaFromPackageWithDocs(pkg, true)
 }
 func RawRequiredSet(required []string) map[string]struct{} { return rawRequiredSet(required) }
 func ExternalTokenTypeSpec(token, currentProvider, refKind, wireType string, useReferenceType, useReferenceTypes bool) (PackageTypeSpec, bool) {

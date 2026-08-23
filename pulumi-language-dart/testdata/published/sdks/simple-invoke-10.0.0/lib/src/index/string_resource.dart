@@ -16,7 +16,7 @@ class StringResource extends pulumi.CustomResource {
           'simple-invoke:index:StringResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '10.0.0').merge(options),
         ) {
     text = registerOutput<String>('text');
   }

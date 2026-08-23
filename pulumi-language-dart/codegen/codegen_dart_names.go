@@ -16,6 +16,7 @@ var dartDisallowedFieldNames = map[string]struct{}{
 }
 
 var dartDisallowedTypeNames = map[string]struct{}{
+	"Bool": {}, "Double": {}, "Dynamic": {}, "Int": {}, "Never": {}, "Num": {}, "Object": {}, "String": {}, "Void": {},
 	"ComponentResource": {}, "CustomResource": {}, "CustomResourceOptions": {}, "Deployment": {},
 	"Function": {}, "Input": {}, "InputArgs": {}, "InvokeOptions": {}, "List": {}, "Map": {},
 	"Output": {}, "Resource": {}, "ResourceOptions": {}, "Set": {},

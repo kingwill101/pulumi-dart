@@ -108,3 +108,11 @@ func TestTypeNameCandidatesStripsRedundantPrefix(t *testing.T) {
 		})
 	}
 }
+
+func TestTypeNameCandidatesAvoidDartCoreTypes(t *testing.T) {
+	t.Parallel()
+
+	if got := typeNameCandidates("String", "index", "", "Resource")[0]; got != "StringType" {
+		t.Fatalf("unexpected type candidate: got %q, want %q", got, "StringType")
+	}
+}

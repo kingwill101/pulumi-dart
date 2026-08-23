@@ -9,8 +9,8 @@ import 'string_enum_mod.dart';
 /// {@endtemplate}
 /// {@macro pulumi_mod_res_mod_args_doc}
 class ResModArgs {
-  final pulumi.Input<IntEnumMod>? intEnum;
-  final pulumi.Input<StringEnumMod>? stringEnum;
+  final pulumi.Input<IntEnumMod?>? intEnum;
+  final pulumi.Input<StringEnumMod?>? stringEnum;
 
   /// Creates a new [ResModArgs].
   /// [intEnum] Optional.
