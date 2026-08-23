@@ -29,14 +29,11 @@ import (
 )
 
 func TestDartErrorHooks(t *testing.T) {
-	goTestproviderPath, err := pulumiSubmodulePath("tests", "testprovider")
-	require.NoError(t, err)
-
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{
 			{
 				Package: "testprovider",
-				Path:    goTestproviderPath,
+				Path:    filepath.Join("error_hooks", "testprovider-go"),
 			},
 		},
 		Quick: true,
