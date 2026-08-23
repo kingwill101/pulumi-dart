@@ -158,100 +158,13 @@ func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 		ObjectClasses: []packageObjectClassSpec{},
 	}
 
-	usedClassNamesByModule := map[string]map[string]int{}
-	namedTypeRefs := map[string]packageNamedTypeRef{}
+	discovery := discoverRawSchema(rawSpec)
+	usedClassNamesByModule := discovery.usedClassNamesByModule
+	namedTypeRefs := discovery.namedTypeRefs
 	externalRefs := newExternalRefResolver(rawSpec.Name, outputDir)
-
-	typeTokens := make([]string, 0, len(rawSpec.Types))
-	for token := range rawSpec.Types {
-		typeTokens = append(typeTokens, token)
-	}
-	sort.Strings(typeTokens)
-
-	for _, token := range typeTokens {
-		typeSpec := rawSpec.Types[token]
-		canonicalName := canonicalTypeName(tokenElementName(token))
-		if len(typeSpec.Enum) > 0 {
-			typeName := uniqueQualifiedClassName(
-				tokenElementName(token),
-				tokenModulePath(token),
-				moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(token)),
-				"",
-				"Enum",
-			)
-			namedTypeRefs[token] = packageNamedTypeRef{
-				Kind:             "enum",
-				Name:             typeName,
-				CanonicalName:    canonicalName,
-				UnderlyingType:   dartTypeFromRawTypeName(typeSpec.Type),
-				UseReferenceType: true,
-			}
-			continue
-		}
-		if typeSpec.Type == "object" {
-			typeName := ""
-			useReferenceType := false
-			if len(typeSpec.Properties) > 0 {
-				typeName = uniqueQualifiedClassName(
-					tokenElementName(token),
-					tokenModulePath(token),
-					moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(token)),
-					"",
-					"Type",
-				)
-				useReferenceType = true
-			}
-			namedTypeRefs[token] = packageNamedTypeRef{
-				Kind:             "object",
-				Name:             typeName,
-				CanonicalName:    canonicalName,
-				UnderlyingType:   "Map<String, dynamic>",
-				UseReferenceType: useReferenceType,
-			}
-		}
-	}
-
-	// Reserve resource type names up front so refs to #/resources/... can be
-	// strongly typed and stable while we build the remaining schema model.
-	resourceSpecByToken := map[string]rawResourceSpec{}
-	for token, resource := range rawSpec.Resources {
-		resourceSpecByToken[token] = resource
-	}
-	if rawSpec.Provider != nil {
-		providerToken := strings.TrimSpace(rawSpec.Provider.Token)
-		if providerToken == "" {
-			providerToken = fmt.Sprintf("pulumi:providers:%s", rawSpec.Name)
-		}
-		provider := *rawSpec.Provider
-		provider.IsProvider = true
-		if existing, ok := resourceSpecByToken[providerToken]; ok {
-			existing.IsProvider = true
-			existing.RequiredInputs = appendDistinctStringSet(existing.RequiredInputs, provider.RequiredInputs)
-			existing.InputProperties = mergeRawPropertySpecs(existing.InputProperties, provider.InputProperties)
-			existing.Properties = mergeRawPropertySpecs(existing.Properties, provider.Properties)
-			existing.Methods = mergeRawMethods(existing.Methods, provider.Methods)
-			resourceSpecByToken[providerToken] = existing
-		} else {
-			resourceSpecByToken[providerToken] = provider
-		}
-	}
-	resourceTokens := make([]string, 0, len(resourceSpecByToken))
-	for token := range resourceSpecByToken {
-		resourceTokens = append(resourceTokens, token)
-	}
-	sort.Strings(resourceTokens)
-
-	for _, token := range resourceTokens {
-		modulePath := tokenModulePath(token)
-		className := resourceClassNameFromToken(token, moduleScopedTypeNameSet(usedClassNamesByModule, modulePath))
-		namedTypeRefs[token] = packageNamedTypeRef{
-			Kind:             "resource",
-			Name:             className,
-			CanonicalName:    canonicalTypeName(tokenElementName(token)),
-			UnderlyingType:   "dynamic",
-			UseReferenceType: true,
-		}
-	}
+	typeTokens := discovery.typeTokens
+	resourceTokens := discovery.resourceTokens
+	resourceSpecByToken := discovery.resourceSpecs
 
 	for _, token := range typeTokens {
 		typeSpec := rawSpec.Types[token]
