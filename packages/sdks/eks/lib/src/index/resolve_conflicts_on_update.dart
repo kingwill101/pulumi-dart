@@ -16,4 +16,3 @@ enum ResolveConflictsOnUpdate {
     throw ArgumentError('Unknown ResolveConflictsOnUpdate value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum ClusterNodePools {
     throw ArgumentError('Unknown ClusterNodePools value: $value');
   }
 }
-
