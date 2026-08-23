@@ -8,8 +8,7 @@ import (
 )
 
 func (lowerer programLowerer) configVariable(variable *pcl.ConfigVariable) (dartProgramConfig, error) {
-	name := propertyFieldName(variable.Name(), lowerer.usedNames)
-	lowerer.names[variable.Name()] = name
+	name := lowerer.names[variable.Name()]
 
 	resolvedType := model.ResolveOutputs(variable.Type())
 	getter, err := dartConfigGetter(resolvedType, variable.DefaultValue == nil)

@@ -7,11 +7,10 @@ import (
 )
 
 func (lowerer programLowerer) resource(resource *pcl.Resource) (dartProgramResource, error) {
-	name := propertyFieldName(resource.Name(), lowerer.usedNames)
-	lowerer.names[resource.Name()] = name
+	name := lowerer.names[resource.Name()]
 	token, _ := resource.GetToken()
 	if token != "pulumi:index:Stash" && token != "pulumi:Stash" && token != "pulumi:pulumi:StackReference" {
-		return dartProgramResource{}, fmt.Errorf("unsupported resource token %q", token)
+		return lowerer.providerResource(resource, name, token)
 	}
 	inputName := "input"
 	resourceType := "stash"
@@ -28,5 +27,29 @@ func (lowerer programLowerer) resource(resource *pcl.Resource) (dartProgramResou
 	}
 	return dartProgramResource{
 		Name: name, LogicalName: resource.LogicalName(), Type: resourceType, Input: input,
+	}, nil
+}
+
+func (lowerer programLowerer) providerResource(
+	resource *pcl.Resource, name, token string,
+) (dartProgramResource, error) {
+	pkg, module, member, diagnostics := pcl.DecomposeToken(token, resource.SyntaxNode().Range())
+	if diagnostics.HasErrors() {
+		return dartProgramResource{}, fmt.Errorf("invalid resource token %q", token)
+	}
+	inputs := make([]dartProgramResourceInput, len(resource.Inputs))
+	for index, input := range resource.Inputs {
+		expression, err := lowerer.expression(input.Value)
+		if err != nil {
+			return dartProgramResource{}, fmt.Errorf("input %q: %w", input.Name, err)
+		}
+		inputs[index] = dartProgramResourceInput{
+			Name: propertyFieldName(input.Name, map[string]int{}), Expression: expression,
+		}
+	}
+	return dartProgramResource{
+		Name: name, LogicalName: resource.LogicalName(), Type: "provider",
+		Package: pkg, Module: module, Class: sanitizeTypeName(toDartClassName(member)),
+		ArgsClass: sanitizeTypeName(toDartClassName(member) + "Args"), Inputs: inputs,
 	}, nil
 }

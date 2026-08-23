@@ -146,6 +146,27 @@ dependencies:
 	assert.Equal(t, "v2.41.0", packagesByName["azure-native"].Version)
 }
 
+func TestGetRequiredPackagesResolvesLocalPathDependencyVersion(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	tmp := t.TempDir()
+	sdk := filepath.Join(tmp, "simple")
+	require.NoError(t, os.MkdirAll(sdk, 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(sdk, "pubspec.yaml"), []byte(
+		"name: pulumi_simple\nversion: 2.0.0\n"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(tmp, "pubspec.yaml"), []byte(
+		"name: test_project\ndependencies:\n  pulumi_simple:\n    path: simple\n"), 0o600))
+
+	response, err := host.GetRequiredPackages(context.Background(), &pulumirpc.GetRequiredPackagesRequest{
+		Info: &pulumirpc.ProgramInfo{ProgramDirectory: tmp},
+	})
+	require.NoError(t, err)
+	require.Len(t, response.Packages, 1)
+	assert.Equal(t, "simple", response.Packages[0].Name)
+	assert.Equal(t, "v2.0.0", response.Packages[0].Version)
+}
+
 func TestGetRequiredPackagesIncludesParameterizedProjectPackages(t *testing.T) {
 	t.Parallel()
 

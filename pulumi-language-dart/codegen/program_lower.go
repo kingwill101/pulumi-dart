@@ -13,6 +13,7 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 	if len(program.ConfigVariables()) > 0 {
 		lowerer.usedNames["config"] = 1
 	}
+	lowerer.declareNodeNames(program.Nodes)
 	result := dartProgram{}
 	for _, node := range program.Nodes {
 		switch node := node.(type) {
@@ -31,8 +32,7 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 				result.RequiredPulumiVersions = append(result.RequiredPulumiVersions, requiredVersion)
 			}
 		case *pcl.LocalVariable:
-			name := propertyFieldName(node.Name(), lowerer.usedNames)
-			lowerer.names[node.Name()] = name
+			name := lowerer.names[node.Name()]
 			expression, err := lowerer.expression(node.Definition.Value)
 			if err != nil {
 				return dartProgram{}, fmt.Errorf("local %q: %w", node.Name(), err)

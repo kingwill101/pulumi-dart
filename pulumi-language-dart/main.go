@@ -1121,6 +1121,9 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		version := ""
 		if len(pkg) > 1 {
 			version = normalizePackageDependencyVersion(pkg[1])
+			if version == "" {
+				version = localPathDependencyVersion(pubspecPath, pkg[1])
+			}
 		}
 
 		providerName := aliasName

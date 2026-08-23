@@ -1,0 +1,12 @@
+name: l2_parallel_resources
+description: Generated Pulumi Dart project.
+version: 0.0.1
+environment:
+    sdk: '>=3.11.0 <4.0.0'
+dependencies:
+    pulumi:
+        path: ROOT/artifacts/pulumi
+    pulumi_sync:
+        path: ROOT/artifacts/pulumi_sync
+dev_dependencies:
+    lints: ^6.1.0

@@ -2,12 +2,31 @@ package codegen
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
 func renderDartProgram(program dartProgram) []byte {
 	var body strings.Builder
 	body.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n\n")
+	packages := map[string]struct{}{}
+	for _, resource := range program.Resources {
+		if resource.Package != "" {
+			packages[resource.Package] = struct{}{}
+		}
+	}
+	packageNames := make([]string, 0, len(packages))
+	for name := range packages {
+		packageNames = append(packageNames, name)
+	}
+	sort.Strings(packageNames)
+	for _, name := range packageNames {
+		packageName := "pulumi_" + strings.ReplaceAll(name, "-", "_")
+		fmt.Fprintf(&body, "import 'package:%s/%s.dart' as %s;\n", packageName, packageName, name)
+	}
+	if len(packageNames) > 0 {
+		body.WriteString("\n")
+	}
 	body.WriteString("class GeneratedStack extends pulumi.Stack {\n")
 	body.WriteString("  late final List<pulumi.OutputProperty> _outputProperties;\n\n")
 	body.WriteString("  GeneratedStack() {\n")

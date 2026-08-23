@@ -13,6 +13,16 @@ type dartProgramResource struct {
 	LogicalName string
 	Type        string
 	Input       string
+	Package     string
+	Module      string
+	Class       string
+	ArgsClass   string
+	Inputs      []dartProgramResourceInput
+}
+
+type dartProgramResourceInput struct {
+	Name       string
+	Expression string
 }
 
 type dartProgramConfig struct {
