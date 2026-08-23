@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:artisanal/args.dart';
+import 'package:artisanal/artisanal.dart' show Colors, Style;
 
 import 'audit_service.dart';
 import 'models.dart';
@@ -91,17 +92,116 @@ final class UpstreamCheckCommand extends Command<int> {
       );
     }
     if (details) {
-      io.newLine();
-      for (final finding in result.findings) {
-        io.writeln(
-          '${finding.source} ${finding.release} [${finding.category}] '
-          '${finding.summary}',
-        );
-      }
+      _renderDetails(result.findings);
     } else if (result.findings.isNotEmpty) {
       io.newLine();
       io.info('Run again with --details or --json to inspect every finding.');
     }
+  }
+
+  void _renderDetails(List<UpstreamFinding> findings) {
+    final bySource = <String, List<UpstreamFinding>>{};
+    for (final finding in findings) {
+      bySource.putIfAbsent(finding.source, () => []).add(finding);
+    }
+
+    io.newLine();
+    io.components.rule('Detailed findings');
+    for (final sourceEntry in bySource.entries) {
+      final sourceFindings = sourceEntry.value;
+      final sourceTitle = Style()
+          .foreground(Colors.cyan)
+          .bold()
+          .render('${sourceEntry.key} · ${sourceFindings.length} findings');
+      io.section(sourceTitle);
+      io.components.definitionList(_categoryCounts(sourceFindings));
+
+      final byRelease = <String, List<UpstreamFinding>>{};
+      for (final finding in sourceFindings) {
+        byRelease.putIfAbsent(finding.release, () => []).add(finding);
+      }
+      for (final releaseEntry in byRelease.entries) {
+        final releaseFindings = releaseEntry.value;
+        final release = releaseFindings.first;
+        final link = Style()
+            .foreground(Colors.info)
+            .underline()
+            .hyperlink(release.url)
+            .render(releaseEntry.key);
+        final count = Style()
+            .foreground(Colors.muted)
+            .render(
+              '${releaseFindings.length} '
+              '${releaseFindings.length == 1 ? 'finding' : 'findings'}',
+            );
+        io.writeln('  $link  $count');
+        io.newLine();
+
+        final byCategory = <String, List<UpstreamFinding>>{};
+        for (final finding in releaseFindings) {
+          byCategory.putIfAbsent(finding.category, () => []).add(finding);
+        }
+        for (final categoryEntry in byCategory.entries) {
+          final badge = _categoryBadge(categoryEntry.key);
+          io.writeln('    $badge');
+          for (final finding in categoryEntry.value) {
+            io.writeln(_wrappedFinding(finding.summary));
+          }
+          io.newLine();
+        }
+      }
+      io.components.line();
+      io.newLine();
+    }
+  }
+
+  Map<String, Object> _categoryCounts(List<UpstreamFinding> findings) {
+    final counts = <String, int>{};
+    for (final finding in findings) {
+      counts[finding.category] = (counts[finding.category] ?? 0) + 1;
+    }
+    return {for (final entry in counts.entries) entry.key: '${entry.value}'};
+  }
+
+  String _categoryBadge(String category) {
+    final color = switch (category) {
+      'protocol' => Colors.magenta,
+      'automation' => Colors.blue,
+      'codegen' => Colors.cyan,
+      'provider-runtime' => Colors.warning,
+      'provider-sdk' => Colors.green,
+      _ => Colors.info,
+    };
+    return Style().foreground(color).bold().render(category.toUpperCase());
+  }
+
+  String _linkedSummary(String summary) {
+    return summary.replaceAllMapped(
+      RegExp(
+        r'\[([^\]]+)\]\((https?://[^)]+)\)|'
+        r'https://github\.com/([^/]+)/([^/]+)/pull/(\d+)',
+      ),
+      (match) {
+        final url = match.group(2) ?? match.group(0)!;
+        final label =
+            match.group(1) ??
+            '${match.group(3)}/${match.group(4)}#${match.group(5)}';
+        return Style()
+            .foreground(Colors.info)
+            .underline()
+            .hyperlink(url)
+            .render(label);
+      },
+    );
+  }
+
+  String _wrappedFinding(String summary) {
+    final width = (io.terminalWidth - 2).clamp(40, 120);
+    final rendered = Style()
+        .width(width)
+        .paddingLeft(6)
+        .render('• ${_linkedSummary(summary)}');
+    return rendered.split('\n').map((line) => line.trimRight()).join('\n');
   }
 
   String _date(DateTime value) =>
