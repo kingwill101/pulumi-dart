@@ -130,6 +130,11 @@ Future<_ResolvedInputArgs> _resolveInputArgs(Inputs args) async {
     }
   }
 
+  final dependencyMetadata = await _resolveResourceDependencies(resources);
+  resources.addAll(dependencyMetadata.resources);
+  isKnown = isKnown && dependencyMetadata.isKnown;
+  isSecret = isSecret || dependencyMetadata.isSecret;
+
   return _ResolvedInputArgs(
     values: values,
     resources: resources,
@@ -141,20 +146,28 @@ Future<_ResolvedInputArgs> _resolveInputArgs(Inputs args) async {
 Future<_ResolvedDependsOn> _resolveDependsOn(
   Iterable<Resource>? dependsOn,
 ) async {
-  final resources = <Resource>{};
-  var isKnown = true;
-  var isSecret = false;
-
   if (dependsOn == null) {
     return _ResolvedDependsOn(
-      resources: resources,
-      isKnown: isKnown,
-      isSecret: isSecret,
+      resources: <Resource>{},
+      isKnown: true,
+      isSecret: false,
     );
   }
+  final metadata = await _resolveResourceDependencies(dependsOn.toSet());
+  return _ResolvedDependsOn(
+    resources: metadata.resources,
+    isKnown: metadata.isKnown,
+    isSecret: metadata.isSecret,
+  );
+}
 
-  for (final dependency in dependsOn) {
-    resources.add(dependency);
+Future<_ResolvedDependsOn> _resolveResourceDependencies(
+  Set<Resource> dependencies,
+) async {
+  final resources = <Resource>{...dependencies};
+  var isKnown = true;
+  var isSecret = false;
+  for (final dependency in dependencies) {
     if (dependency is! CustomResource) {
       continue;
     }
@@ -163,7 +176,6 @@ Future<_ResolvedDependsOn> _resolveDependsOn(
     isKnown = isKnown && idData.isKnown;
     isSecret = isSecret || idData.isSecret;
   }
-
   return _ResolvedDependsOn(
     resources: resources,
     isKnown: isKnown,

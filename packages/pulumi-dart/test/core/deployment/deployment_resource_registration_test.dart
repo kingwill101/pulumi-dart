@@ -469,6 +469,7 @@ void main() {
           unorderedEquals([
             await depB.urn.getValue(),
             await depA.urn.getValue(),
+            await propertyDependency.urn.getValue(),
           ]),
         );
         expect(request.protect, isTrue);

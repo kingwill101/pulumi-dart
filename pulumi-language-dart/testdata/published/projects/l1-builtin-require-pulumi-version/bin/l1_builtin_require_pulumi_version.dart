@@ -6,7 +6,6 @@ class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     final config = pulumi.Config();
     final version = config.require('version');
-
     pulumi.Deployment.instance.requirePulumiVersion(version);
 
     _outputProperties = [

@@ -15,7 +15,7 @@ func (lowerer programLowerer) providerInputExpression(
 	property := resourceInputProperty(resource, name)
 	propertyType := schema.Type(nil)
 	if property != nil {
-		propertyType = unwrapProviderInputType(property.Type)
+		propertyType = property.Type
 	}
 	if propertyType != nil {
 		value, err := lowerer.typedProviderExpression(defaultPackage, expression, propertyType)
@@ -36,20 +36,21 @@ func (lowerer programLowerer) providerInputExpression(
 func (lowerer programLowerer) typedProviderExpression(
 	defaultPackage string, expression model.Expression, typ schema.Type,
 ) (string, error) {
+	nullable := providerTypeIsOptional(typ)
 	typ = unwrapProviderInputType(typ)
 	switch typ := typ.(type) {
 	case *schema.ObjectType:
 		return lowerer.providerObjectExpression(defaultPackage, expression, typ)
 	case *schema.ArrayType:
-		return lowerer.providerArrayExpression(defaultPackage, expression, typ.ElementType)
+		return lowerer.providerArrayExpression(defaultPackage, expression, typ.ElementType, nullable)
 	case *schema.MapType:
-		return lowerer.providerMapExpression(defaultPackage, expression, typ.ElementType)
+		return lowerer.providerMapExpression(defaultPackage, expression, typ.ElementType, nullable)
 	default:
 		value, err := lowerer.expression(expression)
 		if err != nil {
 			return "", err
 		}
-		if converted, ok := providerPrimitiveConversion(expression, typ, value); ok {
+		if converted, ok := providerPrimitiveConversion(expression, typ, value, nullable); ok {
 			return converted, nil
 		}
 		return value, nil

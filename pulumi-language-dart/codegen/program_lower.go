@@ -30,7 +30,9 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 				if err != nil {
 					return dartProgram{}, fmt.Errorf("required Pulumi version: %w", err)
 				}
-				result.RequiredPulumiVersions = append(result.RequiredPulumiVersions, requiredVersion)
+				result.Statements = append(result.Statements, dartProgramStatement{
+					RequiredPulumiVersion: requiredVersion,
+				})
 			}
 		case *pcl.LocalVariable:
 			name := lowerer.names[node.Name()]

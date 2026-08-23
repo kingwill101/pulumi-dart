@@ -36,10 +36,11 @@ type rawResourceSpec struct {
 }
 
 type rawFunctionSpec struct {
-	Description         string         `json:"description"`
-	Inputs              *rawObjectSpec `json:"inputs"`
-	Outputs             *rawObjectSpec `json:"outputs"`
-	MultiArgumentInputs []string       `json:"multiArgumentInputs"`
+	Description         string               `json:"description"`
+	Inputs              *rawObjectSpec       `json:"inputs"`
+	Outputs             *rawObjectSpec       `json:"outputs"`
+	ReturnType          *rawPropertyTypeSpec `json:"returnType"`
+	MultiArgumentInputs []string             `json:"multiArgumentInputs"`
 }
 
 type rawObjectSpec struct {

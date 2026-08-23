@@ -38,15 +38,6 @@ type Resource struct {
 	Methods          []ResourceMethod
 }
 
-type Function struct {
-	Comment             string
-	HasArgs             bool
-	ArgsClass           string
-	ResultClass         string
-	MultiArgumentInputs bool
-	Parameters          []Property
-}
-
 type ResourceMethod struct {
 	Name        string
 	Token       string

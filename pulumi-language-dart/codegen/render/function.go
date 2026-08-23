@@ -71,6 +71,21 @@ func writeInvokeFunction(b *strings.Builder, function dartir.InvokeFunction) {
 		writeInvokeOutputFunction(b, function)
 		return
 	}
+	if function.ResultType != "" {
+		fmt.Fprintf(
+			b,
+			"Future<%s> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  final value = await deployment.invokeSingle<dynamic>(\n    %s,\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n  return %s;\n}\n",
+			function.ResultType,
+			function.Name,
+			signatureArgs,
+			function.TokenLiteral,
+			invokeArgs,
+			registrationArg,
+			function.ResultDecoder,
+		)
+		writeInvokeOutputFunction(b, function)
+		return
+	}
 	fmt.Fprintf(
 		b,
 		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    %s,\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n}\n",

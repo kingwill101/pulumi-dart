@@ -6,9 +6,8 @@ class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     final config = pulumi.Config();
     final aMap = config.requireObject<Map<String, dynamic>>('aMap');
-    final anObject = config.requireObject<dynamic>('anObject');
-
     final aSecretMap = pulumi.secret(aMap);
+    final anObject = config.requireObject<dynamic>('anObject');
     final aSecretObject = pulumi.secret(anObject);
 
     _outputProperties = [

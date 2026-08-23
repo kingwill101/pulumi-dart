@@ -18,13 +18,21 @@ func writeInvokeOutputFunction(b *strings.Builder, function dartir.InvokeFunctio
 	if function.ResultClass != "" {
 		resultType = function.ResultClass
 		mapResult = fmt.Sprintf(".apply(%s.fromMap)", function.ResultClass)
+	} else if function.ResultType != "" {
+		resultType = function.ResultType
+		mapResult = fmt.Sprintf(".apply<%s>((value) => %s)", function.ResultType, function.ResultDecoder)
+	}
+	invokeHelper := "invokeOutput<Map<String, dynamic>>"
+	if function.ResultClass == "" && function.ResultType != "" {
+		invokeHelper = "invokeSingleOutput<dynamic>"
 	}
 	fmt.Fprintf(
 		b,
-		"\npulumi.Output<%s> %sOutput(\n  %s}) {\n  return pulumi.invokeOutput<Map<String, dynamic>>(\n    %s,\n    %s,\n    options: options%s,\n  )%s;\n}\n",
+		"\npulumi.Output<%s> %sOutput(\n  %s}) {\n  return pulumi.%s(\n    %s,\n    %s,\n    options: options%s,\n  )%s;\n}\n",
 		resultType,
 		function.Name,
 		signature,
+		invokeHelper,
 		function.TokenLiteral,
 		arguments,
 		registration,

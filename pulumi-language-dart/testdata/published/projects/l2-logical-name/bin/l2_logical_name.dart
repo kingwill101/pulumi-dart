@@ -8,7 +8,6 @@ class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     final config = pulumi.Config();
     final configLexicalName = config.requireBoolean('cC-Charlie_charlie.😃⁉️');
-
     final resourceLexicalName = simple_index.ResourceType('aA-Alpha_alpha.🤯⁉️', args: simple_index.ResourceArgs(value: (configLexicalName).input(), ));
 
     _outputProperties = [

@@ -12,6 +12,8 @@ type InvokeFunction struct {
 	ArgsClass              string
 	HasArgs                bool
 	ResultClass            string
+	ResultType             string
+	ResultDecoder          string
 	TokenLiteral           string
 	HasPackageRegistration bool
 	MultiArgumentInputs    bool

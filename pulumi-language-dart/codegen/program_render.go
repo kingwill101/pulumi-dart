@@ -40,12 +40,6 @@ func renderDartProgram(program dartProgram) []byte {
 	if len(program.Configs) > 0 {
 		body.WriteString("    final config = pulumi.Config();\n")
 	}
-	for _, version := range program.RequiredPulumiVersions {
-		fmt.Fprintf(&body, "    pulumi.Deployment.instance.requirePulumiVersion(%s);\n", version)
-	}
-	if len(program.RequiredPulumiVersions) > 0 {
-		body.WriteString("\n")
-	}
 	for _, statement := range program.Statements {
 		if statement.Config != nil {
 			fmt.Fprintf(&body, "    final %s = %s;\n", statement.Config.Name, statement.Config.Expression)
@@ -55,6 +49,13 @@ func renderDartProgram(program dartProgram) []byte {
 		}
 		if statement.Resource != nil {
 			body.WriteString(renderDartProgramResource(*statement.Resource))
+		}
+		if statement.RequiredPulumiVersion != "" {
+			fmt.Fprintf(
+				&body,
+				"    pulumi.Deployment.instance.requirePulumiVersion(%s);\n",
+				statement.RequiredPulumiVersion,
+			)
 		}
 	}
 	if len(program.Statements) > 0 {

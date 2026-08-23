@@ -444,6 +444,10 @@ class DeploymentImpl extends Deployment
     models.RegisterPackageRequest? registerPackageRequest,
   }) async {
     try {
+      if (resource.getResourceType() != Stack.rootPulumiStackTypeName &&
+          _stack != null) {
+        await _stack!.urn.getData();
+      }
       if (resource.isCustom && (opts.id != null || opts.urn != null)) {
         await _readResource(
           resource: resource as CustomResource,
@@ -487,6 +491,7 @@ class DeploymentImpl extends Deployment
           propertyDependencies[entry.key] =
               RegisterResourceRequest_PropertyDependencies()
                 ..urns.addAll(sortedUrns);
+          dependencyUrns.addAll(urns);
         }
       }
 
@@ -517,7 +522,7 @@ class DeploymentImpl extends Deployment
         request.parent = await opts.parent!.urn.getValue();
       }
 
-      if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
+      if (dependencyUrns.isNotEmpty) {
         request.dependencies.addAll(dependencyUrns.toList()..sort());
       }
 

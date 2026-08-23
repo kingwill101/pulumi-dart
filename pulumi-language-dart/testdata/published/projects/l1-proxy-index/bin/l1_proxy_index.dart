@@ -7,7 +7,6 @@ class GeneratedStack extends pulumi.Stack {
     final config = pulumi.Config();
     final anObject = config.requireObject<Map<String, dynamic>>('anObject');
     final anyObject = config.requireObject<dynamic>('anyObject');
-
     final l = pulumi.secret([1]);
     final m = pulumi.secret({'key': true});
     final c = pulumi.secret(anObject);

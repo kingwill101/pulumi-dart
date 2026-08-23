@@ -23,7 +23,7 @@ class ComplexResourceArgs {
 
   factory ComplexResourceArgs.fromMap(Map<String, dynamic> map) {
     return ComplexResourceArgs(
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

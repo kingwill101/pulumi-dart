@@ -9,7 +9,7 @@ import (
 )
 
 func (lowerer programLowerer) providerArrayExpression(
-	pkg string, expression model.Expression, elementType schema.Type,
+	pkg string, expression model.Expression, elementType schema.Type, nullable bool,
 ) (string, error) {
 	tuple, ok := expression.(*model.TupleConsExpression)
 	if !ok {
@@ -18,6 +18,9 @@ func (lowerer programLowerer) providerArrayExpression(
 			return value, err
 		}
 		element := providerSchemaValueDartType(elementType)
+		if nullable {
+			return fmt.Sprintf("pulumi.output(%s).apply<List<%s>?>((value) => value == null ? null : (value as List).cast<%s>())", value, element, element), nil
+		}
 		return fmt.Sprintf("pulumi.output(%s).apply<List<%s>>((value) => (value as List).cast<%s>())", value, element, element), nil
 	}
 	items := make([]string, len(tuple.Expressions))
@@ -32,7 +35,7 @@ func (lowerer programLowerer) providerArrayExpression(
 }
 
 func (lowerer programLowerer) providerMapExpression(
-	pkg string, expression model.Expression, elementType schema.Type,
+	pkg string, expression model.Expression, elementType schema.Type, nullable bool,
 ) (string, error) {
 	object, ok := expression.(*model.ObjectConsExpression)
 	if !ok {
@@ -41,6 +44,9 @@ func (lowerer programLowerer) providerMapExpression(
 			return value, err
 		}
 		element := providerSchemaValueDartType(elementType)
+		if nullable {
+			return fmt.Sprintf("pulumi.output(%s).apply<Map<String, %s>?>((value) => value == null ? null : (value as Map).cast<String, %s>())", value, element, element), nil
+		}
 		return fmt.Sprintf("pulumi.output(%s).apply<Map<String, %s>>((value) => (value as Map).cast<String, %s>())", value, element, element), nil
 	}
 	items := make([]string, len(object.Items))

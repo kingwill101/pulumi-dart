@@ -6,7 +6,6 @@ class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     final config = pulumi.Config();
     final input = config.require('input');
-
     final bytes = pulumi.fromBase64(input);
 
     _outputProperties = [

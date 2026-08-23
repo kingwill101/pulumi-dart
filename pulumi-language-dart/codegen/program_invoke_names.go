@@ -12,6 +12,7 @@ type programFunction struct {
 	Name        string
 	ArgsClass   string
 	ResultClass string
+	ResultType  string
 	Function    packageFunctionSpec
 	Schema      *schema.Function
 }
@@ -34,8 +35,9 @@ func programFunctions(packages []*schema.Package) map[string]programFunction {
 			planned := programFunction{
 				Package: pkg.Name, Module: rootProgramModule(module), Name: name,
 				ArgsClass: function.ArgsClass, ResultClass: function.ResultClass,
-				Function: function,
-				Schema:   schemaFunction,
+				ResultType: function.ReturnType.DartType,
+				Function:   function,
+				Schema:     schemaFunction,
 			}
 			result[token] = planned
 			if module == "index" {

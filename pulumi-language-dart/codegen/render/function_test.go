@@ -31,6 +31,12 @@ func TestFunctionsLibraryRendersTypedAndUntypedInvokes(t *testing.T) {
 				TokenLiteral: "'example:index:listWidgets'",
 			},
 			{
+				Name:          "listFlags",
+				TokenLiteral:  "'example:index:listFlags'",
+				ResultType:    "List<bool>",
+				ResultDecoder: "(value as List).cast<bool>()",
+			},
+			{
 				Name:                "lookupWidget",
 				ArgsClass:           "LookupWidgetArgs",
 				HasArgs:             true,
@@ -50,6 +56,12 @@ func TestFunctionsLibraryRendersTypedAndUntypedInvokes(t *testing.T) {
 	require.Contains(t, actual, "registerPackageRequest: package_registration.registerPackageRequest")
 	require.Contains(t, actual, "return GetWidgetResult.fromMap(result);")
 	require.Contains(t, actual, "Future<Map<String, dynamic>> listWidgets(")
+	require.Contains(t, actual, "Future<List<bool>> listFlags(")
+	require.Contains(t, actual, "deployment.invokeSingle<dynamic>(")
+	require.Contains(t, actual, "return (value as List).cast<bool>();")
+	require.Contains(t, actual, "pulumi.Output<List<bool>> listFlagsOutput(")
+	require.Contains(t, actual, "pulumi.invokeSingleOutput<dynamic>(")
+	require.Contains(t, actual, ".apply<List<bool>>((value) => (value as List).cast<bool>())")
 	require.Contains(t, actual, "const <String, dynamic>{}")
 	require.Contains(t, actual, "pulumi.Input<String> name,")
 	require.Contains(t, actual, "pulumi.Input<String>? region,")

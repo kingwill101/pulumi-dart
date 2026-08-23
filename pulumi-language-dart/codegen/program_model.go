@@ -1,13 +1,12 @@
 package codegen
 
 type dartProgram struct {
-	Imports                []dartProgramImport
-	Configs                []dartProgramConfig
-	RequiredPulumiVersions []string
-	Locals                 []dartProgramLocal
-	Resources              []dartProgramResource
-	Statements             []dartProgramStatement
-	Outputs                []dartProgramOutput
+	Imports    []dartProgramImport
+	Configs    []dartProgramConfig
+	Locals     []dartProgramLocal
+	Resources  []dartProgramResource
+	Statements []dartProgramStatement
+	Outputs    []dartProgramOutput
 }
 
 type dartProgramImport struct {
@@ -16,9 +15,10 @@ type dartProgramImport struct {
 }
 
 type dartProgramStatement struct {
-	Config   *dartProgramConfig
-	Local    *dartProgramLocal
-	Resource *dartProgramResource
+	Config                *dartProgramConfig
+	Local                 *dartProgramLocal
+	Resource              *dartProgramResource
+	RequiredPulumiVersion string
 }
 
 type dartProgramResource struct {

@@ -36,8 +36,8 @@ class ResourceArgs {
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
       boolean: (() { final guardedValue = map['boolean']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      float: (() { final guardedValue = map['float']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      integer: (() { final guardedValue = map['integer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      float: (() { final guardedValue = map['float']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      integer: (() { final guardedValue = map['integer']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       string_: (() { final guardedValue = map['string']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

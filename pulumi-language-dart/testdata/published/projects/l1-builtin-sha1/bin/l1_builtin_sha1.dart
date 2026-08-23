@@ -6,7 +6,6 @@ class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     final config = pulumi.Config();
     final input = config.require('input');
-
     final hash = pulumi.sha1Hash(input);
 
     _outputProperties = [

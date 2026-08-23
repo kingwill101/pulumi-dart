@@ -25,6 +25,16 @@ func (lowerer programLowerer) invokeExpression(expression *model.FunctionCallExp
 	if err != nil {
 		return "", err
 	}
+	options, err := lowerer.invokeOptions(expression)
+	if err != nil {
+		return "", err
+	}
+	if options != "" {
+		if arguments != "" {
+			arguments += ", "
+		}
+		arguments += "options: " + options
+	}
 	qualifier := programModuleAlias(function.Package, function.Module)
 	return qualifier + "." + function.Name + "Output(" + arguments + ")", nil
 }
