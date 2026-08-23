@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_bandwidth.dart';
 import 'network_bridge.dart';
 import 'network_dns.dart';
+import 'network_dnsmasq_options.dart';
 import 'network_domain.dart';
 import 'network_forward.dart';
 import 'network_ip.dart';
@@ -25,6 +26,7 @@ class NetworkState {
   final pulumi.Input<NetworkBridge>? bridge;
   /// DNS configuration for the network
   final pulumi.Input<NetworkDns>? dns;
+  final pulumi.Input<NetworkDnsmasqOptions>? dnsmasqOptions;
   /// Configures the domain associated with the network.
   final pulumi.Input<NetworkDomain>? domain;
   /// Network forwarding mode configuration
@@ -71,6 +73,7 @@ class NetworkState {
   /// [bandwidth] Configures the bandwidth settings for the virtual network, specifying what limits are applied to data transport.
   /// [bridge] Optional.
   /// [dns] DNS configuration for the network
+  /// [dnsmasqOptions] Optional.
   /// [domain] Configures the domain associated with the network.
   /// [forward] Network forwarding mode configuration
   /// [ips] IP address configuration for the network
@@ -91,6 +94,7 @@ class NetworkState {
     this.bandwidth,
     this.bridge,
     this.dns,
+    this.dnsmasqOptions,
     this.domain,
     this.forward,
     this.ips,
@@ -114,6 +118,7 @@ class NetworkState {
       'bandwidth': ?pulumi.Input.mapOptionalInputValue<NetworkBandwidth, Map<String, dynamic>>(bandwidth, (value) => value.toMap()),
       'bridge': ?pulumi.Input.mapOptionalInputValue<NetworkBridge, Map<String, dynamic>>(bridge, (value) => value.toMap()),
       'dns': ?pulumi.Input.mapOptionalInputValue<NetworkDns, Map<String, dynamic>>(dns, (value) => value.toMap()),
+      'dnsmasqOptions': ?pulumi.Input.mapOptionalInputValue<NetworkDnsmasqOptions, Map<String, dynamic>>(dnsmasqOptions, (value) => value.toMap()),
       'domain': ?pulumi.Input.mapOptionalInputValue<NetworkDomain, Map<String, dynamic>>(domain, (value) => value.toMap()),
       'forward': ?pulumi.Input.mapOptionalInputValue<NetworkForward, Map<String, dynamic>>(forward, (value) => value.toMap()),
       'ips': ?pulumi.Input.mapOptionalInputValue<List<NetworkIp>, List<Map<String, dynamic>>>(ips, (value) => pulumi.Input.encodeList<NetworkIp, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -138,6 +143,7 @@ class NetworkState {
       bandwidth: (() { final guardedValue = map['bandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkBandwidth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bridge: (() { final guardedValue = map['bridge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkBridge.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dns: (() { final guardedValue = map['dns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkDns.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dnsmasqOptions: (() { final guardedValue = map['dnsmasqOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkDnsmasqOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkDomain.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forward: (() { final guardedValue = map['forward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkForward.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ips: (() { final guardedValue = map['ips']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkIp>(guardedValue, (value) => NetworkIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -156,4 +162,3 @@ class NetworkState {
     );
   }
 }
-

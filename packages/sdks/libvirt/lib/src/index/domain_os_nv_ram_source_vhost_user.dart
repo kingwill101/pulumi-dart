@@ -7,7 +7,7 @@ import 'domain_os_nv_ram_source_vhost_user_file.dart';
 import 'domain_os_nv_ram_source_vhost_user_nmdm.dart';
 import 'domain_os_nv_ram_source_vhost_user_pipe.dart';
 import 'domain_os_nv_ram_source_vhost_user_pty.dart';
-import 'domain_os_nv_ram_source_vhost_user_qemuvd_agent.dart';
+import 'domain_os_nv_ram_source_vhost_user_qemu_vd_agent.dart';
 import 'domain_os_nv_ram_source_vhost_user_spice_port.dart';
 import 'domain_os_nv_ram_source_vhost_user_tcp.dart';
 import 'domain_os_nv_ram_source_vhost_user_udp.dart';
@@ -28,8 +28,7 @@ class DomainOsNvRamSourceVhostUser {
   final pulumi.Input<DomainOsNvRamSourceVhostUserPipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
   final pulumi.Input<DomainOsNvRamSourceVhostUserPty>? pty;
-  /// Configures the QEMU guest agent for the random number generator backend.
-  final pulumi.Input<DomainOsNvRamSourceVhostUserQemuvdAgent>? qemuvdAgent;
+  final pulumi.Input<DomainOsNvRamSourceVhostUserQemuVdAgent>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
   final pulumi.Input<DomainOsNvRamSourceVhostUserSpicePort>? spicePort;
   /// Configures the Spice VMC settings in the VHostUser source configuration for the mirrored disk.
@@ -53,7 +52,7 @@ class DomainOsNvRamSourceVhostUser {
   /// [null_] Configures a null device type in the VHostUser source configuration for the mirrored disk.
   /// [pipe] Defines a pipe source for the EGD backend.
   /// [pty] Defines a pseudo-terminal (PTY) source for the EGD backend.
-  /// [qemuvdAgent] Configures the QEMU guest agent for the random number generator backend.
+  /// [qemuVdAgent] Optional.
   /// [spicePort] Configures the SPICE port settings for the random number generator backend.
   /// [spiceVmc] Configures the Spice VMC settings in the VHostUser source configuration for the mirrored disk.
   /// [stdIo] Configures standard I/O settings for the VHostUser interface associated with the mirrored disk.
@@ -69,7 +68,7 @@ class DomainOsNvRamSourceVhostUser {
     this.null_,
     this.pipe,
     this.pty,
-    this.qemuvdAgent,
+    this.qemuVdAgent,
     this.spicePort,
     this.spiceVmc,
     this.stdIo,
@@ -88,7 +87,7 @@ class DomainOsNvRamSourceVhostUser {
       'null': ?null_,
       'pipe': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceVhostUserPipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
       'pty': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceVhostUserPty, Map<String, dynamic>>(pty, (value) => value.toMap()),
-      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceVhostUserQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'qemuVdAgent': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceVhostUserQemuVdAgent, Map<String, dynamic>>(qemuVdAgent, (value) => value.toMap()),
       'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceVhostUserSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
@@ -108,7 +107,7 @@ class DomainOsNvRamSourceVhostUser {
       null_: (() { final guardedValue = map['null']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pipe: (() { final guardedValue = map['pipe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceVhostUserPipe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pty: (() { final guardedValue = map['pty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceVhostUserPty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      qemuvdAgent: (() { final guardedValue = map['qemuvdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceVhostUserQemuvdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuVdAgent: (() { final guardedValue = map['qemuVdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceVhostUserQemuVdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spicePort: (() { final guardedValue = map['spicePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceVhostUserSpicePort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spiceVmc: (() { final guardedValue = map['spiceVmc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stdIo: (() { final guardedValue = map['stdIo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -119,4 +118,3 @@ class DomainOsNvRamSourceVhostUser {
     );
   }
 }
-

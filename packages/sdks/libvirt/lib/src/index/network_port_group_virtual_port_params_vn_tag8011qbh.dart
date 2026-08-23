@@ -24,4 +24,3 @@ class NetworkPortGroupVirtualPortParamsVnTag8011qbh {
     );
   }
 }
-

@@ -3,6 +3,7 @@ import 'network_args.dart';
 import 'network_bandwidth.dart';
 import 'network_bridge.dart';
 import 'network_dns.dart';
+import 'network_dnsmasq_options.dart';
 import 'network_domain.dart';
 import 'network_forward.dart';
 import 'network_mac.dart';
@@ -23,6 +24,7 @@ class Network extends pulumi.CustomResource {
   late final pulumi.Output<NetworkBridge?> bridge;
   /// DNS configuration for the network
   late final pulumi.Output<NetworkDns?> dns;
+  late final pulumi.Output<NetworkDnsmasqOptions?> dnsmasqOptions;
   /// Configures the domain associated with the network.
   late final pulumi.Output<NetworkDomain?> domain;
   /// Network forwarding mode configuration
@@ -83,6 +85,7 @@ class Network extends pulumi.CustomResource {
     bandwidth = registerOutput<NetworkBandwidth?>('bandwidth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkBandwidth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bridge = registerOutput<NetworkBridge?>('bridge', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkBridge.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dns = registerOutput<NetworkDns?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsmasqOptions = registerOutput<NetworkDnsmasqOptions?>('dnsmasqOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDnsmasqOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domain = registerOutput<NetworkDomain?>('domain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forward = registerOutput<NetworkForward?>('forward', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkForward.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ips = registerOutput<List<Map<String, dynamic>>?>('ips');
@@ -127,6 +130,7 @@ class Network extends pulumi.CustomResource {
     bandwidth = registerOutput<NetworkBandwidth?>('bandwidth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkBandwidth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bridge = registerOutput<NetworkBridge?>('bridge', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkBridge.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dns = registerOutput<NetworkDns?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsmasqOptions = registerOutput<NetworkDnsmasqOptions?>('dnsmasqOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDnsmasqOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domain = registerOutput<NetworkDomain?>('domain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forward = registerOutput<NetworkForward?>('forward', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkForward.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ips = registerOutput<List<Map<String, dynamic>>?>('ips');

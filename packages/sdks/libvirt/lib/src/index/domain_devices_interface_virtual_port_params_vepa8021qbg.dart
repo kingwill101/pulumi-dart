@@ -42,4 +42,3 @@ class DomainDevicesInterfaceVirtualPortParamsVepa8021qbg {
     );
   }
 }
-

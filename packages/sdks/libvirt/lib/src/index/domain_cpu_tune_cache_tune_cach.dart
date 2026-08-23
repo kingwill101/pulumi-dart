@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneCacheTuneCach {
   /// Sets the identifier for the cache tuning configuration related to the CPUs.
-  final pulumi.Input<double>? id;
+  final pulumi.Input<double> id;
   /// Specifies the level of cache tuning being configured within the CPU tuning settings.
   final pulumi.Input<double> level;
   /// Configures the size of the cache allocated in the CPU tuning parameters.
@@ -21,7 +21,7 @@ class DomainCpuTuneCacheTuneCach {
   /// [type] Sets the type of cache being configured in the domain's CPU tuning settings.
   /// [unit] Specifies the unit of measurement for the configured cache size in CPU tuning.
   const DomainCpuTuneCacheTuneCach({
-    this.id,
+    required this.id,
     required this.level,
     required this.size,
     required this.type,
@@ -30,7 +30,7 @@ class DomainCpuTuneCacheTuneCach {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': ?id,
+      'id': id,
       'level': level,
       'size': size,
       'type': type,
@@ -40,7 +40,7 @@ class DomainCpuTuneCacheTuneCach {
 
   factory DomainCpuTuneCacheTuneCach.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTuneCach(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      id: pulumi.Input.fromValue(map['id'] as double),
       level: pulumi.Input.fromValue(map['level'] as double),
       size: pulumi.Input.fromValue(map['size'] as double),
       type: pulumi.Input.fromValue(map['type'] as String),
@@ -48,4 +48,3 @@ class DomainCpuTuneCacheTuneCach {
     );
   }
 }
-

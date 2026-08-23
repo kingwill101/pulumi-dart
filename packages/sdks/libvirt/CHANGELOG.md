@@ -2,7 +2,7 @@
 
 All notable changes to this package will be documented in this file.
 
-## 0.9.3
+## 0.9.8
 
 - Initial generated release.
 

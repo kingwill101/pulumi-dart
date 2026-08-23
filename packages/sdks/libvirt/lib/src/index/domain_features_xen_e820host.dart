@@ -24,4 +24,3 @@ class DomainFeaturesXenE820host {
     );
   }
 }
-

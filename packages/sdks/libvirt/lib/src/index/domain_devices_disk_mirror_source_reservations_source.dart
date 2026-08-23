@@ -7,7 +7,7 @@ import 'domain_devices_disk_mirror_source_reservations_source_file.dart';
 import 'domain_devices_disk_mirror_source_reservations_source_nmdm.dart';
 import 'domain_devices_disk_mirror_source_reservations_source_pipe.dart';
 import 'domain_devices_disk_mirror_source_reservations_source_pty.dart';
-import 'domain_devices_disk_mirror_source_reservations_source_qemuvd_agent.dart';
+import 'domain_devices_disk_mirror_source_reservations_source_qemu_vd_agent.dart';
 import 'domain_devices_disk_mirror_source_reservations_source_spice_port.dart';
 import 'domain_devices_disk_mirror_source_reservations_source_tcp.dart';
 import 'domain_devices_disk_mirror_source_reservations_source_udp.dart';
@@ -28,8 +28,7 @@ class DomainDevicesDiskMirrorSourceReservationsSource {
   final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourcePipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
   final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourcePty>? pty;
-  /// Configures the QEMU guest agent for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent>? qemuvdAgent;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgent>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
   final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceSpicePort>? spicePort;
   /// Configures settings for the SPICE VMC used in reservations related to disk mirroring.
@@ -53,7 +52,7 @@ class DomainDevicesDiskMirrorSourceReservationsSource {
   /// [null_] Configures settings for a null device used in reservations for storage.
   /// [pipe] Defines a pipe source for the EGD backend.
   /// [pty] Defines a pseudo-terminal (PTY) source for the EGD backend.
-  /// [qemuvdAgent] Configures the QEMU guest agent for the random number generator backend.
+  /// [qemuVdAgent] Optional.
   /// [spicePort] Configures the SPICE port settings for the random number generator backend.
   /// [spiceVmc] Configures settings for the SPICE VMC used in reservations related to disk mirroring.
   /// [stdIo] Manages standard I/O settings for the reservations in disk mirroring.
@@ -69,7 +68,7 @@ class DomainDevicesDiskMirrorSourceReservationsSource {
     this.null_,
     this.pipe,
     this.pty,
-    this.qemuvdAgent,
+    this.qemuVdAgent,
     this.spicePort,
     this.spiceVmc,
     this.stdIo,
@@ -88,7 +87,7 @@ class DomainDevicesDiskMirrorSourceReservationsSource {
       'null': ?null_,
       'pipe': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceReservationsSourcePipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
       'pty': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceReservationsSourcePty, Map<String, dynamic>>(pty, (value) => value.toMap()),
-      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'qemuVdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgent, Map<String, dynamic>>(qemuVdAgent, (value) => value.toMap()),
       'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceReservationsSourceSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
@@ -108,7 +107,7 @@ class DomainDevicesDiskMirrorSourceReservationsSource {
       null_: (() { final guardedValue = map['null']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pipe: (() { final guardedValue = map['pipe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorSourceReservationsSourcePipe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pty: (() { final guardedValue = map['pty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorSourceReservationsSourcePty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      qemuvdAgent: (() { final guardedValue = map['qemuvdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuVdAgent: (() { final guardedValue = map['qemuVdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spicePort: (() { final guardedValue = map['spicePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorSourceReservationsSourceSpicePort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spiceVmc: (() { final guardedValue = map['spiceVmc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stdIo: (() { final guardedValue = map['stdIo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -119,4 +118,3 @@ class DomainDevicesDiskMirrorSourceReservationsSource {
     );
   }
 }
-
