@@ -59,6 +59,5 @@ class WidgetArgs {
     );
   }
 }
-
 `, string(actual))
 }
