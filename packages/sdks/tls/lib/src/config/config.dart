@@ -29,4 +29,3 @@ class TlsConfig {
 }
 
 const config = TlsConfig();
-

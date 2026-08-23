@@ -2,7 +2,7 @@
 
 All notable changes to this package will be documented in this file.
 
-## 5.3.0
+## 5.5.1
 
 - Initial generated release.
 

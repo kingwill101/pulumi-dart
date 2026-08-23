@@ -11,7 +11,7 @@ class CertRequestState {
   final pulumi.Input<List<String>>? dnsNames;
   /// List of IP addresses for which a certificate is being requested (i.e. certificate subjects).
   final pulumi.Input<List<String>>? ipAddresses;
-  /// Name of the algorithm used when generating the private key provided in `private_key_pem`.
+  /// Name of the algorithm used when generating the private key provided in `privateKeyPem`.
   final pulumi.Input<String>? keyAlgorithm;
   /// Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. This can be read from a separate file using the `file` interpolation function.
   final pulumi.Input<String>? privateKeyPem;
@@ -24,7 +24,7 @@ class CertRequestState {
   /// [certRequestPem] The certificate request data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
   /// [dnsNames] List of DNS names for which a certificate is being requested (i.e. certificate subjects).
   /// [ipAddresses] List of IP addresses for which a certificate is being requested (i.e. certificate subjects).
-  /// [keyAlgorithm] Name of the algorithm used when generating the private key provided in `private_key_pem`.
+  /// [keyAlgorithm] Name of the algorithm used when generating the private key provided in `privateKeyPem`.
   /// [privateKeyPem] Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. This can be read from a separate file using the `file` interpolation function.
   /// [subject] The subject for which a certificate is being requested. The acceptable arguments are all optional and their naming is based upon [Issuer Distinguished Names (RFC5280)](https://tools.ietf.org/html/rfc5280#section-4.1.2.4) section.
   /// [uris] List of URIs for which a certificate is being requested (i.e. certificate subjects).
@@ -62,4 +62,3 @@ class CertRequestState {
     );
   }
 }
-
