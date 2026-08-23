@@ -1,6 +1,10 @@
 export 'state/functions.dart';
+export 'state/get_azure_rmreference_args.dart';
+export 'state/get_azure_rmreference_result.dart';
 export 'state/get_local_reference_args.dart';
 export 'state/get_local_reference_result.dart';
 export 'state/get_remote_reference_args.dart';
 export 'state/get_remote_reference_result.dart';
+export 'state/get_s3_reference_args.dart';
+export 'state/get_s3_reference_result.dart';
 export 'state/workspaces.dart';
