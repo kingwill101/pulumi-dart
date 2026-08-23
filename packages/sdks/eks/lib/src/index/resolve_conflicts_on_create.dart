@@ -15,4 +15,3 @@ enum ResolveConflictsOnCreate {
     throw ArgumentError('Unknown ResolveConflictsOnCreate value: $value');
   }
 }
-

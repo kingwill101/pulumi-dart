@@ -363,4 +363,3 @@ class NodeGroupV2Args {
     );
   }
 }
-

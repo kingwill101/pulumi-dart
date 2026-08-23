@@ -19,4 +19,3 @@ enum AccessEntryType {
     throw ArgumentError('Unknown AccessEntryType value: $value');
   }
 }
-

@@ -19,4 +19,3 @@ enum AuthenticationMode {
     throw ArgumentError('Unknown AuthenticationMode value: $value');
   }
 }
-

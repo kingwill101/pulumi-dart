@@ -23,4 +23,3 @@ enum AmiType {
     throw ArgumentError('Unknown AmiType value: $value');
   }
 }
-
