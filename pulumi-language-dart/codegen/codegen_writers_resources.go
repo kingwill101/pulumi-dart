@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 // generatedResourceFile renders a Dart resource class source file for provider,
@@ -132,7 +134,7 @@ func generatedResourceFile(
 			}
 			b.WriteString("  }\n")
 		}
-		writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
+		render.WriteResourceMembers(&b, lowerResourceMembers(token, resource, className, hasPackageRegistration))
 		b.WriteString("}\n")
 
 		return []byte(b.String())
@@ -200,7 +202,7 @@ func generatedResourceFile(
 			}
 			b.WriteString("  }\n")
 		}
-		writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
+		render.WriteResourceMembers(&b, lowerResourceMembers(token, resource, className, hasPackageRegistration))
 		b.WriteString("}\n")
 		return []byte(b.String())
 	}
@@ -275,10 +277,7 @@ func generatedResourceFile(
 		}
 		b.WriteString("  }\n")
 	}
-	writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
-	if resource.StateClass != "" {
-		writeGeneratedResourceGetMethod(&b, token, resource, className)
-	}
+	render.WriteResourceMembers(&b, lowerResourceMembers(token, resource, className, hasPackageRegistration))
 	b.WriteString("}\n")
 	return []byte(b.String())
 }
