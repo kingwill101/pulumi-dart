@@ -59,7 +59,9 @@ jobs:
         run: dart run repodoc packages:generate
 
       - name: Verify provider packages are up to date
-        run: git diff --exit-code -- packages
+        # Older checked-in SDKs contain an extra blank line at EOF. Ignore
+        # blank-only changes while still rejecting generated API/content drift.
+        run: git diff --exit-code --ignore-blank-lines -- packages
 
       - name: Test Dart language host
         run: |
