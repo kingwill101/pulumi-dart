@@ -12,14 +12,13 @@ import (
 )
 
 const (
-	productionFileCeiling = 300
+	productionFileCeiling = 200
 	testFileCeiling       = 450
 )
 
 // These predate the staged generator architecture. Delete entries as each
 // responsibility is migrated; do not add entries for new code.
-var legacyOversizedFiles = map[string]string{
-}
+var legacyOversizedFiles = map[string]string{}
 
 func TestGeneratorFilesRemainFocused(t *testing.T) {
 	_, currentFile, _, ok := runtime.Caller(0)
