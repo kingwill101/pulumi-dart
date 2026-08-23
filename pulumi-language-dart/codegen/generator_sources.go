@@ -78,78 +78,11 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	moduleSymbolFiles := make([]string, 0, len(typeExports)+len(spec.Resources)+len(spec.Functions))
 	moduleSymbolFiles = append(moduleSymbolFiles, typeExports...)
 
-	moduleAliases := map[string]map[string]moduleAliasSpec{}
-	moduleSymbols := map[string]map[string]moduleAliasSpec{}
-	moduleOccupiedSymbols := map[string]map[string]struct{}{}
-	markModuleSymbol := func(moduleFilePath, name string) {
-		if moduleFilePath == "" || name == "" {
-			return
-		}
-		occupied, ok := moduleOccupiedSymbols[moduleFilePath]
-		if !ok {
-			occupied = map[string]struct{}{}
-			moduleOccupiedSymbols[moduleFilePath] = occupied
-		}
-		occupied[name] = struct{}{}
-	}
-	recordModuleSymbol := func(kind, moduleFilePath, canonicalName, generatedName string) {
-		if moduleFilePath == "" || canonicalName == "" || generatedName == "" {
-			return
-		}
-		symbolsForModule, ok := moduleSymbols[moduleFilePath]
-		if !ok {
-			symbolsForModule = map[string]moduleAliasSpec{}
-			moduleSymbols[moduleFilePath] = symbolsForModule
-		}
-		if _, exists := symbolsForModule[canonicalName]; exists {
-			return
-		}
-		symbolsForModule[canonicalName] = moduleAliasSpec{
-			Kind:          kind,
-			CanonicalName: canonicalName,
-			GeneratedName: generatedName,
-		}
-	}
-	addModuleAlias := func(kind, moduleFilePath, canonicalName, generatedName, sourceFilePath string) {
-		if resolved := moduleLibraryPathForSymbolFile(sourceFilePath); resolved != "" {
-			moduleFilePath = resolved
-		}
-		recordModuleSymbol(kind, moduleFilePath, canonicalName, generatedName)
-		if moduleFilePath == "" ||
-			canonicalName == "" ||
-			generatedName == "" ||
-			sourceFilePath == "" ||
-			canonicalName == generatedName {
-			markModuleSymbol(moduleFilePath, generatedName)
-			return
-		}
-		markModuleSymbol(moduleFilePath, generatedName)
-		if occupied := moduleOccupiedSymbols[moduleFilePath]; occupied != nil {
-			if _, exists := occupied[canonicalName]; exists {
-				return
-			}
-		}
-		importPath := relativeImportPath(moduleFilePath, sourceFilePath)
-		aliasesForModule, ok := moduleAliases[moduleFilePath]
-		if !ok {
-			aliasesForModule = map[string]moduleAliasSpec{}
-			moduleAliases[moduleFilePath] = aliasesForModule
-		}
-		if _, exists := aliasesForModule[canonicalName]; exists {
-			return
-		}
-		aliasesForModule[canonicalName] = moduleAliasSpec{
-			Kind:          kind,
-			CanonicalName: canonicalName,
-			GeneratedName: generatedName,
-			ImportPath:    importPath,
-		}
-		markModuleSymbol(moduleFilePath, canonicalName)
-	}
+	symbols := newModuleSymbolPlanner()
 
 	for _, enumSpec := range spec.Enums {
 		if filePath, ok := resolveTypeFilePath(typeFilesByName, enumSpec.EnumName, enumSpec.ModulePath); ok {
-			addModuleAlias(
+			symbols.addAlias(
 				"type",
 				moduleLibraryFilePath(enumSpec.ModulePath),
 				enumSpec.CanonicalName,
@@ -160,7 +93,7 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	}
 	for _, objectClass := range spec.ObjectClasses {
 		if filePath, ok := resolveTypeFilePath(typeFilesByName, objectClass.ClassName, objectClass.ModulePath); ok {
-			addModuleAlias(
+			symbols.addAlias(
 				"type",
 				moduleLibraryFilePath(objectClass.ModulePath),
 				objectClass.CanonicalName,
@@ -168,7 +101,7 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 				filePath,
 			)
 			if objectClass.CanonicalName != "" && !strings.HasSuffix(objectClass.CanonicalName, "Args") {
-				addModuleAlias(
+				symbols.addAlias(
 					"type",
 					moduleLibraryFilePath(objectClass.ModulePath),
 					canonicalTypeName(objectClass.CanonicalName, "Args"),
@@ -197,10 +130,10 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 
 		moduleFilePath := moduleLibraryFilePath(modulePath)
 		canonicalClassName := canonicalTypeName(tokenElementName(token))
-		addModuleAlias("type", moduleFilePath, canonicalClassName, className, filePath)
+		symbols.addAlias("type", moduleFilePath, canonicalClassName, className, filePath)
 		if argsClass := spec.Resources[token].ArgsClass; argsClass != "" {
 			if argsPath, ok := resolveTypeFilePath(typeFilesByName, argsClass, modulePath); ok {
-				addModuleAlias("type", moduleFilePath, canonicalTypeName(tokenElementName(token), "Args"), argsClass, argsPath)
+				symbols.addAlias("type", moduleFilePath, canonicalTypeName(tokenElementName(token), "Args"), argsClass, argsPath)
 			}
 		}
 	}
@@ -237,17 +170,17 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 		})
 
 		moduleFilePath := moduleLibraryFilePath(modulePath)
-		addModuleAlias("function", moduleFilePath, canonicalFunctionNameFromToken(token), funcName, filePath)
+		symbols.addAlias("function", moduleFilePath, canonicalFunctionNameFromToken(token), funcName, filePath)
 
 		baseName := toDartClassName(tokenElementName(token))
 		if argsClass := spec.Functions[token].ArgsClass; argsClass != "" {
 			if argsPath, ok := resolveTypeFilePath(typeFilesByName, argsClass, modulePath); ok {
-				addModuleAlias("type", moduleFilePath, canonicalTypeName(baseName, "Args"), argsClass, argsPath)
+				symbols.addAlias("type", moduleFilePath, canonicalTypeName(baseName, "Args"), argsClass, argsPath)
 			}
 		}
 		if resultClass := spec.Functions[token].ResultClass; resultClass != "" {
 			if resultPath, ok := resolveTypeFilePath(typeFilesByName, resultClass, modulePath); ok {
-				addModuleAlias("type", moduleFilePath, canonicalTypeName(baseName, "Result"), resultClass, resultPath)
+				symbols.addAlias("type", moduleFilePath, canonicalTypeName(baseName, "Result"), resultClass, resultPath)
 			}
 		}
 	}
@@ -279,7 +212,7 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	for modulePath, moduleContent := range moduleFiles {
 		files[modulePath] = moduleContent
 	}
-	for modulePath, aliasesByCanonical := range moduleAliases {
+	for modulePath, aliasesByCanonical := range symbols.aliases {
 		baseContent, ok := files[modulePath]
 		if !ok {
 			continue
@@ -292,7 +225,7 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	}
 
 	orderedModuleSymbols := map[string][]moduleAliasSpec{}
-	for modulePath, symbolsByCanonical := range moduleSymbols {
+	for modulePath, symbolsByCanonical := range symbols.symbols {
 		if len(symbolsByCanonical) == 0 {
 			continue
 		}
