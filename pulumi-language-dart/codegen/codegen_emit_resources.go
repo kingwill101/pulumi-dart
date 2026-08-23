@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
 )
 
 func generatedResourceFile(
@@ -39,21 +39,6 @@ func generatedResourceFile(
 		kind = dartir.ComponentResource
 	}
 
-	outputs := make([]dartir.ResourceOutput, len(resource.OutputProperties))
-	assignments := make([]dartir.Assignment, len(resource.OutputProperties))
-	constructorNames := resourceConstructorParameterNames(kind, resource.ArgsClass != "")
-	for index, property := range resource.OutputProperties {
-		outputs[index] = dartir.ResourceOutput{
-			Name: property.FieldName,
-			Docs: property.Comment,
-			Type: resourceOutputValueType(property),
-		}
-		assignments[index] = dartir.Assignment{
-			Target:     registerOutputAssignmentTarget(property.FieldName, constructorNames...),
-			Expression: resourceRegisterOutputExpression(property),
-		}
-	}
-
 	argsDocs := ""
 	if resource.ArgsClass != "" {
 		argsDocs = fmt.Sprintf(
@@ -64,18 +49,16 @@ func generatedResourceFile(
 	} else if kind == dartir.CustomResource {
 		argsDocs = "The raw input arguments for this resource."
 	}
-	return render.Resource(dartir.ResourceClass{
-		Name:                   className,
-		Docs:                   resource.Comment,
+	return lower.ResourceLibrary(lower.Resource{
+		Token:                  token,
+		RegistrationToken:      tokenValue,
+		ClassName:              className,
 		Kind:                   kind,
-		Imports:                imports,
-		ArgsClass:              resource.ArgsClass,
 		ArgsDocs:               argsDocs,
-		TokenLiteral:           dartStringLiteral(tokenValue),
+		Imports:                imports,
+		Methods:                planResourceMethods(token, resource.Methods),
 		HasPackageRegistration: hasPackageRegistration,
-		Outputs:                outputs,
-		ConstructorAssignments: assignments,
-		Members:                lowerResourceMembers(token, resource, className, hasPackageRegistration),
+		Schema:                 resource,
 	})
 }
 
@@ -131,13 +114,4 @@ func lowerResourceImports(
 		})
 	}
 	return imports
-}
-
-func resourceConstructorParameterNames(kind dartir.ResourceKind, hasArgsClass bool) []string {
-	if kind == dartir.ProviderResource || kind == dartir.ComponentResource {
-		if !hasArgsClass {
-			return []string{"name", "options"}
-		}
-	}
-	return []string{"name", "args", "options"}
 }
