@@ -76,7 +76,7 @@ import 'administrative_unit_member_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -99,6 +99,27 @@ import 'administrative_unit_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+///
+/// resource "azuread_administrativeunit" "example" {
+///   display_name = "Example-AU"
+/// }
+/// resource "azuread_administrativeunitmember" "example" {
+///   administrative_unit_object_id = azuread_administrativeunit.example.id
+///   member_object_id              = data.azuread_getuser.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +132,8 @@ import 'administrative_unit_member_state.dart';
 /// import com.pulumi.azuread.AdministrativeUnitArgs;
 /// import com.pulumi.azuread.AdministrativeUnitMember;
 /// import com.pulumi.azuread.AdministrativeUnitMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,7 +195,7 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
   late final pulumi.Output<String?> administrativeUnitObjectId;
   /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+  /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   late final pulumi.Output<String?> memberObjectId;
 
   /// Creates a new [AdministrativeUnitMember].

@@ -86,6 +86,23 @@ import 'application_fallback_public_client_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationfallbackpublicclient" "example" {
+///   application_id = azuread_applicationregistration.example.id
+///   enabled        = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +113,8 @@ import 'application_fallback_public_client_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationFallbackPublicClient;
 /// import com.pulumi.azuread.ApplicationFallbackPublicClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

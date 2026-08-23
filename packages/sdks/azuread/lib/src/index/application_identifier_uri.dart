@@ -4,7 +4,7 @@ import 'application_identifier_uri_state.dart';
 
 /// Manages a single Identifier URI for an application registration.
 ///
-/// This resource is analogous to the `identifier_uris` property in the `azuread.Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+/// This resource is analogous to the `identifierUris` property in the `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
 ///
 /// ## API Permissions
 ///
@@ -86,6 +86,23 @@ import 'application_identifier_uri_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationidentifieruri" "example" {
+///   application_id = azuread_applicationregistration.example.id
+///   identifier_uri = "https://app.example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +113,8 @@ import 'application_identifier_uri_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationIdentifierUri;
 /// import com.pulumi.azuread.ApplicationIdentifierUriArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,6 +218,22 @@ import 'application_identifier_uri_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationidentifieruri" "example" {
+///   application_id = azuread_application.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +244,8 @@ import 'application_identifier_uri_state.dart';
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.ApplicationIdentifierUri;
 /// import com.pulumi.azuread.ApplicationIdentifierUriArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

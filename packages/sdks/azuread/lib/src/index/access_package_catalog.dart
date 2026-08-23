@@ -70,6 +70,20 @@ import 'access_package_catalog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_accesspackagecatalog" "example" {
+///   display_name = "example-access-package-catalog"
+///   description  = "Example access package catalog"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +92,8 @@ import 'access_package_catalog_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AccessPackageCatalog;
 /// import com.pulumi.azuread.AccessPackageCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

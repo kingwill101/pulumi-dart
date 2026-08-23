@@ -109,6 +109,28 @@ import 'application_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationcertificate" "example" {
+///   application_id = azuread_applicationregistration.example.id
+///   type           = "AsymmetricX509Cert"
+///   value          = file("cert.pem")
+///   end_date       = "2021-05-01T01:02:03Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +143,8 @@ import 'application_certificate_state.dart';
 /// import com.pulumi.azuread.ApplicationCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,6 +298,29 @@ import 'application_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationcertificate" "example" {
+///   application_id = azuread_applicationregistration.example.id
+///   type           = "AsymmetricX509Cert"
+///   encoding       = "base64"
+///   value          = base64encode(file("cert.der"))
+///   end_date       = "2021-05-01T01:02:03Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +334,8 @@ import 'application_certificate_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -416,7 +461,7 @@ import 'application_certificate_state.dart';
 /// import pulumi_azurerm as azurerm
 ///
 /// example_application = azuread.Application("example", display_name="example")
-/// example = azurerm.index.KeyVaultCertificate("example",
+/// example = azurerm.KeyVaultCertificate("example",
 ///     name=generated-cert,
 ///     key_vault_id=example_azurerm_key_vault.id,
 ///     certificate_policy=[{
@@ -480,7 +525,7 @@ import 'application_certificate_state.dart';
 ///         DisplayName = "example",
 ///     });
 ///
-///     var example = new Azurerm.Index.KeyVaultCertificate("example", new()
+///     var example = new Azurerm.KeyVaultCertificate("example", new()
 ///     {
 ///         Name = "generated-cert",
 ///         KeyVaultId = exampleAzurermKeyVault.Id,
@@ -678,6 +723,62 @@ import 'application_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azurerm_keyvaultcertificate" "example" {
+///   name         = "generated-cert"
+///   key_vault_id = exampleAzurermKeyVault.id
+///   certificate_policy = [{
+///     "issuerParameters" = [{
+///       "name" = "Self"
+///     }]
+///     "keyProperties" = [{
+///       "exportable" = true
+///       "keySize"    = 2048
+///       "keyType"    = "RSA"
+///       "reuseKey"   = true
+///     }]
+///     "lifetimeAction" = [{
+///       "action" = [{
+///         "actionType" = "AutoRenew"
+///       }]
+///       "trigger" = [{
+///         "daysBeforeExpiry" = 30
+///       }]
+///     }]
+///     "secretProperties" = [{
+///       "contentType" = "application/x-pkcs12"
+///     }]
+///     "x509CertificateProperties" = [{
+///       "extendedKeyUsage" = ["1.3.6.1.5.5.7.3.2"]
+///       "keyUsage"         = ["dataEncipherment", "digitalSignature", "keyCertSign", "keyEncipherment"]
+///       "subjectAlternativeNames" = [{
+///         "dnsNames" = ["internal.contoso.com", "domain.hello.world"]
+///       }]
+///       "subject"          ="CN=${azuread_application.example.name}"
+///       "validityInMonths" = 12
+///     }]
+///   }]
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationcertificate" "example" {
+///   application_id = azuread_application.example.id
+///   type           = "AsymmetricX509Cert"
+///   encoding       = "hex"
+///   value          = azurerm_keyvaultcertificate.example.certificateData
+///   end_date       = azurerm_keyvaultcertificate.example.certificateAttribute[0].expires
+///   start_date     = azurerm_keyvaultcertificate.example.certificateAttribute[0].notBefore
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -690,8 +791,8 @@ import 'application_certificate_state.dart';
 /// import com.pulumi.azurerm.KeyVaultCertificateArgs;
 /// import com.pulumi.azuread.ApplicationCertificate;
 /// import com.pulumi.azuread.ApplicationCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -710,27 +811,27 @@ import 'application_certificate_state.dart';
 ///         var example = new KeyVaultCertificate("example", KeyVaultCertificateArgs.builder()
 ///             .name("generated-cert")
 ///             .keyVaultId(exampleAzurermKeyVault.id())
-///             .certificatePolicy(List.of(Map.ofEntries(
-///                 Map.entry("issuerParameters", List.of(Map.of("name", "Self"))),
-///                 Map.entry("keyProperties", List.of(Map.ofEntries(
+///             .certificatePolicy(Arrays.asList(Map.ofEntries(
+///                 Map.entry("issuerParameters", Arrays.asList(Map.of("name", "Self"))),
+///                 Map.entry("keyProperties", Arrays.asList(Map.ofEntries(
 ///                     Map.entry("exportable", true),
 ///                     Map.entry("keySize", 2048),
 ///                     Map.entry("keyType", "RSA"),
 ///                     Map.entry("reuseKey", true)
 ///                 ))),
-///                 Map.entry("lifetimeAction", List.of(Map.ofEntries(
-///                     Map.entry("action", List.of(Map.of("actionType", "AutoRenew"))),
-///                     Map.entry("trigger", List.of(Map.of("daysBeforeExpiry", 30)))
+///                 Map.entry("lifetimeAction", Arrays.asList(Map.ofEntries(
+///                     Map.entry("action", Arrays.asList(Map.of("actionType", "AutoRenew"))),
+///                     Map.entry("trigger", Arrays.asList(Map.of("daysBeforeExpiry", 30)))
 ///                 ))),
-///                 Map.entry("secretProperties", List.of(Map.of("contentType", "application/x-pkcs12"))),
-///                 Map.entry("x509CertificateProperties", List.of(Map.ofEntries(
-///                     Map.entry("extendedKeyUsage", List.of("1.3.6.1.5.5.7.3.2")),
-///                     Map.entry("keyUsage", List.of(
+///                 Map.entry("secretProperties", Arrays.asList(Map.of("contentType", "application/x-pkcs12"))),
+///                 Map.entry("x509CertificateProperties", Arrays.asList(Map.ofEntries(
+///                     Map.entry("extendedKeyUsage", Arrays.asList("1.3.6.1.5.5.7.3.2")),
+///                     Map.entry("keyUsage", Arrays.asList(
 ///                         "dataEncipherment",
 ///                         "digitalSignature",
 ///                         "keyCertSign",
 ///                         "keyEncipherment")),
-///                     Map.entry("subjectAlternativeNames", List.of(Map.of("dnsNames", List.of(
+///                     Map.entry("subjectAlternativeNames", Arrays.asList(Map.of("dnsNames", Arrays.asList(
 ///                         "internal.contoso.com",
 ///                         "domain.hello.world")))),
 ///                     Map.entry("subject", String.format("CN=%s", exampleApplication.name())),
@@ -819,13 +920,13 @@ class ApplicationCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> applicationId;
   /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
   ///
-  /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+  /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
   late final pulumi.Output<String?> encoding;
   /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> endDate;
   /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
   ///
-  /// &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+  /// &gt; One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
   late final pulumi.Output<String?> endDateRelative;
   /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> keyId;

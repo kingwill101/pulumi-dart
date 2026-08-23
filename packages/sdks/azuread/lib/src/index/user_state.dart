@@ -68,7 +68,7 @@ class UserState {
   final pulumi.Input<String>? onpremisesDistinguishedName;
   /// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
   final pulumi.Input<String>? onpremisesDomainName;
-  /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+  /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
   final pulumi.Input<String>? onpremisesImmutableId;
   /// The on-premise SAM account name of the user.
   final pulumi.Input<String>? onpremisesSamAccountName;
@@ -138,7 +138,7 @@ class UserState {
   /// [officeLocation] The office location in the user's place of business.
   /// [onpremisesDistinguishedName] The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
   /// [onpremisesDomainName] The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
-  /// [onpremisesImmutableId] The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+  /// [onpremisesImmutableId] The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
   /// [onpremisesSamAccountName] The on-premise SAM account name of the user.
   /// [onpremisesSecurityIdentifier] The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
   /// [onpremisesSyncEnabled] Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
@@ -315,4 +315,3 @@ class UserState {
     );
   }
 }
-

@@ -19,7 +19,7 @@ class GetDomainsArgs {
   final pulumi.Input<bool>? onlyRoot;
   /// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
   ///
-  /// &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+  /// &gt; **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
   final pulumi.Input<List<String>>? supportsServices;
 
   /// Creates a new [GetDomainsArgs].
@@ -60,4 +60,3 @@ class GetDomainsArgs {
     );
   }
 }
-

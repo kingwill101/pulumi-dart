@@ -4,7 +4,7 @@ import 'application_permission_scope_state.dart';
 
 /// Manages a permission scope for an application registration.
 ///
-/// This resource is analogous to the `oauth2_permission_scope` block in the `api` block of the  `azuread.Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+/// This resource is analogous to the `oauth2PermissionScope` block in the `api` block of the  `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
 ///
 /// ## API Permissions
 ///
@@ -40,7 +40,7 @@ import 'application_permission_scope_state.dart';
 /// import pulumi_random as random
 ///
 /// example = azuread.ApplicationRegistration("example", display_name="example")
-/// example_administer = random.index.Uuid("example_administer")
+/// example_administer = random.Uuid("example_administer")
 /// example_application_permission_scope = azuread.ApplicationPermissionScope("example",
 ///     application_id=test["id"],
 ///     scope_id=example_administer["id"],
@@ -62,7 +62,7 @@ import 'application_permission_scope_state.dart';
 ///         DisplayName = "example",
 ///     });
 ///
-///     var exampleAdminister = new Random.Index.Uuid("example_administer");
+///     var exampleAdminister = new Random.Uuid("example_administer");
 ///
 ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("example", new()
 ///     {
@@ -110,6 +110,31 @@ import 'application_permission_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "random_uuid" "example_administer" {
+/// }
+/// resource "azuread_applicationpermissionscope" "example" {
+///   application_id             = test.id
+///   scope_id                   = random_uuid.example_administer.id
+///   value                      = "administer"
+///   admin_consent_description  = "Administer the application"
+///   admin_consent_display_name = "Administer"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +146,8 @@ import 'application_permission_scope_state.dart';
 /// import com.pulumi.random.Uuid;
 /// import com.pulumi.azuread.ApplicationPermissionScope;
 /// import com.pulumi.azuread.ApplicationPermissionScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,6 +262,22 @@ import 'application_permission_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationpermissionscope" "example" {
+///   application_id = azuread_application.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +288,8 @@ import 'application_permission_scope_state.dart';
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.ApplicationPermissionScope;
 /// import com.pulumi.azuread.ApplicationPermissionScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,7 +348,7 @@ class ApplicationPermissionScope extends pulumi.CustomResource {
   late final pulumi.Output<String?> userConsentDescription;
   /// Display name for the delegated permission that appears in the end user consent experience.
   ///
-  /// &gt; **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
+  /// &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
   late final pulumi.Output<String?> userConsentDisplayName;
   /// The value that is used for the `scp` claim in OAuth access tokens.
   ///

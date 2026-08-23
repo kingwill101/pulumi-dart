@@ -4,7 +4,7 @@ import 'application_api_access_state.dart';
 
 /// Manages the API permissions for an application registration.
 ///
-/// This resource is analogous to the `required_resource_access` block in the `azuread.Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+/// This resource is analogous to the `requiredResourceAccess` block in the `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
 ///
 /// ## API Permissions
 ///
@@ -105,7 +105,7 @@ import 'application_api_access_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		msgraph, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
+/// 		msgraph, err := azuread.GetServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
 /// 			ClientId: pulumi.StringRef(wellKnown.Result.MicrosoftGraph),
 /// 		}, nil)
 /// 		if err != nil {
@@ -135,6 +135,31 @@ import 'application_api_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// }
+/// data "azuread_getserviceprincipal" "msgraph" {
+///   client_id = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationapiaccess" "example_msgraph" {
+///   application_id = azuread_applicationregistration.example.id
+///   api_client_id  = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
+///   role_ids       = [data.azuread_getserviceprincipal.msgraph.app_role_ids["Group.Read.All"], data.azuread_getserviceprincipal.msgraph.app_role_ids["User.Read.All"]]
+///   scope_ids      = [data.azuread_getserviceprincipal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +172,8 @@ import 'application_api_access_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationApiAccess;
 /// import com.pulumi.azuread.ApplicationApiAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,10 +220,10 @@ import 'application_api_access_state.dart';
 ///       applicationId: ${example.id}
 ///       apiClientId: ${wellKnown.result.MicrosoftGraph}
 ///       roleIds:
-///         - ${msgraph.appRoleIds"Group.Read.All"[%!s(MISSING)]}
-///         - ${msgraph.appRoleIds"User.Read.All"[%!s(MISSING)]}
+///         - ${msgraph.appRoleIds["Group.Read.All"]}
+///         - ${msgraph.appRoleIds["User.Read.All"]}
 ///       scopeIds:
-///         - ${msgraph.oauth2PermissionScopeIds"User.ReadWrite"[%!s(MISSING)]}
+///         - ${msgraph.oauth2PermissionScopeIds["User.ReadWrite"]}
 /// variables:
 ///   wellKnown:
 ///     fn::invoke:
@@ -277,6 +302,22 @@ import 'application_api_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationapiaccess" "example" {
+///   application_id = azuread_application.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -287,8 +328,8 @@ import 'application_api_access_state.dart';
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.ApplicationApiAccess;
 /// import com.pulumi.azuread.ApplicationApiAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,7 +382,7 @@ class ApplicationApiAccess extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> roleIds;
   /// A set of scope IDs to be granted to the application, as published by the API.
   ///
-  /// &gt; At least one of `role_ids` or `scope_ids` must be specified.
+  /// &gt; At least one of `roleIds` or `scopeIds` must be specified.
   late final pulumi.Output<List<String>?> scopeIds;
 
   /// Creates a new [ApplicationApiAccess].

@@ -9,30 +9,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersArgs {
   /// The employee identifiers assigned to the users by the organisation.
   final pulumi.Input<List<String>>? employeeIds;
-  /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+  /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
   final pulumi.Input<bool>? ignoreMissing;
   /// The email aliases of the users.
   ///
-  /// &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
+  /// &gt; **Note:** `mailNicknames` are not a unique identifier for users. If multiple users share the same `mailNickname`, all matching users will be returned.
   final pulumi.Input<List<String>>? mailNicknames;
   /// The SMTP email addresses of the users.
   final pulumi.Input<List<String>>? mails;
   /// The object IDs of the users.
   final pulumi.Input<List<String>>? objectIds;
-  /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+  /// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
   final pulumi.Input<bool>? returnAll;
   /// The user principal names (UPNs) of the users.
   ///
-  /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+  /// &gt; Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
   final pulumi.Input<List<String>>? userPrincipalNames;
 
   /// Creates a new [GetUsersArgs].
   /// [employeeIds] The employee identifiers assigned to the users by the organisation.
-  /// [ignoreMissing] Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+  /// [ignoreMissing] Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
   /// [mailNicknames] The email aliases of the users.
   /// [mails] The SMTP email addresses of the users.
   /// [objectIds] The object IDs of the users.
-  /// [returnAll] When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+  /// [returnAll] When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
   /// [userPrincipalNames] The user principal names (UPNs) of the users.
   const GetUsersArgs({
     this.employeeIds,
@@ -68,4 +68,3 @@ class GetUsersArgs {
     );
   }
 }
-

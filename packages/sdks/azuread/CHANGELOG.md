@@ -2,7 +2,7 @@
 
 All notable changes to this package will be documented in this file.
 
-## 6.8.1
+## 6.10.0
 
 - Initial generated release.
 

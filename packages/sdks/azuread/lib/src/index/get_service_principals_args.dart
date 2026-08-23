@@ -15,9 +15,9 @@ class GetServicePrincipalsArgs {
   final pulumi.Input<bool>? ignoreMissing;
   /// The object IDs of the service principals.
   final pulumi.Input<List<String>>? objectIds;
-  /// When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+  /// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
   ///
-  /// &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+  /// &gt; Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
   final pulumi.Input<bool>? returnAll;
 
   /// Creates a new [GetServicePrincipalsArgs].
@@ -25,7 +25,7 @@ class GetServicePrincipalsArgs {
   /// [displayNames] A list of display names of the applications associated with the service principals.
   /// [ignoreMissing] Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
   /// [objectIds] The object IDs of the service principals.
-  /// [returnAll] When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+  /// [returnAll] When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
   const GetServicePrincipalsArgs({
     this.clientIds,
     this.displayNames,
@@ -54,4 +54,3 @@ class GetServicePrincipalsArgs {
     );
   }
 }
-

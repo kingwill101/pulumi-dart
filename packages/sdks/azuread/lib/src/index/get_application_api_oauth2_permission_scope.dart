@@ -66,4 +66,3 @@ class GetApplicationApiOauth2PermissionScope {
     );
   }
 }
-

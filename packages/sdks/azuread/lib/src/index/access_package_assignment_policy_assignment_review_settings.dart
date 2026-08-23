@@ -18,7 +18,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings {
   final pulumi.Input<String>? reviewFrequency;
   /// Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
   final pulumi.Input<String>? reviewType;
-  /// One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+  /// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
   final pulumi.Input<List<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer>>? reviewers;
   /// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
   final pulumi.Input<String>? startingOn;
@@ -31,7 +31,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings {
   /// [enabled] Whether to enable assignment review.
   /// [reviewFrequency] This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
   /// [reviewType] Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
-  /// [reviewers] One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+  /// [reviewers] One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
   /// [startingOn] This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
   const AccessPackageAssignmentPolicyAssignmentReviewSettings({
     this.accessRecommendationEnabled,
@@ -73,4 +73,3 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings {
     );
   }
 }
-

@@ -14,7 +14,7 @@ class ApplicationAppRoleState {
   final pulumi.Input<String>? displayName;
   /// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
+  /// &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
   final pulumi.Input<String>? roleId;
   /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
   ///
@@ -59,4 +59,3 @@ class ApplicationAppRoleState {
     );
   }
 }
-

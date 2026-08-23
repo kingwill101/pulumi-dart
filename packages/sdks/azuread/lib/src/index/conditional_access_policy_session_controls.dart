@@ -13,13 +13,13 @@ class ConditionalAccessPolicySessionControls {
   final pulumi.Input<bool>? disableResilienceDefaults;
   /// Session control to define whether to persist cookies. Possible values are: `always` or `never`.
   final pulumi.Input<String>? persistentBrowserMode;
-  /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+  /// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
   final pulumi.Input<int>? signInFrequency;
   /// Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
   final pulumi.Input<String>? signInFrequencyAuthenticationType;
   /// The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
   final pulumi.Input<String>? signInFrequencyInterval;
-  /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+  /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
   final pulumi.Input<String>? signInFrequencyPeriod;
 
   /// Creates a new [ConditionalAccessPolicySessionControls].
@@ -27,10 +27,10 @@ class ConditionalAccessPolicySessionControls {
   /// [cloudAppSecurityPolicy] Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
   /// [disableResilienceDefaults] Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
   /// [persistentBrowserMode] Session control to define whether to persist cookies. Possible values are: `always` or `never`.
-  /// [signInFrequency] Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+  /// [signInFrequency] Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
   /// [signInFrequencyAuthenticationType] Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
   /// [signInFrequencyInterval] The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
-  /// [signInFrequencyPeriod] The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+  /// [signInFrequencyPeriod] The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
   const ConditionalAccessPolicySessionControls({
     this.applicationEnforcedRestrictionsEnabled,
     this.cloudAppSecurityPolicy,
@@ -68,4 +68,3 @@ class ConditionalAccessPolicySessionControls {
     );
   }
 }
-

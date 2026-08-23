@@ -116,6 +116,28 @@ import 'service_principal_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   owners       = [data.azuread_getclientconfig.current.object_id]
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id                    = azuread_application.example.client_id
+///   app_role_assignment_required = false
+///   owners                       = [data.azuread_getclientconfig.current.object_id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +149,8 @@ import 'service_principal_state.dart';
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.ServicePrincipal;
 /// import com.pulumi.azuread.ServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,6 +323,32 @@ import 'service_principal_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   owners       = [data.azuread_getclientconfig.current.object_id]
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id                    = azuread_application.example.client_id
+///   app_role_assignment_required = false
+///   owners                       = [data.azuread_getclientconfig.current.object_id]
+///   feature_tags {
+///     enterprise = true
+///     gallery    = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -313,8 +361,8 @@ import 'service_principal_state.dart';
 /// import com.pulumi.azuread.ServicePrincipal;
 /// import com.pulumi.azuread.ServicePrincipalArgs;
 /// import com.pulumi.azuread.inputs.ServicePrincipalFeatureTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,6 +486,23 @@ import 'service_principal_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// }
+///
+/// resource "azuread_serviceprincipal" "msgraph" {
+///   client_id    = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///   use_existing = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -447,8 +512,8 @@ import 'service_principal_state.dart';
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.ServicePrincipal;
 /// import com.pulumi.azuread.ServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -577,6 +642,28 @@ import 'service_principal_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationtemplate" "example" {
+///   display_name = "Marketo"
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   template_id  = data.azuread_getapplicationtemplate.example.template_id
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id    = azuread_application.example.client_id
+///   use_existing = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -589,8 +676,8 @@ import 'service_principal_state.dart';
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.ServicePrincipal;
 /// import com.pulumi.azuread.ServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -668,9 +755,9 @@ class ServicePrincipal extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Display name for the app role that appears during app role assignment and in consent experiences.
   late final pulumi.Output<String> displayName;
-  /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+  /// A `featureTags` block as described below. Cannot be used together with the `tags` property.
   ///
-  /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+  /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
   late final pulumi.Output<List<Map<String, dynamic>>> featureTags;
   /// Block of features to configure for this service principal using tags
   late final pulumi.Output<List<Map<String, dynamic>>> features;
@@ -700,21 +787,21 @@ class ServicePrincipal extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> redirectUris;
   /// The URL where the service exposes SAML metadata for federation.
   late final pulumi.Output<String> samlMetadataUrl;
-  /// A `saml_single_sign_on` block as documented below.
+  /// A `samlSingleSignOn` block as documented below.
   late final pulumi.Output<ServicePrincipalSamlSingleSignOn?> samlSingleSignOn;
   /// A list of identifier URI(s), copied over from the associated application.
   late final pulumi.Output<List<String>> servicePrincipalNames;
   /// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
   late final pulumi.Output<String> signInAudience;
-  /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+  /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
   ///
-  /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+  /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
   late final pulumi.Output<List<String>> tags;
   /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
   late final pulumi.Output<String> type;
   /// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
   ///
-  /// &gt; **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
+  /// &gt; **Caveats of `useExisting`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `useExisting` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
   late final pulumi.Output<bool?> useExisting;
 
   /// Creates a new [ServicePrincipal].

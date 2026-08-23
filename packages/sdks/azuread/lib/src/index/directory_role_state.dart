@@ -12,7 +12,7 @@ class DirectoryRoleState {
   final pulumi.Input<String>? objectId;
   /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
   ///
-  /// &gt; Either `display_name` or `template_id` must be specified.
+  /// &gt; Either `displayName` or `templateId` must be specified.
   final pulumi.Input<String>? templateId;
 
   /// Creates a new [DirectoryRoleState].
@@ -45,4 +45,3 @@ class DirectoryRoleState {
     );
   }
 }
-

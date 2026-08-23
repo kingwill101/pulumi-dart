@@ -10,22 +10,22 @@ import 'application_optional_claims_saml2_token.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_application_optional_claims_application_optional_claims_args_doc}
 class ApplicationOptionalClaimsArgs {
-  /// One or more `access_token` blocks as documented below.
+  /// One or more `accessToken` blocks as documented below.
   final pulumi.Input<List<ApplicationOptionalClaimsAccessToken>>? accessTokens;
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationId;
-  /// One or more `id_token` blocks as documented below.
+  /// One or more `idToken` blocks as documented below.
   final pulumi.Input<List<ApplicationOptionalClaimsIdToken>>? idTokens;
-  /// One or more `saml2_token` blocks as documented below.
+  /// One or more `saml2Token` blocks as documented below.
   ///
-  /// &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+  /// &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
   final pulumi.Input<List<ApplicationOptionalClaimsSaml2Token>>? saml2Tokens;
 
   /// Creates a new [ApplicationOptionalClaimsArgs].
-  /// [accessTokens] One or more `access_token` blocks as documented below.
+  /// [accessTokens] One or more `accessToken` blocks as documented below.
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
-  /// [idTokens] One or more `id_token` blocks as documented below.
-  /// [saml2Tokens] One or more `saml2_token` blocks as documented below.
+  /// [idTokens] One or more `idToken` blocks as documented below.
+  /// [saml2Tokens] One or more `saml2Token` blocks as documented below.
   const ApplicationOptionalClaimsArgs({
     this.accessTokens,
     required this.applicationId,
@@ -51,4 +51,3 @@ class ApplicationOptionalClaimsArgs {
     );
   }
 }
-

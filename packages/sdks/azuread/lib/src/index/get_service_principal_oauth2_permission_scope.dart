@@ -66,4 +66,3 @@ class GetServicePrincipalOauth2PermissionScope {
     );
   }
 }
-

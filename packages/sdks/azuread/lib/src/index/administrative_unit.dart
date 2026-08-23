@@ -73,6 +73,21 @@ import 'administrative_unit_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_administrativeunit" "example" {
+///   display_name              = "Example-AU"
+///   description               = "Just an example"
+///   hidden_membership_enabled = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'administrative_unit_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AdministrativeUnit;
 /// import com.pulumi.azuread.AdministrativeUnitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,9 +145,9 @@ class AdministrativeUnit extends pulumi.CustomResource {
   late final pulumi.Output<bool?> hiddenMembershipEnabled;
   /// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
   ///
-  /// &gt; **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+  /// &gt; **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   ///
-  /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+  /// &gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
   late final pulumi.Output<List<String>> members;
   /// The object ID of the administrative unit.
   late final pulumi.Output<String> objectId;

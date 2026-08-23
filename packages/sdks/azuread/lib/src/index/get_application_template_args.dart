@@ -11,7 +11,7 @@ class GetApplicationTemplateArgs {
   final pulumi.Input<String>? displayName;
   /// Specifies the ID of the templated application.
   ///
-  /// &gt; One of `template_id` or `display_name` must be specified.
+  /// &gt; One of `templateId` or `displayName` must be specified.
   final pulumi.Input<String>? templateId;
 
   /// Creates a new [GetApplicationTemplateArgs].
@@ -36,4 +36,3 @@ class GetApplicationTemplateArgs {
     );
   }
 }
-

@@ -80,7 +80,7 @@ class AzureadConfig {
 
   bool get clientSecretFilePathIsSecret => _isSecret('clientSecretFilePath');
 
-  /// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
+  /// Disable the Terraform Partner ID, which is used if a custom `partnerId` isn't specified
   bool? get disableTerraformPartnerId {
     final raw = _raw('disableTerraformPartnerId');
     return (raw).toBool();
@@ -88,7 +88,7 @@ class AzureadConfig {
 
   bool get disableTerraformPartnerIdIsSecret => _isSecret('disableTerraformPartnerId');
 
-  /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
+  /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
   String? get environment {
     final raw = _raw('environment');
     return raw;
@@ -203,4 +203,3 @@ class AzureadConfig {
 }
 
 const config = AzureadConfig();
-

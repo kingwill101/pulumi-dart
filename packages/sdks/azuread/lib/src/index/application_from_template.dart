@@ -100,14 +100,38 @@ import 'application_from_template_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_ = azuread.LookupApplicationOutput(ctx, azuread.GetApplicationOutputArgs{
+/// 		_ = azuread.GetApplicationOutput(ctx, azuread.GetApplicationOutputArgs{
 /// 			ObjectId: exampleApplicationFromTemplate.ApplicationObjectId,
 /// 		}, nil)
-/// 		_ = azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+/// 		_ = azuread.GetServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
 /// 			ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 /// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationtemplate" "example" {
+///   display_name = "Marketo"
+/// }
+/// data "azuread_getapplication" "exampleGetApplication" {
+///   object_id = azuread_applicationfromtemplate.example.application_object_id
+/// }
+/// data "azuread_getserviceprincipal" "exampleGetServicePrincipal" {
+///   object_id = azuread_applicationfromtemplate.example.service_principal_object_id
+/// }
+///
+/// resource "azuread_applicationfromtemplate" "example" {
+///   display_name = "Example Application"
+///   template_id  = data.azuread_getapplicationtemplate.example.template_id
 /// }
 /// ```
 /// ```java
@@ -122,8 +146,8 @@ import 'application_from_template_state.dart';
 /// import com.pulumi.azuread.ApplicationFromTemplateArgs;
 /// import com.pulumi.azuread.inputs.GetApplicationArgs;
 /// import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

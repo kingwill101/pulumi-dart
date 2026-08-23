@@ -6,7 +6,7 @@ import 'get_application_web_implicit_grant.dart';
 class GetApplicationWeb {
   /// Home page or landing page of the application.
   final pulumi.Input<String> homepageUrl;
-  /// An `implicit_grant` block as documented above.
+  /// An `implicitGrant` block as documented above.
   final pulumi.Input<List<GetApplicationWebImplicitGrant>> implicitGrants;
   /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
   final pulumi.Input<String> logoutUrl;
@@ -15,7 +15,7 @@ class GetApplicationWeb {
 
   /// Creates a new [GetApplicationWeb].
   /// [homepageUrl] Home page or landing page of the application.
-  /// [implicitGrants] An `implicit_grant` block as documented above.
+  /// [implicitGrants] An `implicitGrant` block as documented above.
   /// [logoutUrl] The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
   /// [redirectUris] A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
   const GetApplicationWeb({
@@ -43,4 +43,3 @@ class GetApplicationWeb {
     );
   }
 }
-

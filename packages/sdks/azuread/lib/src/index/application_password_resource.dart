@@ -79,6 +79,22 @@ import 'application_password_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationpassword" "example" {
+///   application_id = azuread_applicationregistration.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +105,8 @@ import 'application_password_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationPassword;
 /// import com.pulumi.azuread.ApplicationPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,6 +239,31 @@ import 'application_password_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "time_rotating" "example" {
+///   rotation_days = 7
+/// }
+/// resource "azuread_applicationpassword" "example" {
+///   application_id = azuread_applicationregistration.example.id
+///   rotate_when_changed = {
+///     "rotation" = time_rotating.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +276,8 @@ import 'application_password_state.dart';
 /// import com.pulumiverse.time.RotatingArgs;
 /// import com.pulumi.azuread.ApplicationPassword;
 /// import com.pulumi.azuread.ApplicationPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

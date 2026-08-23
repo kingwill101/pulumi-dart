@@ -92,6 +92,25 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "azuread_serviceprincipaltokensigningcertificate" "example" {
+///   service_principal_id = azuread_serviceprincipal.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// import com.pulumi.azuread.ServicePrincipalArgs;
 /// import com.pulumi.azuread.ServicePrincipalTokenSigningCertificate;
 /// import com.pulumi.azuread.ServicePrincipalTokenSigningCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,6 +257,27 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "azuread_serviceprincipaltokensigningcertificate" "example" {
+///   service_principal_id = azuread_serviceprincipal.example.id
+///   display_name         = "CN=example.com"
+///   end_date             = "2023-05-01T01:02:03Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -250,8 +290,8 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// import com.pulumi.azuread.ServicePrincipalArgs;
 /// import com.pulumi.azuread.ServicePrincipalTokenSigningCertificate;
 /// import com.pulumi.azuread.ServicePrincipalTokenSigningCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

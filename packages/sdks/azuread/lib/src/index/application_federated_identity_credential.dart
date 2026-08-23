@@ -105,6 +105,27 @@ import 'application_federated_identity_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationfederatedidentitycredential" "example" {
+///   application_id = azuread_applicationregistration.example.id
+///   display_name   = "my-repo-deploy"
+///   description    = "Deployments for my-repo"
+///   audiences      = ["api://AzureADTokenExchange"]
+///   issuer         = "https://token.actions.githubusercontent.com"
+///   subject        = "repo:my-organization/my-repo:environment:prod"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +136,8 @@ import 'application_federated_identity_credential_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationFederatedIdentityCredential;
 /// import com.pulumi.azuread.ApplicationFederatedIdentityCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant {
-  /// A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+  /// A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
   final pulumi.Input<List<String>>? members;
   /// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
   final pulumi.Input<String> membershipKind;
 
   /// Creates a new [ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant].
-  /// [members] A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+  /// [members] A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
   /// [membershipKind] The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
   const ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant({
     this.members,
@@ -30,4 +30,3 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternal
     );
   }
 }
-

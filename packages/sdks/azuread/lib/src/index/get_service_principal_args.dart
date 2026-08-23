@@ -13,7 +13,7 @@ class GetServicePrincipalArgs {
   final pulumi.Input<String>? displayName;
   /// The object ID of the service principal.
   ///
-  /// &gt; One of `client_id`, `display_name` or `object_id` must be specified.
+  /// &gt; One of `clientId`, `displayName` or `objectId` must be specified.
   final pulumi.Input<String>? objectId;
 
   /// Creates a new [GetServicePrincipalArgs].
@@ -42,4 +42,3 @@ class GetServicePrincipalArgs {
     );
   }
 }
-

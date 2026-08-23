@@ -266,6 +266,60 @@ import 'access_package_assignment_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_group" "example" {
+///   display_name     = "group-name"
+///   security_enabled = true
+/// }
+/// resource "azuread_accesspackagecatalog" "example" {
+///   display_name = "example-catalog"
+///   description  = "Example catalog"
+/// }
+/// resource "azuread_accesspackage" "example" {
+///   catalog_id   = azuread_accesspackagecatalog.example.id
+///   display_name = "access-package"
+///   description  = "Access Package"
+/// }
+/// resource "azuread_accesspackageassignmentpolicy" "example" {
+///   access_package_id = azuread_accesspackage.example.id
+///   display_name      = "assignment-policy"
+///   description       = "My assignment policy"
+///   duration_in_days  = 90
+///   requestor_settings = {
+///     scope_type = "AllExistingDirectoryMemberUsers"
+///   }
+///   approval_settings = {
+///     approval_required = true
+///     approval_stages = [{
+///       "approvalTimeoutInDays" = 14
+///       "primaryApprovers" = [{
+///         "objectId"    = azuread_group.example.object_id
+///         "subjectType" = "groupMembers"
+///       }]
+///     }]
+///   }
+///   assignment_review_settings = {
+///     enabled                        = true
+///     review_frequency               = "weekly"
+///     duration_in_days               = 3
+///     review_type                    = "Self"
+///     access_review_timeout_behavior = "keepAccess"
+///   }
+///   questions {
+///     text = {
+///       default_text = "hello, how are you?"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,11 +336,13 @@ import 'access_package_assignment_policy_state.dart';
 /// import com.pulumi.azuread.AccessPackageAssignmentPolicyArgs;
 /// import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs;
 /// import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs;
+/// import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs;
+/// import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs;
 /// import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs;
 /// import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionArgs;
 /// import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionTextArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,9 +464,9 @@ import 'access_package_assignment_policy_state.dart';
 class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
   /// The ID of the access package that will contain the policy.
   late final pulumi.Output<String> accessPackageId;
-  /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+  /// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
   late final pulumi.Output<AccessPackageAssignmentPolicyApprovalSettings?> approvalSettings;
-  /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+  /// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
   late final pulumi.Output<AccessPackageAssignmentPolicyAssignmentReviewSettings?> assignmentReviewSettings;
   /// The description of the policy.
   late final pulumi.Output<String> description;
@@ -424,7 +480,7 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
   late final pulumi.Output<bool?> extensionEnabled;
   /// One or more `question` blocks for the requestor, as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> questions;
-  /// A `requestor_settings` block to configure the users who can request access, as documented below.
+  /// A `requestorSettings` block to configure the users who can request access, as documented below.
   late final pulumi.Output<AccessPackageAssignmentPolicyRequestorSettings?> requestorSettings;
 
   /// Creates a new [AccessPackageAssignmentPolicy].

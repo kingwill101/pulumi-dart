@@ -14,11 +14,11 @@ class ConditionalAccessPolicyArgs {
   final pulumi.Input<ConditionalAccessPolicyConditions> conditions;
   /// The friendly name for this Conditional Access Policy.
   final pulumi.Input<String> displayName;
-  /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+  /// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
   final pulumi.Input<ConditionalAccessPolicyGrantControls>? grantControls;
-  /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+  /// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
   ///
-  /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+  /// &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
   final pulumi.Input<ConditionalAccessPolicySessionControls>? sessionControls;
   /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
   final pulumi.Input<String> state;
@@ -26,8 +26,8 @@ class ConditionalAccessPolicyArgs {
   /// Creates a new [ConditionalAccessPolicyArgs].
   /// [conditions] A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
   /// [displayName] The friendly name for this Conditional Access Policy.
-  /// [grantControls] A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-  /// [sessionControls] A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+  /// [grantControls] A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+  /// [sessionControls] A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
   /// [state] Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
   const ConditionalAccessPolicyArgs({
     required this.conditions,
@@ -57,4 +57,3 @@ class ConditionalAccessPolicyArgs {
     );
   }
 }
-

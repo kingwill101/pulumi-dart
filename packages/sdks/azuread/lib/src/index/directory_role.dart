@@ -68,6 +68,19 @@ import 'directory_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_directoryrole" "example" {
+///   template_id = "00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +89,8 @@ import 'directory_role_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.DirectoryRole;
 /// import com.pulumi.azuread.DirectoryRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,6 +168,19 @@ import 'directory_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_directoryrole" "example" {
+///   display_name = "Printer administrator"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +189,8 @@ import 'directory_role_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.DirectoryRole;
 /// import com.pulumi.azuread.DirectoryRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,7 +230,7 @@ class DirectoryRole extends pulumi.CustomResource {
   late final pulumi.Output<String> objectId;
   /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
   ///
-  /// &gt; Either `display_name` or `template_id` must be specified.
+  /// &gt; Either `displayName` or `templateId` must be specified.
   late final pulumi.Output<String> templateId;
 
   /// Creates a new [DirectoryRole].

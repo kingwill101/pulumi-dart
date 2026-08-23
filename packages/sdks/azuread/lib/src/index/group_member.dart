@@ -84,7 +84,7 @@ import 'group_member_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -108,6 +108,28 @@ import 'group_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+///
+/// resource "azuread_group" "example" {
+///   display_name     = "my_group"
+///   security_enabled = true
+/// }
+/// resource "azuread_groupmember" "example" {
+///   group_object_id  = azuread_group.example.object_id
+///   member_object_id = data.azuread_getuser.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +142,8 @@ import 'group_member_state.dart';
 /// import com.pulumi.azuread.GroupArgs;
 /// import com.pulumi.azuread.GroupMember;
 /// import com.pulumi.azuread.GroupMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -114,6 +114,29 @@ import 'access_package_resource_catalog_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_group" "example" {
+///   display_name     = "example-group"
+///   security_enabled = true
+/// }
+/// resource "azuread_accesspackagecatalog" "example" {
+///   display_name = "example-catalog"
+///   description  = "Example catalog"
+/// }
+/// resource "azuread_accesspackageresourcecatalogassociation" "example" {
+///   catalog_id             = exampleCatalog.id
+///   resource_origin_id     = exampleGroup.objectId
+///   resource_origin_system = "AadGroup"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +149,8 @@ import 'access_package_resource_catalog_association_state.dart';
 /// import com.pulumi.azuread.AccessPackageCatalogArgs;
 /// import com.pulumi.azuread.AccessPackageResourceCatalogAssociation;
 /// import com.pulumi.azuread.AccessPackageResourceCatalogAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

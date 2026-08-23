@@ -92,6 +92,25 @@ import 'service_principal_password_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "azuread_serviceprincipalpassword" "example" {
+///   service_principal_id = azuread_serviceprincipal.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'service_principal_password_state.dart';
 /// import com.pulumi.azuread.ServicePrincipalArgs;
 /// import com.pulumi.azuread.ServicePrincipalPassword;
 /// import com.pulumi.azuread.ServicePrincipalPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,6 +279,34 @@ import 'service_principal_password_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "time_rotating" "example" {
+///   rotation_days = 7
+/// }
+/// resource "azuread_serviceprincipalpassword" "example" {
+///   service_principal_id = azuread_serviceprincipal.example.id
+///   rotate_when_changed = {
+///     "rotation" = time_rotating.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -274,8 +321,8 @@ import 'service_principal_password_state.dart';
 /// import com.pulumiverse.time.RotatingArgs;
 /// import com.pulumi.azuread.ServicePrincipalPassword;
 /// import com.pulumi.azuread.ServicePrincipalPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -99,6 +99,27 @@ import 'application_registration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name          = "Example Application"
+///   description           = "My example application"
+///   sign_in_audience      = "AzureADMyOrg"
+///   homepage_url          = "https://app.example.com/"
+///   logout_url            = "https://app.example.com/logout"
+///   marketing_url         = "https://example.com/"
+///   privacy_statement_url = "https://example.com/privacy"
+///   support_url           = "https://support.example.com/"
+///   terms_of_service_url  = "https://example.com/terms"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +128,8 @@ import 'application_registration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.ApplicationRegistration;
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,7 +209,7 @@ class ApplicationRegistration extends pulumi.CustomResource {
   late final pulumi.Output<String?> privacyStatementUrl;
   /// The verified publisher domain for the application.
   late final pulumi.Output<String> publisherDomain;
-  /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+  /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
   late final pulumi.Output<int?> requestedAccessTokenVersion;
   /// References application context information from a Service or Asset Management database.
   late final pulumi.Output<String?> serviceManagementReference;

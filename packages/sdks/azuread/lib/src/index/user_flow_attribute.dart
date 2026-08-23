@@ -73,6 +73,21 @@ import 'user_flow_attribute_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_userflowattribute" "example" {
+///   display_name = "Hobby"
+///   description  = "Your hobby"
+///   data_type    = "string"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'user_flow_attribute_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.UserFlowAttribute;
 /// import com.pulumi.azuread.UserFlowAttributeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

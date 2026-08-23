@@ -172,13 +172,13 @@ import 'service_principal_delegated_permission_grant_state.dart';
 /// 					ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-/// 								return oauth2PermissionScopeIds.Openid, nil
+/// 								return oauth2PermissionScopeIds["openid"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Scope"),
 /// 						},
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-/// 								return oauth2PermissionScopeIds.User.Read, nil
+/// 								return oauth2PermissionScopeIds["User.Read"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Scope"),
 /// 						},
@@ -210,6 +210,45 @@ import 'service_principal_delegated_permission_grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// }
+///
+/// resource "azuread_serviceprincipal" "msgraph" {
+///   client_id    = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///   use_existing = true
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   required_resource_accesses {
+///     resource_app_id = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["openid"]
+///       type = "Scope"
+///     }
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["User.Read"]
+///       type = "Scope"
+///     }
+///   }
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "azuread_serviceprincipaldelegatedpermissiongrant" "example" {
+///   service_principal_object_id          = azuread_serviceprincipal.example.object_id
+///   resource_service_principal_object_id = azuread_serviceprincipal.msgraph.object_id
+///   claim_values                         = ["openid", "User.Read.All"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,10 +261,11 @@ import 'service_principal_delegated_permission_grant_state.dart';
 /// import com.pulumi.azuread.Application;
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+/// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
 /// import com.pulumi.azuread.ServicePrincipalDelegatedPermissionGrant;
 /// import com.pulumi.azuread.ServicePrincipalDelegatedPermissionGrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +331,7 @@ import 'service_principal_delegated_permission_grant_state.dart';
 ///           resourceAccesses:
 ///             - id: ${msgraph.oauth2PermissionScopeIds.openid}
 ///               type: Scope
-///             - id: ${msgraph.oauth2PermissionScopeIds"User.Read"[%!s(MISSING)]}
+///             - id: ${msgraph.oauth2PermissionScopeIds["User.Read"]}
 ///               type: Scope
 ///   exampleServicePrincipal:
 ///     type: azuread:ServicePrincipal
@@ -495,13 +535,13 @@ import 'service_principal_delegated_permission_grant_state.dart';
 /// 					ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-/// 								return oauth2PermissionScopeIds.Openid, nil
+/// 								return oauth2PermissionScopeIds["openid"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Scope"),
 /// 						},
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-/// 								return oauth2PermissionScopeIds.User.Read, nil
+/// 								return oauth2PermissionScopeIds["User.Read"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Scope"),
 /// 						},
@@ -543,6 +583,52 @@ import 'service_principal_delegated_permission_grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// }
+///
+/// resource "azuread_serviceprincipal" "msgraph" {
+///   client_id    = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///   use_existing = true
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   required_resource_accesses {
+///     resource_app_id = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["openid"]
+///       type = "Scope"
+///     }
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["User.Read"]
+///       type = "Scope"
+///     }
+///   }
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "azuread_user" "example" {
+///   display_name        = "J. Doe"
+///   user_principal_name = "jdoe@example.com"
+///   mail_nickname       = "jdoe"
+///   password            = "SecretP@sswd99!"
+/// }
+/// resource "azuread_serviceprincipaldelegatedpermissiongrant" "example" {
+///   service_principal_object_id          = azuread_serviceprincipal.example.object_id
+///   resource_service_principal_object_id = azuread_serviceprincipal.msgraph.object_id
+///   claim_values                         = ["openid", "User.Read.All"]
+///   user_object_id                       = azuread_user.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -555,12 +641,13 @@ import 'service_principal_delegated_permission_grant_state.dart';
 /// import com.pulumi.azuread.Application;
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+/// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
 /// import com.pulumi.azuread.User;
 /// import com.pulumi.azuread.UserArgs;
 /// import com.pulumi.azuread.ServicePrincipalDelegatedPermissionGrant;
 /// import com.pulumi.azuread.ServicePrincipalDelegatedPermissionGrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -634,7 +721,7 @@ import 'service_principal_delegated_permission_grant_state.dart';
 ///           resourceAccesses:
 ///             - id: ${msgraph.oauth2PermissionScopeIds.openid}
 ///               type: Scope
-///             - id: ${msgraph.oauth2PermissionScopeIds"User.Read"[%!s(MISSING)]}
+///             - id: ${msgraph.oauth2PermissionScopeIds["User.Read"]}
 ///               type: Scope
 ///   exampleServicePrincipal:
 ///     type: azuread:ServicePrincipal
@@ -683,7 +770,7 @@ class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResource {
   late final pulumi.Output<String> servicePrincipalObjectId;
   /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+  /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
   late final pulumi.Output<String?> userObjectId;
 
   /// Creates a new [ServicePrincipalDelegatedPermissionGrant].

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_application_required_resource_access_resource_access.dart';
 
 class GetApplicationRequiredResourceAccess {
-  /// A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+  /// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
   final pulumi.Input<List<GetApplicationRequiredResourceAccessResourceAccess>> resourceAccesses;
   /// The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
   final pulumi.Input<String> resourceAppId;
 
   /// Creates a new [GetApplicationRequiredResourceAccess].
-  /// [resourceAccesses] A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+  /// [resourceAccesses] A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
   /// [resourceAppId] The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
   const GetApplicationRequiredResourceAccess({
     required this.resourceAccesses,
@@ -31,4 +31,3 @@ class GetApplicationRequiredResourceAccess {
     );
   }
 }
-

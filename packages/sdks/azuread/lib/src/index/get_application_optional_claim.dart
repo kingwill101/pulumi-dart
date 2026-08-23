@@ -6,17 +6,17 @@ import 'get_application_optional_claim_id_token.dart';
 import 'get_application_optional_claim_saml2_token.dart';
 
 class GetApplicationOptionalClaim {
-  /// One or more `access_token` blocks as documented below.
+  /// One or more `accessToken` blocks as documented below.
   final pulumi.Input<List<GetApplicationOptionalClaimAccessToken>>? accessTokens;
-  /// One or more `id_token` blocks as documented below.
+  /// One or more `idToken` blocks as documented below.
   final pulumi.Input<List<GetApplicationOptionalClaimIdToken>>? idTokens;
-  /// One or more `saml2_token` blocks as documented below.
+  /// One or more `saml2Token` blocks as documented below.
   final pulumi.Input<List<GetApplicationOptionalClaimSaml2Token>>? saml2Tokens;
 
   /// Creates a new [GetApplicationOptionalClaim].
-  /// [accessTokens] One or more `access_token` blocks as documented below.
-  /// [idTokens] One or more `id_token` blocks as documented below.
-  /// [saml2Tokens] One or more `saml2_token` blocks as documented below.
+  /// [accessTokens] One or more `accessToken` blocks as documented below.
+  /// [idTokens] One or more `idToken` blocks as documented below.
+  /// [saml2Tokens] One or more `saml2Token` blocks as documented below.
   const GetApplicationOptionalClaim({
     this.accessTokens,
     this.idTokens,
@@ -39,4 +39,3 @@ class GetApplicationOptionalClaim {
     );
   }
 }
-

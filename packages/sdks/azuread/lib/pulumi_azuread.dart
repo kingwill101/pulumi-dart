@@ -181,6 +181,8 @@ class _IndexModuleNamespace {
   final ConditionalAccessPolicyConditions = module_index.ConditionalAccessPolicyConditions.new;
   final ConditionalAccessPolicyConditionsApplications = module_index.ConditionalAccessPolicyConditionsApplications.new;
   final ConditionalAccessPolicyConditionsApplicationsArgs = module_index.ConditionalAccessPolicyConditionsApplications.new;
+  final ConditionalAccessPolicyConditionsApplicationsFilter = module_index.ConditionalAccessPolicyConditionsApplicationsFilter.new;
+  final ConditionalAccessPolicyConditionsApplicationsFilterArgs = module_index.ConditionalAccessPolicyConditionsApplicationsFilter.new;
   final ConditionalAccessPolicyConditionsArgs = module_index.ConditionalAccessPolicyConditions.new;
   final ConditionalAccessPolicyConditionsClientApplications = module_index.ConditionalAccessPolicyConditionsClientApplications.new;
   final ConditionalAccessPolicyConditionsClientApplicationsArgs = module_index.ConditionalAccessPolicyConditionsClientApplications.new;

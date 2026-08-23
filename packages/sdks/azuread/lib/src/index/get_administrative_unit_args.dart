@@ -11,7 +11,7 @@ class GetAdministrativeUnitArgs {
   final pulumi.Input<String>? displayName;
   /// Specifies the object ID of the administrative unit.
   ///
-  /// &gt; One of `display_name` or `object_id` must be specified.
+  /// &gt; One of `displayName` or `objectId` must be specified.
   final pulumi.Input<String>? objectId;
 
   /// Creates a new [GetAdministrativeUnitArgs].
@@ -36,4 +36,3 @@ class GetAdministrativeUnitArgs {
     );
   }
 }
-

@@ -23,7 +23,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> clientSecret;
   /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
   late final pulumi.Output<String?> clientSecretFilePath;
-  /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
+  /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
   late final pulumi.Output<String?> environment;
   /// The Hostname which should be used for the Azure Metadata Service.
   late final pulumi.Output<String?> metadataHost;

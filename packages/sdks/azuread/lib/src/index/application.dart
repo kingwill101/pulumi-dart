@@ -600,6 +600,117 @@ import 'application_web.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name     = "example"
+///   identifier_uris  = ["api://example-app"]
+///   logo_image       = filebase64("/path/to/logo.png")
+///   owners           = [data.azuread_getclientconfig.current.object_id]
+///   sign_in_audience = "AzureADMultipleOrgs"
+///   api = {
+///     mapped_claims_enabled          = true
+///     requested_access_token_version = 2
+///     known_client_applications      = [known1.clientId, known2.clientId]
+///     oauth2_permission_scopes = [{
+///       "adminConsentDescription" = "Allow the application to access example on behalf of the signed-in user."
+///       "adminConsentDisplayName" = "Access example"
+///       "enabled"                 = true
+///       "id"                      = "96183846-204b-4b43-82e1-5d2222eb4b9b"
+///       "type"                    = "User"
+///       "userConsentDescription"  = "Allow the application to access example on your behalf."
+///       "userConsentDisplayName"  = "Access example"
+///       "value"                   = "user_impersonation"
+///       }, {
+///       "adminConsentDescription" = "Administer the example application"
+///       "adminConsentDisplayName" = "Administer"
+///       "enabled"                 = true
+///       "id"                      = "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc"
+///       "type"                    = "Admin"
+///       "value"                   = "administer"
+///     }]
+///   }
+///   app_roles {
+///     allowed_member_types = ["User", "Application"]
+///     description          = "Admins can manage roles and perform all task actions"
+///     display_name         = "Admin"
+///     enabled              = true
+///     id                   = "1b19509b-32b1-4e9f-b71d-4992aa991967"
+///     value                = "admin"
+///   }
+///   app_roles {
+///     allowed_member_types = ["User"]
+///     description          = "ReadOnly roles have limited query access"
+///     display_name         = "ReadOnly"
+///     enabled              = true
+///     id                   = "497406e4-012a-4267-bf18-45a1cb148a01"
+///     value                = "User"
+///   }
+///   feature_tags {
+///     enterprise = true
+///     gallery    = true
+///   }
+///   optional_claims = {
+///     access_tokens = [{
+///       "name" = "myclaim"
+///       }, {
+///       "name" = "otherclaim"
+///     }]
+///     id_tokens = [{
+///       "name"                 = "userclaim"
+///       "source"               = "user"
+///       "essential"            = true
+///       "additionalProperties" = ["emit_as_roles"]
+///     }]
+///     saml2_tokens = [{
+///       "name" = "samlexample"
+///     }]
+///   }
+///   required_resource_accesses {
+///     resource_app_id = "00000003-0000-0000-c000-000000000000"
+///     resource_accesses {
+///       id   = "df021288-bdef-4463-88db-98f22de89214"
+///       type = "Role"
+///     }
+///     resource_accesses {
+///       id   = "b4e74841-8e56-480b-be8b-910348b18b4c"
+///       type = "Scope"
+///     }
+///   }
+///   required_resource_accesses {
+///     resource_app_id = "c5393580-f805-4401-95e8-94b7a6ef2fc2"
+///     resource_accesses {
+///       id   = "594c1fb6-4f81-4475-ae41-0c394909246c"
+///       type = "Role"
+///     }
+///   }
+///   # User.Read.All
+///   # User.ReadWrite
+///   # ActivityFeed.Read
+///   web = {
+///     homepage_url  = "https://app.example.net"
+///     logout_url    = "https://app.example.net/logout"
+///     redirect_uris = ["https://app.example.net/account"]
+///     implicit_grant = {
+///       access_token_issuance_enabled = true
+///       id_token_issuance_enabled     = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -610,16 +721,21 @@ import 'application_web.dart';
 /// import com.pulumi.azuread.Application;
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.inputs.ApplicationApiArgs;
+/// import com.pulumi.azuread.inputs.ApplicationApiOauth2PermissionScopeArgs;
 /// import com.pulumi.azuread.inputs.ApplicationAppRoleArgs;
 /// import com.pulumi.azuread.inputs.ApplicationFeatureTagArgs;
 /// import com.pulumi.azuread.inputs.ApplicationOptionalClaimsArgs;
+/// import com.pulumi.azuread.inputs.ApplicationOptionalClaimsAccessTokenArgs;
+/// import com.pulumi.azuread.inputs.ApplicationOptionalClaimsIdTokenArgs;
+/// import com.pulumi.azuread.inputs.ApplicationOptionalClaimsSaml2TokenArgs;
 /// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+/// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
 /// import com.pulumi.azuread.inputs.ApplicationWebArgs;
 /// import com.pulumi.azuread.inputs.ApplicationWebImplicitGrantArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -958,7 +1074,8 @@ import 'application_web.dart';
 /// Duration: example.ID(),
 /// Timestamp: pulumi.String("4320h"),
 /// }, nil).ApplyT(func(invoke std.TimeaddResult) (*string, error) {
-/// return invoke.Result, nil
+/// val := invoke.Result
+/// return &val, nil
 /// }).(pulumi.StringPtrOutput),
 /// },
 /// })
@@ -970,6 +1087,40 @@ import 'application_web.dart';
 /// }).(pulumi.Interface{}PtrOutput))
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+///
+/// resource "time_rotating" "example" {
+///   rotation_days = 180
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   owners       = [data.azuread_getclientconfig.current.object_id]
+///   password = {
+///     display_name = "MySecret-1"
+///     start_date   = time_rotating.example.id
+///     end_date     = timeadd(time_rotating.example.id, "4320h")
+///   }
+/// }
+/// output "examplePassword" {
+///   value = azuread_application.example.password[0].value
 /// }
 /// ```
 /// ```java
@@ -986,8 +1137,8 @@ import 'application_web.dart';
 /// import com.pulumi.azuread.inputs.ApplicationPasswordArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.TimeaddArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1147,6 +1298,28 @@ import 'application_web.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationtemplate" "example" {
+///   display_name = "Marketo"
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   template_id  = data.azuread_getapplicationtemplate.example.template_id
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id    = azuread_application.example.client_id
+///   use_existing = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1159,8 +1332,8 @@ import 'application_web.dart';
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.ServicePrincipal;
 /// import com.pulumi.azuread.ServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1224,7 +1397,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<ApplicationApi?> api;
   /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
   late final pulumi.Output<Map<String, String>> appRoleIds;
-  /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+  /// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
   late final pulumi.Output<List<Map<String, dynamic>>?> appRoles;
   /// The Client ID for the application.
   late final pulumi.Output<String> clientId;
@@ -1238,9 +1411,9 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
   late final pulumi.Output<bool?> fallbackPublicClientEnabled;
-  /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+  /// A `featureTags` block as described below. Cannot be used together with the `tags` property.
   ///
-  /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+  /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
   late final pulumi.Output<List<Map<String, dynamic>>> featureTags;
   /// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
   late final pulumi.Output<List<String>?> groupMembershipClaims;
@@ -1248,7 +1421,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> identifierUris;
   /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
   late final pulumi.Output<String?> logoImage;
-  /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
+  /// CDN URL to the application's logo, as uploaded with the `logoImage` property.
   late final pulumi.Output<String> logoUrl;
   /// URL of the application's marketing page.
   late final pulumi.Output<String?> marketingUrl;
@@ -1260,7 +1433,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<bool?> oauth2PostResponseRequired;
   /// The application's object ID.
   late final pulumi.Output<String> objectId;
-  /// An `optional_claims` block as documented below.
+  /// An `optionalClaims` block as documented below.
   late final pulumi.Output<ApplicationOptionalClaims?> optionalClaims;
   /// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
   ///
@@ -1274,25 +1447,25 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<bool?> preventDuplicateNames;
   /// URL of the application's privacy statement.
   late final pulumi.Output<String?> privacyStatementUrl;
-  /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+  /// A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
   late final pulumi.Output<ApplicationPublicClient?> publicClient;
   /// The verified publisher domain for the application.
   late final pulumi.Output<String> publisherDomain;
-  /// A collection of `required_resource_access` blocks as documented below.
+  /// A collection of `requiredResourceAccess` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> requiredResourceAccesses;
   /// References application context information from a Service or Asset Management database.
   late final pulumi.Output<String?> serviceManagementReference;
   /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
   ///
-  /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+  /// &gt; **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
   late final pulumi.Output<String?> signInAudience;
-  /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+  /// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
   late final pulumi.Output<ApplicationSinglePageApplication?> singlePageApplication;
   /// URL of the application's support page.
   late final pulumi.Output<String?> supportUrl;
-  /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+  /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
   ///
-  /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+  /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
   late final pulumi.Output<List<String>> tags;
   /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   ///
@@ -1302,7 +1475,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String?> termsOfServiceUrl;
   /// A `web` block as documented below, which configures web related settings for this application.
   ///
-  /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+  /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
   late final pulumi.Output<ApplicationWeb?> web;
 
   /// Creates a new [Application].

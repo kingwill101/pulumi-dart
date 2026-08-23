@@ -17,7 +17,7 @@ class GetUserArgs {
   final pulumi.Input<String>? objectId;
   /// The user principal name (UPN) of the user.
   ///
-  /// &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
+  /// &gt; One of `userPrincipalName`, `objectId`, `mail`, `mailNickname` or `employeeId` must be specified.
   final pulumi.Input<String>? userPrincipalName;
 
   /// Creates a new [GetUserArgs].
@@ -54,4 +54,3 @@ class GetUserArgs {
     );
   }
 }
-

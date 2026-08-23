@@ -10,9 +10,9 @@ import 'access_package_assignment_policy_requestor_settings.dart';
 class AccessPackageAssignmentPolicyState {
   /// The ID of the access package that will contain the policy.
   final pulumi.Input<String>? accessPackageId;
-  /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+  /// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
   final pulumi.Input<AccessPackageAssignmentPolicyApprovalSettings>? approvalSettings;
-  /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+  /// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
   final pulumi.Input<AccessPackageAssignmentPolicyAssignmentReviewSettings>? assignmentReviewSettings;
   /// The description of the policy.
   final pulumi.Input<String>? description;
@@ -26,20 +26,20 @@ class AccessPackageAssignmentPolicyState {
   final pulumi.Input<bool>? extensionEnabled;
   /// One or more `question` blocks for the requestor, as documented below.
   final pulumi.Input<List<AccessPackageAssignmentPolicyQuestion>>? questions;
-  /// A `requestor_settings` block to configure the users who can request access, as documented below.
+  /// A `requestorSettings` block to configure the users who can request access, as documented below.
   final pulumi.Input<AccessPackageAssignmentPolicyRequestorSettings>? requestorSettings;
 
   /// Creates a new [AccessPackageAssignmentPolicyState].
   /// [accessPackageId] The ID of the access package that will contain the policy.
-  /// [approvalSettings] An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
-  /// [assignmentReviewSettings] An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+  /// [approvalSettings] An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
+  /// [assignmentReviewSettings] An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
   /// [description] The description of the policy.
   /// [displayName] The display name of the policy.
   /// [durationInDays] How many days this assignment is valid for.
   /// [expirationDate] The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
   /// [extensionEnabled] Whether users will be able to request extension of their access to this package before their access expires.
   /// [questions] One or more `question` blocks for the requestor, as documented below.
-  /// [requestorSettings] A `requestor_settings` block to configure the users who can request access, as documented below.
+  /// [requestorSettings] A `requestorSettings` block to configure the users who can request access, as documented below.
   const AccessPackageAssignmentPolicyState({
     this.accessPackageId,
     this.approvalSettings,
@@ -83,4 +83,3 @@ class AccessPackageAssignmentPolicyState {
     );
   }
 }
-
