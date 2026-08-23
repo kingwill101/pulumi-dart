@@ -11,6 +11,13 @@ func renderDartProgram(program dartProgram) []byte {
 	body.WriteString("class GeneratedStack extends pulumi.Stack {\n")
 	body.WriteString("  late final List<pulumi.OutputProperty> _outputProperties;\n\n")
 	body.WriteString("  GeneratedStack() {\n")
+	if len(program.Configs) > 0 {
+		body.WriteString("    final config = pulumi.Config();\n")
+		for _, config := range program.Configs {
+			fmt.Fprintf(&body, "    final %s = %s;\n", config.Name, config.Expression)
+		}
+		body.WriteString("\n")
+	}
 	for _, local := range program.Locals {
 		fmt.Fprintf(&body, "    final %s = %s;\n", local.Name, local.Expression)
 	}

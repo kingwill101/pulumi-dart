@@ -4,17 +4,24 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
-	"github.com/zclconf/go-cty/cty"
 )
 
 func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 	lowerer := programLowerer{names: map[string]string{}, usedNames: map[string]int{}}
+	if len(program.ConfigVariables()) > 0 {
+		lowerer.usedNames["config"] = 1
+	}
 	result := dartProgram{}
 	for _, node := range program.Nodes {
 		switch node := node.(type) {
+		case *pcl.ConfigVariable:
+			config, err := lowerer.configVariable(node)
+			if err != nil {
+				return dartProgram{}, fmt.Errorf("config %q: %w", node.LogicalName(), err)
+			}
+			result.Configs = append(result.Configs, config)
 		case *pcl.LocalVariable:
 			name := propertyFieldName(node.Name(), lowerer.usedNames)
 			lowerer.names[node.Name()] = name
@@ -51,15 +58,7 @@ func (lowerer programLowerer) expression(expression model.Expression) (string, e
 	case *model.LiteralValueExpression:
 		return lowerDartLiteral(expression.Value)
 	case *model.TemplateExpression:
-		var value strings.Builder
-		for _, part := range expression.Parts {
-			literal, ok := part.(*model.LiteralValueExpression)
-			if !ok || literal.Value.Type() != cty.String {
-				return "", fmt.Errorf("unsupported template part %T", part)
-			}
-			value.WriteString(literal.Value.AsString())
-		}
-		return dartStringLiteral(value.String()), nil
+		return lowerer.templateExpression(expression)
 	case *model.TupleConsExpression:
 		items := make([]string, len(expression.Expressions))
 		for index, item := range expression.Expressions {
@@ -85,14 +84,9 @@ func (lowerer programLowerer) expression(expression model.Expression) (string, e
 		}
 		return "{" + strings.Join(items, ", ") + "}", nil
 	case *model.UnaryOpExpression:
-		if expression.Operation != hclsyntax.OpNegate {
-			return "", fmt.Errorf("unsupported unary operation")
-		}
-		operand, err := lowerer.expression(expression.Operand)
-		if err != nil {
-			return "", err
-		}
-		return "-" + operand, nil
+		return lowerer.unaryExpression(expression)
+	case *model.BinaryOpExpression:
+		return lowerer.binaryExpression(expression)
 	case *model.ScopeTraversalExpression:
 		if len(expression.Traversal) != 1 {
 			return "", fmt.Errorf("unsupported traversal %v", expression.Traversal)
