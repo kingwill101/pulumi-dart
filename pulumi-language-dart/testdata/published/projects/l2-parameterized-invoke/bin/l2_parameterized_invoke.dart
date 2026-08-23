@@ -1,0 +1,20 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+import 'package:pulumi_subpackage/index.dart' as pulumi_subpackage_index;
+
+class GeneratedStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  GeneratedStack() {
+    _outputProperties = [
+      pulumi.OutputProperty('parameterValue', pulumi.output(pulumi_subpackage_index.doHelloWorldOutput(pulumi_subpackage_index.DoHelloWorldArgs(input: ('goodbye').input())).apply((value) => value.output)).apply<Object?>((value) => value)),
+    ];
+  }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
+}
+
+Future<void> main() async {
+  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+}

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"net/url"
 	"os"
@@ -8,13 +9,34 @@ import (
 	"strings"
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
+	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
 type dartPluginMetadata struct {
-	Resource bool   `json:"resource"`
-	Name     string `json:"name"`
-	Version  string `json:"version"`
-	Server   string `json:"server"`
+	Resource         bool   `json:"resource"`
+	Name             string `json:"name"`
+	Version          string `json:"version"`
+	Server           string `json:"server"`
+	Parameterization *struct {
+		Name    string `json:"name"`
+		Version string `json:"version"`
+		Value   string `json:"value"`
+	} `json:"parameterization"`
+}
+
+func (metadata dartPluginMetadata) packageParameterization() *pulumirpc.PackageParameterization {
+	if metadata.Parameterization == nil {
+		return nil
+	}
+	value, err := base64.StdEncoding.DecodeString(metadata.Parameterization.Value)
+	if err != nil {
+		return nil
+	}
+	return &pulumirpc.PackageParameterization{
+		Name:    strings.TrimSpace(metadata.Parameterization.Name),
+		Version: strings.TrimSpace(metadata.Parameterization.Version),
+		Value:   value,
+	}
 }
 
 func readDartPluginMetadata(pubspecPath, dependency string, spec any) (dartPluginMetadata, bool) {

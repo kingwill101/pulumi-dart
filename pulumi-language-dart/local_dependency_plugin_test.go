@@ -1,11 +1,13 @@
 package main
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"testing"
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
+	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"github.com/stretchr/testify/require"
 )
 
@@ -36,4 +38,32 @@ func TestGeneratedExtraFilesIncludeProviderMetadata(t *testing.T) {
 		"resource": true,
 		"name": "camelNames"
 	}`, string(files["pulumi-plugin.json"]))
+}
+
+func TestGeneratedExtraFilesIncludeParameterizedProviderMetadata(t *testing.T) {
+	t.Parallel()
+	directory := t.TempDir()
+	_, err := (&dartLanguageHost{}).GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: directory,
+		Schema: `{
+		"name":"subpackage","version":"2.0.0",
+		"parameterization":{
+			"baseProvider":{"name":"parameterized","version":"1.2.3"},
+			"parameter":"SGVsbG9Xb3JsZA=="
+		}
+	}`,
+	})
+	require.NoError(t, err)
+	contents, err := os.ReadFile(filepath.Join(directory, "pulumi-plugin.json"))
+	require.NoError(t, err)
+	require.JSONEq(t, `{
+		"resource":true,
+		"name":"parameterized",
+		"version":"1.2.3",
+		"parameterization":{
+			"name":"subpackage",
+			"version":"2.0.0",
+			"value":"SGVsbG9Xb3JsZA=="
+		}
+	}`, string(contents))
 }

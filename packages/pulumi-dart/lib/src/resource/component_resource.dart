@@ -1,4 +1,5 @@
 import '../deployment/deployment.dart';
+import '../deployment/models.dart' as models;
 import '../input.dart';
 import '../output.dart';
 import 'resource.dart';
@@ -37,6 +38,7 @@ class ComponentResource extends Resource {
     Inputs? args,
     ComponentResourceOptions? options, {
     bool remote = false,
+    models.RegisterPackageRequest? registerPackageRequest,
     List<String> additionalSecretOutputs = const [],
   }) : super(
          type,
@@ -45,6 +47,7 @@ class ComponentResource extends Resource {
          args ?? {},
          options ?? ComponentResourceOptions(),
          remote: remote,
+         registerPackageRequest: registerPackageRequest,
          additionalSecretOutputs: additionalSecretOutputs,
        );
 

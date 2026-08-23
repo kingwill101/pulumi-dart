@@ -50,7 +50,7 @@ func lowerResourceImports(
 	for _, path := range externalPaths {
 		imports = append(imports, dartir.Import{URI: path, Prefix: externalImports[path]})
 	}
-	if hasPackageRegistration && !resource.IsComponent {
+	if hasPackageRegistration {
 		imports = append(imports, dartir.Import{
 			URI: relativeDartImportPath(filePath, registrationFilePath), Prefix: "package_registration",
 		})
