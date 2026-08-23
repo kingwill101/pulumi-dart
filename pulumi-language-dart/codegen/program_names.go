@@ -16,6 +16,8 @@ func (lowerer programLowerer) declareNodeNames(nodes []pcl.Node) {
 			name = node.Name()
 		case *pcl.Hook:
 			name = node.Name()
+		case *pcl.Component:
+			name = node.Name()
 		}
 		if name != "" {
 			lowerer.names[name] = propertyFieldName(name, lowerer.usedNames)

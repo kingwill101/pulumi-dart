@@ -20,4 +20,16 @@ class ResourceType extends pulumi.CustomResource {
         ) {
     text = registerOutput<String>('text');
   }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'config:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    text = registerOutput<String>('text');
+  }
 }

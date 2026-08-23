@@ -7,6 +7,10 @@ import (
 
 func renderDartProgramResource(resource dartProgramResource) string {
 	options := renderDartProgramResourceOptions(resource)
+	logicalName := dartStringLiteral(resource.LogicalName)
+	if resource.PrefixLogicalName {
+		logicalName = "name + " + dartStringLiteral("-"+resource.LogicalName)
+	}
 	switch resource.Type {
 	case "read":
 		qualifier := programModuleAlias(resource.Package, resource.Module)
@@ -20,14 +24,14 @@ func renderDartProgramResource(resource dartProgramResource) string {
 		}
 		return fmt.Sprintf(
 			"    final %s = %s.%s.get(%s, (%s).input()%s%s);\n",
-			resource.Name, qualifier, resource.Class, dartStringLiteral(resource.LogicalName), resource.ID, state, options,
+			resource.Name, qualifier, resource.Class, logicalName, resource.ID, state, options,
 		)
 	case "provider":
 		qualifier := programModuleAlias(resource.Package, resource.Module)
 		if len(resource.Inputs) == 0 {
 			return fmt.Sprintf(
 				"    final %s = %s.%s(%s);\n",
-				resource.Name, qualifier, resource.Class, dartStringLiteral(resource.LogicalName)+options,
+				resource.Name, qualifier, resource.Class, logicalName+options,
 			)
 		}
 		var inputs strings.Builder
@@ -36,7 +40,7 @@ func renderDartProgramResource(resource dartProgramResource) string {
 		}
 		return fmt.Sprintf(
 			"    final %s = %s.%s(%s, args: %s.%s(%s)%s);\n",
-			resource.Name, qualifier, resource.Class, dartStringLiteral(resource.LogicalName),
+			resource.Name, qualifier, resource.Class, logicalName,
 			qualifier, resource.ArgsClass, inputs.String(), options,
 		)
 	case "stackReference":

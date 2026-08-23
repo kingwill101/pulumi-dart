@@ -69,13 +69,17 @@ func (lowerer programLowerer) providerResource(
 	if err != nil {
 		return dartProgramResource{}, err
 	}
+	if lowerer.componentMode && !hasProgramOption(options, "parent") {
+		options = append(options, dartProgramResourceOption{Name: "parent", Expression: "this"})
+	}
 	optionsClass := "CustomResourceOptions"
 	if resource.Schema != nil && resource.Schema.IsComponent {
 		optionsClass = "ComponentResourceOptions"
 	}
 	return dartProgramResource{
 		Name: name, LogicalName: resource.LogicalName(), Type: "provider",
-		Package: pkg, Module: module, Class: className,
+		PrefixLogicalName: lowerer.componentMode,
+		Package:           pkg, Module: module, Class: className,
 		ArgsClass: argsClass, Inputs: inputs, OptionsClass: optionsClass, Options: options,
 	}, nil
 }

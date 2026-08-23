@@ -19,8 +19,9 @@ func (lowerer programLowerer) unaryExpression(expression *model.UnaryOpExpressio
 	if err != nil {
 		return "", err
 	}
-	if model.ContainsOutputs(expression.Type()) {
-		return "pulumi.output(" + operand + ").apply<dynamic>((value) => " + operator + "(value))", nil
+	if model.ContainsOutputs(expression.Type()) || lowerer.componentMode && containsComponentConfigExpression(expression.Operand) {
+		return "pulumi.output(" + operand + ").apply<" + dartConfigValueType(expression.Type()) +
+			">((value) => " + operator + "(value))", nil
 	}
 	return operator + "(" + operand + ")", nil
 }
@@ -44,7 +45,8 @@ func (lowerer programLowerer) binaryExpression(expression *model.BinaryOpExpress
 	if err != nil {
 		return "", err
 	}
-	if model.ContainsOutputs(expression.Type()) {
+	if model.ContainsOutputs(expression.Type()) || lowerer.componentMode &&
+		(containsComponentConfigExpression(expression.LeftOperand) || containsComponentConfigExpression(expression.RightOperand)) {
 		return "pulumi.output([" + left + ", " + right + "]).apply<dynamic>(" +
 			"(values) => (values[0] " + operator + " values[1]))", nil
 	}

@@ -30,4 +30,21 @@ class ResourceType extends pulumi.CustomResource {
     numberArray = registerOutput<List<double>>('numberArray', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<double>(); });
     string_ = registerOutput<String>('string');
   }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'primitive:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    boolean = registerOutput<bool>('boolean');
+    booleanMap = registerOutput<Map<String, bool>>('booleanMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+    float = registerOutput<double>('float');
+    integer = registerOutput<int>('integer');
+    numberArray = registerOutput<List<double>>('numberArray', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<double>(); });
+    string_ = registerOutput<String>('string');
+  }
 }

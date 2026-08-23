@@ -11,6 +11,6 @@ class ProviderProvider extends pulumi.ProviderResource {
           'multi-argument-invoke',
           name,
           const <String, pulumi.Input<dynamic>>{},
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '44.0.0').merge(options),
         );
 }

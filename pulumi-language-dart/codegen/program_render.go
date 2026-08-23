@@ -20,6 +20,7 @@ func renderDartProgram(program dartProgram) []byte {
 		key := imported.Package + "\x00" + imported.Module
 		imports[key] = dartProgramResource{Package: imported.Package, Module: imported.Module}
 	}
+	collectDartComponentImports(imports, program.Components)
 	importKeys := make([]string, 0, len(imports))
 	for key := range imports {
 		importKeys = append(importKeys, key)
@@ -32,6 +33,9 @@ func renderDartProgram(program dartProgram) []byte {
 	}
 	if len(importKeys) > 0 {
 		body.WriteString("\n")
+	}
+	for _, component := range program.Components {
+		body.WriteString(renderDartComponent(component))
 	}
 	body.WriteString("class GeneratedStack extends pulumi.Stack {\n")
 	body.WriteString("  late final List<pulumi.OutputProperty> _outputProperties;\n\n")
@@ -68,6 +72,9 @@ func renderDartProgram(program dartProgram) []byte {
 		}
 		if statement.Resource != nil {
 			body.WriteString(renderDartProgramResource(*statement.Resource))
+		}
+		if statement.Component != nil {
+			body.WriteString(renderDartComponentInstance(*statement.Component))
 		}
 		if statement.RequiredPulumiVersion != "" {
 			fmt.Fprintf(

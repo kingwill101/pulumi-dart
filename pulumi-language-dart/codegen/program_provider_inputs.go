@@ -41,6 +41,13 @@ func (lowerer programLowerer) typedProviderExpression(
 ) (string, error) {
 	nullable := providerTypeIsOptional(typ)
 	typ = unwrapProviderInputType(typ)
+	if lowerer.componentMode && containsComponentConfigExpression(expression) {
+		value, err := lowerer.expression(expression)
+		if err != nil {
+			return "", err
+		}
+		return lowerer.componentConfigProviderExpression(defaultPackage, typ, value, nullable)
+	}
 	switch typ := typ.(type) {
 	case *schema.UnionType:
 		return lowerer.providerUnionExpression(defaultPackage, expression, typ)

@@ -37,6 +37,18 @@ func GenerateDartProgramArtifact(program *pcl.Program) (DartProgramArtifact, err
 			packages[imported.Package] = struct{}{}
 		}
 	}
+	for _, component := range lowered.Components {
+		for _, resource := range component.Program.Resources {
+			if resource.Package != "" {
+				packages[resource.Package] = struct{}{}
+			}
+		}
+		for _, imported := range component.Program.Imports {
+			if imported.Package != "" {
+				packages[imported.Package] = struct{}{}
+			}
+		}
+	}
 	packageNames := make([]string, 0, len(packages))
 	for name := range packages {
 		packageNames = append(packageNames, name)

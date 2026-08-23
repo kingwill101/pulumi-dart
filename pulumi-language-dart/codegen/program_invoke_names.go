@@ -15,6 +15,7 @@ type programFunction struct {
 	ResultType  string
 	Function    packageFunctionSpec
 	Schema      *schema.Function
+	InputTypes  map[string]string
 }
 
 func programFunctions(packages []*schema.Package) map[string]programFunction {
@@ -38,6 +39,7 @@ func programFunctions(packages []*schema.Package) map[string]programFunction {
 				ResultType: function.ReturnType.DartType,
 				Function:   function,
 				Schema:     schemaFunction,
+				InputTypes: functionInputTypes(spec, function.ArgsClass),
 			}
 			result[token] = planned
 			result[pkg.CanonicalizeToken(token)] = planned
@@ -51,6 +53,20 @@ func programFunctions(packages []*schema.Package) map[string]programFunction {
 				result[pkg.Name+"::"+tokenElementName(token)] = planned
 			}
 		}
+	}
+	return result
+}
+
+func functionInputTypes(spec *packageSchema, argsClass string) map[string]string {
+	result := map[string]string{}
+	for _, object := range spec.ObjectClasses {
+		if object.ClassName != argsClass {
+			continue
+		}
+		for _, property := range object.Properties {
+			result[property.Name] = property.DartType
+		}
+		break
 	}
 	return result
 }

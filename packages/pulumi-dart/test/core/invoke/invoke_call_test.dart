@@ -165,6 +165,19 @@ void main() {
       expect(result, equals('alpha'));
     });
 
+    test('invoke sends the parent URN for provider inheritance', () async {
+      const urn = 'urn:pulumi:stack::project::components:index:Parent::parent';
+      final parent = DependencyResource(urn);
+
+      await harness.invoke<Map<String, dynamic>>(
+        'test:index:getThing',
+        {},
+        options: deployment_models.InvokeOptions(parent: parent),
+      );
+
+      expect(monitor.capturedInvokeRequest!.parent, urn);
+    });
+
     test('invoke returns null for Null return type', () async {
       final result = await harness.invoke<Null>('test:index:get', {});
       expect(result, isNull);

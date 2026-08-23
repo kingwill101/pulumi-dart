@@ -10,6 +10,7 @@ type dartProgram struct {
 	NeedsAsyncInitialization bool
 	ResourceReferences       []dartProgramResourceReference
 	RequiresPulumiProvider   bool
+	Components               []dartProgramComponent
 }
 
 type dartProgramResourceReference struct {
@@ -29,7 +30,26 @@ type dartProgramStatement struct {
 	Local                 *dartProgramLocal
 	Hook                  *dartProgramHook
 	Resource              *dartProgramResource
+	Component             *dartProgramComponentInstance
 	RequiredPulumiVersion string
+}
+
+type dartProgramComponent struct {
+	Name    string
+	Args    []dartProgramComponentArg
+	Program dartProgram
+}
+
+type dartProgramComponentArg struct {
+	Name, DartType, Default string
+	Required                bool
+}
+
+type dartProgramComponentInstance struct {
+	Name, LogicalName, Class string
+	PrefixLogicalName        bool
+	Inputs                   []dartProgramResourceInput
+	Options                  []dartProgramResourceOption
 }
 
 type dartProgramHook struct {
@@ -42,19 +62,20 @@ type dartProgramHook struct {
 }
 
 type dartProgramResource struct {
-	Name         string
-	LogicalName  string
-	Type         string
-	Input        string
-	ID           string
-	Package      string
-	Module       string
-	Class        string
-	ArgsClass    string
-	StateClass   string
-	Inputs       []dartProgramResourceInput
-	OptionsClass string
-	Options      []dartProgramResourceOption
+	Name              string
+	LogicalName       string
+	PrefixLogicalName bool
+	Type              string
+	Input             string
+	ID                string
+	Package           string
+	Module            string
+	Class             string
+	ArgsClass         string
+	StateClass        string
+	Inputs            []dartProgramResourceInput
+	OptionsClass      string
+	Options           []dartProgramResourceOption
 }
 
 type dartProgramResourceInput struct {

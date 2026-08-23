@@ -6,7 +6,6 @@ import (
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
-	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
 
 func (lowerer programLowerer) invokeExpression(expression *model.FunctionCallExpression) (string, error) {
@@ -64,6 +63,7 @@ func (lowerer programLowerer) invokeArguments(
 		if property != nil {
 			value, err = lowerer.typedProviderExpression(function.Package, item.Value, property.Type)
 		}
+		value = typedInvokeInput(value, function.InputTypes[name])
 		if err != nil {
 			return "", fmt.Errorf("invoke input %q: %w", name, err)
 		}
@@ -73,42 +73,11 @@ func (lowerer programLowerer) invokeArguments(
 	return qualifier + "." + function.ArgsClass + "(" + strings.Join(fields, ", ") + ")", nil
 }
 
-func (lowerer programLowerer) multiArgumentInvokeArguments(
-	object *model.ObjectConsExpression, function programFunction,
-) (string, error) {
-	values := map[string]model.Expression{}
-	for _, item := range object.Items {
-		values[pcl.LiteralValueString(item.Key)] = item.Value
+func typedInvokeInput(value, dartType string) string {
+	if dartType == "" || dartType == "dynamic" {
+		return value
 	}
-	arguments := make([]string, len(function.Function.Parameters))
-	for index, parameter := range function.Function.Parameters {
-		expression, ok := values[parameter.Name]
-		if !ok {
-			arguments[index] = "null"
-			continue
-		}
-		value, err := lowerer.expression(expression)
-		if property := invokeInputProperty(function.Schema, parameter.Name); property != nil {
-			value, err = lowerer.typedProviderExpression(function.Package, expression, property.Type)
-		}
-		if err != nil {
-			return "", fmt.Errorf("invoke input %q: %w", parameter.Name, err)
-		}
-		arguments[index] = "(" + value + ").input()"
-	}
-	return strings.Join(arguments, ", "), nil
-}
-
-func invokeInputProperty(function *schema.Function, name string) *schema.Property {
-	if function == nil || function.Inputs == nil {
-		return nil
-	}
-	for _, property := range function.Inputs.InputShape.Properties {
-		if property.Name == name {
-			return property
-		}
-	}
-	return nil
+	return "pulumi.output(" + value + ").apply<" + dartType + ">((value) => value as " + dartType + ")"
 }
 
 func invokeExpression(expression model.Expression) *model.FunctionCallExpression {
