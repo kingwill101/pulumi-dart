@@ -14,4 +14,3 @@ enum APIKeySource {
     throw ArgumentError('Unknown APIKeySource value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum IntegrationType {
     throw ArgumentError('Unknown IntegrationType value: $value');
   }
 }
-
