@@ -128,6 +128,7 @@ var passingConformanceTests = []string{
 	"l2-keywords",
 	"l2-destroy",
 	"l2-resource-name-type",
+	"l2-engine-update-options",
 	"l2-union",
 	"l2-discriminated-union",
 	"l2-discriminated-union-many",
