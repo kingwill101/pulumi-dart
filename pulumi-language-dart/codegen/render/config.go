@@ -27,7 +27,7 @@ func Config(declaration dartir.Config) []byte {
 		writeConfigProperty(&b, property)
 	}
 	b.WriteString("}\n\n")
-	fmt.Fprintf(&b, "const config = %s();\n\n", declaration.ClassName)
+	fmt.Fprintf(&b, "const config = %s();\n", declaration.ClassName)
 	return []byte(b.String())
 }
 

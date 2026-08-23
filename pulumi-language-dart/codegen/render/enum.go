@@ -26,6 +26,6 @@ func Enum(declaration dartir.Enum) []byte {
 	fmt.Fprintf(&b, "    for (final item in %s.values) {\n", declaration.Name)
 	b.WriteString("      if (item.wireValue == value) {\n        return item;\n      }\n    }\n")
 	fmt.Fprintf(&b, "    throw ArgumentError('Unknown %s value: $value');\n", declaration.Name)
-	b.WriteString("  }\n}\n\n")
+	b.WriteString("  }\n}\n")
 	return []byte(b.String())
 }
