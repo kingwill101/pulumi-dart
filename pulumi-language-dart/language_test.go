@@ -34,10 +34,10 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-// initialConformanceTests is intentionally small while Dart's project generator
-// is brought up to full PCL support. Every entry here runs through the shared
-// Pulumi language-conformance engine, not a Dart-specific test double.
-var initialConformanceTests = []string{
+// passingConformanceTests records the tests that must currently pass. The test
+// runner still registers every test returned by the shared conformance server,
+// so unsupported and newly-added cases remain visible as explicit skips.
+var passingConformanceTests = []string{
 	"l1-empty",
 	"l1-config-types-primitive",
 	"l1-config-types-optional",
@@ -70,6 +70,7 @@ var initialConformanceTests = []string{
 	"l2-logical-name",
 	"l2-parallel-resources",
 	"l2-resource-primitives",
+	"l2-resource-const",
 	"l1-keyword-overlap",
 	"l1-output-array",
 	"l1-output-bool",
@@ -133,6 +134,16 @@ func TestLanguageConformance(t *testing.T) {
 
 	ctx := t.Context()
 	testServerAddress, client := runConformanceServer(t)
+	tests, err := client.GetLanguageTests(ctx, &testingrpc.GetLanguageTestsRequest{})
+	require.NoError(t, err)
+	available := make(map[string]struct{}, len(tests.Tests))
+	for _, name := range tests.Tests {
+		available[name] = struct{}{}
+	}
+	for _, name := range passingConformanceTests {
+		_, registered := available[name]
+		require.True(t, registered, "passing conformance test %q is not registered upstream", name)
+	}
 
 	dart, err := exec.LookPath("dart")
 	require.NoError(t, err, "Dart must be available on PATH")
@@ -159,7 +170,7 @@ func TestLanguageConformance(t *testing.T) {
 		LanguagePluginName:   "dart",
 		LanguagePluginTarget: fmt.Sprintf("127.0.0.1:%d", host.Port),
 		TemporaryDirectory:   rootDir,
-		SnapshotDirectory:    "testdata/conformance",
+		SnapshotDirectory:    "testdata/published",
 		CoreSdkDirectory:     "../packages/pulumi-dart",
 		CoreSdkVersion:       "3.0.0",
 		SnapshotEdits: []*testingrpc.PrepareLanguageTestsRequest_Replacement{
@@ -172,8 +183,15 @@ func TestLanguageConformance(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	for _, name := range initialConformanceTests {
+	passing := make(map[string]struct{}, len(passingConformanceTests))
+	for _, name := range passingConformanceTests {
+		passing[name] = struct{}{}
+	}
+	for _, name := range tests.Tests {
 		t.Run(name, func(t *testing.T) {
+			if _, ok := passing[name]; !ok {
+				t.Skip("Dart conformance support is not implemented yet")
+			}
 			result, err := client.RunLanguageTest(ctx, &testingrpc.RunLanguageTestRequest{
 				Token: prepare.Token,
 				Test:  name,
