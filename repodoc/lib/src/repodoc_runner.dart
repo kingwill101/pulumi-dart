@@ -4,6 +4,7 @@ import 'commands/packages/generate_command.dart';
 import 'commands/packages/remove_command.dart';
 import 'commands/packages/update_command.dart';
 import 'commands/packages/check_workspace_command.dart';
+import 'commands/packages/verify_generated_command.dart';
 import 'commands/integration/matrix_command.dart';
 import 'commands/integration/prewarm_command.dart';
 import 'commands/integration/run_command.dart';
@@ -22,6 +23,7 @@ CommandRunner<int> createRepodocRunner() {
     ..addCommand(PackagesRemoveCommand())
     ..addCommand(PackagesUpdateCommand())
     ..addCommand(PackagesCheckWorkspaceCommand())
+    ..addCommand(PackagesVerifyGeneratedCommand())
     ..addCommand(ParityIntegrationCommand())
     ..addCommand(ParitySdkCommand())
     ..addCommand(IntegrationMatrixCommand())
