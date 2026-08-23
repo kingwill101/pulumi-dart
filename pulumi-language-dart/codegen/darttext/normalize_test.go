@@ -31,3 +31,9 @@ func TestNormalizeDeprecatedProviderReferences(t *testing.T) {
 	require.NotContains(t, actual, "/resources/pulumi:providers:test")
 	require.Contains(t, actual, `"$ref":"#/provider"`)
 }
+
+func TestStringLiteralEscapesInterpolationAndQuotes(t *testing.T) {
+	t.Parallel()
+
+	require.Equal(t, `'can\'t use \$value'`, StringLiteral("can't use $value"))
+}

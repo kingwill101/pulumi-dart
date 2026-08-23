@@ -2,6 +2,7 @@ package darttext
 
 import (
 	"encoding/json"
+	"fmt"
 	"regexp"
 	"strings"
 )
@@ -28,6 +29,40 @@ func SanitizeDocComment(comment string) string {
 		}
 	}
 	return strings.TrimSpace(strings.Join(lines, "\n"))
+}
+
+func StringLiteral(value string) string {
+	var b strings.Builder
+	b.Grow(len(value) + 2)
+	b.WriteByte('\'')
+	for _, character := range value {
+		switch character {
+		case '\\':
+			b.WriteString(`\\`)
+		case '\'':
+			b.WriteString(`\'`)
+		case '$':
+			b.WriteString(`\$`)
+		case '\n':
+			b.WriteString(`\n`)
+		case '\r':
+			b.WriteString(`\r`)
+		case '\t':
+			b.WriteString(`\t`)
+		case '\b':
+			b.WriteString(`\b`)
+		case '\f':
+			b.WriteString(`\f`)
+		default:
+			if character < 0x20 {
+				fmt.Fprintf(&b, `\u%04x`, character)
+				continue
+			}
+			b.WriteRune(character)
+		}
+	}
+	b.WriteByte('\'')
+	return b.String()
 }
 
 func NormalizeDeprecatedProviderReferences(rawSchema string) string {

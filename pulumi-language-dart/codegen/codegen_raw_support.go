@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
 )
 
 func rawRequiredSet(required []string) map[string]struct{} {
@@ -112,37 +114,7 @@ func dartDoubleQuotedStringLiteral(value string) string {
 }
 
 func dartStringLiteral(value string) string {
-	var b strings.Builder
-	b.Grow(len(value) + 2)
-	b.WriteByte('\'')
-	for _, r := range value {
-		switch r {
-		case '\\':
-			b.WriteString(`\\`)
-		case '\'':
-			b.WriteString(`\'`)
-		case '$':
-			b.WriteString(`\$`)
-		case '\n':
-			b.WriteString(`\n`)
-		case '\r':
-			b.WriteString(`\r`)
-		case '\t':
-			b.WriteString(`\t`)
-		case '\b':
-			b.WriteString(`\b`)
-		case '\f':
-			b.WriteString(`\f`)
-		default:
-			if r < 0x20 {
-				fmt.Fprintf(&b, `\u%04x`, r)
-				continue
-			}
-			b.WriteRune(r)
-		}
-	}
-	b.WriteByte('\'')
-	return b.String()
+	return darttext.StringLiteral(value)
 }
 
 func rawRefToken(ref string) string {

@@ -1,8 +1,13 @@
-package codegen
+package lower
 
-import "fmt"
+import (
+	"fmt"
 
-func nullGuardedExpression(sourceExpr, resultExpr string) string {
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
+)
+
+func NullGuardedExpression(sourceExpr, resultExpr string) string {
 	return fmt.Sprintf(
 		"(() { final guardedValue = %s; if (guardedValue == null) return null; return %s; })()",
 		sourceExpr,
@@ -10,25 +15,25 @@ func nullGuardedExpression(sourceExpr, resultExpr string) string {
 	)
 }
 
-func objectClassFromMapExpression(objectClass packageObjectClassSpec, property packagePropertySpec) string {
-	sourceExpr := fmt.Sprintf("map[%s]", dartStringLiteral(property.Name))
-	typeSpec := propertyTypeSpec(property)
+func ObjectFromMapExpression(objectClass schemair.ObjectClass, property schemair.Property) string {
+	sourceExpr := fmt.Sprintf("map[%s]", darttext.StringLiteral(property.Name))
+	typeSpec := PropertyType(property)
 	decodeSourceExpr := sourceExpr
 	switch typeSpec.Kind {
 	case "object", "enum":
 		decodeSourceExpr = sourceExpr + "!"
 	case "array", "map":
-		if typeSpecNeedsDecodeConversion(typeSpecElement(typeSpec)) {
+		if NeedsDecodeConversion(ElementType(typeSpec)) {
 			decodeSourceExpr = sourceExpr + "!"
 		}
 	}
-	decodedExpr := typeSpecDecodeExpression(typeSpec, decodeSourceExpr)
+	decodedExpr := DecodeExpression(typeSpec, decodeSourceExpr)
 	if objectClass.UsesInputTypes {
 		if property.Required {
 			return fmt.Sprintf("pulumi.Input.fromValue(%s)", decodedExpr)
 		}
-		optionalDecodedExpr := typeSpecDecodeExpression(typeSpec, "guardedValue")
-		return nullGuardedExpression(
+		optionalDecodedExpr := DecodeExpression(typeSpec, "guardedValue")
+		return NullGuardedExpression(
 			sourceExpr,
 			fmt.Sprintf("pulumi.Input.fromValue(%s)", optionalDecodedExpr),
 		)
@@ -36,35 +41,35 @@ func objectClassFromMapExpression(objectClass packageObjectClassSpec, property p
 	if property.Required {
 		return decodedExpr
 	}
-	optionalDecodedExpr := typeSpecDecodeExpression(typeSpec, "guardedValue")
-	return nullGuardedExpression(sourceExpr, optionalDecodedExpr)
+	optionalDecodedExpr := DecodeExpression(typeSpec, "guardedValue")
+	return NullGuardedExpression(sourceExpr, optionalDecodedExpr)
 }
 
-func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, property packagePropertySpec, sourceExpr string) string {
-	typeSpec := propertyTypeSpec(property)
+func ObjectToMapExpressionFromSource(objectClass schemair.ObjectClass, property schemair.Property, sourceExpr string) string {
+	typeSpec := PropertyType(property)
 	if objectClass.UsesInputTypes {
-		if typeSpecNeedsEncodeConversion(typeSpec) {
+		if NeedsEncodeConversion(typeSpec) {
 			if property.Required {
 				return fmt.Sprintf(
 					"pulumi.Input.mapInputValue<%s, %s>(%s, (value) => %s)",
 					typeSpec.DartType,
-					typeSpecWireDartType(typeSpec),
+					WireType(typeSpec),
 					sourceExpr,
-					typeSpecEncodeExpression(typeSpec, "value"),
+					EncodeExpression(typeSpec, "value"),
 				)
 			}
 			return fmt.Sprintf(
 				"pulumi.Input.mapOptionalInputValue<%s, %s>(%s, (value) => %s)",
 				typeSpec.DartType,
-				typeSpecWireDartType(typeSpec),
+				WireType(typeSpec),
 				sourceExpr,
-				typeSpecEncodeExpression(typeSpec, "value"),
+				EncodeExpression(typeSpec, "value"),
 			)
 		}
 		return sourceExpr
 	}
 
-	if typeSpecNeedsEncodeConversion(typeSpec) {
+	if NeedsEncodeConversion(typeSpec) {
 		if !property.Required {
 			if typeSpec.Kind == "object" {
 				return fmt.Sprintf("%s?.toMap()", sourceExpr)
@@ -72,41 +77,41 @@ func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, pr
 			if typeSpec.Kind == "enum" {
 				return fmt.Sprintf("%s?.wireValue", sourceExpr)
 			}
-			return nullGuardedExpression(
+			return NullGuardedExpression(
 				sourceExpr,
-				typeSpecEncodeExpression(typeSpec, "guardedValue"),
+				EncodeExpression(typeSpec, "guardedValue"),
 			)
 		}
-		return typeSpecEncodeExpression(typeSpec, sourceExpr)
+		return EncodeExpression(typeSpec, sourceExpr)
 	}
 	return sourceExpr
 }
 
-func objectClassToMapExpression(objectClass packageObjectClassSpec, property packagePropertySpec) string {
-	return objectClassToMapExpressionFromSource(objectClass, property, property.FieldName)
+func ObjectToMapExpression(objectClass schemair.ObjectClass, property schemair.Property) string {
+	return ObjectToMapExpressionFromSource(objectClass, property, property.FieldName)
 }
 
-func resourceOutputValueType(property packagePropertySpec) string {
-	return nullableDartType(propertyBaseDartType(property), property.Required)
+func ResourceOutputValueType(property schemair.Property) string {
+	return NullableType(PropertyBaseType(property), property.Required)
 }
 
-func resourceOutputDecoderExpression(property packagePropertySpec) string {
-	typeSpec := propertyTypeSpec(property)
-	if !typeSpecNeedsDecodeConversion(typeSpec) {
+func ResourceOutputDecoderExpression(property schemair.Property) string {
+	typeSpec := PropertyType(property)
+	if !NeedsDecodeConversion(typeSpec) {
 		return ""
 	}
 
-	decodedExpr := typeSpecDecodeExpression(typeSpec, "guardedValue")
+	decodedExpr := DecodeExpression(typeSpec, "guardedValue")
 	return fmt.Sprintf(
 		"(raw) { final guardedValue = raw; if (guardedValue == null) return null; return %s; }",
 		decodedExpr,
 	)
 }
 
-func resourceRegisterOutputExpression(property packagePropertySpec) string {
-	outputType := resourceOutputValueType(property)
-	propertyName := dartStringLiteral(property.Name)
-	decoderExpr := resourceOutputDecoderExpression(property)
+func ResourceRegisterOutputExpression(property schemair.Property) string {
+	outputType := ResourceOutputValueType(property)
+	propertyName := darttext.StringLiteral(property.Name)
+	decoderExpr := ResourceOutputDecoderExpression(property)
 	if decoderExpr == "" {
 		return fmt.Sprintf("registerOutput<%s>(%s)", outputType, propertyName)
 	}
@@ -118,15 +123,15 @@ func resourceRegisterOutputExpression(property packagePropertySpec) string {
 	)
 }
 
-func configPropertyGetterType(property packagePropertySpec) string {
-	base := propertyBaseDartType(property)
+func ConfigPropertyGetterType(property schemair.Property) string {
+	base := PropertyBaseType(property)
 	if base == "dynamic" {
 		return "dynamic"
 	}
 	return base + "?"
 }
 
-func configTypeRequiresJSONDecode(typeSpec packageTypeSpec) bool {
+func ConfigTypeRequiresJSONDecode(typeSpec schemair.Type) bool {
 	switch typeSpec.Kind {
 	case "array", "map":
 		return true
@@ -137,12 +142,12 @@ func configTypeRequiresJSONDecode(typeSpec packageTypeSpec) bool {
 	}
 }
 
-func configPropertyParseExpression(property packagePropertySpec, rawExpr string) string {
-	typeSpec := propertyTypeSpec(property)
-	if configTypeRequiresJSONDecode(typeSpec) {
-		return nullGuardedExpression(
+func ConfigPropertyParseExpression(property schemair.Property, rawExpr string) string {
+	typeSpec := PropertyType(property)
+	if ConfigTypeRequiresJSONDecode(typeSpec) {
+		return NullGuardedExpression(
 			rawExpr,
-			typeSpecDecodeExpression(typeSpec, "jsonDecode(guardedValue)"),
+			DecodeExpression(typeSpec, "jsonDecode(guardedValue)"),
 		)
 	}
 
@@ -160,7 +165,7 @@ func configPropertyParseExpression(property packagePropertySpec, rawExpr string)
 		case "bool":
 			parseWire = "(guardedValue).toBool()"
 		}
-		return nullGuardedExpression(
+		return NullGuardedExpression(
 			rawExpr,
 			fmt.Sprintf("%s.fromValue(%s as %s)", typeSpec.ReferenceType, parseWire, wireType),
 		)
@@ -180,7 +185,7 @@ func configPropertyParseExpression(property packagePropertySpec, rawExpr string)
 	}
 }
 
-func registerOutputAssignmentTarget(fieldName string, parameterNames ...string) string {
+func RegisterOutputAssignmentTarget(fieldName string, parameterNames ...string) string {
 	for _, parameterName := range parameterNames {
 		if fieldName == parameterName {
 			return "this." + fieldName

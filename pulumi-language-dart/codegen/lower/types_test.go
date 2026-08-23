@@ -38,3 +38,31 @@ func TestObjectPropertyTypeWrapsInputs(t *testing.T) {
 
 	require.Equal(t, "pulumi.Input<String>", ObjectPropertyType(schemair.ObjectClass{UsesInputTypes: true}, property))
 }
+
+func TestConfigPropertyParseExpression(t *testing.T) {
+	t.Parallel()
+
+	property := schemair.Property{
+		TypeSpec: schemair.Type{Kind: "scalar", DartType: "int"},
+	}
+
+	require.Equal(t, "(raw).toInt()", ConfigPropertyParseExpression(property, "raw"))
+}
+
+func TestResourceRegisterOutputExpressionUsesDecoder(t *testing.T) {
+	t.Parallel()
+
+	property := schemair.Property{
+		Name:     "widget",
+		Required: true,
+		TypeSpec: schemair.Type{
+			Kind:          "object",
+			DartType:      "Widget",
+			ReferenceType: "Widget",
+		},
+	}
+
+	actual := ResourceRegisterOutputExpression(property)
+	require.Contains(t, actual, "registerOutput<Widget>('widget', decoder:")
+	require.Contains(t, actual, "Widget.fromMap")
+}
