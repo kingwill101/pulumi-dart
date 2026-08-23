@@ -11,25 +11,42 @@ import (
 )
 
 func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
+	lowerer := programLowerer{names: map[string]string{}, usedNames: map[string]int{}}
 	result := dartProgram{}
 	for _, node := range program.Nodes {
-		output, ok := node.(*pcl.OutputVariable)
-		if !ok {
-			continue
+		switch node := node.(type) {
+		case *pcl.LocalVariable:
+			name := propertyFieldName(node.Name(), lowerer.usedNames)
+			lowerer.names[node.Name()] = name
+			expression, err := lowerer.expression(node.Definition.Value)
+			if err != nil {
+				return dartProgram{}, fmt.Errorf("local %q: %w", node.Name(), err)
+			}
+			result.Locals = append(result.Locals, dartProgramLocal{Name: name, Expression: expression})
+		case *pcl.OutputVariable:
+			expression, err := lowerer.expression(node.Value)
+			if err != nil {
+				return dartProgram{}, fmt.Errorf("output %q: %w", node.LogicalName(), err)
+			}
+			result.Outputs = append(result.Outputs, dartProgramOutput{
+				Name:       node.LogicalName(),
+				Expression: expression,
+			})
 		}
-		expression, err := lowerDartProgramExpression(output.Value)
-		if err != nil {
-			return dartProgram{}, fmt.Errorf("output %q: %w", output.LogicalName(), err)
-		}
-		result.Outputs = append(result.Outputs, dartProgramOutput{
-			Name:       output.LogicalName(),
-			Expression: expression,
-		})
 	}
 	return result, nil
 }
 
 func lowerDartProgramExpression(expression model.Expression) (string, error) {
+	return (programLowerer{names: map[string]string{}, usedNames: map[string]int{}}).expression(expression)
+}
+
+type programLowerer struct {
+	names     map[string]string
+	usedNames map[string]int
+}
+
+func (lowerer programLowerer) expression(expression model.Expression) (string, error) {
 	switch expression := expression.(type) {
 	case *model.LiteralValueExpression:
 		return lowerDartLiteral(expression.Value)
@@ -46,7 +63,7 @@ func lowerDartProgramExpression(expression model.Expression) (string, error) {
 	case *model.TupleConsExpression:
 		items := make([]string, len(expression.Expressions))
 		for index, item := range expression.Expressions {
-			lowered, err := lowerDartProgramExpression(item)
+			lowered, err := lowerer.expression(item)
 			if err != nil {
 				return "", err
 			}
@@ -56,11 +73,11 @@ func lowerDartProgramExpression(expression model.Expression) (string, error) {
 	case *model.ObjectConsExpression:
 		items := make([]string, len(expression.Items))
 		for index, item := range expression.Items {
-			key, err := lowerDartProgramExpression(item.Key)
+			key, err := lowerer.expression(item.Key)
 			if err != nil {
 				return "", fmt.Errorf("object key: %w", err)
 			}
-			value, err := lowerDartProgramExpression(item.Value)
+			value, err := lowerer.expression(item.Value)
 			if err != nil {
 				return "", fmt.Errorf("object value: %w", err)
 			}
@@ -71,27 +88,21 @@ func lowerDartProgramExpression(expression model.Expression) (string, error) {
 		if expression.Operation != hclsyntax.OpNegate {
 			return "", fmt.Errorf("unsupported unary operation")
 		}
-		operand, err := lowerDartProgramExpression(expression.Operand)
+		operand, err := lowerer.expression(expression.Operand)
 		if err != nil {
 			return "", err
 		}
 		return "-" + operand, nil
+	case *model.ScopeTraversalExpression:
+		if len(expression.Traversal) != 1 {
+			return "", fmt.Errorf("unsupported traversal %v", expression.Traversal)
+		}
+		name, ok := lowerer.names[expression.RootName]
+		if !ok {
+			return "", fmt.Errorf("unknown variable %q", expression.RootName)
+		}
+		return name, nil
 	default:
 		return "", fmt.Errorf("unsupported expression %T", expression)
 	}
-}
-
-func lowerDartLiteral(value cty.Value) (string, error) {
-	if value.IsNull() {
-		return "null", nil
-	}
-	switch value.Type() {
-	case cty.Bool:
-		return fmt.Sprintf("%t", value.True()), nil
-	case cty.String:
-		return dartStringLiteral(value.AsString()), nil
-	case cty.Number:
-		return value.AsBigFloat().Text('g', -1), nil
-	}
-	return "", fmt.Errorf("unsupported literal type %s", value.Type().FriendlyName())
 }

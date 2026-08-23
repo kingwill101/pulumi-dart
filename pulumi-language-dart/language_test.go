@@ -39,6 +39,7 @@ import (
 // Pulumi language-conformance engine, not a Dart-specific test double.
 var initialConformanceTests = []string{
 	"l1-empty",
+	"l1-keyword-overlap",
 	"l1-output-array",
 	"l1-output-bool",
 	"l1-output-map",
