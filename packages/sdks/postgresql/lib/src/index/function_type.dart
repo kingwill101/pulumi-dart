@@ -101,6 +101,26 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_function" "increment" {
+///   name = "increment"
+///   args {
+///     name = "i"
+///     type = "integer"
+///   }
+///   returns  = "integer"
+///   language = "plpgsql"
+///   body     = "BEGIN\n    RETURN i + 1;\nEND;\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +130,8 @@ import 'function_state.dart';
 /// import com.pulumi.postgresql.Function;
 /// import com.pulumi.postgresql.FunctionArgs;
 /// import com.pulumi.postgresql.inputs.FunctionArgArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,14 +181,15 @@ import 'function_state.dart';
 ///
 /// ## Import
 ///
-/// It is possible to import a `postgresql_function` resource with the following
+/// It is possible to import a `postgresql.Function` resource with the following
 /// command:
 ///
 /// ```sh
 /// $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
 /// ```
-/// Where `my_database` is the name of the database containing the schema,
-/// `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
+///
+/// Where `myDatabase` is the name of the database containing the schema,
+/// `mySchema` is the name of the schema in the PostgreSQL database, `myFunctionName` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
 /// `postgresql_schema.function_foo` is the name of the resource whose state will be
 /// populated as a result of the command.
 class FunctionType extends pulumi.CustomResource {

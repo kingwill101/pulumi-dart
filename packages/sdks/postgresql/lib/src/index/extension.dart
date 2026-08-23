@@ -56,6 +56,19 @@ import 'extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_extension" "my_extension" {
+///   name = "pg_trgm"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'extension_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.Extension;
 /// import com.pulumi.postgresql.ExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -98,9 +111,7 @@ import 'extension_state.dart';
 ///
 /// PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
 ///
-/// ```sh
-/// $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
-/// ```
+/// `terraform import postgresql_extension.uuid_ossp example-database.uuid-ossp`
 class Extension extends pulumi.CustomResource {
   /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
   late final pulumi.Output<bool?> createCascade;

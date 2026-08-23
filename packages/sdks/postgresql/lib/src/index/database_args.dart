@@ -22,15 +22,32 @@ class DatabaseArgs {
   /// How many concurrent connections can be
   /// established to this database. `-1` (the default) means no limit.
   final pulumi.Input<int>? connectionLimit;
-  /// Character set encoding to use in the new database
+  /// Character set encoding to use in the database.
+  /// Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+  /// number.  If unset or set to an empty string the default encoding is set to
+  /// `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+  /// template database.  Changing this value will force the creation of a new
+  /// resource as this value can only be changed when a database is created.
   final pulumi.Input<String>? encoding;
   /// If `true`, then this database can be cloned by any
   /// user with `CREATEDB` privileges; if `false` (the default), then only
   /// superusers or the owner of the database can clone it.
   final pulumi.Input<bool>? isTemplate;
-  /// Collation order (LC_COLLATE) to use in the new database
+  /// Collation order (`LC_COLLATE`) to use in the
+  /// database.  This affects the sort order applied to strings, e.g. in queries
+  /// with `ORDER BY`, as well as the order used in indexes on text columns. If
+  /// unset or set to an empty string the default collation is set to `C`.  If set
+  /// to `DEFAULT` Terraform will use the same collation order as the specified
+  /// `template` database.  Changing this value will force the creation of a new
+  /// resource as this value can only be changed when a database is created.
   final pulumi.Input<String>? lcCollate;
-  /// Character classification (LC_CTYPE) to use in the new database
+  /// Character classification (`LC_CTYPE`) to use in the
+  /// database. This affects the categorization of characters, e.g. lower, upper and
+  /// digit. If unset or set to an empty string the default character classification
+  /// is set to `C`.  If set to `DEFAULT` Terraform will use the character
+  /// classification of the specified `template` database.  Changing this value will
+  /// force the creation of a new resource as this value can only be changed when a
+  /// database is created.
   final pulumi.Input<String>? lcCtype;
   /// The name of the database. Must be unique on the PostgreSQL
   /// server instance where it is configured.
@@ -46,21 +63,25 @@ class DatabaseArgs {
   /// tablespace.  This tablespace will be the default tablespace used for objects
   /// created in this database.
   final pulumi.Input<String>? tablespaceName;
-  /// The name of the template from which to create the new database
+  /// The name of the template database from which to create
+  /// the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
+  /// the default in Terraform is `template0`, not `template1`.  Changing this value
+  /// will force the creation of a new resource as this value can only be changed
+  /// when a database is created.
   final pulumi.Input<String>? template;
 
   /// Creates a new [DatabaseArgs].
   /// [allowConnections] If `false` then no one can connect to this
   /// [alterObjectOwnership] If `true`, the change of the database
   /// [connectionLimit] How many concurrent connections can be
-  /// [encoding] Character set encoding to use in the new database
+  /// [encoding] Character set encoding to use in the database.
   /// [isTemplate] If `true`, then this database can be cloned by any
-  /// [lcCollate] Collation order (LC_COLLATE) to use in the new database
-  /// [lcCtype] Character classification (LC_CTYPE) to use in the new database
+  /// [lcCollate] Collation order (`LC_COLLATE`) to use in the
+  /// [lcCtype] Character classification (`LC_CTYPE`) to use in the
   /// [name] The name of the database. Must be unique on the PostgreSQL
   /// [owner] The role name of the user who will own the database, or
   /// [tablespaceName] The name of the tablespace that will be
-  /// [template] The name of the template from which to create the new database
+  /// [template] The name of the template database from which to create
   const DatabaseArgs({
     this.allowConnections,
     this.alterObjectOwnership,
@@ -107,4 +128,3 @@ class DatabaseArgs {
     );
   }
 }
-

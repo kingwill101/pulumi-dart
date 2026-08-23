@@ -107,6 +107,29 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_extension" "ext_postgres_fdw" {
+///   name = "postgres_fdw"
+/// }
+/// resource "postgresql_server" "myserver_postgres" {
+///   depends_on  = [postgresql_extension.ext_postgres_fdw]
+///   server_name = "myserver_postgres"
+///   fdw_name    = "postgres_fdw"
+///   options = {
+///     "host"   = "foo"
+///     "dbname" = "foodb"
+///     "port"   = "5432"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +141,8 @@ import 'server_state.dart';
 /// import com.pulumi.postgresql.Server;
 /// import com.pulumi.postgresql.ServerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,6 +275,24 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_extension" "ext_file_fdw" {
+///   name = "file_fdw"
+/// }
+/// resource "postgresql_server" "myserver_file" {
+///   depends_on  = [postgresql_extension.ext_file_fdw]
+///   server_name = "myserver_file"
+///   fdw_name    = "file_fdw"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -263,8 +304,8 @@ import 'server_state.dart';
 /// import com.pulumi.postgresql.Server;
 /// import com.pulumi.postgresql.ServerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

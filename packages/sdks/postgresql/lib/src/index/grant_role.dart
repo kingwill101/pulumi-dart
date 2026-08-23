@@ -69,6 +69,21 @@ import 'grant_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_grantrole" "grant_root" {
+///   role              = "root"
+///   grant_role        = "application"
+///   with_admin_option = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'grant_role_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.GrantRole;
 /// import com.pulumi.postgresql.GrantRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +195,23 @@ import 'grant_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_role" "bob" {
+///   name = "bob"
+/// }
+/// resource "postgresql_grantrole" "bob_admin" {
+///   role       = "bob"
+///   grant_role = "admin"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +222,8 @@ import 'grant_role_state.dart';
 /// import com.pulumi.postgresql.RoleArgs;
 /// import com.pulumi.postgresql.GrantRole;
 /// import com.pulumi.postgresql.GrantRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

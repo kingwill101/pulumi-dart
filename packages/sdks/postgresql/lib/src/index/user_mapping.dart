@@ -157,6 +157,40 @@ import 'user_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_extension" "ext_postgres_fdw" {
+///   name = "postgres_fdw"
+/// }
+/// resource "postgresql_server" "myserver_postgres" {
+///   depends_on  = [postgresql_extension.ext_postgres_fdw]
+///   server_name = "myserver_postgres"
+///   fdw_name    = "postgres_fdw"
+///   options = {
+///     "host"   = "foo"
+///     "dbname" = "foodb"
+///     "port"   = "5432"
+///   }
+/// }
+/// resource "postgresql_role" "remote" {
+///   name = "remote"
+/// }
+/// resource "postgresql_usermapping" "remote" {
+///   server_name = postgresql_server.myserver_postgres.server_name
+///   user_name   = postgresql_role.remote.name
+///   options = {
+///     "user"     = "admin"
+///     "password" = "pass"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +206,8 @@ import 'user_mapping_state.dart';
 /// import com.pulumi.postgresql.UserMapping;
 /// import com.pulumi.postgresql.UserMappingArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

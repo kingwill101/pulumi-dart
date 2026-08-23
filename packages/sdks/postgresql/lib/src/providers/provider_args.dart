@@ -8,7 +8,7 @@ import '../index/provider_clientcert.dart';
 /// {@endtemplate}
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
-  /// Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+  /// Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
   final pulumi.Input<bool>? awsRdsIamAuth;
   /// AWS profile to use for IAM auth
   final pulumi.Input<String>? awsRdsIamProfile;
@@ -18,6 +18,7 @@ class ProviderArgs {
   final pulumi.Input<String>? awsRdsIamRegion;
   /// Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
   final pulumi.Input<bool>? azureIdentityAuth;
+  /// MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
   final pulumi.Input<String>? azureTenantId;
   /// SSL client certificate if required by the database.
   final pulumi.Input<ProviderClientcert>? clientcert;
@@ -51,12 +52,12 @@ class ProviderArgs {
   final pulumi.Input<String>? username;
 
   /// Creates a new [ProviderArgs].
-  /// [awsRdsIamAuth] Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+  /// [awsRdsIamAuth] Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
   /// [awsRdsIamProfile] AWS profile to use for IAM auth
   /// [awsRdsIamProviderRoleArn] AWS IAM role to assume for IAM auth
   /// [awsRdsIamRegion] AWS region to use for IAM auth
   /// [azureIdentityAuth] Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
-  /// [azureTenantId] Optional.
+  /// [azureTenantId] MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
   /// [clientcert] SSL client certificate if required by the database.
   /// [connectTimeout] Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
   /// [database] The name of the database to connect to in order to connect to (defaults to `postgres`).
@@ -152,4 +153,3 @@ class ProviderArgs {
     );
   }
 }
-

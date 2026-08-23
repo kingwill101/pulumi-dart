@@ -61,6 +61,19 @@ import 'get_tables_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// data "postgresql_getschemas" "mySchemas" {
+///   database = "my_database"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +82,8 @@ import 'get_tables_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.PostgresqlFunctions;
 /// import com.pulumi.postgresql.inputs.GetSchemasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +180,19 @@ Future<GetSchemasResult> getSchemas(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// data "postgresql_getsequences" "mySequences" {
+///   database = "my_database"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +201,8 @@ Future<GetSchemasResult> getSchemas(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.PostgresqlFunctions;
 /// import com.pulumi.postgresql.inputs.GetSequencesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,6 +299,19 @@ Future<GetSequencesResult> getSequences(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// data "postgresql_gettables" "myTables" {
+///   database = "my_database"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -281,8 +320,8 @@ Future<GetSequencesResult> getSequences(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.PostgresqlFunctions;
 /// import com.pulumi.postgresql.inputs.GetTablesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
