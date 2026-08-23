@@ -22,6 +22,13 @@ Input<T>? _normalizeInputValue<T>(Object? value) {
 /// A map of serialized resource arguments keyed by Pulumi property name.
 typedef Inputs = Map<String, Input<dynamic>>;
 
+/// Wraps a strongly typed plain value as a Pulumi [Input].
+///
+/// This is the Dart equivalent of typed literal helpers such as
+/// `pulumi.String("value")` in the Pulumi Go SDK. Existing [Output] values can
+/// already be passed directly anywhere an [Input] is required.
+Input<T> input<T>(T value) => Input.fromValue(value);
+
 /// {@template pulumi.input.summary}
 /// Represents a Pulumi resource/function input.
 ///

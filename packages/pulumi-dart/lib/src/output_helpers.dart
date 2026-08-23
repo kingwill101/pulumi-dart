@@ -40,6 +40,16 @@ Output<dynamic> secret(dynamic value) {
 /// Removes the secret bit from an output.
 Output<T> unsecret<T>(Output<T> value) => Output.unsecret(value);
 
+/// Concatenates typed inputs after resolving their values.
+///
+/// Dependency and secret metadata from every part is preserved in the returned
+/// output.
+Output<String> concatInputs(Iterable<Input<Object?>> parts) {
+  return Output.all(
+    parts.map((part) => part.toOutput()),
+  ).apply((values) => values.join());
+}
+
 /// JSON-encodes the resolved value of an output-like input.
 Output<String> jsonStringify(dynamic value) {
   return output(value).apply((resolved) => jsonEncode(resolved));
