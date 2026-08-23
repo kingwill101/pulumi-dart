@@ -12,6 +12,7 @@ import 'commands/parity/integration_command.dart';
 import 'commands/parity/sdk_command.dart';
 import 'commands/schema/check_command.dart';
 import 'commands/tools/check_command.dart';
+import 'commands/upstream/check_command.dart';
 
 CommandRunner<int> createRepodocRunner() {
   return CommandRunner<int>(
@@ -29,7 +30,8 @@ CommandRunner<int> createRepodocRunner() {
     ..addCommand(IntegrationMatrixCommand())
     ..addCommand(IntegrationRunCommand())
     ..addCommand(IntegrationPrewarmCommand())
-    ..addCommand(ToolsCheckCommand());
+    ..addCommand(ToolsCheckCommand())
+    ..addCommand(UpstreamCheckCommand());
 }
 
 Future<int> runRepodoc(List<String> arguments) async {

@@ -7,6 +7,7 @@ This guide is for contributors working on the language host, core SDK, and provi
 - Go
 - Dart SDK
 - Pulumi CLI
+- GitHub CLI (`gh`), authenticated for `repodoc upstream:check`
 - `jq`
 - `curl`
 - `task` (Taskfile runner)
@@ -26,6 +27,7 @@ Use these as the source of truth for contributor workflows:
 - `packages/sdks/schema_sources.json`: provider schema sources and local mapping
 - `packages/sdk_dependency_registry.yaml`: cross-provider dependency mapping for generated pubspecs
 - `repodoc schema:check`: upstream schema drift detection
+- `repodoc upstream:check`: upstream runtime, SDK, codegen, and overlay review
 - `scripts/install-pulumi-language-dart.sh`: install script for language host releases
 - `website/README.md`: docs site development commands
 
@@ -69,6 +71,17 @@ repodoc schema:check --fail-on-drift
 # Machine-readable output for automation
 repodoc schema:check --provider aws --json --pretty
 ```
+
+### Audit Upstream SDK Work
+
+```bash
+repodoc upstream:check --core-only
+repodoc upstream:check --provider aws
+repodoc upstream:check --details
+```
+
+See `docs/upstream-maintenance.md` for review boundaries and the current parity
+backlog.
 
 ## Pull Request Checklist
 
