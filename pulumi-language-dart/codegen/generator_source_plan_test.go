@@ -41,3 +41,16 @@ func TestSourcePlanSortsResourceTokens(t *testing.T) {
 
 	require.Equal(t, []string{"sample:index:Alpha", "sample:index:Zebra"}, plan.resourceTokens)
 }
+
+func TestSourcePlanResultNormalizesTerminalNewline(t *testing.T) {
+	t.Parallel()
+
+	plan := newSourcePlan(&packageSchema{}, "example", "example")
+	plan.files["one.dart"] = []byte("class One {}\n\n")
+	plan.files["two.dart"] = []byte("class Two {}\r\n")
+
+	files, _ := plan.result()
+
+	require.Equal(t, "class One {}\n", string(files["one.dart"]))
+	require.Equal(t, "class Two {}\n", string(files["two.dart"]))
+}

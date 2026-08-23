@@ -1,6 +1,9 @@
 package codegen
 
-import "sort"
+import (
+	"bytes"
+	"sort"
+)
 
 type sourcePlan struct {
 	spec             *packageSchema
@@ -29,6 +32,9 @@ func newSourcePlan(spec *packageSchema, packageName, sdkLibraryName string) *sou
 }
 
 func (p *sourcePlan) result() (map[string][]byte, map[string][]moduleAliasSpec) {
+	for path, content := range p.files {
+		p.files[path] = normalizeGeneratedSource(content)
+	}
 	ordered := map[string][]moduleAliasSpec{}
 	for modulePath, symbolsByCanonical := range p.symbols.symbols {
 		if len(symbolsByCanonical) == 0 {
@@ -42,4 +48,8 @@ func (p *sourcePlan) result() (map[string][]byte, map[string][]moduleAliasSpec) 
 		ordered[modulePath] = symbols
 	}
 	return p.files, ordered
+}
+
+func normalizeGeneratedSource(content []byte) []byte {
+	return append(bytes.TrimRight(content, "\r\n"), '\n')
 }
