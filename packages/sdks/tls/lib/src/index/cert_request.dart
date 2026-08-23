@@ -3,6 +3,16 @@ import 'cert_request_args.dart';
 import 'cert_request_state.dart';
 import 'cert_request_subject.dart';
 
+/// Creates a Certificate Signing Request (CSR) in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
+///
+/// PEM is the typical format used to request a certificate from a Certificate Authority (CA).
+///
+/// This resource is intended to be used in conjunction with a Terraform provider for a particular certificate authority in order to provision a new certificate.
+///
+/// This is a *logical resource*, so it contributes only to the current Terraform
+/// state and does not create any external managed resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -88,6 +98,26 @@ import 'cert_request_subject.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     std = {
+///       source = "pulumi/std"
+///     }
+///     tls = {
+///       source = "pulumi/tls"
+///     }
+///   }
+/// }
+///
+/// resource "tls_certrequest" "example" {
+///   private_key_pem = file("private_key.pem")
+///   subject = {
+///     common_name  = "example.com"
+///     organization = "ACME Examples, Inc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +129,8 @@ import 'cert_request_subject.dart';
 /// import com.pulumi.tls.inputs.CertRequestSubjectArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,7 +177,7 @@ class CertRequest extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> dnsNames;
   /// List of IP addresses for which a certificate is being requested (i.e. certificate subjects).
   late final pulumi.Output<List<String>?> ipAddresses;
-  /// Name of the algorithm used when generating the private key provided in `private_key_pem`.
+  /// Name of the algorithm used when generating the private key provided in `privateKeyPem`.
   late final pulumi.Output<String> keyAlgorithm;
   /// Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. This can be read from a separate file using the `file` interpolation function.
   late final pulumi.Output<String> privateKeyPem;

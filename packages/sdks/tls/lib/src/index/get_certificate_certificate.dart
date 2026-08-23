@@ -9,7 +9,7 @@ class GetCertificateCertificate {
   final pulumi.Input<bool> isCa;
   /// Who verified and signed the certificate, roughly following [RFC2253](https://tools.ietf.org/html/rfc2253).
   final pulumi.Input<String> issuer;
-  /// The maximum number of intermediate certificates that can follow this certificate in a valid certification path. If `is_ca` is `false`, this value is `-1`.
+  /// The maximum number of intermediate certificates that can follow this certificate in a valid certification path. If `isCa` is `false`, this value is `-1`.
   final pulumi.Input<int> maxPathLength;
   /// The time until which the certificate is invalid, as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
   final pulumi.Input<String> notAfter;
@@ -33,7 +33,7 @@ class GetCertificateCertificate {
   /// [certPem] Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
   /// [isCa] `true` if the certificate is of a CA (Certificate Authority).
   /// [issuer] Who verified and signed the certificate, roughly following [RFC2253](https://tools.ietf.org/html/rfc2253).
-  /// [maxPathLength] The maximum number of intermediate certificates that can follow this certificate in a valid certification path. If `is_ca` is `false`, this value is `-1`.
+  /// [maxPathLength] The maximum number of intermediate certificates that can follow this certificate in a valid certification path. If `isCa` is `false`, this value is `-1`.
   /// [notAfter] The time until which the certificate is invalid, as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
   /// [notBefore] The time after which the certificate is valid, as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
   /// [publicKeyAlgorithm] The key algorithm used to create the certificate.
@@ -91,4 +91,3 @@ class GetCertificateCertificate {
     );
   }
 }
-

@@ -12,7 +12,7 @@ dependencies:
   pulumi_azuread: 6.10.0
   pulumi_kubernetes: 4.33.0
   pulumi_random: 4.21.1
-  pulumi_tls: 5.3.0
+  pulumi_tls: 5.5.1
 
 dev_dependencies:
   lints: ^6.1.0
