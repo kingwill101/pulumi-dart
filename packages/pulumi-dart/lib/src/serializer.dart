@@ -25,12 +25,16 @@ class Serializer {
   final Set<Resource> dependentResources = {};
   final bool _excessiveDebugOutput;
   final bool _collapseUnknownCollections;
+  final bool _excludeResourceReferencesFromDependencies;
 
   Serializer({
     bool excessiveDebugOutput = false,
     bool collapseUnknownCollections = true,
+    bool excludeResourceReferencesFromDependencies = false,
   }) : _excessiveDebugOutput = excessiveDebugOutput,
-       _collapseUnknownCollections = collapseUnknownCollections;
+       _collapseUnknownCollections = collapseUnknownCollections,
+       _excludeResourceReferencesFromDependencies =
+           excludeResourceReferencesFromDependencies;
 
   /// Serializes [prop] in context [ctx].
   ///
@@ -111,6 +115,8 @@ class Serializer {
         final valueSerializer = Serializer(
           excessiveDebugOutput: _excessiveDebugOutput,
           collapseUnknownCollections: _collapseUnknownCollections,
+          excludeResourceReferencesFromDependencies:
+              _excludeResourceReferencesFromDependencies,
         );
         final value = isKnown
             ? await valueSerializer._serializeAsync(
@@ -209,9 +215,20 @@ class Serializer {
         print('Serialize property[$ctx]: Encountered Resource');
       }
 
-      dependentResources.add(prop);
+      final excludeReferenceDependency =
+          _excludeResourceReferencesFromDependencies && keepResources;
+      if (!excludeReferenceDependency) {
+        dependentResources.add(prop);
+      }
 
-      var id = await _serializeAsync(
+      final referenceSerializer = excludeReferenceDependency
+          ? Serializer(
+              excessiveDebugOutput: _excessiveDebugOutput,
+              collapseUnknownCollections: _collapseUnknownCollections,
+              excludeResourceReferencesFromDependencies: true,
+            )
+          : this;
+      var id = await referenceSerializer._serializeAsync(
         '$ctx.id',
         prop.id,
         keepResources,
@@ -219,7 +236,7 @@ class Serializer {
         seenSet,
       );
       if (keepResources) {
-        var urn = await _serializeAsync(
+        var urn = await referenceSerializer._serializeAsync(
           '$ctx.urn',
           prop.urn,
           keepResources,
@@ -241,9 +258,20 @@ class Serializer {
         print('Serialize property[$ctx]: Encountered Resource');
       }
 
-      dependentResources.add(prop);
+      final excludeReferenceDependency =
+          _excludeResourceReferencesFromDependencies && keepResources;
+      if (!excludeReferenceDependency) {
+        dependentResources.add(prop);
+      }
 
-      var urn = await _serializeAsync(
+      final referenceSerializer = excludeReferenceDependency
+          ? Serializer(
+              excessiveDebugOutput: _excessiveDebugOutput,
+              collapseUnknownCollections: _collapseUnknownCollections,
+              excludeResourceReferencesFromDependencies: true,
+            )
+          : this;
+      var urn = await referenceSerializer._serializeAsync(
         '$ctx.urn',
         prop.urn,
         keepResources,

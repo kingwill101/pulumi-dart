@@ -473,7 +473,10 @@ class DeploymentImpl extends Deployment
       }
 
       for (final entry in args.entries) {
-        final serializer = Serializer(collapseUnknownCollections: !remote);
+        final serializer = Serializer(
+          collapseUnknownCollections: !remote,
+          excludeResourceReferencesFromDependencies: remote,
+        );
         final serialized = await serializer.serializeAsync(
           'resource:${resource.getResourceName()}.${entry.key}',
           entry.value,

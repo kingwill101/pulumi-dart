@@ -189,6 +189,30 @@ void main() {
       },
     );
 
+    test(
+      'resource references can be excluded from dependency tracking',
+      () async {
+        final custom = MockCustomResource();
+        when(custom.getResourceType()).thenReturn('test:index:Custom');
+        when(custom.getResourceName()).thenReturn('custom');
+        when(custom.urn).thenReturn(
+          Output.create('urn:pulumi:stack::project::test:index:Custom::custom'),
+        );
+        when(custom.id).thenReturn(Output.create('custom-id'));
+
+        final serializer = Serializer(
+          excludeResourceReferencesFromDependencies: true,
+        );
+        final result = await serializer.serializeAsync('test', {
+          'resource': custom,
+          'nested': [custom],
+        }, true);
+
+        expect(result, isA<Map<String, dynamic>>());
+        expect(serializer.dependentResources, isEmpty);
+      },
+    );
+
     test('Serialize unknown asset/archive type throws error', () async {
       await expectLater(
         serializer.serializeAsync('test', _UnknownAssetOrArchive(), false),

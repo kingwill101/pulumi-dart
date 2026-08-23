@@ -27,6 +27,7 @@ func (lowerer programLowerer) providerResourceReferenceExpression(
 		if diagnostics.HasErrors() {
 			pkg = defaultPackage
 		}
+		pkg = dartPackageNameForReference(pkg, resource.PackageReference)
 		module, className, _ := programProviderResourceName(resource)
 		lowerer.imports[pkg+"\x00"+module] = dartProgramImport{Package: pkg, Module: module}
 		lowerer.addResourceReference(typ.Token, pkg, module, className)
