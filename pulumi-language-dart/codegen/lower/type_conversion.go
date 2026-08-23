@@ -11,7 +11,10 @@ func NeedsDecodeConversion(typeSpec schemair.Type) bool {
 	case "enum", "object":
 		return typeSpec.ReferenceType != ""
 	case "array", "map":
-		return NeedsDecodeConversion(ElementType(typeSpec))
+		// Provider RPC payloads use runtime-typed List/Map objects. Decode every
+		// collection layer so nested generic types are rebuilt instead of relying
+		// on a shallow cast at the outer boundary.
+		return true
 	default:
 		return false
 	}

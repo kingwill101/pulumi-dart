@@ -38,7 +38,11 @@ func providerEnumName(defaultPackage string, enum *schema.EnumType) (string, str
 	}
 	module := rootProgramModule(tokenModulePath(enum.Token))
 	className := sanitizeTypeName(toDartClassName(parts[2]))
-	if definition, err := enum.PackageReference.Definition(); err == nil && definition != nil {
+	if enum.PackageReference != nil {
+		definition, err := enum.PackageReference.Definition()
+		if err != nil || definition == nil {
+			return pkg, module, className
+		}
 		named, _, _ := reserveBoundNamedTypes(definition, map[string]map[string]int{})
 		if resolved, ok := named[enum.Token]; ok {
 			className = resolved.Name

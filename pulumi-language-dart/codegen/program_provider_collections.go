@@ -99,6 +99,10 @@ func (lowerer programLowerer) providerSchemaValueDartType(defaultPackage string,
 		pkg, module, className := providerEnumName(defaultPackage, typ)
 		lowerer.imports[pkg+"\x00"+module] = dartProgramImport{Package: pkg, Module: module}
 		return programModuleAlias(pkg, module) + "." + className
+	case *schema.ObjectType:
+		pkg, module, className := providerObjectTypeName(defaultPackage, typ)
+		lowerer.imports[pkg+"\x00"+module] = dartProgramImport{Package: pkg, Module: module}
+		return programModuleAlias(pkg, module) + "." + className
 	case *schema.ArrayType:
 		return "List<" + lowerer.providerSchemaValueDartType(defaultPackage, typ.ElementType) + ">"
 	case *schema.MapType:

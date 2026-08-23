@@ -50,7 +50,19 @@ func providerObjectTypeName(defaultPackage string, objectType *schema.ObjectType
 	if pkg == "" {
 		pkg = defaultPackage
 	}
-	return pkg, parts[1], sanitizeTypeName(toDartClassName(parts[2]))
+	module := rootProgramModule(tokenModulePath(objectType.Token))
+	className := sanitizeTypeName(toDartClassName(parts[2]))
+	if objectType.PackageReference != nil {
+		definition, err := objectType.PackageReference.Definition()
+		if err != nil || definition == nil {
+			return pkg, module, className
+		}
+		named, _, _ := reserveBoundNamedTypes(definition, map[string]map[string]int{})
+		if resolved, ok := named[objectType.Token]; ok {
+			className = resolved.Name
+		}
+	}
+	return pkg, module, className
 }
 
 func staticProviderObjectKey(expression model.Expression) (string, error) {

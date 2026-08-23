@@ -44,6 +44,8 @@ func TestObjectPropertyTypeWrapsInputs(t *testing.T) {
 	}
 
 	require.Equal(t, "pulumi.Input<String>", ObjectPropertyType(schemair.ObjectClass{UsesInputTypes: true}, property))
+	property.Required = false
+	require.Equal(t, "pulumi.Input<String?>?", ObjectPropertyType(schemair.ObjectClass{UsesInputTypes: true}, property))
 }
 
 func TestConfigPropertyParseExpression(t *testing.T) {

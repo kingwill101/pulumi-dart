@@ -3,7 +3,6 @@ package codegen
 import (
 	"fmt"
 
-	"github.com/hashicorp/hcl/v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
 )
@@ -17,10 +16,10 @@ func (lowerer programLowerer) scopeTraversalExpression(expression *model.ScopeTr
 		return "", fmt.Errorf("unknown variable %q", expression.RootName)
 	}
 	if _, resourceRoot := expression.Parts[0].(*pcl.Resource); resourceRoot {
-		return lowerDartTraversal(name, expression.Traversal[1:], true)
+		return lowerResourceOutputTraversal(name, expression)
 	}
 	if _, resourceRoot := expression.Parts[0].(*pcl.ReadResource); resourceRoot {
-		return lowerDartTraversal(name, expression.Traversal[1:], true)
+		return lowerResourceOutputTraversal(name, expression)
 	}
 	rootType := model.GetTraversableType(expression.Parts[0])
 	if len(expression.Traversal) > 1 && model.ContainsOutputs(rootType) {
@@ -75,27 +74,4 @@ func (lowerer programLowerer) relativeTraversalExpression(
 		return "pulumi.output(" + source + ")" + apply + "((value) => " + traversed + ")", nil
 	}
 	return lowerDartTraversal(source, expression.Traversal, false)
-}
-
-func lowerDartTraversal(source string, traversal hcl.Traversal, properties bool) (string, error) {
-	result := source
-	for _, traverser := range traversal {
-		switch traverser := traverser.(type) {
-		case hcl.TraverseAttr:
-			if properties {
-				result += "." + propertyFieldName(traverser.Name, map[string]int{})
-			} else {
-				result = "pulumi.indexValue(" + result + ", " + dartStringLiteral(traverser.Name) + ")"
-			}
-		case hcl.TraverseIndex:
-			key, err := lowerDartLiteral(traverser.Key)
-			if err != nil {
-				return "", err
-			}
-			result = "pulumi.indexValue(" + result + ", " + key + ")"
-		default:
-			return "", fmt.Errorf("unsupported traverser %T", traverser)
-		}
-	}
-	return result, nil
 }
