@@ -113,7 +113,7 @@ func TestInstallDependenciesUsesProgramDirectoryFromInfo(t *testing.T) {
 	traceBytes, err := os.ReadFile(tracePath)
 	require.NoError(t, err)
 	trace := string(traceBytes)
-	assert.Contains(t, trace, "PWD="+testDir)
+	assertTraceWorkingDirectory(t, trace, "PWD", testDir)
 	assert.Contains(t, trace, "ARGS=pub get")
 	assert.Contains(t, server.stdout(), "Installing dependencies...")
 	assert.Contains(t, server.stdout(), "Finished installing dependencies")
