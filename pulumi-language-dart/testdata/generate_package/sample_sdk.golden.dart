@@ -104,6 +104,17 @@ Future<GetWidgetDetailsResult> getWidgetDetails(
   return GetWidgetDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetWidgetDetailsResult> getWidgetDetailsOutput(
+  GetWidgetDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'sample:index:getWidgetDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWidgetDetailsResult.fromMap);
+}
+
 // FILE: index/get_widget_details_args.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
@@ -143,28 +154,28 @@ import 'widget_mode.dart';
 
 /// Result data returned by getWidgetDetails.
 class GetWidgetDetailsResult {
-  final WidgetMetadata metadata;
-  final WidgetMode mode;
+  final WidgetMetadata? metadata;
+  final WidgetMode? mode;
 
   /// Creates a new [GetWidgetDetailsResult].
-  /// [metadata] Required.
-  /// [mode] Required.
+  /// [metadata] Optional.
+  /// [mode] Optional.
   const GetWidgetDetailsResult({
-    required this.metadata,
-    required this.mode,
+    this.metadata,
+    this.mode,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': metadata.toMap(),
-      'mode': mode.wireValue,
+      'metadata': ?metadata?.toMap(),
+      'mode': ?mode?.wireValue,
     };
   }
 
   factory GetWidgetDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsResult(
-      metadata: WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
-      mode: WidgetMode.fromValue(map['mode']! as String),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return WidgetMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return WidgetMode.fromValue(guardedValue as String); })(),
     );
   }
 }
@@ -190,8 +201,21 @@ class Widget extends pulumi.CustomResource {
           'sample:index:Widget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.2.3').merge(options),
         ) {
+    arn = registerOutput<String>('arn');
+    mode = registerOutput<WidgetMode>('mode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetMode.fromValue(guardedValue as String); });
+  }
+
+  /// Creates a typed reference to an existing [Widget] resource.
+  Widget.reference(String urn)
+    : super(
+        'sample:index:Widget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     mode = registerOutput<WidgetMode>('mode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetMode.fromValue(guardedValue as String); });
   }
@@ -303,6 +327,6 @@ class ProviderProvider extends pulumi.ProviderResource {
           'sample',
           name,
           const <String, pulumi.Input<dynamic>>{},
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.2.3').merge(options),
         );
 }
