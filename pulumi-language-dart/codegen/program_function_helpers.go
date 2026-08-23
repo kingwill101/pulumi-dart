@@ -3,6 +3,8 @@ package codegen
 import (
 	"fmt"
 	"strings"
+
+	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
 )
 
 func noArgumentBuiltin(name string, arguments []string, result string) (string, error) {
@@ -10,6 +12,16 @@ func noArgumentBuiltin(name string, arguments []string, result string) (string, 
 		return "", fmt.Errorf("%s expects no arguments", name)
 	}
 	return result, nil
+}
+
+func lowerOutputAwareBuiltin(
+	expression *model.FunctionCallExpression, arguments []string, function string,
+) (string, error) {
+	value, err := oneArgumentBuiltin(expression.Name, arguments, function)
+	if err != nil || !model.ContainsOutputs(expression.Args[0].Type()) {
+		return value, err
+	}
+	return "pulumi.output(" + arguments[0] + ").apply<dynamic>((value) => " + function + "(value))", nil
 }
 
 func oneArgumentBuiltin(name string, arguments []string, function string) (string, error) {

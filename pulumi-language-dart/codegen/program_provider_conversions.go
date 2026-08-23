@@ -18,6 +18,7 @@ func providerPrimitiveConversion(
 	source := model.ResolveOutputs(expression.Type())
 	conversion := providerPrimitiveValueConversion(source, target, "value")
 	if model.ContainsOutputs(expression.Type()) {
+		conversion = providerOutputPrimitiveValueConversion(target, "value")
 		if nullable {
 			return fmt.Sprintf(
 				"pulumi.output(%s).apply<%s?>((value) => value == null ? null : %s)",
@@ -35,6 +36,9 @@ func providerPrimitiveValueConversion(source model.Type, target schema.Type, val
 		if source == model.StringType {
 			return "bool.parse(" + value + ")"
 		}
+		if source == model.DynamicType {
+			return value + " is String ? bool.parse((" + value + ").toString()) : " + value + " as bool"
+		}
 	case schema.IntType:
 		if source == model.StringType {
 			return "int.parse(" + value + ")"
@@ -42,9 +46,15 @@ func providerPrimitiveValueConversion(source model.Type, target schema.Type, val
 		if source == model.NumberType {
 			return "(" + value + ").toInt()"
 		}
+		if source == model.DynamicType {
+			return value + " is String ? int.parse((" + value + ").toString()) : (" + value + " as num).toInt()"
+		}
 	case schema.NumberType:
 		if source == model.StringType {
 			return "double.parse(" + value + ")"
+		}
+		if source == model.DynamicType {
+			return value + " is String ? double.parse((" + value + ").toString()) : (" + value + " as num).toDouble()"
 		}
 		return "(" + value + ").toDouble()"
 	case schema.StringType:

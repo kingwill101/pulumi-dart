@@ -4,6 +4,7 @@ import 'package:pulumi/src/resource/resource.dart';
 
 import 'constants.dart';
 import 'input.dart';
+import 'input_collections.dart';
 import 'output.dart';
 import 'resource/custom_resource.dart';
 
@@ -174,6 +175,20 @@ class Serializer {
       } finally {
         seenSet.remove(prop);
       }
+    }
+
+    if (prop is InputMap) {
+      return serializeMap(
+        ctx,
+        prop.cast(),
+        keepResources,
+        keepOutputValues,
+        seenSet,
+      );
+    }
+
+    if (prop is InputList) {
+      return serializeList(ctx, prop, keepResources, keepOutputValues, seenSet);
     }
 
     if (prop is Input) {

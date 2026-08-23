@@ -48,6 +48,12 @@ func (lowerer programLowerer) providerArrayExpression(
 		items[index] = value
 	}
 	element := lowerer.providerSchemaValueDartType(pkg, elementType)
+	if model.ContainsOutputs(expression.Type()) {
+		for index := range items {
+			items[index] = "(" + items[index] + ").input()"
+		}
+		return "pulumi.inputList<" + element + ">(<pulumi.Input<" + element + ">>[" + strings.Join(items, ", ") + "]) as pulumi.Input<List<" + element + ">>", nil
+	}
 	return "<" + element + ">[" + strings.Join(items, ", ") + "]", nil
 }
 
@@ -86,28 +92,12 @@ func (lowerer programLowerer) providerMapExpression(
 		items[index] = key + ": " + value
 	}
 	element := lowerer.providerSchemaValueDartType(pkg, elementType)
+	if model.ContainsOutputs(expression.Type()) {
+		for index, item := range items {
+			parts := strings.SplitN(item, ": ", 2)
+			items[index] = parts[0] + ": (" + parts[1] + ").input()"
+		}
+		return "pulumi.inputMap<" + element + ">(<String, pulumi.Input<" + element + ">>{" + strings.Join(items, ", ") + "}) as pulumi.Input<Map<String, " + element + ">>", nil
+	}
 	return "<String, " + element + ">{" + strings.Join(items, ", ") + "}", nil
-}
-
-func (lowerer programLowerer) providerSchemaValueDartType(defaultPackage string, typ schema.Type) string {
-	typ = unwrapProviderInputType(typ)
-	if primitive, ok := providerPrimitiveDartType(typ); ok {
-		return primitive
-	}
-	switch typ := typ.(type) {
-	case *schema.EnumType:
-		pkg, module, className := providerEnumName(defaultPackage, typ)
-		lowerer.imports[pkg+"\x00"+module] = dartProgramImport{Package: pkg, Module: module}
-		return programModuleAlias(pkg, module) + "." + className
-	case *schema.ObjectType:
-		pkg, module, className := providerObjectTypeName(defaultPackage, typ)
-		lowerer.imports[pkg+"\x00"+module] = dartProgramImport{Package: pkg, Module: module}
-		return programModuleAlias(pkg, module) + "." + className
-	case *schema.ArrayType:
-		return "List<" + lowerer.providerSchemaValueDartType(defaultPackage, typ.ElementType) + ">"
-	case *schema.MapType:
-		return "Map<String, " + lowerer.providerSchemaValueDartType(defaultPackage, typ.ElementType) + ">"
-	default:
-		return "dynamic"
-	}
 }

@@ -80,9 +80,9 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 	case "organization":
 		return noArgumentBuiltin(expression.Name, arguments, "pulumi.Deployment.instance.organizationName")
 	case "fromBase64":
-		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fromBase64")
+		return lowerOutputAwareBuiltin(expression, arguments, "pulumi.fromBase64")
 	case "toBase64":
-		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.toBase64")
+		return lowerOutputAwareBuiltin(expression, arguments, "pulumi.toBase64")
 	case "sha1":
 		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.sha1Hash")
 	case "readFile":

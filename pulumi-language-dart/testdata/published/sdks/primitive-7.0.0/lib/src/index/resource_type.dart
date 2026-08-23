@@ -24,10 +24,10 @@ class ResourceType extends pulumi.CustomResource {
           pulumi.CustomResourceOptions(version: '7.0.0').merge(options),
         ) {
     boolean = registerOutput<bool>('boolean');
-    booleanMap = registerOutput<Map<String, bool>>('booleanMap');
+    booleanMap = registerOutput<Map<String, bool>>('booleanMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     float = registerOutput<double>('float');
     integer = registerOutput<int>('integer');
-    numberArray = registerOutput<List<double>>('numberArray');
+    numberArray = registerOutput<List<double>>('numberArray', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<double>(); });
     string_ = registerOutput<String>('string');
   }
 }

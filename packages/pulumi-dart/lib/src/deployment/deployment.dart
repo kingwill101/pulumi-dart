@@ -497,7 +497,10 @@ class DeploymentImpl extends Deployment
 
       final serializedStruct = await StructConverter.toStruct(
         serializedProps,
-        collapseUnknownCollections: !remote,
+        // Resource registration advertises supportsPartialValues, so preserve
+        // unknown sentinels at collection leaves instead of collapsing the
+        // collection a second time after Serializer has shaped each property.
+        collapseUnknownCollections: false,
       );
       final request = RegisterResourceRequest()
         ..type = resource.getResourceType()

@@ -698,6 +698,39 @@ void main() {
       },
     );
 
+    test(
+      'Serialize typed input collections preserves unknown leaves',
+      () async {
+        final unknown = Output<int>(
+          Future.value(
+            const OutputData<int>(
+              value: null,
+              isKnown: false,
+              isSecret: false,
+              resources: {},
+            ),
+          ),
+        );
+
+        expect(
+          await serializer.serializeAsync(
+            'list',
+            inputList<int>([unknown.input()]),
+            false,
+          ),
+          [Constants.unknownNumberValue],
+        );
+        expect(
+          await serializer.serializeAsync(
+            'map',
+            inputMap<int>({'value': unknown.input()}),
+            false,
+          ),
+          {'value': Constants.unknownNumberValue},
+        );
+      },
+    );
+
     test('Serialize OutputValue envelope with metadata', () async {
       final dependency = DependencyResource(
         'urn:pulumi:stack::project::test:index:Resource::dep',
