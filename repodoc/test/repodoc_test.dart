@@ -20,6 +20,7 @@ void main() {
         'packages:remove',
         'packages:update',
         'packages:check-workspace',
+        'packages:verify-generated',
         'parity:integration',
         'parity:sdk',
         'integration:matrix',

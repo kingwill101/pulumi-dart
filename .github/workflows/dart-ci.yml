@@ -101,9 +101,7 @@ jobs:
 
       - name: Verify provider packages are up to date
         if: steps.provider-scope.outputs.run == 'true'
-        # Older checked-in SDKs contain an extra blank line at EOF. Ignore
-        # blank-only changes while still rejecting generated API/content drift.
-        run: git diff --exit-code --ignore-blank-lines -- packages
+        run: dart run repodoc packages:verify-generated
 
       - name: Test Dart language host
         run: |
