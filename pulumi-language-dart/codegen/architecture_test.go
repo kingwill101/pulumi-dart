@@ -19,7 +19,6 @@ const (
 // These predate the staged generator architecture. Delete entries as each
 // responsibility is migrated; do not add entries for new code.
 var legacyOversizedFiles = map[string]string{
-	"generate_pack_test.go": "legacy end-to-end generator test suite",
 }
 
 func TestGeneratorFilesRemainFocused(t *testing.T) {
